@@ -1,0 +1,10 @@
+extends parts/layout
+
+include parts/AboutZingy
+
+block app
+	base-page#app
+		template
+
+		template(v-slot:about-zingy)
+			+about-zingy

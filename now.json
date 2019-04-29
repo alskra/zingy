@@ -1,0 +1,33 @@
+{
+	"version": 2,
+	"name": "project-name",
+	"alias": "project-alias.now.sh",
+	"builds": [
+		{
+			"src": "package.json",
+			"use": "@now/static-build"
+		}
+	],
+	"routes": [
+		{
+			"src": "^/css/(.*)",
+			"headers": {"cache-control": "max-age=31536000,immutable"},
+			"dest": "/css/$1"
+		},
+		{
+			"src": "^/img/(.*)",
+			"headers": {"cache-control": "max-age=31536000,immutable"},
+			"dest": "/img/$1"
+		},
+		{
+			"src": "^/js/(.*)",
+			"headers": {"cache-control": "max-age=31536000,immutable"},
+			"dest": "/js/$1"
+		},
+		{
+			"src": "^/upload/(.*)",
+			"headers": {"cache-control": "max-age=31536000,immutable"},
+			"dest": "/upload/$1"
+		}
+	]
+}
