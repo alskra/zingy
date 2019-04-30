@@ -84,7 +84,7 @@
 		line-height: 1.25;
 		box-sizing: border-box;
 		width: 100%;
-		max-width: env(--content-width-max);
+		max-width: 1200px;
 		margin: 0 auto;
 		padding: 20px 10px;
 		text-align: right;
