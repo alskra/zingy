@@ -26,7 +26,7 @@ const OUTPUT_DIR = '';
  * List of input directories
  */
 const INPUT_DIRS = [
-	'src/img',
+	'src/assets/img',
 	'public/upload'
 ];
 
@@ -61,7 +61,9 @@ const options = {
 	 */
 	svgoOptions: {
 		plugins: [
-			{removeViewBox: false}
+			{
+				removeViewBox: false
+			}
 		]
 	},
 	/**

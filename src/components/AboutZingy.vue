@@ -8,8 +8,7 @@
 			.zingy-str.str-5 strateg#[b y]
 
 		.description
-			template(v-if="$scopedSlots.default")
-				slot
+			slot
 </template>
 
 <script>
@@ -29,6 +28,7 @@
 	}
 
 	.zingy {
+		position: relative;
 		margin: auto auto auto calc(50% - 228 / 34 * 1em);
 		color: #ffffff;
 		font-family: var(--font-family);
@@ -38,6 +38,18 @@
 		text-transform: uppercase;
 		letter-spacing: calc(17 / 34 * 1em);
 		white-space: nowrap;
+		user-select: none;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: -0.25em;
+			bottom: -0.25em;
+			left: calc(206 / 34 * 1em);
+			box-sizing: border-box;
+			border: 1px solid #ffffff;
+			width: calc(47 / 34 * 1em);
+		}
 
 		>>> b {
 			font-size: from-to(calc(46 / 2.5), 46);
@@ -61,6 +73,31 @@
 
 		&.str-5 {
 			margin-left: calc(-48 / 34 * 1em);
+		}
+	}
+
+	.description {
+		color: #ffffff;
+		font-family: var(--font-family);
+		font-size: from-to(14, 16);
+		font-weight: 300;
+		line-height: 1.25;
+		box-sizing: border-box;
+		width: 100%;
+		max-width: env(--content-width-max);
+		margin: 0 auto;
+		padding: 20px 10px;
+		text-align: right;
+
+		>>> {
+			p {
+				margin: 0;
+			}
+
+			strong {
+				font-weight: 500;
+				letter-spacing: calc(1.6 / 16 * 1em);
+			}
 		}
 	}
 </style>

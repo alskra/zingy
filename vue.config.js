@@ -49,12 +49,12 @@ module.exports = {
 				return [options];
 			});
 
-		config.plugin('copy')
+		config.plugins.has('copy') && config.plugin('copy')
 			.tap(([options]) => {
-				options[0].ignore = [
-					...options[0].ignore,
+				options.forEach(optionObj => optionObj.ignore = [
+					...optionObj.ignore,
 					...['*.pug']
-				];
+				]);
 
 				return [options];
 			});

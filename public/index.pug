@@ -1,10 +1,10 @@
-extends parts/layout
+extends templates/layout
 
-include parts/AboutZingy
+include templates/AboutZingy
 
 block app
 	base-page#app
 		template
 
-		template(v-slot:about-zingy)
+		template(v-slot:back-layout)
 			+about-zingy

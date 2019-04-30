@@ -1,6 +1,7 @@
 const environmentVariables = {
 	'--vw-min': '320px',
-	'--vw-max': '1920px'
+	'--vw-max': '1920px',
+	'--content-width-max': '1200px'
 };
 
 module.exports = {

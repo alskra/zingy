@@ -1,7 +1,7 @@
 {
 	"version": 2,
-	"name": "project-name",
-	"alias": "project-alias.now.sh",
+	"name": "zingy",
+	"alias": "z-project-front.now.sh",
 	"builds": [
 		{
 			"src": "package.json",

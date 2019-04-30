@@ -4,7 +4,7 @@
 			slot
 
 		.back-layout
-			slot(name="about-zingy")
+			slot(name="back-layout")
 </template>
 
 <script>
