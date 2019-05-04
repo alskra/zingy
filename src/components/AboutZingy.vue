@@ -1,16 +1,3 @@
-<template lang="pug">
-	.about-zingy
-		.zingy
-			.zingy-str.str-1 optimi#[b z]ation
-			.zingy-str.str-2 des#[b i]gn
-			.zingy-str.str-3 developme#[b n]t
-			.zingy-str.str-4 marketin#[b g]
-			.zingy-str.str-5 strateg#[b y]
-
-		.description
-			slot
-</template>
-
 <script>
 	export default {
 		name: 'AboutZingy'
@@ -22,6 +9,7 @@
 		all: initial;
 		display: flex;
 		flex-flow: column;
+		box-sizing: border-box;
 		width: 100%;
 		height: 100%;
 		background: url("../assets/img/about-zingy-bg.jpg") no-repeat 50% 50% / cover;
@@ -31,8 +19,8 @@
 		position: relative;
 		margin: auto auto auto calc(50% - 228 / 34 * 1em);
 		color: #ffffff;
-		font-family: var(--font-family);
-		font-size: from-to(calc(34 / 2.5), 34);
+		font-family: var(--font-family, sans-serif);
+		font-size: range(calc(34 / 2.5), 34);
 		font-weight: 400;
 		line-height: 1.5;
 		text-transform: uppercase;
@@ -52,7 +40,7 @@
 		}
 
 		>>> b {
-			font-size: from-to(calc(46 / 2.5), 46);
+			font-size: range(calc(46 / 2.5), 46);
 			font-weight: 700;
 			letter-spacing: calc(23 / 46 * 1em);
 		}
@@ -78,8 +66,8 @@
 
 	.description {
 		color: #ffffff;
-		font-family: var(--font-family);
-		font-size: from-to(14, 16);
+		font-family: var(--font-family, sans-serif);
+		font-size: range(1.4rem, 1.6rem);
 		font-weight: 300;
 		line-height: 1.25;
 		box-sizing: border-box;

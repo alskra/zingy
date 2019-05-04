@@ -1,31 +1,38 @@
-<template lang="pug">
-	.base-page
-		.front-layout
-			slot
-
-		.back-layout
-			slot(name="back-layout")
-</template>
-
 <script>
+	import FooterPage from './FooterPage';
+	import AboutZingy from './AboutZingy';
+
 	export default {
-		name: 'BasePage'
+		name: 'BasePage',
+		components: {
+			FooterPage,
+			AboutZingy
+		}
 	};
 </script>
 
 <style scoped>
+	:focus:not(:focus-visible) {
+		outline-style: none;
+	}
+
 	.base-page {
 		all: initial;
 		display: block;
 		overflow: hidden;
-		min-height: 200vh;
+		padding-bottom: 100vh;
+
+		.footer-page {
+			margin-top: auto;
+		}
 	}
 
 	.front-layout {
 		position: relative;
 		z-index: 1;
 		min-height: 100vh;
-		background-color: white;
+		display: flex;
+		flex-flow: column;
 	}
 
 	.back-layout {

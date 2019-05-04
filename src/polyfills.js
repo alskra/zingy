@@ -1,3 +1,4 @@
+import './resolve-breakpoint';
 import cssBlankPseudo from 'css-blank-pseudo/legacy';
 import 'focus-visible';
 import focusWithin from 'focus-within';

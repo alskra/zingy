@@ -1,10 +1,10 @@
 <script>
-	import AboutZingy from './components/AboutZingy';
+	import PageIndex from './components/PageIndex';
 
 	export default {
 		name: 'App',
 		components: {
-			AboutZingy
+			PageIndex
 		}
 	}
 </script>
@@ -13,8 +13,6 @@
 	@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700&subset=cyrillic,cyrillic-ext,latin-ext');
 
 	:root {
-		--vw: 100vw;
-
 		// Overwrite browser dependent properties
 		--quotes: "“" "”" "‘" "’";
 		--font-family: Roboto, Arial, sans-serif;
@@ -25,14 +23,6 @@
 		font-size: percentage(10 / 16);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-
-		@media (width > env(--vw-max)) {
-			--vw: env(--vw-max);
-		}
-
-		@media (width < env(--vw-min)) {
-			--vw: env(--vw-min);
-		}
 
 		&::before {
 			content: '';

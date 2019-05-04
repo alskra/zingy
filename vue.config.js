@@ -4,14 +4,16 @@ process.env.VUE_APP_NAME = 'Zingy';
 
 const pages = {
 	index: {
-		template: 'public/index.pug',
+		template: 'public/templates/index.pug',
 		filename: 'index.html'
 	},
 	blog: {
-		template: 'public/blog.pug',
+		template: 'public/templates/blog.pug',
 		filename: 'blog.html'
 	}
 };
+
+const pugTemplateLoaders = '!!pug-loader?pretty!';
 
 module.exports = {
 	runtimeCompiler: true,
@@ -24,7 +26,7 @@ module.exports = {
 				options = {
 					...options,
 					...{
-						template: '!!pug-loader?pretty!' + pages.index.template,
+						template: pugTemplateLoaders + pages.index.template,
 						filename: pages.index.filename,
 						minify: false
 					}
@@ -38,7 +40,7 @@ module.exports = {
 								.use(HtmlWebpackPlugin, [{
 									...options,
 									...{
-										template: '!!pug-loader?pretty!' + pageOptions.template,
+										template: pugTemplateLoaders + pageOptions.template,
 										filename: pageOptions.filename
 									}
 								}])

@@ -1,8 +1,4 @@
-const environmentVariables = {
-	'--vw-min': '320px',
-	'--vw-max': '1920px',
-	'--content-width-max': '1200px'
-};
+const {environmentVariables} = require('./postcss.import');
 
 module.exports = {
 	parser: 'postcss-scss',
@@ -11,26 +7,27 @@ module.exports = {
 		'postcss-calc': {},
 		'postcss-functions': {
 			functions: {
-				'from-to'(
+				'range'(
 					from,
 					to,
-					vwMin = environmentVariables['--vw-min'],
-					vwMax = environmentVariables['--vw-max']
+					minBreakpoint = environmentVariables['--min-breakpoint'],
+					maxBreakpoint = environmentVariables['--max-breakpoint']
 				) {
-					[from, to, vwMin, vwMax] = [from, to, vwMin, vwMax].map(value => {
+					const unit = (from + to).match(/rem$/) ? 'rem' : 'px';
+
+					[from, to, minBreakpoint, maxBreakpoint] = [from, to, minBreakpoint, maxBreakpoint].map(value => {
 						const number = parseFloat(value);
 
 						if (isNaN(number)) {
-							throw new Error(`Argument is NaN`);
+							throw new Error(`Argument '${value}' is NaN`);
 						}
 
 						return number;
 					});
 
-					return `calc(${from}px + (${to} - ${from}) / (${vwMax} - ${vwMin}) * (var(--vw) - ${vwMin}px))`;
+					return `calc(${from}${unit} + (${to}${unit} - ${from}${unit}) / (${maxBreakpoint} - ${minBreakpoint}) * (var(--resolved-breakpoint) - ${minBreakpoint}))`;
 				},
 				percentage(expression) {
-					// return eval(expression) * 100 + '%';
 					return (new Function('', `return ${expression} * 100 + '%'`))();
 				}
 			}
@@ -39,9 +36,9 @@ module.exports = {
 		'postcss-preset-env': {
 			stage: false,
 			features: {
-				'all-property': {
+				'all-property': process.env.NODE_ENV === 'production' ? {
 					replace: true
-				},
+				} : false,
 				'any-link-pseudo-class': true,
 				'blank-pseudo-class': true,
 				'color-functional-notation': true,
