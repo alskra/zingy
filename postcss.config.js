@@ -5,6 +5,7 @@ module.exports = {
 	plugins: {
 		'postcss-nested': {},
 		'postcss-calc': {},
+		'postcss-hexrgba': {},
 		'postcss-functions': {
 			functions: {
 				'range'(
@@ -25,14 +26,13 @@ module.exports = {
 						return number;
 					});
 
-					return `calc(${from}${unit} + (${to}${unit} - ${from}${unit}) / (${maxBreakpoint} - ${minBreakpoint}) * (var(--resolved-breakpoint) - ${minBreakpoint}))`;
+					return `calc(${from}${unit} + (${to}${unit} - ${from}${unit}) / (${maxBreakpoint} - ${minBreakpoint}) * 1000 * (var(--resolved-breakpoint) - ${minBreakpoint}) / 1000)`;
 				},
 				percentage(expression) {
 					return (new Function('', `return ${expression} * 100 + '%'`))();
 				}
 			}
 		},
-		'postcss-hexrgba': {},
 		'postcss-preset-env': {
 			stage: false,
 			features: {
