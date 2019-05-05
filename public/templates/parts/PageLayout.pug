@@ -4,9 +4,9 @@ include ZingyDefinition
 mixin page-layout()
 	page-layout(inline-template)&attributes(attributes)
 		.page-layout
-			.front-layout
+			.front
 				block
 				+page-footer()
 
-			.back-layout
+			.back
 				+zingy-definition()

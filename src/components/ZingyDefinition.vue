@@ -7,12 +7,15 @@
 <style scoped>
 	.zingy-definition {
 		all: initial;
-		display: flex;
-		flex-flow: column;
-		box-sizing: border-box;
-		width: 100%;
-		height: 100%;
-		background: url("../assets/img/about-zingy-bg.jpg") no-repeat 50% 50% / cover;
+
+		& {
+			display: flex;
+			flex-flow: column;
+			box-sizing: border-box;
+			width: 100%;
+			height: 100%;
+			background: url("../assets/img/about-zingy-bg.jpg") no-repeat 50% 50% / cover;
+		}
 	}
 
 	.zingy {
@@ -46,20 +49,20 @@
 		}
 	}
 
-	.zingy-str {
-		&.str-2 {
+	.str {
+		&:nth-child(2) {
 			margin-left: calc(110 / 34 * 1em);
 		}
 
-		&.str-3 {
+		&:nth-child(3) {
 			margin-left: calc(-134 / 34 * 1em);
 		}
 
-		&.str-4 {
+		&:nth-child(4) {
 			margin-left: calc(-91 / 34 * 1em);
 		}
 
-		&.str-5 {
+		&:nth-child(5) {
 			margin-left: calc(-48 / 34 * 1em);
 		}
 	}
@@ -77,15 +80,13 @@
 		padding: 20px 10px;
 		text-align: right;
 
-		>>> {
-			p {
-				margin: 0;
-			}
+		>>> p {
+			margin: 0;
+		}
 
-			strong {
-				font-weight: 500;
-				letter-spacing: calc(1.6 / 16 * 1em);
-			}
+		>>> strong {
+			font-weight: 500;
+			letter-spacing: calc(1.6 / 16 * 1em);
 		}
 	}
 </style>

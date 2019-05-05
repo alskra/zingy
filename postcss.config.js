@@ -36,9 +36,9 @@ module.exports = {
 		'postcss-preset-env': {
 			stage: false,
 			features: {
-				'all-property': process.env.NODE_ENV === 'production' ? {
+				'all-property': {
 					replace: true
-				} : false,
+				},
 				'any-link-pseudo-class': true,
 				'blank-pseudo-class': true,
 				'color-functional-notation': true,

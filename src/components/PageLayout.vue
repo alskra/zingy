@@ -14,26 +14,28 @@
 <style scoped>
 	.page-layout {
 		all: initial;
-		display: block;
-		overflow: hidden;
-		padding-bottom: 100vh;
-		background-color: white;
 
-		.page-footer {
-			margin-top: auto;
+		& {
+			display: block;
+			overflow: hidden;
+			padding-bottom: 100vh;
 		}
 	}
 
-	.front-layout {
+	.front {
 		position: relative;
 		z-index: 1;
 		min-height: 100vh;
 		display: flex;
 		flex-flow: column;
 		background-color: white;
+
+		> .page-footer {
+			margin-top: auto;
+		}
 	}
 
-	.back-layout {
+	.back {
 		position: fixed;
 		top: 0;
 		right: 0;
