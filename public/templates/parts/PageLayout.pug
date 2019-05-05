@@ -1,0 +1,12 @@
+include PageFooter
+include ZingyDefinition
+
+mixin page-layout()
+	page-layout(inline-template)&attributes(attributes)
+		.page-layout
+			.front-layout
+				block
+				+page-footer()
+
+			.back-layout
+				+zingy-definition()

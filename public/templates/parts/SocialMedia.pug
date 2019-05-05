@@ -1,0 +1,21 @@
+mixin social-media(data)
+	-
+		const socialMediaList = [
+			'VK',
+			'Facebook',
+			'Twitter',
+			'Google+',
+			'Instagram'
+		]
+
+	social-media(inline-template)&attributes(attributes)
+		.social-media
+			.row
+				each iconName in socialMediaList
+					.row-col
+						a.item(
+							href=""
+							title=iconName
+							target="_blank"
+						)
+							base-icon-svg(icon-name=iconName.toLowerCase())

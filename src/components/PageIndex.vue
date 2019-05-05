@@ -1,6 +1,11 @@
 <script>
+	import PageLayout from './PageLayout';
+
 	export default {
-		name: 'PageIndex'
+		name: 'PageIndex',
+		components: {
+			PageLayout
+		}
 	};
 </script>
 

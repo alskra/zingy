@@ -1,0 +1,26 @@
+include SocialMedia
+
+mixin page-footer()
+	page-footer(inline-template)&attributes(attributes)
+		footer.page-footer
+			.container
+				h2.title Контакты
+
+				.row
+					.row-col
+						.contacts-row
+							.contacts-row-col
+								.content
+									p E-mail: #[a(href="mailto:zingy.projects@gmail.com") zingy.projects@gmail.com]
+									p Телефон: #[a(href="tel:+79854575817") +7 (985) 457-58-17]
+
+							.contacts-row-col
+								+social-media()
+
+							.contacts-row-col
+								.content.content-copyright
+									p &copy;&nbsp;2008&mdash;2019. Все&nbsp;права защищены
+
+					.row-col 2
+					.row-col 3
+					.row-col 4

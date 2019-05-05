@@ -63,5 +63,9 @@ module.exports = {
 	},
 	css: {
 		sourceMap: process.env.NODE_ENV !== 'production'
-	}
+	},
+	transpileDependencies: [
+		'css-blank-pseudo',
+		'focus-within'
+	]
 };

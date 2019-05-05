@@ -1,4 +1,5 @@
 import {environmentVariables} from '../postcss.import';
+import cssVars from 'css-vars-ponyfill';
 
 export default function resolveBreakpoint() {
 	let resolvedBreakpoint = window.innerWidth;
@@ -15,9 +16,16 @@ export default function resolveBreakpoint() {
 		resolvedBreakpoint = breakpoints.max;
 	}
 
-	document.documentElement.style.setProperty('--resolved-breakpoint', String(resolvedBreakpoint));
+	// document.documentElement.style.setProperty('--resolved-breakpoint', String(resolvedBreakpoint));
 
-	window.addEventListener('resize', resolveBreakpoint);
+	cssVars({
+		variables: {
+			'resolved-breakpoint': resolvedBreakpoint
+		}
+	});
+
+	return resolvedBreakpoint;
 }
 
 resolveBreakpoint();
+window.addEventListener('resize', resolveBreakpoint);

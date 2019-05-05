@@ -1,11 +1,11 @@
 <script>
 	export default {
-		name: 'AboutZingy'
+		name: 'ZingyDefinition'
 	};
 </script>
 
 <style scoped>
-	.about-zingy {
+	.zingy-definition {
 		all: initial;
 		display: flex;
 		flex-flow: column;
@@ -64,7 +64,7 @@
 		}
 	}
 
-	.description {
+	.definition {
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
 		font-size: range(1.4rem, 1.6rem);

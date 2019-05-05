@@ -1,28 +1,25 @@
 <script>
-	import FooterPage from './FooterPage';
-	import AboutZingy from './AboutZingy';
+	import PageFooter from './PageFooter';
+	import ZingyDefinition from './ZingyDefinition';
 
 	export default {
-		name: 'BasePage',
+		name: 'PageLayout',
 		components: {
-			FooterPage,
-			AboutZingy
+			PageFooter,
+			ZingyDefinition
 		}
 	};
 </script>
 
 <style scoped>
-	:focus:not(:focus-visible) {
-		outline-style: none;
-	}
-
-	.base-page {
+	.page-layout {
 		all: initial;
 		display: block;
 		overflow: hidden;
 		padding-bottom: 100vh;
+		background-color: white;
 
-		.footer-page {
+		.page-footer {
 			margin-top: auto;
 		}
 	}
@@ -33,6 +30,7 @@
 		min-height: 100vh;
 		display: flex;
 		flex-flow: column;
+		background-color: white;
 	}
 
 	.back-layout {
