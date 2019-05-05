@@ -17,6 +17,33 @@
 			display: block;
 			padding: range(50, 100) 0;
 			background-color: #222222;
+			position: relative;
+			min-height: calc(396 / 1920 * 100vmax + 10vmax);
+		}
+	}
+
+	.zingyprojects {
+		width: calc(3983 / 1920 * 100vmax);
+		height: calc(396 / 1920 * 100vmax);
+		background: url("../assets/img/zingy-projects.png") no-repeat 50% 50% / contain;
+		position: absolute;
+		left: 0;
+		margin-top: range(-15, -30);
+		transform: translateX(4vw);
+		animation: zingyprojects 90s linear infinite;
+
+		@keyframes zingyprojects {
+			2% {
+				transform: translateX(4vw);
+			}
+
+			50% {
+				transform: translateX(calc(-3983 / 1920 * 100vmax + 100vw - 4vw));
+			}
+
+			52% {
+				transform: translateX(calc(-3983 / 1920 * 100vmax + 100vw - 4vw));
+			}
 		}
 	}
 
@@ -30,6 +57,7 @@
 			display: flex;
 			flex-wrap: wrap;
 			margin: 15px -10px;
+			position: relative;
 		}
 
 		> .row > .col {
@@ -91,6 +119,7 @@
 		font-weight: 500;
 		line-height: 1.25;
 		margin: 0 0 range(30, 60);
+		position: relative;
 	}
 
 	.content {
