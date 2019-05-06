@@ -36,6 +36,15 @@
 		}
 	}
 
+	:focus:not(:focus-visible) {
+		outline: none;
+	}
+
+	:focus-visible {
+		outline: 1px dotted currentColor;
+		outline: 5px auto -webkit-focus-ring-color;
+	}
+
 	body {
 		margin: 0;
 	}

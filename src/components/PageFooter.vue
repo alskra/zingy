@@ -3,8 +3,47 @@
 
 	export default {
 		name: 'PageFooter',
+		data() {
+			return {
+				navBoxHoverVisible: false
+			};
+		},
 		components: {
 			SocialMedia
+		},
+		methods: {
+			onNavBoxItemMouseOver(event) {
+				if (event.target.classList.contains('item')) {
+					const hover = event.currentTarget.querySelector('.hover');
+
+					clearTimeout(hover.hideTimer);
+					hover.removeEventListener('transitionend', hover.onHide, false);
+
+					Object.assign(hover.style, {
+						display: 'block',
+						top: event.target.offsetTop + 'px',
+						height: event.target.offsetHeight + 'px'
+					});
+
+					hover.showTimer = requestAnimationFrame(() => hover.style.opacity = '1');
+				}
+			},
+			onNavBoxItemMouseOut(event) {
+				if (event.target.classList.contains('item')) {
+					const hover = event.currentTarget.querySelector('.hover');
+
+					cancelAnimationFrame(hover.showTimer);
+
+					hover.onHide = () => {
+						hover.removeEventListener('transitionend', hover.onHide, false);
+						hover.style.display = '';
+					};
+
+					hover.addEventListener('transitionend', hover.onHide, false);
+
+					hover.hideTimer = setTimeout(() => hover.style.opacity = '', 300);
+				}
+			}
 		}
 	};
 </script>
@@ -22,7 +61,7 @@
 		}
 	}
 
-	.zingyprojects {
+	.zingy-projects {
 		width: calc(3983 / 1920 * 100vmax);
 		height: calc(396 / 1920 * 100vmax);
 		background: url("../assets/img/zingy-projects.png") no-repeat 50% 50% / contain;
@@ -47,7 +86,7 @@
 		}
 	}
 
-	.container {
+	.content-box {
 		padding: 0 range(10, 110);
 		box-sizing: border-box;
 		max-width: 1920px;
@@ -56,7 +95,7 @@
 		> .row {
 			display: flex;
 			flex-wrap: wrap;
-			margin: 15px -10px;
+			margin: -15px -10px;
 			position: relative;
 		}
 
@@ -81,7 +120,15 @@
 			}
 
 			@media (width < 768px) {
-				width: calc(100% - 20px);
+				&:nth-child(1),
+				&:nth-child(2) {
+					width: calc(100% - 20px);
+				}
+
+				&:nth-child(3),
+				&:nth-child(4) {
+					width: calc(50% - 20px);
+				}
 			}
 		}
 
@@ -112,7 +159,7 @@
 		}
 	}
 
-	.title {
+	.heading-box {
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
 		font-size: range(calc(4.8rem / 1.5), 4.8rem);
@@ -122,7 +169,7 @@
 		position: relative;
 	}
 
-	.content {
+	.text-box {
 		color: #494848;
 		font-family: var(--font-family, sans-serif);
 		font-size: range(1.6rem, 1.8rem);
@@ -142,19 +189,81 @@
 		}
 
 		>>> a {
-			outline: none;
 			color: #ffffff;
 			text-decoration: none;
 			font-weight: 500;
-
-			&:focus-visible {
-				outline: 2px solid currentColor;
-			}
 		}
 
 		&.-copyright {
 			@media (768px <= width < 1024px) {
 				text-align: right;
+			}
+		}
+	}
+
+	.nav-box {
+		> .grid {
+			display: flex;
+			flex-flow: column;
+			margin: -8px -10px;
+
+			> .cell {
+				margin: 8px 10px;
+
+				> .item {
+					color: #ffffff;
+					font-family: var(--font-family, sans-serif);
+					font-size: range(1.6rem, 1.8rem);
+					font-weight: 300;
+					line-height: 1.25;
+					text-decoration: none;
+					transition: color 0.2s;
+
+					&:hover {
+						color: #ec5151;
+					}
+				}
+			}
+		}
+
+		&.-main {
+			> .grid {
+				@media (width < 768px) {
+					flex-flow: row;
+					flex-wrap: wrap;
+				}
+
+				> .cell {
+					> .item {
+						font-weight: 500;
+					}
+				}
+			}
+		}
+
+		&.-section {
+			position: relative;
+
+			> .grid {
+				> .cell {
+					padding-left: 28px;
+
+					> .item {
+					}
+				}
+			}
+
+			> .hover {
+				display: none;
+				opacity: 0;
+				width: 3px;
+				height: 28px;
+				background-color: #e04b4a;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transition-property: opacity, top, height;
+				transition-duration: 0.3s;
 			}
 		}
 	}
