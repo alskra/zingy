@@ -1,13 +1,15 @@
-mixin page-footer-nav-box(navList = [])
-	page-footer-nav-box(inline-template)&attributes(attributes)
-		.page-footer-nav-box(
+mixin page-footer-nav(navList = [], navName)
+	page-footer-nav(inline-template)&attributes(attributes)
+		.page-footer-nav(
 			@mouseover="onNavBoxItemMouseOver"
 			@mouseout="onNavBoxItemMouseOut"
 		)
+			if navName
+				.name= navName
+
 			transition
 				.hover(
-					v-if="hasHover"
-					v-show="hoverShow"
+					v-if="hover"
 					:style="hoverStyle"
 				)
 

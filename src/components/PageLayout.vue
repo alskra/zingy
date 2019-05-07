@@ -22,7 +22,7 @@
 		}
 	}
 
-	.front {
+	.front-box {
 		position: relative;
 		z-index: 1;
 		min-height: 100vh;
@@ -35,7 +35,7 @@
 		}
 	}
 
-	.back {
+	.back-box {
 		position: fixed;
 		top: 0;
 		right: 0;

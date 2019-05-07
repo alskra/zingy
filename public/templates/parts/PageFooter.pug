@@ -1,5 +1,5 @@
 include SocialMedia
-include PageFooterNavBox
+include PageFooterNav
 
 mixin page-footer()
 	-
@@ -55,10 +55,10 @@ mixin page-footer()
 									p &copy;&nbsp;2008&mdash;2019. Все&nbsp;права&nbsp;защищены
 
 					.col
-						+page-footer-nav-box(data.navMain).-main
+						+page-footer-nav(data.navMain).-main
 
 					.col
-						+page-footer-nav-box(data.navDev).-section(has-hover)
+						+page-footer-nav(data.navDev, 'Разработка').-section(hover)
 
 					.col
-						+page-footer-nav-box(data.navSeo).-section(has-hover)
+						+page-footer-nav(data.navSeo, 'Продвижение').-section(hover)

@@ -1,38 +1,32 @@
 <script>
 	export default {
-		name: 'PageFooterNavBox',
+		name: 'PageFooterNav',
 		props: {
-			hasHover: {
+			hover: {
 				type: Boolean,
 				default: false
 			}
 		},
 		data() {
 			return {
-				hoverShow: false,
-				hoverStyle: {
-					top: 0,
-					height: 0
-				},
-				hoverTimerHide: null
+				hoverStyle: {}
 			};
 		},
 		methods: {
 			onNavBoxItemMouseOver(event) {
-				if (this.hasHover && event.target.classList.contains('item')) {
-					this.hoverShow = true;
-
-					clearTimeout(this.hoverTimerHide);
-
-					this.hoverStyle = Object.assign(this.hoverStyle, {
+				if (this.hover && event.target.classList.contains('item')) {
+					this.hoverStyle = Object.assign({}, this.hoverStyle, {
 						top: event.target.offsetTop + 'px',
 						height: event.target.offsetHeight + 'px'
 					});
 				}
 			},
-			onNavBoxItemMouseOut(event) {
-				if (this.hasHover && event.target.classList.contains('item')) {
-					this.hoverTimerHide = setTimeout(() => this.hoverShow = false, 200);
+			onNavBoxItemMouseOut() {
+				if (this.hover) {
+					this.hoverStyle = Object.assign({}, this.hoverStyle, {
+						top: '',
+						height: ''
+					});
 				}
 			}
 		}
@@ -40,25 +34,40 @@
 </script>
 
 <style scoped>
-	.page-footer-nav-box {
+	.page-footer-nav {
 		all: initial;
 
 		& {
 			display: block;
 		}
 
+		> .name {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			padding: 3px 0 3px 28px;
+			font-weight: 500;
+			text-transform: uppercase;
+			color: #ffffff;
+			font-family: var(--font-family, sans-serif);
+			font-size: range(1.6rem, 1.8rem);
+			line-height: 1.25;
+			position: relative;
+			margin-bottom: 5px;
+		}
+
 		> .grid {
 			display: flex;
 			flex-flow: column;
-			margin: -8px -10px;
+			margin: 0 -10px;
 
 			> .cell {
-				margin: 8px 10px;
+				margin: 0 10px;
 				display: flex;
 
 				> .item {
 					overflow: hidden;
 					text-overflow: ellipsis;
+					padding: 8px 0;
 					width: 100%;
 					color: #ffffff;
 					font-family: var(--font-family, sans-serif);
@@ -111,16 +120,6 @@
 				transition-property: top, height;
 				transition-duration: 0.3s;
 				pointer-events: none;
-
-				&.v-enter-active,
-				&.v-leave-active {
-					transition: opacity 0.2s;
-				}
-
-				&.v-enter,
-				&.v-leave-to {
-					opacity: 0;
-				}
 			}
 		}
 	}

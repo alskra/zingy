@@ -1,12 +1,12 @@
 <script>
 	import SocialMedia from './SocialMedia';
-	import PageFooterNavBox from './PageFooterNavBox';
+	import PageFooterNav from './PageFooterNav';
 
 	export default {
 		name: 'PageFooter',
 		components: {
 			SocialMedia,
-			PageFooterNavBox
+			PageFooterNav
 		}
 	};
 </script>
