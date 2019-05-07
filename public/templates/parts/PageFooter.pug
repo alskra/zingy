@@ -1,36 +1,37 @@
 include SocialMedia
+include PageFooterNavBox
 
 mixin page-footer()
 	-
-		const mainNav = [
-			'Главная',
-			'Разработка',
-			'Провижение',
-			'О компании',
-			'Блог',
-			'Цены',
-			'Контакты'
-		];
-
-		const devNav = [
-			'Разработка сайта-визитки',
-			'Разработка интернет-магазина',
-			'Разработка корпоративного сайта',
-			'Разработка сайта на 1С-Битрикс',
-			'Разработка промо-сайта',
-			'Разработка личного кабинета',
-			'Разработка веб-дизайна',
-			'Интеграция'
-		];
-
-		const seoNav = [
-			'Продвижение по трафику',
-			'Продвижение по запросам',
-			'Провижение по лидам',
-			'Вывод из-под санкций',
-			'Контекстная реклама',
-			'SEO продвижение'
-		];
+		const data = {
+			navMain: [
+				'Главная',
+				'Разработка',
+				'Провижение',
+				'О компании',
+				'Блог',
+				'Цены',
+				'Контакты'
+			],
+			navDev: [
+				'Разработка сайта-визитки',
+				'Разработка интернет-магазина',
+				'Разработка корпоративного сайта',
+				'Разработка сайта на 1С-Битрикс',
+				'Разработка промо-сайта',
+				'Разработка личного кабинета',
+				'Разработка веб-дизайна',
+				'Интеграция'
+			],
+			navSeo: [
+				'Продвижение по трафику',
+				'Продвижение по запросам',
+				'Провижение по лидам',
+				'Вывод из-под санкций',
+				'Контекстная реклама',
+				'SEO продвижение'
+			]
+		}
 
 	page-footer(inline-template)&attributes(attributes)
 		footer.page-footer
@@ -43,8 +44,8 @@ mixin page-footer()
 						.row
 							.col
 								.text-box
-									p E-mail: #[a(href="mailto:zingy.projects@gmail.com") zingy.projects@gmail.com]
-									p Телефон: #[a(href="tel:+79854575817") +7 (985) 457-58-17]
+									p E-mail: #[br]#[a(href="mailto:zingy.projects@gmail.com") zingy.projects@gmail.com]
+									p Телефон: #[br]#[a(href="tel:+79854575817") +7 (985) 457-58-17]
 
 							.col
 								+social-media().-justify-center
@@ -54,30 +55,10 @@ mixin page-footer()
 									p &copy;&nbsp;2008&mdash;2019. Все&nbsp;права&nbsp;защищены
 
 					.col
-						.nav-box.-main
-							.grid
-								each item in mainNav
-									.cell
-										a.item(href="")= item
+						+page-footer-nav-box(data.navMain).-main
 
 					.col
-						.nav-box.-section(
-							@mouseover="onNavBoxItemMouseOver"
-							@mouseout="onNavBoxItemMouseOut"
-						)
-							.hover
-							.grid
-								each item in devNav
-									.cell
-										a.item(href="")= item
+						+page-footer-nav-box(data.navDev).-section(has-hover)
 
 					.col
-						.nav-box.-section(
-							@mouseover="onNavBoxItemMouseOver"
-							@mouseout="onNavBoxItemMouseOut"
-						)
-							.hover
-							.grid
-								each item in seoNav
-									.cell
-										a.item(href="")= item
+						+page-footer-nav-box(data.navSeo).-section(has-hover)

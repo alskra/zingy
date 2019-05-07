@@ -1,49 +1,12 @@
 <script>
 	import SocialMedia from './SocialMedia';
+	import PageFooterNavBox from './PageFooterNavBox';
 
 	export default {
 		name: 'PageFooter',
-		data() {
-			return {
-				navBoxHoverVisible: false
-			};
-		},
 		components: {
-			SocialMedia
-		},
-		methods: {
-			onNavBoxItemMouseOver(event) {
-				if (event.target.classList.contains('item')) {
-					const hover = event.currentTarget.querySelector('.hover');
-
-					clearTimeout(hover.hideTimer);
-					hover.removeEventListener('transitionend', hover.onHide, false);
-
-					Object.assign(hover.style, {
-						display: 'block',
-						top: event.target.offsetTop + 'px',
-						height: event.target.offsetHeight + 'px'
-					});
-
-					hover.showTimer = requestAnimationFrame(() => hover.style.opacity = '1');
-				}
-			},
-			onNavBoxItemMouseOut(event) {
-				if (event.target.classList.contains('item')) {
-					const hover = event.currentTarget.querySelector('.hover');
-
-					cancelAnimationFrame(hover.showTimer);
-
-					hover.onHide = () => {
-						hover.removeEventListener('transitionend', hover.onHide, false);
-						hover.style.display = '';
-					};
-
-					hover.addEventListener('transitionend', hover.onHide, false);
-
-					hover.hideTimer = setTimeout(() => hover.style.opacity = '', 300);
-				}
-			}
+			SocialMedia,
+			PageFooterNavBox
 		}
 	};
 </script>
@@ -57,31 +20,30 @@
 			padding: range(50, 100) 0;
 			background-color: #222222;
 			position: relative;
-			min-height: calc(396 / 1920 * 100vmax + 10vmax);
+			min-height: calc(396 / 1920 * 100vmax + 5vw);
+			overflow: hidden;
 		}
 	}
 
 	.zingy-projects {
-		width: calc(3983 / 1920 * 100vmax);
+		display: flex;
+		width: calc(3983 / 1920 * 100vmax * 2 + 8vw * 2);
 		height: calc(396 / 1920 * 100vmax);
-		background: url("../assets/img/zingy-projects.png") no-repeat 50% 50% / contain;
 		position: absolute;
 		left: 0;
 		margin-top: range(-15, -30);
-		transform: translateX(4vw);
-		animation: zingyprojects 90s linear infinite;
+		animation: zingyprojects 60s linear infinite;
+
+		&::before,
+		&::after {
+			content: '';
+			width: 50%;
+			background: url("../assets/img/zingy-projects.png") no-repeat 50% 50% / contain;
+		}
 
 		@keyframes zingyprojects {
-			2% {
-				transform: translateX(4vw);
-			}
-
-			50% {
-				transform: translateX(calc(-3983 / 1920 * 100vmax + 100vw - 4vw));
-			}
-
-			52% {
-				transform: translateX(calc(-3983 / 1920 * 100vmax + 100vw - 4vw));
+			100% {
+				transform: translateX(calc(-3983 / 1920 * 100vmax - 8vw));
 			}
 		}
 	}
@@ -174,7 +136,7 @@
 		font-family: var(--font-family, sans-serif);
 		font-size: range(1.6rem, 1.8rem);
 		font-weight: 300;
-		line-height: 1.25;
+		line-height: 1.5;
 
 		@media (width < 768px) {
 			text-align: center;
@@ -197,73 +159,6 @@
 		&.-copyright {
 			@media (768px <= width < 1024px) {
 				text-align: right;
-			}
-		}
-	}
-
-	.nav-box {
-		> .grid {
-			display: flex;
-			flex-flow: column;
-			margin: -8px -10px;
-
-			> .cell {
-				margin: 8px 10px;
-
-				> .item {
-					color: #ffffff;
-					font-family: var(--font-family, sans-serif);
-					font-size: range(1.6rem, 1.8rem);
-					font-weight: 300;
-					line-height: 1.25;
-					text-decoration: none;
-					transition: color 0.2s;
-
-					&:hover {
-						color: #ec5151;
-					}
-				}
-			}
-		}
-
-		&.-main {
-			> .grid {
-				@media (width < 768px) {
-					flex-flow: row;
-					flex-wrap: wrap;
-				}
-
-				> .cell {
-					> .item {
-						font-weight: 500;
-					}
-				}
-			}
-		}
-
-		&.-section {
-			position: relative;
-
-			> .grid {
-				> .cell {
-					padding-left: 28px;
-
-					> .item {
-					}
-				}
-			}
-
-			> .hover {
-				display: none;
-				opacity: 0;
-				width: 3px;
-				height: 28px;
-				background-color: #e04b4a;
-				position: absolute;
-				top: 0;
-				left: 0;
-				transition-property: opacity, top, height;
-				transition-duration: 0.3s;
 			}
 		}
 	}
