@@ -35,30 +35,30 @@ mixin page-footer()
 
 	page-footer(inline-template)&attributes(attributes)
 		footer.page-footer
-			.content-box
-				h2.heading-box Контакты
-				.zingy-projects
+			.content
+				h2.heading Контакты
+				.zingyprojects
 
-				.row
-					.col
-						.row
-							.col
-								.text-box
+				.boxgroup
+					.box
+						.boxgroup
+							.box
+								.text
 									p E-mail: #[br]#[a(href="mailto:zingy.projects@gmail.com") zingy.projects@gmail.com]
 									p Телефон: #[br]#[a(href="tel:+79854575817") +7 (985) 457-58-17]
 
-							.col
+							.box
 								+social-media().-justify-center
 
-							.col
-								.text-box.-copyright
-									p &copy;&nbsp;2008&mdash;2019. Все&nbsp;права&nbsp;защищены
+							.box
+								.text.-copyright
+									p &copy;&nbsp;2008&ndash;2019. Все&nbsp;права&nbsp;защищены
 
-					.col
+					.box
 						+page-footer-nav(data.navMain).-main
 
-					.col
+					.box
 						+page-footer-nav(data.navDev, 'Разработка').-section(hover)
 
-					.col
+					.box
 						+page-footer-nav(data.navSeo, 'Продвижение').-section(hover)

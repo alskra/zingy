@@ -1,10 +1,12 @@
 <script>
+	import PageHeader from './PageHeader';
 	import PageFooter from './PageFooter';
 	import ZingyDefinition from './ZingyDefinition';
 
 	export default {
 		name: 'PageLayout',
 		components: {
+			PageHeader,
 			PageFooter,
 			ZingyDefinition
 		}
@@ -22,7 +24,7 @@
 		}
 	}
 
-	.front-box {
+	.main {
 		position: relative;
 		z-index: 1;
 		min-height: 100vh;
@@ -30,12 +32,12 @@
 		flex-flow: column;
 		background-color: white;
 
-		> .page-footer {
+		.page-footer {
 			margin-top: auto;
 		}
 	}
 
-	.back-box {
+	.backface {
 		position: fixed;
 		top: 0;
 		right: 0;

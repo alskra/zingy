@@ -1,4 +1,4 @@
-mixin social-media(data)
+mixin social-media()
 	-
 		const socialMediaList = [
 			'VK',
@@ -10,9 +10,9 @@ mixin social-media(data)
 
 	social-media(inline-template)&attributes(attributes)
 		.social-media
-			.row
+			.boxgroup
 				each iconName in socialMediaList
-					.col
+					.box
 						a.item(
 							href=""
 							title=iconName

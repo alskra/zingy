@@ -1,12 +1,14 @@
+include PageHeader
 include PageFooter
 include ZingyDefinition
 
 mixin page-layout()
 	page-layout(inline-template)&attributes(attributes)
 		.page-layout
-			.front-box
+			.main
+				+page-header()
 				block
 				+page-footer()
 
-			.back-box
+			.backface
 				+zingy-definition()

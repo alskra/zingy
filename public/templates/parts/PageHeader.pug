@@ -1,0 +1,18 @@
+mixin page-header()
+	page-header(inline-template)&attributes(attributes)
+		header.page-header
+			transition(
+				appear
+				appear-active-class="v-appear-active"
+				:duration="600"
+			)
+				.box.-logo
+					a.logo(
+						href="/"
+						title="Zingy Projects"
+					)
+						base-icon-svg(icon-name="zingy")
+
+			transition
+				.box.-buttonmenu
+					button.buttonmenu(type="button")

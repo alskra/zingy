@@ -4,16 +4,16 @@ mixin page-footer-nav(navList = [], navName)
 			@mouseover="onNavBoxItemMouseOver"
 			@mouseout="onNavBoxItemMouseOut"
 		)
-			if navName
-				.name= navName
-
 			transition
 				.hover(
 					v-if="hover"
 					:style="hoverStyle"
 				)
 
-			.grid
+			if navName
+				.name= navName
+
+			.boxgroup
 				each item in navList
-					.cell
+					.box
 						a.item(href="")= item
