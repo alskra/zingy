@@ -1,18 +1,18 @@
 <script>
-	import SocialMedia from './SocialMedia';
+	import VSociallinks from './VSociallinks';
 	import PageFooterNav from './PageFooterNav';
 
 	export default {
-		name: 'PageFooter',
+		name: 'AppPageFooter',
 		components: {
-			SocialMedia,
+			VSociallinks,
 			PageFooterNav
 		}
 	};
 </script>
 
 <style scoped>
-	.page-footer {
+	.app-page-footer {
 		all: initial;
 
 		& {
@@ -23,6 +23,23 @@
 			min-height: calc(396 / 1920 * 100vmax + 5vw);
 			overflow: hidden;
 		}
+	}
+
+	.contentbox {
+		padding: 0 range(10, 110);
+		box-sizing: border-box;
+		max-width: 1920px;
+		margin: 0 auto;
+	}
+
+	.heading {
+		color: #ffffff;
+		font-family: var(--font-family, sans-serif);
+		font-size: range(calc(4.8rem / 1.5), 4.8rem);
+		font-weight: 500;
+		line-height: 1.25;
+		margin: 0 0 range(30, 60);
+		position: relative;
 	}
 
 	.zingyprojects {
@@ -48,28 +65,16 @@
 		}
 	}
 
-	.content {
-		padding: 0 range(10, 110);
-		box-sizing: border-box;
-		max-width: 1920px;
-		margin: 0 auto;
+	.contentgrid {
+		display: flex;
+		flex-wrap: wrap;
+		margin: -15px -10px;
+		position: relative;
+		align-items: baseline;
 
-		> .boxgroup {
-			display: flex;
-			flex-wrap: wrap;
-			margin: -15px -10px;
-			position: relative;
-			align-items: baseline;
-		}
-
-		> .boxgroup > .box {
+		&-item {
 			width: calc(25% - 20px);
 			margin: 15px 10px;
-
-			&:nth-child(1),
-			&:nth-child(2) {
-				/*padding-top: calc(range(1.6rem, 1.8rem) * 1.25 + 11px);*/
-			}
 
 			@media (width < 1024px) {
 				&:not(:first-child) {
@@ -99,17 +104,17 @@
 				}
 			}
 		}
+	}
 
-		> .boxgroup > .box:nth-child(1) > .boxgroup {
-			@media (width < 1024px) {
-				display: flex;
-				flex-wrap: wrap;
-				align-items: center;
-				margin: -15px -10px;
-			}
+	.contactsgrid {
+		@media (width < 1024px) {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			margin: -15px -10px;
 		}
 
-		> .boxgroup > .box:nth-child(1) > .boxgroup > .box {
+		&-item {
 			@media (width >= 1024px) {
 				&:nth-child(2) {
 					margin: range(30, 60) 0;
@@ -124,17 +129,13 @@
 			@media (width < 768px) {
 				width: calc(100% - 20px);
 			}
-		}
-	}
 
-	.heading {
-		color: #ffffff;
-		font-family: var(--font-family, sans-serif);
-		font-size: range(calc(4.8rem / 1.5), 4.8rem);
-		font-weight: 500;
-		line-height: 1.25;
-		margin: 0 0 range(30, 60);
-		position: relative;
+			.v-sociallinks {
+				@media (width < 1024px) {
+					--v-sociallinks__justify-content: center;
+				}
+			}
+		}
 	}
 
 	.text {
@@ -161,11 +162,11 @@
 			text-decoration: none;
 			font-weight: 500;
 		}
+	}
 
-		&.-copyright {
-			@media (768px <= width < 1024px) {
-				text-align: right;
-			}
+	.textcopyright {
+		@media (768px <= width < 1024px) {
+			text-align: right;
 		}
 	}
 </style>

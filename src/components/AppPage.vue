@@ -1,20 +1,20 @@
 <script>
-	import PageHeader from './PageHeader';
-	import PageFooter from './PageFooter';
-	import ZingyDefinition from './ZingyDefinition';
+	import AppPageHeader from './AppPageHeader';
+	import AppPageFooter from './AppPageFooter';
+	import VZingysection from './VZingysection';
 
 	export default {
-		name: 'PageLayout',
+		name: 'AppPage',
 		components: {
-			PageHeader,
-			PageFooter,
-			ZingyDefinition
+			AppPageHeader,
+			AppPageFooter,
+			VZingysection
 		}
 	};
 </script>
 
 <style scoped>
-	.page-layout {
+	.app-page {
 		all: initial;
 
 		& {
@@ -32,7 +32,7 @@
 		flex-flow: column;
 		background-color: white;
 
-		.page-footer {
+		.app-page-footer {
 			margin-top: auto;
 		}
 	}

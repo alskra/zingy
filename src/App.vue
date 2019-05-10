@@ -1,16 +1,18 @@
 <script>
-	import PageIndex from './components/PageIndex';
+	import AppPageIsIndex from './components/AppPageIsIndex';
 
 	export default {
 		name: 'App',
 		components: {
-			PageIndex
+			AppPageIsIndex
 		}
 	}
 </script>
 
 <style>
-	@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700&subset=cyrillic,cyrillic-ext,latin-ext');
+	/*@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700&subset=cyrillic,cyrillic-ext,latin-ext');*/
+
+	@import "assets/fonts/Roboto/stylesheet.css";
 
 	:root {
 		// Overwrite browser dependent properties
@@ -47,5 +49,6 @@
 
 	body {
 		margin: 0;
+		background-color: white;
 	}
 </style>

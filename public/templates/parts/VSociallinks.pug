@@ -1,4 +1,4 @@
-mixin social-media()
+mixin VSociallinks()
 	-
 		const socialMediaList = [
 			'VK',
@@ -8,14 +8,14 @@ mixin social-media()
 			'Instagram'
 		]
 
-	social-media(inline-template)&attributes(attributes)
-		.social-media
-			.boxgroup
+	+defineTemplate('v-sociallinks')&attributes(attributes)
+		nav
+			.linksgrid
 				each iconName in socialMediaList
-					.box
-						a.item(
+					.linksgrid-item
+						a.linkitem(
 							href=""
 							title=iconName
 							target="_blank"
 						)
-							base-icon-svg(icon-name=iconName.toLowerCase())
+							base-icon(icon-name=iconName.toLowerCase())

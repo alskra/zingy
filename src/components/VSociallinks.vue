@@ -1,37 +1,36 @@
 <script>
 	export default {
-		name: 'SocialMedia'
+		name: 'VSociallinks'
 	};
 </script>
 
+<style>
+	:root {
+		--v-sociallinks__justify-content: flex-start;
+	}
+</style>
+
 <style scoped>
-	.social-media {
+	.v-sociallinks {
 		all: initial;
 
 		& {
 			display: block;
 		}
+	}
 
-		&.-justify-center {
-			.boxgroup {
-				@media (width < 1024px) {
-					justify-content: center;
-				}
-			}
+	.linksgrid {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: var(--v-sociallinks__justify-content);
+		margin: -10px -15px;
+
+		&-item {
+			margin: 10px 15px;
 		}
 	}
 
-	.boxgroup {
-		display: flex;
-		flex-wrap: wrap;
-		margin: -10px -15px;
-	}
-
-	.box {
-		margin: 10px 15px;
-	}
-
-	.item {
+	.linkitem {
 		display: block;
 		width: range(calc(38 / 1.5), 38);
 		height: range(calc(38 / 1.5), 38);
@@ -41,10 +40,6 @@
 
 		&:hover {
 			color: white;
-		}
-
-		.base-icon-svg {
-			height: 100%;
 		}
 	}
 </style>

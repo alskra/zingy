@@ -1,7 +1,7 @@
-include SocialMedia
+include VSociallinks
 include PageFooterNav
 
-mixin page-footer()
+mixin AppPageFooter()
 	-
 		const data = {
 			navMain: [
@@ -33,32 +33,32 @@ mixin page-footer()
 			]
 		}
 
-	page-footer(inline-template)&attributes(attributes)
-		footer.page-footer
-			.content
+	+defineTemplate('app-page-footer')&attributes(attributes)
+		footer
+			.contentbox
 				h2.heading Контакты
 				.zingyprojects
 
-				.boxgroup
-					.box
-						.boxgroup
-							.box
+				.contentgrid
+					.contentgrid-item
+						.contactsgrid
+							.contactsgrid-item
 								.text
 									p E-mail: #[br]#[a(href="mailto:zingy.projects@gmail.com") zingy.projects@gmail.com]
 									p Телефон: #[br]#[a(href="tel:+79854575817") +7 (985) 457-58-17]
 
-							.box
-								+social-media().-justify-center
+							.contactsgrid-item
+								+VSociallinks()
 
-							.box
-								.text.-copyright
+							.contactsgrid-item
+								.text.textcopyright
 									p &copy;&nbsp;2008&ndash;2019. Все&nbsp;права&nbsp;защищены
 
-					.box
+					.contentgrid-item
 						+page-footer-nav(data.navMain).-main
 
-					.box
+					.contentgrid-item
 						+page-footer-nav(data.navDev, 'Разработка').-section(hover)
 
-					.box
+					.contentgrid-item
 						+page-footer-nav(data.navSeo, 'Продвижение').-section(hover)
