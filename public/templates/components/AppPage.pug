@@ -1,0 +1,19 @@
+mixin AppPage()
+	template
+		.app-page&attributes(attributes)
+			.main
+				app-page-header(inline-template)
+					include AppPageHeader
+					+AppPageHeader()
+
+				block
+
+				app-page-footer(inline-template)
+					include AppPageFooter
+					+AppPageFooter()
+
+			.backface
+
+mixin AppPageExtIndex()
+	+AppPage().app-page-ext-index
+		h2 Page Index

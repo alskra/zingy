@@ -8,8 +8,8 @@ mixin VSociallinks()
 			'Instagram'
 		]
 
-	+defineTemplate('v-sociallinks')&attributes(attributes)
-		nav
+	template
+		nav.v-sociallinks&attributes(attributes)
 			.linksgrid
 				each iconName in socialMediaList
 					.linksgrid-item

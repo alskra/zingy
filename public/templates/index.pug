@@ -1,11 +1,6 @@
-extends parts/layout
-
-include parts/AppPage
-include parts/AppPageIsIndex
+extends layout
 
 block app
-	app-page(inline-template)
-		+AppPage()
-
-	app-page-is-index(inline-template)
-		+AppPageIsIndex()
+	app-page-ext-index(inline-template)
+		include components/AppPage
+		+AppPageExtIndex()

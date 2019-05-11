@@ -1,14 +1,14 @@
 <script>
 	import VSociallinks from './VSociallinks';
 	import AppPageFooterNav from './AppPageFooterNav';
-	import AppPageFooterNavOfSection from './AppPageFooterNavOfSection';
+	import {AppPageFooterNavExtSection} from './AppPageFooterNav';
 
 	export default {
 		name: 'AppPageFooter',
 		components: {
 			VSociallinks,
 			AppPageFooterNav,
-			AppPageFooterNavOfSection
+			AppPageFooterNavExtSection
 		}
 	};
 </script>
@@ -163,6 +163,12 @@
 			color: #ffffff;
 			text-decoration: none;
 			font-weight: 500;
+			transition: background-size 0.2s;
+			background: linear-gradient(#ec5151, #ec5151) no-repeat 0 100% / 0 2px;
+
+			&:hover {
+				background-size: 100% 2px;
+			}
 		}
 	}
 

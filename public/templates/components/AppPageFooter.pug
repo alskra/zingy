@@ -1,11 +1,7 @@
-include VSociallinks
-include AppPageFooterNav
-include AppPageFooterNavOfSection
-
 mixin AppPageFooter()
 	-
-		const data = {
-			navMain: [
+		const [navMain, navDev, navSeo] = [
+			[
 				'Главная',
 				'Разработка',
 				'Провижение',
@@ -14,7 +10,7 @@ mixin AppPageFooter()
 				'Цены',
 				'Контакты'
 			],
-			navDev: [
+			[
 				'Разработка сайта-визитки',
 				'Разработка интернет-магазина',
 				'Разработка корпоративного сайта',
@@ -24,7 +20,7 @@ mixin AppPageFooter()
 				'Разработка веб-дизайна',
 				'Интеграция'
 			],
-			navSeo: [
+			[
 				'Продвижение по трафику',
 				'Продвижение по запросам',
 				'Провижение по лидам',
@@ -32,10 +28,10 @@ mixin AppPageFooter()
 				'Контекстная реклама',
 				'SEO продвижение'
 			]
-		}
+		]
 
-	+defineTemplate('app-page-footer')&attributes(attributes)
-		footer
+	template
+		footer.app-page-footer&attributes(attributes)
 			.contentbox
 				h2.heading Контакты
 				.zingyprojects
@@ -49,17 +45,23 @@ mixin AppPageFooter()
 									p Телефон: #[br]#[a(href="tel:+79854575817") +7 (985) 457-58-17]
 
 							.contactsgrid-item
-								+VSociallinks()
+								v-sociallinks(inline-template)
+									include VSociallinks
+									+VSociallinks()
 
 							.contactsgrid-item
 								.text.textcopyright
 									p &copy;&nbsp;2008&ndash;2019. Все&nbsp;права&nbsp;защищены
 
 					.contentgrid-item
-						+AppPageFooterNav(data.navMain)
+						app-page-footer-nav(inline-template)
+							include AppPageFooterNav
+							+AppPageFooterNav(navMain)
 
 					.contentgrid-item
-						+AppPageFooterNavOfSection(data.navDev, 'Разработка')
+						app-page-footer-nav-ext-section(inline-template)
+							+AppPageFooterNavExtSection(navDev, 'Разработка')
 
 					.contentgrid-item
-						+AppPageFooterNavOfSection(data.navSeo, 'Продвижение')
+						app-page-footer-nav-ext-section(inline-template)
+							+AppPageFooterNavExtSection(navSeo, 'Продвижение')

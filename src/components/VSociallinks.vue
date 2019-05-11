@@ -34,12 +34,6 @@
 		display: block;
 		width: range(calc(38 / 1.5), 38);
 		height: range(calc(38 / 1.5), 38);
-		color: #1a1a1a;
 		text-decoration: none;
-		transition: color 0.2s;
-
-		&:hover {
-			color: white;
-		}
 	}
 </style>

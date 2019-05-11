@@ -1,0 +1,18 @@
+mixin AppPageFooterNav(navList = [])
+	template
+		nav.app-page-footer-nav&attributes(attributes)
+			block
+
+			.navgrid
+				each item in navList
+					.navgrid-item
+						a.navitem(href="")
+							span.navitem-text= item
+
+mixin AppPageFooterNavExtSection(navList, navName = 'Section')
+	+AppPageFooterNav(navList).app-page-footer-nav-ext-section(
+		@mouseover="onNavItemMouseOver"
+		@mouseout="onNavItemMouseOut"
+	)&attributes(attributes)
+		.hoveritem(:style="hoverItemStyle")
+		.navname= navName
