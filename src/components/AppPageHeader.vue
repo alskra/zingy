@@ -27,22 +27,22 @@
 		overflow: hidden;
 
 		&.v-appear-active {
-			animation: logobox__slide-in-right 0.4s;
+			animation: logobox_slide-in-right 0.4s;
 
 			.logo {
 				.base-icon {
-					animation: logobox__fade-in-top 0.2s 0.4s backwards;
+					animation: logobox_fade-in-top 0.2s 0.4s backwards;
 				}
 			}
 		}
 
-		@keyframes logobox__slide-in-right {
+		@keyframes logobox_slide-in-right {
 			0% {
 				width: 0;
 			}
 		}
 
-		@keyframes logobox__fade-in-top {
+		@keyframes logobox_fade-in-top {
 			0% {
 				transform: translateY(10px);
 				opacity: 0;
@@ -58,6 +58,14 @@
 		background-color: #252525;
 		color: white;
 		text-decoration: none;
+		position: relative;
+
+		&:hover {
+			.base-icon {
+				transition: transform 0.8s;
+				transform: perspective(50px) rotateY(360deg);
+			}
+		}
 	}
 
 	.menubuttonbox {

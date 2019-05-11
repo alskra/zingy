@@ -84,6 +84,7 @@
 	}
 
 	.navitem-text {
+		padding-bottom: 1px;
 		transition: background-size 0.2s;
 		background: linear-gradient(#ec5151, #ec5151) no-repeat 0 100% / 0 2px;
 	}

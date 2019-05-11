@@ -62,14 +62,15 @@ module.exports = {
 				'overflow-property': true,
 				'overflow-wrap-property': true
 			},
-			autoprefixer: {
-				cascade: false,
-				add: true,
-				remove: true
-			},
+			autoprefixer: false,
 			preserve: false,
 			importFrom: {environmentVariables}
 		},
-		'postcss-nested': {}
+		'postcss-nested': {},
+		autoprefixer: {
+			cascade: false,
+			add: true,
+			remove: true
+		}
 	}
 };

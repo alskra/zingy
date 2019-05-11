@@ -73,70 +73,84 @@
 		margin: -15px -10px;
 		position: relative;
 		align-items: baseline;
+	}
 
-		&-item {
-			width: calc(25% - 20px);
-			margin: 15px 10px;
+	.contentgrid-item {
+		width: calc(25% - 20px);
+		margin: 15px 10px;
 
-			@media (width < 1024px) {
-				&:not(:first-child) {
-					order: -1;
-				}
+		&:nth-child(1) {
+			align-self: stretch;
+		}
+
+		@media (width < 1024px) {
+			&:not(:first-child) {
+				order: -1;
+			}
+		}
+
+		@media (768px <= width < 1024px) {
+			&:first-child {
+				width: calc(100% - 20px);
 			}
 
-			@media (768px <= width < 1024px) {
-				&:first-child {
-					width: calc(100% - 20px);
-				}
+			&:not(:first-child) {
+				width: calc(percentage(1 / 3) - 20px);
+			}
+		}
 
-				&:not(:first-child) {
-					width: calc(percentage(1 / 3) - 20px);
-				}
+		@media (width < 768px) {
+			&:nth-child(1),
+			&:nth-child(2) {
+				width: calc(100% - 20px);
 			}
 
-			@media (width < 768px) {
-				&:nth-child(1),
-				&:nth-child(2) {
-					width: calc(100% - 20px);
-				}
-
-				&:nth-child(3),
-				&:nth-child(4) {
-					width: calc(50% - 20px);
-				}
+			&:nth-child(3),
+			&:nth-child(4) {
+				width: calc(50% - 20px);
 			}
 		}
 	}
 
 	.contactsgrid {
+		display: flex;
+		flex-flow: column;
+		height: 100%;
+
 		@media (width < 1024px) {
-			display: flex;
+			flex-flow: row;
 			flex-wrap: wrap;
-			align-items: center;
+			align-items: flex-end;
 			margin: -15px -10px;
 		}
+	}
 
-		&-item {
-			@media (width >= 1024px) {
-				&:nth-child(2) {
-					margin: range(30, 60) 0;
-				}
-			}
+	.contactsgrid-item {
+		&:nth-child(3) {
+			margin-top: auto;
+		}
 
-			@media (width < 1024px) {
-				margin: 15px 10px;
-				width: calc(percentage(1 / 3) - 20px);
+		@media (width >= 1024px) {
+			&:nth-child(2) {
+				margin: range(30, 60) 0;
 			}
+		}
 
-			@media (width < 768px) {
-				width: calc(100% - 20px);
-			}
+		@media (width < 1024px) {
+			margin: 15px 10px;
+			width: calc(percentage(1 / 3) - 20px);
 
 			.v-sociallinks {
-				@media (width < 1024px) {
-					--v-sociallinks__justify-content: center;
-				}
+				--v-sociallinks_justify-content: center;
 			}
+
+			&:nth-child(3) {
+				margin-top: 0;
+			}
+		}
+
+		@media (width < 768px) {
+			width: calc(100% - 20px);
 		}
 	}
 
@@ -163,6 +177,7 @@
 			color: #ffffff;
 			text-decoration: none;
 			font-weight: 500;
+			padding-bottom: 1px;
 			transition: background-size 0.2s;
 			background: linear-gradient(#ec5151, #ec5151) no-repeat 0 100% / 0 2px;
 
