@@ -3,7 +3,11 @@ const {environmentVariables} = require('./postcss.import');
 module.exports = {
 	parser: 'postcss-scss',
 	plugins: {
-		'postcss-nested': {},
+		'postcss-import': {
+			filter(path) {
+				return path.match(/\.pcss$/);
+			}
+		},
 		'postcss-calc': {},
 		'postcss-hexrgba': {},
 		'postcss-functions': {
@@ -65,6 +69,7 @@ module.exports = {
 			},
 			preserve: false,
 			importFrom: {environmentVariables}
-		}
+		},
+		'postcss-nested': {}
 	}
 };

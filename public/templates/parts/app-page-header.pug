@@ -1,0 +1,19 @@
+mixin app-page-header()
+	template(v-slot:app-page-header="AppPageHeader")
+		transition(
+			appear
+			appear-active-class="v-appear-active"
+			:duration="600"
+		)
+			.logobox
+				a.logo(
+					href="/"
+					title="Zingy Projects"
+					:class="[AppPageHeader.foo]"
+				)
+					base-icon(icon-name="zingy")
+
+		transition
+			.menubuttonbox
+				button.menubutton(type="button")
+					base-icon(icon-name="menu")

@@ -1,0 +1,11 @@
+mixin AppPageFooterNav(navList = [])
+	if block
+		app-page-footer-nav&attributes(attributes)
+			block
+	else
+		app-page-footer-nav(inline-template)&attributes(attributes)
+			nav.app-page-footer-nav
+				.navgrid
+					each item in navList
+						.navgrid-item
+							a.navitem(href="")= item

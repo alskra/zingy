@@ -1,14 +1,7 @@
-include AppPageHeader
-include AppPageFooter
-include VZingysection
-
-mixin AppPage()
-	+defineTemplate('app-page')&attributes(attributes)
-		div
+mixin AppPage(host = 'app-page')
+	template
+		div(class=host)&attributes(attributes)
 			.main
-				+AppPageHeader()
 				block
-				+AppPageFooter()
 
 			.backface
-				+VZingysection()

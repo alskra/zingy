@@ -20,3 +20,9 @@ Vue.component('FVnodes', {
 		return ctx.props.vnodes;
 	}
 });
+
+
+Vue.component('VHost', {
+
+	template: `<div><slot></slot></div>`
+});

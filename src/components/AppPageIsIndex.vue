@@ -3,14 +3,8 @@
 
 	export default {
 		name: 'AppPageIsIndex',
-		components: {
-			AppPage
-		},
 		mixins: [AppPage]
 	};
 </script>
 
-<style scoped>
-	.app-page-is-index {
-	}
-</style>
+<style src="./AppPageIsIndex.pcss" lang="postcss" scoped></style>

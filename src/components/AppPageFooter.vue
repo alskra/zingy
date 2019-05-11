@@ -1,12 +1,14 @@
 <script>
 	import VSociallinks from './VSociallinks';
-	import PageFooterNav from './PageFooterNav';
+	import AppPageFooterNav from './AppPageFooterNav';
+	import AppPageFooterNavOfSection from './AppPageFooterNavOfSection';
 
 	export default {
 		name: 'AppPageFooter',
 		components: {
 			VSociallinks,
-			PageFooterNav
+			AppPageFooterNav,
+			AppPageFooterNavOfSection
 		}
 	};
 </script>

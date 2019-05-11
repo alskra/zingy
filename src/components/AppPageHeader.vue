@@ -1,6 +1,19 @@
+<template lang="pug">
+	header.app-page-header
+		slot(name="app-page-header" v-bind="{foo}")
+</template>
+
 <script>
 	export default {
-		name: 'AppPageHeader'
+		name: 'AppPageHeader',
+		created() {
+			console.log(this);
+		},
+		data() {
+			return {
+				foo: 'bar'
+			}
+		}
 	};
 </script>
 
@@ -50,7 +63,7 @@
 		}
 	}
 
-	.logo {
+	.logobox >>> > .logo {
 		display: block;
 		width: range(40, 58);
 		height: range(40, 58);
@@ -70,7 +83,7 @@
 		overflow: hidden;
 	}
 
-	.menubutton {
+	.menubuttonbox >>> > .menubutton {
 		display: block;
 		width: range(40, 58);
 		height: range(40, 58);

@@ -1,5 +1,6 @@
 include VSociallinks
-include PageFooterNav
+include AppPageFooterNav
+include AppPageFooterNavOfSection
 
 mixin AppPageFooter()
 	-
@@ -55,10 +56,10 @@ mixin AppPageFooter()
 									p &copy;&nbsp;2008&ndash;2019. Все&nbsp;права&nbsp;защищены
 
 					.contentgrid-item
-						+page-footer-nav(data.navMain).-main
+						+AppPageFooterNav(data.navMain)
 
 					.contentgrid-item
-						+page-footer-nav(data.navDev, 'Разработка').-section(hover)
+						+AppPageFooterNavOfSection(data.navDev, 'Разработка')
 
 					.contentgrid-item
-						+page-footer-nav(data.navSeo, 'Продвижение').-section(hover)
+						+AppPageFooterNavOfSection(data.navSeo, 'Продвижение')

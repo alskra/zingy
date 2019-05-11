@@ -1,9 +1,11 @@
 <script>
+	import AppPage from './components/AppPage';
 	import AppPageIsIndex from './components/AppPageIsIndex';
 
 	export default {
 		name: 'App',
 		components: {
+			AppPage,
 			AppPageIsIndex
 		}
 	}

@@ -1,6 +1,5 @@
 include AppPage
 
 mixin AppPageIsIndex()
-	+defineTemplate('app-page-is-index')&attributes(attributes)
-		+AppPage()
-			h1 Page Index
+	+AppPage('app-page-is-index')
+		h2 Page Index
