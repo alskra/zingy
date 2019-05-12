@@ -13,6 +13,9 @@ mixin AppPage()
 					+AppPageFooter()
 
 			.backface
+				v-zingysection(inline-template)
+					include VZingysection
+					+VZingysection()
 
 mixin AppPageExtIndex()
 	+AppPage().app-page-ext-index

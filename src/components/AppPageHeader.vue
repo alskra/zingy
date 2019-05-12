@@ -1,6 +1,30 @@
 <script>
 	export default {
-		name: 'AppPageHeader'
+		name: 'AppPageHeader',
+		data() {
+			return {
+				startAnimateIsEnd: false,
+				headerIsMinimized: false
+			};
+		},
+		watch: {
+			startAnimateIsEnd() {
+				this.getHeaderState();
+			}
+		},
+		methods: {
+			getHeaderState() {
+				this.headerIsMinimized = this.startAnimateIsEnd && (window.innerWidth < 1024 || window.pageYOffset > 0);
+			}
+		},
+		created() {
+			window.addEventListener('resize', this.getHeaderState);
+			window.addEventListener('scroll', this.getHeaderState);
+		},
+		destroyed() {
+			window.removeEventListener('resize', this.getHeaderState);
+			window.removeEventListener('scroll', this.getHeaderState);
+		}
 	};
 </script>
 
@@ -76,14 +100,26 @@
 		justify-content: flex-end;
 		width: range(40, 58);
 		overflow: hidden;
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: width 0.4s;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			width: 0;
+		}
 	}
 
 	.menubutton {
+		all: initial;
 		display: block;
 		width: range(40, 58);
 		height: range(40, 58);
 		flex-shrink: 0;
-		background-color: white;
+		background-color: #f0f0f0;
 		color: #252525;
+		cursor: pointer;
 	}
 </style>

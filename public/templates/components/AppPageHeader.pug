@@ -5,6 +5,7 @@ mixin AppPageHeader()
 				appear
 				appear-active-class="v-appear-active"
 				:duration="600"
+				@after-appear="startAnimateIsEnd = true"
 			)
 				.logobox
 					a.logo(
@@ -14,6 +15,8 @@ mixin AppPageHeader()
 						base-icon(icon-name="zingy")
 
 			transition
-				.menubuttonbox
+				.menubuttonbox(
+					v-show="startAnimateIsEnd && headerIsMinimized"
+				)
 					button.menubutton(type="button")
 						base-icon(icon-name="menu")
