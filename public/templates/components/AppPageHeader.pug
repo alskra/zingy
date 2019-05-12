@@ -14,7 +14,7 @@ mixin AppPageHeader()
 					)
 						base-icon(icon-name="zingy")
 
-			transition
+			transition(:duration="{enter: 550, leave: 350}")
 				.menubuttonbox(
 					v-show="startAnimateIsEnd && headerIsMinimized"
 				)

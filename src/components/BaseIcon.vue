@@ -1,8 +1,7 @@
 <template lang="pug">
 	.base-icon(:is="tagName")
 		template(v-if="socialIconsNames.indexOf(iconName) !== -1")
-			svg(
-				class="socialicon"
+			svg.socialicon(
 				role="img"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
@@ -31,9 +30,39 @@
 			</svg>
 
 		template(v-else-if="iconName === 'menu'")
-			<svg role="img" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg">
-				<line x1="0" y1="0" x2="100%" y2="0"></line>
-			</svg>
+			svg.menuicon(
+				role="img"
+				viewBox="0 0 44 44"
+				xmlns="http://www.w3.org/2000/svg"
+			)
+				g(transform="translate(0, 5)")
+					rect(
+						x="2"
+						y="2"
+						:width="((40 - 15) / 44 * 100).toFixed(3) + '%'"
+						height="1"
+					)
+
+					rect(
+						x="2"
+						y="12"
+						:width="((40 - 0) / 44 * 100).toFixed(3) + '%'"
+						height="1"
+					)
+
+					rect(
+						x="2"
+						y="22"
+						:width="((40 - 25) / 44 * 100).toFixed(3) + '%'"
+						height="1"
+					)
+
+					rect(
+						x="2"
+						y="32"
+						:width="((40 - 10) / 44 * 100).toFixed(3) + '%'"
+						height="1"
+					)
 </template>
 
 <script>
@@ -109,5 +138,83 @@
 		width: 0;
 		color: #ec5151;
 		transition: width 0.2s;
+	}
+
+	.menuicon {
+		>>> rect {
+			stroke: currentColor;
+			stroke-width: 2px;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+
+		.menubutton & {
+			>>> rect {
+				transition: width 0.2s;
+			}
+		}
+
+		.menubutton:hover & {
+			>>> rect {
+				&:nth-child(1) {
+					width: 75%;
+				}
+
+				&:nth-child(2) {
+					width: 35%;
+				}
+
+				&:nth-child(3) {
+					width: 90%;
+				}
+
+				&:nth-child(4) {
+					width: 60%;
+				}
+			}
+		}
+
+		.menubuttonbox.v-enter-active & {
+			>>> rect {
+				transition: width 0.2s 0.2s;
+
+				&:nth-child(2) {
+					transition-delay: 0.25s;
+				}
+
+				&:nth-child(3) {
+					transition-delay: 0.3s;
+				}
+
+				&:nth-child(4) {
+					transition-delay: 0.35s;
+				}
+			}
+		}
+
+		.menubuttonbox.v-leave-active & {
+			>>> rect {
+				transition: width 0.2s;
+
+				&:nth-child(2) {
+					transition-delay: 0.05s;
+				}
+
+				&:nth-child(3) {
+					transition-delay: 0.1s;
+				}
+
+				&:nth-child(4) {
+					transition-delay: 0.15s;
+				}
+			}
+		}
+
+		.menubuttonbox.v-enter &,
+		.menubuttonbox.v-leave-to & {
+			>>> rect {
+				width: 0;
+			}
+		}
 	}
 </style>

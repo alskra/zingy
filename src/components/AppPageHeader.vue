@@ -103,7 +103,7 @@
 
 		&.v-enter-active,
 		&.v-leave-active {
-			transition: width 0.4s;
+			transition: width 0.3s;
 		}
 
 		&.v-enter,
@@ -114,12 +114,19 @@
 
 	.menubutton {
 		all: initial;
-		display: block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: range(40, 58);
 		height: range(40, 58);
 		flex-shrink: 0;
 		background-color: #f0f0f0;
-		color: #252525;
+		color: #0a0a0a;
 		cursor: pointer;
+
+		.base-icon {
+			width: range(calc(40 / 58 * 44), 44);
+			height: range(calc(40 / 58 * 44), 44);
+		}
 	}
 </style>
