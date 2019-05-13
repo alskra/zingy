@@ -14,28 +14,33 @@
 			};
 		},
 		methods: {
-			onNavItemMouseOver(event) {
-				const navItem = event.target.closest('.nav-item');
-
-				if (navItem) {
-					this.hoverItemStyle = {
-						...this.hoverItemStyle,
-						...{
-							top: navItem.offsetTop + 'px',
-							height: navItem.offsetHeight + 'px'
-						}
-					};
-				}
-			},
-			onNavItemMouseOut() {
+			onNavItemMouseenter(event) {
 				this.hoverItemStyle = {
-					...this.hoverStyle,
+					...this.hoverItemStyle,
+					...{
+						top: event.currentTarget.offsetTop + 'px',
+						height: event.currentTarget.offsetHeight + 'px'
+					}
+				};
+			},
+			onNavItemMouseleave() {
+				this.hoverItemStyle = {
+					...this.hoverItemStyle,
 					...{
 						top: '',
 						height: ''
 					}
 				};
 			}
+		},
+		mounted() {
+			this.$el
+				.querySelectorAll('.nav-item')
+				.forEach(navItem => {
+						navItem.addEventListener('mouseenter', this.onNavItemMouseenter);
+						navItem.addEventListener('mouseleave', this.onNavItemMouseleave)
+					}
+				)
 		}
 	}
 </script>

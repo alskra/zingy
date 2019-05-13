@@ -9,10 +9,13 @@
 		created() {
 			// console.log(this);
 			// console.log(this.$el);
+		},
+		mounted() {
+			// console.log(this);
+			// console.log(this.$el);
 		}
 	};
 </script>
 
 <style scoped>
-</style>
 </style>

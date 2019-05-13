@@ -10,9 +10,6 @@ mixin AppPageFooterNav(navList = [])
 							span.nav-item-text= item
 
 mixin AppPageFooterNavOfSection(navList, navName = 'Section')
-	+AppPageFooterNav(navList).AppPageFooterNavOfSection(
-		@mouseover="onNavItemMouseOver"
-		@mouseout="onNavItemMouseOut"
-	)&attributes(attributes)
+	+AppPageFooterNav(navList).AppPageFooterNavOfSection&attributes(attributes)
 		.hover-item(:style="hoverItemStyle")
 		.nav-name= navName

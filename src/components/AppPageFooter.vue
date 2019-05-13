@@ -31,7 +31,7 @@
 		}
 	}
 
-	.content-box {
+	.content {
 		padding: 0 range(10, 110);
 		box-sizing: border-box;
 		max-width: 1920px;
@@ -74,7 +74,7 @@
 		}
 	}
 
-	.zingy-projects-substr {
+	.zingy-projects-item {
 		width: calc(3983 / 1920 * 100vmax + 8vmax);
 		height: calc(396 / 1920 * 100vmax);
 		flex-shrink: 0;
