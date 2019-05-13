@@ -19,14 +19,14 @@
 		}
 	}
 
-	.grid {
+	.l-grid {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: var(--v-social-media_justify-content);
 		margin: -10px -15px;
 	}
 
-	.grid-item {
+	.l-grid-item {
 		margin: 10px 15px;
 	}
 

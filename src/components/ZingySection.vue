@@ -18,7 +18,7 @@
 		}
 	}
 
-	.grid {
+	.matrix {
 		position: relative;
 		margin: auto auto auto calc(50% - 228 / 34 * 1em);
 		color: #ffffff;
@@ -49,7 +49,7 @@
 		}
 	}
 
-	.grid-item {
+	.matrix-row {
 		&:nth-child(2) {
 			margin-left: calc(110 / 34 * 1em);
 		}

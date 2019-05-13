@@ -1,21 +1,21 @@
 mixin AppPageHeader()
 	template
 		header.AppPageHeader&attributes(attributes)
-			transition(
+			transition-box(
 				appear
 				appear-active-class="v-appear-active"
 				:duration="600"
 				@after-appear="startAnimateIsEnd = true"
 			)
-				.logo-box
+				.l-logo-box
 					a.logo(
 						href="/"
 						title="Zingy Projects"
 					)
 						base-icon(icon-name="zingy")
 
-			transition(:duration="{enter: 550, leave: 350}")
-				.menu-button-box(
+			transition-box(:duration="{enter: 550, leave: 350}")
+				.l-menu-button-box(
 					v-show="startAnimateIsEnd && headerIsMinimized"
 				)
 					button.menu-button(type="button")

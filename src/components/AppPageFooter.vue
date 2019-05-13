@@ -1,7 +1,7 @@
 <script>
 	import SocialMedia from './SocialMedia';
 	import AppPageFooterNav from './AppPageFooterNav';
-	import {AppPageFooterNavOfSection} from './AppPageFooterNav';
+	import AppPageFooterNavOfSection from './AppPageFooterNavOfSection';
 
 	export default {
 		name: 'AppPageFooter',
@@ -31,7 +31,7 @@
 		}
 	}
 
-	.content {
+	.l-content-box {
 		padding: 0 range(10, 110);
 		box-sizing: border-box;
 		max-width: 1920px;
@@ -86,7 +86,7 @@
 		}
 	}
 
-	.content-grid {
+	.l-content-grid {
 		display: flex;
 		flex-wrap: wrap;
 		margin: -15px -10px;
@@ -94,7 +94,7 @@
 		align-items: baseline;
 	}
 
-	.content-grid-item {
+	.l-content-grid-item {
 		width: calc(25% - 20px);
 		margin: 15px 10px;
 
@@ -131,7 +131,7 @@
 		}
 	}
 
-	.contacts-grid {
+	.l-contacts-grid {
 		display: flex;
 		flex-flow: column;
 		height: 100%;
@@ -144,7 +144,7 @@
 		}
 	}
 
-	.contacts-grid-item {
+	.l-contacts-grid-item {
 		&:nth-child(3) {
 			margin-top: auto;
 		}

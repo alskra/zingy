@@ -1,22 +1,19 @@
+include AppPageHeader
+include AppPageFooter
+include ZingySection
+
 mixin AppPage()
 	template
 		.AppPage&attributes(attributes)
-			.front-layout
+			.l-front-layer
 				app-page-header(inline-template)
-					include AppPageHeader
 					+AppPageHeader()
 
 				block
 
 				app-page-footer(inline-template)
-					include AppPageFooter
 					+AppPageFooter()
 
-			.back-layout
+			.l-back-layer
 				zingy-section(inline-template)
-					include ZingySection
 					+ZingySection()
-
-mixin AppPageIsIndex()
-	+AppPage().AppPageIsIndex
-		h2 Page Index

@@ -3,20 +3,13 @@
 	import AppPageFooter from './AppPageFooter';
 	import ZingySection from './ZingySection';
 
-	const AppPage = {
+	export default {
 		name: 'AppPage',
 		components: {
 			AppPageHeader,
 			AppPageFooter,
 			ZingySection
 		}
-	};
-
-	export default AppPage;
-
-	export const AppPageIsIndex = {
-		name: 'AppPageIsIndex',
-		extends: AppPage
 	};
 </script>
 
@@ -31,7 +24,7 @@
 		}
 	}
 
-	.front-layout {
+	.l-front-layer {
 		position: relative;
 		z-index: 1;
 		min-height: 100vh;
@@ -44,7 +37,7 @@
 		}
 	}
 
-	.back-layout {
+	.l-back-layer {
 		position: fixed;
 		top: 0;
 		right: 0;

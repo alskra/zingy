@@ -41,7 +41,7 @@
 		}
 	}
 
-	.logo-box {
+	.l-logo-box {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -53,10 +53,8 @@
 		&.v-appear-active {
 			animation: logo-box_slide-in-right 0.4s;
 
-			.logo {
-				.base-icon {
-					animation: logo-box_fade-in-top 0.2s 0.4s backwards;
-				}
+			.BaseIcon {
+				animation: logo-box_fade-in-top 0.2s 0.4s backwards;
 			}
 		}
 
@@ -92,7 +90,7 @@
 		}
 	}
 
-	.menu-button-box {
+	.l-menu-button-box {
 		position: absolute;
 		top: 0;
 		left: range(40, 58);

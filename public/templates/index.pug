@@ -1,6 +1,11 @@
 extends layout
 
+include components/AppPageIsIndex
+
 block app
 	app-page-is-index(inline-template)
-		include components/AppPage
 		+AppPageIsIndex()
+
+	//-base-foo
+	//-base-foo-ext
+	//-base-foo-ext-outer

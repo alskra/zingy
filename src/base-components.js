@@ -21,11 +21,25 @@ Vue.component('Vnodes', {
 	}
 });
 
+// Vue.component('TransitionBox', {
+// 	functional: true,
+// 	// template: `<p>VTransition</p>`,
+// 	render(createElement, ctx) {
+// 		// console.log(ctx);
+// 		return createElement('transition', ctx.data, ctx.children);
+// 	},
+// 	created() {
+// 		// console.log(this);
+// 		// console.log(this.$el);
+// 	}
+// });
+
+Vue.component('TransitionBox', {
+	extends: Vue.component('Transition')
+});
+
 // Vue.mixin({
 // 	mounted() {
-// 		this.$el.setAttribute('host', this.$options.name);
-// 	},
-// 	updated() {
-// 		this.$el.setAttribute('host', this.$options.name);
+// 		this.$el.classList.add(this.$options.name);
 // 	}
 // });

@@ -1,5 +1,5 @@
 <script>
-	import {AppPageIsIndex} from './components/AppPage';
+	import AppPageIsIndex from './components/AppPageIsIndex';
 
 	export default {
 		name: 'App',
