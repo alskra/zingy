@@ -1,7 +1,7 @@
 mixin AppPage()
 	template
-		.app-page&attributes(attributes)
-			.main
+		.AppPage&attributes(attributes)
+			.front-layout
 				app-page-header(inline-template)
 					include AppPageHeader
 					+AppPageHeader()
@@ -12,11 +12,11 @@ mixin AppPage()
 					include AppPageFooter
 					+AppPageFooter()
 
-			.backface
-				v-zingysection(inline-template)
-					include VZingysection
-					+VZingysection()
+			.back-layout
+				zingy-section(inline-template)
+					include ZingySection
+					+ZingySection()
 
-mixin AppPageExtIndex()
-	+AppPage().app-page-ext-index
+mixin AppPageIsIndex()
+	+AppPage().AppPageIsIndex
 		h2 Page Index

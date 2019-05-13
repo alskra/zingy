@@ -1,27 +1,27 @@
 <script>
 	import AppPageHeader from './AppPageHeader';
 	import AppPageFooter from './AppPageFooter';
-	import VZingysection from './VZingysection';
+	import ZingySection from './ZingySection';
 
 	const AppPage = {
 		name: 'AppPage',
 		components: {
 			AppPageHeader,
 			AppPageFooter,
-			VZingysection
+			ZingySection
 		}
 	};
 
 	export default AppPage;
 
-	export const AppPageExtIndex = {
-		name: 'AppPageExtIndex',
-		mixins: [AppPage]
+	export const AppPageIsIndex = {
+		name: 'AppPageIsIndex',
+		extends: AppPage
 	};
 </script>
 
 <style scoped>
-	.app-page {
+	.AppPage {
 		all: initial;
 
 		& {
@@ -31,7 +31,7 @@
 		}
 	}
 
-	.main {
+	.front-layout {
 		position: relative;
 		z-index: 1;
 		min-height: 100vh;
@@ -39,12 +39,12 @@
 		flex-flow: column;
 		background-color: white;
 
-		.app-page-footer {
+		.AppPageFooter {
 			margin-top: auto;
 		}
 	}
 
-	.backface {
+	.back-layout {
 		position: fixed;
 		top: 0;
 		right: 0;

@@ -5,8 +5,8 @@
 
 	export default AppPageFooterNav;
 
-	export const AppPageFooterNavExtSection = {
-		name: 'AppPageFooterNavExtSection',
+	export const AppPageFooterNavOfSection = {
+		name: 'AppPageFooterNavOfSection',
 		mixins: [AppPageFooterNav],
 		data() {
 			return {
@@ -15,7 +15,7 @@
 		},
 		methods: {
 			onNavItemMouseOver(event) {
-				const navItem = event.target.closest('.navitem');
+				const navItem = event.target.closest('.nav-item');
 
 				if (navItem) {
 					this.hoverItemStyle = {
@@ -41,7 +41,7 @@
 </script>
 
 <style scoped>
-	.app-page-footer-nav {
+	.AppPageFooterNav {
 		all: initial;
 
 		& {
@@ -49,7 +49,7 @@
 		}
 	}
 
-	.navgrid {
+	.grid {
 		display: flex;
 		flex-flow: column;
 		margin: 0 -10px;
@@ -58,14 +58,14 @@
 			flex-flow: row;
 			flex-wrap: wrap;
 		}
-
-		&-item {
-			margin: 0 10px;
-			display: flex;
-		}
 	}
 
-	.navitem {
+	.grid-item {
+		margin: 0 10px;
+		display: flex;
+	}
+
+	.nav-item {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		padding: 8px 0;
@@ -77,13 +77,13 @@
 		text-decoration: none;
 
 		&:hover {
-			.navitem-text {
+			.nav-item-text {
 				background-size: 100% 2px;
 			}
 		}
 	}
 
-	.navitem-text {
+	.nav-item-text {
 		padding-bottom: 1px;
 		transition: background-size 0.2s;
 		background: linear-gradient(#ec5151, #ec5151) no-repeat 0 100% / 0 2px;
@@ -91,10 +91,10 @@
 </style>
 
 <style scoped>
-	.app-page-footer-nav-ext-section {
+	.AppPageFooterNavOfSection {
 		position: relative;
 
-		.hoveritem {
+		.hover-item {
 			width: 3px;
 			height: 28px;
 			background-color: #e04b4a;
@@ -106,7 +106,7 @@
 			pointer-events: none;
 		}
 
-		.navname {
+		.nav-name {
 			overflow: hidden;
 			text-overflow: ellipsis;
 			padding: 3px 0 3px 28px;
@@ -120,13 +120,13 @@
 			margin-bottom: 5px;
 		}
 
-		.navitem {
+		.nav-item {
 			width: 100%;
 			font-weight: 300;
 			padding-left: 28px;
 		}
 
-		.navitem-text {
+		.nav-item-text {
 			background: none;
 		}
 	}

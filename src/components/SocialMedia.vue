@@ -1,17 +1,17 @@
 <script>
 	export default {
-		name: 'VSociallinks'
+		name: 'SocialMedia'
 	};
 </script>
 
 <style>
 	:root {
-		--v-sociallinks_justify-content: flex-start;
+		--v-social-media_justify-content: flex-start;
 	}
 </style>
 
 <style scoped>
-	.v-sociallinks {
+	.SocialMedia {
 		all: initial;
 
 		& {
@@ -19,18 +19,18 @@
 		}
 	}
 
-	.linksgrid {
+	.grid {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: var(--v-sociallinks_justify-content);
+		justify-content: var(--v-social-media_justify-content);
 		margin: -10px -15px;
 	}
 
-	.linksgrid-item {
+	.grid-item {
 		margin: 10px 15px;
 	}
 
-	.linkitem {
+	.media-item {
 		display: block;
 		width: range(calc(38 / 1.5), 38);
 		height: range(calc(38 / 1.5), 38);

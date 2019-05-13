@@ -1,10 +1,10 @@
 <script>
-	import {AppPageExtIndex} from './components/AppPage';
+	import {AppPageIsIndex} from './components/AppPage';
 
 	export default {
 		name: 'App',
 		components: {
-			AppPageExtIndex
+			AppPageIsIndex
 		}
 	}
 </script>

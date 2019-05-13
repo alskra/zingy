@@ -14,15 +14,18 @@ requireComponents.keys().forEach(fileName => {
 	Vue.component(componentName, componentConfig);
 });
 
-Vue.component('FVnodes', {
+Vue.component('Vnodes', {
 	functional: true,
 	render(createElement, ctx) {
 		return ctx.props.vnodes;
 	}
 });
 
-
-Vue.component('VHost', {
-
-	template: `<div><slot></slot></div>`
-});
+// Vue.mixin({
+// 	mounted() {
+// 		this.$el.setAttribute('host', this.$options.name);
+// 	},
+// 	updated() {
+// 		this.$el.setAttribute('host', this.$options.name);
+// 	}
+// });

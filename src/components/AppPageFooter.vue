@@ -1,20 +1,20 @@
 <script>
-	import VSociallinks from './VSociallinks';
+	import SocialMedia from './SocialMedia';
 	import AppPageFooterNav from './AppPageFooterNav';
-	import {AppPageFooterNavExtSection} from './AppPageFooterNav';
+	import {AppPageFooterNavOfSection} from './AppPageFooterNav';
 
 	export default {
 		name: 'AppPageFooter',
 		components: {
-			VSociallinks,
+			SocialMedia,
 			AppPageFooterNav,
-			AppPageFooterNavExtSection
+			AppPageFooterNavOfSection
 		}
 	};
 </script>
 
 <style scoped>
-	.app-page-footer {
+	.AppPageFooter {
 		all: initial;
 
 		& {
@@ -24,10 +24,14 @@
 			position: relative;
 			min-height: calc(396 / 1920 * 100vmax + 5vw);
 			overflow: hidden;
+
+			@media (width >= 1920px) {
+				min-height: calc(396px + 5vw);
+			}
 		}
 	}
 
-	.contentbox {
+	.content-box {
 		padding: 0 range(10, 110);
 		box-sizing: border-box;
 		max-width: 1920px;
@@ -42,32 +46,47 @@
 		line-height: 1.25;
 		margin: 0 0 range(30, 60);
 		position: relative;
+		z-index: 1;
 	}
 
-	.zingyprojects {
+	.zingy-projects {
 		display: flex;
-		width: calc(3983 / 1920 * 100vmax * 2 + 8vw * 2);
-		height: calc(396 / 1920 * 100vmax);
 		position: absolute;
 		left: 0;
 		margin-top: range(-15, -30);
-		animation: zingyprojects 60s linear infinite;
+		animation: zingy-projects_run 60s linear infinite;
+		pointer-events: none;
 
-		&::before,
-		&::after {
-			content: '';
-			width: 50%;
-			background: url("../assets/img/zingy-projects.png") no-repeat 50% 50% / contain;
+		@keyframes zingy-projects_run {
+			100% {
+				transform: translateX(calc(-3983 / 1920 * 100vmax - 8vmax));
+			}
 		}
 
-		@keyframes zingyprojects {
+		@media (width >= 1920px) {
+			animation-name: zingy-projects_run-for-large-screen;
+		}
+
+		@keyframes zingy-projects_run-for-large-screen {
 			100% {
-				transform: translateX(calc(-3983 / 1920 * 100vmax - 8vw));
+				transform: translateX(calc(-3983px - 8 / 100 * 1920px));
 			}
 		}
 	}
 
-	.contentgrid {
+	.zingy-projects-substr {
+		width: calc(3983 / 1920 * 100vmax + 8vmax);
+		height: calc(396 / 1920 * 100vmax);
+		flex-shrink: 0;
+		background: url("../assets/img/zingy-projects.png") no-repeat 50% 50% / contain;
+
+		@media (width >= 1920px) {
+			width: calc(3983px + 8 / 100 * 1920px);
+			height: 396px;
+		}
+	}
+
+	.content-grid {
 		display: flex;
 		flex-wrap: wrap;
 		margin: -15px -10px;
@@ -75,7 +94,7 @@
 		align-items: baseline;
 	}
 
-	.contentgrid-item {
+	.content-grid-item {
 		width: calc(25% - 20px);
 		margin: 15px 10px;
 
@@ -112,7 +131,7 @@
 		}
 	}
 
-	.contactsgrid {
+	.contacts-grid {
 		display: flex;
 		flex-flow: column;
 		height: 100%;
@@ -125,7 +144,7 @@
 		}
 	}
 
-	.contactsgrid-item {
+	.contacts-grid-item {
 		&:nth-child(3) {
 			margin-top: auto;
 		}
@@ -140,8 +159,8 @@
 			margin: 15px 10px;
 			width: calc(percentage(1 / 3) - 20px);
 
-			.v-sociallinks {
-				--v-sociallinks_justify-content: center;
+			.SocialMedia {
+				--v-social-media_justify-content: center;
 			}
 
 			&:nth-child(3) {
@@ -160,10 +179,6 @@
 		font-size: range(1.6rem, 1.8rem);
 		font-weight: 300;
 		line-height: 1.5;
-
-		@media (width < 768px) {
-			text-align: center;
-		}
 
 		>>> p {
 			margin: 0;
@@ -185,9 +200,13 @@
 				background-size: 100% 2px;
 			}
 		}
+
+		@media (width < 768px) {
+			text-align: center;
+		}
 	}
 
-	.textcopyright {
+	.text-is-copyright {
 		@media (768px <= width < 1024px) {
 			text-align: right;
 		}

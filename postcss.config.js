@@ -12,7 +12,7 @@ module.exports = {
 		'postcss-hexrgba': {},
 		'postcss-functions': {
 			functions: {
-				'range'(
+				range(
 					from,
 					to,
 					minBreakpoint = environmentVariables['--min-breakpoint'],

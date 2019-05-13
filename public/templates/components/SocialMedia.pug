@@ -1,0 +1,21 @@
+mixin SocialMedia()
+	-
+		const mediaList = [
+			'VK',
+			'Facebook',
+			'Twitter',
+			'Google+',
+			'Instagram'
+		]
+
+	template
+		nav.SocialMedia&attributes(attributes)
+			.grid
+				each mediaItem in mediaList
+					.grid-item
+						a.media-item(
+							href=""
+							title=mediaItem
+							target="_blank"
+						)
+							base-icon(icon-name=mediaItem.toLowerCase())

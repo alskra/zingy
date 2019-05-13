@@ -1,11 +1,11 @@
 <script>
 	export default {
-		name: 'VZingysection'
+		name: 'ZingySection'
 	};
 </script>
 
 <style scoped>
-	.v-zingysection {
+	.ZingySection {
 		all: initial;
 
 		& {
@@ -18,7 +18,7 @@
 		}
 	}
 
-	.zingygrid {
+	.grid {
 		position: relative;
 		margin: auto auto auto calc(50% - 228 / 34 * 1em);
 		color: #ffffff;
@@ -47,27 +47,27 @@
 			font-weight: 700;
 			letter-spacing: calc(23 / 46 * 1em);
 		}
+	}
 
-		&-item {
-			&:nth-child(2) {
-				margin-left: calc(110 / 34 * 1em);
-			}
+	.grid-item {
+		&:nth-child(2) {
+			margin-left: calc(110 / 34 * 1em);
+		}
 
-			&:nth-child(3) {
-				margin-left: calc(-134 / 34 * 1em);
-			}
+		&:nth-child(3) {
+			margin-left: calc(-134 / 34 * 1em);
+		}
 
-			&:nth-child(4) {
-				margin-left: calc(-91 / 34 * 1em);
-			}
+		&:nth-child(4) {
+			margin-left: calc(-91 / 34 * 1em);
+		}
 
-			&:nth-child(5) {
-				margin-left: calc(-48 / 34 * 1em);
-			}
+		&:nth-child(5) {
+			margin-left: calc(-48 / 34 * 1em);
 		}
 	}
 
-	.zingydefinition {
+	.definition {
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
 		font-size: range(1.4rem, 1.6rem);

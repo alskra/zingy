@@ -1,6 +1,6 @@
 mixin AppPageFooter()
 	-
-		const [navMain, navDev, navSeo] = [
+		const [mainNav, devNav, seoNav] = [
 			[
 				'Главная',
 				'Разработка',
@@ -31,37 +31,42 @@ mixin AppPageFooter()
 		]
 
 	template
-		footer.app-page-footer&attributes(attributes)
-			.contentbox
+		footer.AppPageFooter&attributes(attributes)
+			.content-box
 				h2.heading Контакты
-				.zingyprojects
+				.zingy-projects
+					.zingy-projects-substr
+					.zingy-projects-substr
+					.zingy-projects-substr
+					.zingy-projects-substr
+					.zingy-projects-substr
 
-				.contentgrid
-					.contentgrid-item
-						.contactsgrid
-							.contactsgrid-item
+				.content-grid
+					.content-grid-item
+						.contacts-grid
+							.contacts-grid-item
 								.text
 									p E-mail: #[br]#[a(href="mailto:zingy.projects@gmail.com") zingy.projects@gmail.com]
 									p Телефон: #[br]#[a(href="tel:+79854575817") +7 (985) 457-58-17]
 
-							.contactsgrid-item
-								v-sociallinks(inline-template)
-									include VSociallinks
-									+VSociallinks()
+							.contacts-grid-item
+								social-media(inline-template)
+									include SocialMedia
+									+SocialMedia()
 
-							.contactsgrid-item
-								.text.textcopyright
+							.contacts-grid-item
+								.text.text-is-copyright
 									p &copy;&nbsp;2008&ndash;2019. Все&nbsp;права&nbsp;защищены
 
-					.contentgrid-item
+					.content-grid-item
 						app-page-footer-nav(inline-template)
 							include AppPageFooterNav
-							+AppPageFooterNav(navMain)
+							+AppPageFooterNav(mainNav)
 
-					.contentgrid-item
-						app-page-footer-nav-ext-section(inline-template)
-							+AppPageFooterNavExtSection(navDev, 'Разработка')
+					.content-grid-item
+						app-page-footer-nav-of-section(inline-template)
+							+AppPageFooterNavOfSection(devNav, 'Разработка')
 
-					.contentgrid-item
-						app-page-footer-nav-ext-section(inline-template)
-							+AppPageFooterNavExtSection(navSeo, 'Продвижение')
+					.content-grid-item
+						app-page-footer-nav-of-section(inline-template)
+							+AppPageFooterNavOfSection(seoNav, 'Продвижение')
