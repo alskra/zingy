@@ -32,8 +32,8 @@
 
 	.media-item {
 		display: block;
-		width: range(calc(38 / 1.5), 38);
-		height: range(calc(38 / 1.5), 38);
+		width: range(38px / 1.5, 38px);
+		height: range(38px / 1.5, 38px);
 		text-decoration: none;
 		color: #1a1a1a;
 		transition: filter 0.2s;

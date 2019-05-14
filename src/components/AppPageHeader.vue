@@ -35,9 +35,9 @@
 		& {
 			position: fixed;
 			z-index: 100;
-			top: range(10, 40);
-			right: range(10, 40);
-			left: range(10, 40);
+			top: range(10px, 40px);
+			right: range(10px, 40px);
+			left: range(10px, 40px);
 		}
 	}
 
@@ -47,7 +47,7 @@
 		left: 0;
 		display: flex;
 		justify-content: flex-end;
-		width: range(40, 58);
+		width: range(40px, 58px);
 		overflow: hidden;
 
 		&.v-appear-active {
@@ -74,8 +74,8 @@
 
 	.logo {
 		display: block;
-		width: range(40, 58);
-		height: range(40, 58);
+		width: range(40px, 58px);
+		height: range(40px, 58px);
 		flex-shrink: 0;
 		background-color: #252525;
 		color: white;
@@ -93,10 +93,10 @@
 	.l-menu-button-box {
 		position: absolute;
 		top: 0;
-		left: range(40, 58);
+		left: range(40px, 58px);
 		display: flex;
 		justify-content: flex-end;
-		width: range(40, 58);
+		width: range(40px, 58px);
 		overflow: hidden;
 
 		&.v-enter-active,
@@ -161,16 +161,16 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: range(40, 58);
-		height: range(40, 58);
+		width: range(40px, 58px);
+		height: range(40px, 58px);
 		flex-shrink: 0;
 		background-color: #f0f0f0;
 		color: #0a0a0a;
 		cursor: pointer;
 
 		.BaseIcon {
-			width: range(calc(40 / 58 * 44), 44);
-			height: range(calc(40 / 58 * 44), 44);
+			width: range(40 / 58 * 44px, 44px);
+			height: range(40 / 58 * 44px, 44px);
 
 			>>> .menu-icon-line {
 				transition: width 0.2s;
@@ -197,6 +197,21 @@
 					}
 				}
 			}
+		}
+	}
+
+	.l-nav-box {
+		position: absolute;
+		top: 0;
+		left: range(40px, 58px);
+		display: flex;
+		justify-content: flex-end;
+		width: range(845px / 2, 845px);
+		overflow: hidden;
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: width 0.3s;
 		}
 	}
 </style>

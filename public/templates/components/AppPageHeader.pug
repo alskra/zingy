@@ -20,3 +20,9 @@ mixin AppPageHeader()
 				)
 					button.menu-button(type="button")
 						base-icon(icon-name="menu")
+
+			transition-box
+				.l-nav-box
+					nav.nav
+						each navItem in ['Главная', 'О компании', 'Разработка', 'Продвижение', 'Блог', 'Контакты']
+							a.nav-item(href="")= navItem

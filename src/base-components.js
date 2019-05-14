@@ -21,25 +21,6 @@ Vue.component('Vnodes', {
 	}
 });
 
-// Vue.component('TransitionBox', {
-// 	functional: true,
-// 	// template: `<p>VTransition</p>`,
-// 	render(createElement, ctx) {
-// 		// console.log(ctx);
-// 		return createElement('transition', ctx.data, ctx.children);
-// 	},
-// 	created() {
-// 		// console.log(this);
-// 		// console.log(this.$el);
-// 	}
-// });
-
 Vue.component('TransitionBox', {
 	extends: Vue.component('Transition')
 });
-
-// Vue.mixin({
-// 	mounted() {
-// 		this.$el.classList.add(this.$options.name);
-// 	}
-// });

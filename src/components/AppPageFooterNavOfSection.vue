@@ -57,6 +57,16 @@
 		position: relative;
 	}
 
+	.nav-item {
+		width: 100%;
+		font-weight: 300;
+		padding-left: 28px;
+	}
+
+	.nav-item-text {
+		background: none;
+	}
+
 	.hover-item {
 		width: 3px;
 		height: 28px;
@@ -81,15 +91,5 @@
 		text-decoration: none;
 		text-transform: uppercase;
 		margin-bottom: 5px;
-	}
-
-	.nav-item {
-		width: 100%;
-		font-weight: 300;
-		padding-left: 28px;
-	}
-
-	.nav-item-text {
-		background: none;
 	}
 </style>

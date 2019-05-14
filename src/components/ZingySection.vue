@@ -23,7 +23,7 @@
 		margin: auto auto auto calc(50% - 228 / 34 * 1em);
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
-		font-size: range(calc(34 / 2.5), 34);
+		font-size: range(34px / 2.5, 34px);
 		font-weight: 400;
 		line-height: 1.5;
 		text-transform: uppercase;
@@ -43,7 +43,7 @@
 		}
 
 		>>> b {
-			font-size: range(calc(46 / 2.5), 46);
+			font-size: range(46px / 2.5, 46px);
 			font-weight: 700;
 			letter-spacing: calc(23 / 46 * 1em);
 		}

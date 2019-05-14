@@ -19,7 +19,7 @@
 
 		& {
 			display: block;
-			padding: range(50, 100) 0;
+			padding: range(50px, 100px) 0;
 			background-color: #222222;
 			position: relative;
 			min-height: calc(396 / 1920 * 100vmax + 5vw);
@@ -32,7 +32,7 @@
 	}
 
 	.l-content-box {
-		padding: 0 range(10, 110);
+		padding: 0 range(10px, 110px);
 		box-sizing: border-box;
 		max-width: 1920px;
 		margin: 0 auto;
@@ -41,10 +41,10 @@
 	.heading {
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
-		font-size: range(calc(4.8rem / 1.5), 4.8rem);
+		font-size: range(4.8rem / 1.5, 4.8rem);
 		font-weight: 500;
 		line-height: 1.25;
-		margin: 0 0 range(30, 60);
+		margin: 0 0 range(30px, 60px);
 		position: relative;
 		z-index: 1;
 	}
@@ -53,7 +53,7 @@
 		display: flex;
 		position: absolute;
 		left: 0;
-		margin-top: range(-15, -30);
+		margin-top: range(-15px, -30px);
 		animation: zingy-projects_run 60s linear infinite;
 		pointer-events: none;
 
@@ -151,7 +151,7 @@
 
 		@media (width >= 1024px) {
 			&:nth-child(2) {
-				margin: range(30, 60) 0;
+				margin: range(30px, 60px) 0;
 			}
 		}
 
