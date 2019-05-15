@@ -9,3 +9,6 @@ import cssVars from 'css-vars-ponyfill';
 focusWithin(document, {force: true});
 
 cssVars();
+
+
+NodeList.prototype.forEach = Array.prototype.forEach;

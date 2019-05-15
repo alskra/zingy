@@ -14,15 +14,26 @@ mixin AppPageHeader()
 					)
 						base-icon(icon-name="zingy")
 
+			transition-box(
+				:duration="{enter: 500, leave: 300}"
+				@enter="enterLNavBox"
+				@after-enter="afterEnterLNavBox"
+				@before-leave="beforeLeaveLNavBox"
+			)
+				.l-nav-box(v-show="startAnimateIsEnd && !headerIsMinimized")
+					app-page-header-nav-is-top(class="AppPageHeaderNavIsTop")
+
 			transition-box(:duration="{enter: 550, leave: 350}")
-				.l-menu-button-box(
-					v-show="startAnimateIsEnd && headerIsMinimized"
-				)
-					button.menu-button(type="button")
-						base-icon(icon-name="menu")
+				.l-menu-button-box(v-show="startAnimateIsEnd && headerIsMinimized")
+					button.menu-button(
+						type="button"
+						@click="sidebarIsOpened = !sidebarIsOpened"
+					)
+						base-icon(
+							icon-name="menu"
+							:class="{'is-menu-opened': sidebarIsOpened}"
+						)
 
 			transition-box
-				.l-nav-box
-					nav.nav
-						each navItem in ['Главная', 'О компании', 'Разработка', 'Продвижение', 'Блог', 'Контакты']
-							a.nav-item(href="")= navItem
+				.sidebar(v-if="sidebarIsOpened")
+					app-page-header-nav-is-aside(class="AppPageHeaderNavIsAside")

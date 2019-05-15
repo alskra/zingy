@@ -51,4 +51,8 @@
 		margin: 0;
 		background-color: white;
 	}
+
+	template {
+		display: none;
+	}
 </style>

@@ -31,39 +31,11 @@
 			</svg>
 
 		template(v-else-if="iconName === 'menu'")
-			svg.menu-icon(
-				role="img"
-				viewBox="0 0 44 44"
-				xmlns="http://www.w3.org/2000/svg"
-			)
-				g(transform="translate(0, 5)")
-					rect.menu-icon-line(
-						x="2"
-						y="2"
-						:width="((40 - 15) / 44 * 100).toFixed(3) + '%'"
-						height="1"
-					)
-
-					rect.menu-icon-line(
-						x="2"
-						y="12"
-						:width="((40 - 0) / 44 * 100).toFixed(3) + '%'"
-						height="1"
-					)
-
-					rect.menu-icon-line(
-						x="2"
-						y="22"
-						:width="((40 - 25) / 44 * 100).toFixed(3) + '%'"
-						height="1"
-					)
-
-					rect.menu-icon-line(
-						x="2"
-						y="32"
-						:width="((40 - 10) / 44 * 100).toFixed(3) + '%'"
-						height="1"
-					)
+			span.menu-icon
+				span.menu-icon-line
+				span.menu-icon-line
+				span.menu-icon-line
+				span.menu-icon-line
 </template>
 
 <script>
@@ -115,6 +87,31 @@
 				width: 100%;
 			}
 		}
+
+		&.is-menu-opened {
+			.menu-icon-line {
+				&:nth-child(2),
+				&:nth-child(3) {
+					display: none;
+				}
+
+				&:nth-child(1),
+				&:nth-child(4) {
+					width: 100%;
+					transform-origin: 50% 50%;
+					top: 50%;
+					margin-top: -1px;
+				}
+
+				&:nth-child(1) {
+					transform: rotate(45deg);
+				}
+
+				&:nth-child(4) {
+					transform: rotate(-45deg);
+				}
+			}
+		}
 	}
 
 	svg {
@@ -141,10 +138,39 @@
 		transition: width 0.2s;
 	}
 
+	.menu-icon {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+
 	.menu-icon-line {
-		stroke: currentColor;
-		stroke-width: 2px;
-		stroke-linecap: round;
-		stroke-linejoin: round;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: percentage(3 / 44);
+		background-color: currentColor;
+
+		&:nth-child(1) {
+			top: 6px;
+			width: 57%;
+		}
+
+		&:nth-child(2) {
+			top: 16px;
+			width: 91%;
+		}
+
+		&:nth-child(3) {
+			top: 26px;
+			width: 34%;
+		}
+
+		&:nth-child(4) {
+			top: 36px;
+			width: 68%;
+		}
 	}
 </style>

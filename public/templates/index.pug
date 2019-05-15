@@ -1,11 +1,11 @@
 extends layout
 
 include components/AppPageIsIndex
+include components/AppPageHeaderNav
+
+block templates
+	+AppPageHeaderNav()
 
 block app
 	app-page-is-index(inline-template)
 		+AppPageIsIndex()
-
-	//-base-foo
-	//-base-foo-ext
-	//-base-foo-ext-outer

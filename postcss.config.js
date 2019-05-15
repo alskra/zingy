@@ -22,7 +22,7 @@ module.exports = {
 						const number = parseFloat(value);
 
 						if (isNaN(number)) {
-							throw new Error(`Argument '${value}' is NaN`);
+							throw new Error(`PostCSS function 'range': Argument '${value}' is NaN`);
 						}
 
 						return number;
@@ -31,7 +31,12 @@ module.exports = {
 					return `calc(${from} + (${to} - ${from}) / (${maxBreakpoint} - ${minBreakpoint}) * 1000 * (var(--resolved-breakpoint) - ${minBreakpoint}) / 1000)`;
 				},
 				percentage(expression) {
-					return (new Function('', `return ${expression} * 100 + '%'`))();
+					try {
+						return (new Function('', `return ${expression} * 100 + '%'`))();
+					} catch (error) {
+						error.message = `PostCSS function 'percentage': ${error.message}`;
+						throw error;
+					}
 				}
 			}
 		},

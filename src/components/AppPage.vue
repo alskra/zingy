@@ -9,6 +9,13 @@
 			AppPageHeader,
 			AppPageFooter,
 			ZingySection
+		},
+		created() {
+			if (window.navigator.userAgent.match(/Trident/i)) {
+				document.documentElement.classList.add('is-ie');
+			} else {
+				document.documentElement.classList.add('is-not-ie');
+			}
 		}
 	};
 </script>
@@ -21,6 +28,10 @@
 			display: block;
 			overflow: hidden;
 			padding-bottom: 100vh;
+
+			.is-ie & {
+				padding-bottom: 0;
+			}
 		}
 	}
 
@@ -43,5 +54,10 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
+
+		.is-ie & {
+			position: relative;
+			height: 100vh;
+		}
 	}
 </style>

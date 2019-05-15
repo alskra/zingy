@@ -1,11 +1,19 @@
 <script>
+	import AppPageHeaderNavIsTop from './AppPageHeaderNavIsTop';
+	import AppPageHeaderNavIsAside from './AppPageHeaderNavIsAside';
+
 	export default {
 		name: 'AppPageHeader',
 		data() {
 			return {
 				startAnimateIsEnd: false,
-				headerIsMinimized: false
+				headerIsMinimized: false,
+				sidebarIsOpened: false
 			};
+		},
+		components: {
+			AppPageHeaderNavIsTop,
+			AppPageHeaderNavIsAside
 		},
 		watch: {
 			startAnimateIsEnd() {
@@ -15,6 +23,15 @@
 		methods: {
 			getHeaderState() {
 				this.headerIsMinimized = this.startAnimateIsEnd && (window.innerWidth < 1024 || window.pageYOffset > 0);
+			},
+			enterLNavBox(el) {
+				el.style.width = el.children[0].offsetWidth + 'px';
+			},
+			afterEnterLNavBox(el) {
+				el.style.width = '';
+			},
+			beforeLeaveLNavBox(el){
+				el.style.width = el.children[0].offsetWidth + 'px';
 			}
 		},
 		created() {
@@ -45,6 +62,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		z-index: 10;
 		display: flex;
 		justify-content: flex-end;
 		width: range(40px, 58px);
@@ -94,6 +112,7 @@
 		position: absolute;
 		top: 0;
 		left: range(40px, 58px);
+		z-index: 10;
 		display: flex;
 		justify-content: flex-end;
 		width: range(40px, 58px);
@@ -173,13 +192,13 @@
 			height: range(40 / 58 * 44px, 44px);
 
 			>>> .menu-icon-line {
-				transition: width 0.2s;
+				transition: width 0.2s, transform 0.2s;
 			}
 		}
 
 		&:hover {
 			.BaseIcon {
-				>>> .menu-icon-line {
+				&:not(.is-menu-opened) >>> .menu-icon-line {
 					&:nth-child(1) {
 						width: 75%;
 					}
@@ -204,14 +223,67 @@
 		position: absolute;
 		top: 0;
 		left: range(40px, 58px);
+		z-index: 10;
 		display: flex;
 		justify-content: flex-end;
-		width: range(845px / 2, 845px);
 		overflow: hidden;
+
+		.AppPageHeaderNavIsTop {
+			flex-shrink: 0;
+		}
 
 		&.v-enter-active,
 		&.v-leave-active {
 			transition: width 0.3s;
+
+			.AppPageHeaderNavIsTop {
+				>>> .l-grid-item {
+					transition-property: transform, opacity;
+					transition-duration: 0.2s;
+				}
+			}
+		}
+
+		&.v-enter-active {
+			.AppPageHeaderNavIsTop {
+				>>> .l-grid-item {
+					transition-delay: 0.3s;
+				}
+			}
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			width: 0 !important;
+
+			.AppPageHeaderNavIsTop {
+				>>> .l-grid-item {
+					transform: translateX(-10px);
+					opacity: 0;
+				}
+			}
+		}
+	}
+
+	.sidebar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		box-sizing: border-box;
+		width: 960px;
+		max-width: 100%;
+		height: 100%;
+		padding: range(80px, 138px) range(10px, 40px);
+		background-color: white;
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: transform 0.4s;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			transform: translateX(-100%);
 		}
 	}
 </style>
