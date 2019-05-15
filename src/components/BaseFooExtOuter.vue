@@ -9,18 +9,18 @@
 	};
 </script>
 
-<style scoped src="./BaseFoo">
+<style scoped src="./BaseFoo.vue">
 	.foo {
 		color: green;
 	}
 </style>
 
-<style scoped>
-	@custom-selector :--host .bar;
+<style scoped src="./BaseFoo"></style>
 
-	:--host {
-		color: yellow;
-	}
+<style src="./BaseFoo"></style>
+
+<style scoped>
+
 </style>
 
 <style>

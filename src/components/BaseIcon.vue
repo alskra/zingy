@@ -88,7 +88,7 @@
 			}
 		}
 
-		&.is-menu-opened {
+		&.is-sidebar-opened {
 			.menu-icon-line {
 				&:nth-child(2),
 				&:nth-child(3) {
@@ -100,7 +100,7 @@
 					width: 100%;
 					transform-origin: 50% 50%;
 					top: 50%;
-					margin-top: -1px;
+					margin-top: percentage(-1 / 44);
 				}
 
 				&:nth-child(1) {
@@ -154,22 +154,22 @@
 		background-color: currentColor;
 
 		&:nth-child(1) {
-			top: 6px;
+			top: percentage(6 / 44);
 			width: 57%;
 		}
 
 		&:nth-child(2) {
-			top: 16px;
+			top: percentage(16 / 44);
 			width: 91%;
 		}
 
 		&:nth-child(3) {
-			top: 26px;
+			top: percentage(26 / 44);
 			width: 34%;
 		}
 
 		&:nth-child(4) {
-			top: 36px;
+			top: percentage(36 / 44);
 			width: 68%;
 		}
 	}

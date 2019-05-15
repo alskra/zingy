@@ -3,7 +3,7 @@ mixin AppPageHeaderNav()
 		nav.AppPageHeaderNav
 			.l-grid
 				each navItem, index in ['Главная', 'О компании', 'Разработка', 'Продвижение', 'Блог', 'Контакты']
-					.l-grid-item
+					.l-grid-item(class={'is-active': index === 0})
 						a.nav-item(
 							href=""
 							class={'is-active': index === 0}

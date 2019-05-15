@@ -18,20 +18,32 @@
 		watch: {
 			startAnimateIsEnd() {
 				this.getHeaderState();
-			}
+			},
+			sidebarIsOpened(value) {
+				document.documentElement.classList.toggle('is-sidebar-opened', value);
+			},
 		},
 		methods: {
 			getHeaderState() {
 				this.headerIsMinimized = this.startAnimateIsEnd && (window.innerWidth < 1024 || window.pageYOffset > 0);
 			},
-			enterLNavBox(el) {
+			onLNavBoxEnter(el) {
 				el.style.width = el.children[0].offsetWidth + 'px';
 			},
-			afterEnterLNavBox(el) {
+			onLNavBoxAfterEnter(el) {
 				el.style.width = '';
 			},
-			beforeLeaveLNavBox(el){
+			onLNavBoxBeforeLeave(el){
 				el.style.width = el.children[0].offsetWidth + 'px';
+			},
+			onLRightPanelBoxEnter(el) {
+				this.onLNavBoxEnter(el);
+			},
+			onLRightPanelBoxAfterEnter(el) {
+				this.onLNavBoxAfterEnter(el);
+			},
+			onLRightPanelBoxBeforeLeave(el){
+				this.onLNavBoxBeforeLeave(el);
 			}
 		},
 		created() {
@@ -177,42 +189,60 @@
 
 	.menu-button {
 		all: initial;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: range(40px, 58px);
-		height: range(40px, 58px);
-		flex-shrink: 0;
-		background-color: #f0f0f0;
-		color: #0a0a0a;
-		cursor: pointer;
+
+		& {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: range(40px, 58px);
+			height: range(40px, 58px);
+			flex-shrink: 0;
+			background-color: #f0f0f0;
+			color: #0a0a0a;
+			cursor: pointer;
+		}
 
 		.BaseIcon {
 			width: range(40 / 58 * 44px, 44px);
 			height: range(40 / 58 * 44px, 44px);
 
 			>>> .menu-icon-line {
-				transition: width 0.2s, transform 0.2s;
+				transition-property: width, transform, top;
+				transition-duration: 0.2s;
 			}
 		}
 
 		&:hover {
 			.BaseIcon {
-				&:not(.is-menu-opened) >>> .menu-icon-line {
-					&:nth-child(1) {
-						width: 75%;
-					}
+				&:not(.is-sidebar-opened) {
+					>>> .menu-icon-line {
+						&:nth-child(1) {
+							width: 75%;
+						}
 
-					&:nth-child(2) {
-						width: 35%;
-					}
+						&:nth-child(2) {
+							width: 35%;
+						}
 
-					&:nth-child(3) {
-						width: 90%;
-					}
+						&:nth-child(3) {
+							width: 90%;
+						}
 
-					&:nth-child(4) {
-						width: 60%;
+						&:nth-child(4) {
+							width: 60%;
+						}
+					}
+				}
+
+				&.is-sidebar-opened {
+					>>> .menu-icon-line {
+						&:nth-child(1) {
+							transform: rotate(35deg) scale(0.9);
+						}
+
+						&:nth-child(4) {
+							transform: rotate(-35deg) scale(0.9);
+						}
 					}
 				}
 			}
@@ -265,25 +295,217 @@
 		}
 	}
 
-	.sidebar {
+	.sidebar-backdrop {
 		position: fixed;
 		top: 0;
 		left: 0;
-		box-sizing: border-box;
-		width: 960px;
-		max-width: 100%;
+		width: 100%;
 		height: 100%;
-		padding: range(80px, 138px) range(10px, 40px);
-		background-color: white;
+		/*background: rgba(#000, 0.3);*/
 
 		&.v-enter-active,
 		&.v-leave-active {
-			transition: transform 0.4s;
+			transition: opacity 0.4s;
 		}
 
 		&.v-enter,
 		&.v-leave-to {
-			transform: translateX(-100%);
+			opacity: 0;
+		}
+	}
+
+	.sidebar-box {
+		position: fixed;
+		top: 0;
+		left: 0;
+		box-sizing: border-box;
+		width: range(env(--min-breakpoint), 800px);
+		height: calc(100%);
+		padding: range(80px, 138px) range(10px, 40px);
+		background-color: white;
+		/*box-shadow: 5px -90% var(--color-link) inset;*/
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 5px;
+			height: 100%;
+			background-color: var(--color-link);
+		}
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: transform 0.4s;
+
+			&::before {
+				transition: transform 0.2s;
+			}
+
+			.AppPageHeaderNavIsAside {
+				>>> .l-grid-item {
+					transition-property: transform, opacity;
+					transition-duration: 0.2s;
+				}
+			}
+		}
+
+		&.v-enter-active {
+			&::before {
+				transition-delay: 0.4s;
+			}
+
+			.AppPageHeaderNavIsAside {
+				>>> .l-grid-item {
+					transition-delay: 0.4s;
+				}
+			}
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			transform: translateX(calc(-100%));
+
+			&::before {
+				transform: translateY(-100%);
+			}
+
+			.AppPageHeaderNavIsAside {
+				>>> .l-grid-item {
+					transform: translateY(10px);
+					opacity: 0;
+				}
+			}
+		}
+	}
+
+	.l-right-panel-box {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 10;
+		display: flex;
+		justify-content: flex-start;
+		overflow: hidden;
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: width 0.3s;
+
+			.l-right-panel-grid-item {
+				transition-property: transform, opacity;
+				transition-duration: 0.2s;
+			}
+		}
+
+		&.v-enter-active {
+			.l-right-panel-grid-item {
+				transition-delay: 0.3s;
+			}
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			width: 0 !important;
+
+			.l-right-panel-grid-item {
+				transform: translateX(10px);
+				opacity: 0;
+			}
+		}
+	}
+
+	.right-panel {
+		flex-shrink: 0;
+		height: range(40px, 58px);
+	}
+
+	.l-right-panel-grid {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		margin: 0 range(0px, -30px);
+	}
+
+	.l-right-panel-grid-item {
+		margin: 0 range(0px, 30px);
+	}
+
+	.BaseButton.button {
+		background-color: #000000;
+		box-sizing: border-box;
+		padding: 2px 20px 0;
+		height: 31px;
+		transition: background-color 0.2s;
+
+		>>> .text {
+			color: #ffffff;
+			font-size: 1.2rem;
+			font-weight: 500;
+			letter-spacing: 0.06rem;
+			line-height: 1.25;
+			text-transform: uppercase;
+		}
+
+		&:not(:disabled) {
+			&:hover {
+				background-color: var(--color-link, #e04b4a);
+			}
+		}
+	}
+
+	.choose-lang {
+		display: flex;
+		align-items: center;
+		color: #000000;
+		text-decoration: none;
+
+		&:hover {
+			.choose-lang-text {
+				background-size: 100% 2px;
+			}
+		}
+	}
+
+	.choose-lang-icon {
+		flex-shrink: 0;
+		margin-right: 16px;
+	}
+
+	.choose-lang-text {
+		font-family: var(--font-family, sans-serif);
+		font-size: 1.8rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		line-height: 1.25;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		background: linear-gradient(to right, var(--color-link, #e04b4a), var(--color-link, #e04b4a)) no-repeat 0 100% / 0 2px;
+		transition: background-size 0.2s;
+	}
+</style>
+
+<style>
+	@custom-selector :--disabled-boxes
+	.AppPage > .l-front-box > .l-main-box,
+	.AppPage > .l-back-box;
+
+	:root {
+		:--disabled-boxes {
+			transition: filter 0.4s;
+		}
+
+		&.is-sidebar-opened {
+			&,
+			body {
+				overflow: hidden;
+			}
+
+			:--disabled-boxes {
+				filter: brightness(0.5);
+			}
 		}
 	}
 </style>

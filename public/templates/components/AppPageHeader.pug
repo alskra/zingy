@@ -16,9 +16,9 @@ mixin AppPageHeader()
 
 			transition-box(
 				:duration="{enter: 500, leave: 300}"
-				@enter="enterLNavBox"
-				@after-enter="afterEnterLNavBox"
-				@before-leave="beforeLeaveLNavBox"
+				@enter="onLNavBoxEnter"
+				@after-enter="onLNavBoxAfterEnter"
+				@before-leave="onLNavBoxBeforeLeave"
 			)
 				.l-nav-box(v-show="startAnimateIsEnd && !headerIsMinimized")
 					app-page-header-nav-is-top(class="AppPageHeaderNavIsTop")
@@ -31,9 +31,45 @@ mixin AppPageHeader()
 					)
 						base-icon(
 							icon-name="menu"
-							:class="{'is-menu-opened': sidebarIsOpened}"
+							:class="{'is-sidebar-opened': sidebarIsOpened}"
 						)
 
-			transition-box
-				.sidebar(v-if="sidebarIsOpened")
+			transition-group.sidebar(
+				tag="div"
+				:duration="{enter: 600, leave: 400}"
+			)
+				.sidebar-backdrop(
+					v-if="sidebarIsOpened"
+					@click="sidebarIsOpened = false"
+					key="1"
+				)
+
+				.sidebar-box(
+					v-if="sidebarIsOpened"
+					key="2"
+				)
 					app-page-header-nav-is-aside(class="AppPageHeaderNavIsAside")
+
+			transition-box(
+				:duration="{enter: 500, leave: 300}"
+				@enter="onLRightPanelBoxEnter"
+				@after-enter="onLRightPanelBoxAfterEnter"
+				@before-leave="onLRightPanelBoxBeforeLeave"
+			)
+				.l-right-panel-box(v-show="startAnimateIsEnd && !headerIsMinimized")
+					.right-panel
+						.l-right-panel-grid
+							.l-right-panel-grid-item
+								a(href="").choose-lang
+									.choose-lang-icon
+									.choose-lang-text Eng
+
+							.l-right-panel-grid-item
+								| right panel item
+
+							.l-right-panel-grid-item
+								base-button.button(
+									tag="a"
+									href=""
+								)
+									| Начать проект

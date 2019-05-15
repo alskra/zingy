@@ -28,24 +28,22 @@
 	};
 
 	export default BaseFoo;
-
-	// Vue.component('BaseFooExt', {
-	// 	name: 'BaseFooExt',
-	// 	extends: BaseFoo,
-	// 	render(...args) {
-	// 		return BaseFoo.render.call(this, ...args);
-	// 	}
-	// })
 </script>
 
 <style scoped>
-	@custom-selector :--host .foo:not(.foo > .foo);
-
-	:--host {
+	.foo {
 		color: red;
 	}
+</style>
 
-	.foo:not(.foo > .foo) {
+<style scoped>
+	.foo {
+		color: black;
+	}
+</style>
 
+<style scoped>
+	.foo {
+		color: green;
 	}
 </style>

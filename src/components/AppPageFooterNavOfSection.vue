@@ -57,6 +57,12 @@
 		position: relative;
 	}
 
+	.l-grid {
+		@media (width < 768px) {
+			flex-flow: column;
+		}
+	}
+
 	.nav-item {
 		width: 100%;
 		font-weight: 300;

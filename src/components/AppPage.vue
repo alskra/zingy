@@ -9,13 +9,6 @@
 			AppPageHeader,
 			AppPageFooter,
 			ZingySection
-		},
-		created() {
-			if (window.navigator.userAgent.match(/Trident/i)) {
-				document.documentElement.classList.add('is-ie');
-			} else {
-				document.documentElement.classList.add('is-not-ie');
-			}
 		}
 	};
 </script>
@@ -27,6 +20,7 @@
 		& {
 			display: block;
 			overflow: hidden;
+			min-width: env(--min-breakpoint);
 			padding-bottom: 100vh;
 
 			.is-ie & {
@@ -35,20 +29,21 @@
 		}
 	}
 
-	.l-front-layer {
+	.l-front-box {
 		position: relative;
 		z-index: 1;
 		min-height: 100vh;
 		display: flex;
 		flex-flow: column;
-		background-color: white;
-
-		.AppPageFooter {
-			margin-top: auto;
-		}
 	}
 
-	.l-back-layer {
+	.l-main-box {
+		flex-grow: 1;
+		padding: range(60px, 138px) 0;
+		background-color: white;
+	}
+
+	.l-back-box {
 		position: fixed;
 		top: 0;
 		right: 0;

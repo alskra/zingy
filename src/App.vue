@@ -5,6 +5,11 @@
 		name: 'App',
 		components: {
 			AppPageIsIndex
+		},
+		created() {
+			if (window.navigator.userAgent.match(/Trident/i)) {
+				document.documentElement.classList.add('is-ie');
+			}
 		}
 	}
 </script>
@@ -22,20 +27,11 @@
 		--color: #000;
 		--outline-color: #000;
 
+		--color-link: #e04b4a;
+
 		font-size: percentage(10 / 16);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-
-		&::before {
-			content: '';
-			position: fixed;
-			z-index: 99999;
-			top: 0;
-			bottom: 0;
-			left: 50%;
-			border-left: 1px solid red;
-			pointer-events: none;
-		}
 	}
 
 	:focus:not(:focus-visible) {
@@ -45,6 +41,11 @@
 	:focus-visible {
 		outline: 1px dotted currentColor;
 		outline: 5px auto -webkit-focus-ring-color;
+	}
+
+	::selection {
+		color: white;
+		background-color: #e04b4a;
 	}
 
 	body {

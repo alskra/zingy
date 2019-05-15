@@ -19,13 +19,19 @@
 		flex-flow: column;
 	}
 
+	.l-grid-item {
+		&.is-active {
+			order: 1
+		}
+	}
+
 	.nav-item {
 		justify-content: center;
 		padding: range(5px, 10px) 0;
 
 		&.is-active {
 			.nav-item-text {
-				font-size: range(3rem, 4.5rem);
+				font-size: range(2rem * 1.5, 3rem * 1.5);
 			}
 		}
 	}
