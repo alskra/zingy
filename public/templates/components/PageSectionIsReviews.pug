@@ -1,0 +1,7 @@
+mixin PageSectionIsReviews(title = 'Отзывы')
+	include PageSection
+	include ReviewsList
+
+	+PageSection(title).PageSectionIsReviews&attributes(attributes)
+		reviews-list(inline-template)
+			+ReviewsList()

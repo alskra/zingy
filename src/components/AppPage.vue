@@ -39,7 +39,7 @@
 
 	.l-main-box {
 		flex-grow: 1;
-		padding: range(60px, 138px) 0;
+		padding: range(60px, 138px) 0 0;
 		background-color: white;
 	}
 

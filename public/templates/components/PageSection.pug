@@ -1,0 +1,11 @@
+mixin PageSection(title)
+	template
+		section.PageSection&attributes(attributes)
+			header.header
+				.content-box
+					.content-grid
+						.content-grid-item
+							h2.title= title
+
+			.main
+				block

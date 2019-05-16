@@ -75,8 +75,8 @@
 			position: fixed;
 			z-index: 100;
 			top: range(10px, 40px);
-			right: range(15px, 40px);
-			left: range(15px, 40px);
+			right: range(10px, 40px);
+			left: range(10px, 40px);
 		}
 	}
 
@@ -344,6 +344,7 @@
 			width: 5px;
 			height: 100%;
 			background-color: var(--color-link);
+			pointer-events: none;
 		}
 
 		&.v-enter-active,
@@ -564,14 +565,16 @@
 	.sidebar-lang-box {
 		position: absolute;
 		top: range(10px, 40px);
-		right: range(15px, 40px);
+		right: range(10px, 40px);
 		height: range(40px, 58px);
 		display: flex;
 		align-items: center;
 	}
 
 	.sidebar-footer {
-		width: 290px;
+		box-sizing: border-box;
+		padding: 0 10px;
+		width: 300px;
 		max-width: 100%;
 		margin: auto auto 0;
 		flex-shrink: 0;

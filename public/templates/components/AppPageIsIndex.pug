@@ -1,5 +1,11 @@
 mixin AppPageIsIndex()
 	include AppPage
+	include QuoteSection
+	include PageSectionIsReviews
 
 	+AppPage().AppPageIsIndex&attributes(attributes)
-		h2 Page Index
+		quote-section(inline-template)
+			+QuoteSection()
+
+		page-section-is-reviews(inline-template)
+			+PageSectionIsReviews()

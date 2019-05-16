@@ -1,0 +1,20 @@
+mixin QuoteSection({subject, quote, citeName, citeDescription} = {})
+	-
+		subject = subject || 'Мнение экспертов рынка';
+		quote = quote || `<p>Благодаря авторской 2-х ступенчатой системе работы с брендом получается новый современный
+		сайт и эффективная SEO стратегия.</p>`;
+		citeName = citeName || 'Максим Троцкий'
+		citeDescription = citeDescription || 'SEO-специалист'
+
+	template
+		blockquote.QuoteSection&attributes(attributes)
+			.content-box
+				p.subject= subject
+
+				.content-grid
+					.content-grid-item
+						.quote!= quote
+
+						.cite
+							p.cite-name= citeName
+							p.cite-description= citeDescription

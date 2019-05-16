@@ -27,7 +27,7 @@
 
 	.nav-item {
 		justify-content: center;
-		padding: range(10px, 10px) 0;
+		padding: range(10px, 10px) 15px;
 
 		&.is-active {
 			.nav-item-text {

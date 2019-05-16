@@ -24,11 +24,14 @@
 		--quotes: "“" "”" "‘" "’";
 		--font-family: Roboto, Arial, sans-serif;
 		--text-align: left;
-		--color: #000;
+		--color: #0a0a0a;
 		--outline-color: #000;
 
 		--color-link: #e04b4a;
 		--color-zingy: #252525;
+
+		--content-box-width: 1260px;
+		--content-box-gutter: range(10px, 40px);
 
 		font-size: percentage(10 / 16);
 		-webkit-font-smoothing: antialiased;
@@ -46,7 +49,7 @@
 
 	::selection {
 		color: white;
-		background-color: #e04b4a;
+		background-color: var(--color-link);
 	}
 
 	body {
