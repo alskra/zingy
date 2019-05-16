@@ -4,6 +4,7 @@
 </template>
 
 <script>
+	/* eslint-disable */
 	// import Vue from 'vue';
 
 	const BaseFoo = {
@@ -13,18 +14,22 @@
 		// render(createElement, ctx) {
 		// 	return ctx.props.vnodes;
 		// },
-		// beforeCreate() {
-		// 	console.log(this);
-		// 	console.log(this.$el);
-		// },
-		// created() {
-		// 	console.log(this);
-		// 	console.log(this.$el);
-		// },
-		// mounted() {
-		// 	console.log(this);
-		// 	console.log(this.$el);
-		// }
+
+		beforeCreate() {
+			console.log('beforeCreate');
+			console.log(this);
+			console.log(this.$el);
+		},
+		created() {
+			console.log('created');
+			console.log(this);
+			console.log(this.$el);
+		},
+		mounted() {
+			console.log('mounted');
+			console.log(this);
+			console.log(this.$el);
+		}
 	};
 
 	export default BaseFoo;

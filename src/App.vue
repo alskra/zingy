@@ -28,6 +28,7 @@
 		--outline-color: #000;
 
 		--color-link: #e04b4a;
+		--color-zingy: #252525;
 
 		font-size: percentage(10 / 16);
 		-webkit-font-smoothing: antialiased;

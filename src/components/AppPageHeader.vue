@@ -17,15 +17,25 @@
 		},
 		watch: {
 			startAnimateIsEnd() {
-				this.getHeaderState();
+				this.setHeaderState();
 			},
-			sidebarIsOpened(value) {
-				document.documentElement.classList.toggle('is-sidebar-opened', value);
-			},
+			sidebarIsOpened: {
+				handler(value) {
+					this.setHeaderState();
+
+					if (value) {
+						document.documentElement.classList.add('is-sidebar-opened');
+					} else {
+						document.documentElement.classList.remove('is-sidebar-opened');
+					}
+				},
+				immediate: true
+			}
 		},
 		methods: {
-			getHeaderState() {
-				this.headerIsMinimized = this.startAnimateIsEnd && (window.innerWidth < 1024 || window.pageYOffset > 0);
+			setHeaderState() {
+				this.headerIsMinimized = this.startAnimateIsEnd
+					&& (window.innerWidth < 1200 || window.pageYOffset > 0 || this.sidebarIsOpened);
 			},
 			onLNavBoxEnter(el) {
 				el.style.width = el.children[0].offsetWidth + 'px';
@@ -47,12 +57,12 @@
 			}
 		},
 		created() {
-			window.addEventListener('resize', this.getHeaderState);
-			window.addEventListener('scroll', this.getHeaderState);
+			window.addEventListener('resize', this.setHeaderState);
+			window.addEventListener('scroll', this.setHeaderState);
 		},
 		destroyed() {
-			window.removeEventListener('resize', this.getHeaderState);
-			window.removeEventListener('scroll', this.getHeaderState);
+			window.removeEventListener('resize', this.setHeaderState);
+			window.removeEventListener('scroll', this.setHeaderState);
 		}
 	};
 </script>
@@ -65,8 +75,8 @@
 			position: fixed;
 			z-index: 100;
 			top: range(10px, 40px);
-			right: range(10px, 40px);
-			left: range(10px, 40px);
+			right: range(15px, 40px);
+			left: range(15px, 40px);
 		}
 	}
 
@@ -314,20 +324,21 @@
 		}
 	}
 
-	.sidebar-box {
+	.sidebar {
 		position: fixed;
 		top: 0;
 		left: 0;
 		box-sizing: border-box;
-		width: range(env(--min-breakpoint), 800px);
+		width: range(env(--min-breakpoint), 480px);
 		height: calc(100%);
-		padding: range(80px, 138px) range(10px, 40px);
+		padding: range(70px, 138px) range(10px, 40px) 0;
 		background-color: white;
-		/*box-shadow: 5px -90% var(--color-link) inset;*/
+		display: flex;
+		flex-flow: column;
 
 		&::before {
 			content: '';
-			position: absolute;
+			position: fixed;
 			top: 0;
 			left: 0;
 			width: 5px;
@@ -343,11 +354,21 @@
 				transition: transform 0.2s;
 			}
 
+			.sidebar-lang-box {
+				transition-property: transform, opacity;
+				transition-duration: 0.2s;
+			}
+
 			.AppPageHeaderNavIsAside {
 				>>> .l-grid-item {
 					transition-property: transform, opacity;
 					transition-duration: 0.2s;
 				}
+			}
+
+			.sidebar-footer {
+				transition-property: transform, opacity;
+				transition-duration: 0.2s;
 			}
 		}
 
@@ -356,11 +377,23 @@
 				transition-delay: 0.4s;
 			}
 
+			.sidebar-lang-box {
+				transition-delay: 0.4s;
+			}
+
 			.AppPageHeaderNavIsAside {
 				>>> .l-grid-item {
 					transition-delay: 0.4s;
 				}
 			}
+
+			.sidebar-footer {
+				transition-delay: 0.4s;
+			}
+		}
+
+		&.v-leave-active {
+			transition-delay: 0.2s;
 		}
 
 		&.v-enter,
@@ -371,12 +404,42 @@
 				transform: translateY(-100%);
 			}
 
+			.sidebar-lang-box {
+				transform: translateX(10px);
+				opacity: 0;
+			}
+
 			.AppPageHeaderNavIsAside {
 				>>> .l-grid-item {
 					transform: translateY(10px);
 					opacity: 0;
 				}
 			}
+
+			.sidebar-footer {
+				transform: translateY(10px);
+				opacity: 0;
+			}
+		}
+	}
+
+	.sidebar-scrollable {
+		overflow-y: auto;
+		flex: 1 0;
+		margin: 0 range(-10px, -40px);
+		padding-bottom: range(20px, 40px);
+		display: flex;
+		flex-flow: column;
+
+		&::-webkit-scrollbar {
+			width: 5px;
+		}
+
+		&::-webkit-scrollbar-track {
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: var(--color-zingy);
 		}
 	}
 
@@ -432,11 +495,11 @@
 		margin: 0 range(0px, 30px);
 	}
 
-	.BaseButton.button {
-		background-color: #000000;
+	.button.BaseButton {
+		background-color: var(--color-zingy);
 		box-sizing: border-box;
 		padding: 2px 20px 0;
-		height: 31px;
+		height: range(40px, 58px);
 		transition: background-color 0.2s;
 
 		>>> .text {
@@ -450,50 +513,92 @@
 
 		&:not(:disabled) {
 			&:hover {
-				background-color: var(--color-link, #e04b4a);
+				background-color: var(--color-link);
 			}
 		}
 	}
 
-	.choose-lang {
-		display: flex;
+	.link {
+		display: inline-flex;
+		vertical-align: top;
 		align-items: center;
-		color: #000000;
+		/*height: range(40px, 58px);*/
+		color: #0a0a0a;
 		text-decoration: none;
 
 		&:hover {
-			.choose-lang-text {
+			.link-text {
 				background-size: 100% 2px;
 			}
 		}
 	}
 
-	.choose-lang-icon {
+	.link-icon.BaseIcon {
 		flex-shrink: 0;
-		margin-right: 16px;
+		margin-right: 10px;
+		width: 24px;
+		height: 24px;
 	}
 
-	.choose-lang-text {
+	.link-text {
 		font-family: var(--font-family, sans-serif);
-		font-size: 1.8rem;
+		font-size: range(1.6rem, 1.8rem);
 		font-weight: 500;
-		text-transform: uppercase;
 		line-height: 1.25;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		background: linear-gradient(to right, var(--color-link, #e04b4a), var(--color-link, #e04b4a)) no-repeat 0 100% / 0 2px;
 		transition: background-size 0.2s;
+
+		&.is-uppercase {
+			text-transform: uppercase;
+		}
+	}
+
+	.sidebar-nav.AppPageHeaderNavIsAside {
+		margin-bottom: 40px;
+		flex-shrink: 0;
+	}
+
+	.sidebar-lang-box {
+		position: absolute;
+		top: range(10px, 40px);
+		right: range(15px, 40px);
+		height: range(40px, 58px);
+		display: flex;
+		align-items: center;
+	}
+
+	.sidebar-footer {
+		width: 290px;
+		max-width: 100%;
+		margin: auto auto 0;
+		flex-shrink: 0;
+	}
+
+	.sidebar-footer-grid {
+		display: flex;
+		flex-flow: column;
+		margin: -10px 0;
+	}
+
+	.sidebar-footer-grid-item {
+		margin: 10px 0;
+
+		&:nth-child(1) {
+			margin-bottom: 20px;
+		}
 	}
 </style>
 
 <style>
-	@custom-selector :--disabled-boxes
+	@custom-selector :--back-boxes
 	.AppPage > .l-front-box > .l-main-box,
 	.AppPage > .l-back-box;
 
 	:root {
-		:--disabled-boxes {
+		:--back-boxes {
 			transition: filter 0.4s;
 		}
 
@@ -503,7 +608,7 @@
 				overflow: hidden;
 			}
 
-			:--disabled-boxes {
+			:--back-boxes {
 				filter: brightness(0.5);
 			}
 		}

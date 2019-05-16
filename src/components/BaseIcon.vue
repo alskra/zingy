@@ -3,7 +3,6 @@
 		template(v-if="socialIconsNames.indexOf(iconName) !== -1")
 			svg.social-icon(
 				:class="`social-icon-is-${iconName}`"
-				role="img"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
 			)
@@ -25,10 +24,7 @@
 				)
 
 		template(v-else-if="iconName === 'zingy'")
-			<svg role="img" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
-				<path fill="#252525" d="M0 0h260v260H0z"/>
-				<path d="M150.84 109.52q18.67 13.91 20.31 30.31h10.23q10.78 0 10.78 7.5a9.81 9.81 0 0 1-3.83 8.2q-3.83 3-10.55 3H172q-1.7 24.47-18.27 41.38t-38.75 17q-17.19 0-28.52-10.82t-11.33-27.3q0-17.74 12.58-28.32t33.59-10.59h29q-3-11-14.92-17.42l-2.38-1.3q-6.56-3.44-6.56-9.06 0-3.52 4.45-8.67l28.2-32.89h-32.31Q116 70.53 116 63.11a9.93 9.93 0 0 1 3.79-8.28q3.79-3 10.66-3h45.08q13 0 13 10.16 0 4.53-4.37 9.45zm.55 49H133q-17.66 0-24.53 2.81-12.86 5.21-12.86 17.67a17.32 17.32 0 0 0 5.9 13.24 20.5 20.5 0 0 0 14.41 5.43q12.73 0 22.93-11.25t12.54-27.92z" fill="#fff"/>
-			</svg>
+			include ../assets/img/icons/zingy.svg
 
 		template(v-else-if="iconName === 'menu'")
 			span.menu-icon
@@ -36,6 +32,21 @@
 				span.menu-icon-line
 				span.menu-icon-line
 				span.menu-icon-line
+
+		template(v-else-if="iconName === 'lang'")
+			include ../assets/img/icons/lang.svg
+
+		template(v-else-if="iconName === 'phone-square'")
+			include ../assets/img/icons/phone-square.svg
+
+		template(v-else-if="iconName === 'phone'")
+			include ../assets/img/icons/phone.svg
+
+		template(v-else-if="iconName === 'globe'")
+			include ../assets/img/icons/globe.svg
+
+		template(v-else-if="iconName === 'envelope'")
+			include ../assets/img/icons/envelope.svg
 </template>
 
 <script>
@@ -65,6 +76,19 @@
 		computed: {
 			socialIconsNames() {
 				return Object.keys(this.socialIcons);
+			}
+		},
+		mounted() {
+			for (const childElement of this.$el.children) {
+				childElement.setAttribute('role', 'img');
+
+				const className = this.iconName + '-icon';
+
+				try {
+					childElement.classList.add(className);
+				} catch (e) {
+					childElement.className.baseVal = className;
+				}
 			}
 		}
 	};

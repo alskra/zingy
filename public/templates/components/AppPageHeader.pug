@@ -34,22 +34,6 @@ mixin AppPageHeader()
 							:class="{'is-sidebar-opened': sidebarIsOpened}"
 						)
 
-			transition-group.sidebar(
-				tag="div"
-				:duration="{enter: 600, leave: 400}"
-			)
-				.sidebar-backdrop(
-					v-if="sidebarIsOpened"
-					@click="sidebarIsOpened = false"
-					key="1"
-				)
-
-				.sidebar-box(
-					v-if="sidebarIsOpened"
-					key="2"
-				)
-					app-page-header-nav-is-aside(class="AppPageHeaderNavIsAside")
-
 			transition-box(
 				:duration="{enter: 500, leave: 300}"
 				@enter="onLRightPanelBoxEnter"
@@ -60,16 +44,67 @@ mixin AppPageHeader()
 					.right-panel
 						.l-right-panel-grid
 							.l-right-panel-grid-item
-								a(href="").choose-lang
-									.choose-lang-icon
-									.choose-lang-text Eng
+								a(href="").link
+									base-icon(icon-name="globe").link-icon
+									.link-text.is-uppercase Eng
 
 							.l-right-panel-grid-item
-								| right panel item
+								a(href="tel:+79854575817").link
+									base-icon(icon-name="phone").link-icon
+									.link-text +7 985 457 58 17
 
 							.l-right-panel-grid-item
 								base-button.button(
 									tag="a"
 									href=""
 								)
+									template(v-slot:icon)
+										span.icon
+
 									| Начать проект
+
+			transition-group.sidebar-box(
+				tag="div"
+				:duration="{enter: 600, leave: 600}"
+			)
+				.sidebar-backdrop(
+					v-if="sidebarIsOpened"
+					@click="sidebarIsOpened = false"
+					key="1"
+				)
+
+				.sidebar(
+					v-if="sidebarIsOpened"
+					key="2"
+				)
+					.sidebar-lang-box
+						a(href="").link
+							base-icon(icon-name="globe").link-icon
+							.link-text.is-uppercase Eng
+
+					.sidebar-scrollable
+						app-page-header-nav-is-aside.sidebar-nav(class="AppPageHeaderNavIsAside")
+
+						.sidebar-footer
+							.sidebar-footer-grid
+								.sidebar-footer-grid-item
+									base-button.is-full-width.button(
+										tag="a"
+										href=""
+									)
+										template(v-slot:icon)
+											span.icon
+
+										| Начать проект
+
+								.sidebar-footer-grid-item
+									a(href="tel:+79854575817").link
+										base-icon(icon-name="phone").link-icon
+										.link-text +7 985 457 58 17
+
+								.sidebar-footer-grid-item
+									a(href="mailto:zingy.projects@gmail.com").link
+										base-icon(icon-name="envelope").link-icon
+										.link-text zingy.projects@gmail.com
+
+

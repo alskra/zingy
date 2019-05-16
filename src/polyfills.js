@@ -10,5 +10,7 @@ focusWithin(document, {force: true});
 
 cssVars();
 
+if (NodeList.prototype.forEach === undefined) {
+	NodeList.prototype.forEach = Array.prototype.forEach;
+}
 
-NodeList.prototype.forEach = Array.prototype.forEach;

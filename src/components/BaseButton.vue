@@ -1,7 +1,6 @@
 <template lang="pug">
 	.BaseButton(:is="tag")
-		span.l-icon-box(v-if="$scopedSlots.icon")
-			slot(name="icon")
+		slot(name="icon")
 
 		span.text(v-if="$scopedSlots.default")
 			slot(name="default")
@@ -24,18 +23,21 @@
 		all: initial;
 
 		& {
-			display: flex;
+			display: inline-flex;
 			justify-content: center;
 			align-items: center;
+			vertical-align: top;
+			max-width: 100%;
+			cursor: pointer;
 
-			&:not(:disabled) {
-				cursor: pointer;
+			&:disabled {
+				cursor: default;
+			}
+
+			&.is-full-width {
+				width: 100%;
 			}
 		}
-	}
-
-	.l-icon-box {
-		flex-shrink: 0;
 	}
 
 	.text {

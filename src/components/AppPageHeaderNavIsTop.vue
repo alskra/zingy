@@ -13,7 +13,7 @@
 <style scoped>
 	.AppPageHeaderNavIsTop {
 		box-sizing: border-box;
-		max-width: 60vw;
+		max-width: 50vw;
 		height: range(40px, 58px);
 		background-color: #f0f0f0;
 		padding: 0 range(0px, 20px);

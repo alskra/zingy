@@ -8,6 +8,10 @@
 <style scoped>
 	.AppPageHeaderNav {
 		all: initial;
+
+		& {
+			display: block;
+		}
 	}
 
 	.l-grid {
