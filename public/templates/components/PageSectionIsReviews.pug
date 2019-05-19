@@ -1,7 +1,11 @@
 mixin PageSectionIsReviews(title = 'Отзывы')
 	include PageSection
-	include ReviewsList
+	include ContentCarouselOfReviews
 
 	+PageSection(title).PageSectionIsReviews&attributes(attributes)
-		reviews-list(inline-template)
-			+ReviewsList()
+		content-carousel-of-reviews(
+			inline-template
+			:count="2"
+			:initial="0"
+		)
+			+ContentCarouselOfReviews()

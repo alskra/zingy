@@ -1,25 +1,30 @@
 <template lang="pug">
-	.BaseIcon(:is="tagName")
+	BaseIcon.BaseIcon(
+		inline-template
+		v-bind="$props"
+		:class="iconName + '-icon'"
+		role="img"
+	)
 		template(v-if="socialIconsNames.indexOf(iconName) !== -1")
-			svg.social-icon(
-				:class="`social-icon-is-${iconName}`"
+			svg(
+				:class="['social-icon', `social-icon-is-${iconName}`]"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
 			)
-				title {{ iconName }} icon
+				//-title {{ iconName }} icon
 
 				rect(
 					class="social-icon-default-fill"
-					:clip-path="`url(#${iconName}icon-clip)`"
+					:clip-path="`url(#${iconName}-icon-clip)`"
 				)
 
 				rect(
 					class="social-icon-hover-fill"
-					:clip-path="`url(#${iconName}icon-clip)`"
+					:clip-path="`url(#${iconName}-icon-clip)`"
 				)
 
 				clipPath(
-					:id="`${iconName}icon-clip`"
+					:id="`${iconName}-icon-clip`"
 					v-html="socialIcons[iconName]"
 				)
 
@@ -27,7 +32,7 @@
 			include ../assets/img/icons/zingy.svg
 
 		template(v-else-if="iconName === 'menu'")
-			span.menu-icon
+			span
 				span.menu-icon-line
 				span.menu-icon-line
 				span.menu-icon-line
@@ -47,6 +52,12 @@
 
 		template(v-else-if="iconName === 'envelope'")
 			include ../assets/img/icons/envelope.svg
+
+		template(v-else-if="iconName === 'open-quote'")
+			include ../assets/img/icons/open-quote.svg
+
+		template(v-else-if="iconName === 'arrow-right'")
+			include ../assets/img/icons/arrow-right.svg
 </template>
 
 <script>
@@ -55,11 +66,7 @@
 		props: {
 			iconName: {
 				type: String,
-				default: ''
-			},
-			tagName: {
-				type: String,
-				default: 'span'
+				required: true
 			}
 		},
 		data() {
@@ -77,19 +84,6 @@
 			socialIconsNames() {
 				return Object.keys(this.socialIcons);
 			}
-		},
-		mounted() {
-			for (const childElement of this.$el.children) {
-				childElement.setAttribute('role', 'img');
-
-				const className = this.iconName + '-icon';
-
-				try {
-					childElement.classList.add(className);
-				} catch (e) {
-					childElement.className.baseVal = className;
-				}
-			}
 		}
 	};
 </script>
@@ -104,6 +98,15 @@
 			height: 100%;
 			color: inherit;
 			cursor: inherit;
+			fill: currentColor;
+		}
+
+		> * {
+			pointer-events: none;
+		}
+
+		title {
+			display: none;
 		}
 
 		&:hover {
@@ -138,14 +141,6 @@
 		}
 	}
 
-	svg {
-		display: block;
-		width: 100%;
-		height: 100%;
-		fill: currentColor;
-		pointer-events: none;
-	}
-
 	.social-icon-default-fill,
 	.social-icon-hover-fill {
 		height: 100%;
@@ -163,9 +158,6 @@
 	}
 
 	.menu-icon {
-		display: block;
-		width: 100%;
-		height: 100%;
 		position: relative;
 	}
 

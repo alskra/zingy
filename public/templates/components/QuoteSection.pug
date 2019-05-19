@@ -15,6 +15,6 @@ mixin QuoteSection({subject, quote, citeName, citeDescription} = {})
 					.content-grid-item
 						.quote!= quote
 
-						.cite
-							p.cite-name= citeName
-							p.cite-description= citeDescription
+						p.cite
+							strong.cite-name= citeName
+							em.cite-description= citeDescription

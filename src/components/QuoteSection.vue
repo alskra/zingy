@@ -15,11 +15,9 @@
 	}
 
 	.content-box {
-		box-sizing: border-box;
-		width: 100%;
+		width: calc(100% - 2 * var(--content-box-gutter));
 		max-width: var(--content-box-width);
 		margin: 0 auto;
-		padding: 0 var(--content-box-gutter);
 	}
 
 	.subject {
@@ -30,7 +28,7 @@
 		line-height: 1.25;
 		text-transform: uppercase;
 		border-left: 2px solid #e81818;
-		padding: 3px 10px 2px;
+		padding: 2px 10px;
 		margin: 0 0 range(40px / 1.5, 40px);
 	}
 
@@ -40,9 +38,12 @@
 
 	.content-grid-item {
 		box-sizing: border-box;
-		width: percentage(10 / 12);
 		padding: 0 10px;
 		margin: 0 auto;
+
+		@media (width >= 768px) {
+			width: percentage(10 / 12);
+		}
 	}
 
 	.quote {
@@ -61,18 +62,15 @@
 	}
 
 	.cite {
+		color: var(--color);
 		font-family: var(--font-family);
 		font-size: range(1.4rem, 1.6rem);
 		line-height: 1.25;
-		margin-top: range(40px / 1.5, 40px);
+		margin: range(40px / 1.5, 40px) 0 0;
 	}
 
-	.cite-name {
-		margin: 0;
-		font-weight: 500;
-	}
-
+	.cite-name,
 	.cite-description {
-		margin: 0;
+		display: block;
 	}
 </style>

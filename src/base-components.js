@@ -24,3 +24,7 @@ Vue.component('Vnodes', {
 Vue.component('TransitionBox', {
 	extends: Vue.component('Transition')
 });
+
+Vue.component('Wrapper', {
+
+});

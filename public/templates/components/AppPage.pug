@@ -5,16 +5,16 @@ include ZingySection
 mixin AppPage()
 	template
 		.AppPage&attributes(attributes)
-			.l-front-box
+			.front-box
 				app-page-header(inline-template)
 					+AppPageHeader()
 
-				.l-main-box
+				.main
 					block
 
 				app-page-footer(inline-template)
 					+AppPageFooter()
 
-			.l-back-box
+			.back-box
 				zingy-section(inline-template)
 					+ZingySection()

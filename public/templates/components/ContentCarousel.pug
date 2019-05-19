@@ -1,0 +1,43 @@
+mixin ContentCarousel(items = [])
+	template
+		.ContentCarousel&attributes(attributes)
+			.actions
+				button.actions-button.actions-button-is-prev(
+					type="button"
+					@click="$refs.slick.prev()"
+					:disabled="currentIndex === 0"
+				)
+					base-icon(icon-name="arrow-right")
+
+				.actions-counter {{ padStartNumber(currentIndex + 1) }}&nbsp;/&nbsp;{{ padStartNumber(count) }}
+
+				button.actions-button.actions-button-is-next(
+					type="button"
+					@click="$refs.slick.next()"
+					:disabled="currentIndex === count - 1"
+				)
+					base-icon(icon-name="arrow-right")
+
+			.main
+				if block
+					block
+				else
+					vue-slick(
+						ref="slick"
+						:options="slickOptions"
+						v-on="{beforeChange: onSlickBeforeChange}"
+					)
+						each item in items
+							!= item
+
+				button.arrow-button.arrow-button-is-prev(
+					type="button"
+					@click="$refs.slick.prev()"
+					:disabled="currentIndex === 0"
+				)
+
+				button.arrow-button.arrow-button-is-next(
+					type="button"
+					@click="$refs.slick.next()"
+					:disabled="currentIndex === count - 1"
+				)

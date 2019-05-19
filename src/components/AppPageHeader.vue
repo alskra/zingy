@@ -534,7 +534,7 @@
 		}
 	}
 
-	.link-icon.BaseIcon {
+	.BaseIcon.link-icon {
 		flex-shrink: 0;
 		margin-right: 10px;
 		width: 24px;
@@ -597,8 +597,8 @@
 
 <style>
 	@custom-selector :--back-boxes
-	.AppPage > .l-front-box > .l-main-box,
-	.AppPage > .l-back-box;
+	.AppPage > .front-box > .main,
+	.AppPage > .back-box;
 
 	:root {
 		:--back-boxes {

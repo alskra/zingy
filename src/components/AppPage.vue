@@ -29,7 +29,7 @@
 		}
 	}
 
-	.l-front-box {
+	.front-box {
 		position: relative;
 		z-index: 1;
 		min-height: 100vh;
@@ -37,13 +37,13 @@
 		flex-flow: column;
 	}
 
-	.l-main-box {
+	.main {
 		flex-grow: 1;
 		padding: range(60px, 138px) 0 0;
 		background-color: white;
 	}
 
-	.l-back-box {
+	.back-box {
 		position: fixed;
 		top: 0;
 		right: 0;

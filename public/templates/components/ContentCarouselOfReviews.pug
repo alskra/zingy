@@ -1,0 +1,28 @@
+mixin ContentCarouselOfReviews()
+	include ContentCarousel
+	include ReviewElement
+
+	-
+		const reviews = [
+			{},
+			{
+				content: 'Content',
+				citeName: 'Cite Name',
+				citeDescription: 'Cite Description'
+			}
+		]
+
+	+ContentCarousel().ContentCarouselOfReviews&attributes(attributes)
+		.content-box
+			.content-grid
+				.content-grid-item
+					base-icon.background-quote(icon-name="open-quote")
+
+					vue-slick(
+						ref="slick"
+						:options="slickOptions"
+						v-on="{beforeChange: onSlickBeforeChange}"
+					)
+						each review in reviews
+							review-element(inline-template)
+								+ReviewElement(review)

@@ -30,7 +30,7 @@
 		--color-link: #e04b4a;
 		--color-zingy: #252525;
 
-		--content-box-width: 1260px;
+		--content-box-width: env(--content-box-width);
 		--content-box-gutter: range(10px, 40px);
 
 		font-size: percentage(10 / 16);

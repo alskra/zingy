@@ -1,12 +1,12 @@
 <script>
 	import PageSection from './PageSection';
-	import ReviewsList from './ReviewsList';
+	import ContentCarouselOfReviews from './ContentCarouselOfReviews';
 
 	export default {
 		name: 'PageSectionIsReviews',
 		extends: PageSection,
 		components: {
-			ReviewsList
+			ContentCarouselOfReviews
 		}
 	};
 </script>

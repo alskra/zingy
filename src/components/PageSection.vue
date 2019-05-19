@@ -19,10 +19,8 @@
 	}
 
 	.content-box {
-		box-sizing: border-box;
-		width: 100%;
+		width: calc(100% - 2 * var(--content-box-gutter));
 		max-width: var(--content-box-width);
-		padding: 0 var(--content-box-gutter);
 		margin: 0 auto;
 	}
 
@@ -32,9 +30,12 @@
 
 	.content-grid-item {
 		box-sizing: border-box;
-		width: percentage(10 / 12);
 		padding: 0 10px;
 		margin: 0 auto;
+
+		@media (width >= 768px) {
+			width: percentage(10 / 12);
+		}
 	}
 
 	.title {

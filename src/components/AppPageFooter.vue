@@ -54,7 +54,7 @@
 		position: absolute;
 		left: 0;
 		margin-top: range(-15px, -30px);
-		animation: zingy-projects_run 60s linear infinite;
+		animation: zingy-projects_run 180s linear infinite;
 		pointer-events: none;
 
 		@keyframes zingy-projects_run {
