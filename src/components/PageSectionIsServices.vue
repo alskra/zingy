@@ -19,7 +19,7 @@
 	}
 
 	.header {
-		padding: range(40px, 80px) 0;
+		padding: range(40px / 2, 40px) 0;
 		margin: 0;
 		background: url("../assets/img/section-services-bg.jpg") no-repeat 50% 50% / cover;
 	}

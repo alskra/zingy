@@ -28,7 +28,7 @@
 		background-color: rgba(#f2f4f5, 0.9);
 		margin: range(5px, 12px) range(5px, 12px) 0 0;
 		position: relative;
-		box-sizing: border-box;
+		/*box-sizing: border-box;*/
 		min-height: 300px;
 		padding: range(80px / 2, 80px) 0;
 
