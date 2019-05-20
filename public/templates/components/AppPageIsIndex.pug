@@ -1,6 +1,7 @@
 mixin AppPageIsIndex()
 	include AppPage
 	include QuoteSection
+	include WorkSection
 	include PageSection
 	include ContentCarouselOfWorks
 	include ContentCarouselOfReviews
@@ -10,6 +11,9 @@ mixin AppPageIsIndex()
 	+AppPage().AppPageIsIndex&attributes(attributes)
 		quote-section(inline-template)
 			+QuoteSection()
+
+		work-section(inline-template)
+			+WorkSection()
 
 		page-section(inline-template)
 			+PageSection('Наши работы')
