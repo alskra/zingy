@@ -4,17 +4,17 @@ mixin ContentCarousel(items = [])
 			.actions
 				button.actions-button.actions-button-is-prev(
 					type="button"
-					@click="$refs.slick.prev()"
-					:disabled="currentIndex === 0"
+					@click="currentPageNumber += -1"
+					:disabled="currentPageNumber === 1"
 				)
 					base-icon(icon-name="arrow-right")
 
-				.actions-counter {{ padStartNumber(currentIndex + 1) }}&nbsp;/&nbsp;{{ padStartNumber(count) }}
+				.actions-counter {{ padStartNumber(currentPageNumber) }}&nbsp;/&nbsp;{{ padStartNumber(pagesCount) }}
 
 				button.actions-button.actions-button-is-next(
 					type="button"
-					@click="$refs.slick.next()"
-					:disabled="currentIndex === count - 1"
+					@click="currentPageNumber += 1"
+					:disabled="currentPageNumber === pagesCount"
 				)
 					base-icon(icon-name="arrow-right")
 
@@ -25,7 +25,7 @@ mixin ContentCarousel(items = [])
 					vue-slick(
 						ref="slick"
 						:options="slickOptions"
-						v-on="{beforeChange: onSlickBeforeChange}"
+						v-on="{init: onSlickInit, beforeChange: onSlickBeforeChange, breakpoint: onSlickBreakpoint}"
 					)
 						each item in items
 							!= item
@@ -33,11 +33,11 @@ mixin ContentCarousel(items = [])
 				button.arrow-button.arrow-button-is-prev(
 					type="button"
 					@click="$refs.slick.prev()"
-					:disabled="currentIndex === 0"
+					:disabled="currentItemIndex === 0"
 				)
 
 				button.arrow-button.arrow-button-is-next(
 					type="button"
 					@click="$refs.slick.next()"
-					:disabled="currentIndex === count - 1"
+					:disabled="currentPageNumber === pagesCount"
 				)

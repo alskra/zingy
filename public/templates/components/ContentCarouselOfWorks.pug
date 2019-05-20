@@ -1,0 +1,60 @@
+mixin ContentCarouselOfWorks()
+	include ContentCarousel
+	include WorkElement
+
+	-
+		const works = [
+			{
+				category: 'Разработка сайта',
+				title: 'Profsaunastroy',
+				description: 'Строительство и отделка бань, саун. Компания работает \n'+
+				'с 2001 года. Собственное производство мебели на заказ.',
+				url: '',
+				image: 'upload/profsaunastroy.jpg',
+				color: undefined
+			},
+			{
+				category: 'Разработка сайта',
+				title: 'Crypto Pi',
+				description: 'Международный специализированный криптовалютный центр, созданный крупными мировыми инвесторами',
+				url: '',
+				image: 'upload/crypto-pi.jpg',
+				color: '#f59900'
+			},
+			{
+				category: 'Разработка сайта',
+				title: 'Profsaunastroy',
+				description: 'Строительство и отделка бань, саун. Компания работает \n'+
+				'с 2001 года. Собственное производство мебели на заказ.',
+				url: '',
+				image: 'upload/profsaunastroy.jpg',
+				color: 'green'
+			},
+			{
+				category: 'Разработка сайта',
+				title: 'Crypto Pi',
+				description: 'Международный специализированный криптовалютный центр, созданный крупными мировыми инвесторами',
+				url: '',
+				image: 'upload/crypto-pi.jpg',
+				color: 'red'
+			},
+			{
+				category: 'Разработка сайта',
+				title: 'Profsaunastroy',
+				description: 'Строительство и отделка бань, саун. Компания работает \n'+
+				'с 2001 года. Собственное производство мебели на заказ.',
+				url: '',
+				image: 'upload/profsaunastroy.jpg',
+				color: 'purple'
+			}
+		]
+
+	+ContentCarousel().ContentCarouselOfWorks&attributes(attributes)
+		vue-slick(
+			ref="slick"
+			:options="slickOptions"
+			v-on="{init: onSlickInit, beforeChange: onSlickBeforeChange, breakpoint: onSlickBreakpoint}"
+		)
+			each work in works
+				work-element(inline-template)
+					+WorkElement(work)

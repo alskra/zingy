@@ -1,6 +1,13 @@
 <script>
+	import ContentCarouselOfWorks from './ContentCarouselOfWorks';
+	import ContentCarouselOfReviews from './ContentCarouselOfReviews';
+
 	export default {
-		name: 'PageSection'
+		name: 'PageSection',
+		components: {
+			ContentCarouselOfWorks,
+			ContentCarouselOfReviews
+		}
 	};
 </script>
 
@@ -45,5 +52,9 @@
 		font-weight: 500;
 		line-height: 1.25;
 		margin: 0;
+
+		@media (width < 768px) {
+			text-align: center;
+		}
 	}
 </style>

@@ -4,37 +4,72 @@
 
 	export default {
 		name: 'ContentCarousel',
-		props: {
-			count: {
-				type: Number,
-				required: true
-			},
-			initial: {
-				type: Number,
-				required: true
-			}
-		},
 		data() {
 			return {
 				slickOptions: {
-					initialSlide: this.initial,
+					initialSlide: 0,
 					infinite: false,
 					arrows: false
 				},
-				currentIndex: this.initial
+				itemsCount: 0,
+				currentItemIndex: 0,
+				itemsPerPage: 1
 			};
+		},
+		computed: {
+			pagesCount() {
+				return Math.ceil(this.itemsCount / this.itemsPerPage);
+			},
+			currentPageNumber: {
+				get() {
+					if (this.currentItemIndex === this.lastPageItemIndex) {
+						return this.pagesCount;
+					}
+
+					return Math.ceil((this.currentItemIndex + 1) / this.itemsPerPage);
+				},
+				set(value) {
+					if (value === this.pagesCount) {
+						this.$refs.slick.goTo(this.lastPageItemIndex);
+					} else {
+						this.$refs.slick.goTo((value - 1) * this.itemsPerPage);
+					}
+				}
+			},
+			lastPageItemIndex() {
+				if (this.itemsCount % this.itemsPerPage > 0) {
+					return (this.pagesCount - 1) * this.itemsPerPage - (this.itemsPerPage - this.itemsCount % this.itemsPerPage);
+				}
+
+				return (this.pagesCount - 1) * this.itemsPerPage;
+			}
 		},
 		components: {
 			VueSlick
 		},
 		methods: {
+			onSlickInit(event, slick) {
+				// console.log(slick);
+				this.itemsCount = slick.$slides.length;
+				this.itemsPerPage = slick.slickGetOption('slidesToShow');
+			},
+			onSlickBreakpoint(event, slick) {
+				this.itemsPerPage = slick.slickGetOption('slidesToShow');
+			},
 			onSlickBeforeChange(event, slick, currentSlide, nextSlide) {
-				this.currentIndex = nextSlide;
+				this.currentItemIndex = nextSlide;
 			},
 			padStartNumber(value) {
 				return (value + '').padStart(2, '0');
 			}
-		}
+		},
+		// created() {
+		// 	console.log('created:', this.$el);
+		// },
+		// mounted() {
+		// 	console.log('mounted:', this.$el.querySelectorAll('.slick-item').length);
+		// 	this.itemsCount = this.$el.querySelectorAll('.slick-item').length;
+		// }
 	};
 </script>
 
@@ -43,7 +78,8 @@
 		all: initial;
 
 		& {
-			display: block;
+			display: flex;
+			flex-flow: column;
 		}
 
 		&:hover {
@@ -60,6 +96,13 @@
 		width: calc(100% - 2 * var(--content-box-gutter));
 		max-width: var(--content-box-width);
 		margin: 0 auto range(25px, 50px);
+
+		@media (width < 768px) {
+			justify-content: center;
+			order: 1;
+			margin-top: range(25px, 50px);
+			margin-bottom: 0;
+		}
 	}
 
 	.actions-button {
@@ -86,21 +129,23 @@
 		}
 
 		&.actions-button-is-prev {
-			margin-right: range(35px, 70px);
+			margin-right: range(20px, 70px);
 			transform: rotateY(-180deg);
 		}
 
 		&.actions-button-is-next {
-			margin-left: range(35px, 70px);
+			margin-left: range(20px, 70px);
 		}
 	}
 
 	.actions-counter {
+		flex-shrink: 0;
 		color: #0a0a0a;
 		font-family: var(--font-family);
 		font-size: range(1.4rem, 1.6rem);
 		line-height: 1.25;
 		cursor: default;
+		user-select: none;
 	}
 
 	.main {
@@ -118,10 +163,10 @@
 			cursor: pointer;
 			background: url("../assets/img/icons/dots-arrow.png") no-repeat 50% 50% / contain;
 			position: absolute;
-			top: 0;
+			top: range(30px, 60px);
 			transition: opacity 0.2s;
 			opacity: 0;
-			/*filter: drop-shadow(0 0 1px white) drop-shadow(0 0 1px white) drop-shadow(0 0 1px white);*/
+			filter: drop-shadow(0 0 1px white) drop-shadow(0 0 1px white);
 
 			@media (width < 1440px) {
 				display: none;

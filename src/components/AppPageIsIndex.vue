@@ -1,14 +1,14 @@
 <script>
 	import AppPage from './AppPage';
 	import QuoteSection from './QuoteSection';
-	import PageSectionIsReviews from './PageSectionIsReviews';
+	import PageSection from './PageSection';
 
 	export default {
 		name: 'AppPageIsIndex',
 		extends: AppPage,
 		components: {
 			QuoteSection,
-			PageSectionIsReviews
+			PageSection
 		}
 	};
 </script>

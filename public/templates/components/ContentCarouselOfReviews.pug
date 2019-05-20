@@ -21,7 +21,7 @@ mixin ContentCarouselOfReviews()
 					vue-slick(
 						ref="slick"
 						:options="slickOptions"
-						v-on="{beforeChange: onSlickBeforeChange}"
+						v-on="{init: onSlickInit, beforeChange: onSlickBeforeChange, breakpoint: onSlickBreakpoint}"
 					)
 						each review in reviews
 							review-element(inline-template)
