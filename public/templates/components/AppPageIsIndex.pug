@@ -4,6 +4,7 @@ mixin AppPageIsIndex()
 	include PageSection
 	include ContentCarouselOfWorks
 	include ContentCarouselOfReviews
+	include PageSectionIsServices
 
 	+AppPage().AppPageIsIndex&attributes(attributes)
 		quote-section(inline-template)
@@ -18,3 +19,6 @@ mixin AppPageIsIndex()
 			+PageSection('Отзывы')
 				content-carousel-of-reviews(inline-template)
 					+ContentCarouselOfReviews()
+
+		page-section-is-services(inline-template)
+			+PageSectionIsServices()

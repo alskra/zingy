@@ -2,13 +2,15 @@
 	import AppPage from './AppPage';
 	import QuoteSection from './QuoteSection';
 	import PageSection from './PageSection';
+	import PageSectionIsServices from './PageSectionIsServices';
 
 	export default {
 		name: 'AppPageIsIndex',
 		extends: AppPage,
 		components: {
 			QuoteSection,
-			PageSection
+			PageSection,
+			PageSectionIsServices
 		}
 	};
 </script>
