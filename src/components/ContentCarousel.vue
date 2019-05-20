@@ -166,7 +166,6 @@
 			top: range(30px, 60px);
 			transition: opacity 0.2s;
 			opacity: 0;
-			filter: drop-shadow(0 0 1px white) drop-shadow(0 0 1px white);
 
 			@media (width < 1440px) {
 				display: none;

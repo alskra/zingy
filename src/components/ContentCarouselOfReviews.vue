@@ -61,4 +61,8 @@
 	.ReviewElement {
 		vertical-align: top;
 	}
+
+	.arrow-button {
+		filter: drop-shadow(0 0 1px white) drop-shadow(0 0 1px white);
+	}
 </style>

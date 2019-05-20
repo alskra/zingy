@@ -1,0 +1,126 @@
+<script>
+	export default {
+		name: 'FeedbackSection'
+	};
+</script>
+
+<style scoped>
+	.FeedbackSection {
+		all: initial;
+
+		& {
+			display: block;
+			padding: range(80px / 2, 80px) 0;
+			background-color: white;
+			position: relative;
+			min-height: range(504px / 2, 504px);
+			overflow: hidden;
+		}
+	}
+
+	.BaseIcon.bg-icon {
+		/*width: range(502px / 2, 502px);*/
+		/*height: auto;*/
+		width: auto;
+		height: range(504px / 2, 504px);
+		color: #f0f0f0;
+		position: absolute;
+		top: range(80px / 2, 80px);
+		left: 50%;
+		margin-left: range(10px, 213px);
+		pointer-events: none;
+	}
+
+	.content-box {
+		width: calc(100% - 2 * var(--content-box-gutter));
+		max-width: var(--content-box-width);
+		padding: 0 var(--content-box-gutter);
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.content-grid {
+		margin: 0 -10px;
+	}
+
+	.content-grid-item {
+		box-sizing: border-box;
+		padding: 0 10px;
+		width: percentage(10 / 12);
+		margin: 0 auto;
+	}
+
+	.content-grid-item-is-1 {
+		@media (width < 768px) {
+			width: 100%;
+		}
+	}
+
+	.content-grid-item-is-2 {
+		@media (width < 1024px) {
+			width: 100%;
+		}
+	}
+
+	.title {
+		margin: range(0px, 80px) 0 range(40px / 2, 40px);
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(4.8rem / 1.5, 4.8rem);
+		font-weight: 500;
+		line-height: 1.25;
+	}
+
+	.text {
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(1.4rem, 1.6rem);
+		font-weight: 400;
+		line-height: 1.25;
+
+		>>> a {
+			color: var(--color-link);
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.text-is-description {
+		font-size: range(1.6rem, 1.8rem);
+		margin-bottom: range(70px / 2, 70px);
+	}
+
+	.text-is-info {
+		font-size: range(1.2rem, 1.4rem);
+		margin-top: range(40px / 2, 40px);
+	}
+
+	.form {
+
+	}
+
+	.form-grid {
+		display: flex;
+		flex-wrap: wrap;
+		margin: -10px range(-10px, -30px);
+	}
+
+	.form-grid-item {
+		min-width: 0;
+		margin: 10px range(10px, 30px);
+		flex-grow: 1;
+	}
+
+	.BaseField.form-field {
+		/*width: 300px;*/
+		width: 100%;
+	}
+
+	.BaseButtonIsPrimary.form-button {
+		/*width: 200px;*/
+		width: 100%;
+	}
+</style>

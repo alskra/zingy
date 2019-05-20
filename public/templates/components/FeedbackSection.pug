@@ -1,0 +1,24 @@
+mixin FeedbackSection()
+	template
+		.FeedbackSection&attributes(attributes)
+			base-icon.bg-icon(icon-name="chess")
+
+			.content-box
+				.content-grid
+					.content-grid-item.content-grid-item-is-1
+						h2.title Грамотная первая консультация — 99% успеха!
+						.text.text-is-description Оставьте заявку на консультацию
+
+					.content-grid-item.content-grid-item-is-1
+						form.form(action="")
+							.form-grid
+								.form-grid-item
+									base-field.form-field(placeholder="Ссылка на сайт")
+
+								.form-grid-item
+									base-field.form-field(placeholder="Телефон")
+
+								.form-grid-item
+									base-button-is-primary.form-button Отправить
+
+							.text.text-is-info *&nbsp;Отправляя заявку, вы соглашаетесь с #[a(href="" target="_blank") условиями передачи информации].

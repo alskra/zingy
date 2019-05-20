@@ -3,6 +3,7 @@
 	import QuoteSection from './QuoteSection';
 	import PageSection from './PageSection';
 	import PageSectionIsServices from './PageSectionIsServices';
+	import FeedbackSection from './FeedbackSection';
 
 	export default {
 		name: 'AppPageIsIndex',
@@ -10,7 +11,8 @@
 		components: {
 			QuoteSection,
 			PageSection,
-			PageSectionIsServices
+			PageSectionIsServices,
+			FeedbackSection
 		}
 	};
 </script>

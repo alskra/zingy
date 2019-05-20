@@ -1,9 +1,7 @@
 <template lang="pug">
-	.BaseButton(:is="tag")
-		slot(name="icon")
+	include BaseButton.pug
 
-		span.text(v-if="$scopedSlots.default")
-			slot(name="default")
+	+BaseButton()
 </template>
 
 <script>
@@ -27,22 +25,29 @@
 			justify-content: center;
 			align-items: center;
 			vertical-align: top;
+			box-sizing: border-box;
 			max-width: 100%;
 			cursor: pointer;
+		}
 
-			&:disabled {
-				cursor: default;
-			}
+		&:focus-visible {
+			outline: 2px solid currentColor;
+			outline-offset: 1px;
+		}
 
-			&.is-full-width {
-				width: 100%;
-			}
+		&:disabled {
+			cursor: default;
+			opacity: 0.5;
+		}
+
+		&.is-full-width {
+			width: 100%;
 		}
 	}
 
 	.text {
-		color: var(--color, #0a0a0a);
-		font-family: var(--font-family, sans-serif);
+		color: var(--color);
+		font-family: var(--font-family);
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;

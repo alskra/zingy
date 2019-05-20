@@ -58,6 +58,9 @@
 
 		template(v-else-if="iconName === 'arrow-right'")
 			include ../assets/img/icons/arrow-right.svg
+
+		template(v-else-if="iconName === 'chess'")
+			include ../assets/img/icons/chess.svg
 </template>
 
 <script>

@@ -5,6 +5,7 @@ mixin AppPageIsIndex()
 	include ContentCarouselOfWorks
 	include ContentCarouselOfReviews
 	include PageSectionIsServices
+	include FeedbackSection
 
 	+AppPage().AppPageIsIndex&attributes(attributes)
 		quote-section(inline-template)
@@ -22,3 +23,6 @@ mixin AppPageIsIndex()
 
 		page-section-is-services(inline-template)
 			+PageSectionIsServices()
+
+		feedback-section(inline-template)
+			+FeedbackSection()
