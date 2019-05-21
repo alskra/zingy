@@ -4,17 +4,25 @@
 	};
 </script>
 
-<style scoped>
-	.ZingySection {
-		all: initial;
+<style>
+	:root {
+		--ZingySection_height: range(600px / 2.5, 600px);
+	}
+</style>
 
-		& {
-			display: flex;
-			flex-flow: column;
-			box-sizing: border-box;
-			width: 100%;
-			height: 100%;
-			background: url("../assets/img/about-zingy-bg.jpg") no-repeat 50% 50% / cover;
+<style scoped>
+	.zingy-section {
+		display: flex;
+		flex-flow: column;
+		box-sizing: border-box;
+		width: 100%;
+		height: var(--ZingySection_height);
+		background: url("../assets/img/about-zingy-bg.jpg") no-repeat 50% 50% / cover;
+
+		:root:not(.is-ie) & {
+			position: fixed;
+			bottom: 0;
+			left: 0;
 		}
 	}
 
@@ -67,17 +75,20 @@
 		}
 	}
 
-	.definition {
+	.grid {
+		width: calc(100% - 2 * var(--grid-padding));
+		max-width: var(--grid-width);
+		padding: 0 var(--grid-padding);
+		margin: 0 auto;
+	}
+
+	.content {
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
-		font-size: range(1.4rem, 1.6rem);
+		font-size: range(1.6rem / 1.5, 1.6rem);
 		font-weight: 300;
 		line-height: 1.25;
-		box-sizing: border-box;
-		width: 100%;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 20px 10px;
+		padding: range(10px, 20px) 0;
 		text-align: right;
 
 		>>> p {

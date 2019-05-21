@@ -33,6 +33,10 @@
 		--content-box-width: env(--content-box-width);
 		--content-box-gutter: range(10px, 40px);
 
+		--grid-width: env(--grid-width);
+		--grid-padding: range(10px, 40px);
+		--grid-col-padding: 10px;
+
 		font-size: percentage(10 / 16);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
@@ -59,5 +63,9 @@
 
 	template {
 		display: none;
+	}
+
+	.host {
+		all: initial;
 	}
 </style>

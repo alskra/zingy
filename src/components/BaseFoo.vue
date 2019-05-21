@@ -1,6 +1,7 @@
 <template lang="pug">
 	.foo.foo.foo
-		p Foo
+		p(@click="onClick") Foo
+		slot(@click="onClick")
 </template>
 
 <script>
@@ -15,6 +16,11 @@
 		// 	return ctx.props.vnodes;
 		// },
 
+		methods: {
+			onClick(){
+				alert('click');
+			}
+		},
 		beforeCreate() {
 			console.log('beforeCreate');
 			console.log(this);

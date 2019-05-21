@@ -8,7 +8,7 @@ mixin AppPageIsIndex()
 	include PageSectionIsServices
 	include FeedbackSection
 
-	+AppPage().AppPageIsIndex&attributes(attributes)
+	+AppPage().app-page-is-index&attributes(attributes)
 		quote-section(inline-template)
 			+QuoteSection()
 
@@ -30,3 +30,6 @@ mixin AppPageIsIndex()
 
 		feedback-section(inline-template)
 			+FeedbackSection()
+
+		base-foo
+			h1 Slot

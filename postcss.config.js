@@ -32,7 +32,7 @@ module.exports = {
 				},
 				percentage(expression) {
 					try {
-						return (new Function('', `return ${expression} * 100 + '%'`))();
+						return (new Function('', `return (${expression} * 100).toFixed(5) + '%'`))();
 					} catch (error) {
 						error.message = `PostCSS function 'percentage': ${error.message}`;
 						throw error;

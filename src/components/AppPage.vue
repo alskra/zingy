@@ -14,45 +14,28 @@
 </script>
 
 <style scoped>
-	.AppPage {
-		all: initial;
-
-		& {
-			display: block;
-			overflow: hidden;
-			min-width: env(--min-breakpoint);
-			padding-bottom: 100vh;
-
-			.is-ie & {
-				padding-bottom: 0;
-			}
-		}
+	.app-page {
+		display: block;
+		overflow: hidden;
+		min-width: env(--min-breakpoint);
+		content: env(--grid-width);
 	}
 
-	.front-box {
+	.body {
 		position: relative;
 		z-index: 1;
 		min-height: 100vh;
 		display: flex;
 		flex-flow: column;
+
+		:root:not(.is-ie) & {
+			margin-bottom: var(--ZingySection_height);
+		}
 	}
 
 	.main {
-		flex-grow: 1;
+		flex: 1 0 auto;
 		padding: range(60px, 138px) 0 0;
 		background-color: white;
-	}
-
-	.back-box {
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-
-		.is-ie & {
-			position: relative;
-			height: 100vh;
-		}
 	}
 </style>

@@ -10,18 +10,11 @@
 				:class="['social-icon', `social-icon-is-${iconName}`]"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
+				:clip-path="`url(#${iconName}-icon-clip)`"
 			)
 				//-title {{ iconName }} icon
 
-				rect(
-					class="social-icon-default-fill"
-					:clip-path="`url(#${iconName}-icon-clip)`"
-				)
-
-				rect(
-					class="social-icon-hover-fill"
-					:clip-path="`url(#${iconName}-icon-clip)`"
-				)
+				g(v-html="socialIcons[iconName]")
 
 				clipPath(
 					:id="`${iconName}-icon-clip`"
@@ -114,9 +107,18 @@
 
 		&:hover {
 			.social-icon-hover-fill {
-				width: 100%;
+				transform: translateX(0);
 			}
 		}
+	}
+
+	.social-icon {
+		width: 24px;
+		height: 24px;
+	}
+
+	.menu-icon {
+		position: relative;
 
 		&.is-sidebar-opened {
 			.menu-icon-line {
@@ -127,41 +129,20 @@
 
 				&:nth-child(1),
 				&:nth-child(4) {
-					width: 100%;
-					transform-origin: 50% 50%;
 					top: 50%;
-					margin-top: percentage(-1 / 44);
+					width: 100%;
+					padding-left: 46%;
 				}
 
 				&:nth-child(1) {
-					transform: rotate(45deg);
+					transform: translate(-25%, -50%) rotate(45deg);
 				}
 
 				&:nth-child(4) {
-					transform: rotate(-45deg);
+					transform: translate(-25%, -50%) rotate(-45deg);
 				}
 			}
 		}
-	}
-
-	.social-icon-default-fill,
-	.social-icon-hover-fill {
-		height: 100%;
-	}
-
-	.social-icon-default-fill {
-		width: 100%;
-		color: #1a1a1a;
-	}
-
-	.social-icon-hover-fill {
-		width: 0;
-		color: #ec5151;
-		transition: width 0.2s;
-	}
-
-	.menu-icon {
-		position: relative;
 	}
 
 	.menu-icon-line {
@@ -169,26 +150,30 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: percentage(3 / 44);
+		height: 3px;
 		background-color: currentColor;
+		transform-origin: 50% 50%;
+		transform: translateY(-50%);
+		background-clip: content-box;
+		box-sizing: border-box;
 
 		&:nth-child(1) {
-			top: percentage(6 / 44);
+			top: percentage(5 / 40);
 			width: 57%;
 		}
 
 		&:nth-child(2) {
-			top: percentage(16 / 44);
+			top: percentage(15 / 40);
 			width: 91%;
 		}
 
 		&:nth-child(3) {
-			top: percentage(26 / 44);
+			top: percentage(25 / 40);
 			width: 34%;
 		}
 
 		&:nth-child(4) {
-			top: percentage(36 / 44);
+			top: percentage(35 / 40);
 			width: 68%;
 		}
 	}

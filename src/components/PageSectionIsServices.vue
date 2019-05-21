@@ -65,6 +65,10 @@
 		&:hover {
 			&::before {
 				opacity: 1;
+
+				:root.is-ie & {
+					opacity: 0.5;
+				}
 			}
 		}
 

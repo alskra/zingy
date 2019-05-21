@@ -8,7 +8,8 @@
 			return {
 				startAnimateIsEnd: false,
 				headerIsMinimized: false,
-				sidebarIsOpened: false
+				sidebarIsOpened: false,
+				scrollPosition: 0
 			};
 		},
 		components: {
@@ -34,8 +35,16 @@
 		},
 		methods: {
 			setHeaderState() {
-				this.headerIsMinimized = this.startAnimateIsEnd
-					&& (window.innerWidth < 1200 || window.pageYOffset > 0 || this.sidebarIsOpened);
+				if (!this.scrollProcessed) {
+					this.scrollProcessed = true;
+					setTimeout(() => this.scrollProcessed = false, 100);
+
+					const scrollDelta = window.pageYOffset - this.scrollPosition;
+					this.scrollPosition = window.pageYOffset;
+
+					this.headerIsMinimized = this.startAnimateIsEnd
+						&& (window.innerWidth < 1200 || scrollDelta > 0 || this.sidebarIsOpened);
+				}
 			},
 			onLNavBoxEnter(el) {
 				el.style.width = el.children[0].offsetWidth + 'px';
@@ -201,24 +210,20 @@
 		all: initial;
 
 		& {
-			display: flex;
-			justify-content: center;
-			align-items: center;
 			width: range(40px, 58px);
 			height: range(40px, 58px);
 			flex-shrink: 0;
 			background-color: #f0f0f0;
 			color: #0a0a0a;
 			cursor: pointer;
+			overflow: hidden;
+			box-sizing: border-box;
+			padding: range(40 / 58 * 9px, 9px);
 		}
 
 		.BaseIcon {
-			width: range(40 / 58 * 44px, 44px);
-			height: range(40 / 58 * 44px, 44px);
-
 			>>> .menu-icon-line {
-				transition-property: width, transform, top;
-				transition-duration: 0.2s;
+				transition: all 0.2s;
 			}
 		}
 
@@ -246,12 +251,17 @@
 
 				&.is-sidebar-opened {
 					>>> .menu-icon-line {
+						&:nth-child(1),
+						&:nth-child(4) {
+							padding-left: 0;
+						}
+
 						&:nth-child(1) {
-							transform: rotate(35deg) scale(0.9);
+							transform: translateY(-50%) rotate(45deg);
 						}
 
 						&:nth-child(4) {
-							transform: rotate(-35deg) scale(0.9);
+							transform: translateY(-50%) rotate(-45deg);
 						}
 					}
 				}
@@ -311,7 +321,10 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		/*background: rgba(#000, 0.3);*/
+
+		:root.is-ie & {
+			background: rgba(#000, 0.3);
+		}
 
 		&.v-enter-active,
 		&.v-leave-active {
@@ -483,6 +496,7 @@
 	.right-panel {
 		flex-shrink: 0;
 		height: range(40px, 58px);
+		background-color: white;
 	}
 
 	.l-right-panel-grid {
@@ -597,8 +611,9 @@
 
 <style>
 	@custom-selector :--back-boxes
-	.AppPage > .front-box > .main,
-	.AppPage > .back-box;
+	.AppPage > .body > .main,
+	.AppPage > .body > .footer,
+	.AppPage > .ZingySection;
 
 	:root {
 		:--back-boxes {

@@ -41,7 +41,7 @@
 		top: range(-10px, -20px);
 		left: range(10px, -190px);
 		width: range(376px / 2, 376px);
-		height: auto;
+		height: range(277px / 2, 277px);
 		color: #f0f0f0;
 		pointer-events: none;
 
