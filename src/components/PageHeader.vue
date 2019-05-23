@@ -267,7 +267,9 @@
 	}
 
 	.menu-button-icon.host {
-		transform: scale(range(2 / 3, 1));
+		@media (width < 960px) {
+			transform: scale(calc(2 / 3));
+		}
 	}
 
 	.right-panel-box {
