@@ -155,7 +155,7 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 3px;
+		height: 2px;
 		background-color: currentColor;
 		transform-origin: 50% 50%;
 		transform: translateY(-50%);

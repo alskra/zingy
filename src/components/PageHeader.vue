@@ -305,8 +305,9 @@
 
 	.right-panel {
 		flex-shrink: 0;
+		padding: 0 range(0px, 20px);
 		height: range(40px, 58px);
-		background-color: white;
+		background-color: #f0f0f0;
 	}
 
 	.right-panel-grid {
@@ -365,6 +366,69 @@
 		>>> .text {
 			font-size: 12px;
 		}
+	}
+
+	.phone-button-box {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 10;
+		display: flex;
+		justify-content: flex-start;
+		width: range(40px, 58px);
+		overflow: hidden;
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: width 0.3s;
+
+			.phone-button-icon.host {
+				transition-property: transform, opacity;
+				transition-duration: 0.2s;
+				transition-delay: 0.3s;
+			}
+		}
+
+		&.v-enter-active {
+			.phone-button-icon.host {
+				/*transition-delay: 0.3s;*/
+			}
+		}
+
+		&.v-leave-active {
+			.phone-button-icon.host {
+				/*transition-delay: 0.3s;*/
+			}
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			width: 0;
+
+			.phone-button-icon.host {
+				transform: translateY(10px);
+				opacity: 0;
+			}
+		}
+	}
+
+	.phone-button {
+		all: initial;
+
+		& {
+			width: range(40px, 58px);
+			height: range(40px, 58px);
+			flex-shrink: 0;
+			background-color: var(--color-zingy);
+			color: white;
+			cursor: pointer;
+			overflow: hidden;
+			box-sizing: border-box;
+		}
+	}
+
+	.phone-button-icon.host {
+		border: range(40 / 58 * 9px, 9px) solid transparent;
 	}
 
 	.sidebar-backdrop {
