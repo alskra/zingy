@@ -1,11 +1,11 @@
-mixin AppPageHeaderNav()
-	template#app-page-header-nav
-		nav.AppPageHeaderNav
-			.l-grid
+mixin PageHeaderNav()
+	template#page-header-nav
+		nav.host.page-header-nav
+			.grid
 				each navItem, index in ['Главная', 'О компании', 'Разработка', 'Продвижение', 'Блог', 'Контакты']
-					.l-grid-item(class={'is-active': index === 0})
-						a.nav-item(
+					.grid-cell(class={'is-active': index === 0})
+						a.link(
 							href=""
 							class={'is-active': index === 0}
 						)
-							span.nav-item-text= navItem
+							span.link-text= navItem

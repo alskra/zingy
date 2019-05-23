@@ -17,17 +17,21 @@
 </script>
 
 <style scoped>
-	.BaseButton {
-		all: initial;
+	.base-button {
+		display: inline-flex;
+		vertical-align: top;
+		justify-content: center;
+		align-items: center;
+		box-sizing: border-box;
+		padding: 5px 20px;
+		max-width: 100%;
+		height: range(40px, 56px);
+		background-color: var(--color);
+		transition: background-color 0.2s;
+		cursor: pointer;
 
-		& {
-			display: inline-flex;
-			justify-content: center;
-			align-items: center;
-			vertical-align: top;
-			box-sizing: border-box;
-			max-width: 100%;
-			cursor: pointer;
+		&:hover:not(:disabled) {
+			background-color: var(--color-link);
 		}
 
 		&:focus-visible {
@@ -46,8 +50,13 @@
 	}
 
 	.text {
-		color: var(--color);
+		color: #ffffff;
 		font-family: var(--font-family);
+		font-size: range(1.2rem, 1.4rem);
+		font-weight: 500;
+		letter-spacing: calc(1.05 / 14 * 1em);
+		line-height: 1.25;
+		text-transform: uppercase;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;

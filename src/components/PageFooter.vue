@@ -1,12 +1,12 @@
 <script>
-	import SocialMedia from './SocialMedia';
+	import SocialLinks from './SocialLinks';
 	import AppPageFooterNav from './AppPageFooterNav';
 	import AppPageFooterNavOfSection from './AppPageFooterNavOfSection';
 
 	export default {
-		name: 'AppPageFooter',
+		name: 'PageFooter',
 		components: {
-			SocialMedia,
+			SocialLinks,
 			AppPageFooterNav,
 			AppPageFooterNavOfSection
 		}
@@ -14,31 +14,27 @@
 </script>
 
 <style scoped>
-	.AppPageFooter {
-		all: initial;
+	.page-footer {
+		display: block;
+		padding: range(50px, 100px) 0;
+		background-color: #222222;
+		position: relative;
+		min-height: calc(396 / 1920 * 100vmax + 5vw);
+		overflow: hidden;
 
-		& {
-			display: block;
-			padding: range(50px, 100px) 0;
-			background-color: #222222;
-			position: relative;
-			min-height: calc(396 / 1920 * 100vmax + 5vw);
-			overflow: hidden;
-
-			@media (width >= 1920px) {
-				min-height: calc(396px + 5vw);
-			}
+		@media (width >= 1920px) {
+			min-height: calc(396px + 5vw);
 		}
 	}
 
-	.l-content-box {
+	.grid {
 		padding: 0 range(10px, 110px);
 		box-sizing: border-box;
-		max-width: 1920px;
+		max-width: env(--max-breakpoint);
 		margin: 0 auto;
 	}
 
-	.heading {
+	.title {
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
 		font-size: range(4.8rem / 1.5, 4.8rem);
@@ -74,7 +70,7 @@
 		}
 	}
 
-	.zingy-projects-item {
+	.zingy-projects-copy {
 		width: calc(3983 / 1920 * 100vmax + 8vmax);
 		height: calc(396 / 1920 * 100vmax);
 		flex-shrink: 0;
@@ -86,7 +82,7 @@
 		}
 	}
 
-	.l-content-grid {
+	.grid-row {
 		display: flex;
 		flex-wrap: wrap;
 		margin: -15px -10px;
@@ -94,7 +90,7 @@
 		align-items: baseline;
 	}
 
-	.l-content-grid-item {
+	.grid-cell {
 		width: calc(25% - 20px);
 		margin: 15px 10px;
 
@@ -131,7 +127,7 @@
 		}
 	}
 
-	.l-contacts-grid {
+	.contacts-grid {
 		display: flex;
 		flex-flow: column;
 		height: 100%;
@@ -144,7 +140,7 @@
 		}
 	}
 
-	.l-contacts-grid-item {
+	.contacts-grid-cell {
 		&:nth-child(3) {
 			margin-top: auto;
 		}
@@ -159,8 +155,8 @@
 			margin: 15px 10px;
 			width: calc(percentage(1 / 3) - 20px);
 
-			.SocialMedia {
-				--v-social-media_justify-content: center;
+			.social-links.host {
+				--social-links_justify-content: center;
 			}
 
 			&:nth-child(3) {
@@ -173,9 +169,9 @@
 		}
 	}
 
-	.text {
+	.content {
 		color: #494848;
-		font-family: var(--font-family, sans-serif);
+		font-family: var(--font-family);
 		font-size: range(1.6rem, 1.8rem);
 		font-weight: 300;
 		line-height: 1.5;
@@ -191,14 +187,14 @@
 		>>> a {
 			color: #ffffff;
 			text-decoration: none;
-			font-weight: 500;
-			padding-bottom: 1px;
-			transition: background-size 0.2s;
-			background: linear-gradient(#ec5151, #ec5151) no-repeat 0 100% / 0 2px;
 
 			&:hover {
-				background-size: 100% 2px;
+				text-decoration: underline;
 			}
+		}
+
+		>>> small {
+			font-size: 0.8em;
 		}
 
 		@media (width < 768px) {
@@ -206,7 +202,23 @@
 		}
 	}
 
-	.text-is-copyright {
+	.content-is-contacts {
+		>>> a {
+			color: #ffffff;
+			text-decoration: none;
+			font-weight: 500;
+			padding-bottom: 1px;
+			transition: background-size 0.2s;
+			background: linear-gradient(var(--color-link), var(--color-link)) no-repeat 0 100% / 0 2px;
+
+			&:hover {
+				text-decoration: none;
+				background-size: 100% 2px;
+			}
+		}
+	}
+
+	.content-is-copyright {
 		@media (768px <= width < 1024px) {
 			text-align: right;
 		}

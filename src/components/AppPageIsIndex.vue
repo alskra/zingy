@@ -19,5 +19,5 @@
 	};
 </script>
 
-<style src="./AppPage.vue" scoped>
+<style scoped src="./AppPage.vue">
 </style>

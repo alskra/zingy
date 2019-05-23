@@ -1,17 +1,17 @@
 <script>
-	import AppPageHeaderNav from './AppPageHeaderNav';
+	import PageHeaderNav from './PageHeaderNav';
 
 	export default {
-		name: 'AppPageHeaderNavIsTop',
-		extends: AppPageHeaderNav
+		name: 'PageHeaderNavIsTop',
+		extends: PageHeaderNav
 	};
 </script>
 
-<style src="./AppPageHeaderNav.vue" scoped>
+<style scoped src="./PageHeaderNav.vue">
 </style>
 
 <style scoped>
-	.AppPageHeaderNavIsTop {
+	.page-header-nav-is-top {
 		box-sizing: border-box;
 		max-width: 50vw;
 		height: range(40px, 58px);
@@ -19,7 +19,7 @@
 		padding: 0 range(0px, 20px);
 	}
 
-	.l-grid {
+	.grid {
 		height: 100%;
 	}
 </style>

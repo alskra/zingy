@@ -1,13 +1,13 @@
 <script>
-	import AppPageHeader from './AppPageHeader';
-	import AppPageFooter from './AppPageFooter';
+	import PageHeader from './PageHeader';
+	import PageFooter from './PageFooter';
 	import ZingySection from './ZingySection';
 
 	export default {
 		name: 'AppPage',
 		components: {
-			AppPageHeader,
-			AppPageFooter,
+			PageHeader,
+			PageFooter,
 			ZingySection
 		}
 	};
@@ -18,7 +18,6 @@
 		display: block;
 		overflow: hidden;
 		min-width: env(--min-breakpoint);
-		content: env(--grid-width);
 	}
 
 	.body {
@@ -28,8 +27,8 @@
 		display: flex;
 		flex-flow: column;
 
-		:root:not(.is-ie) & {
-			margin-bottom: var(--ZingySection_height);
+		:root:not(.is-browser-ie) & {
+			margin-bottom: var(--zingy-section_height);
 		}
 	}
 

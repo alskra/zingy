@@ -17,6 +17,7 @@
     "focus-visible": "^4.1.5",
     "focus-within": "^3.0.2",
     "jquery": "^3.4.1",
+    "ninelines-ua-parser": "^1.1.6",
     "vue": "^2.6.10",
     "vue-slick": "^1.1.15"
   },

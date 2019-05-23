@@ -1,5 +1,5 @@
 mixin BaseButton()
-	.BaseButton(:is="tag")&attributes(attributes)
+	.host.base-button(:is="tag")&attributes(attributes)
 		slot(name="icon")
 
 		span.text(v-if="$scopedSlots.default")

@@ -1,5 +1,5 @@
-mixin AppPageFooter()
-	include SocialMedia
+mixin PageFooter()
+	include SocialLinks
 	include AppPageFooterNav
 	include AppPageFooterNavOfSection
 
@@ -35,41 +35,44 @@ mixin AppPageFooter()
 		]
 
 	template
-		footer.AppPageFooter&attributes(attributes)
-			.l-content-box
-				h2.heading Контакты
+		footer.host.page-footer&attributes(attributes)
+			.grid
+				h2.title Контакты
 
 				.zingy-projects
-					.zingy-projects-item
-					.zingy-projects-item
-					.zingy-projects-item
-					.zingy-projects-item
-					.zingy-projects-item
+					.zingy-projects-copy
+					.zingy-projects-copy
+					.zingy-projects-copy
+					.zingy-projects-copy
+					.zingy-projects-copy
 
-				.l-content-grid
-					.l-content-grid-item
-						.l-contacts-grid
-							.l-contacts-grid-item
-								.text
+				.grid-row
+					.grid-cell
+						.contacts-grid
+							.contacts-grid-cell
+								.content.content-is-contacts
 									p E-mail: #[br]#[a(href="mailto:zingy.projects@gmail.com") zingy.projects@gmail.com]
 									p Телефон: #[br]#[a(href="tel:+79854575817") +7 (985) 457-58-17]
 
-							.l-contacts-grid-item
-								social-media(inline-template)
-									+SocialMedia()
+							.contacts-grid-cell
+								social-links(inline-template)
+									+SocialLinks()
 
-							.l-contacts-grid-item
-								.text.text-is-copyright
+							.contacts-grid-cell
+								.content.content-is-copyright
+									p
+										small #[a(href="" target="_blank") Политика конфиденциальности]
+
 									p &copy;&nbsp;2008&ndash;2019. Все&nbsp;права&nbsp;защищены
 
-					.l-content-grid-item
+					.grid-cell
 						app-page-footer-nav(inline-template)
 							+AppPageFooterNav(mainNav)
 
-					.l-content-grid-item
+					.grid-cell
 						app-page-footer-nav-of-section(inline-template)
 							+AppPageFooterNavOfSection(devNav, 'Разработка')
 
-					.l-content-grid-item
+					.grid-cell
 						app-page-footer-nav-of-section(inline-template)
 							+AppPageFooterNavOfSection(seoNav, 'Продвижение')

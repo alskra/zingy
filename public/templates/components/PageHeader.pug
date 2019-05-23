@@ -1,18 +1,18 @@
-mixin AppPageHeader()
+mixin PageHeader()
 	template
-		header.AppPageHeader&attributes(attributes)
+		header.host.page-header&attributes(attributes)
 			transition-box(
 				appear
 				appear-active-class="v-appear-active"
 				:duration="600"
 				@after-appear="startAnimateIsEnd = true"
 			)
-				.l-logo-box
+				.logo-box
 					a.logo(
 						href="/"
 						title="Zingy Projects"
 					)
-						base-icon(icon-name="zingy")
+						base-icon.logo-icon(icon-name="zingy")
 
 			transition-box(
 				:duration="{enter: 500, leave: 300}"
@@ -20,19 +20,16 @@ mixin AppPageHeader()
 				@after-enter="onLNavBoxAfterEnter"
 				@before-leave="onLNavBoxBeforeLeave"
 			)
-				.l-nav-box(v-show="startAnimateIsEnd && !headerIsMinimized")
-					app-page-header-nav-is-top(class="AppPageHeaderNavIsTop")
+				.nav-box(v-show="startAnimateIsEnd && !headerIsMinimized")
+					page-header-nav-is-top.page-header-nav-is-top.nav
 
 			transition-box(:duration="{enter: 550, leave: 350}")
-				.l-menu-button-box(v-show="startAnimateIsEnd && headerIsMinimized")
+				.menu-button-box(v-show="startAnimateIsEnd && headerIsMinimized")
 					button.menu-button(
 						type="button"
 						@click="sidebarIsOpened = !sidebarIsOpened"
 					)
-						base-icon(
-							icon-name="menu"
-							:class="{'is-sidebar-opened': sidebarIsOpened}"
-						)
+						base-icon.menu-button-icon(icon-name="menu")
 
 			transition-box(
 				:duration="{enter: 500, leave: 300}"
@@ -40,28 +37,24 @@ mixin AppPageHeader()
 				@after-enter="onLRightPanelBoxAfterEnter"
 				@before-leave="onLRightPanelBoxBeforeLeave"
 			)
-				.l-right-panel-box(v-show="startAnimateIsEnd && !headerIsMinimized")
+				.right-panel-box(v-show="startAnimateIsEnd && !headerIsMinimized")
 					.right-panel
-						.l-right-panel-grid
-							.l-right-panel-grid-item
+						.right-panel-grid
+							.right-panel-grid-cell
 								a(href="").link
-									base-icon(icon-name="globe").link-icon
+									base-icon.link-icon(icon-name="globe")
 									.link-text.is-uppercase Eng
 
-							.l-right-panel-grid-item
+							.right-panel-grid-cell
 								a(href="tel:+79854575817").link
-									base-icon(icon-name="phone").link-icon
+									base-icon.link-icon(icon-name="phone")
 									.link-text +7 985 457 58 17
 
-							.l-right-panel-grid-item
+							.right-panel-grid-cell
 								base-button.button(
 									tag="a"
 									href=""
-								)
-									template(v-slot:icon)
-										span.icon
-
-									| Начать проект
+								) Начать проект
 
 			transition-group.sidebar-box(
 				tag="div"
@@ -79,32 +72,28 @@ mixin AppPageHeader()
 				)
 					.sidebar-lang-box
 						a(href="").link
-							base-icon(icon-name="globe").link-icon
+							base-icon.link-icon(icon-name="globe")
 							.link-text.is-uppercase Eng
 
 					.sidebar-scrollable
-						app-page-header-nav-is-aside.sidebar-nav(class="AppPageHeaderNavIsAside")
+						page-header-nav-is-aside.page-header-nav-is-aside.sidebar-nav
 
 						.sidebar-footer
 							.sidebar-footer-grid
-								.sidebar-footer-grid-item
+								.sidebar-footer-grid-cell
 									base-button.is-full-width.button(
 										tag="a"
 										href=""
-									)
-										template(v-slot:icon)
-											span.icon
+									) Начать проект
 
-										| Начать проект
-
-								.sidebar-footer-grid-item
+								.sidebar-footer-grid-cell
 									a(href="tel:+79854575817").link
-										base-icon(icon-name="phone").link-icon
+										base-icon.link-icon(icon-name="phone")
 										.link-text +7 985 457 58 17
 
-								.sidebar-footer-grid-item
+								.sidebar-footer-grid-cell
 									a(href="mailto:zingy.projects@gmail.com").link
-										base-icon(icon-name="envelope").link-icon
+										base-icon.link-icon(icon-name="envelope")
 										.link-text zingy.projects@gmail.com
 
 

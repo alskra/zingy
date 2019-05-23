@@ -6,35 +6,11 @@ block variables
 				viewport: 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, shrink-to-fit=no'
 			};
 
-block mixins
-	mixin defineTemplate(componentName, tagName)
-		-
-			attributes = Object.assign({
-				is: typeof tagName === 'string' ? componentName : null,
-				class: componentName,
-				'inline-template': true
-			}, attributes);
-
-		if typeof tagName === 'string'
-			#{tagName}&attributes(attributes)
-				if attributes['inline-template']
-					block
-		else
-			#{componentName}&attributes(attributes)
-				if attributes['inline-template']
-					block
-
-	//-
-	mixin test
-		.type-of-inline-template&attributes(attributes)= typeof attributes['inline-template']
-		.value-inline-template&attributes(attributes)= attributes['inline-template']
-	//-
-
 doctype html
 html(lang=lang)
 	head
 		block title
-			title= VUE_APP_NAME + ' — ' + title || htmlWebpackPlugin.options.title
+			title= (title || htmlWebpackPlugin.options.title) + ' — ' + VUE_APP_NAME
 
 		block meta
 			meta(charset="utf-8")

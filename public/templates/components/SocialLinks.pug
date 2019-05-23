@@ -1,0 +1,24 @@
+mixin SocialLinks()
+	-
+		const links = [
+			['VK', 'vk'],
+			['Facebook', 'facebook'],
+			['Twitter', 'twitter'],
+			['Яндекс Дзен', 'yandex-zen'],
+			['Instagram', 'instagram']
+		]
+
+	template
+		nav.host.social-links&attributes(attributes)
+			.grid
+				each link in links
+					.grid-cell
+						a.link(
+							href=""
+							target="_blank"
+							title=link[0]
+						)
+							base-icon(
+								:class="['link-icon', {'link-icon-is-masked': linkIconIsMasked}]"
+								icon-name=link[1]
+							)

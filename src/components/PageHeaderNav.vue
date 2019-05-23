@@ -1,28 +1,24 @@
 <script>
 	export default {
-		name: 'AppPageHeaderNav',
-		template: '#app-page-header-nav'
+		name: 'PageHeaderNav',
+		template: '#page-header-nav'
 	};
 </script>
 
 <style scoped>
-	.AppPageHeaderNav {
-		all: initial;
-
-		& {
-			display: block;
-		}
+	.page-header-nav {
+		display: block;
 	}
 
-	.l-grid {
+	.grid {
 		display: flex;
 	}
 
-	.l-grid-item {
+	.grid-cell {
 		min-width: 0;
 	}
 
-	.nav-item {
+	.link {
 		display: flex;
 		align-items: center;
 		height: 100%;
@@ -31,7 +27,7 @@
 
 		&:not(.is-active) {
 			&:hover {
-				.nav-item-text {
+				.link-text {
 					&::before {
 						transition: transform 0.4s 0.1s;
 						transform: translateX(105%);
@@ -41,19 +37,19 @@
 		}
 
 		&.is-active {
-			.nav-item-text {
+			.link-text {
 				&::before {
 					transform: translateX(0);
 				}
 			}
 
 			&:hover {
-				.nav-item-text {
+				.link-text {
 					&::before {
-						animation: nav-item-is-active_hover 0.4s 0.1s;
+						animation: link-is-active_hover 0.4s 0.1s;
 					}
 
-					@keyframes nav-item-is-active_hover {
+					@keyframes link-is-active_hover {
 						49.99999% {
 							transform: translateX(105%);
 						}
@@ -67,9 +63,9 @@
 		}
 	}
 
-	.nav-item-text {
-		color: #0a0a0a;
-		font-family: var(--font-family, sans-serif);
+	.link-text {
+		color: var(--color);
+		font-family: var(--font-family);
 		font-size: range(1.4rem, 1.6rem);
 		font-weight: 500;
 		line-height: 1.25;
@@ -85,7 +81,6 @@
 			left: 0;
 			width: 100%;
 			border-top: 2px solid;
-			/*margin-top: -1px;*/
 			transform: translateX(-105%);
 		}
 	}

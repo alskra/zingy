@@ -6,7 +6,7 @@
 
 <style>
 	:root {
-		--ZingySection_height: range(600px / 2.5, 600px);
+		--zingy-section_height: range(600px / 2.5, 600px);
 	}
 </style>
 
@@ -16,10 +16,28 @@
 		flex-flow: column;
 		box-sizing: border-box;
 		width: 100%;
-		height: var(--ZingySection_height);
-		background: url("../assets/img/about-zingy-bg.jpg") no-repeat 50% 50% / cover;
+		height: var(--zingy-section_height);
+		position: relative;
 
-		:root:not(.is-ie) & {
+		&::before {
+			@keyframes zingy-section_scale-bg {
+				50% {
+					transform: scale(1.5);
+				}
+			}
+
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url("../assets/img/about-zingy-bg.jpg") no-repeat 50% 50% / cover;
+			animation: zingy-section_scale-bg 40s ease-in-out infinite;
+			transform-origin: 50% 100%;
+		}
+
+		:root:not(.is-browser-ie) & {
 			position: fixed;
 			bottom: 0;
 			left: 0;
@@ -30,7 +48,7 @@
 		position: relative;
 		margin: auto auto auto calc(50% - 228 / 34 * 1em);
 		color: #ffffff;
-		font-family: var(--font-family, sans-serif);
+		font-family: var(--font-family);
 		font-size: range(34px / 2.5, 34px);
 		font-weight: 400;
 		line-height: 1.5;
@@ -76,19 +94,20 @@
 	}
 
 	.grid {
+		position: relative;
 		width: calc(100% - 2 * var(--grid-padding));
 		max-width: var(--grid-width);
-		padding: 0 var(--grid-padding);
+		padding: 0 var(--grid-cell-padding);
 		margin: 0 auto;
 	}
 
 	.content {
 		color: #ffffff;
-		font-family: var(--font-family, sans-serif);
+		font-family: var(--font-family);
 		font-size: range(1.6rem / 1.5, 1.6rem);
 		font-weight: 300;
 		line-height: 1.25;
-		padding: range(10px, 20px) 0;
+		padding: range(20px / 2, 20px) 0;
 		text-align: right;
 
 		>>> p {

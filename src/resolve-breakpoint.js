@@ -28,4 +28,5 @@ export default function resolveBreakpoint() {
 }
 
 resolveBreakpoint();
+
 window.addEventListener('resize', resolveBreakpoint);

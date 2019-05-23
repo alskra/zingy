@@ -30,7 +30,7 @@
 	.text {
 		color: #ffffff;
 		font-family: var(--font-family);
-		font-size: range(1.4rem, 1.4rem);
+		font-size: range(1.2rem, 1.4rem);
 		font-weight: 500;
 		letter-spacing: calc(1.05 / 14 * 1em);
 		text-transform: uppercase;

@@ -1,19 +1,19 @@
-include AppPageHeader
-include AppPageFooter
+include PageHeader
+include PageFooter
 include ZingySection
 
 mixin AppPage()
 	template
 		.host.app-page&attributes(attributes)
 			.body
-				app-page-header.header(inline-template)
-					+AppPageHeader()
+				page-header.header(inline-template)
+					+PageHeader()
 
 				.main
 					block
 
-				app-page-footer.footer(inline-template)
-					+AppPageFooter()
+				page-footer.footer(inline-template)
+					+PageFooter()
 
 			zingy-section(inline-template)
 				+ZingySection()

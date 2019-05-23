@@ -1,10 +1,14 @@
 extends layout
 
+include components/PageHeaderNav
 include components/AppPageIsIndex
-include components/AppPageHeaderNav
+
+append variables
+	-
+		title = 'Главная';
 
 block templates
-	+AppPageHeaderNav()
+	+PageHeaderNav()
 
 block app
 	app-page-is-index(inline-template)
