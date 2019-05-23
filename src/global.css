@@ -23,6 +23,7 @@
 	font-size: percentage(10 / 16);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	text-size-adjust: 100%;
 }
 
 :focus:not(:focus-visible) {

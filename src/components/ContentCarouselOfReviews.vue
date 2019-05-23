@@ -36,7 +36,7 @@
 		}
 	}
 
-	.BaseIcon.background-quote {
+	.background-quote.host {
 		position: absolute;
 		top: range(-10px, -20px);
 		left: range(10px, -190px);

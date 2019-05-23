@@ -1,6 +1,11 @@
 <script>
+	import Inputmask from 'inputmask';
+
 	export default {
-		name: 'FeedbackSection'
+		name: 'FeedbackSection',
+		mounted() {
+			Inputmask({regex: '\\+\\d*'}).mask(this.$el.querySelectorAll('input[type="tel"]'));
+		}
 	};
 </script>
 
@@ -14,23 +19,18 @@
 			background-color: white;
 			position: relative;
 			min-height: range(504px / 2, 504px);
-			/*min-height: calc(504 / 1920 * 100vw);*/
 			overflow: hidden;
 		}
 	}
 
-	.BaseIcon.bg-icon {
-		/*width: range(502px / 2, 502px);*/
-		/*height: auto;*/
-		width: auto;
+	.bg-icon.host {
+		width: range(504px / 2, 504px);
 		height: range(504px / 2, 504px);
-		/*height: calc(504 / 1920 * 100vw);*/
 		color: #f0f0f0;
 		position: absolute;
 		top: range(80px / 2, 80px);
 		left: 50%;
 		margin-left: range(10px, 213px);
-		/*margin-left: calc(213 / 1920 * 100vw);*/
 		pointer-events: none;
 	}
 

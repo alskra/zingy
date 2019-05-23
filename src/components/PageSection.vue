@@ -52,9 +52,5 @@
 		font-weight: 500;
 		line-height: 1.25;
 		margin: 0;
-
-		@media (width < 768px) {
-			text-align: center;
-		}
 	}
 </style>

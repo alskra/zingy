@@ -24,7 +24,7 @@
 		background: url("../assets/img/section-services-bg.jpg") no-repeat 50% 50% / cover;
 	}
 
-	.services-list {
+	.services {
 		position: relative;
 
 		@media (width >= 768px) {
@@ -37,17 +37,14 @@
 		}
 	}
 
-	.services-list-item {
+	.services-item {
 		display: block;
 		color: var(--color);
 		text-decoration: none;
-		/*background-color: rgba(0, 0, 0, 0.6);*/
-		/*box-shadow: 0 0 0 1px red inset;*/
 
 		&::before {
 			content: '';
 			position: absolute;
-			/*z-index: 1;*/
 			top: 0;
 			left: 0;
 			width: 100%;
@@ -55,19 +52,20 @@
 			background-color: inherit;
 			opacity: 0;
 			transition: opacity 0.3s;
-			/*mix-blend-mode: overlay;*/
-			/*mix-blend-mode: multiply;*/
-			/*mix-blend-mode: hard-light;*/
-			mix-blend-mode: color;
 			pointer-events: none;
+
+			:root:not(.is-browser-mobile-safari) & {
+				mix-blend-mode: color;
+			}
 		}
 
 		&:hover {
 			&::before {
 				opacity: 1;
 
-				:root.is-ie & {
-					opacity: 0.5;
+				:root.is-browser-ie &,
+				:root.is-browser-mobile-safari & {
+					opacity: 0.3;
 				}
 			}
 		}
@@ -88,7 +86,7 @@
 		}
 	}
 
-	.services-list-item-is-1 {
+	.services-item-is-1 {
 		background: url("../assets/img/services/create-logo.jpg") no-repeat 50% 50% / cover #00ffff;
 
 		@media (width >= 768px) {
@@ -99,7 +97,7 @@
 		}
 	}
 
-	.services-list-item-is-2 {
+	.services-item-is-2 {
 		background: url("../assets/img/services/audit.jpg") no-repeat 50% 50% / cover #006d68;
 
 		@media (width >= 768px) {
@@ -111,7 +109,7 @@
 		}
 	}
 
-	.services-list-item-is-3 {
+	.services-item-is-3 {
 		background: url("../assets/img/services/single-page-site.jpg") no-repeat 50% 50% / cover #009640;
 
 		@media (width >= 768px) {
@@ -122,7 +120,7 @@
 		}
 	}
 
-	.services-list-item-is-4 {
+	.services-item-is-4 {
 		background: url("../assets/img/services/seo-kernel.jpg") no-repeat 50% 50% / cover #3aaa35;
 
 		@media (width >= 768px) {
@@ -133,7 +131,7 @@
 		}
 	}
 
-	.services-list-item-is-5 {
+	.services-item-is-5 {
 		background: url("../assets/img/services/corp-site.jpg") no-repeat 50% 50% / cover #a76700;
 
 		@media (width >= 768px) {
@@ -144,7 +142,7 @@
 		}
 	}
 
-	.services-list-item-is-6 {
+	.services-item-is-6 {
 		background: url("../assets/img/services/e-market.jpg") no-repeat 50% 50% / cover #7b3200;
 
 		@media (width >= 768px) {
@@ -155,7 +153,7 @@
 		}
 	}
 
-	.services-list-item-box {
+	.services-item-inner {
 		box-sizing: border-box;
 		width: 100%;
 		height: 100%;
@@ -170,7 +168,7 @@
 		}
 	}
 
-	.services-list-item-title {
+	.services-item-title {
 		color: #ffffff;
 		font-family: var(--font-family);
 		font-size: range(3.6rem / 2.5, 3.6rem);
