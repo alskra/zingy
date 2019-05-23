@@ -267,14 +267,7 @@
 	}
 
 	.menu-button-icon.host {
-		/*width: 32px;*/
-		/*height: 27px;*/
 		transform: scale(range(44 / 58, 1));
-
-		@media (width < 1024px) {
-			/*width: 26px;*/
-			/*height: 21px;*/
-		}
 	}
 
 	.right-panel-box {

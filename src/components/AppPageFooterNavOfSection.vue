@@ -75,7 +75,7 @@
 
 	.hover-item {
 		width: 3px;
-		height: 28px;
+		height: calc(range(1.6rem, 1.8rem) * 1.25 + 6px);
 		background-color: #e04b4a;
 		position: absolute;
 		top: 0;
