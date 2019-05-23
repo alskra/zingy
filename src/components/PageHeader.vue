@@ -92,7 +92,7 @@
 		z-index: 10;
 		display: flex;
 		justify-content: flex-end;
-		width: range(48px, 58px);
+		width: range(44px, 58px);
 		overflow: hidden;
 
 		&.v-appear-active {
@@ -119,8 +119,8 @@
 
 	.logo {
 		display: block;
-		width: range(48px, 58px);
-		height: range(48px, 58px);
+		width: range(44px, 58px);
+		height: range(44px, 58px);
 		flex-shrink: 0;
 		background-color: #252525;
 		color: white;
@@ -138,7 +138,7 @@
 	.nav-box {
 		position: absolute;
 		top: 0;
-		left: range(48px, 58px);
+		left: range(44px, 58px);
 		z-index: 10;
 		display: flex;
 		justify-content: flex-end;
@@ -184,11 +184,11 @@
 	.menu-button-box {
 		position: absolute;
 		top: 0;
-		left: range(48px, 58px);
+		left: range(44px, 58px);
 		z-index: 10;
 		display: flex;
 		justify-content: flex-end;
-		width: range(48px, 58px);
+		width: range(44px, 58px);
 		overflow: hidden;
 
 		&.v-enter-active,
@@ -255,8 +255,8 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			width: range(48px, 58px);
-			height: range(48px, 58px);
+			width: range(44px, 58px);
+			height: range(44px, 58px);
 			flex-shrink: 0;
 			background-color: #f0f0f0;
 			color: #0a0a0a;
@@ -315,7 +315,7 @@
 	.right-panel {
 		flex-shrink: 0;
 		padding: 0 range(0px, 20px);
-		height: range(48px, 58px);
+		height: range(44px, 58px);
 		background-color: #f0f0f0;
 	}
 
@@ -384,7 +384,7 @@
 		z-index: 10;
 		display: flex;
 		justify-content: flex-start;
-		width: range(48px, 58px);
+		width: range(44px, 58px);
 		overflow: hidden;
 
 		&.v-enter-active,
@@ -428,8 +428,8 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			width: range(48px, 58px);
-			height: range(48px, 58px);
+			width: range(44px, 58px);
+			height: range(44px, 58px);
 			flex-shrink: 0;
 			background-color: var(--color-zingy);
 			color: white;
@@ -440,8 +440,8 @@
 	}
 
 	.phone-button-icon.host {
-		width: range(48 / 58 * 32px, 32px);
-		height: range(48 / 58 * 32px, 32px);
+		width: range(44 / 58 * 32px, 32px);
+		height: range(44 / 58 * 32px, 32px);
 	}
 
 	.sidebar-backdrop {
@@ -570,7 +570,7 @@
 		position: absolute;
 		top: range(10px, 40px);
 		right: range(10px, 40px);
-		height: range(48px, 58px);
+		height: range(44px, 58px);
 		display: flex;
 		align-items: center;
 	}

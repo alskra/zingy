@@ -14,7 +14,7 @@
 	.page-header-nav-is-top {
 		box-sizing: border-box;
 		max-width: 50vw;
-		height: range(48px, 58px);
+		height: range(44px, 58px);
 		background-color: #f0f0f0;
 		padding: 0 range(0px, 20px);
 	}

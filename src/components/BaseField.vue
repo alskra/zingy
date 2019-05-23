@@ -38,7 +38,7 @@
 		align-items: center;
 		box-sizing: border-box;
 		padding: 5px range(15px, 20px);
-		height: range(48px, 56px);
+		height: range(44px, 56px);
 		border: 1px solid currentColor;
 		color: var(--color);
 		font-family: var(--font-family);
