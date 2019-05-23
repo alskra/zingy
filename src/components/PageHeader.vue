@@ -267,7 +267,11 @@
 	}
 
 	.menu-button-icon.host {
-		@media (width < 960px) {
+		@media (width < 1280px) {
+			transform: scale(calc(5 / 6));
+		}
+
+		@media (width < 640px) {
 			transform: scale(calc(2 / 3));
 		}
 	}
