@@ -3,27 +3,45 @@ mixin PageSectionIsServices(title = 'Популярные услуги')
 
 	+PageSection(title).PageSectionIsServices
 		nav.services
-			a.services-item.services-item-is-1(href="")
+			a(
+				:class="['services-item', 'services-item-is-1', {'services-item-has-mix-blend-mode': servicesItemHasMixBlendMode}]"
+				href=""
+			)
 				.services-item-inner
 					h3.services-item-title Создание логотипа
 
-			a.services-item.services-item-is-2(href="")
+			a(
+				:class="['services-item', 'services-item-is-2', {'services-item-has-mix-blend-mode': servicesItemHasMixBlendMode}]"
+				href=""
+			)
 				.services-item-inner
 					h3.services-item-title Аудит сайта
 
-			a.services-item.services-item-is-3(href="")
+			a(
+				:class="['services-item', 'services-item-is-3', {'services-item-has-mix-blend-mode': servicesItemHasMixBlendMode}]"
+				href=""
+			)
 				.services-item-inner
 					h3.services-item-title Разработка сайта-визитки
 
-			a.services-item.services-item-is-4(href="")
+			a(
+				:class="['services-item', 'services-item-is-4', {'services-item-has-mix-blend-mode': servicesItemHasMixBlendMode}]"
+				href=""
+			)
 				.services-item-inner
 					h3.services-item-title Сбор семантического ядра
 
-			a.services-item.services-item-is-5(href="")
+			a(
+				:class="['services-item', 'services-item-is-5', {'services-item-has-mix-blend-mode': servicesItemHasMixBlendMode}]"
+				href=""
+			)
 				.services-item-inner
 					h3.services-item-title Разработка корпоративного сайта
 
-			a.services-item.services-item-is-6(href="")
+			a(
+				:class="['services-item', 'services-item-is-6', {'services-item-has-mix-blend-mode': servicesItemHasMixBlendMode}]"
+				href=""
+			)
 				.services-item-inner
 					h3.services-item-title Разработка и SEO продвижение интернет-магазина
 

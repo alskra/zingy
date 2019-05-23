@@ -5,6 +5,11 @@
 		name: 'PageSectionIsServices',
 		extends: {
 			PageSection
+		},
+		data() {
+			return {
+				servicesItemHasMixBlendMode: document.documentElement.style.mixBlendMode !== undefined
+			};
 		}
 	};
 </script>
@@ -53,20 +58,11 @@
 			opacity: 0;
 			transition: opacity 0.3s;
 			pointer-events: none;
-
-			:root:not(.is-browser-mobile-safari) & {
-				mix-blend-mode: color;
-			}
 		}
 
 		&:hover {
 			&::before {
-				opacity: 1;
-
-				:root.is-browser-ie &,
-				:root.is-browser-mobile-safari & {
-					opacity: 0.3;
-				}
+				opacity: 0.3;
 			}
 		}
 
@@ -83,6 +79,20 @@
 		@media (width < 425px) {
 			width: 100%;
 			height: 30vw;
+		}
+	}
+
+	.services-item-has-mix-blend-mode {
+		:root:not(.is-browser-mobile-safari) & {
+			&::before {
+				mix-blend-mode: color;
+			}
+
+			&:hover {
+				&::before {
+					opacity: 1;
+				}
+			}
 		}
 	}
 
