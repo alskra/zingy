@@ -19,7 +19,8 @@ mixin FeedbackSection()
 										type="tel"
 										placeholder="Телефон"
 										required
-										pattern="\\+[0-9]{10}[0-9]*"
+										pattern="\\+[0-9]{8}[0-9]*"
+										data-pattern-mismatch="Номер должен быть не короче 8 цифр"
 									)
 
 								.form-grid-cell

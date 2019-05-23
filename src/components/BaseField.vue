@@ -22,7 +22,7 @@
 				event.target.classList.add('is-invalid');
 
 				if (event.target.validity.patternMismatch) {
-					event.target.setCustomValidity('Номер должен быть не короче 10 цифр')
+					event.target.setCustomValidity(event.target.dataset.patternMismatch)
 				} else if (!event.target.validity.valid) {
 					event.target.setCustomValidity('Обязательное поле!')
 				}
@@ -39,7 +39,7 @@
 		box-sizing: border-box;
 		padding: 5px range(10px, 20px);
 		height: range(40px, 56px);
-		border: 1px solid var(--color);
+		border: 1px solid currentColor;
 		color: var(--color);
 		font-family: var(--font-family);
 		font-size: range(1.6rem, 1.8rem);
@@ -69,7 +69,11 @@
 		}
 
 		&.is-invalid {
-			border-color: red;
+			color: red;
+
+			&::placeholder {
+				color: red;
+			}
 		}
 
 		&.is-full-width {
