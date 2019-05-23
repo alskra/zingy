@@ -88,6 +88,8 @@
 
 	.base-icon-is-menu {
 		position: relative;
+		width: 36px;
+		height: 30px;
 
 		:root:not(.is-sidebar-opened) & {
 			&:hover {
@@ -159,7 +161,7 @@
 		position: absolute;
 		left: 0;
 		width: 100%;
-		height: 2px;
+		height: 3px;
 		background-color: currentColor;
 		transform-origin: 50% 50%;
 		background-clip: content-box;
@@ -172,19 +174,17 @@
 		}
 
 		&:nth-child(2) {
-			top: percentage(1 / 3);
+			top: 9px;
 			width: 99%;
-			transform: translateY(-50%);
 		}
 
 		&:nth-child(3) {
-			bottom: percentage(1 / 3);
+			top: 18px;
 			width: 34%;
-			transform: translateY(50%);
 		}
 
 		&:nth-child(4) {
-			bottom: 0;
+			top: 27px;
 			width: 68%;
 		}
 	}
