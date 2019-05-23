@@ -167,6 +167,7 @@
 		background-clip: content-box;
 		box-sizing: border-box;
 		transition: all 0.2s;
+		will-change: top, width, padding, transform;
 
 		&:nth-child(1) {
 			top: 0;
