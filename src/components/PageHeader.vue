@@ -324,11 +324,11 @@
 		display: flex;
 		align-items: center;
 		height: 100%;
-		margin: 0 range(0px, -30px);
+		margin: 0 range(0px, -20px);
 	}
 
 	.right-panel-grid-cell {
-		margin: 0 range(0px, 30px);
+		margin: 0 range(0px, 20px);
 	}
 
 	.link {
