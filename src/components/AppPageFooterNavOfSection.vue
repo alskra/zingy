@@ -66,7 +66,7 @@
 	.nav-item {
 		width: 100%;
 		font-weight: 300;
-		padding-left: 28px;
+		padding-left: range(18px, 28px);
 	}
 
 	.nav-item-text {
@@ -88,7 +88,7 @@
 	.nav-name {
 		overflow: hidden;
 		text-overflow: ellipsis;
-		padding: 3px 0 3px 28px;
+		padding: 3px 0 3px range(18px, 28px);
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
 		font-size: range(1.6rem, 1.8rem);
