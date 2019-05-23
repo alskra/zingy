@@ -252,6 +252,9 @@
 		all: initial;
 
 		& {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			width: range(40px, 58px);
 			height: range(40px, 58px);
 			flex-shrink: 0;
@@ -264,7 +267,8 @@
 	}
 
 	.menu-button-icon.host {
-		border: range(40 / 58 * 9px, 9px) solid transparent;
+		width: range(40 / 58 * 32px, 32px);
+		height: range(40 / 58 * 26px, 26px);
 	}
 
 	.right-panel-box {
@@ -416,6 +420,9 @@
 		all: initial;
 
 		& {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			width: range(40px, 58px);
 			height: range(40px, 58px);
 			flex-shrink: 0;
@@ -428,7 +435,8 @@
 	}
 
 	.phone-button-icon.host {
-		border: range(40 / 58 * 9px, 9px) solid transparent;
+		width: range(40 / 58 * 32px, 32px);
+		height: range(40 / 58 * 32px, 32px);
 	}
 
 	.sidebar-backdrop {

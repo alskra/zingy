@@ -130,7 +130,9 @@
 					transform: translate(-25%, -50%) rotate(-45deg);
 				}
 			}
+		}
 
+		:root.is-sidebar-opened:not(.is-device-mobile) & {
 			&:hover {
 				.menu-icon-line {
 					&:nth-child(1),
@@ -152,34 +154,34 @@
 
 	.menu-icon-line {
 		position: absolute;
-		top: 0;
 		left: 0;
 		width: 100%;
 		height: 2px;
 		background-color: currentColor;
 		transform-origin: 50% 50%;
-		transform: translateY(-50%);
 		background-clip: content-box;
 		box-sizing: border-box;
 		transition: all 0.2s;
 
 		&:nth-child(1) {
-			top: percentage(5 / 40);
+			top: 0;
 			width: 57%;
 		}
 
 		&:nth-child(2) {
-			top: percentage(15 / 40);
+			top: percentage(1 / 3);
 			width: 91%;
+			transform: translateY(-50%);
 		}
 
 		&:nth-child(3) {
-			top: percentage(25 / 40);
+			bottom: percentage(1 / 3);
 			width: 34%;
+			transform: translateY(50%);
 		}
 
 		&:nth-child(4) {
-			top: percentage(35 / 40);
+			bottom: 0;
 			width: 68%;
 		}
 	}
