@@ -57,7 +57,7 @@ mixin PageHeader()
 								) Начать проект
 
 			transition-box(:duration="{enter: 500, leave: 300}")
-				.phone-button-box(v-show="startAnimateIsEnd && headerIsMinimized")
+				.phone-button-box(v-show="startAnimateIsEnd && headerIsMinimized && !sidebarIsOpened")
 					a.phone-button(href="tel:+79854575817")
 						base-icon.phone-button-icon(icon-name="phone")
 

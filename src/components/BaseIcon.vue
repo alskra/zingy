@@ -119,7 +119,7 @@
 				&:nth-child(4) {
 					top: 50%;
 					width: 100%;
-					padding-left: 47%;
+					padding-left: 48%;
 				}
 
 				&:nth-child(1) {
@@ -162,14 +162,6 @@
 		background-clip: content-box;
 		box-sizing: border-box;
 		transition: all 0.2s;
-
-		&::before {
-			content: '';
-			display: block;
-			height: 100%;
-			background-color: inherit;
-			transform: translateY(-50%);
-		}
 
 		&:nth-child(1) {
 			top: percentage(5 / 40);
