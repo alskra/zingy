@@ -267,8 +267,14 @@
 	}
 
 	.menu-button-icon.host {
-		width: range(40 / 58 * 32px, 32px);
-		height: range(40 / 58 * 26px, 26px);
+		width: 32px;
+		height: 26px;
+
+		@media (width < 1024px) {
+			width: 24px;
+			/*height: calc(26 / 32 * 26px);*/
+			height: 20px;
+		}
 	}
 
 	.right-panel-box {

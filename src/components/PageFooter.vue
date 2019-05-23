@@ -28,7 +28,7 @@
 	}
 
 	.grid {
-		padding: 0 range(10px, 110px);
+		padding: 0 var(--grid-padding);
 		box-sizing: border-box;
 		max-width: env(--max-breakpoint);
 		margin: 0 auto;

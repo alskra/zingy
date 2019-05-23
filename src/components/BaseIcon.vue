@@ -20,6 +20,9 @@
 		template(v-else-if="iconName === 'instagram'")
 			include ../assets/img/icons/instagram.svg
 
+		template(v-else-if="iconName === 'youtube'")
+			include ../assets/img/icons/youtube.svg
+
 		template(v-else-if="iconName === 'zingy'")
 			include ../assets/img/icons/zingy.svg
 
@@ -98,7 +101,7 @@
 					}
 
 					&:nth-child(3) {
-						width: 90%;
+						width: 99%;
 					}
 
 					&:nth-child(4) {
@@ -170,7 +173,7 @@
 
 		&:nth-child(2) {
 			top: percentage(1 / 3);
-			width: 91%;
+			width: 99%;
 			transform: translateY(-50%);
 		}
 

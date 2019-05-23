@@ -84,5 +84,9 @@
 		&.base-icon-is-instagram {
 			mask: url("../assets/img/icons/instagram.svg");
 		}
+
+		&.base-icon-is-youtube {
+			mask: url("../assets/img/icons/youtube.svg");
+		}
 	}
 </style>
