@@ -45,8 +45,11 @@
 	.grid-cell {
 		box-sizing: border-box;
 		padding: 0 var(--grid-cell-padding);
-		width: percentage(10 / 12);
 		margin: 0 auto;
+
+		@media (width >= 768px) {
+			width: percentage(10 / 12);
+		}
 	}
 
 	.title {
@@ -92,12 +95,12 @@
 	.form-grid {
 		display: flex;
 		flex-wrap: wrap;
-		margin: -10px range(-10px, -30px);
+		margin: range(-5px, -10px) range(-10px, -30px);
 	}
 
 	.form-grid-cell {
 		min-width: 0;
-		margin: 10px range(10px, 30px);
+		margin: range(5px, 10px) range(10px, 30px);
 		flex-grow: 1;
 	}
 

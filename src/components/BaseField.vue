@@ -37,7 +37,7 @@
 		vertical-align: top;
 		align-items: center;
 		box-sizing: border-box;
-		padding: 5px range(10px, 20px);
+		padding: 5px range(15px, 20px);
 		height: range(40px, 56px);
 		border: 1px solid currentColor;
 		color: var(--color);
