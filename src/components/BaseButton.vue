@@ -23,7 +23,7 @@
 		justify-content: center;
 		align-items: center;
 		box-sizing: border-box;
-		padding: 5px 20px;
+		padding: 5px range(10px, 20px);
 		max-width: 100%;
 		height: range(40px, 56px);
 		background-color: var(--color);

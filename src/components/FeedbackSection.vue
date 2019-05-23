@@ -10,17 +10,13 @@
 </script>
 
 <style scoped>
-	.FeedbackSection {
-		all: initial;
-
-		& {
-			display: block;
-			padding: range(80px / 2, 80px) 0;
-			background-color: white;
-			position: relative;
-			min-height: range(504px / 2, 504px);
-			overflow: hidden;
-		}
+	.feedback-section {
+		display: block;
+		padding: range(80px / 2, 80px) 0;
+		background-color: white;
+		position: relative;
+		min-height: range(504px / 2, 504px);
+		overflow: hidden;
 	}
 
 	.bg-icon.host {
@@ -34,35 +30,23 @@
 		pointer-events: none;
 	}
 
-	.content-box {
-		width: calc(100% - 2 * var(--content-box-gutter));
-		max-width: var(--content-box-width);
-		padding: 0 var(--content-box-gutter);
+	.grid {
+		width: calc(100% - 2 * var(--grid-padding));
+		max-width: var(--grid-width);
+		padding: 0 var(--grid-padding);
 		margin: 0 auto;
 		position: relative;
 	}
 
-	.content-grid {
-		margin: 0 -10px;
+	.grid-row {
+		margin: 0 calc(-1 * var(--grid-cell-padding));
 	}
 
-	.content-grid-item {
+	.grid-cell {
 		box-sizing: border-box;
-		padding: 0 10px;
+		padding: 0 var(--grid-cell-padding);
 		width: percentage(10 / 12);
 		margin: 0 auto;
-	}
-
-	.content-grid-item-is-1 {
-		@media (width < 768px) {
-			width: 100%;
-		}
-	}
-
-	.content-grid-item-is-2 {
-		@media (width < 1024px) {
-			width: 100%;
-		}
 	}
 
 	.title {
@@ -74,7 +58,7 @@
 		line-height: 1.25;
 	}
 
-	.text {
+	.content {
 		color: var(--color);
 		font-family: var(--font-family);
 		font-size: range(1.4rem, 1.6rem);
@@ -91,12 +75,12 @@
 		}
 	}
 
-	.text-is-description {
+	.content-is-description {
 		font-size: range(1.6rem, 1.8rem);
 		margin-bottom: range(70px / 2, 70px);
 	}
 
-	.text-is-info {
+	.content-is-info {
 		font-size: range(1.2rem, 1.4rem);
 		margin-top: range(40px / 2, 40px);
 	}
@@ -111,18 +95,18 @@
 		margin: -10px range(-10px, -30px);
 	}
 
-	.form-grid-item {
+	.form-grid-cell {
 		min-width: 0;
 		margin: 10px range(10px, 30px);
 		flex-grow: 1;
 	}
 
-	.BaseField.form-field {
+	.form-field.host {
 		/*width: 300px;*/
 		width: 100%;
 	}
 
-	.BaseButtonIsPrimary.form-button {
+	.form-button.host {
 		/*width: 200px;*/
 		width: 100%;
 	}

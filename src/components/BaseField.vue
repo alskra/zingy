@@ -6,34 +6,56 @@
 
 <script>
 	export default {
-		name: 'BaseField'
+		name: 'BaseField',
+		data() {
+			return {
+				valid: true
+			};
+		},
+		methods: {
+			onInput(event) {
+				event.target.classList.remove('is-invalid');
+				event.target.setCustomValidity('');
+				event.target.checkValidity();
+			},
+			onInvalid(event) {
+				event.target.classList.add('is-invalid');
+
+				if (event.target.validity.patternMismatch) {
+					event.target.setCustomValidity('Номер должен быть не короче 10 цифр')
+				} else if (!event.target.validity.valid) {
+					event.target.setCustomValidity('Обязательное поле!')
+				}
+			}
+		}
 	};
 </script>
 
 <style scoped>
-	.BaseField {
-		all: initial;
+	.base-field {
+		display: inline-flex;
+		vertical-align: top;
+		align-items: center;
+		box-sizing: border-box;
+		padding: 5px range(10px, 20px);
+		height: range(40px, 56px);
+		border: 1px solid var(--color);
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(1.6rem, 1.8rem);
+		line-height: 1.25;
+		max-width: 100%;
+		background-color: white;
+		transition-property:
+			color,
+			background-color,
+			border-color,
+			box-shadow;
+		transition-duration: 0.2s;
 
-		& {
-			display: inline-flex;
-			vertical-align: top;
-			align-items: center;
-			box-sizing: border-box;
-			padding: 5px 20px;
-			height: 56px;
-			border: 1px solid #050505;
+		&::placeholder {
 			color: var(--color);
-			font-family: var(--font-family);
-			font-size: 1.8rem;
-			line-height: 1.25;
-			max-width: 100%;
-			background-color: white;
-			transition-property:
-				color,
-				background-color,
-				border-color,
-				box-shadow;
-			transition-duration: 0.2s;
+			font-weight: 300;
 		}
 
 		&:focus-visible {
@@ -46,9 +68,12 @@
 			opacity: 0.5;
 		}
 
-		&::placeholder {
-			color: var(--color);
-			font-weight: 300;
+		&.is-invalid {
+			border-color: red;
+		}
+
+		&.is-full-width {
+			width: 100%;
 		}
 	}
 </style>

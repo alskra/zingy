@@ -1,24 +1,34 @@
 mixin FeedbackSection()
 	template
-		.FeedbackSection&attributes(attributes)
+		section.host.feedback-section&attributes(attributes)
 			base-icon.bg-icon(icon-name="chess")
 
-			.content-box
-				.content-grid
-					.content-grid-item.content-grid-item-is-1
+			.grid
+				.grid-row
+					.grid-cell
 						h2.title Грамотная первая консультация #[br]—&nbsp;99%&nbsp;успеха!
-						.text.text-is-description Оставьте заявку на консультацию
+						.content.content-is-description Оставьте заявку на консультацию
 
-					.content-grid-item.content-grid-item-is-1
-						form.form(action="")
+					.grid-cell
+						form.form(
+							action=""
+						)
 							.form-grid
-								.form-grid-item
-									base-field.form-field(type="tel" placeholder="Телефон")
+								.form-grid-cell
+									base-field.form-field(
+										type="tel"
+										placeholder="Телефон"
+										required
+										pattern="\\+[0-9]{10}[0-9]*"
+									)
 
-								.form-grid-item
-									base-field.form-field(type="url" placeholder="Ссылка на сайт")
+								.form-grid-cell
+									base-field.form-field(
+										type="url"
+										placeholder="Ссылка на сайт"
+									)
 
-								.form-grid-item
-									base-button-is-primary.form-button Отправить
+								.form-grid-cell
+									base-button.form-button Отправить
 
-							.text.text-is-info *&nbsp;Отправляя заявку, вы соглашаетесь с #[a(href="" target="_blank") условиями передачи информации].
+							.content.content-is-info *&nbsp;Отправляя заявку, вы соглашаетесь с #[a(href="" target="_blank") условиями передачи информации].

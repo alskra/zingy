@@ -48,7 +48,7 @@ module.exports = {
 					replace: true
 				},
 				'any-link-pseudo-class': true,
-				'blank-pseudo-class': true,
+				'blank-pseudo-class': true, // ?
 				'color-functional-notation': true,
 				'custom-media-queries': true,
 				'custom-properties': false, // ?

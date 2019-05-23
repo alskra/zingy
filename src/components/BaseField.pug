@@ -1,2 +1,5 @@
 mixin BaseField()
-	input.BaseField(type='text')&attributes(attributes)
+	input.host.base-field(
+		@input="onInput"
+		@invalid="onInvalid"
+	)&attributes(attributes)
