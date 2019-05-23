@@ -34,7 +34,7 @@
 
 	.main {
 		flex: 1 0 auto;
-		padding: range(64px, 138px) 0 0;
+		padding: range(60px, 138px) 0 0;
 		background-color: white;
 	}
 </style>

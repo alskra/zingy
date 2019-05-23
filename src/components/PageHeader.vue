@@ -80,7 +80,7 @@
 	.page-header {
 		position: fixed;
 		z-index: 100;
-		top: range(10px, 40px);
+		top: range(8px, 40px);
 		right: range(10px, 40px);
 		left: range(10px, 40px);
 	}
@@ -473,7 +473,7 @@
 		box-sizing: border-box;
 		width: range(env(--min-breakpoint), 480px);
 		height: calc(100%);
-		padding: range(70px, 138px) range(10px, 40px) 0;
+		padding: range(60px, 138px) range(10px, 40px) 0;
 		background-color: white;
 		display: flex;
 		flex-flow: column;
