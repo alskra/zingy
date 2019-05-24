@@ -137,7 +137,7 @@
 		box-sizing: border-box;
 		background-color: var(--color-link);
 		transition: transform 0.7s;
-		padding: range(10px, 20px) range(10px, 40px) range(10px, 20px) calc(range(50px, 150px) - range(10px, 27px));
+		padding: range(10px, 20px) range(10px, 40px) range(10px, 20px) range((50px - 10px), (150px - 27px));
 		color: #ffffff;
 		font-family: var(--font-family);
 		font-size: range(1.2rem, 1.4rem);
