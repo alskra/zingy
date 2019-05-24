@@ -1,6 +1,7 @@
 mixin AppPageIsIndex()
 	include AppPage
 	include QuoteSection
+	include ServiceSection
 	include WorkSection
 	include PageSection
 	include ContentCarouselOfWorks
@@ -11,6 +12,9 @@ mixin AppPageIsIndex()
 	+AppPage().app-page-is-index&attributes(attributes)
 		quote-section(inline-template)
 			+QuoteSection()
+
+		service-section(inline-template)
+			+ServiceSection()
 
 		work-section(inline-template)
 			+WorkSection()

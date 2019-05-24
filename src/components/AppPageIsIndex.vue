@@ -1,6 +1,7 @@
 <script>
 	import AppPage from './AppPage';
 	import QuoteSection from './QuoteSection';
+	import ServiceSection from './ServiceSection';
 	import WorkSection from './WorkSection';
 	import PageSection from './PageSection';
 	import PageSectionIsServices from './PageSectionIsServices';
@@ -11,6 +12,7 @@
 		extends: AppPage,
 		components: {
 			QuoteSection,
+			ServiceSection,
 			WorkSection,
 			PageSection,
 			PageSectionIsServices,
