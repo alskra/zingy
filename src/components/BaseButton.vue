@@ -1,7 +1,9 @@
 <template lang="pug">
-	include BaseButton.pug
+	.host.base-button(:is="tag")&attributes(attributes)
+		slot(name="icon")
 
-	+BaseButton()
+		span.text(v-if="$scopedSlots.default")
+			slot(name="default")
 </template>
 
 <script>

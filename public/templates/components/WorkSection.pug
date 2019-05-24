@@ -1,17 +1,31 @@
 mixin WorkSection()
+	include AwesomeList
+
 	template
-		section.WorkSection
-			.content-box
-				.content
-					.content-overlay.content-overlay-is-left-top
-					.content-overlay.content-overlay-is-left-bottom
-					.content-overlay.content-overlay-is-right-top
+		section.host.work-section
+			.body
+				.body-inner
+					.body-overlay.body-overlay-is-left-top
+					.body-overlay.body-overlay-is-left-bottom
+					.body-overlay.body-overlay-is-right
+
+					.body-stars
+						base-icon.body-stars-item(icon-name="star")
+						base-icon.body-stars-item(icon-name="star")
+						base-icon.body-stars-item(icon-name="star")
+						base-icon.body-stars-item(icon-name="star")
+						base-icon.body-stars-item(icon-name="star")
+						base-icon.body-stars-item(icon-name="star")
+						base-icon.body-stars-item(icon-name="star")
 
 					header.header
 						h2.title Коротко о работе
 
 					.main
-						.text
+						awesome-list(inline-template)
+							+AwesomeList()
+
+						.content
 							p.
 								Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется
 								долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше.

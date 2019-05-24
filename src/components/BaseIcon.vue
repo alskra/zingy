@@ -56,6 +56,9 @@
 
 		template(v-else-if="iconName === 'chess'")
 			include ../assets/img/icons/chess.svg
+
+		template(v-else-if="iconName === 'star'")
+			include ../assets/img/icons/star.svg
 </template>
 
 <script>
