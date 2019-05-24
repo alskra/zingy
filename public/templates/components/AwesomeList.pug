@@ -63,6 +63,13 @@ mixin AwesomeList()
 
 					.item-description
 						.item-description-inner
-							p= item.description
+							vue-truncate-collapsed(
+								clamp=""
+								:length="itemDescriptionLength"
+								less=""
+								type="html"
+								text=`<p>${item.description}</p>`
+							)
+
 							| &nbsp;
-							a.item-read-more(href="") Читать подробнее
+							a.item-read-more(href="") Читать&nbsp;подробнее

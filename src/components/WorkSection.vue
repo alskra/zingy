@@ -118,10 +118,6 @@
 	.awesome-list.host {
 		margin-bottom: range(20px, 40px);
 		margin-right: range(-10px, -140px);
-
-		>>> .item {
-			padding-right: range(10px, 140px);
-		}
 	}
 
 	.content {

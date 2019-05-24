@@ -1,4 +1,6 @@
 <script>
+	import VueTruncateCollapsed from 'vue-truncate-collapsed';
+
 	export default {
 		name: 'AwesomeList',
 		data() {
@@ -7,8 +9,12 @@
 				runningLineStyle: {
 					top: '',
 					height: ''
-				}
+				},
+				itemDescriptionLength: 0
 			};
+		},
+		components: {
+			VueTruncateCollapsed
 		},
 		methods: {
 			onItemMouseenter(event) {
@@ -21,7 +27,17 @@
 						height: item.offsetHeight + 'px'
 					}
 				};
+			},
+			setItemDescriptionLength() {
+				this.itemDescriptionLength = 300 / 1920 * window.innerWidth;
 			}
+		},
+		created() {
+			this.setItemDescriptionLength();
+			window.addEventListener('resize', this.setItemDescriptionLength);
+		},
+		destroyed() {
+			window.removeEventListener('resize', this.setItemDescriptionLength);
 		}
 	};
 </script>
@@ -56,8 +72,6 @@
 
 	.item {
 		display: flex;
-		align-items: baseline;
-		padding-left: 3px;
 		position: relative;
 		overflow: hidden;
 
@@ -68,11 +82,11 @@
 			}
 
 			.item-title{
-				padding-left: range(20px, 40px);
+				transform: translateX(range(20px, 40px));
 			}
 
 			.item-description {
-				transform: translateX(0);
+				transform: translateX(-100%);
 				transition-delay: 0.5s;
 			}
 		}
@@ -85,17 +99,23 @@
 		font-weight: 400;
 		line-height: 1.25;
 		flex-shrink: 0;
-		width: range(75px, 150px);
+		width: range(50px, 150px);
 		text-align: center;
 		transition: color 0.2s;
 		position: relative;
 		z-index: 1;
+		box-sizing: border-box;
+		align-self: center;
+		padding: 0 range(5px, 10px);
 	}
 
 	.item-main {
-		flex-grow: 1;
-		padding: range(15px, 30px) 0;
+		flex-shrink: 0;
+		width: calc(100% - range(50px, 150px));
+		padding: range(15px, 30px) range(10px, 40px) range(15px, 30px) 0;
 		overflow: hidden;
+		box-sizing: border-box;
+		align-self: center;
 	}
 
 	.item-title {
@@ -107,21 +127,17 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		margin: 0;
-		transition: padding-left 0.5s;
+		transition: transform 0.5s;
 		cursor: default;
 	}
 
 	.item-description {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: calc(100% - range(10px, 26px));
-		height: 100%;
+		position: relative;
+		width: calc(100% - range(10px, 27px));
 		box-sizing: border-box;
 		background-color: var(--color-link);
-		transform: translateX(100%);
 		transition: transform 0.7s;
-		padding: range(10px, 20px) range(15px, 30px) range(10px, 20px) calc(range(75px, 150px) - range(10px, 26px));
+		padding: range(10px, 20px) range(10px, 40px) range(10px, 20px) calc(range(50px, 150px) - range(10px, 27px));
 		color: #ffffff;
 		font-family: var(--font-family);
 		font-size: range(1.2rem, 1.4rem);
@@ -129,15 +145,21 @@
 		line-height: 1.25;
 		display: flex;
 		flex-flow: column;
+		flex-shrink: 0;
+		/*transform: translateX(-100%);*/
+	}
+
+	.item-description-inner {
+		margin: auto 0;
+
+		>>> div {
+			display: inline;
+		}
 
 		>>> p {
 			display: inline;
 			margin: 0;
 		}
-	}
-
-	.item-description-inner {
-		margin: auto 0;
 	}
 
 	.item-read-more {
