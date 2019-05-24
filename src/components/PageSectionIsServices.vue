@@ -178,6 +178,7 @@
 		padding: range(10px, 20px);
 		display: flex;
 		flex-flow: column;
+		position: relative;
 
 		@media (width >= 768px) {
 			position: absolute;
