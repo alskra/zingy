@@ -47,4 +47,5 @@ mixin AwesomeList()
 			each item, index in items
 				li.item
 					.item-number= '0' + (index + 1)
-					.item-content= item.title
+					.item-content
+						.item-title= item.title

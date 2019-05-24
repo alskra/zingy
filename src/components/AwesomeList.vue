@@ -14,12 +14,14 @@
 		display: flex;
 		align-items: baseline;
 		padding-left: 3px;
+		position: relative;
+		overflow: hidden;
 	}
 
 	.item-number {
 		color: #5c5c5c;
 		font-family: var(--font-family);
-		font-size: range(1.6rem, 1.8rem);
+		font-size: range(1.8rem / 1.3, 1.8rem);
 		font-weight: 400;
 		line-height: 1.25;
 		flex-shrink: 0;
@@ -28,11 +30,18 @@
 	}
 
 	.item-content {
+		flex-grow: 1;
+		padding: range(15px, 30px) 0;
+		overflow: hidden;
+	}
+
+	.item-title {
 		color: var(--color);
 		font-family: var(--font-family);
-		font-size: range(2rem, 2.4rem);
+		font-size: range(2.4rem / 1.3, 2.4rem);
 		font-weight: 400;
 		line-height: 1.25;
-		padding: range(30px, 30px) 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 </style>

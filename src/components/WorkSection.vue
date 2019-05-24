@@ -12,7 +12,7 @@
 <style scoped>
 	.work-section {
 		display: block;
-		background: url("../assets/img/mount-bg.jpg") no-repeat 50% range(5px, 12px) / cover #ffffff;
+		background: url("../assets/img/mount-bg.jpg") no-repeat 50% range(6px, 13px) / cover #ffffff;
 		overflow: hidden;
 	}
 
@@ -21,7 +21,7 @@
 		flex-flow: column;
 		width: calc(100% - 2 * var(--grid-padding));
 		max-width: var(--grid-width);
-		padding: 0 var(--grid-cell-padding);
+		padding: 0 var(--grid-padding);
 		margin: 0 auto;
 	}
 
@@ -84,7 +84,7 @@
 		justify-content: center;
 		position: absolute;
 		top: 30%;
-		right: calc(100% + range(82px, 164px));
+		right: calc(100% + range(0px, 164px));
 		bottom: 15%;
 	}
 
@@ -116,6 +116,11 @@
 
 	.awesome-list.host {
 		margin-bottom: range(20px, 40px);
+		margin-right: range(-10px, -140px);
+
+		>>> .item {
+			padding-right: range(10px, 140px);
+		}
 	}
 
 	.content {
