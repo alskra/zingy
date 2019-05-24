@@ -43,24 +43,28 @@
 	}
 
 	.input {
-		display: flex;
-		align-items: center;
-		box-sizing: border-box;
-		padding: 5px range(15px, 20px);
-		width: 100%;
-		height: range(44px, 56px);
-		border: 1px solid currentColor;
-		color: var(--color);
-		font-family: var(--font-family);
-		font-size: range(1.6rem, 1.8rem);
-		line-height: 1.25;
-		background-color: white;
-		transition-property:
-			color,
-			background-color,
-			border-color,
-			box-shadow;
-		transition-duration: 0.2s;
+		all: initial;
+
+		& {
+			display: flex;
+			align-items: center;
+			box-sizing: border-box;
+			padding: 5px range(15px, 20px);
+			width: 100%;
+			height: range(44px, 56px);
+			border: 1px solid currentColor;
+			color: var(--color);
+			font-family: var(--font-family);
+			font-size: range(1.6rem, 1.8rem);
+			line-height: 1.25;
+			background-color: white;
+			transition-property:
+				color,
+				background-color,
+				border-color,
+				box-shadow;
+			transition-duration: 0.2s;
+		}
 
 		&::placeholder {
 			color: var(--color);

@@ -5,8 +5,7 @@ mixin AwesomeList()
 				title: 'Неповторимый веб-дизайн UX/UI',
 				description: 'Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать ' +
 				'придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше. Мы не торопим ' +
-				'вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. ' +
-				'Читать подробнее (открывается поп-ап)'
+				'вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго.'
 			},
 			{
 				title: 'Уникальная гарантия на рынке веб-услуг',
@@ -43,9 +42,27 @@ mixin AwesomeList()
 		];
 
 	template
-		ol.host.awesome-list
+		.host.awesome-list(
+			@mouseenter="runningLineIsVisible = true"
+			@mouseleave="runningLineIsVisible = false"
+		)
+			transition-box
+				.running-line(
+					v-show="runningLineIsVisible"
+					:style="runningLineStyle"
+				)
+
 			each item, index in items
-				li.item
+				article.item(
+					@mouseenter="onItemMouseenter"
+				)
 					.item-number= '0' + (index + 1)
-					.item-content
-						.item-title= item.title
+
+					.item-main
+						h3.item-title= item.title
+
+					.item-description
+						.item-description-inner
+							p= item.description
+							| &nbsp;
+							a.item-read-more(href="") Читать подробнее
