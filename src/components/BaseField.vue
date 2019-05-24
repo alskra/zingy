@@ -19,7 +19,7 @@
 		props: {
 			value: {
 				type: String,
-				default: null
+				default: ''
 			},
 			error: {
 				type: String,

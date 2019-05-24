@@ -49,7 +49,7 @@
 	.quote {
 		color: var(--color);
 		font-family: var(--font-family);
-		font-size: range(4.8rem / 1.5, 4.8rem);
+		font-size: range(4.8rem / 2.2, 4.8rem);
 		font-weight: 400;
 
 		>>> > p {

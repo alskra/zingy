@@ -19,21 +19,26 @@
 
 <style scoped>
 	.PageSectionIsServices {
-		background-color: #f0f0f0;
+		background: url("../assets/img/section-services-bg.jpg") no-repeat 50% 50% / cover #f0f0f0;
 		padding: 0;
 	}
 
 	.header {
 		padding: range(40px / 2, 40px) 0;
 		margin: 0;
-		background: url("../assets/img/section-services-bg.jpg") no-repeat 50% 50% / cover;
 	}
 
 	.services {
 		position: relative;
+		max-width: env(--max-breakpoint);
+		margin: 0 auto;
 
 		@media (width >= 768px) {
-			padding-top: percentage((239 + 631) / 1920);
+			&::before {
+				content: '';
+				display: block;
+				padding-top: percentage((239 + 631) / 1920);
+			}
 		}
 
 		@media (width < 768px) {
@@ -54,15 +59,18 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: inherit;
-			opacity: 0;
-			transition: opacity 0.3s;
+			background-color: #000;
+			opacity: 0.6;
+			transition: background-color, mix-blend-mode;
+			transition-duration: 0.3s;
+			transition-timing-function: linear;
+			will-change: background-color, mix-blend-mode;
 			pointer-events: none;
 		}
 
 		&:hover {
 			&::before {
-				opacity: 0.3;
+				background-color: inherit;
 			}
 		}
 
@@ -85,19 +93,19 @@
 	.services-item-has-mix-blend-mode {
 		:root:not(.is-browser-mobile-safari) & {
 			&::before {
-				mix-blend-mode: color;
+				mix-blend-mode: darken;
 			}
 
 			&:hover {
 				&::before {
-					opacity: 1;
+					mix-blend-mode: darken;
 				}
 			}
 		}
 	}
 
 	.services-item-is-1 {
-		background: url("../assets/img/services/create-logo.jpg") no-repeat 50% 50% / cover #00ffff;
+		background: url("../assets/img/services/create-logo.jpg") no-repeat 50% 50% / cover #00c2c2;
 
 		@media (width >= 768px) {
 			top: 0;
@@ -189,6 +197,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		max-height: calc(1.25em * 2);
+		text-shadow: 0 1px 2px rgba(#000, 0.8);
 
 		@media (width < 768px) {
 			font-size: range(1.8rem, 2rem);

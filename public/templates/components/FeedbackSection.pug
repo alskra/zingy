@@ -23,8 +23,8 @@ mixin FeedbackSection()
 										placeholder="Телефон"
 										v-model="tel.value"
 										:error="tel.error"
-										@input="checkTel(tel)"
 										:disabled="formIsDisabled"
+										@input="checkTel(tel)"
 									)
 										template(v-slot:error)
 											.error(v-if="tel.error")
@@ -36,7 +36,8 @@ mixin FeedbackSection()
 										type="url"
 										name="url"
 										placeholder="Ссылка на сайт"
-										v-model="url"
+										v-model="url.value"
+										:error="url.error"
 										:disabled="formIsDisabled"
 									)
 
