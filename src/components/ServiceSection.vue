@@ -7,7 +7,7 @@
 <style scoped>
 	.service-section {
 		display: block;
-		padding: range(40px, 80px) 0;
+		padding: scale-down(80px, 0.5) 0;
 	}
 
 	.grid {
@@ -19,15 +19,15 @@
 	.grid-row {
 		display: flex;
 		flex-wrap: wrap;
-		margin: range(-20px, -40px) range(-25px, -50px);
+		margin: scale-down(-40px, 0.5) scale-down(-50px, 0.5);
 	}
 
 	.grid-cell {
-		width: calc(50% - range(50px, 100px));
-		margin: range(20px, 40px) range(25px, 50px);
+		width: calc(50% - scale-down(100px, 0.5));
+		margin: scale-down(40px, 0.5) scale-down(50px, 0.5);
 
 		@media (width < 1024px) {
-			width: calc(100% - range(50px, 100px));
+			width: calc(100% - scale-down(100px, 0.5));
 		}
 	}
 
@@ -37,7 +37,7 @@
 
 	.service-body {
 		padding: 0 range(10px, 80px);
-		margin-bottom: range(40px, 80px);
+		margin-bottom: scale-down(80px, 0.5);
 	}
 
 	.service-title {
@@ -47,33 +47,58 @@
 		font-weight: 700;
 		line-height: 1.25;
 		text-align: center;
-		margin: 0 0 range(40px, 80px);
+		margin: 0 0 scale-down(80px, 0.5);
 	}
 
 	.service-button {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: range(53px, 106px);
+		height: scale-down(106px, 0.5);
 		background-color: #373737;
 		color: white;
 		text-decoration: none;
-		padding: 10px 20px;
+		padding: scale-down(20px, 0.5);
 		box-sizing: border-box;
+
+		&:not(:hover) {
+			.service-button-icon {
+				transform: translateY(10px);
+				opacity: 0;
+
+				&:nth-of-type(2) {
+					transform: rotateY(180deg) translateY(10px);
+				}
+			}
+		}
 	}
 
 	.service-button-text {
 		font-family: var(--font-family);
-		font-size: range(1.2rem, 2.4rem);
+		font-size: scale-down(2.4rem, 0.5);
 		font-weight: 500;
 		text-transform: uppercase;
 		line-height: 1.25;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+		margin: 0 scale-down(10px, 0.5);
+
+		strong {
+			text-decoration: underline;
+			font-weight: inherit;
+		}
 	}
 
-	.service-button-underline {
-		text-decoration: underline;
+	.service-button-icon {
+		flex-shrink: 0;
+		width: scale-down(50px, 0.5);
+		height: scale-down(50px, 0.5);
+		transition: transform, opacity;
+		transition-duration: 0.2s;
+
+		&:nth-of-type(2) {
+			transform: rotateY(180deg);
+		}
 	}
 </style>

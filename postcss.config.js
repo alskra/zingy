@@ -12,8 +12,8 @@ module.exports = {
 		'postcss-functions': {
 			functions: {
 				range(
-					from,
-					to,
+					min,
+					max,
 					minBreakpoint = environmentVariables['--min-breakpoint'],
 					maxBreakpoint = environmentVariables['--max-breakpoint']
 				) {
@@ -28,7 +28,34 @@ module.exports = {
 						return number;
 					});
 
-					return `calc(${from} + (${to} - ${from}) / (${maxBreakpoint} - ${minBreakpoint}) * 1000 * (var(--resolved-breakpoint) - ${minBreakpoint}) / 1000)`;
+					return `calc(
+					${min} + (${max} - ${min})
+					/ (${maxBreakpoint} - ${minBreakpoint}) * 1000
+					* (var(--resolved-breakpoint) - ${minBreakpoint}) / 1000
+					)`;
+				},
+				'scale-down'(
+					max,
+					scale,
+					minBreakpoint = environmentVariables['--min-breakpoint'],
+					maxBreakpoint = environmentVariables['--max-breakpoint']
+				) {
+
+					[minBreakpoint, maxBreakpoint] = [minBreakpoint, maxBreakpoint].map(value => {
+						const number = parseFloat(value);
+
+						if (isNaN(number)) {
+							throw new Error(`PostCSS function 'range': Argument '${value}' is NaN`);
+						}
+
+						return number;
+					});
+
+					return `calc(
+					${max} * ${scale} + (${max} - ${max} * ${scale})
+					/ (${maxBreakpoint} - ${minBreakpoint}) * 1000
+					* (var(--resolved-breakpoint) - ${minBreakpoint}) / 1000
+					)`;
 				},
 				percentage(expression) {
 					try {
