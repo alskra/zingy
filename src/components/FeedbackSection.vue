@@ -1,8 +1,54 @@
 <script>
 	import Inputmask from 'inputmask';
+	// import axios from 'axios';
 
 	export default {
 		name: 'FeedbackSection',
+		data() {
+			return {
+				tel: {
+					value: '',
+					error: null
+				},
+				url: '',
+				response: null,
+				formIsDisabled: false
+			};
+		},
+		computed: {
+			hasErrors() {
+				return this.tel.error;
+			}
+		},
+		methods: {
+			checkTel(tel) {
+				if (!tel.value) {
+					this.$set(tel, 'error', 'required');
+				} else if (tel.value.length < 9) {
+					this.$set(tel, 'error', 'minLength');
+				} else {
+					this.$set(tel, 'error', null);
+				}
+			},
+			onFormSubmit(event) {
+				event.preventDefault();
+
+				this.checkTel(this.tel);
+
+				if (!this.hasErrors) {
+					this.formIsDisabled = true;
+
+					const formData = new FormData(event.target);
+
+					// Imitation request
+					setTimeout(() => {
+						this.formIsDisabled = false;
+
+						this.response = `Телефон: ${formData.get('tel')}, Сайт: ${formData.get('url') || '-'}`;
+					}, 2000);
+				}
+			}
+		},
 		mounted() {
 			Inputmask({regex: '\\+\\d*'}).mask(this.$el.querySelectorAll('input[type="tel"]'));
 		}
@@ -95,22 +141,24 @@
 	.form-grid {
 		display: flex;
 		flex-wrap: wrap;
-		margin: range(-5px, -10px) range(-10px, -30px);
+		margin: range(-5px, -10px) range(-10px, -20px);
 	}
 
 	.form-grid-cell {
 		min-width: 0;
-		margin: range(5px, 10px) range(10px, 30px);
-		flex-grow: 1;
+		margin: range(5px, 10px) range(10px, 20px);
+		flex: 1 0 200px;
+	}
+
+	.form-grid-cell-has-field {
+		flex-basis: 300px;
 	}
 
 	.form-field.host {
-		/*width: 300px;*/
 		width: 100%;
 	}
 
-	.form-button.host {
-		/*width: 200px;*/
+	.submit-button.host {
 		width: 100%;
 	}
 </style>

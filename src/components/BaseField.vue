@@ -1,31 +1,29 @@
 <template lang="pug">
-	include BaseField.pug
+	.host.base-field
+		input(
+			:class="['input', {'is-invalid': error}]"
+			v-bind="$attrs"
+			:value="value"
+			@input="$emit('input', $event.target.value)"
+		)
 
-	+BaseField()
+		transition
+			slot(name="error")
+				.error(v-if="error") {{ error }}
 </template>
 
 <script>
 	export default {
 		name: 'BaseField',
-		data() {
-			return {
-				valid: true
-			};
-		},
-		methods: {
-			onInput(event) {
-				event.target.classList.remove('is-invalid');
-				event.target.setCustomValidity('');
-				event.target.checkValidity();
+		inheritAttrs: false,
+		props: {
+			value: {
+				type: String,
+				default: null
 			},
-			onInvalid(event) {
-				event.target.classList.add('is-invalid');
-
-				if (event.target.validity.patternMismatch) {
-					event.target.setCustomValidity(event.target.dataset.patternMismatch)
-				} else if (!event.target.validity.valid) {
-					event.target.setCustomValidity('Обязательное поле!')
-				}
+			error: {
+				type: String,
+				default: null
 			}
 		}
 	};
@@ -35,16 +33,27 @@
 	.base-field {
 		display: inline-flex;
 		vertical-align: top;
+		flex-flow: column;
+		max-width: 100%;
+		position: relative;
+
+		&.is-full-width {
+			width: 100%;
+		}
+	}
+
+	.input {
+		display: flex;
 		align-items: center;
 		box-sizing: border-box;
 		padding: 5px range(15px, 20px);
+		width: 100%;
 		height: range(44px, 56px);
 		border: 1px solid currentColor;
 		color: var(--color);
 		font-family: var(--font-family);
 		font-size: range(1.6rem, 1.8rem);
 		line-height: 1.25;
-		max-width: 100%;
 		background-color: white;
 		transition-property:
 			color,
@@ -65,7 +74,7 @@
 
 		&:disabled {
 			cursor: default;
-			opacity: 0.5;
+			opacity: 0.6;
 		}
 
 		&.is-invalid {
@@ -75,9 +84,30 @@
 				color: red;
 			}
 		}
+	}
 
-		&.is-full-width {
-			width: 100%;
+	.error {
+		color: white;
+		font-family: var(--font-family);
+		font-size: 1.2rem;
+		line-height: 1.25;
+		background: var(--color-link);
+		padding: 3px 10px;
+		margin-top: 4px;
+		/*position: absolute;*/
+		/*z-index: 1;*/
+		/*top: 100%;*/
+		/*right: 0;*/
+		/*left: 0;*/
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: opacity 0.2s;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			opacity: 0;
 		}
 	}
 </style>

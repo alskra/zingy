@@ -1,5 +1,8 @@
 mixin BaseField()
-	input.host.base-field(
-		@input="onInput"
-		@invalid="onInvalid"
-	)&attributes(attributes)
+	.host.base-field&attributes(attributes)
+		input(
+			:class="['input', {'is-invalid': error}]"
+			v-bind="$attrs"
+			:value="value"
+			@input="$emit('input', $event.target.value)"
+		)

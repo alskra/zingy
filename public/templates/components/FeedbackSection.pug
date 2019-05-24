@@ -12,24 +12,37 @@ mixin FeedbackSection()
 					.grid-cell
 						form.form(
 							action=""
+							novalidate
+							@submit="onFormSubmit"
 						)
 							.form-grid
-								.form-grid-cell
+								.form-grid-cell.form-grid-cell-has-field
 									base-field.form-field(
 										type="tel"
+										name="tel"
 										placeholder="Телефон"
-										required
-										pattern="\\+[0-9]{8}[0-9]*"
-										data-pattern-mismatch="Номер должен быть не короче 8 цифр"
+										v-model="tel.value"
+										:error="tel.error"
+										@input="checkTel(tel)"
+										:disabled="formIsDisabled"
 									)
+										template(v-slot:error)
+											.error(v-if="tel.error")
+												span(v-if="tel.error === 'required'") Это поле обязательное!
+												span(v-else-if="tel.error === 'minLength'") Номер должен содержать не менее 8 цифр
 
-								.form-grid-cell
+								.form-grid-cell.form-grid-cell-has-field
 									base-field.form-field(
 										type="url"
+										name="url"
 										placeholder="Ссылка на сайт"
+										v-model="url"
+										:disabled="formIsDisabled"
 									)
 
 								.form-grid-cell
-									base-button.form-button Отправить
+									base-button.submit-button(:disabled="formIsDisabled") Отправить
 
 							.content.content-is-info *&nbsp;Отправляя заявку, вы соглашаетесь с #[a(href="" target="_blank") условиями передачи информации].
+
+							p.response(v-if="response") {{ response }}
