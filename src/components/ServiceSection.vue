@@ -69,7 +69,7 @@
 		top: 50%;
 		left: 50%;
 		width: 50%;
-		height: auto;
+		height: 100%;
 		color: #f0f0f0;
 		transform: translate(-100%, -50%);
 	}

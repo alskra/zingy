@@ -4,6 +4,7 @@
 		v-bind="$props"
 		:class="['host', 'base-icon', 'base-icon-is-' + iconName]"
 		role="img"
+		:preserveAspectRatio="align + ' ' + scale"
 	)
 		template(v-if="iconName === 'vk'")
 			include ../assets/img/icons/vk.svg
@@ -80,6 +81,14 @@
 			iconName: {
 				type: String,
 				required: true
+			},
+			align: {
+				type: String,
+				default: 'xMidYMid'
+			},
+			scale: {
+				type: String,
+				default: 'meet'
 			}
 		}
 	};
