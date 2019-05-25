@@ -26,15 +26,15 @@
 		position: absolute;
 		top: 0;
 		left: 50%;
-		width: scale-down(160px, 0.5);
-		height: scale-down(90px, 0.5);
+		width: scale-down(160px, 0.3);
+		height: scale-down(90px, 0.3);
 		color: #f0f0f0;
 		transform: translateX(-50%);
 		pointer-events: none;
 
 		@media (width < 1024px) {
 			position: static;
-			margin: scale-down(35px, 0.5) auto;
+			margin: scale-down(35px, 0.3) auto;
 			transform: rotate(90deg);
 		}
 	}
@@ -64,20 +64,23 @@
 
 	.service-bg-icon {
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 50%;
+		top: 0;
+		left: var(--grid-padding);
+		width: calc(50% - var(--grid-padding));
 		height: 100%;
 		color: #f0f0f0;
-		transform: translate(-100%, -50%);
+
+		@media (width < 1024px) {
+			width: calc(percentage(2 / 3) - var(--grid-padding));
+		}
 	}
 
 	.service-bg-icon-is-unicorn {
-		width: percentage(335 / 872);
+		/*width: percentage(335 / 872);*/
 	}
 
 	.service-bg-icon-is-cup {
-		width: percentage(402 / 872);
+		/*width: percentage(402 / 872);*/
 	}
 
 	.service-body {
