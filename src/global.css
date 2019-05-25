@@ -15,6 +15,7 @@
 	--color-link: #e04b4a;
 	--color-zingy: #252525;
 
+	// Deprecated, --grid instead
 	--content-box-width: env(--content-box-width);
 	--content-box-gutter: range(10px, 40px);
 

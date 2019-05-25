@@ -1,5 +1,6 @@
 mixin AppPageIsIndex()
 	include AppPage
+	include IntroSection
 	include QuoteSection
 	include ServiceSection
 	include WorkSection
@@ -10,6 +11,9 @@ mixin AppPageIsIndex()
 	include FeedbackSection
 
 	+AppPage().app-page-is-index&attributes(attributes)
+		intro-section(inline-template)
+			+IntroSection()
+
 		quote-section(inline-template)
 			+QuoteSection()
 
