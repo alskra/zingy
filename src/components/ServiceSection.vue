@@ -1,6 +1,11 @@
 <script>
+	import DList from './DList';
+
 	export default {
-		name: 'ServiceSection'
+		name: 'ServiceSection',
+		components: {
+			DList
+		}
 	};
 </script>
 
@@ -54,6 +59,9 @@
 	.service {
 		position: relative;
 		overflow: hidden;
+		display: flex;
+		flex-flow: column;
+		height: 100%;
 	}
 
 	.service-bg-icon.host {
@@ -78,6 +86,7 @@
 		padding: 0 range(10px, 80px);
 		margin-bottom: scale-down(80px, 0.5);
 		position: relative;
+		flex-grow: 1;
 	}
 
 	.service-title {

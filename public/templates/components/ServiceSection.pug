@@ -1,4 +1,9 @@
 mixin ServiceSection()
+	include DList
+
+	-
+		const createSiteDList = [];
+
 	template
 		section.host.service-section
 			.grid
@@ -9,6 +14,9 @@ mixin ServiceSection()
 
 							.service-body
 								h2.service-title Обновить&nbsp;/ Создать сайт для&nbsp;бизнеса
+
+								d-list(inline-template)
+									+DList()
 
 							a.service-button(href="")
 								base-icon.service-button-icon(icon-name="laurel")
