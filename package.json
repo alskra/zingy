@@ -23,6 +23,7 @@
     "normalize.css": "^8.0.1",
     "vue": "^2.6.10",
     "vue-slick": "^1.1.15",
+    "vue-sticky-directive": "0.0.8",
     "vue-truncate-collapsed": "^2.1.0",
     "vue-window-size": "^0.2.3"
   },

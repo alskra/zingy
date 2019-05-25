@@ -1,12 +1,21 @@
 <script>
 	export default {
-		name: 'IntroSection'
+		name: 'IntroSection',
+		data () {
+			return {
+				scrollOffset: {
+					top: 0, // set the top breakpoint
+					bottom: 46 // set the bottom breakpoint
+				}
+			}
+		}
 	};
 </script>
 
 <style scoped>
 	.intro-section {
 		display: block;
+		padding-bottom: range(40px, 80px);
 	}
 
 	.body {
@@ -43,7 +52,7 @@
 		box-shadow: range(5px, 8px) range(-5px, -8px) #e81818;
 		background-color: #f0f0f0;
 		padding: scale-down(60px, 0.5) range(10px, 80px);
-		height: calc(100vh - range(73px, 186px));
+		min-height: calc(100vh - range(73px, 186px));
 	}
 
 	.title {
@@ -97,5 +106,13 @@
 			transform: translateY(10px);
 			opacity: 0;
 		}
+	}
+
+	.scroll {
+		position: absolute;
+		bottom: 46px;
+		right: 0;
+		left: 0;
+		text-align: center;
 	}
 </style>

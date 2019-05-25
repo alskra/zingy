@@ -114,6 +114,7 @@
 		position: relative;
 		width: 36px;
 		height: 30px;
+		overflow: visible;
 
 		:root:not(.is-sidebar-opened) & {
 			&:hover {
