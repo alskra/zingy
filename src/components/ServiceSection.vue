@@ -22,7 +22,7 @@
 		position: relative;
 	}
 
-	.grid-arrow.host {
+	.grid-arrow {
 		position: absolute;
 		top: 0;
 		left: 50%;
@@ -64,7 +64,7 @@
 		height: 100%;
 	}
 
-	.service-bg-icon.host {
+	.service-bg-icon {
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -74,15 +74,17 @@
 		transform: translate(-100%, -50%);
 	}
 
-	.service-bg-icon-is-unicorn.host {
+	.service-bg-icon-is-unicorn {
 		width: percentage(335 / 872);
 	}
 
-	.service-bg-icon-is-cup.host {
+	.service-bg-icon-is-cup {
 		width: percentage(402 / 872);
 	}
 
 	.service-body {
+		display: flex;
+		flex-flow: column;
 		padding: 0 range(10px, 80px);
 		margin-bottom: scale-down(80px, 0.5);
 		position: relative;
@@ -140,7 +142,7 @@
 		}
 	}
 
-	.service-button-icon.host {
+	.service-button-icon {
 		flex-shrink: 0;
 		width: scale-down(50px, 0.5);
 		height: scale-down(50px, 0.5);
@@ -150,5 +152,9 @@
 		&:nth-of-type(2) {
 			transform: rotateY(180deg);
 		}
+	}
+
+	.d-list {
+		margin: 0 auto;
 	}
 </style>

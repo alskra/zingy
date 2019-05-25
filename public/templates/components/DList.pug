@@ -1,13 +1,14 @@
 mixin DList(items = [{title: 'Title', nav: [{url: '', text: 'Link'}]}])
-	ol.host.d-list
-		each item, index in items
-			li.item
-				.item-number= '0' + (index + 1)
-				.item-main
-					.item-title= item.title
+	.host.d-list
+		ol.d-list-inner
+			each item, index in items
+				li.item
+					.item-number= '0' + (index + 1)
+					.item-body
+						.item-title= item.title
 
-					if item.nav
-						ul.nav
-							each navItem in item.nav
-								li.nav-item
-									a.nav-link(href=navItem.url)= navItem.text
+						if item.nav
+							ul.nav
+								each navItem in item.nav
+									li.nav-item
+										a.nav-link(href=navItem.url)= navItem.text

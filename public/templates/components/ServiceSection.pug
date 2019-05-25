@@ -2,7 +2,52 @@ mixin ServiceSection()
 	include DList
 
 	-
-		const createSiteDList = [];
+		const createSiteDList = [
+			{
+				title: 'Аналитика',
+				nav: [
+					{url: '', text: 'Стратегия'},
+					{url: '', text: 'Бизнес-задачи'},
+					{url: '', text: 'ТЗ'},
+				]
+			},
+			{
+				title: 'Проектирование',
+				nav: [
+					{url: '', text: 'Balsamiq Mockups 3'},
+					{url: '', text: 'Axure'},
+				]
+			},
+			{
+				title: 'Разработка дизайна',
+				nav: [
+					{url: '', text: 'Adobe Photoshop'},
+					{url: '', text: 'Sketch'},
+				]
+			},
+			{
+				title: 'FRONT-END DEVELOPMENT',
+				nav: [
+					{url: '', text: 'HTML 5'},
+					{url: '', text: 'CSS 3'},
+					{url: '', text: 'JavaScript'},
+					{url: '', text: 'JQuery'},
+					{url: '', text: 'Sass'},
+					{url: '', text: 'Less'},
+					{url: '', text: 'Gulp'},
+				]
+			},
+			{
+				title: 'BACK-END DEVELOPMENT',
+				nav: [
+					{url: '', text: 'PHP'},
+					{url: '', text: 'Laravel'},
+					{url: '', text: 'MODX'},
+					{url: '', text: '1C-Битрикс'},
+					{url: '', text: 'MySQL'},
+				]
+			},
+		];
 
 	template
 		section.host.service-section
@@ -16,7 +61,7 @@ mixin ServiceSection()
 								h2.service-title Обновить&nbsp;/ Создать сайт для&nbsp;бизнеса
 
 								d-list(inline-template)
-									+DList()
+									+DList(createSiteDList)
 
 							a.service-button(href="")
 								base-icon.service-button-icon(icon-name="laurel")
