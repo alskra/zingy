@@ -268,7 +268,7 @@
 
 	.menu-button-icon.host {
 		@media (width < 1280px) {
-			transform: scale(calc(5 / 6));
+			/*transform: scale(calc(5 / 6));*/
 		}
 
 		@media (width < 640px) {

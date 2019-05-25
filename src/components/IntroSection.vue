@@ -43,7 +43,7 @@
 		box-shadow: range(5px, 8px) range(-5px, -8px) #e81818;
 		background-color: #f0f0f0;
 		padding: scale-down(60px, 0.5) range(10px, 80px);
-		height: calc(100vh - range(68px, 178px));
+		height: calc(100vh - range(73px, 186px));
 	}
 
 	.title {
@@ -68,6 +68,34 @@
 
 		@media (width >= 1130px) {
 			margin-left: range((146px + 80px), (-146px - 80px));
+		}
+	}
+
+	.content {
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(1.6rem, 1.8rem);
+		font-weight: 400;
+		line-height: 1.25;
+
+		p {
+			margin: 0;
+
+			&:not(:last-child) {
+				margin-bottom: 1.25em;
+			}
+		}
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: 0.2s 1.2s;
+			transition-property: transform, opacity;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			transform: translateY(10px);
+			opacity: 0;
 		}
 	}
 </style>
