@@ -5,6 +5,8 @@ mixin ServiceSection()
 				.grid-row
 					.grid-cell
 						.service
+							base-icon.service-bg-icon.service-bg-icon-is-unicorn(icon-name="unicorn")
+
 							.service-body
 								h2.service-title Обновить&nbsp;/ Создать сайт для&nbsp;бизнеса
 
@@ -13,7 +15,16 @@ mixin ServiceSection()
 								.service-button-text Отдел #[strong web] разработки
 								base-icon.service-button-icon(icon-name="laurel")
 
+					base-icon.grid-arrow(icon-name="arrow-right-2")
+
 					.grid-cell
 						.service
+							base-icon.service-bg-icon.service-bg-icon-is-cup(icon-name="cup")
+
 							.service-body
 								h2.service-title Продвинуть сайт в&nbsp;ТОП&nbsp;10 Yandex &amp;&nbsp;Google
+
+							a.service-button(href="")
+								base-icon.service-button-icon(icon-name="laurel")
+								.service-button-text Отдел продвижения #[strong seo]
+								base-icon.service-button-icon(icon-name="laurel")

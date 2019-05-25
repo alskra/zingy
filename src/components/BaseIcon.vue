@@ -62,6 +62,15 @@
 
 		template(v-else-if="iconName === 'laurel'")
 			include ../assets/img/icons/laurel.svg
+
+		template(v-else-if="iconName === 'arrow-right-2'")
+			include ../assets/img/icons/arrow-right-2.svg
+
+		template(v-else-if="iconName === 'unicorn'")
+			include ../assets/img/icons/unicorn.svg
+
+		template(v-else-if="iconName === 'cup'")
+			include ../assets/img/icons/cup.svg
 </template>
 
 <script>

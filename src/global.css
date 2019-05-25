@@ -20,7 +20,7 @@
 	--grid-padding: range(10px, 40px);
 	--grid-cell-padding: 10px;
 
-	--font-size-h2: range(4.8rem / 1.8, 4.8rem);
+	--font-size-h2: scale-down(4.8rem, 0.56);
 
 	font-size: percentage(10 / 16);
 	-webkit-font-smoothing: antialiased;
