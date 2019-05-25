@@ -95,36 +95,43 @@ mixin ServiceSection()
 			.grid
 				.grid-row
 					.grid-cell
-						.service
-							base-icon.service-bg-icon.service-bg-icon-is-unicorn(
-								icon-name="unicorn"
-								align="xMaxYMid"
-							)
-
-							.service-body
+						article.service
+							header.service-header
 								h2.service-title Обновить&nbsp;/ Создать сайт для&nbsp;бизнеса
+
+							.service-main
+								base-icon.service-main-bg(
+									icon-name="unicorn"
+									:align="windowWidth >= 1024 ? 'xMaxYMin' : 'xMidYMin'"
+								)
 
 								d-list(inline-template)
 									+DList(createSiteDList)
 
-							a.service-button(href="")
-								base-icon.service-button-icon(icon-name="laurel")
-								.service-button-text Отдел #[strong web] разработки
-								base-icon.service-button-icon(icon-name="laurel")
+							footer.service-footer
+								a.service-button(href="")
+									base-icon.service-button-icon(icon-name="laurel")
+									.service-button-text Отдел #[strong web] разработки
+									base-icon.service-button-icon(icon-name="laurel")
 
 					base-icon.grid-arrow(icon-name="arrow-right-2")
 
 					.grid-cell
-						.service
-							base-icon.service-bg-icon.service-bg-icon-is-cup(icon-name="cup")
+						article.service
+							header.service-header
+								h2.service-title Продвинуть сайт в&nbsp;ТОП&nbsp;10 Yandex&nbsp;&amp;&nbsp;Google
 
-							.service-body
-								h2.service-title Продвинуть сайт в&nbsp;ТОП&nbsp;10 Yandex &amp;&nbsp;Google
+							.service-main
+								base-icon.service-main-bg(
+									icon-name="cup"
+									:align="windowWidth >= 1024 ? 'xMaxYMin' : 'xMidYMin'"
+								)
 
 								d-list(inline-template)
 									+DList(seoDList)
 
-							a.service-button(href="")
-								base-icon.service-button-icon(icon-name="laurel")
-								.service-button-text Отдел продвижения #[strong seo]
-								base-icon.service-button-icon(icon-name="laurel")
+							footer.service-footer
+								a.service-button(href="")
+									base-icon.service-button-icon(icon-name="laurel")
+									.service-button-text Отдел продвижения #[strong seo]
+									base-icon.service-button-icon(icon-name="laurel")

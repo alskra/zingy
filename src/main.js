@@ -2,6 +2,7 @@ import './global.css';
 import './polyfills';
 import 'ninelines-ua-parser';
 import Vue from 'vue';
+import './plugins';
 import './base-components';
 import App from './App';
 

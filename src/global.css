@@ -1,9 +1,11 @@
+@import "~normalize.css";
+
 /*@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700&subset=cyrillic,cyrillic-ext,latin-ext');*/
 
 @import "assets/fonts/Roboto/stylesheet.css";
 
 :root {
-// Overwrite browser dependent properties
+	// Overwrite browser dependent properties
 	--quotes: "“" "”" "‘" "’";
 	--font-family: Roboto, Arial, sans-serif;
 	--text-align: left;
@@ -25,7 +27,6 @@
 	font-size: percentage(10 / 16);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	text-size-adjust: 100%;
 }
 
 :focus:not(:focus-visible) {
@@ -40,15 +41,6 @@
 ::selection {
 	color: white;
 	background-color: var(--color-link);
-}
-
-body {
-	margin: 0;
-	background-color: white;
-}
-
-template {
-	display: none;
 }
 
 .host {

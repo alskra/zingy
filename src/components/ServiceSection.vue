@@ -55,41 +55,40 @@
 	}
 
 	.service {
-		position: relative;
-		overflow: hidden;
 		display: flex;
 		flex-flow: column;
 		height: 100%;
 	}
 
-	.service-bg-icon {
+	.service-header {
+		margin-bottom: scale-down(40px, 0.5);
+		padding: 0 var(--grid-padding);
+	}
+
+	.service-main {
+		display: flex;
+		flex-flow: column;
+		padding: scale-down(40px, 0.5) var(--grid-padding);
+		flex-grow: 1;
+		position: relative;
+	}
+
+	.service-main-bg {
 		position: absolute;
 		top: 0;
 		left: var(--grid-padding);
-		width: calc(50% - var(--grid-padding));
+		width: calc(50% - 2 * var(--grid-padding));
 		height: 100%;
 		color: #f0f0f0;
+		pointer-events: none;
 
 		@media (width < 1024px) {
-			width: calc(percentage(2 / 3) - var(--grid-padding));
+			width: calc(100% - 2 * var(--grid-padding));
 		}
 	}
 
-	.service-bg-icon-is-unicorn {
-		/*width: percentage(335 / 872);*/
-	}
-
-	.service-bg-icon-is-cup {
-		/*width: percentage(402 / 872);*/
-	}
-
-	.service-body {
-		display: flex;
-		flex-flow: column;
-		padding: 0 range(10px, 80px);
-		margin-bottom: scale-down(80px, 0.5);
-		position: relative;
-		flex-grow: 1;
+	.service-footer {
+		margin-top: scale-down(40px, 0.5);
 	}
 
 	.service-title {
@@ -99,7 +98,7 @@
 		font-weight: 700;
 		line-height: 1.25;
 		text-align: center;
-		margin: 0 0 scale-down(80px, 0.5);
+		margin: 0;
 	}
 
 	.service-button {
@@ -112,7 +111,6 @@
 		text-decoration: none;
 		padding: scale-down(20px, 0.5);
 		box-sizing: border-box;
-		position: relative;
 
 		&:not(:hover) {
 			.service-button-icon {
@@ -157,5 +155,6 @@
 
 	.d-list {
 		margin: 0 auto;
+		position: relative;
 	}
 </style>
