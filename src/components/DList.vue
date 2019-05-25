@@ -1,15 +1,38 @@
 <script>
 	export default {
-		name: 'DList'
+		name: 'DList',
+		data() {
+			return {
+				runningLineIsVisible: false,
+				runningLineStyle: {
+					top: 0,
+					height: 0
+				}
+			};
+		},
+		methods: {
+			onItemMouseenter(event) {
+				this.runningLineStyle = {
+					top: event.currentTarget.offsetTop + 'px',
+					height: event.currentTarget.offsetHeight + 'px'
+				};
+			}
+		}
 	};
 </script>
+
+<style>
+	:root {
+		--d-list-item_transition-duration: 0.4s;
+		--d-list-item_transition-delay: 0.1s;
+	}
+</style>
 
 <style scoped>
 	.d-list {
 		display: flex;
 		flex-flow: column;
 		position: relative;
-		overflow: hidden;
 	}
 
 	.d-list-inner {
@@ -25,6 +48,16 @@
 		align-items: baseline;
 		margin: scale-down(15px, 0.8);
 		cursor: default;
+
+		&:hover {
+			.item-number {
+				color: var(--color);
+			}
+
+			.item-body {
+				transform: translateX(scale-down(40px, 0.5));
+			}
+		}
 	}
 
 	.item-number {
@@ -38,11 +71,13 @@
 		font-weight: 400;
 		line-height: 1.25;
 		text-align: center;
+		transition: color var(--d-list-item_transition-duration) var(--d-list-item_transition-delay);
 	}
 
 	.item-body {
 		flex-grow: 1;
 		overflow: hidden;
+		transition: transform var(--d-list-item_transition-duration) var(--d-list-item_transition-delay);
 	}
 
 	.item-title {
@@ -80,6 +115,25 @@
 
 		&:hover {
 			text-decoration: underline;
+		}
+	}
+
+	.running-line {
+		position: absolute;
+		z-index: 1;
+		width: 3px;
+		background-color: var(--color-link);
+		transition: top, height;
+		transition-duration: calc(var(--d-list-item_transition-duration) + var(--d-list-item_transition-delay));
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: opacity 0.2s
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			opacity: 0;
 		}
 	}
 </style>

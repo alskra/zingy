@@ -1,8 +1,11 @@
 mixin DList(items = [{title: 'Title', nav: [{url: '', text: 'Link'}]}])
-	.host.d-list
+	.host.d-list(
+		@mouseenter="runningLineIsVisible = true"
+		@mouseleave="runningLineIsVisible = false"
+	)
 		ol.d-list-inner
 			each item, index in items
-				li.item
+				li.item(@mouseenter="onItemMouseenter")
 					.item-number= '0' + (index + 1)
 					.item-body
 						.item-title= item.title
@@ -12,3 +15,9 @@ mixin DList(items = [{title: 'Title', nav: [{url: '', text: 'Link'}]}])
 								each navItem in item.nav
 									li.nav-item
 										a.nav-link(href=navItem.url)= navItem.text
+
+		transition-box
+			.running-line(
+				v-show="runningLineIsVisible"
+				:style="runningLineStyle"
+			)
