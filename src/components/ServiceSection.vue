@@ -47,8 +47,6 @@
 
 	.grid-cell {
 		width: calc(50% - scale-down(160px, 0.5));
-		/*flex: 1 0;*/
-		/*width: 50%;*/
 		margin: scale-down(40px, 0.5) scale-down(80px, 0.5);
 
 		@media (width < 1024px) {

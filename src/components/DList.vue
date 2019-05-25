@@ -16,20 +16,21 @@
 		display: flex;
 		flex-flow: column;
 		padding: 0;
-		margin: -10px;
+		margin: scale-down(-15px, 0.8);
 	}
 
 	.item {
 		list-style: none;
 		display: flex;
 		align-items: baseline;
-		margin: 10px;
+		margin: scale-down(15px, 0.8);
+		cursor: default;
 	}
 
 	.item-number {
 		box-sizing: border-box;
-		flex-shrink: 0;
 		width: scale-down(100px, 0.5);
+		flex-shrink: 0;
 		padding: 0 5px;
 		color: #5c5c5c;
 		font-family: var(--font-family);

@@ -49,6 +49,47 @@ mixin ServiceSection()
 			},
 		];
 
+		const seoDList = [
+			{
+				title: 'Анализ конкуретнтов',
+				nav: [
+					{url: '', text: 'Стратегия SEO продвижения на 6-12 месяцев'},
+				]
+			},
+			{
+				title: 'Выявление технических ошибок сайта',
+				nav: [
+					{url: '', text: 'Screaming Frog SEO spider'},
+					{url: '', text: 'Яндекс.Вебмастер'},
+					{url: '', text: 'ТЗ'},
+				]
+			},
+			{
+				title: 'Улучшение поведенческих факторов',
+				nav: [
+					{url: '', text: 'Яндекс.Метрика'},
+					{url: '', text: 'Google analytics'},
+					{url: '', text: 'Яндекс.Вебмастер'},
+					{url: '', text: 'ТЗ'},
+				]
+			},
+			{
+				title: 'Улучшение коммерческих факторов',
+				nav: [
+					{url: '', text: 'Продвижение коммерческих запросов'},
+					{url: '', text: 'Повышение конверсии'},
+				]
+			},
+			{
+				title: 'Проработка внешнего SEO',
+				nav: [
+					{url: '', text: 'Крауд-маркетинг'},
+					{url: '', text: 'Отзывы'},
+					{url: '', text: 'Ссылки с соц. сетей, каталогов'},
+				]
+			},
+		];
+
 	template
 		section.host.service-section
 			.grid
@@ -79,6 +120,9 @@ mixin ServiceSection()
 
 							.service-body
 								h2.service-title Продвинуть сайт в&nbsp;ТОП&nbsp;10 Yandex &amp;&nbsp;Google
+
+								d-list(inline-template)
+									+DList(seoDList)
 
 							a.service-button(href="")
 								base-icon.service-button-icon(icon-name="laurel")
