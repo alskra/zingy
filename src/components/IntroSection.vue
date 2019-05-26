@@ -1,13 +1,10 @@
 <script>
+	import VueStickScroll from './VueStickScroll';
+
 	export default {
 		name: 'IntroSection',
-		data () {
-			return {
-				scrollOffset: {
-					top: 0, // set the top breakpoint
-					bottom: 46 // set the bottom breakpoint
-				}
-			}
+		components: {
+			VueStickScroll
 		}
 	};
 </script>
@@ -47,12 +44,15 @@
 	}
 
 	.body-inner {
+		display: flex;
+		flex-flow: column;
 		box-sizing: border-box;
 		margin: range(5px, 8px) range(5px, 8px) 0 0;
 		box-shadow: range(5px, 8px) range(-5px, -8px) #e81818;
 		background-color: #f0f0f0;
-		padding: scale-down(60px, 0.5) range(10px, 80px);
+		padding: scale-down(60px, 0.5) range(10px, 80px) scale-down(40px, 0.5);
 		min-height: calc(100vh - range(73px, 186px));
+		position: relative;
 	}
 
 	.title {
@@ -66,7 +66,7 @@
 		&.v-enter-active,
 		&.v-leave-active {
 			transition: transform, opacity;
-			transition-duration: 0.2s;
+			transition-duration: 0.3s;
 			transition-delay: 1s;
 		}
 
@@ -86,21 +86,23 @@
 		font-family: var(--font-family);
 		font-size: range(1.6rem, 1.8rem);
 		font-weight: 400;
-		line-height: 1.25;
+		line-height: 1.5;
+		margin: 0 scale-down(43%, 0) scale-down(40px, 0.5) 0;
+		flex-grow: 1;
 
 		p {
 			margin: 0;
 
 			&:not(:last-child) {
-				margin-bottom: 1.25em;
+				margin-bottom: 1.5em;
 			}
 		}
 
 		&.v-enter-active,
 		&.v-leave-active {
 			transition-property: transform, opacity;
-			transition-duration: 0.2s;
-			transition-delay: 1.2s;
+			transition-duration: 0.3s;
+			transition-delay: 1.3s;
 		}
 
 		&.v-enter,
@@ -111,10 +113,53 @@
 	}
 
 	.scroll {
-		position: absolute;
-		bottom: 46px;
-		right: 0;
-		left: 0;
+		position: relative;
 		text-align: center;
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(1.2rem, 1.4rem);
+		font-weight: 300;
+		line-height: 1.25;
+		text-shadow: 0 1px #f0f0f0, 0 -1px #f0f0f0, 1px 0 #f0f0f0, -1px 0 #f0f0f0;
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition-property: opacity;
+			transition-duration: 0.3s;
+			transition-delay: 1.6s;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			opacity: 0;
+		}
+	}
+
+	.scroll-line {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		width: 2px;
+		height: scale-down(60px, 0.5);
+		transform: translate(-50%, scale-down(10px, 0.5));
+		overflow: hidden;
+
+		&::before {
+			@keyframes scroll_run {
+				0% {
+					transform: translateY(-100%);
+				}
+
+				100% {
+					transform: translateY(100%);
+				}
+			}
+
+			content: '';
+			display: block;
+			height: 100%;
+			background-color: #e81818;
+			animation: scroll_run 1.5s linear infinite;
+		}
 	}
 </style>

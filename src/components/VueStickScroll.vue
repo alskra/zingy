@@ -46,7 +46,7 @@
 			}
 		},
 		methods: {
-			onScroll() {
+			doStick() {
 				const offsetParentStyles = getComputedStyle(this.offsetParent);
 
 				if ((typeof this.stickTop === 'number' || this.stickTop) && !this.bottom.sticked) {
@@ -215,10 +215,27 @@
 						this.$set(this.bottom, 'sticked', false);
 					}
 				}
+			},
+			onScroll() {
+				this.doStick();
+			},
+			onResize() {
+				this.doStick();
+
+				if (this.sticked) {
+					this.$el.style.width = getComputedStyle(this.placeholder).width;
+				}
 			}
 		},
 		created() {
 			window.addEventListener('scroll', this.onScroll);
+			window.addEventListener('resize', this.onResize);
+		},
+		destroyed() {
+			this.placeholder.parentElement.removeChild(this.placeholder);
+
+			window.removeEventListener('scroll', this.onScroll);
+			window.removeEventListener('resize', this.onResize);
 		},
 		mounted() {
 			this.offsetParent = this.$el.offsetParent;

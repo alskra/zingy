@@ -4,6 +4,7 @@ mixin IntroSection()
 			transition-box(
 				appear
 				:duration="1000"
+				@after-enter="$refs.scroll.doStick()"
 			)
 				.body-transition
 					.body-inner
@@ -13,15 +14,16 @@ mixin IntroSection()
 						transition-box(appear)
 							.content
 								p.
-									«Работа студии построена на тесном взаимодействии двух кофликтующих между собой отделах разработки и продвижения, что позволяет сделать быстрый старт проекта без двойных переплат. Сейчас на рынке крайне мало таких предложений.
-									Это новый уровень Digital.»
+									&laquo;Работа студии построена на&nbsp;тесном взаимодействии двух кофликтующих между
+									собой отделах разработки и&nbsp;продвижения, что&nbsp;позволяет сделать быстрый старт
+									проекта без двойных переплат. Сейчас на&nbsp;рынке крайне мало таких предложений.
+									#[br]Это новый уровень Digital.&raquo;
 
 								p.
-									#[strong Сергей Макоронников]#[br]
-									#[em CEO Рейтинг Рунета]
+									#[strong Сергей Макоронников]
+									#[br]#[em CEO Рейтинг Рунета]
 
-			.scroll(
-				v-sticky
-				sticky-offset="scrollOffset"
-				sticky-side="bottom"
-			) Крутите вниз
+						transition-box(appear)
+							vue-stick-scroll(:stick-top="false" :stick-bottom="40" ref="scroll")
+								.scroll Крутите вниз
+									.scroll-line

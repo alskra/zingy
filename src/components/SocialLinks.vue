@@ -66,27 +66,27 @@
 		}
 
 		&.base-icon-is-vk {
-			mask: url("../assets/img/icons/vk.svg");
+			mask: url("../assets/img/icons/vk.svg") 50% / contain;
 		}
 
 		&.base-icon-is-facebook {
-			mask: url("../assets/img/icons/facebook.svg");
+			mask: url("../assets/img/icons/facebook.svg") 50% / contain;
 		}
 
 		&.base-icon-is-twitter {
-			mask: url("../assets/img/icons/twitter.svg");
+			mask: url("../assets/img/icons/twitter.svg") 50% / contain;
 		}
 
 		&.base-icon-is-yandex-zen {
-			mask: url("../assets/img/icons/yandex-zen.svg");
+			mask: url("../assets/img/icons/yandex-zen.svg") 50% / contain;
 		}
 
 		&.base-icon-is-instagram {
-			mask: url("../assets/img/icons/instagram.svg");
+			mask: url("../assets/img/icons/instagram.svg") 50% / contain;
 		}
 
 		&.base-icon-is-youtube {
-			mask: url("../assets/img/icons/youtube.svg");
+			mask: url("../assets/img/icons/youtube.svg") 50% / contain;
 		}
 	}
 </style>
