@@ -1,13 +1,34 @@
 <script>
-	import VueStickScroll from './VueStickScroll';
+	import VueSticky from './VueSticky';
 
 	export default {
 		name: 'IntroSection',
+		data() {
+			return {
+
+			}
+		},
+		computed: {
+			scrollStickyBottom() {
+				const bottom = 80 / 1920 * this.windowWidth;
+
+				if (bottom > 80) return 80;
+				if (bottom < 40) return 40;
+
+				return bottom;
+			}
+		},
 		components: {
-			VueStickScroll
+			VueSticky
 		}
 	};
 </script>
+
+<style>
+	:root {
+		--intro-section_color-accent: var(--color-link);
+	}
+</style>
 
 <style scoped>
 	.intro-section {
@@ -48,9 +69,9 @@
 		flex-flow: column;
 		box-sizing: border-box;
 		margin: range(5px, 8px) range(5px, 8px) 0 0;
-		box-shadow: range(5px, 8px) range(-5px, -8px) #e81818;
+		box-shadow: range(5px, 8px) range(-5px, -8px) var(--intro-section_color-accent);
 		background-color: #f0f0f0;
-		padding: scale-down(60px, 0.5) range(10px, 80px) scale-down(40px, 0.5);
+		padding: scale-down(70px, 0.5) range(10px, 80px) scale-down(40px, 0.5);
 		min-height: calc(100vh - range(73px, 186px));
 		position: relative;
 	}
@@ -61,7 +82,7 @@
 		font-size: var(--font-size-h2);
 		font-weight: 500;
 		line-height: 1.25;
-		margin: 0 0 scale-down(40px, 0.5);
+		margin: 0 0 scale-down(50px, 0.5);
 
 		&.v-enter-active,
 		&.v-leave-active {
@@ -114,13 +135,6 @@
 
 	.scroll {
 		position: relative;
-		text-align: center;
-		color: var(--color);
-		font-family: var(--font-family);
-		font-size: range(1.2rem, 1.4rem);
-		font-weight: 300;
-		line-height: 1.25;
-		text-shadow: 0 1px #f0f0f0, 0 -1px #f0f0f0, 1px 0 #f0f0f0, -1px 0 #f0f0f0;
 
 		&.v-enter-active,
 		&.v-leave-active {
@@ -133,6 +147,22 @@
 		&.v-leave-to {
 			opacity: 0;
 		}
+
+		&.is-sticky {
+			.scroll-text {
+				opacity: 0;
+			}
+		}
+	}
+
+	.scroll-text {
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(1.2rem, 1.4rem);
+		font-weight: 300;
+		line-height: 1.25;
+		text-align: center;
+		text-shadow: 0 1px #f0f0f0, 0 -1px #f0f0f0, 1px 0 #f0f0f0, -1px 0 #f0f0f0;
 	}
 
 	.scroll-line {
@@ -158,8 +188,8 @@
 			content: '';
 			display: block;
 			height: 100%;
-			background-color: #e81818;
-			animation: scroll_run 1.5s linear infinite;
+			background-color: var(--intro-section_color-accent);
+			/*animation: scroll_run 1.5s linear infinite;*/
 		}
 	}
 </style>

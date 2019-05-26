@@ -4,7 +4,7 @@ mixin IntroSection()
 			transition-box(
 				appear
 				:duration="1000"
-				@after-enter="$refs.scroll.doStick()"
+				@after-enter="$refs.scroll.doSticky()"
 			)
 				.body-transition
 					.body-inner
@@ -15,7 +15,7 @@ mixin IntroSection()
 							.content
 								p.
 									&laquo;Работа студии построена на&nbsp;тесном взаимодействии двух кофликтующих между
-									собой отделах разработки и&nbsp;продвижения, что&nbsp;позволяет сделать быстрый старт
+									собой отделов разработки и&nbsp;продвижения, что&nbsp;позволяет сделать быстрый старт
 									проекта без двойных переплат. Сейчас на&nbsp;рынке крайне мало таких предложений.
 									#[br]Это новый уровень Digital.&raquo;
 
@@ -24,6 +24,7 @@ mixin IntroSection()
 									#[br]#[em CEO Рейтинг Рунета]
 
 						transition-box(appear)
-							vue-stick-scroll(:stick-top="false" :stick-bottom="40" ref="scroll")
-								.scroll Крутите вниз
+							vue-sticky(:top="false" :bottom="scrollStickyBottom" ref="scroll")
+								.scroll
+									.scroll-text Крутите вниз
 									.scroll-line

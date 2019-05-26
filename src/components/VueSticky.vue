@@ -1,59 +1,80 @@
 <script>
 	export default {
-		name: 'VueStickScroll',
+		name: 'VueSticky',
 		render() {
 			return this.$scopedSlots.default();
 		},
 		props: {
-			stickTop: {
+			top: {
 				type: [Number, Boolean],
 				default: true
 			},
-			stickBottom: {
+			bottom: {
 				type: [Number, Boolean],
 				default: false
 			},
 		},
 		data() {
 			return {
-				top: {
-					sticked: false,
+				topState: {
+					sticky: false,
 					edge: false
 				},
-				bottom: {
-					sticked: false,
+				bottomState: {
+					sticky: false,
 					edge: false
 				}
 			}
 		},
 		computed: {
-			stickTopPosition() {
-				if (typeof this.stickTop !== 'number') {
+			topPosition() {
+				if (typeof this.top !== 'number') {
 					return 0;
 				}
 
-				return this.stickTop;
+				return this.top;
 			},
-			stickBottomPosition() {
-				if (typeof this.stickBottom !== 'number') {
+			bottomPosition() {
+				if (typeof this.bottom !== 'number') {
 					return 0;
 				}
 
-				return this.stickBottom;
+				return this.bottom;
 			},
-			sticked() {
-				return this.top.sticked || this.bottom.sticked;
+			isSticky() {
+				return this.topState.sticky || this.bottomState.sticky;
+			}
+		},
+		watch: {
+			isSticky() {
+				this.$el.classList.toggle('is-sticky', this.isSticky);
+				this.$el.classList.toggle('is-sticky-top', this.topState.sticky);
+				this.$el.classList.toggle('is-sticky-bottom', this.bottomState.sticky);
+			},
+			top() {
+				if (this.topState.sticky && !this.topState.edge) {
+					this.$el.style.top = this.top + 'px';
+				}
+
+				this.doSticky();
+			},
+			bottom() {
+				if (this.bottomState.sticky && !this.bottomState.edge) {
+					this.$el.style.bottom = this.bottom + 'px';
+				}
+
+				this.doSticky();
 			}
 		},
 		methods: {
-			doStick() {
+			doSticky() {
 				const offsetParentStyles = getComputedStyle(this.offsetParent);
 
-				if ((typeof this.stickTop === 'number' || this.stickTop) && !this.bottom.sticked) {
+				if ((typeof this.top === 'number' || this.top) && !this.bottomState.sticky) {
 					if (
-						!this.top.sticked
-						&& !this.top.edge
-						&& this.$el.getBoundingClientRect().top < this.stickTopPosition
+						!this.topState.sticky
+						&& !this.topState.edge
+						&& this.$el.getBoundingClientRect().top < this.topPosition
 					) {
 						Object.assign(this.placeholder.style, {
 							position: '',
@@ -62,19 +83,19 @@
 
 						Object.assign(this.$el.style, {
 							position: 'fixed',
-							top: this.stickTopPosition + 'px',
+							top: this.topPosition + 'px',
 							bottom: '',
 							marginTop: 0,
 							marginBottom: 0,
 							width: getComputedStyle(this.$el).width
 						});
 
-						this.$set(this.top, 'sticked', true);
+						this.$set(this.topState, 'sticky', true);
 					}
 
 					if (
-						this.top.sticked
-						&& !this.top.edge
+						this.topState.sticky
+						&& !this.topState.edge
 						&& this.offsetParent.getBoundingClientRect().bottom
 						- parseFloat(offsetParentStyles.borderBottomWidth)
 						- parseFloat(offsetParentStyles.paddingBottom)
@@ -89,30 +110,30 @@
 							width: getComputedStyle(this.$el).width
 						});
 
-						this.$set(this.top, 'edge', true);
+						this.$set(this.topState, 'edge', true);
 					}
 
 					if (
-						this.top.sticked
-						&& this.top.edge
-						&& this.$el.getBoundingClientRect().top > this.stickTopPosition
+						this.topState.sticky
+						&& this.topState.edge
+						&& this.$el.getBoundingClientRect().top > this.topPosition
 					) {
 						Object.assign(this.$el.style, {
 							position: 'fixed',
-							top: this.stickTopPosition + 'px',
+							top: this.topPosition + 'px',
 							bottom: '',
 							marginTop: 0,
 							marginBottom: 0,
 							width: getComputedStyle(this.$el).width
 						});
 
-						this.$set(this.top, 'edge', false);
+						this.$set(this.topState, 'edge', false);
 					}
 
 					if (
-						this.top.sticked
-						&& !this.top.edge
-						&& this.placeholder.getBoundingClientRect().top > this.stickTopPosition
+						this.topState.sticky
+						&& !this.topState.edge
+						&& this.placeholder.getBoundingClientRect().top > this.topPosition
 					) {
 						Object.assign(this.placeholder.style, {
 							position: 'absolute',
@@ -128,16 +149,16 @@
 							width: ''
 						});
 
-						this.$set(this.top, 'sticked', false);
+						this.$set(this.topState, 'sticky', false);
 					}
 				}
 
 				// bottom
-				if ((typeof this.stickBottom === 'number' || this.stickBottom) && !this.top.sticked) {
+				if ((typeof this.bottom === 'number' || this.bottom) && !this.topState.sticky) {
 					if (
-						!this.bottom.sticked
-						&& !this.bottom.edge
-						&& window.innerHeight - this.$el.getBoundingClientRect().bottom < this.stickBottomPosition
+						!this.bottomState.sticky
+						&& !this.bottomState.edge
+						&& window.innerHeight - this.$el.getBoundingClientRect().bottom < this.bottomPosition
 					) {
 						Object.assign(this.placeholder.style, {
 							position: '',
@@ -147,18 +168,18 @@
 						Object.assign(this.$el.style, {
 							position: 'fixed',
 							top: '',
-							bottom: this.stickBottomPosition + 'px',
+							bottom: this.bottomPosition + 'px',
 							marginTop: 0,
 							marginBottom: 0,
 							width: getComputedStyle(this.$el).width
 						});
 
-						this.$set(this.bottom, 'sticked', true);
+						this.$set(this.bottomState, 'sticky', true);
 					}
 
 					if (
-						this.bottom.sticked
-						&& !this.bottom.edge
+						this.bottomState.sticky
+						&& !this.bottomState.edge
 						&& this.offsetParent.getBoundingClientRect().top
 						+ parseFloat(offsetParentStyles.borderTopWidth)
 						+ parseFloat(offsetParentStyles.paddingTop)
@@ -173,30 +194,30 @@
 							width: getComputedStyle(this.$el).width
 						});
 
-						this.$set(this.bottom, 'edge', true);
+						this.$set(this.bottomState, 'edge', true);
 					}
 
 					if (
-						this.bottom.sticked
-						&& this.bottom.edge
-						&& window.innerHeight - this.$el.getBoundingClientRect().bottom > this.stickBottomPosition
+						this.bottomState.sticky
+						&& this.bottomState.edge
+						&& window.innerHeight - this.$el.getBoundingClientRect().bottom > this.bottomPosition
 					) {
 						Object.assign(this.$el.style, {
 							position: 'fixed',
 							top: '',
-							bottom: this.stickBottomPosition + 'px',
+							bottom: this.bottomPosition + 'px',
 							marginTop: 0,
 							marginBottom: 0,
 							width: getComputedStyle(this.$el).width
 						});
 
-						this.$set(this.bottom, 'edge', false);
+						this.$set(this.bottomState, 'edge', false);
 					}
 
 					if (
-						this.bottom.sticked
-						&& !this.bottom.edge
-						&& window.innerHeight - this.placeholder.getBoundingClientRect().bottom > this.stickBottomPosition
+						this.bottomState.sticky
+						&& !this.bottomState.edge
+						&& window.innerHeight - this.placeholder.getBoundingClientRect().bottom > this.bottomPosition
 					) {
 						Object.assign(this.placeholder.style, {
 							position: 'absolute',
@@ -212,17 +233,17 @@
 							width: ''
 						});
 
-						this.$set(this.bottom, 'sticked', false);
+						this.$set(this.bottomState, 'sticky', false);
 					}
 				}
 			},
 			onScroll() {
-				this.doStick();
+				this.doSticky();
 			},
 			onResize() {
-				this.doStick();
+				this.doSticky();
 
-				if (this.sticked) {
+				if (this.isSticky) {
 					this.$el.style.width = getComputedStyle(this.placeholder).width;
 				}
 			}
@@ -248,7 +269,7 @@
 
 			this.$el.parentElement.insertBefore(this.placeholder, this.$el);
 
-			this.onScroll();
+			this.doSticky();
 		}
 	};
 </script>

@@ -1,14 +1,14 @@
 <script>
 	import AppPageIsIndex from './components/AppPageIsIndex';
 	import AppPageIsBlog from './components/AppPageIsBlog';
-	import VueStickScroll from './components/VueStickScroll';
+	import VueSticky from './components/VueSticky';
 
 	export default {
 		name: 'App',
 		components: {
 			AppPageIsIndex,
 			AppPageIsBlog,
-			VueStickScroll
+			VueSticky
 		}
 	}
 </script>
