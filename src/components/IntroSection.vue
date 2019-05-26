@@ -10,7 +10,7 @@
 		},
 		computed: {
 			scrollStickyBottom() {
-				const bottom = 80 / 1920 * this.windowWidth;
+				const bottom = 40 + 40 / 1600 * (this.windowWidth - 320);
 
 				if (bottom > 80) return 80;
 				if (bottom < 40) return 40;
@@ -133,6 +133,41 @@
 		}
 	}
 
+	.content-small {
+		font-size: range(1.4rem, 1.6rem);
+	}
+
+	.content-credits {
+		margin-top: scale-down(50px, 0.5);
+	}
+
+	.content-credit {
+		display: flex;
+		align-items: flex-start;
+
+		& + .content-credit {
+			margin-top: scale-down(20px, 0.5);
+		}
+	}
+
+	.content-credit-img-cell {
+		width: scale-down(70px, 0.5);
+		flex-shrink: 0;
+		margin-right: scale-down(20px, 0.5);
+	}
+
+	.content-credit-img {
+		display: block;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+
+	.content-credit-text-cell {
+		flex-grow: 1;
+		font-size: range(1.4rem, 1.6rem);
+		margin: auto 0;
+	}
+
 	.scroll {
 		position: relative;
 
@@ -162,7 +197,7 @@
 		font-weight: 300;
 		line-height: 1.25;
 		text-align: center;
-		text-shadow: 0 1px #f0f0f0, 0 -1px #f0f0f0, 1px 0 #f0f0f0, -1px 0 #f0f0f0;
+		transition: opacity 0.2s;
 	}
 
 	.scroll-line {

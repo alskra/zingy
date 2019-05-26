@@ -51,23 +51,23 @@
 				this.$el.classList.toggle('is-sticky-top', this.topState.sticky);
 				this.$el.classList.toggle('is-sticky-bottom', this.bottomState.sticky);
 			},
-			top() {
-				if (this.topState.sticky && !this.topState.edge) {
-					this.$el.style.top = this.top + 'px';
-				}
+			$props: {
+				handler() {
+					if (this.topState.sticky && !this.topState.edge) {
+						this.$el.style.top = this.top + 'px';
+					}
 
-				this.doSticky();
-			},
-			bottom() {
-				if (this.bottomState.sticky && !this.bottomState.edge) {
-					this.$el.style.bottom = this.bottom + 'px';
-				}
+					if (this.bottomState.sticky && !this.bottomState.edge) {
+						this.$el.style.bottom = this.bottom + 'px';
+					}
 
-				this.doSticky();
+					this.sticky();
+				},
+				deep: true
 			}
 		},
 		methods: {
-			doSticky() {
+			sticky() {
 				const offsetParentStyles = getComputedStyle(this.offsetParent);
 
 				if ((typeof this.top === 'number' || this.top) && !this.bottomState.sticky) {
@@ -238,10 +238,10 @@
 				}
 			},
 			onScroll() {
-				this.doSticky();
+				this.sticky();
 			},
 			onResize() {
-				this.doSticky();
+				this.sticky();
 
 				if (this.isSticky) {
 					this.$el.style.width = getComputedStyle(this.placeholder).width;
@@ -261,6 +261,7 @@
 		mounted() {
 			this.offsetParent = this.$el.offsetParent;
 			this.placeholder = this.$el.cloneNode();
+			this.placeholder.classList.add('vue-sticky-placeholder');
 
 			Object.assign(this.placeholder.style, {
 				position: 'absolute',
@@ -269,7 +270,7 @@
 
 			this.$el.parentElement.insertBefore(this.placeholder, this.$el);
 
-			this.doSticky();
+			this.sticky();
 		}
 	};
 </script>

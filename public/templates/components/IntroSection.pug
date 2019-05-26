@@ -4,7 +4,7 @@ mixin IntroSection()
 			transition-box(
 				appear
 				:duration="1000"
-				@after-enter="$refs.scroll.doSticky()"
+				@after-enter="$refs.scroll.sticky()"
 			)
 				.body-transition
 					.body-inner
@@ -19,9 +19,36 @@ mixin IntroSection()
 									проекта без двойных переплат. Сейчас на&nbsp;рынке крайне мало таких предложений.
 									#[br]Это новый уровень Digital.&raquo;
 
-								p.
-									#[strong Сергей Макоронников]
-									#[br]#[em CEO Рейтинг Рунета]
+								.content-small
+									p.
+										#[strong Сергей Макоронников]
+										#[br]#[em CEO Рейтинг Рунета]
+
+								.content-credits
+									.content-credit
+										.content-credit-img-cell
+											img.content-credit-img(
+												src="upload/mincom.png"
+												alt=""
+											)
+
+										.content-credit-text-cell
+											p.
+												#[strong ZINGY PROJECTS]
+												#[br]#[em Аккредитация IT-организации номер 8700]
+
+									.content-credit
+										.content-credit-img-cell
+											img.content-credit-img(
+												src="upload/top-300.png"
+												alt=""
+											)
+
+										.content-credit-text-cell
+											p.
+												#[strong ТОП 250]
+												#[br]#[em Среди веб-студий Москвы по версии Рейтинга Рунета]
+
 
 						transition-box(appear)
 							vue-sticky(:top="false" :bottom="scrollStickyBottom" ref="scroll")
