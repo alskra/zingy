@@ -189,7 +189,7 @@
 			display: block;
 			height: 100%;
 			background-color: var(--intro-section_color-accent);
-			/*animation: scroll_run 1.5s linear infinite;*/
+			animation: scroll_run 1.5s linear infinite;
 		}
 	}
 </style>
