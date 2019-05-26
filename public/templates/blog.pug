@@ -1,4 +1,8 @@
 extends layout
 
 block app
-	h1 Blog page !!
+	.stick-container
+		vue-stick-scroll(:stick-top="30")
+			.stick-element Stick Element
+
+		.box

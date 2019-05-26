@@ -1,16 +1,16 @@
 mixin IntroSection()
 	section.host.intro-section
 		.body
-			transition(
+			transition-box(
 				appear
 				:duration="1000"
 			)
 				.body-transition
 					.body-inner
-						transition(appear)
+						transition-box(appear)
 							h1.title Разработка и Продвижение Веб-сайтов
 
-						transition(appear)
+						transition-box(appear)
 							.content
 								p.
 									«Работа студии построена на тесном взаимодействии двух кофликтующих между собой отделах разработки и продвижения, что позволяет сделать быстрый старт проекта без двойных переплат. Сейчас на рынке крайне мало таких предложений.
