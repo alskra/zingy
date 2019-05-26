@@ -31,9 +31,9 @@
 			overflow: hidden;
 
 			.body-inner {
-				transition: 0.8s, 0.2s;
+				transition: transform, box-shadow;
+				transition-duration: 0.8s, 0.2s;
 				transition-delay: 0s, 0.8s;
-				transition-property: transform, box-shadow;
 			}
 		}
 
@@ -65,8 +65,9 @@
 
 		&.v-enter-active,
 		&.v-leave-active {
-			transition: 0.2s 1s;
-			transition-property: transform, opacity;
+			transition: transform, opacity;
+			transition-duration: 0.2s;
+			transition-delay: 1s;
 		}
 
 		&.v-enter,
@@ -97,8 +98,9 @@
 
 		&.v-enter-active,
 		&.v-leave-active {
-			transition: 0.2s 1.2s;
 			transition-property: transform, opacity;
+			transition-duration: 0.2s;
+			transition-delay: 1.2s;
 		}
 
 		&.v-enter,

@@ -1,16 +1,18 @@
-<template lang="pug">
-	transition
-		slot
-</template>
-
 <script>
 	export default {
 		name: 'VueStickScroll',
+		render() {
+			return this.$scopedSlots.default();
+		},
 		props: {
 			stickTop: {
-				type: Number,
-				default: 0
-			}
+				type: [Number, Boolean],
+				default: true
+			},
+			stickBottom: {
+				type: [Number, Boolean],
+				default: false
+			},
 		},
 		data() {
 			return {
@@ -25,96 +27,193 @@
 			}
 		},
 		computed: {
+			stickTopPosition() {
+				if (typeof this.stickTop !== 'number') {
+					return 0;
+				}
+
+				return this.stickTop;
+			},
+			stickBottomPosition() {
+				if (typeof this.stickBottom !== 'number') {
+					return 0;
+				}
+
+				return this.stickBottom;
+			},
 			sticked() {
 				return this.top.sticked || this.bottom.sticked;
 			}
 		},
 		methods: {
 			onScroll() {
-				console.log('Scroll!!');
-
 				const offsetParentStyles = getComputedStyle(this.offsetParent);
 
-				if (
-					!this.top.sticked
-					&& !this.top.edge
-					&& this.$el.getBoundingClientRect().top < this.stickTop
-				) {
-					this.placeholder = this.$el.cloneNode();
+				if ((typeof this.stickTop === 'number' || this.stickTop) && !this.bottom.sticked) {
+					if (
+						!this.top.sticked
+						&& !this.top.edge
+						&& this.$el.getBoundingClientRect().top < this.stickTopPosition
+					) {
+						Object.assign(this.placeholder.style, {
+							position: '',
+							height: getComputedStyle(this.$el).height
+						});
 
-					Object.assign(this.placeholder.style, {
-						height: getComputedStyle(this.$el).height,
-						visibility: 'hidden'
-					});
+						Object.assign(this.$el.style, {
+							position: 'fixed',
+							top: this.stickTopPosition + 'px',
+							bottom: '',
+							marginTop: 0,
+							marginBottom: 0,
+							width: getComputedStyle(this.$el).width
+						});
 
-					this.$el.parentElement.insertBefore(this.placeholder, this.$el);
+						this.$set(this.top, 'sticked', true);
+					}
 
-					Object.assign(this.$el.style, {
-						position: 'fixed',
-						top: this.stickTop + 'px',
-						bottom: '',
-						marginTop: 0,
-						marginBottom: 0
-					});
+					if (
+						this.top.sticked
+						&& !this.top.edge
+						&& this.offsetParent.getBoundingClientRect().bottom
+						- parseFloat(offsetParentStyles.borderBottomWidth)
+						- parseFloat(offsetParentStyles.paddingBottom)
+						< this.$el.getBoundingClientRect().bottom
+					) {
+						Object.assign(this.$el.style, {
+							position: 'absolute',
+							top: '',
+							bottom: offsetParentStyles.paddingBottom,
+							marginTop: 0,
+							marginBottom: 0,
+							width: getComputedStyle(this.$el).width
+						});
 
-					this.$set(this.top, 'sticked', true);
-					console.log('Sticked to Viewport Top');
+						this.$set(this.top, 'edge', true);
+					}
+
+					if (
+						this.top.sticked
+						&& this.top.edge
+						&& this.$el.getBoundingClientRect().top > this.stickTopPosition
+					) {
+						Object.assign(this.$el.style, {
+							position: 'fixed',
+							top: this.stickTopPosition + 'px',
+							bottom: '',
+							marginTop: 0,
+							marginBottom: 0,
+							width: getComputedStyle(this.$el).width
+						});
+
+						this.$set(this.top, 'edge', false);
+					}
+
+					if (
+						this.top.sticked
+						&& !this.top.edge
+						&& this.placeholder.getBoundingClientRect().top > this.stickTopPosition
+					) {
+						Object.assign(this.placeholder.style, {
+							position: 'absolute',
+							height: ''
+						});
+
+						Object.assign(this.$el.style, {
+							position: '',
+							top: '',
+							bottom: '',
+							marginTop: '',
+							marginBottom: '',
+							width: ''
+						});
+
+						this.$set(this.top, 'sticked', false);
+					}
 				}
 
-				if (
-					this.top.sticked
-					&& !this.top.edge
-					&& this.offsetParent.getBoundingClientRect().bottom
-					- parseFloat(offsetParentStyles.borderBottomWidth)
-					- parseFloat(offsetParentStyles.paddingBottom)
-					< this.$el.getBoundingClientRect().bottom
-				) {
-					Object.assign(this.$el.style, {
-						position: 'absolute',
-						top: '',
-						bottom: offsetParentStyles.paddingBottom,
-						marginTop: 0,
-						marginBottom: 0
-					});
+				// bottom
+				if ((typeof this.stickBottom === 'number' || this.stickBottom) && !this.top.sticked) {
+					if (
+						!this.bottom.sticked
+						&& !this.bottom.edge
+						&& window.innerHeight - this.$el.getBoundingClientRect().bottom < this.stickBottomPosition
+					) {
+						Object.assign(this.placeholder.style, {
+							position: '',
+							height: getComputedStyle(this.$el).height
+						});
 
-					this.$set(this.top, 'edge', true);
-					console.log('Sticked to Parent Bottom');
-				}
+						Object.assign(this.$el.style, {
+							position: 'fixed',
+							top: '',
+							bottom: this.stickBottomPosition + 'px',
+							marginTop: 0,
+							marginBottom: 0,
+							width: getComputedStyle(this.$el).width
+						});
 
-				if (
-					this.top.sticked
-					&& this.top.edge
-					&& this.$el.getBoundingClientRect().top >= this.stickTop
-				) {
-					Object.assign(this.$el.style, {
-						position: 'fixed',
-						top: this.stickTop + 'px',
-						bottom: '',
-						marginTop: 0,
-						marginBottom: 0
-					});
+						this.$set(this.bottom, 'sticked', true);
+					}
 
-					this.$set(this.top, 'edge', false);
-					console.log('Unsticked from Parent Bottom');
-				}
+					if (
+						this.bottom.sticked
+						&& !this.bottom.edge
+						&& this.offsetParent.getBoundingClientRect().top
+						+ parseFloat(offsetParentStyles.borderTopWidth)
+						+ parseFloat(offsetParentStyles.paddingTop)
+						> this.$el.getBoundingClientRect().top
+					) {
+						Object.assign(this.$el.style, {
+							position: 'absolute',
+							top: offsetParentStyles.paddingTop,
+							bottom: '',
+							marginTop: 0,
+							marginBottom: 0,
+							width: getComputedStyle(this.$el).width
+						});
 
-				if (
-					this.top.sticked
-					&& !this.top.edge
-					&& this.placeholder.getBoundingClientRect().top >= this.stickTop
-				) {
-					Object.assign(this.$el.style, {
-						position: '',
-						top: '',
-						bottom: '',
-						marginTop: '',
-						marginBottom: ''
-					});
+						this.$set(this.bottom, 'edge', true);
+					}
 
-					this.placeholder.parentElement.removeChild(this.placeholder);
+					if (
+						this.bottom.sticked
+						&& this.bottom.edge
+						&& window.innerHeight - this.$el.getBoundingClientRect().bottom > this.stickBottomPosition
+					) {
+						Object.assign(this.$el.style, {
+							position: 'fixed',
+							top: '',
+							bottom: this.stickBottomPosition + 'px',
+							marginTop: 0,
+							marginBottom: 0,
+							width: getComputedStyle(this.$el).width
+						});
 
-					this.$set(this.top, 'sticked', false);
-					console.log('Unsticked from Viewport Top');
+						this.$set(this.bottom, 'edge', false);
+					}
+
+					if (
+						this.bottom.sticked
+						&& !this.bottom.edge
+						&& window.innerHeight - this.placeholder.getBoundingClientRect().bottom > this.stickBottomPosition
+					) {
+						Object.assign(this.placeholder.style, {
+							position: 'absolute',
+							height: ''
+						});
+
+						Object.assign(this.$el.style, {
+							position: '',
+							top: '',
+							bottom: '',
+							marginTop: '',
+							marginBottom: '',
+							width: ''
+						});
+
+						this.$set(this.bottom, 'sticked', false);
+					}
 				}
 			}
 		},
@@ -123,6 +222,15 @@
 		},
 		mounted() {
 			this.offsetParent = this.$el.offsetParent;
+			this.placeholder = this.$el.cloneNode();
+
+			Object.assign(this.placeholder.style, {
+				position: 'absolute',
+				visibility: 'hidden'
+			});
+
+			this.$el.parentElement.insertBefore(this.placeholder, this.$el);
+
 			this.onScroll();
 		}
 	};
@@ -133,7 +241,7 @@
 		width: 200px;
 		height: 300px;
 		border: 2px solid red;
-		margin: 200px 0;
+		margin: 100px 0;
 		background-color: white;
 	}
 </style>

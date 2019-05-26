@@ -2,7 +2,9 @@ extends layout
 
 block app
 	.stick-container
-		vue-stick-scroll(:stick-top="30")
+		.box
+
+		vue-stick-scroll(:stick-top="50" :stick-bottom="100")
 			.stick-element Stick Element
 
 		.box

@@ -28,6 +28,10 @@
 		height: 50vh;
 		border: 2px dashed black;
 		background-color: white;
+
+		&:last-of-type {
+			border-color: blue;
+		}
 	}
 
 

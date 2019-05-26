@@ -98,6 +98,7 @@ module.exports = {
 			importFrom: {environmentVariables}
 		},
 		'postcss-nested': {},
+		// `autoprefixer` after `postcss-nested`
 		autoprefixer: {
 			cascade: false,
 			add: true,
