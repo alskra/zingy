@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueWindowSize from 'vue-window-size';
-import Sticky from 'vue-sticky-directive';
+import VModal from 'vue-js-modal';
 
 Vue.use(VueWindowSize);
-Vue.use(Sticky);
+Vue.use(VModal);
