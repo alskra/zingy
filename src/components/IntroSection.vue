@@ -211,6 +211,11 @@
 		white-space: nowrap;
 		transform: translateX(-50%);
 		transition: opacity 0.2s;
+		text-shadow:
+			-1px 0 rgba(#f0f0f0, 0.5),
+			1px 0 rgba(#f0f0f0, 0.5),
+			0 1px rgba(#f0f0f0, 0.5),
+			-1px 0 rgba(#f0f0f0, 0.5);
 	}
 
 	.scroll-line {
