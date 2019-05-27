@@ -54,7 +54,6 @@
 			$props: {
 				handler() {
 					this.sticky();
-					this.updateStyle();
 				},
 				deep: true
 			}
@@ -129,21 +128,26 @@
 			},
 			updateStyle() {
 				if (this.topState.sticky) {
+					this.setPlaceholder();
+
 					if (!this.topState.edge) {
 						this.setTopFixedStyle();
 					}
 					else {
 						this.setBottomAbsoluteStyle();
 					}
-				}
+				} else if (this.bottomState.sticky) {
+					this.setPlaceholder();
 
-				if (this.bottomState.sticky) {
 					if (!this.bottomState.edge) {
 						this.setBottomFixedStyle();
 					}
 					else {
 						this.setTopAbsoluteStyle();
 					}
+				} else {
+					this.unsetPlaceholder();
+					this.resetStyle();
 				}
 			},
 			sticky() {
@@ -154,9 +158,8 @@
 						&& !this.topState.edge
 						&& this.$el.getBoundingClientRect().top < this.topPosition
 					) {
-						this.setPlaceholder();
-						this.setTopFixedStyle();
 						this.$set(this.topState, 'sticky', true);
+						this.updateStyle();
 					}
 
 					if (
@@ -167,8 +170,8 @@
 						- parseFloat(this.offsetParentStyle.paddingBottom)
 						< this.$el.getBoundingClientRect().bottom
 					) {
-						this.setBottomAbsoluteStyle();
 						this.$set(this.topState, 'edge', true);
+						this.updateStyle();
 					}
 
 					if (
@@ -176,8 +179,8 @@
 						&& this.topState.edge
 						&& this.$el.getBoundingClientRect().top > this.topPosition
 					) {
-						this.setTopFixedStyle();
 						this.$set(this.topState, 'edge', false);
+						this.updateStyle();
 					}
 
 					if (
@@ -185,9 +188,8 @@
 						&& !this.topState.edge
 						&& this.placeholder.getBoundingClientRect().top > this.topPosition
 					) {
-						this.unsetPlaceholder();
-						this.resetStyle();
 						this.$set(this.topState, 'sticky', false);
+						this.updateStyle();
 					}
 				}
 
@@ -198,9 +200,8 @@
 						&& !this.bottomState.edge
 						&& window.innerHeight - this.$el.getBoundingClientRect().bottom < this.bottomPosition
 					) {
-						this.setPlaceholder();
-						this.setBottomFixedStyle();
 						this.$set(this.bottomState, 'sticky', true);
+						this.updateStyle();
 					}
 
 					if (
@@ -211,8 +212,8 @@
 						+ parseFloat(this.offsetParentStyle.paddingTop)
 						> this.$el.getBoundingClientRect().top
 					) {
-						this.setTopAbsoluteStyle();
 						this.$set(this.bottomState, 'edge', true);
+						this.updateStyle();
 					}
 
 					if (
@@ -220,8 +221,8 @@
 						&& this.bottomState.edge
 						&& window.innerHeight - this.$el.getBoundingClientRect().bottom > this.bottomPosition
 					) {
-						this.setBottomFixedStyle();
 						this.$set(this.bottomState, 'edge', false);
+						this.updateStyle();
 					}
 
 					if (
@@ -229,19 +230,18 @@
 						&& !this.bottomState.edge
 						&& window.innerHeight - this.placeholder.getBoundingClientRect().bottom > this.bottomPosition
 					) {
-						this.unsetPlaceholder();
-						this.resetStyle();
 						this.$set(this.bottomState, 'sticky', false);
+						this.updateStyle();
 					}
 				}
+
+				this.updateStyle();
 			},
 			onScroll() {
 				this.sticky();
-				this.updateStyle();
 			},
 			onResize() {
 				this.sticky();
-				this.updateStyle();
 			}
 		},
 		created() {
