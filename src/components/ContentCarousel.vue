@@ -130,6 +130,7 @@
 
 		&.actions-button-is-prev {
 			margin-right: range(20px, 70px);
+			transform-origin: 50% 50%;
 			transform: rotateY(-180deg);
 		}
 
