@@ -26,6 +26,7 @@
 		min-height: 100vh;
 		display: flex;
 		flex-flow: column;
+		/*transform: translate3d(0, 0, 0);*/
 
 		:root:not(.is-browser-ie) & {
 			margin-bottom: var(--zingy-section_height);

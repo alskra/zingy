@@ -53,23 +53,100 @@
 			},
 			$props: {
 				handler() {
-					if (this.topState.sticky && !this.topState.edge) {
-						this.$el.style.top = this.top + 'px';
-					}
-
-					if (this.bottomState.sticky && !this.bottomState.edge) {
-						this.$el.style.bottom = this.bottom + 'px';
-					}
-
 					this.sticky();
+					this.updateStyle();
 				},
 				deep: true
 			}
 		},
 		methods: {
-			sticky() {
-				const offsetParentStyles = getComputedStyle(this.offsetParent);
+			setTopFixedStyle() {
+				Object.assign(this.$el.style, {
+					position: 'fixed',
+					top: this.topPosition + 'px',
+					bottom: '',
+					left: this.placeholder.getBoundingClientRect().left + 'px',
+					marginTop: 0,
+					marginBottom: 0,
+					width: this.placeholderStyle.width
+				});
+			},
+			setBottomAbsoluteStyle() {
+				Object.assign(this.$el.style, {
+					position: 'absolute',
+					top: '',
+					bottom: this.offsetParentStyle.paddingBottom,
+					left: this.placeholder.offsetLeft + 'px',
+					marginTop: 0,
+					marginBottom: 0,
+					width: this.placeholderStyle.width
+				});
+			},
+			setBottomFixedStyle() {
+				Object.assign(this.$el.style, {
+					position: 'fixed',
+					top: '',
+					bottom: this.bottomPosition + 'px',
+					left: this.placeholder.getBoundingClientRect().left + 'px',
+					marginTop: 0,
+					marginBottom: 0,
+					width: this.placeholderStyle.width
+				});
+			},
+			setTopAbsoluteStyle() {
+				Object.assign(this.$el.style, {
+					position: 'absolute',
+					top: this.offsetParentStyle.paddingTop,
+					bottom: '',
+					left: this.placeholder.offsetLeft + 'px',
+					marginTop: 0,
+					marginBottom: 0,
+					width: this.placeholderStyle.width
+				});
+			},
+			resetStyle() {
+				Object.assign(this.$el.style, {
+					position: '',
+					top: '',
+					bottom: '',
+					left: '',
+					marginTop: '',
+					marginBottom: '',
+					width: ''
+				});
+			},
+			setPlaceholder() {
+				Object.assign(this.placeholder.style, {
+					position: '',
+					height: getComputedStyle(this.$el).height
+				});
+			},
+			unsetPlaceholder() {
+				Object.assign(this.placeholder.style, {
+					position: 'absolute',
+					height: ''
+				});
+			},
+			updateStyle() {
+				if (this.topState.sticky) {
+					if (!this.topState.edge) {
+						this.setTopFixedStyle();
+					}
+					else {
+						this.setBottomAbsoluteStyle();
+					}
+				}
 
+				if (this.bottomState.sticky) {
+					if (!this.bottomState.edge) {
+						this.setBottomFixedStyle();
+					}
+					else {
+						this.setTopAbsoluteStyle();
+					}
+				}
+			},
+			sticky() {
 				// top
 				if ((typeof this.top === 'number' || this.top) && !this.bottomState.sticky) {
 					if (
@@ -77,21 +154,8 @@
 						&& !this.topState.edge
 						&& this.$el.getBoundingClientRect().top < this.topPosition
 					) {
-						Object.assign(this.placeholder.style, {
-							position: '',
-							height: getComputedStyle(this.$el).height
-						});
-
-						Object.assign(this.$el.style, {
-							position: 'fixed',
-							top: this.topPosition + 'px',
-							bottom: '',
-							left: this.$el.getBoundingClientRect().left + 'px',
-							marginTop: 0,
-							marginBottom: 0,
-							width: getComputedStyle(this.$el).width
-						});
-
+						this.setPlaceholder();
+						this.setTopFixedStyle();
 						this.$set(this.topState, 'sticky', true);
 					}
 
@@ -99,20 +163,11 @@
 						this.topState.sticky
 						&& !this.topState.edge
 						&& this.offsetParent.getBoundingClientRect().bottom
-						- parseFloat(offsetParentStyles.borderBottomWidth)
-						- parseFloat(offsetParentStyles.paddingBottom)
+						- parseFloat(this.offsetParentStyle.borderBottomWidth)
+						- parseFloat(this.offsetParentStyle.paddingBottom)
 						< this.$el.getBoundingClientRect().bottom
 					) {
-						Object.assign(this.$el.style, {
-							position: 'absolute',
-							top: '',
-							bottom: offsetParentStyles.paddingBottom,
-							left: this.placeholder.offsetLeft + 'px',
-							marginTop: 0,
-							marginBottom: 0,
-							width: getComputedStyle(this.$el).width
-						});
-
+						this.setBottomAbsoluteStyle();
 						this.$set(this.topState, 'edge', true);
 					}
 
@@ -121,16 +176,7 @@
 						&& this.topState.edge
 						&& this.$el.getBoundingClientRect().top > this.topPosition
 					) {
-						Object.assign(this.$el.style, {
-							position: 'fixed',
-							top: this.topPosition + 'px',
-							bottom: '',
-							left: this.$el.getBoundingClientRect().left + 'px',
-							marginTop: 0,
-							marginBottom: 0,
-							width: getComputedStyle(this.$el).width
-						});
-
+						this.setTopFixedStyle();
 						this.$set(this.topState, 'edge', false);
 					}
 
@@ -139,21 +185,8 @@
 						&& !this.topState.edge
 						&& this.placeholder.getBoundingClientRect().top > this.topPosition
 					) {
-						Object.assign(this.placeholder.style, {
-							position: 'absolute',
-							height: ''
-						});
-
-						Object.assign(this.$el.style, {
-							position: '',
-							top: '',
-							bottom: '',
-							left: '',
-							marginTop: '',
-							marginBottom: '',
-							width: ''
-						});
-
+						this.unsetPlaceholder();
+						this.resetStyle();
 						this.$set(this.topState, 'sticky', false);
 					}
 				}
@@ -165,21 +198,8 @@
 						&& !this.bottomState.edge
 						&& window.innerHeight - this.$el.getBoundingClientRect().bottom < this.bottomPosition
 					) {
-						Object.assign(this.placeholder.style, {
-							position: '',
-							height: getComputedStyle(this.$el).height
-						});
-
-						Object.assign(this.$el.style, {
-							position: 'fixed',
-							top: '',
-							bottom: this.bottomPosition + 'px',
-							left: this.$el.getBoundingClientRect().left + 'px',
-							marginTop: 0,
-							marginBottom: 0,
-							width: getComputedStyle(this.$el).width
-						});
-
+						this.setPlaceholder();
+						this.setBottomFixedStyle();
 						this.$set(this.bottomState, 'sticky', true);
 					}
 
@@ -187,20 +207,11 @@
 						this.bottomState.sticky
 						&& !this.bottomState.edge
 						&& this.offsetParent.getBoundingClientRect().top
-						+ parseFloat(offsetParentStyles.borderTopWidth)
-						+ parseFloat(offsetParentStyles.paddingTop)
+						+ parseFloat(this.offsetParentStyle.borderTopWidth)
+						+ parseFloat(this.offsetParentStyle.paddingTop)
 						> this.$el.getBoundingClientRect().top
 					) {
-						Object.assign(this.$el.style, {
-							position: 'absolute',
-							top: offsetParentStyles.paddingTop,
-							bottom: '',
-							left: this.placeholder.offsetLeft + 'px',
-							marginTop: 0,
-							marginBottom: 0,
-							width: getComputedStyle(this.$el).width
-						});
-
+						this.setTopAbsoluteStyle();
 						this.$set(this.bottomState, 'edge', true);
 					}
 
@@ -209,16 +220,7 @@
 						&& this.bottomState.edge
 						&& window.innerHeight - this.$el.getBoundingClientRect().bottom > this.bottomPosition
 					) {
-						Object.assign(this.$el.style, {
-							position: 'fixed',
-							top: '',
-							bottom: this.bottomPosition + 'px',
-							left: this.$el.getBoundingClientRect().left + 'px',
-							marginTop: 0,
-							marginBottom: 0,
-							width: getComputedStyle(this.$el).width
-						});
-
+						this.setBottomFixedStyle();
 						this.$set(this.bottomState, 'edge', false);
 					}
 
@@ -227,34 +229,19 @@
 						&& !this.bottomState.edge
 						&& window.innerHeight - this.placeholder.getBoundingClientRect().bottom > this.bottomPosition
 					) {
-						Object.assign(this.placeholder.style, {
-							position: 'absolute',
-							height: ''
-						});
-
-						Object.assign(this.$el.style, {
-							position: '',
-							top: '',
-							bottom: '',
-							left: '',
-							marginTop: '',
-							marginBottom: '',
-							width: ''
-						});
-
+						this.unsetPlaceholder();
+						this.resetStyle();
 						this.$set(this.bottomState, 'sticky', false);
 					}
 				}
 			},
 			onScroll() {
 				this.sticky();
+				this.updateStyle();
 			},
 			onResize() {
 				this.sticky();
-
-				if (this.isSticky) {
-					this.$el.style.width = getComputedStyle(this.placeholder).width;
-				}
+				this.updateStyle();
 			}
 		},
 		created() {
@@ -278,6 +265,9 @@
 			});
 
 			this.$el.parentElement.insertBefore(this.placeholder, this.$el);
+
+			this.offsetParentStyle = getComputedStyle(this.offsetParent);
+			this.placeholderStyle = getComputedStyle(this.placeholder);
 
 			this.sticky();
 		}
