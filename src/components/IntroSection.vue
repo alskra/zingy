@@ -179,7 +179,7 @@
 		&.v-leave-active {
 			transition-property: opacity;
 			transition-duration: 0.3s;
-			transition-delay: 1.6s;
+			transition-delay: 1.9s;
 		}
 
 		&.v-enter,
@@ -241,7 +241,7 @@
 		&.v-leave-active {
 			transition-property: opacity;
 			transition-duration: 0.3s;
-			transition-delay: 1.9s;
+			transition-delay: 1.6s;
 		}
 
 		&.v-enter,
