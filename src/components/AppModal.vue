@@ -25,17 +25,17 @@
 
 <style>
 	.v--modal-background-click {
+		box-sizing: border-box;
 		display: flex;
 		flex-flow: column;
-		padding: var(--grid-padding) 0;
+		padding: var(--grid-padding);
 	}
 
 	.app-modal {
-		display: flex;
 		top: auto !important;
 		left: auto !important;
-		width: var(--grid-width) !important;
-		max-width: calc(100% - 2 * var(--grid-padding));
+		width: 100% !important;
+		max-width: var(--grid-width);
 		height: auto !important;
 		margin: auto !important;
 	}
@@ -44,7 +44,6 @@
 <style scoped>
 	.body {
 		box-sizing: border-box;
-		width: 100%;
 		padding: range(15px, 100px) range(10px, 90px);
 		margin: scale-down(13px, 0.5) scale-down(12px, 0.5) 0 0;
 		background-color: #f2f4f5;
