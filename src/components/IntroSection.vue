@@ -1,5 +1,6 @@
 <script>
 	import VueSticky from './VueSticky';
+	import AppModal from './AppModal';
 
 	export default {
 		name: 'IntroSection',
@@ -19,7 +20,11 @@
 			}
 		},
 		components: {
-			VueSticky
+			VueSticky,
+			AppModal
+		},
+		methods: {
+
 		}
 	};
 </script>

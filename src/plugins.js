@@ -3,4 +3,4 @@ import VueWindowSize from 'vue-window-size';
 import VModal from 'vue-js-modal';
 
 Vue.use(VueWindowSize);
-Vue.use(VModal);
+Vue.use(VModal, {dynamic: true, injectModalsContainer: true});
