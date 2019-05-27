@@ -59,7 +59,7 @@
 	.link-icon-is-masked.host {
 		background: linear-gradient(to right, var(--color-link), var(--color-link)) no-repeat 0 0 / 0 100% #1a1a1a;
 		transition: background-size 0.2s;
-		will-change: backgroud-size;
+		will-change: background-size;
 
 		>>> * {
 			display: none;

@@ -112,7 +112,11 @@
 		flex-grow: 1;
 		position: relative;
 		z-index: 1;
-		text-shadow: 1px 1px 1px #f0f0f0;
+		text-shadow:
+			-1px 0 rgba(#f0f0f0, 0.5),
+			1px 0 rgba(#f0f0f0, 0.5),
+			0 1px rgba(#f0f0f0, 0.5),
+			-1px 0 rgba(#f0f0f0, 0.5);
 
 		p {
 			margin: 0;
