@@ -82,11 +82,11 @@
 			}
 
 			.item-title{
-				transform: translateX(range(20px, 40px));
+				transform: translate3d(range(20px, 40px), 0, 0);
 			}
 
 			.item-description {
-				transform: translateX(-100%);
+				transform: translate3d(-100%, 0, 0);
 				transition-delay: 0.5s;
 			}
 		}
@@ -130,6 +130,7 @@
 		transition: transform 0.5s;
 		cursor: default;
 		will-change: transform;
+		transform: translate3d(0, 0, 0);
 	}
 
 	.item-description {
@@ -148,6 +149,7 @@
 		flex-flow: column;
 		flex-shrink: 0;
 		will-change: transform;
+		transform: translate3d(0, 0, 0);
 	}
 
 	.item-description-inner {
