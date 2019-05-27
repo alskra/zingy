@@ -46,6 +46,7 @@
 	.awesome-list {
 		display: block;
 		position: relative;
+		transform: translate3d(0, 0, 0);
 	}
 
 	.running-line {
@@ -74,6 +75,7 @@
 		display: flex;
 		position: relative;
 		overflow: hidden;
+		transform: translate3d(0, 0, 0);
 
 		&:hover {
 			.item-number {
