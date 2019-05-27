@@ -49,9 +49,17 @@ mixin IntroSection()
 												#[strong ТОП 250]
 												#[br]#[em Среди веб-студий Москвы по версии Рейтинга Рунета]
 
-
 						transition-box(appear)
 							vue-sticky(:top="false" :bottom="scrollStickyBottom" ref="scroll")
 								.scroll
 									.scroll-text Крутите вниз
 									.scroll-line
+
+						transition-box(appear)
+							.unicorn
+								.unicorn-img-box
+									include ../../../src/assets/img/icons/unicorn-intro.svg
+									div(:class="['unicorn-img', {'unicorn-img-is-clip': isSupportClipPath}]")
+
+								.unicorn-text-box
+									a(href="") Почему единорог?

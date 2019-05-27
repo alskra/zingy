@@ -5,7 +5,7 @@
 		name: 'IntroSection',
 		data() {
 			return {
-
+				isSupportClipPath: document.documentElement.style.clipPath !== undefined
 			}
 		},
 		computed: {
@@ -82,7 +82,7 @@
 		font-size: var(--font-size-h2);
 		font-weight: 500;
 		line-height: 1.25;
-		margin: 0 0 scale-down(50px, 0.5);
+		margin: 0 scale-down(20%, 0) scale-down(50px, 0.5) 0;
 
 		&.v-enter-active,
 		&.v-leave-active {
@@ -108,8 +108,11 @@
 		font-size: range(1.6rem, 1.8rem);
 		font-weight: 400;
 		line-height: 1.5;
-		margin: 0 scale-down(43%, 0) scale-down(40px, 0.5) 0;
+		margin: 0 scale-down(40%, 0) scale-down(40px, 0.5) 0;
 		flex-grow: 1;
+		position: relative;
+		z-index: 1;
+		text-shadow: 1px 1px 1px #f0f0f0;
 
 		p {
 			margin: 0;
@@ -170,6 +173,7 @@
 
 	.scroll {
 		position: relative;
+		z-index: 1;
 
 		&.v-enter-active,
 		&.v-leave-active {
@@ -225,6 +229,101 @@
 			height: 100%;
 			background-color: var(--intro-section_color-accent);
 			animation: scroll_run 1.5s linear infinite;
+		}
+	}
+
+	.unicorn {
+		position: absolute;
+		right: scale-down(-70px, 0);
+		bottom: scale-down(-25px, 0);
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition-property: opacity;
+			transition-duration: 0.3s;
+			transition-delay: 1.9s;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			opacity: 0;
+		}
+	}
+
+	.unicorn-img-box {
+		width: scale-down(420px, 0.3);
+		position: relative;
+
+		&::before {
+			content: '';
+			display: block;
+			padding-top: percentage(803 / 420);
+		}
+
+		svg {
+			position: absolute;
+			width: 0;
+			height: 0;
+		}
+	}
+
+	.unicorn-img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: url("../assets/img/unicorn-intro-fallback.png") no-repeat 50% 100% / 100% auto;
+	}
+
+	.unicorn-img-is-clip {
+		width: 420px;
+		height: 803px;
+		background: url("../assets/img/intro-bg-1.jpg") no-repeat 50% / cover;
+		clip-path: url("#unicorn");
+		transform-origin: 0 0;
+		transform: scale(scale-down(1, 0.3));
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url("../assets/img/intro-bg-2.jpg") no-repeat 50% / cover;
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+
+		&:hover {
+			&::before {
+				opacity: 1;
+			}
+		}
+	}
+
+	.unicorn-text-box {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(1.2rem, 1.6rem);
+		font-weight: 500;
+		line-height: 1.25;
+		margin-top: scale-down(20px, 0.5);
+
+		a {
+			color: inherit;
+			text-decoration: none;
+			transition: color 0.2s;
+
+			&:hover {
+				color: var(--color-link);
+			}
 		}
 	}
 </style>
