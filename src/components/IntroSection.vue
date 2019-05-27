@@ -176,6 +176,10 @@
 	}
 
 	.scroll {
+		display: flex;
+		align-items: center;
+		width: 0;
+		margin: 0 auto;
 		position: relative;
 		z-index: 1;
 
@@ -204,7 +208,8 @@
 		font-size: range(1.2rem, 1.4rem);
 		font-weight: 300;
 		line-height: 1.25;
-		text-align: center;
+		white-space: nowrap;
+		transform: translateX(-50%);
 		transition: opacity 0.2s;
 	}
 

@@ -70,6 +70,7 @@
 			sticky() {
 				const offsetParentStyles = getComputedStyle(this.offsetParent);
 
+				// top
 				if ((typeof this.top === 'number' || this.top) && !this.bottomState.sticky) {
 					if (
 						!this.topState.sticky
@@ -85,6 +86,7 @@
 							position: 'fixed',
 							top: this.topPosition + 'px',
 							bottom: '',
+							left: this.$el.getBoundingClientRect().left + 'px',
 							marginTop: 0,
 							marginBottom: 0,
 							width: getComputedStyle(this.$el).width
@@ -105,6 +107,7 @@
 							position: 'absolute',
 							top: '',
 							bottom: offsetParentStyles.paddingBottom,
+							left: this.placeholder.offsetLeft + 'px',
 							marginTop: 0,
 							marginBottom: 0,
 							width: getComputedStyle(this.$el).width
@@ -122,6 +125,7 @@
 							position: 'fixed',
 							top: this.topPosition + 'px',
 							bottom: '',
+							left: this.$el.getBoundingClientRect().left + 'px',
 							marginTop: 0,
 							marginBottom: 0,
 							width: getComputedStyle(this.$el).width
@@ -144,6 +148,7 @@
 							position: '',
 							top: '',
 							bottom: '',
+							left: '',
 							marginTop: '',
 							marginBottom: '',
 							width: ''
@@ -169,6 +174,7 @@
 							position: 'fixed',
 							top: '',
 							bottom: this.bottomPosition + 'px',
+							left: this.$el.getBoundingClientRect().left + 'px',
 							marginTop: 0,
 							marginBottom: 0,
 							width: getComputedStyle(this.$el).width
@@ -189,6 +195,7 @@
 							position: 'absolute',
 							top: offsetParentStyles.paddingTop,
 							bottom: '',
+							left: this.placeholder.offsetLeft + 'px',
 							marginTop: 0,
 							marginBottom: 0,
 							width: getComputedStyle(this.$el).width
@@ -206,6 +213,7 @@
 							position: 'fixed',
 							top: '',
 							bottom: this.bottomPosition + 'px',
+							left: this.$el.getBoundingClientRect().left + 'px',
 							marginTop: 0,
 							marginBottom: 0,
 							width: getComputedStyle(this.$el).width
@@ -228,6 +236,7 @@
 							position: '',
 							top: '',
 							bottom: '',
+							left: '',
 							marginTop: '',
 							marginBottom: '',
 							width: ''
@@ -274,13 +283,3 @@
 		}
 	};
 </script>
-
-<style scoped>
-	.stick-element {
-		width: 200px;
-		height: 300px;
-		border: 2px solid red;
-		margin: 100px 0;
-		background-color: white;
-	}
-</style>

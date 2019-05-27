@@ -10,6 +10,10 @@ const pages = {
 	blog: {
 		template: 'public/templates/blog.pug',
 		filename: 'blog.html'
+	},
+	'vue-sticky-exm': {
+		template: 'public/templates/vue-sticky-exm.pug',
+		filename: 'vue-sticky-exm.html'
 	}
 };
 

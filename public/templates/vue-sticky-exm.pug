@@ -1,0 +1,40 @@
+extends layout
+
+block head-styles
+	style.
+		.vue-sticky-exm-container {
+			border: 2px solid green;
+			width: 1024px;
+			max-width: 100%;
+			margin: 150vh auto;
+			padding: 30px;
+			position: relative;
+			box-sizing: border-box;
+		}
+
+		.vue-sticky-exm-box {
+			height: 50vh;
+			border: 2px dashed black;
+			background-color: white;
+		}
+
+		.vue-sticky-exm-box:last-of-type {
+			border-color: blue;
+		}
+
+		.vue-sticky-exm-elem {
+			width: 200px;
+			height: 300px;
+			border: 2px solid red;
+			margin: 100px 0;
+			background-color: white;
+		}
+
+block app
+	.vue-sticky-exm-container
+		.vue-sticky-exm-box
+
+		vue-sticky(:top="50" :bottom="100")
+			.vue-sticky-exm-elem Sticky Element
+
+		.vue-sticky-exm-box
