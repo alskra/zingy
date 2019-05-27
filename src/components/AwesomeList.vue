@@ -129,6 +129,7 @@
 		margin: 0;
 		transition: transform 0.5s;
 		cursor: default;
+		will-change: transform;
 	}
 
 	.item-description {
@@ -146,7 +147,7 @@
 		display: flex;
 		flex-flow: column;
 		flex-shrink: 0;
-		/*transform: translateX(-100%);*/
+		will-change: transform;
 	}
 
 	.item-description-inner {
