@@ -290,7 +290,7 @@
 		background: url("../assets/img/unicorn-intro-fallback.png") no-repeat 50% 100% / 100% auto;
 	}
 
-	.unicorn-img-is-clip {
+	:root:not(.is-browser-mobile-safari) .unicorn-img-is-clip {
 		width: 420px;
 		height: 803px;
 		background: url("../assets/img/intro-bg-1.jpg") no-repeat 50% / cover;
