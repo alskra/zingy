@@ -167,7 +167,7 @@
 	}
 
 	.content-credit-img-cell {
-		width: scale-down(70px, 0.5);
+		width: scale-down(66px, 0.5);
 		flex-shrink: 0;
 		margin-right: scale-down(20px, 0.5);
 	}
