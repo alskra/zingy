@@ -12,12 +12,16 @@
 
 <style scoped>
 	.zingy-section {
-		display: flex;
-		flex-flow: column;
-		box-sizing: border-box;
-		width: 100%;
-		height: var(--zingy-section_height);
-		position: relative;
+		all: initial;
+
+		& {
+			display: flex;
+			flex-flow: column;
+			box-sizing: border-box;
+			width: 100%;
+			height: var(--zingy-section_height);
+			position: relative;
+		}
 
 		&::before {
 			@keyframes zingy-section_scale-bg {

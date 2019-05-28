@@ -1,6 +1,6 @@
 mixin PageHeaderNav()
 	template#page-header-nav
-		nav.host.page-header-nav
+		nav.page-header-nav
 			.grid
 				each navItem, index in ['Главная', 'О компании', 'Разработка', 'Продвижение', 'Блог', 'Контакты']
 					.grid-cell(class={'is-active': index === 0})

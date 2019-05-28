@@ -1,4 +1,4 @@
-mixin ReviewElement({content, citeName, citeDescription})
+mixin AppReview({content, citeName, citeDescription})
 	-
 		[content, citeName, citeDescription] = [
 			content || `<p>“Zingy Projects я выбрала интуитивно, по тем ответам, которые получала от них, по скорости
@@ -20,7 +20,7 @@ mixin ReviewElement({content, citeName, citeDescription})
 		]
 
 	template
-		.ReviewElement&attributes(attributes)
+		.app-review&attributes(attributes)
 			.content!= content
 
 			p.cite

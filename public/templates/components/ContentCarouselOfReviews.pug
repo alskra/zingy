@@ -1,6 +1,6 @@
 mixin ContentCarouselOfReviews()
 	include ContentCarousel
-	include ReviewElement
+	include AppReview
 
 	-
 		const reviews = [
@@ -16,7 +16,7 @@ mixin ContentCarouselOfReviews()
 		.content-box
 			.content-grid
 				.content-grid-item
-					base-icon.background-quote(icon-name="open-quote")
+					base-icon.background-quote(name="open-quote")
 
 					vue-slick(
 						ref="slick"
@@ -24,5 +24,5 @@ mixin ContentCarouselOfReviews()
 						v-on="{init: onSlickInit, beforeChange: onSlickBeforeChange, breakpoint: onSlickBreakpoint}"
 					)
 						each review in reviews
-							review-element(inline-template)
-								+ReviewElement(review)
+							app-review(inline-template)
+								+AppReview(review)

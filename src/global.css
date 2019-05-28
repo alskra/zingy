@@ -1,29 +1,28 @@
 @import "~normalize.css";
 
-/*@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700&subset=cyrillic,cyrillic-ext,latin-ext');*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700&subset=cyrillic,cyrillic-ext,latin-ext');
 
-@import "assets/fonts/Roboto/stylesheet.css";
+//@import "assets/fonts/Roboto/stylesheet.css";
 
 :root {
-	// Overwrite browser dependent properties
+	// Browser dependent properties
 	--quotes: "“" "”" "‘" "’";
 	--font-family: Roboto, Arial, sans-serif;
 	--text-align: left;
 	--color: #0a0a0a;
 	--outline-color: #000;
 
+	--color-accent: #e04b4a;
 	--color-link: #e04b4a;
 	--color-zingy: #252525;
 
-	// Deprecated, --grid instead
-	--content-box-width: env(--content-box-width);
-	--content-box-gutter: range(10px, 40px);
+	--font-size: range(1.6rem, 1.8rem);
+	--font-size-h2: scale-down(4.8rem, 0.56);
+
 
 	--grid-width: env(--grid-width);
 	--grid-padding: range(10px, 40px);
 	--grid-cell-padding: 10px;
-
-	--font-size-h2: scale-down(4.8rem, 0.56);
 
 	font-size: percentage(10 / 16);
 	-webkit-font-smoothing: antialiased;
@@ -42,8 +41,4 @@
 ::selection {
 	color: white;
 	background-color: var(--color-link);
-}
-
-.host {
-	all: initial;
 }

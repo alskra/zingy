@@ -17,7 +17,11 @@
 
 <style scoped>
 	.social-links {
-		display: block;
+		all: initial;
+
+		& {
+			display: block;
+		}
 	}
 
 	.grid {
@@ -46,17 +50,17 @@
 			color: var(--color-link);
 			filter: drop-shadow(0 0 3px var(--color-link));
 
-			.link-icon-is-masked.host {
+			.link-icon-is-masked {
 				background-size: 100% 100%;
 			}
 		}
 	}
 
-	.link-icon.host {
+	.link-icon {
 		pointer-events: none;
 	}
 
-	.link-icon-is-masked.host {
+	.link-icon-is-masked {
 		background: linear-gradient(to right, var(--color-link), var(--color-link)) no-repeat 0 0 / 0 100% #1a1a1a;
 		transition: background-size 0.2s;
 		will-change: background-size;

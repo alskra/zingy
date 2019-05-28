@@ -1,7 +1,7 @@
 mixin PageSectionIsServices(title = 'Популярные услуги')
 	include PageSection
 
-	+PageSection(title).PageSectionIsServices
+	+PageSection(title).page-section-is-services
 		nav.services
 			a(
 				:class="['services-item', 'services-item-is-1', {'services-item-has-mix-blend-mode': servicesItemHasMixBlendMode}]"

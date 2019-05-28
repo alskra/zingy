@@ -1,12 +1,12 @@
 <script>
 	import ContentCarousel from './ContentCarousel';
-	import ReviewElement from './ReviewElement';
+	import AppReview from './AppReview';
 
 	export default {
 		name: 'ContentCarouselOfReviews',
 		extends: ContentCarousel,
 		components: {
-			ReviewElement
+			AppReview
 		}
 	};
 </script>
@@ -15,8 +15,8 @@
 
 <style scoped>
 	.content-box {
-		width: calc(100% - 2 * var(--content-box-gutter));
-		max-width: var(--content-box-width);
+		width: calc(100% - 2 * var(--grid-padding));
+		max-width: var(--grid-width);
 		margin: 0 auto;
 	}
 
@@ -36,7 +36,7 @@
 		}
 	}
 
-	.background-quote.host {
+	.background-quote {
 		position: absolute;
 		top: range(-10px, -20px);
 		left: range(10px, -190px);
@@ -58,7 +58,7 @@
 		margin: 0 10px;
 	}
 
-	.ReviewElement {
+	.app-review {
 		vertical-align: top;
 	}
 

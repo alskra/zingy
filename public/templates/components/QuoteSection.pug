@@ -7,7 +7,7 @@ mixin QuoteSection({subject, quote, citeName, citeDescription} = {})
 		citeDescription = citeDescription || 'SEO-специалист'
 
 	template
-		blockquote.QuoteSection&attributes(attributes)
+		blockquote.quote-section&attributes(attributes)
 			.content-box
 				p.subject= subject
 

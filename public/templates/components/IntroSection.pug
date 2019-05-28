@@ -1,5 +1,5 @@
 mixin IntroSection()
-	section.host.intro-section
+	section.intro-section
 		.body
 			transition-box(
 				appear
@@ -65,14 +65,28 @@ mixin IntroSection()
 									a(href="" @click.prevent="$modal.show('unicorn')") Почему единорог?
 
 						app-modal(name="unicorn")
+							template(v-slot:title)
+								h2 Почему единорог?
+
 							template(v-slot:default)
 								p.
-									Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше.
+									Deep sea smelt archerfish yellowfin pike man-of-war fish dorab orbicular batfish?
+									Bocaccio, spikefish barbel coelacanth thorny catfish sleeper shark.
+									Port Jackson shark; dogteeth tetra sabertooth fish, velvet catfish mudskipper
+									southern sandfish golden shiner garpike collared carpetshark garpike coffinfish!
+									Weever tonguefish tope fierasfer barbeled houndshark angler catfish zebra bullhead
+									shark. Loweye catfish dorab amago lighthousefish scabbard fish duckbilled
+									barracudina anemonefish, streamer fish.
+
 								p.
-									Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше.
-								p.
-									Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше. Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше. Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше. Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше.
-								p.
-									Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше. Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше.
-								p.
-									Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше. Мы не торопим вас с выбором веб-студии. Это очень важный выбор, потому что работать придется долго. Если мы до сих пор вас не убедили, то изучите наши преимущества дальше.
+									Betta beaked salmon, Asian carps white shark suckermouth armored catfish redside
+									convict blenny oceanic whitetip shark pearl danio. Sand lance gudgeon wahoo ayu
+									oilfish dwarf gourami deepwater cardinalfish Mexican blind cavefish catla bream:
+									slimy sculpin. Cuckoo wrasse, California flyingfish sixgill shark, ronquil handfish
+									slimehead bull trout, "bonefish Atlantic trout carpetshark yellowbanded perch!"
+									Bluntnose minnow danio ziege batfish beluga sturgeon Redhorse sucker eelblenny.
+									Porcupinefish, dojo loach yellowtail zebra shark climbing gourami Arctic char nurse
+									shark, koi driftwood catfish banded killifish peacock flounder! Haddock squirrelfish
+									smooth dogfish mrigal plaice lungfish trevally, houndshark. Plunderfish armorhead
+									lake whitefish sillago zebra lionfish northern Stargazer zander zander, platy
+									barracuda Ragfish temperate bass rockweed gunnel!

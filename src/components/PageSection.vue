@@ -12,7 +12,7 @@
 </script>
 
 <style scoped>
-	.PageSection {
+	.page-section {
 		all: initial;
 
 		& {
@@ -26,8 +26,8 @@
 	}
 
 	.content-box {
-		width: calc(100% - 2 * var(--content-box-gutter));
-		max-width: var(--content-box-width);
+		width: calc(100% - 2 * var(--grid-padding));
+		max-width: var(--grid-width);
 		margin: 0 auto;
 	}
 

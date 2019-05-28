@@ -1,11 +1,11 @@
 <script>
 	export default {
-		name: 'ReviewElement'
+		name: 'AppReview'
 	};
 </script>
 
 <style scoped>
-	.ReviewElement {
+	.app-review {
 		all: initial;
 
 		& {

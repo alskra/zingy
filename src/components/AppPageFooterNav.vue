@@ -5,7 +5,7 @@
 </script>
 
 <style scoped>
-	.AppPageFooterNav {
+	.app-page-footer-nav {
 		all: initial;
 
 		& {

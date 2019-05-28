@@ -1,5 +1,5 @@
 <template lang="pug">
-	.host.base-button(:is="tag")&attributes(attributes)
+	.base-button(:is="tag")
 		slot(name="icon")
 
 		span.text(v-if="$scopedSlots.default")
@@ -20,17 +20,21 @@
 
 <style scoped>
 	.base-button {
-		display: inline-flex;
-		vertical-align: top;
-		justify-content: center;
-		align-items: center;
-		box-sizing: border-box;
-		padding: 5px range(15px, 20px);
-		max-width: 100%;
-		height: range(44px, 56px);
-		background-color: var(--color);
-		transition: background-color 0.2s;
-		cursor: pointer;
+		all: initial;
+
+		& {
+			display: inline-flex;
+			vertical-align: top;
+			justify-content: center;
+			align-items: center;
+			box-sizing: border-box;
+			padding: 5px range(15px, 20px);
+			max-width: 100%;
+			height: range(44px, 56px);
+			background-color: var(--color);
+			transition: background-color 0.2s;
+			cursor: pointer;
+		}
 
 		&:hover:not(:disabled) {
 			background-color: var(--color-link);

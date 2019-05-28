@@ -11,8 +11,12 @@
 
 <style scoped>
 	.service-section {
-		display: block;
-		padding: scale-down(80px, 0.5) 0;
+		all: initial;
+
+		& {
+			display: block;
+			padding: scale-down(80px, 0.5) 0;
+		}
 	}
 
 	.grid {

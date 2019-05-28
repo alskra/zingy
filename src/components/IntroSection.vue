@@ -37,8 +37,12 @@
 
 <style scoped>
 	.intro-section {
-		display: block;
-		padding-bottom: range(40px, 80px);
+		all: initial;
+
+		& {
+			display: block;
+			padding-bottom: range(40px, 80px);
+		}
 	}
 
 	.body {

@@ -78,11 +78,15 @@
 
 <style scoped>
 	.page-header {
-		position: fixed;
-		z-index: 100;
-		top: range(8px, 40px);
-		right: range(10px, 40px);
-		left: range(10px, 40px);
+		all: initial;
+
+		& {
+			position: fixed;
+			z-index: 100;
+			top: range(8px, 40px);
+			right: range(10px, 40px);
+			left: range(10px, 40px);
+		}
 	}
 
 	.logo-box {
@@ -98,7 +102,7 @@
 		&.v-appear-active {
 			animation: logo-box_slide-in-right 0.4s;
 
-			.logo-icon.host {
+			.logo-icon {
 				animation: logo-box_fade-in-top 0.2s 0.4s backwards;
 			}
 		}
@@ -128,7 +132,7 @@
 		position: relative;
 
 		&:hover {
-			.logo-icon.host {
+			.logo-icon {
 				transition: transform 0.8s;
 				transform: perspective(50px) rotateY(360deg);
 			}
@@ -144,7 +148,7 @@
 		justify-content: flex-end;
 		overflow: hidden;
 
-		.nav.host {
+		.nav {
 			flex-shrink: 0;
 		}
 
@@ -152,7 +156,7 @@
 		&.v-leave-active {
 			transition: width 0.3s;
 
-			.nav.host {
+			.nav {
 				>>> .grid-cell {
 					transition-property: transform, opacity;
 					transition-duration: 0.2s;
@@ -161,7 +165,7 @@
 		}
 
 		&.v-enter-active {
-			.nav.host {
+			.nav {
 				>>> .grid-cell {
 					transition-delay: 0.3s;
 				}
@@ -172,7 +176,7 @@
 		&.v-leave-to {
 			width: 0 !important;
 
-			.nav.host {
+			.nav {
 				>>> .grid-cell {
 					transform: translateX(-10px);
 					opacity: 0;
@@ -197,7 +201,7 @@
 		}
 
 		&.v-enter-active {
-			.menu-button-icon.host {
+			.menu-button-icon {
 				>>> .menu-icon-line {
 					transition: width 0.2s 0.2s;
 
@@ -217,7 +221,7 @@
 		}
 
 		&.v-leave-active {
-			.menu-button-icon.host {
+			.menu-button-icon {
 				>>> .menu-icon-line {
 					transition: width 0.2s;
 
@@ -240,7 +244,7 @@
 		&.v-leave-to {
 			width: 0;
 
-			.menu-button-icon.host {
+			.menu-button-icon {
 				>>> .menu-icon-line {
 					width: 0;
 				}
@@ -266,7 +270,7 @@
 		}
 	}
 
-	.menu-button-icon.host {
+	.menu-button-icon {
 		@media (width < 1280px) {
 			/*transform: scale(calc(5 / 6));*/
 		}
@@ -346,7 +350,7 @@
 		}
 	}
 
-	.link-icon.host {
+	.link-icon {
 		flex-shrink: 0;
 		margin-right: 10px;
 		width: 24px;
@@ -369,7 +373,7 @@
 		}
 	}
 
-	.button.host {
+	.button {
 		height: 32px;
 
 		>>> .text {
@@ -391,7 +395,7 @@
 		&.v-leave-active {
 			transition: width 0.3s;
 
-			.phone-button-icon.host {
+			.phone-button-icon {
 				transition-property: transform, opacity;
 				transition-duration: 0.2s;
 				transition-delay: 0.3s;
@@ -399,13 +403,13 @@
 		}
 
 		&.v-enter-active {
-			.phone-button-icon.host {
+			.phone-button-icon {
 				/*transition-delay: 0.3s;*/
 			}
 		}
 
 		&.v-leave-active {
-			.phone-button-icon.host {
+			.phone-button-icon {
 				/*transition-delay: 0.3s;*/
 			}
 		}
@@ -414,7 +418,7 @@
 		&.v-leave-to {
 			width: 0;
 
-			.phone-button-icon.host {
+			.phone-button-icon {
 				transform: translateY(10px);
 				opacity: 0;
 			}
@@ -439,7 +443,7 @@
 		}
 	}
 
-	.phone-button-icon.host {
+	.phone-button-icon {
 		width: range(44 / 58 * 32px, 32px);
 		height: range(44 / 58 * 32px, 32px);
 	}
@@ -502,7 +506,7 @@
 				transition-duration: 0.2s;
 			}
 
-			.sidebar-nav.host {
+			.sidebar-nav {
 				>>> .grid-cell {
 					transition-property: transform, opacity;
 					transition-duration: 0.2s;
@@ -524,7 +528,7 @@
 				transition-delay: 0.4s;
 			}
 
-			.sidebar-nav.host {
+			.sidebar-nav {
 				>>> .grid-cell {
 					transition-delay: 0.4s;
 				}
@@ -552,7 +556,7 @@
 				opacity: 0;
 			}
 
-			.sidebar-nav.host {
+			.sidebar-nav {
 				>>> .grid-cell {
 					transform: translateY(10px);
 					opacity: 0;
@@ -592,7 +596,7 @@
 		}
 	}
 
-	.sidebar-nav.host {
+	.sidebar-nav {
 		margin-bottom: 40px;
 		flex-shrink: 0;
 	}
@@ -623,9 +627,9 @@
 
 <style>
 	@custom-selector :--back-boxes
-	.app-page.host > .body > .main,
-	.app-page.host > .body > .footer,
-	.app-page.host > .zingy-section.host;
+	.app-page > .body > .main,
+	.app-page > .body > .footer,
+	.app-page > .zingy-section;
 
 	:root {
 		:--back-boxes {

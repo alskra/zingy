@@ -1,6 +1,6 @@
 mixin ContentCarouselOfWorks()
 	include ContentCarousel
-	include WorkElement
+	include WorksItem
 
 	-
 		const works = [
@@ -56,5 +56,5 @@ mixin ContentCarouselOfWorks()
 			v-on="{init: onSlickInit, beforeChange: onSlickBeforeChange, breakpoint: onSlickBreakpoint}"
 		)
 			each work in works
-				work-element(inline-template)
-					+WorkElement(work)
+				works-item(inline-template)
+					+WorksItem(work)

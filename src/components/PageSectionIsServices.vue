@@ -18,7 +18,7 @@
 </style>
 
 <style scoped>
-	.PageSectionIsServices {
+	.page-section-is-services {
 		background: url("../assets/img/section-services-bg.jpg") no-repeat 50% 50% / cover #f0f0f0;
 		padding: 0;
 	}

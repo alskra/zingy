@@ -1,6 +1,6 @@
 <script>
 	import ContentCarousel from './ContentCarousel';
-	import WorkElement from './WorkElement';
+	import WorksItem from './WorksItem';
 
 	export default {
 		name: 'ContentCarouselOfWorks',
@@ -22,7 +22,7 @@
 			};
 		},
 		components: {
-			WorkElement
+			WorksItem
 		}
 	};
 </script>
@@ -62,7 +62,7 @@
 		}
 	}
 
-	.WorkElement {
+	.works-item {
 		vertical-align: top;
 	}
 </style>

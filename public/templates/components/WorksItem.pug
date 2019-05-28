@@ -1,6 +1,6 @@
-mixin WorkElement({category = 'Category', title = 'Title', description = 'Description', url = '', image = '', color = '#303030'})
+mixin WorksItem({category = 'Category', title = 'Title', description = 'Description', url = '', image = '', color = '#303030'})
 	template
-		figure.WorkElement&attributes(attributes)
+		figure.works-item&attributes(attributes)
 			a.image-box(
 				href=url
 				style={backgroundColor: color}

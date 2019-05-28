@@ -30,9 +30,13 @@
 
 <style scoped>
 	.d-list {
-		display: flex;
-		flex-flow: column;
-		position: relative;
+		all: initial;
+
+		& {
+			display: flex;
+			flex-flow: column;
+			position: relative;
+		}
 	}
 
 	.d-list-inner {

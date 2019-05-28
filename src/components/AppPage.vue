@@ -15,9 +15,13 @@
 
 <style scoped>
 	.app-page {
-		display: block;
-		overflow: hidden;
-		min-width: env(--min-breakpoint);
+		all: initial;
+
+		& {
+			display: block;
+			overflow: hidden;
+			min-width: env(--min-breakpoint);
+		}
 	}
 
 	.body {

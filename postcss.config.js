@@ -29,7 +29,7 @@ module.exports = {
 					});
 
 					return `calc(
-					${min} + (${max} - ${min})
+					(${min}) + ((${max}) - (${min}))
 					/ (${maxBreakpoint} - ${minBreakpoint}) * 1000
 					* (var(--resolved-breakpoint) - ${minBreakpoint}) / 1000
 					)`;

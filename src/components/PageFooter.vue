@@ -15,12 +15,16 @@
 
 <style scoped>
 	.page-footer {
-		display: block;
-		padding: range(50px, 100px) 0;
-		background-color: #222222;
-		position: relative;
-		min-height: calc(396 / 1920 * 100vmax + 5vw);
-		overflow: hidden;
+		all: initial;
+
+		& {
+			display: block;
+			padding: range(50px, 100px) 0;
+			background-color: #222222;
+			position: relative;
+			min-height: calc(396 / 1920 * 100vmax + 5vw);
+			overflow: hidden;
+		}
 
 		@media (width >= 1920px) {
 			min-height: calc(396px + 5vw);
@@ -155,7 +159,7 @@
 			margin: 15px 10px;
 			width: calc(percentage(1 / 3) - 20px);
 
-			.social-links.host {
+			.social-links {
 				--social-links_justify-content: center;
 			}
 

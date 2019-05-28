@@ -53,7 +53,7 @@
 </style>
 
 <style scoped>
-	.AppPageFooterNavOfSection {
+	.app-page-footer-nav-of-section {
 		position: relative;
 	}
 

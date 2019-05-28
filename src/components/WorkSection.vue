@@ -11,10 +11,14 @@
 
 <style scoped>
 	.work-section {
-		display: block;
-		background: url("../assets/img/mount-bg.jpg") no-repeat 50% range(6px, 13px) / cover #ffffff;
-		overflow: hidden;
-		margin: range(40px, 80px) 0;
+		all: initial;
+
+		& {
+			display: block;
+			background: url("../assets/img/mount-bg.jpg") no-repeat 50% range(6px, 13px) / cover #ffffff;
+			overflow: hidden;
+			margin: range(40px, 80px) 0;
+		}
 	}
 
 	.body {
@@ -89,7 +93,7 @@
 		bottom: 15%;
 	}
 
-	.body-stars-item.host {
+	.body-stars-item {
 		width: range(14px, 28px);
 		height: range(14px, 28px);
 		color: white;
@@ -115,7 +119,7 @@
 		padding: 0 range(10px, 140px);
 	}
 
-	.awesome-list.host {
+	.awesome-list {
 		margin-bottom: range(20px, 40px);
 		margin-right: range(-10px, -140px);
 	}

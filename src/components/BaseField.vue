@@ -1,5 +1,5 @@
 <template lang="pug">
-	.host.base-field
+	.base-field
 		input(
 			:class="['input', {'is-invalid': error}]"
 			v-bind="$attrs"
@@ -31,11 +31,15 @@
 
 <style scoped>
 	.base-field {
-		display: inline-flex;
-		vertical-align: top;
-		flex-flow: column;
-		max-width: 100%;
-		position: relative;
+		all: initial;
+
+		& {
+			display: inline-flex;
+			vertical-align: top;
+			flex-flow: column;
+			max-width: 100%;
+			position: relative;
+		}
 
 		&.is-full-width {
 			width: 100%;

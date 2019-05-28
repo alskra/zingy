@@ -60,15 +60,19 @@
 
 <style scoped>
 	.feedback-section {
-		display: block;
-		padding: range(80px / 2, 80px) 0;
-		background-color: white;
-		position: relative;
-		min-height: range(504px / 2, 504px);
-		overflow: hidden;
+		all: initial;
+
+		& {
+			display: block;
+			padding: range(80px / 2, 80px) 0;
+			background-color: white;
+			position: relative;
+			min-height: range(504px / 2, 504px);
+			overflow: hidden;
+		}
 	}
 
-	.bg-icon.host {
+	.bg-icon {
 		width: range(504px / 2, 504px);
 		height: range(504px / 2, 504px);
 		color: #f0f0f0;
@@ -150,18 +154,18 @@
 	.form-grid-cell {
 		min-width: 0;
 		margin: range(5px, 10px) range(10px, 20px);
-		flex: 1 0 200px;
+		flex: 1 1 200px;
 	}
 
 	.form-grid-cell-has-field {
 		flex-basis: 300px;
 	}
 
-	.form-field.host {
+	.form-field {
 		width: 100%;
 	}
 
-	.submit-button.host {
+	.submit-button {
 		width: 100%;
 	}
 </style>

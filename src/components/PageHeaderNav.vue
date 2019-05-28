@@ -7,7 +7,11 @@
 
 <style scoped>
 	.page-header-nav {
-		display: block;
+		all: initial;
+
+		& {
+			display: block;
+		}
 	}
 
 	.grid {

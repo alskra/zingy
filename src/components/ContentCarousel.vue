@@ -93,8 +93,8 @@
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
-		width: calc(100% - 2 * var(--content-box-gutter));
-		max-width: var(--content-box-width);
+		width: calc(100% - 2 * var(--grid-padding));
+		max-width: var(--grid-width);
 		margin: 0 auto range(25px, 50px);
 
 		@media (width < 768px) {
@@ -181,12 +181,12 @@
 		}
 
 		&.arrow-button-is-prev {
-			left: var(--content-box-gutter);
+			left: var(--grid-padding);
 			transform: rotateY(-180deg);
 		}
 
 		&.arrow-button-is-next {
-			right: var(--content-box-gutter);
+			right: var(--grid-padding);
 		}
 	}
 </style>

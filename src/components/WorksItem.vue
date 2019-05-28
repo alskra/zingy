@@ -1,11 +1,11 @@
 <script>
 	export default {
-		name: 'WorkElement'
+		name: 'WorksItem'
 	};
 </script>
 
 <style scoped>
-	.WorkElement {
+	.works-item {
 		all: initial;
 
 		& {

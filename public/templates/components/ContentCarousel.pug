@@ -7,7 +7,7 @@ mixin ContentCarousel(items = [])
 					@click="currentPageNumber += -1"
 					:disabled="currentPageNumber === 1"
 				)
-					base-icon(icon-name="arrow-right")
+					base-icon(name="arrow-right")
 
 				.actions-counter {{ padStartNumber(currentPageNumber) }}&nbsp;/&nbsp;{{ padStartNumber(pagesCount) }}
 
@@ -16,7 +16,7 @@ mixin ContentCarousel(items = [])
 					@click="currentPageNumber += 1"
 					:disabled="currentPageNumber === pagesCount"
 				)
-					base-icon(icon-name="arrow-right")
+					base-icon(name="arrow-right")
 
 			.main
 				if block

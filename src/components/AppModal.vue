@@ -2,7 +2,7 @@
 	modal(
 		v-bind="$attrs"
 		v-on="$listeners"
-		:classes="['host', 'app-modal']"
+		:classes="['app-modal']"
 		:adaptive="true"
 		height="auto"
 		:scrollable="true"
@@ -10,16 +10,28 @@
 	)
 		.body
 			header.header
-				slot(name="title")
-					h2.title Modal Heading
+				.title
+					slot(name="title")
+						h2 Modal Heading
 
-			slot
-				p Modal Content
+				button.close-button(@click="$modal.hide($attrs.name)")
+					base-icon.foo(name="close")
+
+			.main
+				base-content
+					slot
+						p Modal Content
+
 </template>
 
 <script>
+	import VueSticky from './VueSticky';
+
 	export default {
-		name: 'AppModal'
+		name: 'AppModal',
+		components: {
+			VueSticky
+		}
 	};
 </script>
 
@@ -32,20 +44,79 @@
 	}
 
 	.app-modal {
-		top: auto !important;
-		left: auto !important;
-		width: 100% !important;
-		max-width: var(--grid-width);
-		height: auto !important;
-		margin: auto !important;
+		all: initial;
+
+		& {
+			top: auto !important;
+			left: auto !important;
+			width: 100% !important;
+			max-width: var(--grid-width);
+			height: auto !important;
+			margin: auto !important;
+		}
 	}
 </style>
 
 <style scoped>
 	.body {
 		box-sizing: border-box;
-		padding: range(15px, 100px) range(10px, 90px);
 		margin: scale-down(13px, 0.5) scale-down(12px, 0.5) 0 0;
 		background-color: #f2f4f5;
+		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			top: scale-down(-13px, 0.5);
+			right: scale-down(-12px, 0.5);
+			bottom: scale-down(105px, 0.5);
+			left: scale-down(140px, 0.5);
+			background-color: var(--color-accent);
+		}
+	}
+
+	.header {
+		padding: range(40px + 4px, 58px + 20px) range(10px, 140px) 0;
+		position: relative;
+	}
+
+	.title {
+		margin: 0 0 0 range(0px, -60px);
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: var(--font-size-h2);
+		font-weight: 500;
+
+		>>> * {
+			font: inherit;
+			margin: 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
+	.close-button {
+		all: initial;
+
+		& {
+			display: block;
+			width: range(40px, 58px);
+			height: range(40px, 58px);
+			position: absolute;
+			top: range(2px, 10px);
+			right: range(2px, 10px);
+			cursor: pointer;
+			color: var(--color);
+			transition: color 0.2s;
+
+			&:hover {
+				color: var(--color-accent);
+			}
+		}
+	}
+
+	.main {
+		padding: range(20px, 50px) range(10px, 140px);
 	}
 </style>

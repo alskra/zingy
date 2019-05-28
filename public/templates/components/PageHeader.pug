@@ -1,6 +1,6 @@
 mixin PageHeader()
 	template
-		header.host.page-header&attributes(attributes)
+		header.page-header&attributes(attributes)
 			transition-box(
 				appear
 				appear-active-class="v-appear-active"
@@ -12,7 +12,7 @@ mixin PageHeader()
 						href="/"
 						title="Zingy Projects"
 					)
-						base-icon.logo-icon(icon-name="zingy")
+						base-icon.logo-icon(name="zingy")
 
 			transition-box(
 				:duration="{enter: 500, leave: 300}"
@@ -29,7 +29,7 @@ mixin PageHeader()
 						type="button"
 						@click="sidebarIsOpened = !sidebarIsOpened"
 					)
-						base-icon.menu-button-icon(icon-name="menu")
+						base-icon.menu-button-icon(name="menu")
 
 			transition-box(
 				:duration="{enter: 500, leave: 300}"
@@ -42,12 +42,12 @@ mixin PageHeader()
 						.right-panel-grid
 							.right-panel-grid-cell
 								a(href="").link
-									base-icon.link-icon(icon-name="globe")
+									base-icon.link-icon(name="globe")
 									.link-text.is-uppercase Eng
 
 							.right-panel-grid-cell
 								a(href="tel:+79854575817").link
-									base-icon.link-icon(icon-name="phone")
+									base-icon.link-icon(name="phone")
 									.link-text +7 985 457 58 17
 
 							.right-panel-grid-cell
@@ -59,7 +59,7 @@ mixin PageHeader()
 			transition-box(:duration="{enter: 500, leave: 300}")
 				.phone-button-box(v-show="startAnimateIsEnd && headerIsMinimized && !sidebarIsOpened")
 					a.phone-button(href="tel:+79854575817")
-						base-icon.phone-button-icon(icon-name="phone")
+						base-icon.phone-button-icon(name="phone")
 
 			transition-group.sidebar-box(
 				tag="div"
@@ -77,7 +77,7 @@ mixin PageHeader()
 				)
 					.sidebar-lang-box
 						a(href="").link
-							base-icon.link-icon(icon-name="globe")
+							base-icon.link-icon(name="globe")
 							.link-text.is-uppercase Eng
 
 					.sidebar-scrollable
@@ -93,12 +93,12 @@ mixin PageHeader()
 
 								.sidebar-footer-grid-cell
 									a(href="tel:+79854575817").link
-										base-icon.link-icon(icon-name="phone")
+										base-icon.link-icon(name="phone")
 										.link-text +7 985 457 58 17
 
 								.sidebar-footer-grid-cell
 									a(href="mailto:zingy.projects@gmail.com").link
-										base-icon.link-icon(icon-name="envelope")
+										base-icon.link-icon(name="envelope")
 										.link-text zingy.projects@gmail.com
 
 

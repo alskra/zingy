@@ -91,7 +91,7 @@ mixin ServiceSection()
 		];
 
 	template
-		section.host.service-section
+		section.service-section
 			.grid
 				.grid-row
 					.grid-cell
@@ -101,7 +101,7 @@ mixin ServiceSection()
 
 							.service-main
 								base-icon.service-main-bg(
-									icon-name="unicorn"
+									name="unicorn"
 									:align="windowWidth >= 1024 ? 'xMaxYMin' : 'xMidYMin'"
 								)
 
@@ -110,11 +110,11 @@ mixin ServiceSection()
 
 							footer.service-footer
 								a.service-button(href="")
-									base-icon.service-button-icon(icon-name="laurel")
+									base-icon.service-button-icon(name="laurel")
 									.service-button-text Отдел #[strong web] разработки
-									base-icon.service-button-icon(icon-name="laurel")
+									base-icon.service-button-icon(name="laurel")
 
-					base-icon.grid-arrow(icon-name="arrow-right-2")
+					base-icon.grid-arrow(name="arrow-right-2")
 
 					.grid-cell
 						article.service
@@ -123,7 +123,7 @@ mixin ServiceSection()
 
 							.service-main
 								base-icon.service-main-bg(
-									icon-name="cup"
+									name="cup"
 									:align="windowWidth >= 1024 ? 'xMaxYMin' : 'xMidYMin'"
 								)
 
@@ -132,6 +132,6 @@ mixin ServiceSection()
 
 							footer.service-footer
 								a.service-button(href="")
-									base-icon.service-button-icon(icon-name="laurel")
+									base-icon.service-button-icon(name="laurel")
 									.service-button-text Отдел продвижения #[strong seo]
-									base-icon.service-button-icon(icon-name="laurel")
+									base-icon.service-button-icon(name="laurel")
