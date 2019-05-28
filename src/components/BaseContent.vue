@@ -17,7 +17,7 @@
 			display: block;
 			color: var(--color);
 			font-family: var(--font-family);
-			font-size: range(1.6rem, 1.8rem);
+			font-size: var(--font-size);
 			font-weight: 400;
 			line-height: 1.5;
 		}

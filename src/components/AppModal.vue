@@ -1,7 +1,7 @@
-<template lang="pug">
+<template lang="pug" functional>
 	modal(
-		v-bind="$attrs"
-		v-on="$listeners"
+		v-bind="data.attrs"
+		v-on="listeners"
 		:classes="['app-modal']"
 		:adaptive="true"
 		height="auto"
@@ -14,8 +14,8 @@
 					slot(name="title")
 						h2 Modal Heading
 
-				button.close-button(@click="$modal.hide($attrs.name)")
-					base-icon.foo(name="close")
+				button.close-button(@click="parent.$modal.hide(props.name)")
+					base-icon(name="close")
 
 			.main
 				base-content
@@ -40,7 +40,7 @@
 		box-sizing: border-box;
 		display: flex;
 		flex-flow: column;
-		padding: var(--grid-padding);
+		padding: range(0px, 40px);
 	}
 
 	.app-modal {
@@ -60,7 +60,7 @@
 <style scoped>
 	.body {
 		box-sizing: border-box;
-		margin: scale-down(13px, 0.5) scale-down(12px, 0.5) 0 0;
+		margin: scale-down(12px, 0.5) scale-down(12px, 0.5) 0 0;
 		background-color: #f2f4f5;
 		position: relative;
 
@@ -68,7 +68,7 @@
 			content: '';
 			position: absolute;
 			z-index: -1;
-			top: scale-down(-13px, 0.5);
+			top: scale-down(-12px, 0.5);
 			right: scale-down(-12px, 0.5);
 			bottom: scale-down(105px, 0.5);
 			left: scale-down(140px, 0.5);
@@ -87,6 +87,7 @@
 		font-family: var(--font-family);
 		font-size: var(--font-size-h2);
 		font-weight: 500;
+		line-height: 1.25;
 
 		>>> * {
 			font: inherit;

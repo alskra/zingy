@@ -62,9 +62,12 @@ mixin IntroSection()
 									div(:class="['unicorn-img', {'unicorn-img-is-clip': isSupportClipPath}]")
 
 								.unicorn-text-box
-									a(href="" @click.prevent="$modal.show('unicorn')") Почему единорог?
+									a(
+										href=""
+										@click.prevent="$modal.show('why-unicorn')"
+									) Почему единорог?
 
-						app-modal(name="unicorn")
+						app-modal(name="why-unicorn" height="450px")
 							template(v-slot:title)
 								h2 Почему единорог?
 

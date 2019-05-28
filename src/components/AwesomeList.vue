@@ -1,5 +1,6 @@
 <script>
 	import VueTruncateCollapsed from 'vue-truncate-collapsed';
+	import AppModal from './AppModal';
 
 	export default {
 		name: 'AwesomeList',
@@ -14,7 +15,8 @@
 			};
 		},
 		components: {
-			VueTruncateCollapsed
+			VueTruncateCollapsed,
+			AppModal
 		},
 		methods: {
 			onItemMouseenter(event) {
@@ -49,7 +51,7 @@
 		& {
 			display: block;
 			position: relative;
-			transform: translate3d(0, 0, 0);
+			/*transform: translate3d(0, 0, 0);*/
 		}
 	}
 
@@ -79,7 +81,7 @@
 		display: flex;
 		position: relative;
 		overflow: hidden;
-		transform: translate3d(0, 0, 0);
+		/*transform: translate3d(0, 0, 0);*/
 
 		&:hover {
 			.item-number {
