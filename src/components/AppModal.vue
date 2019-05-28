@@ -40,7 +40,7 @@
 		box-sizing: border-box;
 		display: flex;
 		flex-flow: column;
-		padding: range(0px, 40px);
+		padding: 0 0 scale-down(12px, 0.5) scale-down(12px, 0.5);
 	}
 
 	.app-modal {
