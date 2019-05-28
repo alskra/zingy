@@ -373,7 +373,7 @@
 		}
 	}
 
-	.button {
+	.right-panel-button {
 		height: 32px;
 
 		>>> .text {
