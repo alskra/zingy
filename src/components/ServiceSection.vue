@@ -15,7 +15,7 @@
 
 		& {
 			display: block;
-			padding: scale-down(80px, 0.5) 0;
+			padding: scale-down(60px, 0.5) 0;
 		}
 	}
 

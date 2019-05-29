@@ -5,22 +5,6 @@
 	export default {
 		name: 'ContentCarouselOfWorks',
 		extends: ContentCarousel,
-		data() {
-			return {
-				slickOptions: {
-					variableWidth: true,
-					slidesToShow: 2,
-					responsive: [
-						{
-							breakpoint: 982,
-							settings: {
-								slidesToShow: 1
-							}
-						}
-					]
-				}
-			};
-		},
 		components: {
 			WorksItem
 		}
@@ -30,39 +14,31 @@
 <style scoped src="./ContentCarousel.vue"></style>
 
 <style scoped>
-	>>> .slick-slider {
-		max-width: 1920px;
-		margin: 0 auto;
+	.swiper-container {
+		padding: 0 range(0px, 20px);
 	}
 
-	>>> .slick-list {
-		/*margin: 0 range(-10px, -25px);*/
-		padding: 0 range(10px, 40px);
-	}
-
-	>>> .slick-slide {
-		margin: 0 range(10px, 25px);
+	.swiper-slide {
 		width: range(300px, 695px);
-
-		&:not(.slick-active) {
-			position: relative;
-			opacity: 0.8;
-
-			&::before {
-				content: '';
-				position: absolute;
-				z-index: 10;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background-color: #a7a7a7;
-				opacity: 0.6;
-			}
-		}
+		padding: 0 range(10px, 20px);
 	}
 
-	.works-item {
-		vertical-align: top;
+	.swiper-pagination-box {
+		width: calc(100% - 2 * range(10px, 20px));
+	}
+
+	.swiper-pagination-grid {
+		margin: 0 calc(-1 * var(--grid-cell-padding));
+	}
+
+	.swiper-pagination-cell {
+		box-sizing: border-box;
+		width: percentage(10 / 12);
+		padding: 0 var(--grid-cell-padding);
+		margin: 0 auto;
+
+		@media (width < 768px) {
+			width: 100%;
+		}
 	}
 </style>

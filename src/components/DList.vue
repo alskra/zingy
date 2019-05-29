@@ -56,10 +56,12 @@
 		&:hover {
 			.item-number {
 				color: var(--color);
+				transition-delay: var(--d-list-item_transition-delay);
 			}
 
 			.item-body {
-				transform: translateX(scale-down(40px, 0.5));
+				transform: translateX(range(10px, 40px));
+				transition-delay: var(--d-list-item_transition-delay);
 			}
 		}
 	}
@@ -75,13 +77,13 @@
 		font-weight: 400;
 		line-height: 1.25;
 		text-align: center;
-		transition: color var(--d-list-item_transition-duration) var(--d-list-item_transition-delay);
+		transition: color var(--d-list-item_transition-duration);
 	}
 
 	.item-body {
 		flex-grow: 1;
 		overflow: hidden;
-		transition: transform var(--d-list-item_transition-duration) var(--d-list-item_transition-delay);
+		transition: transform var(--d-list-item_transition-duration);
 	}
 
 	.item-title {

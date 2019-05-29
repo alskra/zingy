@@ -1,28 +1,25 @@
-mixin ContentCarouselOfReviews()
-	include ContentCarousel
+mixin ContentCarouselOfReviews(items = [])
 	include AppReview
 
 	-
 		const reviews = [
 			{},
 			{
-				content: 'Content',
+				content: `
+					<p>Если вкратце, то отвечают на письма сразу же, все по делу, иногда могут ответить в нерабочее время
+					(ответственность, она такая), готовы объяснить доступным языком любой процесс, готовы уделить время
+					на дополнительное изучение вопроса, если он им не совсем знаком, если что-то надо добавить/поправить -
+					исправляют/добавляют с первого раза как надо.</p>
+				`,
 				citeName: 'Cite Name',
 				citeDescription: 'Cite Description'
 			}
 		]
 
 	+ContentCarousel().ContentCarouselOfReviews&attributes(attributes)
-		.content-box
-			.content-grid
-				.content-grid-item
-					base-icon.background-quote(name="open-quote")
+		//base-icon.background-quote(name="open-quote")
 
-					vue-slick(
-						ref="slick"
-						:options="slickOptions"
-						v-on="{init: onSlickInit, beforeChange: onSlickBeforeChange, breakpoint: onSlickBreakpoint}"
-					)
-						each review in reviews
-							app-review(inline-template)
-								+AppReview(review)
+		each review in reviews
+			swiper-slide
+				app-review(inline-template)
+					+AppReview(review)

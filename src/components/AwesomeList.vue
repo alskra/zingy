@@ -90,7 +90,7 @@
 			}
 
 			.item-title{
-				transform: translate3d(range(20px, 40px), 0, 0);
+				transform: translate3d(range(10px, 40px), 0, 0);
 			}
 
 			.item-description {

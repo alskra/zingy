@@ -7,6 +7,14 @@
 		extends: ContentCarousel,
 		components: {
 			AppReview
+		},
+		data() {
+			return {
+				swiperOptions: {
+					slidesPerView: 1,
+					// effect: 'fade'
+				}
+			};
 		}
 	};
 </script>
@@ -14,20 +22,20 @@
 <style scoped src="./ContentCarousel.vue"></style>
 
 <style scoped>
-	.content-box {
+	.main {
 		width: calc(100% - 2 * var(--grid-padding));
 		max-width: var(--grid-width);
 		margin: 0 auto;
 	}
 
-	.content-grid {
-		margin: 0 -10px;
+	.grid {
+		margin: 0 calc(-1 * var(--grid-cell-padding));
 	}
 
-	.content-grid-item {
+	.grid-item {
 		box-sizing: border-box;
 		width: percentage(10 / 12);
-		padding: 0 10px;
+		padding: 0 var(--grid-cell-padding);
 		margin: 0 auto;
 		position: relative;
 
@@ -50,19 +58,20 @@
 		}
 	}
 
-	>>> .slick-list {
-		margin: 0 -10px;
+	.swiper-container {
+		margin: 0 calc(-1 * var(--grid-cell-padding));
 	}
 
-	>>> .slick-slide {
-		margin: 0 10px;
+	.swiper-slide {
+		padding: 0 var(--grid-cell-padding);
+		box-sizing: border-box;
 	}
 
-	.app-review {
-		vertical-align: top;
+	.swiper-pagination-box {
+		width: 100%;
 	}
 
-	.arrow-button {
-		filter: drop-shadow(0 0 1px white) drop-shadow(0 0 1px white);
+	.swiper-pagination-cell {
+		padding: 0 var(--grid-cell-padding);
 	}
 </style>

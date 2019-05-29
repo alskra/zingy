@@ -17,7 +17,7 @@
 			display: block;
 			background: url("../assets/img/mount-bg.jpg") no-repeat 50% range(6px, 13px) / cover #ffffff;
 			overflow: hidden;
-			margin: range(40px, 80px) 0;
+			margin: range(30px, 60px) 0;
 		}
 	}
 

@@ -17,12 +17,13 @@
 
 		& {
 			display: block;
-			padding: range(40px, 80px) 0;
+			padding: range(30px, 60px) 0;
+			background-color: white;
 		}
 	}
 
 	.header {
-		margin-bottom: range(25px, 50px);
+		margin-bottom: range(20px, 30px);
 	}
 
 	.content-box {

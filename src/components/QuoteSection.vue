@@ -10,7 +10,7 @@
 
 		& {
 			display: block;
-			padding: range(40px, 80px) 0;
+			padding: range(30px, 60px) 0;
 		}
 	}
 

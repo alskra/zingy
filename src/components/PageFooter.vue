@@ -19,7 +19,7 @@
 
 		& {
 			display: block;
-			padding: range(50px, 100px) 0;
+			padding: range(40px, 80px) 0;
 			background-color: #222222;
 			position: relative;
 			min-height: calc(396 / 1920 * 100vmax + 5vw);
@@ -44,7 +44,7 @@
 		font-size: var(--font-size-h2);
 		font-weight: 500;
 		line-height: 1.25;
-		margin: 0 0 range(30px, 60px);
+		margin: 0 0 range(25px, 50px);
 		position: relative;
 		z-index: 1;
 	}
