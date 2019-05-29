@@ -11,8 +11,9 @@
 		data() {
 			return {
 				swiperOptions: {
-					slidesPerView: 1,
-					// effect: 'fade'
+					// slidesPerView: 1,
+					// effect: 'fade',
+					// autoHeight: true
 				}
 			};
 		}
@@ -39,22 +40,24 @@
 		margin: 0 auto;
 		position: relative;
 
+		&::before {
+			content: '';
+			position: absolute;
+			top: range(10px, 20px);
+			left: range(10px, -160px);
+			width: range(376px / 2, 376px);
+			height: range(277px / 2, 277px);
+			color: #f0f0f0;
+			pointer-events: none;
+			background: url("../assets/img/open-quote.svg") no-repeat 50% 50% / contain;
+
+			@media (width < 768px) {
+				left: 10px;
+			}
+		}
+
 		@media (width < 768px) {
 			width: 100%;
-		}
-	}
-
-	.background-quote {
-		position: absolute;
-		top: range(-10px, -20px);
-		left: range(10px, -190px);
-		width: range(376px / 2, 376px);
-		height: range(277px / 2, 277px);
-		color: #f0f0f0;
-		pointer-events: none;
-
-		@media (width < 768px) {
-			left: 10px;
 		}
 	}
 
@@ -65,6 +68,7 @@
 	.swiper-slide {
 		padding: 0 var(--grid-cell-padding);
 		box-sizing: border-box;
+		width: 100%;
 	}
 
 	.swiper-pagination-box {
