@@ -41,7 +41,7 @@
 	.title {
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
-		font-size: var(--font-size-h2);
+		font-size: var(--font-size-h1);
 		font-weight: 500;
 		line-height: 1.25;
 		margin: 0 0 range(25px, 50px);

@@ -40,6 +40,16 @@
 			overflow: hidden;
 			min-width: env(--min-breakpoint);
 		}
+
+		&.is-theme-dark {
+			.main {
+				background-color: #383838;
+			}
+
+			.title {
+				color: #ffffff;
+			}
+		}
 	}
 
 	.body {
@@ -59,5 +69,20 @@
 		flex: 1 0 auto;
 		padding: range(60px, 138px) 0 0;
 		background-color: white;
+	}
+
+	.grid {
+		width: calc(100% - 2 * var(--grid-padding));
+		max-width: var(--grid-width);
+		margin: 0 auto;
+	}
+
+	.title {
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: 48px;
+		font-weight: 500;
+		line-height: 1.25;
+		margin: 0 range(0px, 80px) range(30px, 70px) range(0px, -80px);
 	}
 </style>

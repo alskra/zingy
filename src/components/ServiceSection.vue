@@ -98,7 +98,7 @@
 	.service-title {
 		color: var(--color);
 		font-family: var(--font-family);
-		font-size: var(--font-size-h2);
+		font-size: var(--font-size-h1);
 		font-weight: 700;
 		line-height: 1.25;
 		text-align: center;

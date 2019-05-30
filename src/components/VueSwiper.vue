@@ -82,6 +82,8 @@
 					});
 
 					this.swiper.on('slideChange', () => {
+						// this.isBeginning = this.swiper.isBeginning;
+						// this.isEnd = this.swiper.isEnd;
 						this.$emit('slide-change', this.swiper);
 					});
 

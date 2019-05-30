@@ -109,7 +109,7 @@
 		margin: range(0px, 80px) 0 range(40px / 2, 40px);
 		color: var(--color);
 		font-family: var(--font-family);
-		font-size: var(--font-size-h2);
+		font-size: var(--font-size-h1);
 		font-weight: 500;
 		line-height: 1.25;
 	}

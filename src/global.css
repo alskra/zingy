@@ -17,7 +17,7 @@
 	--color-zingy: #252525;
 
 	--font-size: range(1.6rem, 1.8rem);
-	--font-size-h2: scale-down(4.8rem, 0.56);
+	--font-size-h1: scale-down(4.8rem, 0.56);
 
 
 	--grid-width: env(--grid-width);

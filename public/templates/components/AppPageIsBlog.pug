@@ -1,0 +1,10 @@
+mixin AppPageIsBlog()
+	include AppPage
+	include FeedbackSection
+
+	+AppPage().app-page-is-blog.is-theme-dark&attributes(attributes)
+		.grid
+			h1.title Блог с&nbsp;полезным контентом для всех, кто интересуется&nbsp;IT
+
+		feedback-section(inline-template)
+			+FeedbackSection()

@@ -88,7 +88,7 @@
 	.title {
 		color: #1b222c;
 		font-family: var(--font-family);
-		font-size: var(--font-size-h2);
+		font-size: var(--font-size-h1);
 		font-weight: 500;
 		line-height: 1.25;
 		margin: 0 scale-down(20%, 0) scale-down(50px, 0.5) 0;
