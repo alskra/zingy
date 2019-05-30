@@ -4,6 +4,10 @@ mixin AppPageIsBlog()
 
 	+AppPage().app-page-is-blog.is-theme-dark&attributes(attributes)
 		.grid
+			nav(is="app-breadcrumb")
+				| Главная
+				a(href="") Блог
+
 			h1(is="base-title") Блог с&nbsp;полезным контентом для всех, кто интересуется&nbsp;IT
 
 		feedback-section(inline-template)

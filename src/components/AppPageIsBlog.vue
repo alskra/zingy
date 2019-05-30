@@ -1,11 +1,13 @@
 <script>
 	import AppPage from './AppPage';
+	import AppBreadcrumb from './AppBreadcrumb';
 	import FeedbackSection from './FeedbackSection';
 
 	export default {
 		name: 'AppPageIsBlog',
 		extends: AppPage,
 		components: {
+			AppBreadcrumb,
 			FeedbackSection
 		}
 	};

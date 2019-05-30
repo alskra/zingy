@@ -49,6 +49,12 @@
 			.base-title {
 				color: #ffffff;
 			}
+
+			.app-breadcrumb {
+				>>> .item {
+					color: #ffffff;
+				}
+			}
 		}
 	}
 
@@ -84,5 +90,9 @@
 			margin-right: 0;
 			margin-left: 0;
 		}
+	}
+
+	.app-breadcrumb {
+		margin: range(10px, 20px) 0 range(20px, 40px);
 	}
 </style>
