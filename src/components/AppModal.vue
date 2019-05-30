@@ -7,6 +7,7 @@
 		height="auto"
 		:scrollable="true"
 		:reset="true"
+		transition="nice-modal-fade"
 	)
 		.body
 			header.header
@@ -44,7 +45,7 @@
 	}
 
 	.app-modal {
-		all: initial;
+		/*all: initial;*/
 
 		& {
 			top: auto !important;
@@ -59,10 +60,15 @@
 
 <style scoped>
 	.body {
-		box-sizing: border-box;
-		margin: scale-down(12px, 0.5) scale-down(12px, 0.5) 0 0;
-		background-color: #f2f4f5;
-		position: relative;
+		all: initial;
+
+		& {
+			display: block;
+			box-sizing: border-box;
+			margin: scale-down(12px, 0.5) scale-down(12px, 0.5) 0 0;
+			background-color: #f2f4f5;
+			position: relative;
+		}
 
 		&::before {
 			content: '';
