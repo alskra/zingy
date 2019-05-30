@@ -59,8 +59,23 @@
 			}
 		},
 		methods: {
+			setPlaceholder() {
+				return Object.assign(this.placeholder.style, {
+					position: '',
+					height: getComputedStyle(this.$el).height
+				});
+			},
+			unsetPlaceholder() {
+				return Object.assign(this.placeholder.style, {
+					position: 'absolute',
+					height: ''
+				});
+			},
 			setTopFixedStyle() {
-				Object.assign(this.$el.style, {
+				this.offsetParent = this.placeholder.offsetParent;
+				this.offsetParentStyle = getComputedStyle(this.offsetParent);
+
+				return Object.assign(this.$el.style, {
 					position: 'fixed',
 					top: this.topPosition + 'px',
 					bottom: '',
@@ -71,7 +86,7 @@
 				});
 			},
 			setBottomAbsoluteStyle() {
-				Object.assign(this.$el.style, {
+				return Object.assign(this.$el.style, {
 					position: 'absolute',
 					top: '',
 					bottom: this.offsetParentStyle.paddingBottom,
@@ -82,7 +97,7 @@
 				});
 			},
 			setBottomFixedStyle() {
-				Object.assign(this.$el.style, {
+				return Object.assign(this.$el.style, {
 					position: 'fixed',
 					top: '',
 					bottom: this.bottomPosition + 'px',
@@ -93,7 +108,7 @@
 				});
 			},
 			setTopAbsoluteStyle() {
-				Object.assign(this.$el.style, {
+				return Object.assign(this.$el.style, {
 					position: 'absolute',
 					top: this.offsetParentStyle.paddingTop,
 					bottom: '',
@@ -104,7 +119,7 @@
 				});
 			},
 			resetStyle() {
-				Object.assign(this.$el.style, {
+				return Object.assign(this.$el.style, {
 					position: '',
 					top: '',
 					bottom: '',
@@ -112,18 +127,6 @@
 					marginTop: '',
 					marginBottom: '',
 					width: ''
-				});
-			},
-			setPlaceholder() {
-				Object.assign(this.placeholder.style, {
-					position: '',
-					height: getComputedStyle(this.$el).height
-				});
-			},
-			unsetPlaceholder() {
-				Object.assign(this.placeholder.style, {
-					position: 'absolute',
-					height: ''
 				});
 			},
 			updateStyle() {
@@ -191,6 +194,10 @@
 						this.$set(this.topState, 'sticky', false);
 						this.updateStyle();
 					}
+				} else if (!this.top) {
+					this.$set(this.topState, 'sticky', false);
+					this.$set(this.topState, 'edge', false);
+					this.updateStyle();
 				}
 
 				// bottom
@@ -233,6 +240,10 @@
 						this.$set(this.bottomState, 'sticky', false);
 						this.updateStyle();
 					}
+				} else if (!this.bottom) {
+					this.$set(this.bottomState, 'sticky', false);
+					this.$set(this.bottomState, 'edge', false);
+					this.updateStyle();
 				}
 
 				this.updateStyle();
@@ -245,6 +256,7 @@
 			}
 		},
 		created() {
+			window.addEventListener('load', this.onResize);
 			window.addEventListener('scroll', this.onScroll);
 			window.addEventListener('resize', this.onResize);
 		},
@@ -255,7 +267,6 @@
 			window.removeEventListener('resize', this.onResize);
 		},
 		mounted() {
-			this.offsetParent = this.$el.offsetParent;
 			this.placeholder = this.$el.cloneNode();
 			this.placeholder.classList.add('vue-sticky-placeholder');
 
@@ -265,11 +276,14 @@
 			});
 
 			this.$el.parentElement.insertBefore(this.placeholder, this.$el);
-
-			this.offsetParentStyle = getComputedStyle(this.offsetParent);
 			this.placeholderStyle = getComputedStyle(this.placeholder);
 
+			// this.offsetParent = this.placeholder.offsetParent;
+			// this.offsetParentStyle = getComputedStyle(this.offsetParent);
+
 			this.sticky();
+
+
 		}
 	};
 </script>

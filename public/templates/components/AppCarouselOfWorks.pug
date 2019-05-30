@@ -54,13 +54,14 @@ mixin AppCarouselOfWorks()
 			}
 		]
 
-	.vue-swiper.app-carousel.app-carousel-of-works
-		+AppCarouselHeader()
+	template
+		.vue-swiper.app-carousel.app-carousel-of-works
+			+AppCarouselHeader()
 
-		.main
-			.swiper-container(ref="swiperContainer")
-				.swiper-wrapper
-					each work in works
-						.swiper-slide
-							works-item(inline-template)
-								+WorksItem(work)
+			.main
+				.swiper-container(ref="swiperContainer")
+					.swiper-wrapper
+						each work in works
+							.swiper-slide
+								works-item(inline-template)
+									+WorksItem(work)

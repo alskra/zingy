@@ -18,18 +18,19 @@ mixin AppCarouselOfReviews(items = [])
 		]
 
 
-	.vue-swiper.app-carousel.app-carousel-of-reviews
-		+AppCarouselHeader()
+	template
+		.vue-swiper.app-carousel.app-carousel-of-reviews
+			+AppCarouselHeader()
 
-		.main
-			.grid
-				.grid-row
-					.grid-cell
-						base-icon.background-quote(name="open-quote")
+			.main
+				.grid
+					.grid-row
+						.grid-cell
+							base-icon.background-quote(name="open-quote")
 
-						.swiper-container(ref="swiperContainer")
-							.swiper-wrapper
-								each review in reviews
-									.swiper-slide
-										reviews-item(inline-template)
-											+ReviewsItem(review)
+							.swiper-container(ref="swiperContainer")
+								.swiper-wrapper
+									each review in reviews
+										.swiper-slide
+											reviews-item(inline-template)
+												+ReviewsItem(review)
