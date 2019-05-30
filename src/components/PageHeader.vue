@@ -634,6 +634,7 @@
 	:root {
 		:--back-boxes {
 			transition: filter 0.4s;
+			will-change: filter;
 		}
 
 		&.is-sidebar-opened {

@@ -5,11 +5,11 @@ include ZingySection
 mixin AppPage()
 	template
 		.app-page&attributes(attributes)
-			.body
+			.body(ref="body")
 				page-header.header(inline-template)
 					+PageHeader()
 
-				.main
+				.main(ref="main")
 					block
 
 				page-footer.footer(inline-template)

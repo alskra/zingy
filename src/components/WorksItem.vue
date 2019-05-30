@@ -20,7 +20,7 @@
 		text-decoration: none;
 		position: relative;
 		margin: range(3px, 9px) 0 0 range(3px, 9px);
-		padding: scale(20px, 0.5);
+		padding: scale-down(20px, 0.5);
 
 		&::before {
 			content: '';

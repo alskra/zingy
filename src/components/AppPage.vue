@@ -9,6 +9,24 @@
 			PageHeader,
 			PageFooter,
 			ZingySection
+		},
+		methods: {
+			stopZingySectionAnimation() {
+				const zingySection = document.querySelector('.zingy-section');
+
+				if (zingySection) {
+					zingySection.classList.toggle(
+						'is-animation-stopped',
+						this.$refs.body.getBoundingClientRect().bottom >= this.windowHeight
+					);
+				}
+			}
+		},
+		created() {
+			window.addEventListener('scroll', this.stopZingySectionAnimation);
+		},
+		destroyed() {
+			window.removeEventListener('scroll', this.stopZingySectionAnimation);
 		}
 	};
 </script>

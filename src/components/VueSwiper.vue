@@ -29,6 +29,8 @@
 
 	Swiper.use([Navigation, Pagination, Scrollbar]);
 
+	const debug = false;
+
 	export default {
 		name: 'VueSwiper',
 		props: {
@@ -108,11 +110,11 @@
 		},
 		beforeCreate() {
 			// eslint-disable-next-line no-console
-			if (process.env.NODE_ENV !== 'production') console.log('VueSwiper beforeCreate', this);
+			if (process.env.NODE_ENV !== 'production' && debug) console.log('VueSwiper beforeCreate', this);
 		},
 		mounted() {
 			// eslint-disable-next-line no-console
-			if (process.env.NODE_ENV !== 'production') console.log('VueSwiper mounted', this);
+			if (process.env.NODE_ENV !== 'production' && debug) console.log('VueSwiper mounted', this);
 
 			this.reInit();
 		},
@@ -128,7 +130,7 @@
 		},
 		destroyed() {
 			// eslint-disable-next-line no-console
-			if (process.env.NODE_ENV !== 'production') console.log('VueSwiper destroyed', this);
+			if (process.env.NODE_ENV !== 'production' && debug) console.log('VueSwiper destroyed', this);
 		}
 	};
 </script>

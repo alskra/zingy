@@ -46,6 +46,12 @@
 			bottom: 0;
 			left: 0;
 		}
+
+		&.is-animation-stopped {
+			&::before {
+				animation-play-state: paused;
+			}
+		}
 	}
 
 	.matrix {
