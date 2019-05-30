@@ -46,7 +46,7 @@
 				background-color: #383838;
 			}
 
-			.title {
+			.base-title {
 				color: #ffffff;
 			}
 		}
@@ -77,12 +77,12 @@
 		margin: 0 auto;
 	}
 
-	.title {
-		color: var(--color);
-		font-family: var(--font-family);
-		font-size: 48px;
-		font-weight: 500;
-		line-height: 1.25;
-		margin: 0 range(0px, 80px) range(30px, 70px) range(0px, -80px);
+	.base-title {
+		margin: 0 range(0px, 80px) range(30px, 70px) range(80px, -80px);
+
+		@media (width < 1440px) {
+			margin-right: 0;
+			margin-left: 0;
+		}
 	}
 </style>
