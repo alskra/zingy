@@ -1,12 +1,15 @@
-mixin WorksItem({category = 'Category', title = 'Title', description = 'Description', url = '', image = '', color = '#303030'})
+mixin WorksItem({category = 'Category', title = 'Title', description = 'Description', url = '', image = '', color = '#303030', logo = ''})
 	template
-		figure.works-item&attributes(attributes)
+		figure.works-item(title=category + ' — ' + title)&attributes(attributes)
 			a.image-box(
 				href=url
 				style={backgroundColor: color}
 			)
+				.image-underlay
+
 				if image
 					img.image(src=image alt=title)
+					img.logo(src=logo alt=title + ' Logo')
 
 			figcaption.caption(style={backgroundColor: color})
 				.description= description
