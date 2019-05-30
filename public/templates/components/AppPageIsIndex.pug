@@ -5,8 +5,8 @@ mixin AppPageIsIndex()
 	include ServiceSection
 	include WorkSection
 	include PageSection
-	include ContentCarouselOfWorks
-	include ContentCarouselOfReviews
+	include AppCarouselOfWorks
+	include AppCarouselOfReviews
 	include PageSectionIsServices
 	include FeedbackSection
 
@@ -25,13 +25,13 @@ mixin AppPageIsIndex()
 
 		page-section(inline-template)
 			+PageSection('Наши работы')
-				content-carousel-of-works(inline-template)
-					+ContentCarouselOfWorks()
+				app-carousel-of-works(inline-template)
+					+AppCarouselOfWorks()
 
 		page-section(inline-template)
 			+PageSection('Отзывы')
-				content-carousel-of-reviews(inline-template)
-					+ContentCarouselOfReviews()
+				app-carousel-of-reviews(inline-template)
+					+AppCarouselOfReviews()
 
 		page-section-is-services(inline-template)
 			+PageSectionIsServices()

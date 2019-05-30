@@ -1,5 +1,6 @@
-mixin ContentCarouselOfReviews(items = [])
-	include AppReview
+mixin AppCarouselOfReviews(items = [])
+	include parts/AppCarouselHeader
+	include ReviewsItem
 
 	-
 		const reviews = [
@@ -16,10 +17,19 @@ mixin ContentCarouselOfReviews(items = [])
 			}
 		]
 
-	+ContentCarousel().ContentCarouselOfReviews&attributes(attributes)
-		//base-icon.background-quote(name="open-quote")
 
-		each review in reviews
-			swiper-slide
-				app-review(inline-template)
-					+AppReview(review)
+	.vue-swiper.app-carousel.app-carousel-of-reviews
+		+AppCarouselHeader()
+
+		.main
+			.grid
+				.grid-row
+					.grid-cell
+						base-icon.background-quote(name="open-quote")
+
+						.swiper-container(ref="swiperContainer")
+							.swiper-wrapper
+								each review in reviews
+									.swiper-slide
+										reviews-item(inline-template)
+											+ReviewsItem(review)

@@ -1,0 +1,21 @@
+mixin AppCarouselHeader()
+	.header
+		.grid
+			.grid-row
+				.grid-cell
+					.nav
+						button.nav-button.nav-button-is-prev(
+							type="button"
+							:disabled="isBeginning"
+							@click="slidePrev"
+						)
+							base-icon(name="arrow-right")
+
+						.pagination(ref="pagination")
+
+						button.nav-button.nav-button-is-next(
+							type="button"
+							:disabled="isEnd"
+							@click="slideNext"
+						)
+							base-icon(name="arrow-right")

@@ -1,5 +1,5 @@
-mixin ContentCarouselOfWorks()
-	include ContentCarousel
+mixin AppCarouselOfWorks()
+	include parts/AppCarouselHeader
 	include WorksItem
 
 	-
@@ -49,8 +49,13 @@ mixin ContentCarouselOfWorks()
 			}
 		]
 
-	+ContentCarousel().ContentCarouselOfWorks&attributes(attributes)
-		each work in works
-			swiper-slide
-				works-item(inline-template)
-					+WorksItem(work)
+	.vue-swiper.app-carousel.app-carousel-of-works
+		+AppCarouselHeader()
+
+		.main
+			.swiper-container(ref="swiperContainer")
+				.swiper-wrapper
+					each work in works
+						.swiper-slide
+							works-item(inline-template)
+								+WorksItem(work)

@@ -1,12 +1,12 @@
 <script>
-	import ContentCarouselOfWorks from './ContentCarouselOfWorks';
-	import ContentCarouselOfReviews from './ContentCarouselOfReviews';
+	import AppCarouselOfWorks from './AppCarouselOfWorks';
+	import AppCarouselOfReviews from './AppCarouselOfReviews';
 
 	export default {
 		name: 'PageSection',
 		components: {
-			ContentCarouselOfWorks,
-			ContentCarouselOfReviews
+			AppCarouselOfWorks,
+			AppCarouselOfReviews
 		}
 	};
 </script>

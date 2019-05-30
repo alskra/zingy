@@ -22,6 +22,7 @@
 
 	--grid-width: env(--grid-width);
 	--grid-padding: range(10px, 40px);
+	--grid-row-margin: -10px;
 	--grid-cell-padding: 10px;
 
 	font-size: percentage(10 / 16);
