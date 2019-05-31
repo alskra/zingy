@@ -14,19 +14,16 @@
 		},
 		computed: {
 			stickyContainerOptions() {
-				if (this.windowWidth >= 1024) {
-					let topSpacing = 60 + (108 - 60) / 1600 * (this.windowWidth - 320);
+				let topSpacing = 60 + (108 - 60) / 1600 * (this.windowWidth - 320);
 
-					if (topSpacing > 108) topSpacing = 108;
-					if (topSpacing < 60) topSpacing = 60;
+				if (topSpacing > 108) topSpacing = 108;
+				if (topSpacing < 60) topSpacing = 60;
 
-					return {
-						topSpacing,
-						bottomSpacing: 20
-					};
-				}
-
-				return null;
+				return {
+					topSpacing,
+					bottomSpacing: 20,
+					minWidth: 1023
+				};
 			}
 		},
 		methods: {
