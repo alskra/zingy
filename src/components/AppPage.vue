@@ -12,6 +12,11 @@
 			ZingySection,
 			AppPageStickyContainer
 		},
+		data() {
+			return {
+				stickyContainerMinWidth: 1024
+			};
+		},
 		computed: {
 			stickyContainerOptions() {
 				let topSpacing = 60 + (108 - 60) / 1600 * (this.windowWidth - 320);
@@ -22,7 +27,7 @@
 				return {
 					topSpacing,
 					bottomSpacing: 20,
-					minWidth: 1023
+					minWidth: this.stickyContainerMinWidth - 1
 				};
 			}
 		},

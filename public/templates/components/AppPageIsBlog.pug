@@ -6,16 +6,21 @@ mixin AppPageIsBlog()
 	+AppPage().app-page-is-blog.is-theme-dark&attributes(attributes)
 		.grid
 			nav(is="app-breadcrumb")
-				| Главная
-				a(href="") Блог
+				a(href="") Главная
+				| Блог
 
 			h1(is="base-title") Блог с&nbsp;полезным контентом для всех, кто интересуется&nbsp;IT
 
 		.grid
 			app-page-sticky-container(:options="stickyContainerOptions")
 				template(v-slot:sidebar)
-					page-sidenav(inline-template)
+					page-sidenav(
+						inline-template
+						v-if="windowWidth >= stickyContainerMinWidth ? true : false"
+					)
 						+PageSidenav()
+
+				| Posts
 
 		feedback-section(inline-template)
 			+FeedbackSection()

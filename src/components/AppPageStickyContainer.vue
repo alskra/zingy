@@ -3,11 +3,11 @@
 		.sidebar(v-sticky="options")
 			.sidebar-inner(data-v-sticky-inner)
 				slot(name="sidebar")
-					p Sidebar Content
+					//-p Sidebar Content
 
 		.main
 			slot
-				p Main Content
+				//-p Main Content
 </template>
 
 <script>
@@ -45,15 +45,13 @@
 	}
 
 	.sidebar-inner {
-		background-color: green;
-		min-height: 1500px;
+
 	}
 
 	.main {
-		flex-grow: 1;
-		margin-left: calc(2 * var(--grid-cell-padding));
-		min-height: 2000px;
-		background-color: white;
+		width: calc(100% - 260px - 2 * var(--grid-cell-padding));
+		flex-shrink: 0;
+		margin-left: auto;
 
 		@media (width < 1024px) {
 			width: 100%;

@@ -33,6 +33,7 @@
 		font-size: range(1.4rem, 1.6rem);
 		font-weight: 400;
 		line-height: 1.25;
+		cursor: default;
 
 		& + .item {
 			&::before {
@@ -47,7 +48,7 @@
 			transition: color 0.2s;
 
 			&:hover {
-				color: var(--color-link);
+				/*color: var(--color-link);*/
 				text-decoration: none;
 			}
 		}
