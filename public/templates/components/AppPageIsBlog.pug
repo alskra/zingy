@@ -11,14 +11,11 @@ mixin AppPageIsBlog()
 
 			h1(is="base-title") Блог с&nbsp;полезным контентом для всех, кто интересуется&nbsp;IT
 
-		.grid.grid-is-columns
-			.grid-row
-				vue-sticky(:top="asideStickyTop")
-					aside.grid-cell.grid-cell-is-aside
-						page-sidenav(inline-template)
-							+PageSidenav()
-
-				main.grid-cell.grid-cell-is-main 2
+		.grid
+			app-page-sticky-container(:options="stickyContainerOptions")
+				template(v-slot:sidebar)
+					page-sidenav(inline-template)
+						+PageSidenav()
 
 		feedback-section(inline-template)
 			+FeedbackSection()

@@ -2,13 +2,32 @@
 	import PageHeader from './PageHeader';
 	import PageFooter from './PageFooter';
 	import ZingySection from './ZingySection';
+	import AppPageStickyContainer from './AppPageStickyContainer';
 
 	export default {
 		name: 'AppPage',
 		components: {
 			PageHeader,
 			PageFooter,
-			ZingySection
+			ZingySection,
+			AppPageStickyContainer
+		},
+		computed: {
+			stickyContainerOptions() {
+				if (this.windowWidth >= 1024) {
+					let topSpacing = 60 + (108 - 60) / 1600 * (this.windowWidth - 320);
+
+					if (topSpacing > 108) topSpacing = 108;
+					if (topSpacing < 60) topSpacing = 60;
+
+					return {
+						topSpacing,
+						bottomSpacing: 20
+					};
+				}
+
+				return null;
+			}
 		},
 		methods: {
 			stopZingySectionAnimation() {
@@ -85,10 +104,6 @@
 
 	.grid-row {
 		margin: 0 var(--grid-row-margin);
-		display: flex;
-		/*align-items: flex-start;*/
-		flex-wrap: wrap;
-		position: relative;
 	}
 
 	.grid-cell {
@@ -96,27 +111,8 @@
 		box-sizing: border-box;
 	}
 
-	.grid-is-columns {
+	.app-page-sticky-container {
 		margin-bottom: range(30px, 70px);
-	}
-
-	.grid-cell-is-aside {
-		width: percentage(3 / 12);
-		position: relative;
-		z-index: 10;
-
-		@media (width < 1024px) {
-			width: 100%;
-		}
-	}
-
-	.grid-cell-is-main {
-		width: percentage(9 / 12);
-		min-height: 500px;
-
-		@media (width < 1024px) {
-			width: 100%;
-		}
 	}
 
 	.base-title {

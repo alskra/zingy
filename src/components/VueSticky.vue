@@ -97,6 +97,9 @@
 				});
 			},
 			setBottomFixedStyle() {
+				this.offsetParent = this.placeholder.offsetParent;
+				this.offsetParentStyle = getComputedStyle(this.offsetParent);
+
 				return Object.assign(this.$el.style, {
 					position: 'fixed',
 					top: '',
@@ -194,7 +197,7 @@
 						this.$set(this.topState, 'sticky', false);
 						this.updateStyle();
 					}
-				} else if (!this.top) {
+				} else if (!(typeof this.top === 'number' || this.top)) {
 					this.$set(this.topState, 'sticky', false);
 					this.$set(this.topState, 'edge', false);
 					this.updateStyle();
@@ -240,7 +243,7 @@
 						this.$set(this.bottomState, 'sticky', false);
 						this.updateStyle();
 					}
-				} else if (!this.bottom) {
+				} else if (!(typeof this.bottom === 'number' || this.bottom)) {
 					this.$set(this.bottomState, 'sticky', false);
 					this.$set(this.bottomState, 'edge', false);
 					this.updateStyle();
