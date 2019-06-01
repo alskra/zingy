@@ -1,10 +1,31 @@
 mixin PageSidenav()
+	-
+		const items = [
+			{title: 'Разработка сайта-визитки', url: ''},
+			{title: 'Разработка интернет магазина', url: ''},
+			{title: 'Разработка корпоративного сайта', url: ''},
+			{title: 'Разработка сайта на 1C-Битрикс', url: ''},
+			{title: 'Разработка промо-сайта', url: ''},
+			{title: 'Разработка личного кабинета', url: ''},
+			{title: 'Разработка веб-дизайна', url: ''},
+			{title: 'Интеграция', url: ''},
+			{title: 'Продвижение по трафику', url: ''},
+			{title: 'Продвижение по запросам', url: ''},
+			{title: 'Провижение по лидам', url: ''},
+			{title: 'Вывод из-под санкций', url: ''},
+			{title: 'Контекстная реклама', url: ''},
+			{title: 'SEO продвижение', url: ''},
+		]
+
 	template
 		.page-sidenav&attributes(attributes)
 			header.header
 				.header-inner
-					.title Услуги студии
-					.desc Быстрый переход по&nbsp;страницам услуг нашей студии от&nbsp;дизайна до&nbsp;продвижения!
+					.header-title Услуги студии
+					.header-desc Быстрый переход по&nbsp;страницам услуг нашей студии от&nbsp;дизайна до&nbsp;продвижения!
 
 			.main
-
+				.main-inner
+					each item in items
+						a.nav-item(href=item.url)
+							span.nav-item-text= item.title

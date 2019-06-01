@@ -55,7 +55,6 @@
 
 		@media (width < 1024px) {
 			width: 100%;
-			margin-left: 0;
 		}
 	}
 </style>
