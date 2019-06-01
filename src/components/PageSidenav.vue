@@ -15,12 +15,24 @@
 
 	.header {
 		position: relative;
-		background-color: #cb5053;
+		color: #cb5053;
+		background-color: currentColor;
 
 		&::before {
 			/*content: '';*/
 			display: block;
 			padding-top: 100%;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 100%;
+			left: range(10px, 20px);
+			border-top: range(5px, 10px) solid currentColor;
+			border-left: range(5px, 10px) solid transparent;
+			border-right: range(5px, 10px) solid transparent;
+			pointer-events: none;
 		}
 	}
 
@@ -35,8 +47,6 @@
 	}
 
 	.header-title {
-		display: inline-block;
-		vertical-align: top;
 		color: #ffffff;
 		font-family: var(--font-family);
 		font-size: range(2.2rem, 2.4rem);
@@ -45,16 +55,13 @@
 		margin-bottom: 0.5em;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		white-space: nowrap;
-		max-width: 100%;
+		padding-bottom: 3px;
+	}
 
-		&::after {
-			content: '';
-			display: block;
-			height: 1px;
-			background-color: #e4797b;
-			margin-top: calc(3 / 24 * 1em);
-		}
+	.header-title-text {
+		display: inline;
+		background: linear-gradient(to right, #e4797b, #e4797b) no-repeat 0 100% / 100% 1px;
+		padding-bottom: 3px;
 	}
 
 	.header-desc {
@@ -86,7 +93,8 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 
-		&:hover {
+		&:hover,
+		&.is-active {
 			.nav-item-text {
 				background-size: 100% 1px;
 			}
@@ -96,6 +104,7 @@
 	.nav-item-text {
 		display: inline;
 		background: linear-gradient(to right, var(--color-link), var(--color-link)) no-repeat 0 100% / 0 1px;
+		padding-bottom: 1px;
 		transition: background-size 0.2s;
 	}
 </style>

@@ -113,12 +113,12 @@
 		box-sizing: border-box;
 	}
 
-	.app-page-sticky-container {
-		margin-bottom: range(30px, 70px);
+	.app-breadcrumb {
+		margin: range(10px, 0px) 0 range(20px, 40px);
 	}
 
 	.base-title {
-		margin: 0 range(0px, 80px) range(30px, 70px) range(80px, -80px);
+		margin: 0 range(0px, 80px) range(30px, 60px) range(80px, -80px);
 
 		@media (width < 1440px) {
 			margin-right: 0;
@@ -126,7 +126,7 @@
 		}
 	}
 
-	.app-breadcrumb {
-		margin: range(10px, 20px) 0 range(20px, 40px);
+	.app-page-sticky-container {
+		margin-bottom: range(30px, 60px);
 	}
 </style>

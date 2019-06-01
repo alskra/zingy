@@ -36,11 +36,13 @@
 	}
 
 	.sidebar {
-		width: 260px;
+		width: percentage(260 / 1080);
+		max-width: 260px;
 		flex-shrink: 0;
 
 		@media (width < 1024px) {
 			width: 100%;
+			max-width: none;
 		}
 	}
 
@@ -49,12 +51,12 @@
 	}
 
 	.main {
-		width: calc(100% - 260px - 2 * var(--grid-cell-padding));
-		flex-shrink: 0;
-		margin-left: auto;
+		flex: 1 0;
+		margin-left: calc(2 * var(--grid-cell-padding));
 
 		@media (width < 1024px) {
 			width: 100%;
+			margin-left: 0;
 		}
 	}
 </style>
