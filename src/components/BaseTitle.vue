@@ -1,10 +1,6 @@
-<template lang="pug" functional>
+<template lang="pug">
 	transition(appear)
-		.base-title(
-			:is="props.tag"
-			v-bind="{...data.attrs, [parent.$options._scopeId]: ''}"
-			v-on="listeners"
-		)
+		.base-title(:is="tag")
 			slot
 </template>
 
@@ -20,13 +16,23 @@
 	};
 </script>
 
+<style>
+	:root {
+		--base-title_color: var(--color);
+
+		&.is-theme-dark {
+			--base-title_color: #ffffff;
+		}
+	}
+</style>
+
 <style scoped>
 	.base-title {
 		all: initial;
 
 		& {
 			display: block;
-			color: var(--color);
+			color: var(--base-title_color);
 			font-family: var(--font-family);
 			font-size: var(--font-size-h1);
 			font-weight: 500;

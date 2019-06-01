@@ -21,6 +21,7 @@
 			width: 100%;
 			height: var(--zingy-section_height);
 			position: relative;
+			background-color: black;
 		}
 
 		&::before {

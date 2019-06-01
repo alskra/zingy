@@ -50,6 +50,16 @@
 	};
 </script>
 
+<style>
+	:root {
+		--app-page-main_background-color: #ffffff;
+
+		&.is-theme-dark {
+			--app-page-main_background-color: #383838;
+		}
+	}
+</style>
+
 <style scoped>
 	.app-page {
 		all: initial;
@@ -59,22 +69,6 @@
 			overflow: hidden;
 			min-width: env(--min-breakpoint);
 		}
-
-		&.is-theme-dark {
-			.main {
-				background-color: #383838;
-			}
-
-			.base-title {
-				color: #ffffff;
-			}
-
-			.app-breadcrumb {
-				>>> .item {
-					color: #ffffff;
-				}
-			}
-		}
 	}
 
 	.body {
@@ -83,7 +77,6 @@
 		min-height: 100vh;
 		display: flex;
 		flex-flow: column;
-		/*transform: translate3d(0, 0, 0);*/
 
 		:root:not(.is-browser-ie) & {
 			margin-bottom: var(--zingy-section_height);
@@ -93,7 +86,7 @@
 	.main {
 		flex: 1 0 auto;
 		padding: range(60px, 138px) 0 0;
-		background-color: white;
+		background-color: var(--app-page-main_background-color);
 	}
 
 	.grid {

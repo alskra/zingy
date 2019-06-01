@@ -14,16 +14,12 @@
 			SideNav,
 			FeedbackSection
 		},
-
+		created() {
+			document.documentElement.classList.add('is-theme-dark');
+		}
 	};
 </script>
 
-<style scoped src="./AppPage.vue">
-</style>
+<style src="./AppPage.vue"></style>
 
-
-<style scoped>
-	.main {
-
-	}
-</style>
+<style scoped src="./AppPage.vue"></style>

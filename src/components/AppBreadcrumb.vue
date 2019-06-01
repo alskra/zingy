@@ -12,10 +12,20 @@
 				return null;
 			};
 
-			return createElement('nav', {staticClass: 'app-breadcrumb'}, getItems());
+			return createElement('nav', {class: 'app-breadcrumb'}, getItems());
 		}
 	};
 </script>
+
+<style>
+	:root {
+		--app-breadcrumb_color: var(--color);
+
+		&.is-theme-dark {
+			--app-breadcrumb_color: #ffffff;
+		}
+	}
+</style>
 
 <style scoped>
 	.app-breadcrumb {
@@ -28,7 +38,7 @@
 
 	.item {
 		display: inline;
-		color: var(--color);
+		color: var(--app-breadcrumb_color);
 		font-family: var(--font-family);
 		font-size: range(1.4rem, 1.6rem);
 		font-weight: 400;

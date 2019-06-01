@@ -71,6 +71,8 @@ module.exports = {
 	},
 	transpileDependencies: [
 		'css-blank-pseudo',
-		'focus-within'
+		'focus-within',
+		'swiper',
+		'dom7'
 	]
 };

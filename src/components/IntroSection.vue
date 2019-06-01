@@ -299,29 +299,31 @@
 		background: url("../assets/img/unicorn-intro-fallback.png") no-repeat 50% 100% / 100% auto;
 	}
 
-	:root:not(.is-browser-mobile-safari) .unicorn-img-is-clip {
-		width: 420px;
-		height: 803px;
-		background: url("../assets/img/intro-bg-1.jpg") no-repeat 50% / cover;
-		clip-path: url("#unicorn");
-		transform-origin: 0 0;
-		transform: scale(scale-down(1, 0.3));
+	.unicorn-img-is-clip {
+		:root:not(.is-browser-mobile-safari, .is-engine-trident) & {
+			width: 420px;
+			height: 803px;
+			background: url("../assets/img/intro-bg-1.jpg") no-repeat 50% / cover;
+			clip-path: url("#unicorn");
+			transform-origin: 0 0;
+			transform: scale(scale-down(1, 0.3));
 
-		&::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: url("../assets/img/intro-bg-2.jpg") no-repeat 50% / cover;
-			opacity: 0;
-			transition: opacity 0.5s;
-		}
-
-		&:hover {
 			&::before {
-				opacity: 1;
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: url("../assets/img/intro-bg-2.jpg") no-repeat 50% / cover;
+				opacity: 0;
+				transition: opacity 0.5s;
+			}
+
+			&:hover {
+				&::before {
+					opacity: 1;
+				}
 			}
 		}
 	}

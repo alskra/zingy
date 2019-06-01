@@ -98,7 +98,7 @@
 
 			&:hover {
 				&::before {
-					mix-blend-mode: darken;
+					/*mix-blend-mode: darken;*/
 				}
 			}
 		}
