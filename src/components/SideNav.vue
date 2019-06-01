@@ -1,11 +1,11 @@
 <script>
 	export default {
-		name: 'PageSidenav'
+		name: 'SideNav'
 	};
 </script>
 
 <style scoped>
-	.page-sidenav {
+	.side-nav {
 		all: initial;
 
 		& {
@@ -79,6 +79,12 @@
 
 	.main-inner {
 		margin: 0 range(-10px, -20px);
+
+		@media (width < 1024px) {
+			margin: 0;
+			display: flex;
+			overflow: hidden;
+		}
 	}
 
 	.nav-item {
@@ -98,6 +104,10 @@
 			.nav-item-text {
 				background-size: 100% 1px;
 			}
+		}
+
+		@media (width < 1024px) {
+			flex-shrink: 0;
 		}
 	}
 

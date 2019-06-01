@@ -1,6 +1,6 @@
 mixin AppPageIsBlog()
 	include AppPage
-	include PageSidenav
+	include SideNav
 	include FeedbackSection
 
 	+AppPage().app-page-is-blog.is-theme-dark&attributes(attributes)
@@ -9,16 +9,20 @@ mixin AppPageIsBlog()
 				a(href="") Главная
 				| Блог
 
-			h1(is="base-title") Блог с&nbsp;полезным контентом для всех, кто интересуется&nbsp;IT
+			h1(
+				is="base-title"
+				tag="h1"
+			) Блог с&nbsp;полезным контентом для всех, кто интересуется&nbsp;IT
 
 		.grid
 			app-page-sticky-container(:options="stickyContainerOptions")
 				template(v-slot:sidebar)
-					page-sidenav(
-						inline-template
-						v-if="windowWidth >= stickyContainerMinWidth ? true : false"
-					)
-						+PageSidenav()
+					aside
+						side-nav(
+							inline-template
+							v-if="windowWidth >= stickyContainerMinWidth ? true : true"
+						)
+							+SideNav()
 
 				| Posts
 

@@ -1,4 +1,4 @@
-mixin PageSidenav()
+mixin SideNav()
 	-
 		const items = [
 			{title: 'Разработка сайта-визитки', url: ''},
@@ -18,15 +18,16 @@ mixin PageSidenav()
 		]
 
 	template
-		.page-sidenav&attributes(attributes)
+		.side-nav&attributes(attributes)
 			header.header
 				.header-inner
 					.header-title
 						span.header-title-text Услуги студии
+
 					.header-desc Быстрый переход по&nbsp;страницам услуг нашей студии от&nbsp;дизайна до&nbsp;продвижения!
 
 			.main
-				.main-inner
+				.main-inner(v-dragscroll.x="true")
 					each item, index in items
 						a.nav-item(
 							class={'is-active': index === 0}

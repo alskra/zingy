@@ -1,12 +1,12 @@
 <script>
 	export default {
-		name: 'PageHeaderNav',
-		template: '#page-header-nav'
+		name: 'AppHeaderNav',
+		template: '#app-header-nav'
 	};
 </script>
 
 <style scoped>
-	.page-header-nav {
+	.app-header-nav {
 		all: initial;
 
 		& {

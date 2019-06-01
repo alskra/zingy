@@ -3,11 +3,9 @@
 		.sidebar(v-sticky="options")
 			.sidebar-inner(data-v-sticky-inner)
 				slot(name="sidebar")
-					//-p Sidebar Content
 
 		.main
 			slot
-				//-p Main Content
 </template>
 
 <script>

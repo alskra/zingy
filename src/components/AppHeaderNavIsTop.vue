@@ -1,17 +1,17 @@
 <script>
-	import PageHeaderNav from './PageHeaderNav';
+	import AppHeaderNav from './AppHeaderNav';
 
 	export default {
-		name: 'PageHeaderNavIsTop',
-		extends: PageHeaderNav
+		name: 'AppHeaderNavIsTop',
+		extends: AppHeaderNav
 	};
 </script>
 
-<style scoped src="./PageHeaderNav.vue">
+<style scoped src="./AppHeaderNav.vue">
 </style>
 
 <style scoped>
-	.page-header-nav-is-top {
+	.app-header-nav-is-top {
 		box-sizing: border-box;
 		max-width: 50vw;
 		height: range(44px, 58px);

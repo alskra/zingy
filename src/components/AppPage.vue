@@ -1,16 +1,14 @@
 <script>
-	import PageHeader from './PageHeader';
+	import AppHeader from './AppHeader';
 	import PageFooter from './PageFooter';
 	import ZingySection from './ZingySection';
-	import AppPageStickyContainer from './AppPageStickyContainer';
 
 	export default {
 		name: 'AppPage',
 		components: {
-			PageHeader,
+			AppHeader,
 			PageFooter,
-			ZingySection,
-			AppPageStickyContainer
+			ZingySection
 		},
 		data() {
 			return {

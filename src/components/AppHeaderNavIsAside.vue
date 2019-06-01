@@ -1,13 +1,13 @@
 <script>
-	import PageHeaderNav from './PageHeaderNav';
+	import AppHeaderNav from './AppHeaderNav';
 
 	export default {
-		name: 'PageHeaderNavIsAside',
-		extends: PageHeaderNav
+		name: 'AppHeaderNavIsAside',
+		extends: AppHeaderNav
 	};
 </script>
 
-<style scoped src="./PageHeaderNav.vue">
+<style scoped src="./AppHeaderNav.vue">
 </style>
 
 <style scoped>

@@ -19,7 +19,6 @@
 	--font-size: range(1.6rem, 1.8rem);
 	--font-size-h1: scale-down(4.8rem, 0.56);
 
-
 	--grid-width: env(--grid-width);
 	--grid-padding: range(10px, 40px);
 	--grid-row-margin: -10px;
@@ -41,5 +40,5 @@
 
 ::selection {
 	color: white;
-	background-color: var(--color-link);
+	background-color: var(--color-accent);
 }

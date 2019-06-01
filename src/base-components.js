@@ -14,7 +14,7 @@ requireComponents.keys().forEach(fileName => {
 	Vue.component(componentName, componentConfig);
 });
 
-Vue.component('Vnodes', {
+Vue.component('VNodes', {
 	functional: true,
 	render(createElement, ctx) {
 		return ctx.props.vnodes;

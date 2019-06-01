@@ -1,7 +1,8 @@
 <script>
 	import AppPage from './AppPage';
 	import AppBreadcrumb from './AppBreadcrumb';
-	import PageSidenav from './PageSidenav';
+	import AppPageStickyContainer from './AppPageStickyContainer';
+	import SideNav from './SideNav';
 	import FeedbackSection from './FeedbackSection';
 
 	export default {
@@ -9,7 +10,8 @@
 		extends: AppPage,
 		components: {
 			AppBreadcrumb,
-			PageSidenav,
+			AppPageStickyContainer,
+			SideNav,
 			FeedbackSection
 		},
 

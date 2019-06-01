@@ -1,9 +1,9 @@
 <script>
-	import PageHeaderNavIsTop from './PageHeaderNavIsTop';
-	import PageHeaderNavIsAside from './PageHeaderNavIsAside';
+	import AppHeaderNavIsTop from './AppHeaderNavIsTop';
+	import AppHeaderNavIsAside from './AppHeaderNavIsAside';
 
 	export default {
-		name: 'PageHeader',
+		name: 'AppHeader',
 		data() {
 			return {
 				startAnimateIsEnd: false,
@@ -13,8 +13,8 @@
 			};
 		},
 		components: {
-			PageHeaderNavIsTop,
-			PageHeaderNavIsAside
+			AppHeaderNavIsTop,
+			AppHeaderNavIsAside
 		},
 		watch: {
 			startAnimateIsEnd() {
@@ -77,7 +77,7 @@
 </script>
 
 <style scoped>
-	.page-header {
+	.app-header {
 		all: initial;
 
 		& {

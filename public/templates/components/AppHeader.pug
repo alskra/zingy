@@ -1,6 +1,6 @@
-mixin PageHeader()
+mixin AppHeader()
 	template
-		header.page-header&attributes(attributes)
+		header.app-header&attributes(attributes)
 			transition-box(
 				appear
 				appear-active-class="v-appear-active"
@@ -21,7 +21,7 @@ mixin PageHeader()
 				@before-leave="onLNavBoxBeforeLeave"
 			)
 				.nav-box(v-show="startAnimateIsEnd && !headerIsMinimized")
-					page-header-nav-is-top.page-header-nav-is-top.nav
+					app-header-nav-is-top.app-header-nav-is-top.nav
 
 			transition-box(:duration="{enter: 550, leave: 350}")
 				.menu-button-box(v-show="startAnimateIsEnd && headerIsMinimized")
@@ -81,7 +81,7 @@ mixin PageHeader()
 							.link-text.is-uppercase Eng
 
 					.sidebar-scrollable
-						page-header-nav-is-aside.page-header-nav-is-aside.sidebar-nav
+						app-header-nav-is-aside.app-header-nav-is-aside.sidebar-nav
 
 						.sidebar-footer
 							.sidebar-footer-grid
