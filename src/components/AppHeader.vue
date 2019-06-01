@@ -628,7 +628,7 @@
 <style>
 	@custom-selector :--back-boxes
 	.app-page > .body > .main,
-	.app-page > .body > .footer,
+	.app-page > .body > .app-footer,
 	.app-page > .zingy-section;
 
 	:root {

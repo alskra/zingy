@@ -1,6 +1,0 @@
-mixin AppPageFooterNavOfSection(navList, navName = 'Section')
-	include AppPageFooterNav
-
-	+AppPageFooterNav(navList).app-page-footer-nav-of-section&attributes(attributes)
-		.hover-item(:style="hoverItemStyle")
-		.nav-name= navName

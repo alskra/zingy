@@ -1,20 +1,20 @@
 <script>
 	import SocialLinks from './SocialLinks';
-	import AppPageFooterNav from './AppPageFooterNav';
-	import AppPageFooterNavOfSection from './AppPageFooterNavOfSection';
+	import AppFooterNav from './AppFooterNav';
+	import AppFooterNavOfSection from './AppFooterNavOfSection';
 
 	export default {
-		name: 'PageFooter',
+		name: 'AppFooter',
 		components: {
 			SocialLinks,
-			AppPageFooterNav,
-			AppPageFooterNavOfSection
+			AppFooterNav,
+			AppFooterNavOfSection
 		}
 	};
 </script>
 
 <style scoped>
-	.page-footer {
+	.app-footer {
 		all: initial;
 
 		& {

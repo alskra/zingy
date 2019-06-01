@@ -1,9 +1,9 @@
 <script>
-	import AppPageFooterNav from './AppPageFooterNav';
+	import AppFooterNav from './AppFooterNav';
 
 	export default {
-		name: 'AppPageFooterNavOfSection',
-		extends: AppPageFooterNav,
+		name: 'AppFooterNavOfSection',
+		extends: AppFooterNav,
 		data() {
 			return {
 				hoverItemStyle: null
@@ -49,11 +49,11 @@
 	};
 </script>
 
-<style src="./AppPageFooterNav.vue" scoped>
+<style src="./AppFooterNav.vue" scoped>
 </style>
 
 <style scoped>
-	.app-page-footer-nav-of-section {
+	.app-footer-nav-of-section {
 		position: relative;
 	}
 

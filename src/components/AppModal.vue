@@ -26,13 +26,8 @@
 </template>
 
 <script>
-	import VueSticky from './VueSticky';
-
 	export default {
-		name: 'AppModal',
-		components: {
-			VueSticky
-		}
+		name: 'AppModal'
 	};
 </script>
 

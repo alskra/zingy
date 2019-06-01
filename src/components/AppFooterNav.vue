@@ -1,11 +1,11 @@
 <script>
 	export default {
-		name: 'AppPageFooterNav'
+		name: 'AppFooterNav'
 	};
 </script>
 
 <style scoped>
-	.app-page-footer-nav {
+	.app-footer-nav {
 		all: initial;
 
 		& {

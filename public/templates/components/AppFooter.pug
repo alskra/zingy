@@ -1,7 +1,7 @@
-mixin PageFooter()
+mixin AppFooter()
 	include SocialLinks
-	include AppPageFooterNav
-	include AppPageFooterNavOfSection
+	include AppFooterNav
+	include AppFooterNavOfSection
 
 	-
 		const [mainNav, devNav, seoNav] = [
@@ -35,7 +35,7 @@ mixin PageFooter()
 		]
 
 	template
-		footer.page-footer&attributes(attributes)
+		footer.app-footer&attributes(attributes)
 			.grid
 				.title Контакты
 
@@ -66,13 +66,13 @@ mixin PageFooter()
 									p &copy;&nbsp;2008&ndash;2019. Все&nbsp;права&nbsp;защищены
 
 					.grid-cell
-						app-page-footer-nav(inline-template)
-							+AppPageFooterNav(mainNav)
+						app-footer-nav(inline-template)
+							+AppFooterNav(mainNav)
 
 					.grid-cell
-						app-page-footer-nav-of-section(inline-template)
-							+AppPageFooterNavOfSection(devNav, 'Разработка')
+						app-footer-nav-of-section(inline-template)
+							+AppFooterNavOfSection(devNav, 'Разработка')
 
 					.grid-cell
-						app-page-footer-nav-of-section(inline-template)
-							+AppPageFooterNavOfSection(seoNav, 'Продвижение')
+						app-footer-nav-of-section(inline-template)
+							+AppFooterNavOfSection(seoNav, 'Продвижение')
