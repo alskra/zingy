@@ -19,7 +19,7 @@ mixin SocialLinks()
 							target="_blank"
 							title=link[0]
 						)
-							base-icon(
-								:class="{'link-icon': true, 'link-icon-is-masked': linkIconIsMasked}"
+							base-icon.link-icon(
+								:class="{'link-icon-is-masked': linkIconIsMasked}"
 								name=link[1]
 							)

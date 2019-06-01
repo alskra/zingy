@@ -22,7 +22,6 @@
 
 	export default {
 		name: 'BaseIcon',
-		functional: true,
 		props: {
 			name: {
 				type: String,
@@ -37,30 +36,18 @@
 				default: 'meet'
 			}
 		},
-		render(createElement, context) {
-			const className = `base-icon base-icon-is-${context.props.name}`;
-
-			if (!context.data.class) {
-				context.data.class = className;
-			} else if (typeof context.data.class === 'string') {
-				context.data.class += ' ' + className;
-			} else if (Array.isArray(context.data.class)) {
-				context.data.class.push(className);
-			} else if (typeof context.data.class === 'object' && context.data.class !== null) {
-				Object.assign(context.data.class, {
-					[className]: true
-				})
-			}
-
-			Object.assign(context.data.attrs, {
-				preserveAspectRatio: context.props.align + ' ' + context.props.scale,
-				role: 'img'
-			});
-
+		render(createElement) {
 			return createElement({
-				name: context.props.name + 'Icon',
-				template: icons[context.props.name]
-			}, context.data);
+				name: 'BaseIconIs-' + this.name,
+				template: icons[this.name],
+				_scopeId: this.$options._scopeId
+			}, {
+				class: `base-icon base-icon-is-${this.name}`,
+				attrs: {
+					preserveAspectRatio: this.align + ' ' + this.scale,
+					role: 'img'
+				}
+			});
 		}
 	};
 </script>
@@ -80,7 +67,7 @@
 			fill: currentColor;
 		}
 
-		>>> * {
+		* {
 			pointer-events: none;
 		}
 	}
@@ -93,7 +80,7 @@
 
 		:root:not(.is-sidebar-opened) & {
 			&:hover {
-				>>> .menu-icon-line {
+				.menu-icon-line {
 					&:nth-child(1) {
 						width: 75%;
 					}
@@ -114,7 +101,7 @@
 		}
 
 		:root.is-sidebar-opened & {
-			>>> .menu-icon-line {
+			.menu-icon-line {
 				&:nth-child(2),
 				&:nth-child(3) {
 					display: none;
@@ -139,7 +126,7 @@
 
 		:root.is-sidebar-opened:not(.is-device-mobile) & {
 			&:hover {
-				>>> .menu-icon-line {
+				.menu-icon-line {
 					&:nth-child(1),
 					&:nth-child(4) {
 						padding-left: 0;
@@ -157,7 +144,7 @@
 		}
 	}
 
-	>>> .menu-icon-line {
+	.menu-icon-line {
 		position: absolute;
 		left: 0;
 		width: 100%;

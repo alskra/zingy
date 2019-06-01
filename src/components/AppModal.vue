@@ -1,6 +1,6 @@
 <template lang="pug" functional>
 	modal(
-		v-bind="data.attrs"
+		v-bind="{...data.attrs, [parent.$options._scopeId]: ''}"
 		v-on="listeners"
 		:classes="['app-modal']"
 		:adaptive="true"
@@ -27,7 +27,8 @@
 
 <script>
 	export default {
-		name: 'AppModal'
+		name: 'AppModal',
+
 	};
 </script>
 
