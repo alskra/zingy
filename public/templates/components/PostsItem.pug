@@ -1,13 +1,18 @@
-mixin PostsItem({url = '', date = '2019-06-02T15:13:14+04:00', title = '', desc = '', img = ''} = {})
+mixin PostsItem({url = '', date = '2019-06-02T15:13:14+04:00', title = 'Post Title', desc = 'Post Description', img = ''} = {})
 	template
 		article.posts-item&attributes(attributes)
-			.img-box
-				img.img(
-					src=img
-					alt=title
-				)
+			.body
+				.header
+					v-lazy-image.img(
+						src=img
+						alt=title
+					)
 
-				base-time(
-					datetime=date
-					locale='ru'
-				)
+					base-time(
+						datetime=date
+						locale='ru'
+					)
+
+				.main
+					h3.title(v-line-clamp="2")=title
+					.desc(v-line-clamp="3")=desc

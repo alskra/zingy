@@ -1,6 +1,9 @@
 <template lang="pug">
 	transition(appear)
-		.base-title(:is="tag")
+		.base-title(
+			:is="tag"
+			:class="'base-title-is-' + tag"
+		)
 			slot
 </template>
 

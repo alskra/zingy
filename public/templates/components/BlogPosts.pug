@@ -2,13 +2,21 @@ mixin BlogPosts()
 	include PostsItem
 
 	-
-		const posts = [{}];
+		const posts = [
+			{
+				url: '',
+				date: '2019-06-02T15:13:14+04:00',
+				title: 'Подписка на статьи ZINGY',
+				desc: 'Как не потерять клиентов из-за долгой загрузки сайтов и тому подобное что-то рыбатекстное побольше рыбное такое чтоб было чем заполнить.',
+				img: 'upload/post-cover.jpg'
+			}
+		];
 
 	template
 		.blog-posts&attributes(attributes)
 			.grid
 				each post in posts
-					.grid-item
+					.grid-cell
 						posts-item(inline-template)
 							+PostsItem(post)
 

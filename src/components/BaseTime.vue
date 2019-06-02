@@ -1,8 +1,10 @@
 <template lang="pug">
 	time.base-time(
 		:datetime="datetime"
-		:title="momentLocale.format('DD MMMM YYYY HH:mm')"
-	) {{ momentLocale.format('DD MMMM YYYY') }}
+		:title="localLocale.format('DD MMMM YYYY HH:mm')"
+	)
+		span.date {{ localLocale.format('DD') }}
+		span.rest {{ localLocale.format(' MMMM YYYY') }}
 </template>
 
 <script>
@@ -19,7 +21,7 @@
 			}
 		},
 		computed: {
-			momentLocale() {
+			localLocale() {
 				return this.$moment(this.datetime).locale(this.locale);
 			}
 		}

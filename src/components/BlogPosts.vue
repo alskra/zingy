@@ -21,4 +21,15 @@
 		}
 	}
 
+	.grid {
+		margin: var(--grid-row-margin);
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.grid-cell {
+		margin: var(--grid-cell-padding);
+		width: calc(percentage(1 / 3) - 2 * var(--grid-cell-padding));
+		flex-shrink: 0;
+	}
 </style>
