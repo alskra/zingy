@@ -1,14 +1,14 @@
 mixin BlogPosts()
-	include PostCard
+	include PostsItem
 
 	-
-		const posts = [];
+		const posts = [{}];
 
 	template
 		.blog-posts&attributes(attributes)
 			.grid
 				each post in posts
 					.grid-item
-						post-card(inlne-template)
-							+PostCard(post)
+						posts-item(inline-template)
+							+PostsItem(post)
 

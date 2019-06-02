@@ -1,10 +1,10 @@
 <script>
-	import PostCard from './PostCard';
+	import PostsItem from './PostsItem';
 
 	export default {
 		name: 'BlogPosts',
 		components: {
-			PostCard
+			PostsItem
 		}
 	};
 </script>

@@ -1,0 +1,13 @@
+mixin PostsItem({url = '', date = '2019-06-02T15:13:14+04:00', title = '', desc = '', img = ''} = {})
+	template
+		article.posts-item&attributes(attributes)
+			.img-box
+				img.img(
+					src=img
+					alt=title
+				)
+
+				base-time(
+					datetime=date
+					locale='ru'
+				)

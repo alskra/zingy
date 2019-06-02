@@ -1,13 +1,16 @@
 <script>
 	export default {
-		name: 'PostCard'
+		name: 'PostsItem',
+		created() {
+			// this.$moment.locale('ru');
+		}
 	};
 </script>
 
 <style></style>
 
 <style scoped>
-	.post-card {
+	.posts-item {
 		all: initial;
 
 		& {

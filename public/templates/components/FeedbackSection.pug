@@ -50,7 +50,8 @@ mixin FeedbackSection()
 								:classes="['is-small']"
 								:loading="isLoading"
 							)
-								template(v-slot:title) Ваша заявка отправлена, мы свяжемся с Вами в ближайшее время!
+								template(v-slot:title)
+									| {{ error || 'Ваша заявка отправлена, мы свяжемся с Вами в ближайшее время!' }}
 
 								base-content
 									p {{ response }}
