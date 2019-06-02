@@ -1,8 +1,7 @@
-<template lang="pug" functional>
+<template lang="pug">
 	modal(
-		v-bind="{...data.attrs, [parent.$options._scopeId]: ''}"
-		v-on="listeners"
-		:classes="['app-modal']"
+		:name="name"
+		:classes="['app-modal', classes]"
 		:adaptive="true"
 		height="auto"
 		:scrollable="true"
@@ -11,11 +10,15 @@
 	)
 		.body
 			header.header
-				.title
-					slot(name="title")
-						h2 Modal Heading
+				.header-inner
+					.title
+						slot(name="title")
+							h2 Modal Heading
 
-				button.close-button(@click="parent.$modal.hide(props.name)")
+				button.close-button(
+					type="button"
+					@click="$modal.hide(name)"
+				)
 					base-icon(name="close")
 
 			.main
@@ -28,7 +31,16 @@
 <script>
 	export default {
 		name: 'AppModal',
-
+		props: {
+			name: {
+				type: String,
+				required: true
+			},
+			classes: {
+				type: [String, Array],
+				default: ''
+			}
+		}
 	};
 </script>
 
@@ -41,7 +53,7 @@
 	}
 
 	.app-modal {
-		/*all: initial;*/
+		/*all: initial;*/ // save transition
 
 		& {
 			top: auto !important;
@@ -50,6 +62,28 @@
 			max-width: var(--grid-width);
 			height: auto !important;
 			margin: auto !important;
+		}
+
+		&.is-width-auto {
+			width: auto !important;
+		}
+
+		&.is-small {
+			max-width: 600px !important;
+
+			.header {
+				padding-left: var(--grid-padding);
+			}
+
+			.title {
+				margin-left: 0;
+				font-size: range(2.4rem, 2.6rem);
+			}
+
+			.main {
+				padding-right: var(--grid-padding);
+				padding-left: var(--grid-padding);
+			}
 		}
 	}
 </style>
@@ -72,15 +106,23 @@
 			z-index: -1;
 			top: scale-down(-12px, 0.5);
 			right: scale-down(-12px, 0.5);
-			bottom: scale-down(105px, 0.5);
-			left: scale-down(140px, 0.5);
+			bottom: percentage(105 / 1130);
+			left: percentage(140 / 1168);
 			background-color: var(--color-accent);
 		}
 	}
 
 	.header {
-		padding: range(40px + 4px, 58px + 20px) range(10px, 140px) 0;
-		position: relative;
+		display: flex;
+		align-items: flex-start;
+		padding: range(5px, 10px) range(5px, 10px) 0 range(10px, 140px);
+	}
+
+	.header-inner {
+		margin: auto 0;
+		padding: range(15px, 30px) 0 0;
+		min-width: 0;
+		flex-grow: 1;
 	}
 
 	.title {
@@ -104,11 +146,10 @@
 
 		& {
 			display: block;
+			flex-shrink: 0;
 			width: range(40px, 58px);
 			height: range(40px, 58px);
-			position: absolute;
-			top: range(2px, 10px);
-			right: range(2px, 10px);
+			margin-left: range(10px, 20px);
 			cursor: pointer;
 			color: var(--color);
 			transition: color 0.2s;
@@ -120,6 +161,6 @@
 	}
 
 	.main {
-		padding: range(20px, 50px) range(10px, 140px);
+		padding: range(20px, 40px) range(10px, 140px);
 	}
 </style>

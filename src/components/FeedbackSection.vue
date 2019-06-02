@@ -1,9 +1,13 @@
 <script>
 	import Inputmask from 'inputmask';
 	// import axios from 'axios';
+	import AppModal from './AppModal';
 
 	export default {
 		name: 'FeedbackSection',
+		components: {
+			AppModal
+		},
 		data() {
 			return {
 				tel: {
@@ -15,6 +19,7 @@
 					error: null
 				},
 				response: null,
+				error: null,
 				formIsDisabled: false
 			};
 		},
@@ -40,14 +45,16 @@
 
 				if (!this.hasErrors) {
 					this.formIsDisabled = true;
+					this.response = null;
+					this.error = null;
 
 					const formData = new FormData(evt.target);
 
 					// Imitation request
 					setTimeout(() => {
-						this.response = `Телефон: ${formData.get('tel')}, Сайт: ${formData.get('url') || '-'}`;
-
 						this.formIsDisabled = false;
+						this.response = `Телефон: ${formData.get('tel')}, Сайт: ${formData.get('url') || '-'}`;
+						this.$modal.show('feedback-response');
 					}, 2000);
 				}
 			}
