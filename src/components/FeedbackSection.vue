@@ -55,7 +55,7 @@
 						this.formIsDisabled = false;
 						this.response = `Телефон: ${formData.get('tel')}, Сайт: ${formData.get('url') || '-'}`;
 						this.$modal.show('feedback-response');
-					}, 2000);
+					}, 1000);
 				}
 			}
 		},

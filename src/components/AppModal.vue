@@ -77,7 +77,7 @@
 
 			.title {
 				margin-left: 0;
-				font-size: range(2.4rem, 2.6rem);
+				font-size: var(--font-size-h3);
 			}
 
 			.main {
