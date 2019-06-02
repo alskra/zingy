@@ -1,6 +1,7 @@
 mixin AppPageIsBlog()
 	include AppPage
 	include SideNav
+	include BlogPosts
 	include FeedbackSection
 
 	+AppPage().app-page-is-blog&attributes(attributes)
@@ -24,7 +25,8 @@ mixin AppPageIsBlog()
 						)
 							+SideNav()
 
-				| Posts
+				blog-posts(inline-template)
+					+BlogPosts()
 
 		feedback-section(inline-template)
 			+FeedbackSection()

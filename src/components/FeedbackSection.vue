@@ -20,7 +20,7 @@
 				},
 				response: null,
 				error: null,
-				formIsDisabled: false
+				isLoading: false
 			};
 		},
 		computed: {
@@ -44,17 +44,19 @@
 				this.checkTel(this.tel);
 
 				if (!this.hasErrors) {
-					this.formIsDisabled = true;
+					this.isLoading = true;
+
 					this.response = null;
 					this.error = null;
 
+					this.$modal.show('feedback-response');
+
 					const formData = new FormData(evt.target);
 
-					// Imitation request
+					// Simulate AJAX
 					setTimeout(() => {
-						this.formIsDisabled = false;
+						this.isLoading = false;
 						this.response = `Телефон: ${formData.get('tel')}, Сайт: ${formData.get('url') || '-'}`;
-						this.$modal.show('feedback-response');
 					}, 1000);
 				}
 			}

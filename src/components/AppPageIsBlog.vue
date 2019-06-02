@@ -3,6 +3,7 @@
 	import AppBreadcrumb from './AppBreadcrumb';
 	import AppPageStickyContainer from './AppPageStickyContainer';
 	import SideNav from './SideNav';
+	import BlogPosts from './BlogPosts';
 	import FeedbackSection from './FeedbackSection';
 
 	export default {
@@ -12,6 +13,7 @@
 			AppBreadcrumb,
 			AppPageStickyContainer,
 			SideNav,
+			BlogPosts,
 			FeedbackSection
 		},
 		created() {

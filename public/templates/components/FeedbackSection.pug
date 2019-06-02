@@ -23,7 +23,7 @@ mixin FeedbackSection()
 										placeholder="Телефон"
 										v-model="tel.value"
 										:error="tel.error"
-										:disabled="formIsDisabled"
+										:disabled="isLoading"
 										@input="checkTel(tel)"
 									)
 										template(v-slot:error)
@@ -37,17 +37,18 @@ mixin FeedbackSection()
 										placeholder="Ссылка на сайт"
 										v-model="url.value"
 										:error="url.error"
-										:disabled="formIsDisabled"
+										:disabled="isLoading"
 									)
 
 								.form-grid-cell
-									base-button.submit-button(:disabled="formIsDisabled") Отправить
+									base-button.submit-button(:disabled="isLoading") Отправить
 
 							.content.content-is-info *&nbsp;Отправляя заявку, вы соглашаетесь с #[a(href="" target="_blank") условиями передачи информации].
 
 							app-modal(
 								name="feedback-response"
 								:classes="['is-small']"
+								:loading="isLoading"
 							)
 								template(v-slot:title) Ваша заявка отправлена, мы свяжемся с Вами в ближайшее время!
 

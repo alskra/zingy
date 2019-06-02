@@ -1,0 +1,14 @@
+mixin BlogPosts()
+	include PostCard
+
+	-
+		const posts = [];
+
+	template
+		.blog-posts&attributes(attributes)
+			.grid
+				each post in posts
+					.grid-item
+						post-card(inlne-template)
+							+PostCard(post)
+

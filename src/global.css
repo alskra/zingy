@@ -28,6 +28,7 @@
 	--grid-cell-padding: 10px;
 
 	--opacity-disabled: 0.5;
+	--overlay_background-color: rgba(#000000, 0.2);
 
 	font-size: percentage(10 / 16);
 	-webkit-font-smoothing: antialiased;
