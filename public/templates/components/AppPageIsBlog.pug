@@ -3,7 +3,7 @@ mixin AppPageIsBlog()
 	include SideNav
 	include FeedbackSection
 
-	+AppPage().app-page-is-blog.is-theme-dark&attributes(attributes)
+	+AppPage().app-page-is-blog&attributes(attributes)
 		.grid
 			nav(is="app-breadcrumb")
 				a(href="/") Главная

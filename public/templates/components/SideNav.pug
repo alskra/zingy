@@ -27,10 +27,17 @@ mixin SideNav()
 					.header-desc Быстрый переход по&nbsp;страницам услуг нашей студии от&nbsp;дизайна до&nbsp;продвижения!
 
 			.main
-				.main-inner(v-dragscroll.x="true")
+				.main-inner(
+					v-dragscroll.x="true"
+					@dragscrollstart="isDragging = true"
+					@dragscrollend="dragScrollEnd"
+					@click.capture="clickOnDrag"
+
+				)
 					each item, index in items
 						a.nav-item(
 							class={'is-active': index === 0}
 							href=item.url
+							@click="onItemClick"
 						)
 							span.nav-item-text= item.title

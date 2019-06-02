@@ -1,8 +1,38 @@
 <script>
 	export default {
-		name: 'SideNav'
+		name: 'SideNav',
+		data() {
+			return {
+				isDragging: false
+			}
+		},
+		methods: {
+			dragScrollEnd() {
+				requestAnimationFrame(() => this.isDragging = false);
+			},
+			clickOnDrag(evt) {
+				if (this.isDragging) {
+					// alert(evt.target.tagName);
+					evt.stopPropagation();
+					evt.preventDefault();
+				}
+			},
+			onItemClick() {
+				alert('onItemClick');
+			}
+		}
 	};
 </script>
+
+<style>
+	:root {
+		--side-nav_background-color: #f0f0f0;
+
+		&.is-theme-dark {
+			--side-nav_background-color: #ffffff;
+		}
+	}
+</style>
 
 <style scoped>
 	.side-nav {
@@ -74,7 +104,7 @@
 
 	.main {
 		padding: range(10px, 20px);
-		background-color: #ffffff;
+		background-color: var(--side-nav_background-color);
 	}
 
 	.main-inner {

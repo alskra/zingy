@@ -57,4 +57,8 @@
 			margin-left: 0;
 		}
 	}
+
+	.side-nav {
+
+	}
 </style>
