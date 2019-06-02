@@ -18,7 +18,7 @@ mixin AppPageIsBlog()
 			app-page-sticky-container(:options="stickyContainerOptions")
 				template(v-slot:sidebar)
 					aside
-						side-nav(
+						side-nav.side-nav-is-wide(
 							inline-template
 							v-if="windowWidth >= stickyContainerMinWidth ? true : true"
 						)

@@ -32,7 +32,6 @@ mixin SideNav()
 					@dragscrollstart="isDragging = true"
 					@dragscrollend="dragScrollEnd"
 					@click.capture="clickOnDrag"
-
 				)
 					each item, index in items
 						a.nav-item(
