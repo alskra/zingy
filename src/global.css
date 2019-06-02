@@ -14,6 +14,7 @@
 
 	--color-accent: #e04b4a;
 	--color-link: #e04b4a;
+	--color-error: #e04b4a;
 	--color-zingy: #252525;
 
 	--font-size: range(1.6rem, 1.8rem);
@@ -23,6 +24,8 @@
 	--grid-padding: range(10px, 40px);
 	--grid-row-margin: -10px;
 	--grid-cell-padding: 10px;
+
+	--opacity-disabled: 0.5;
 
 	font-size: percentage(10 / 16);
 	-webkit-font-smoothing: antialiased;

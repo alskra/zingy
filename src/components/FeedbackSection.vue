@@ -26,28 +26,28 @@
 		methods: {
 			checkTel(tel) {
 				if (!tel.value) {
-					this.$set(tel, 'error', 'required');
+					this.tel.error = 'required';
 				} else if (tel.value.length < 9) {
-					this.$set(tel, 'error', 'minLength');
+					this.tel.error = 'minLength';
 				} else {
-					this.$set(tel, 'error', null);
+					this.tel.error = null;
 				}
 			},
-			onFormSubmit(event) {
-				event.preventDefault();
+			onFormSubmit(evt) {
+				evt.preventDefault();
 
 				this.checkTel(this.tel);
 
 				if (!this.hasErrors) {
 					this.formIsDisabled = true;
 
-					const formData = new FormData(event.target);
+					const formData = new FormData(evt.target);
 
 					// Imitation request
 					setTimeout(() => {
-						this.formIsDisabled = false;
-
 						this.response = `Телефон: ${formData.get('tel')}, Сайт: ${formData.get('url') || '-'}`;
+
+						this.formIsDisabled = false;
 					}, 2000);
 				}
 			}

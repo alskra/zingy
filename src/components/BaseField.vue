@@ -8,8 +8,9 @@
 		)
 
 		transition
-			slot(name="error")
-				.error(v-if="error") {{ error }}
+			.error(v-if="error")
+				slot(name="error")
+					| {{ error }}
 </template>
 
 <script>
@@ -54,7 +55,6 @@
 			align-items: center;
 			box-sizing: border-box;
 			padding: 5px range(15px, 20px);
-			width: 100%;
 			height: range(44px, 56px);
 			border: 1px solid currentColor;
 			color: var(--color);
@@ -82,14 +82,14 @@
 
 		&:disabled {
 			cursor: default;
-			opacity: 0.6;
+			opacity: var(--opacity-disabled);
 		}
 
 		&.is-invalid {
-			color: red;
+			color: var(--color-error);
 
 			&::placeholder {
-				color: red;
+				color: var(--color-error);
 			}
 		}
 	}
@@ -99,14 +99,9 @@
 		font-family: var(--font-family);
 		font-size: 1.2rem;
 		line-height: 1.25;
-		background: var(--color-link);
+		background: var(--color-error);
 		padding: 3px 10px;
-		margin-top: 4px;
-		/*position: absolute;*/
-		/*z-index: 1;*/
-		/*top: 100%;*/
-		/*right: 0;*/
-		/*left: 0;*/
+		/*margin-top: 4px;*/
 
 		&.v-enter-active,
 		&.v-leave-active {

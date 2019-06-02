@@ -27,9 +27,8 @@ mixin FeedbackSection()
 										@input="checkTel(tel)"
 									)
 										template(v-slot:error)
-											.error(v-if="tel.error")
-												span(v-if="tel.error === 'required'") Это поле обязательное!
-												span(v-else-if="tel.error === 'minLength'") Номер должен содержать не менее 8 цифр
+											span(v-if="tel.error === 'required'") Это поле обязательное!
+											span(v-else-if="tel.error === 'minLength'") Номер должен содержать не менее 8 цифр
 
 								.form-grid-cell.form-grid-cell-has-field
 									base-field.form-field(

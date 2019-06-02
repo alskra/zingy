@@ -3,7 +3,7 @@
 		slot(name="icon")
 
 		span.text(v-if="$scopedSlots.default")
-			slot(name="default")
+			slot
 </template>
 
 <script>
@@ -47,7 +47,7 @@
 
 		&:disabled {
 			cursor: default;
-			opacity: 0.6;
+			opacity: var(--opacity-disabled);
 		}
 
 		&.is-full-width {
