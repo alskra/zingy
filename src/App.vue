@@ -8,6 +8,7 @@
 		components: {
 			AppPageIsIndex,
 			AppPageIsBlog: () => import('./components/AppPageIsBlog'),
+			AppPageIsDefault: () => import('./components/AppPageIsDefault'),
 			VueSticky
 		}
 	}
