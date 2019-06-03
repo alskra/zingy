@@ -104,7 +104,7 @@
 		box-sizing: border-box;
 	}
 
-	.app-breadcrumb {
+	.app-breadcrumb.breadcrumb {
 		margin: range(10px, 0px) 0 range(20px, 40px);
 	}
 
