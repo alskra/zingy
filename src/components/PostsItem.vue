@@ -83,7 +83,7 @@
 		position: relative;
 		overflow: hidden;
 		flex-shrink: 0;
-		background-color: rgba(#000000, 0.15);
+		/*background-color: rgba(#000000, 0.15);*/
 
 		&::before {
 			content: '';
@@ -107,14 +107,16 @@
 		object-fit: cover;
 
 		&.v-lazy-image {
-			opacity: 0;
+			object-fit: contain;
+			background-color: var(--color-zingy);
 			filter: blur(10px);
 			transition: filter 0.7s;
 			will-change: filter;
 		}
 
 		&.v-lazy-image-loaded {
-			opacity: 1;
+			object-fit: cover;
+			background-color: transparent;
 			filter: blur(0);
 		}
 	}
