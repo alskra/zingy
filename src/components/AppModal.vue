@@ -48,7 +48,7 @@
 <style>
 	.v--modal-overlay {
 		.v--modal-box {
-			overflow: visible;
+			overflow: visible !important;
 		}
 	}
 

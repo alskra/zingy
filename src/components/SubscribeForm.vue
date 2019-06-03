@@ -173,7 +173,7 @@
 			vertical-align: top;
 			color: #c5dcd6;
 			font-family: var(--font-family);
-			font-size: range(1.4rem, 1.6rem);
+			font-size: range(1.6rem, 1.6rem);
 			font-weight: 500;
 			line-height: 1.25;
 			text-align: center;
@@ -182,7 +182,7 @@
 			white-space: nowrap;
 			user-select: none;
 			box-sizing: border-box;
-			padding: 8px 10px;
+			padding: 9px 10px;
 			max-width: 100%;
 			border: 1px solid currentColor;
 			transition: color 0.2s;

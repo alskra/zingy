@@ -1,5 +1,8 @@
 <template lang="pug">
-	.base-button(:is="tag")
+	.base-button(
+		:is="tag"
+		v-on="$listeners"
+	)
 		slot(name="icon")
 
 		span.text(v-if="$scopedSlots.default")

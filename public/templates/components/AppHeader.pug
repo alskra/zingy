@@ -53,7 +53,7 @@ mixin AppHeader()
 							.right-panel-grid-cell
 								base-button.right-panel-button(
 									tag="a"
-									href=""
+									href="#feedback-section"
 								) Начать проект
 
 			transition-box(:duration="{enter: 500, leave: 300}")
@@ -88,7 +88,8 @@ mixin AppHeader()
 								.sidebar-footer-grid-cell
 									base-button.is-full-width.sidebar-button(
 										tag="a"
-										href=""
+										href="#feedback-section"
+										@click="sidebarIsOpened = false"
 									) Начать проект
 
 								.sidebar-footer-grid-cell

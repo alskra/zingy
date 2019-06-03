@@ -20,7 +20,7 @@ const pages = {
 const pugTemplateLoaders = '!!pug-loader?pretty!';
 
 module.exports = {
-	publicPath: '/',
+	publicPath: '',
 	runtimeCompiler: true,
 	devServer: {
 		host: 'localhost'

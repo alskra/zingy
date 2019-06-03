@@ -587,12 +587,14 @@
 		display: flex;
 		flex-flow: column;
 
-		&::-webkit-scrollbar {
-			width: 5px;
-		}
+		:root.is-device-desktop & {
+			&::-webkit-scrollbar {
+				width: 5px;
+			}
 
-		&::-webkit-scrollbar-thumb {
-			background-color: var(--color-zingy);
+			&::-webkit-scrollbar-thumb {
+				background-color: var(--color-zingy);
+			}
 		}
 	}
 

@@ -86,12 +86,21 @@
 		position: relative;
 		overflow: hidden;
 		flex-shrink: 0;
-		background-color: rgba(#000000, 0.15);
 
 		&::before {
 			content: '';
 			display: block;
 			padding-top: percentage(260 / 290);
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(#000000, 0.3);
 		}
 
 		@media (width < 560px) {
@@ -110,12 +119,14 @@
 		object-fit: cover;
 
 		&.v-lazy-image {
+			opacity: 0;
 			filter: blur(10px);
 			transition: filter 0.7s;
 			will-change: filter;
 		}
 
 		&.v-lazy-image-loaded {
+			opacity: 1;
 			filter: blur(0);
 		}
 	}
@@ -130,12 +141,12 @@
 		font-family: var(--font-family);
 		font-size: range(1.2rem, 1.2rem);
 		font-weight: 500;
-		line-height: 1;
+		line-height: 1.25;
 		text-shadow:
-			0 -1px var(--color),
-			1px 0 var(--color),
-			0 1px var(--color),
-			-1px 0 var(--color);
+			0 -1px rgba(#000, 0.5),
+			1px 0 rgba(#000, 0.5),
+			0 1px rgba(#000, 0.5),
+			-1px 0 rgba(#000, 0.5);
 		user-select: none;
 		cursor: default;
 		white-space: nowrap;
@@ -148,7 +159,7 @@
 			display: block;
 			font-size: range(2.6rem, 2.8rem);
 			font-weight: 700;
-			margin-bottom: 0.15em;
+			margin-bottom: 0;
 		}
 
 		>>> .month {

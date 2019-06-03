@@ -115,7 +115,7 @@
 		font-weight: 500;
 		line-height: 1.25;
 		text-decoration: none;
-		padding: range(5px, 10px) range(10px, 20px);
+		padding: range(6px, 13px) range(10px, 20px);
 		overflow: hidden;
 		text-overflow: ellipsis;
 

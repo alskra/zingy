@@ -33,6 +33,8 @@
 	font-size: percentage(10 / 16);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	scroll-behavior: smooth;
 }
 
 :focus:not(:focus-visible) {
