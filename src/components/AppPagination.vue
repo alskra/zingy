@@ -21,7 +21,7 @@
 			flex-flow: column;
 			position: fixed;
 			/*z-index: 99;*/
-			top: 0;
+			top: range(60px, 108px);
 			bottom: 0;
 			left: var(--grid_padding);
 			/*transform: translateY(-50%);*/
@@ -33,6 +33,7 @@
 
 		@media (width < 1440px) {
 			position: relative;
+			top: auto;
 			left: auto;
 		}
 	}
@@ -46,33 +47,33 @@
 			flex-flow: row;
 			flex-wrap: wrap;
 			justify-content: center;
-			margin: -6px;
+			margin: -5px;
 		}
 	}
 
 	.grid-cell {
-		margin: 6px auto;
+		margin: 5px auto;
 
 		& + .grid-cell {
 			&::before {
 				content: '';
 				display: block;
 				width: 1px;
-				height: 20px;
+				height: 12px;
 				background-color: var(--color-accent);
-				margin: 0 auto 12px;
+				margin: 0 auto 10px;
 			}
 		}
 
 		@media (width < 1440px) {
-			margin: 6px;
+			margin: 5px;
 			display: flex;
 
 			& + .grid-cell {
 				&::before {
-					width: 20px;
+					width: 12px;
 					height: 1px;
-					margin: auto 12px auto 0;
+					margin: auto 10px auto 0;
 				}
 			}
 		}

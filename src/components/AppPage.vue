@@ -18,6 +18,7 @@
 	import AppPageStickyContainer from './AppPageStickyContainer';
 	import SideNav from './SideNav';
 	// import BlogPosts from './BlogPosts';
+	import SubscribeForm from './SubscribeForm';
 
 	export default {
 		name: 'AppPage',
@@ -41,6 +42,7 @@
 			AppPageStickyContainer,
 			SideNav,
 			BlogPosts: () => import('./BlogPosts'),
+			SubscribeForm
 		},
 		data() {
 			return {
