@@ -1,4 +1,4 @@
 .vue-line-clamp {
 	word-break: normal;
-	word-wrap: break-word;
+	word-wrap: normal;
 }

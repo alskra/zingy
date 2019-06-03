@@ -97,6 +97,7 @@
 			--app-breadcrumb_color: #ffffff;
 			--base-title_color: #ffffff;
 			--side-nav_background-color: #ffffff;
+			--app-pagination_color: #ffffff;
 			/*--posts-item_color: #ffffff;*/
 			/*--posts-item_background-color: transparent;*/
 		}

@@ -1,10 +1,12 @@
 <script>
 	import PostsItem from './PostsItem';
+	import AppPagination from './AppPagination';
 
 	export default {
 		name: 'BlogPosts',
 		components: {
-			PostsItem
+			PostsItem,
+			AppPagination
 		}
 	};
 </script>
