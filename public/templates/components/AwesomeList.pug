@@ -87,8 +87,8 @@ mixin AwesomeList()
 								@click.prevent=`$modal.show('about-work-${index}')`
 							) Читать&nbsp;подробнее
 
-				app-modal(name=`about-work-${index}`)
+				app-modal.modal(name=`about-work-${index}`)
 					template(v-slot:title)
 						h3= item.title
 
-					!= item.description
+					base-content.modal-content!= item.description

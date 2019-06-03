@@ -24,16 +24,6 @@
 	};
 </script>
 
-<style>
-	:root {
-		--side-nav_background-color: #f0f0f0;
-
-		&.is-theme-dark {
-			--side-nav_background-color: #ffffff;
-		}
-	}
-</style>
-
 <style scoped>
 	.side-nav {
 		all: initial;
@@ -104,7 +94,7 @@
 
 	.main {
 		padding: range(10px, 20px);
-		background-color: var(--side-nav_background-color);
+		background-color: var(--side-nav_background-color, #f0f0f0);
 	}
 
 	.main-inner {
@@ -152,13 +142,13 @@
 
 	.side-nav-is-wide {
 		@media (width < 1024px) {
-			margin: 0 calc(-1 * var(--grid-padding));
+			margin: 0 calc(-1 * var(--grid_padding));
 		}
 
 		.header-inner {
 			@media (width < 1024px) {
-				padding-right: var(--grid-padding);
-				padding-left: var(--grid-padding);
+				padding-right: var(--grid_padding);
+				padding-left: var(--grid_padding);
 			}
 		}
 	}

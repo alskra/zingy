@@ -1,7 +1,16 @@
 extends layout
 
 include components/AppHeaderNav
-include components/AppPageIsIndex
+include components/AppPage
+include components/IntroSection
+include components/QuoteSection
+include components/ServiceSection
+include components/WorkSection
+include components/PageSection
+include components/AppCarouselOfWorks
+include components/AppCarouselOfReviews
+include components/PageSectionIsServices
+include components/FeedbackSection
 
 append vars
 	-
@@ -11,5 +20,32 @@ block templates
 	+AppHeaderNav()
 
 block app
-	app-page-is-index(inline-template)
-		+AppPageIsIndex()
+	app-page.page(inline-template)
+		+AppPage()
+			intro-section.section(inline-template)
+				+IntroSection()
+
+			quote-section.section(inline-template)
+				+QuoteSection()
+
+			service-section.section(inline-template)
+				+ServiceSection()
+
+			work-section.section(inline-template)
+				+WorkSection()
+
+			page-section.section(inline-template)
+				+PageSection('Наши работы')
+					app-carousel-of-works.works-carousel(inline-template)
+						+AppCarouselOfWorks()
+
+			page-section.section(inline-template)
+				+PageSection('Отзывы')
+					app-carousel-of-reviews.reviews-carousel(inline-template)
+						+AppCarouselOfReviews()
+
+			page-section-is-services.section(inline-template)
+				+PageSectionIsServices()
+
+			feedback-section.section(inline-template)
+				+FeedbackSection()

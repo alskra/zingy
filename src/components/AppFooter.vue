@@ -32,7 +32,7 @@
 	}
 
 	.grid {
-		padding: 0 var(--grid-padding);
+		padding: 0 var(--grid_padding);
 		box-sizing: border-box;
 		max-width: env(--max-breakpoint);
 		margin: 0 auto;
@@ -41,7 +41,7 @@
 	.title {
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
-		font-size: var(--font-size-h1);
+		font-size: var(--h1_font-size);
 		font-weight: 500;
 		line-height: 1.25;
 		margin: 0 0 range(25px, 50px);

@@ -23,12 +23,12 @@
 
 <style scoped>
 	.main {
-		width: calc(100% - 2 * var(--grid-padding));
+		width: calc(100% - 2 * var(--grid_padding));
 		margin: 0 auto;
 	}
 
 	.swiper-container {
-		margin: 0 calc(-1 * var(--grid-padding));
+		margin: 0 calc(-1 * var(--grid_padding));
 		padding: 0 range(0px, 20px);
 	}
 

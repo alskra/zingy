@@ -37,19 +37,19 @@
 	}
 
 	.grid {
-		width: calc(100% - 2 * var(--grid-padding));
-		max-width: var(--grid-width);
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
 		margin: 0 auto;
 	}
 
 	.grid-row {
-		margin: 0 var(--grid-row-margin);
+		margin: 0 var(--grid-row_margin);
 	}
 
 	.grid-cell {
 		box-sizing: border-box;
 		width: percentage(10 / 12);
-		padding: 0 var(--grid-cell-padding);
+		padding: 0 var(--grid-cell_padding);
 		margin: 0 auto;
 
 		@media (width < 768px) {
@@ -92,7 +92,7 @@
 	}
 
 	.nav-button-is-prev {
-		.base-icon {
+		.base-icon.nav-button-icon {
 			transform-origin: 50% 50%;
 			transform: rotateY(-180deg);
 		}

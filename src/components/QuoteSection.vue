@@ -15,8 +15,8 @@
 	}
 
 	.content-box {
-		width: calc(100% - 2 * var(--grid-padding));
-		max-width: var(--grid-width);
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
 		margin: 0 auto;
 	}
 

@@ -106,9 +106,9 @@
 
 	.grid {
 		position: relative;
-		width: calc(100% - 2 * var(--grid-padding));
-		max-width: var(--grid-width);
-		padding: 0 var(--grid-cell-padding);
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
+		padding: 0 var(--grid-cell_padding);
 		margin: 0 auto;
 	}
 

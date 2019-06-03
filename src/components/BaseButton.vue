@@ -47,7 +47,7 @@
 
 		&:disabled {
 			cursor: default;
-			opacity: var(--opacity-disabled);
+			opacity: var(--disabled_opacity);
 		}
 
 		&.is-full-width {

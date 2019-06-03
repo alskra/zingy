@@ -22,8 +22,8 @@
 							base-icon(name="close")
 
 					.main
-						base-content
-							slot
+						slot
+							base-content.content
 								p Modal Content
 </template>
 
@@ -67,17 +67,17 @@
 
 		&.is-small {
 			.header {
-				padding-left: var(--grid-padding);
+				padding-left: var(--grid_padding);
 			}
 
 			.title {
 				margin-left: 0;
-				font-size: var(--font-size-h3);
+				font-size: var(--h3_font-size);
 			}
 
 			.main {
-				padding-right: var(--grid-padding);
-				padding-left: var(--grid-padding);
+				padding-right: var(--grid_padding);
+				padding-left: var(--grid_padding);
 			}
 		}
 	}
@@ -119,7 +119,7 @@
 		margin: 0 0 0 range(0px, -60px);
 		color: var(--color);
 		font-family: var(--font-family);
-		font-size: var(--font-size-h1);
+		font-size: var(--h1_font-size);
 		font-weight: 500;
 		line-height: 1.25;
 		overflow: hidden;
@@ -144,10 +144,10 @@
 			cursor: pointer;
 			color: var(--color);
 			transition: color 0.2s;
+		}
 
-			&:hover {
-				color: var(--color-accent);
-			}
+		&:hover {
+			color: var(--color-accent);
 		}
 	}
 

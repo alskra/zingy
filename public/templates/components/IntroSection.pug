@@ -67,11 +67,11 @@ mixin IntroSection()
 										@click.prevent="$modal.show('why-unicorn')"
 									) Почему единорог?
 
-						app-modal(name="why-unicorn" height="450px")
+						app-modal.modal(name="why-unicorn" height="450px")
 							template(v-slot:title)
 								h2 Почему единорог?
 
-							template(v-slot:default)
+							base-content.modal-content
 								p.
 									Deep sea smelt archerfish yellowfin pike man-of-war fish dorab orbicular batfish?
 									Bocaccio, spikefish barbel coelacanth thorny catfish sleeper shark.

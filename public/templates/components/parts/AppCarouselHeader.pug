@@ -9,7 +9,7 @@ mixin AppCarouselHeader()
 							:disabled="isBeginning"
 							@click="slidePrev"
 						)
-							base-icon(name="arrow-right")
+							base-icon.nav-button-icon(name="arrow-right")
 
 						.pagination(ref="pagination")
 
@@ -18,4 +18,4 @@ mixin AppCarouselHeader()
 							:disabled="isEnd"
 							@click="slideNext"
 						)
-							base-icon(name="arrow-right")
+							base-icon.nav-button-icon(name="arrow-right")

@@ -6,14 +6,14 @@ mixin AppPage()
 	template
 		.app-page&attributes(attributes)
 			.body(ref="body")
-				app-header(inline-template)
+				app-header.header(inline-template)
 					+AppHeader()
 
-				main.main(ref="main")
+				main.main
 					block
 
-				app-footer(inline-template)
+				app-footer.footer(inline-template)
 					+AppFooter()
 
-			zingy-section(inline-template)
+			zingy-section.section(inline-template)
 				+ZingySection()

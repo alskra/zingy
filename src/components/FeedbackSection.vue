@@ -81,7 +81,7 @@
 		}
 	}
 
-	.bg-icon {
+	.base-icon.bg-icon {
 		width: range(504px / 2, 504px);
 		height: range(504px / 2, 504px);
 		color: #f0f0f0;
@@ -93,20 +93,20 @@
 	}
 
 	.grid {
-		width: calc(100% - 2 * var(--grid-padding));
-		max-width: var(--grid-width);
-		padding: 0 var(--grid-padding);
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
+		padding: 0 var(--grid_padding);
 		margin: 0 auto;
 		position: relative;
 	}
 
 	.grid-row {
-		margin: 0 calc(-1 * var(--grid-cell-padding));
+		margin: 0 calc(-1 * var(--grid-cell_padding));
 	}
 
 	.grid-cell {
 		box-sizing: border-box;
-		padding: 0 var(--grid-cell-padding);
+		padding: 0 var(--grid-cell_padding);
 		margin: 0 auto;
 
 		@media (width >= 768px) {
@@ -118,7 +118,7 @@
 		margin: range(0px, 80px) 0 range(40px / 2, 40px);
 		color: var(--color);
 		font-family: var(--font-family);
-		font-size: var(--font-size-h1);
+		font-size: var(--h1_font-size);
 		font-weight: 500;
 		line-height: 1.25;
 	}
@@ -170,11 +170,11 @@
 		flex-basis: 300px;
 	}
 
-	.form-field {
+	.base-field.form-field {
 		width: 100%;
 	}
 
-	.submit-button {
+	.base-button.submit-button {
 		width: 100%;
 	}
 </style>

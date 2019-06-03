@@ -102,7 +102,7 @@
 		&.v-appear-active {
 			animation: logo-box_slide-in-right 0.4s;
 
-			.logo-icon {
+			.base-icon.logo-icon {
 				animation: logo-box_fade-in-top 0.2s 0.4s backwards;
 			}
 		}
@@ -132,7 +132,7 @@
 		position: relative;
 
 		&:hover {
-			.logo-icon {
+			.base-icon.logo-icon {
 				transition: transform 0.8s;
 				transform: perspective(50px) rotateY(360deg);
 			}
@@ -201,7 +201,7 @@
 		}
 
 		&.v-enter-active {
-			.menu-button-icon {
+			.base-icon.menu-button-icon {
 				>>> .menu-icon-line {
 					transition: width 0.2s 0.2s;
 
@@ -221,7 +221,7 @@
 		}
 
 		&.v-leave-active {
-			.menu-button-icon {
+			.base-icon.menu-button-icon {
 				>>> .menu-icon-line {
 					transition: width 0.2s;
 
@@ -244,7 +244,7 @@
 		&.v-leave-to {
 			width: 0;
 
-			.menu-button-icon {
+			.base-icon.menu-button-icon {
 				>>> .menu-icon-line {
 					width: 0;
 				}
@@ -270,7 +270,7 @@
 		}
 	}
 
-	.menu-button-icon {
+	.base-icon.menu-button-icon {
 		@media (width < 1280px) {
 			/*transform: scale(calc(5 / 6));*/
 		}
@@ -350,7 +350,7 @@
 		}
 	}
 
-	.link-icon {
+	.base-icon.link-icon {
 		flex-shrink: 0;
 		margin-right: 10px;
 		width: 24px;
@@ -373,7 +373,7 @@
 		}
 	}
 
-	.right-panel-button {
+	.base-button.right-panel-button {
 		height: 32px;
 
 		>>> .text {
@@ -395,7 +395,7 @@
 		&.v-leave-active {
 			transition: width 0.3s;
 
-			.phone-button-icon {
+			.base-icon.phone-button-icon {
 				transition-property: transform, opacity;
 				transition-duration: 0.2s;
 				transition-delay: 0.3s;
@@ -403,13 +403,13 @@
 		}
 
 		&.v-enter-active {
-			.phone-button-icon {
+			.base-icon.phone-button-icon {
 				/*transition-delay: 0.3s;*/
 			}
 		}
 
 		&.v-leave-active {
-			.phone-button-icon {
+			.base-icon.phone-button-icon {
 				/*transition-delay: 0.3s;*/
 			}
 		}
@@ -418,7 +418,7 @@
 		&.v-leave-to {
 			width: 0;
 
-			.phone-button-icon {
+			.base-icon.phone-button-icon {
 				transform: translateY(10px);
 				opacity: 0;
 			}
@@ -443,7 +443,7 @@
 		}
 	}
 
-	.phone-button-icon {
+	.base-icon.phone-button-icon {
 		width: range(44 / 58 * 32px, 32px);
 		height: range(44 / 58 * 32px, 32px);
 	}

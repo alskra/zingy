@@ -66,7 +66,7 @@
 			top: auto !important;
 			left: auto !important;
 			width: 100% !important;
-			max-width: var(--grid-width);
+			max-width: var(--grid_width);
 			height: auto !important;
 			margin: auto !important;
 		}

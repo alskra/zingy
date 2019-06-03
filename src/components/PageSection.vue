@@ -27,8 +27,8 @@
 	}
 
 	.content-box {
-		width: calc(100% - 2 * var(--grid-padding));
-		max-width: var(--grid-width);
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
 		margin: 0 auto;
 	}
 
@@ -49,7 +49,7 @@
 	.title {
 		color: var(--color);
 		font-family: var(--font-family);
-		font-size: var(--font-size-h1);
+		font-size: var(--h1_font-size);
 		font-weight: 500;
 		line-height: 1.25;
 		margin: 0;

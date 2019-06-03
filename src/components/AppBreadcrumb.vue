@@ -17,16 +17,6 @@
 	};
 </script>
 
-<style>
-	:root {
-		--app-breadcrumb_color: var(--color);
-
-		&.is-theme-dark {
-			--app-breadcrumb_color: #ffffff;
-		}
-	}
-</style>
-
 <style scoped>
 	.app-breadcrumb {
 		all: initial;
@@ -38,7 +28,7 @@
 
 	.item {
 		display: inline;
-		color: var(--app-breadcrumb_color);
+		color: var(--app-breadcrumb_color, var(--color));
 		font-family: var(--font-family);
 		font-size: range(1.4rem, 1.6rem);
 		font-weight: 400;

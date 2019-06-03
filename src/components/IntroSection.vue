@@ -46,9 +46,9 @@
 	}
 
 	.body {
-		width: calc(100% - 2 * var(--grid-padding));
-		max-width: var(--grid-width);
-		padding: 0 var(--grid-padding);
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
+		padding: 0 var(--grid_padding);
 		margin: 0 auto;
 	}
 
@@ -88,7 +88,7 @@
 	.title {
 		color: #1b222c;
 		font-family: var(--font-family);
-		font-size: var(--font-size-h1);
+		font-size: var(--h1_font-size);
 		font-weight: 500;
 		line-height: 1.25;
 		margin: 0 scale-down(20%, 0) scale-down(50px, 0.5) 0;

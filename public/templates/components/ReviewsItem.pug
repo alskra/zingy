@@ -21,7 +21,7 @@ mixin ReviewsItem({content, citeName, citeDescription})
 
 	template
 		.reviews-item&attributes(attributes)
-			base-content!= content
+			base-content.content!= content
 
 			p.cite
 				strong.cite-name= citeName

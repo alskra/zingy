@@ -19,25 +19,15 @@
 	};
 </script>
 
-<style>
-	:root {
-		--base-title_color: var(--color);
-
-		&.is-theme-dark {
-			--base-title_color: #ffffff;
-		}
-	}
-</style>
-
 <style scoped>
 	.base-title {
 		all: initial;
 
 		& {
 			display: block;
-			color: var(--base-title_color);
+			color: var(--base-title_color, var(--color));
 			font-family: var(--font-family);
-			font-size: var(--font-size-h1);
+			font-size: var(--h1_font-size);
 			font-weight: 500;
 			line-height: 1.25;
 		}

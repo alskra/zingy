@@ -24,9 +24,9 @@
 	.body {
 		display: flex;
 		flex-flow: column;
-		width: calc(100% - 2 * var(--grid-padding));
-		max-width: var(--grid-width);
-		padding: 0 var(--grid-padding);
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
+		padding: 0 var(--grid_padding);
 		margin: 0 auto;
 	}
 
@@ -93,7 +93,7 @@
 		bottom: 15%;
 	}
 
-	.body-stars-item {
+	.base-icon.body-stars-item {
 		width: range(14px, 28px);
 		height: range(14px, 28px);
 		color: white;
@@ -109,7 +109,7 @@
 	.title {
 		color: var(--color);
 		font-family: var(--font-family);
-		font-size: var(--font-size-h1);
+		font-size: var(--h1_font-size);
 		font-weight: 500;
 		line-height: 1.25;
 		margin: 0;
@@ -119,7 +119,7 @@
 		padding: 0 range(10px, 140px);
 	}
 
-	.awesome-list {
+	.awesome-list.about-list {
 		margin-bottom: range(20px, 40px);
 		margin-right: range(-10px, -140px);
 	}

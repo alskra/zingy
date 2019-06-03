@@ -45,7 +45,7 @@ mixin FeedbackSection()
 
 							.content.content-is-info *&nbsp;Отправляя заявку, вы соглашаетесь с #[a(href="" target="_blank") условиями передачи информации].
 
-							app-modal(
+							app-modal.modal(
 								name="feedback-response"
 								:classes="['is-small']"
 								:loading="isLoading"
@@ -53,5 +53,5 @@ mixin FeedbackSection()
 								template(v-slot:title)
 									| {{ error || 'Ваша заявка отправлена, мы свяжемся с Вами в ближайшее время!' }}
 
-								base-content
+								base-content.modal-content
 									p {{ response }}

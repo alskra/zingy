@@ -1,13 +1,37 @@
 extends index
 
-include components/AppPageIsBlog
+include components/SideNav
+include components/BlogPosts
 
 append vars
 	-
 		title = 'Блог';
 
 block app
-	app-page-is-blog(inline-template)
-		+AppPageIsBlog()
+	app-page.is-theme-dark.page(inline-template)
+		+AppPage()
+			.grid
+				nav.breadcrumb(is="app-breadcrumb")
+					a(href="/") Главная
+					| Блог
 
-	app-page-is-default
+				h1.title(
+					is="base-title"
+					tag="h1"
+				) Блог с&nbsp;полезным контентом для всех, кто интересуется&nbsp;IT
+
+			.grid
+				app-page-sticky-container.sticky-container(:options="stickyContainerOptions")
+					template(v-slot:sidebar)
+						aside
+							side-nav.side-nav-is-wide.sticky-container-nav(
+								inline-template
+								v-if="windowWidth >= stickyContainerMinWidth ? true : true"
+							)
+								+SideNav()
+
+					blog-posts.posts(inline-template)
+						+BlogPosts()
+
+			feedback-section.section(inline-template)
+				+FeedbackSection()

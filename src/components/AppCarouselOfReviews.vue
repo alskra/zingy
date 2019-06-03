@@ -33,7 +33,7 @@
 		position: relative;
 	}
 
-	.background-quote {
+	.base-icon.background-quote {
 		position: absolute;
 		top: range(-20px, -30px);
 		left: range(10px, -150px);
@@ -44,16 +44,16 @@
 		background: url("../assets/img/open-quote.svg") no-repeat 50% 50% / contain;
 
 		@media (width < 768px) {
-			left: var(--grid-cell-padding);
+			left: var(--grid-cell_padding);
 		}
 	}
 
 	.swiper-container {
-		margin: 0 var(--grid-row-margin);
+		margin: 0 var(--grid-row_margin);
 	}
 
 	.swiper-slide {
-		width: calc(100% - 2 * var(--grid-cell-padding));
-		margin: 0 var(--grid-cell-padding);
+		width: calc(100% - 2 * var(--grid-cell_padding));
+		margin: 0 var(--grid-cell_padding);
 	}
 </style>
