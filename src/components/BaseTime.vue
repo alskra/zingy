@@ -3,9 +3,9 @@
 		:datetime="datetime"
 		:title="localLocale.format('DD MMMM YYYY HH:mm')"
 	)
-		span.date {{ localLocale.format('DD') }}
-		span.mounth {{ localLocale.format(' MMMM') }}
-		span.rest {{ localLocale.format(' YYYY') }}
+		span.date {{ formattedArray[0] }}
+		span.month {{ formattedArray[1] }}
+		span.year {{ formattedArray[2] }}
 </template>
 
 <script>
@@ -24,6 +24,9 @@
 		computed: {
 			localLocale() {
 				return this.$moment(this.datetime).locale(this.locale);
+			},
+			formattedArray() {
+				return this.localLocale.format('DD MMMM YYYY').split(' ');
 			}
 		}
 	};

@@ -150,7 +150,7 @@
 			margin-bottom: 0.15em;
 		}
 
-		>>> .mounth {
+		>>> .month {
 			display: block;
 		}
 	}
