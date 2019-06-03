@@ -83,11 +83,11 @@ mixin AwesomeList()
 
 							| &nbsp;
 							a.item-read-more(
-								href=""
-								@click.prevent=`$modal.show('about-work-${index}')`
+								href=`#${item.title}`
+								@click.prevent=`$modal.show('#${item.title}')`
 							) Читать&nbsp;подробнее
 
-				app-modal.modal(name=`about-work-${index}`)
+				app-modal.modal(name=`#${item.title}`)
 					template(v-slot:title)
 						h3= item.title
 

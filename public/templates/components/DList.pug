@@ -14,8 +14,16 @@ mixin DList(items = [{title: 'Title', nav: [{url: '', text: 'Link'}]}])
 							ul.nav
 								each navItem in item.nav
 									li.nav-item
-										a.nav-link(href=navItem.url)= navItem.text
+										a.nav-link(
+											href=navItem.url
+											@click.prevent=`$modal.show('${navItem.url}')`
+										)= navItem.text
 
+										app-modal.modal(name=navItem.url)
+											template(v-slot:title)
+												h3= navItem.text
+
+											base-content.modal-content!= `<p>${navItem.text}...</p>`
 		transition-box
 			.running-line(
 				v-show="runningLineIsVisible"

@@ -63,11 +63,11 @@ mixin IntroSection()
 
 								.unicorn-text-box
 									a(
-										href=""
-										@click.prevent="$modal.show('why-unicorn')"
+										href="#why-unicorn"
+										@click.prevent="$modal.show('#why-unicorn')"
 									) Почему единорог?
 
-						app-modal.modal(name="why-unicorn" height="450px")
+						app-modal.modal(name="#why-unicorn" height="450px")
 							template(v-slot:title)
 								h2 Почему единорог?
 

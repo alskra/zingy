@@ -1,6 +1,11 @@
 <script>
+	import AppModal from './AppModal';
+
 	export default {
 		name: 'DList',
+		components: {
+			AppModal
+		},
 		data() {
 			return {
 				runningLineIsVisible: false,
@@ -59,7 +64,7 @@
 				transition-delay: var(--d-list-item_transition-delay);
 			}
 
-			.item-body {
+			.item-title {
 				transform: translateX(range(10px, 40px));
 				transition-delay: var(--d-list-item_transition-delay);
 			}
@@ -83,7 +88,6 @@
 	.item-body {
 		flex-grow: 1;
 		overflow: hidden;
-		transition: transform var(--d-list-item_transition-duration);
 	}
 
 	.item-title {
@@ -93,6 +97,7 @@
 		font-weight: 400;
 		line-height: 1.25;
 		margin: 0 0 0.5em;
+		transition: transform var(--d-list-item_transition-duration);
 	}
 
 	.nav {
