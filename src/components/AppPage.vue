@@ -176,5 +176,15 @@
 
 	.subscribe-form.sticky-container-subscribe {
 		margin-top: calc(var(--grid-cell_padding) * 2);
+
+		@media (width < 1024px) {
+			display: none;
+		}
+	}
+
+	.subscribe-form.subscribe-form-is-wide {
+		@media (width >= 1024px) {
+			display: none;
+		}
 	}
 </style>
