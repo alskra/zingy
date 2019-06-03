@@ -62,8 +62,9 @@
 			}
 		},
 		methods: {
-			stopZingySectionAnimation() {
+			onScrollAndResize() {
 				const zingySection = document.querySelector('.zingy-section');
+				const appPagination = document.querySelector('.app-pagination');
 
 				if (zingySection) {
 					zingySection.classList.toggle(
@@ -71,13 +72,25 @@
 						this.$refs.body.getBoundingClientRect().bottom >= this.windowHeight
 					);
 				}
+
+				if (appPagination) {
+					appPagination.classList.toggle(
+						'is-hidden',
+						this.$refs.body.getBoundingClientRect().bottom < this.windowHeight
+					)
+				}
 			}
 		},
 		created() {
-			window.addEventListener('scroll', this.stopZingySectionAnimation);
+			window.addEventListener('scroll', this.onScrollAndResize);
+			window.addEventListener('resize', this.onScrollAndResize);
 		},
 		destroyed() {
-			window.removeEventListener('scroll', this.stopZingySectionAnimation);
+			window.removeEventListener('scroll', this.onScrollAndResize);
+			window.removeEventListener('resize', this.onScrollAndResize);
+		},
+		mounted() {
+			this.onScrollAndResize();
 		}
 	};
 </script>

@@ -21,15 +21,21 @@
 			flex-flow: column;
 			position: fixed;
 			/*z-index: 99;*/
-			top: 50%;
+			top: 0;
+			bottom: 0;
 			left: var(--grid_padding);
+			/*transform: translateY(-50%);*/
+		}
+
+		&.is-hidden {
+			visibility: hidden;
 		}
 	}
 
 	.grid {
 		display: flex;
 		flex-flow: column;
-		margin: -6px 0;
+		margin: auto 0;
 	}
 
 	.grid-cell {
@@ -46,7 +52,7 @@
 		font-family: var(--font-family);
 		font-size: range(1.4rem, 1.6rem);
 		font-weight: 300;
-		line-height: 1.25;
+		line-height: 1;
 		user-select: none;
 
 		>>> span,
@@ -56,7 +62,7 @@
 			align-items: center;
 			width: 100%;
 			height: 100%;
-			padding: 0 4px;
+			padding: 1px 4px 0;
 		}
 
 		>>> span {
