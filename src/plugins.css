@@ -1,4 +1,8 @@
 .vue-line-clamp {
-	word-break: normal;
+	word-break: break-word;
 	word-wrap: normal;
+
+	:root.is-engine-webkit & {
+		//display: block;
+	}
 }

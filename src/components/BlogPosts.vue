@@ -64,4 +64,10 @@
 	.posts-item.post {
 		height: 100%;
 	}
+
+	.app-pagination.pagination {
+		@media (width < 1440px) {
+			margin-top: range(20px, 40px);
+		}
+	}
 </style>
