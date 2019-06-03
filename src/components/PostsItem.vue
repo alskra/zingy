@@ -10,6 +10,7 @@
 					:src="post.img || 'upload/zingy.svg?fallback'"
 					src-placeholder="upload/zingy.svg"
 					:alt="post.title"
+					:class="{'img-is-zingy': !post.img}"
 				)
 
 				base-time.public-date(
@@ -116,6 +117,11 @@
 			opacity: 1;
 			filter: blur(0);
 		}
+	}
+
+	.img-is-zingy {
+		object-fit: contain;
+		background-color: var(--color-zingy);
 	}
 
 	.public-date {
