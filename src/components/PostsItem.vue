@@ -1,18 +1,46 @@
+<template lang="pug">
+	article.posts-item(:class="{'posts-item-is-large': post.isLarge}")
+		a.body(
+			:href="href"
+			:style="{backgroundColor: post.backgroundColor}"
+		)
+			.header
+				v-lazy-image.img(
+					:src="post.img"
+					:alt="post.title"
+				)
+
+				slot(name="date")
+					base-time.date(
+						:datetime="post.date"
+						:locale="post.locale"
+					)
+
+			.main
+				.title(
+					v-line-clamp="2"
+					:style="{color: post.color}"
+				)
+					slot(name="title")
+
+				.desc(
+					v-line-clamp="3"
+					:style="{color: post.color}"
+				)
+					slot(name="desc")
+</template>
+
 <script>
 	export default {
 		name: 'PostsItem',
 		props: {
-			color: {
-				type: String,
+			post: {
+				type: Object,
 				default: null
 			},
-			backgroundColor: {
+			href: {
 				type: String,
-				default: null
-			},
-			isLarge: {
-				type: Boolean,
-				default: false
+				default: ''
 			}
 		}
 	};
@@ -89,6 +117,11 @@
 		font-weight: 500;
 		line-height: 1.25;
 		margin: 0 0 0.5em;
+
+		* {
+			display: inline;
+			font: inherit;
+		}
 	}
 
 	.desc {

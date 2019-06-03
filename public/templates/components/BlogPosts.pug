@@ -1,10 +1,8 @@
 mixin BlogPosts()
-	include PostsItem
-
 	-
 		const posts = [
 			{
-				url: '',
+				url: 'post.html',
 				date: '2019-06-02T15:13:14+04:00',
 				title: 'Подписка на статьи ZINGY',
 				desc: 'Как не потерять клиентов из-за долгой загрузки сайтов и тому подобное что-то рыбатекстное побольше рыбное такое чтоб было чем заполнить.',
@@ -14,14 +12,14 @@ mixin BlogPosts()
 				isLarge: false
 			},
 			{
-				url: '',
+				url: 'post.html',
 				date: '2019-06-02T15:13:14+04:00',
 				title: 'Вы думаете они будут ждать, пока ваш сайт загрузится?',
 				desc: 'Как не потерять клиентов из-за долгой загрузки сайта и почему это важно и полезные сервисы читайте в этой статье.'+
 				'Может быть и третья строчка',
 				img: 'upload/post-cover.jpg',
-				color: null,
-				backgroundColor: null,
+				color: '',
+				backgroundColor: '',
 				isLarge: true
 			}
 		];
@@ -32,11 +30,19 @@ mixin BlogPosts()
 				.grid-row
 					each post in posts
 						.grid-cell(class={'grid-cell-is-large': post.isLarge})
-							posts-item.post(
-								inline-template
-								color=post.color
-								background-color=post.backgroundColor
-								:is-large=`${post.isLarge}`
+							a.post(
+								is="posts-item"
+								href=post.url
+								:post=`{
+									date: '${post.date}',
+									locale: 'ru',
+									img: '${post.img}',
+									color: '${post.color}',
+									backgroundColor: '${post.backgroundColor}',
+									isLarge: ${post.isLarge}
+								}`
 							)
-								+PostsItem(post)
+								h3(slot="title")=post.title
+								template(slot="desc")!=post.desc
+
 
