@@ -9,8 +9,6 @@
 	};
 </script>
 
-<style></style>
-
 <style scoped>
 	.blog-posts {
 		all: initial;
@@ -42,6 +40,12 @@
 
 		@media (width < 560px) {
 			width: calc(percentage(1 / 1) - 2 * var(--grid-cell_padding));
+		}
+	}
+
+	.grid-cell-is-large {
+		@media (width >= 768px) {
+			width: calc(percentage(2 / 3) - 2 * var(--grid-cell_padding));
 		}
 	}
 

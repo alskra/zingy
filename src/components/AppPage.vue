@@ -157,6 +157,8 @@
 	}
 
 	.side-nav.sticky-container-nav {
-		margin-bottom: calc(2 * var(--grid-cell_padding));
+		@media (width < 1024px) {
+			margin-bottom: calc(2 * var(--grid-cell_padding));
+		}
 	}
 </style>

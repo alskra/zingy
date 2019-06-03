@@ -1,13 +1,13 @@
 <template lang="pug">
 	article.posts-item(:class="{'posts-item-is-large': post.isLarge}")
 		a.body(
-			:href="href"
+			:href="post.url || $attrs.href"
 			:style="{backgroundColor: post.backgroundColor}"
 		)
 			.header
 				v-lazy-image.img(
 					:src="post.img"
-					:alt="post.title"
+					:alt="post.title || ''"
 				)
 
 				slot(name="date")
@@ -24,7 +24,7 @@
 					slot(name="title")
 
 				.desc(
-					v-line-clamp="3"
+					v-line-clamp="post.isLarge ? 3 : 5"
 					:style="{color: post.color}"
 				)
 					slot(name="desc")
@@ -33,20 +33,15 @@
 <script>
 	export default {
 		name: 'PostsItem',
+		inheritAttrs: false,
 		props: {
 			post: {
 				type: Object,
 				default: null
-			},
-			href: {
-				type: String,
-				default: ''
 			}
 		}
 	};
 </script>
-
-<style></style>
 
 <style scoped>
 	.posts-item {
@@ -73,9 +68,6 @@
 		position: relative;
 		overflow: hidden;
 		flex-shrink: 0;
-		width: 100%;
-		max-width: 300px;
-		margin: 0 auto;
 
 		&::before {
 			content: '';
@@ -133,6 +125,18 @@
 
 		p {
 			display: inline;
+		}
+	}
+
+	.posts-item-is-large {
+		@media (width >= 768px) {
+			max-width: calc(2 * 300px + var(--grid-cell_padding));
+
+			.header {
+				&::before {
+					padding-top: percentage(330 / 605);
+				}
+			}
 		}
 	}
 </style>
