@@ -10,21 +10,28 @@
 					:alt="post.title || ''"
 				)
 
-				slot(name="date")
+				base-time.date(
+					:datetime="post.date"
+					:locale="post.locale"
+					v-if="!post.isLarge && windowWidth < 768"
+				)
+
+			.main
+				.title
 					base-time.date(
 						:datetime="post.date"
 						:locale="post.locale"
+						v-if="post.isLarge && windowWidth >= 768"
 					)
 
-			.main
-				.title(
-					v-line-clamp="2"
-					:style="{color: post.color}"
-				)
-					slot(name="title")
+					.title-inner(
+						v-line-clamp="2"
+						:style="{color: post.color}"
+					)
+						slot(name="title")
 
 				.desc(
-					v-line-clamp="post.isLarge ? 3 : 5"
+					v-line-clamp="post.isLarge && windowWidth >= 768 ? 3 : 5"
 					:style="{color: post.color}"
 				)
 					slot(name="desc")
@@ -51,7 +58,6 @@
 			display: flex;
 			flex-flow: column;
 			max-width: 300px;
-			margin: 0 auto;
 		}
 	}
 
@@ -97,12 +103,16 @@
 		}
 	}
 
+	.date {
+		position: absolute;
+	}
+
 	.main {
 		flex-grow: 1;
 		padding: range(15px, 30px) range(10px, 20px);
 	}
 
-	.title {
+	.title-inner {
 		color: var(--posts-item_color, var(--color));
 		font-family: var(--font-family);
 		font-size: range(1.8rem, 2rem);
@@ -130,12 +140,16 @@
 
 	.posts-item-is-large {
 		@media (width >= 768px) {
-			max-width: calc(2 * 300px + var(--grid-cell_padding));
+			max-width: calc(300px * 2 + var(--grid-cell_padding) * 2);
 
 			.header {
 				&::before {
 					padding-top: percentage(330 / 605);
 				}
+			}
+
+			.date {
+				position: relative;
 			}
 		}
 	}
