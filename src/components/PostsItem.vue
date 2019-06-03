@@ -7,7 +7,8 @@
 		)
 			.img-box
 				v-lazy-image.img(
-					:src="post.img"
+					:src="post.img || 'upload/zingy.svg?fallback'"
+					src-placeholder="upload/zingy.svg"
 					:alt="post.title"
 				)
 
@@ -81,6 +82,7 @@
 		position: relative;
 		overflow: hidden;
 		flex-shrink: 0;
+		background-color: rgba(#000000, 0.15);
 
 		&::before {
 			content: '';
