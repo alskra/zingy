@@ -182,7 +182,7 @@
 		}
 	}
 
-	.subscribe-form.subscribe-form-is-wide {
+	.subscribe-form.subscribe {
 		@media (width >= 1024px) {
 			display: none;
 		}
