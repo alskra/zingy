@@ -8,7 +8,6 @@
 			.img-box
 				v-lazy-image.img(
 					:src="post.img || 'upload/zingy.svg?fallback'"
-					src-placeholder="upload/zingy.svg"
 					:alt="post.title"
 					:class="{'img-is-zingy': !post.img}"
 				)
@@ -83,7 +82,7 @@
 		position: relative;
 		overflow: hidden;
 		flex-shrink: 0;
-		/*background-color: rgba(#000000, 0.15);*/
+		background-color: rgba(#000000, 0.15);
 
 		&::before {
 			content: '';
@@ -107,16 +106,12 @@
 		object-fit: cover;
 
 		&.v-lazy-image {
-			object-fit: contain;
-			background-color: var(--color-zingy);
 			filter: blur(10px);
 			transition: filter 0.7s;
 			will-change: filter;
 		}
 
 		&.v-lazy-image-loaded {
-			object-fit: cover;
-			background-color: transparent;
 			filter: blur(0);
 		}
 	}
