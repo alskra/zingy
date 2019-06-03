@@ -1,50 +1,57 @@
 <template lang="pug">
 	article.posts-item(:class="{'posts-item-is-large': post.isLarge}")
 		a.body(
-			:href="post.url || $attrs.href"
+			:href="post.url"
+			:title="post.title"
 			:style="{backgroundColor: post.backgroundColor}"
 		)
-			.header
+			.img-box
 				v-lazy-image.img(
 					:src="post.img"
-					:alt="post.title || ''"
+					:alt="post.title"
 				)
 
-				base-time.date(
+				base-time.public-date(
 					:datetime="post.date"
-					:locale="post.locale"
-					v-if="!post.isLarge && windowWidth < 768"
+					:locale="locale"
+					v-if="!post.isLarge || windowWidth < 768"
 				)
 
-			.main
-				.title
-					base-time.date(
+			.body-inner
+				header.header
+					base-time.public-date(
 						:datetime="post.date"
-						:locale="post.locale"
+						:locale="locale"
 						v-if="post.isLarge && windowWidth >= 768"
+						:style="{color: post.color}"
 					)
 
-					.title-inner(
-						v-line-clamp="2"
+					.title(
+						v-line-clamp="post.isLarge && windowWidth >= 768 ? 2 : 4"
 						:style="{color: post.color}"
 					)
 						slot(name="title")
 
-				.desc(
-					v-line-clamp="post.isLarge && windowWidth >= 768 ? 3 : 5"
-					:style="{color: post.color}"
-				)
-					slot(name="desc")
+				.main
+					.desc(
+						v-line-clamp="post.isLarge && windowWidth >= 768 ? 3 : 5"
+						:style="{color: post.color}"
+					)
+						slot(name="desc")
 </template>
 
 <script>
 	export default {
 		name: 'PostsItem',
-		inheritAttrs: false,
 		props: {
 			post: {
 				type: Object,
 				default: null
+			}
+		},
+		computed: {
+			locale() {
+				return document.documentElement.getAttribute('lang');
 			}
 		}
 	};
@@ -70,7 +77,7 @@
 		background-color: var(--posts-item_background-color, #ffffff);
 	}
 
-	.header {
+	.img-box {
 		position: relative;
 		overflow: hidden;
 		flex-shrink: 0;
@@ -103,22 +110,52 @@
 		}
 	}
 
-	.date {
+	.public-date {
+		color: #ffffff;
+		font-family: var(--font-family);
+		font-size: range(1.2rem, 1.2rem);
+		font-weight: 500;
+		line-height: 1;
+		text-shadow:
+			0 0 1px rgba(#000000, 1),
+			0 0 1px rgba(#000000, 1),
+			0 0 1px rgba(#000000, 1),
+			0 0 1px rgba(#000000, 1);
+		user-select: none;
+		cursor: default;
+		white-space: nowrap;
 		position: absolute;
+		z-index: 1;
+		bottom: range(10px, 20px);
+		left: range(10px, 20px);
+
+		>>> .date {
+			display: block;
+			font-size: range(2.6rem, 2.8rem);
+			font-weight: 700;
+			margin-bottom: 0.15em;
+		}
+
+		>>> .mounth {
+			display: block;
+		}
 	}
 
-	.main {
+	.body-inner {
 		flex-grow: 1;
 		padding: range(15px, 30px) range(10px, 20px);
 	}
 
-	.title-inner {
+	.header {
+		margin-bottom: range(5px, 10px);
+	}
+
+	.title {
 		color: var(--posts-item_color, var(--color));
 		font-family: var(--font-family);
 		font-size: range(1.8rem, 2rem);
 		font-weight: 500;
 		line-height: 1.25;
-		margin: 0 0 0.5em;
 
 		* {
 			display: inline;
@@ -133,7 +170,7 @@
 		font-weight: 400;
 		line-height: 1.5;
 
-		p {
+		* {
 			display: inline;
 		}
 	}
@@ -142,14 +179,29 @@
 		@media (width >= 768px) {
 			max-width: calc(300px * 2 + var(--grid-cell_padding) * 2);
 
-			.header {
+			.img-box {
 				&::before {
 					padding-top: percentage(330 / 605);
 				}
 			}
 
-			.date {
-				position: relative;
+			.header {
+				display: flex;
+				align-items: flex-start;
+			}
+
+			.public-date {
+				color: var(--posts-item_color, var(--color));
+				text-shadow: none;
+				position: static;
+				flex-shrink: 0;
+				margin-right: range(10px, 20px);
+			}
+
+			.title {
+				flex-grow: 1;
+				overflow: hidden;
+				margin: auto 0;
 			}
 		}
 	}

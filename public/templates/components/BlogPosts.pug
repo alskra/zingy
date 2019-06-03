@@ -53,7 +53,58 @@ mixin BlogPosts()
 				color: '#ffffff',
 				backgroundColor: '#df663e',
 				isLarge: false
-			}
+			},
+			{
+				url: 'post.html',
+				date: '2019-06-01T10:54:14+04:00',
+				title: 'Вы думаете они будут ждать, пока ваш сайт загрузится? Будет просто крутое что-то совсем. Как не потерять клиентов из-за долгой загрузки',
+				desc: `Как не потерять клиентов из-за долгой загрузки сайтов и тому подобное.`,
+				img: 'upload/post-cover.jpg',
+				color: '#ffffff',
+				backgroundColor: '#cc5256',
+				isLarge: true
+			},
+			{
+				url: 'post.html',
+				date: '2019-06-01T10:54:14+04:00',
+				title: 'Подписка на статьи ZINGY',
+				desc: `Как не потерять клиентов из-за долгой загрузки сайтов и тому подобное.`,
+				img: 'upload/post-cover.jpg',
+				color: '#ffffff',
+				backgroundColor: 'transparent',
+				isLarge: false
+			},
+			{
+				url: 'post.html',
+				date: '2019-06-01T10:54:14+04:00',
+				title: 'Подписка на статьи ZINGY Будет просто крутое что-то совсем',
+				desc: `Как не потерять клиентов из-за долгой загрузки сайтов и тому подобное что-то рыбатекстное побольше рыбное такое чтоб было чем заполнить`,
+				img: 'upload/post-cover.jpg',
+				color: '#ffffff',
+				backgroundColor: 'transparent',
+				isLarge: false
+			},
+			{
+				url: 'post.html',
+				date: '2019-06-01T10:54:14+04:00',
+				title: 'Подписка на статьи ZINGY как не потерять клиентов из-за того, что 4 строка в названи заголовка',
+				desc: `Как не потерять клиентов из-за долгой загрузки сайтов и тому подобное что-то рыбатекстное побольше рыбное такое чтоб было чем заполнить.
+				Что-то рыбатекстное побольше рыбное такое чтоб было чем заполнить`,
+				img: 'upload/post-cover.jpg',
+				color: '#ffffff',
+				backgroundColor: 'transparent',
+				isLarge: false
+			},
+			{
+				url: 'post.html',
+				date: '2019-06-01T10:54:14+04:00',
+				title: 'Подписка на статьи ZINGY PROJECTS',
+				desc: `Как не потерять клиентов из-за долгой загрузки`,
+				img: 'upload/post-cover.jpg',
+				color: '#ffffff',
+				backgroundColor: 'transparent',
+				isLarge: false
+			},
 		];
 
 	template
@@ -62,12 +113,12 @@ mixin BlogPosts()
 				.grid-row
 					each post in posts
 						.grid-cell(class={'grid-cell-is-large': post.isLarge})
-							a.post(
+							article.post(
 								is="posts-item"
-								href=post.url
 								:post=`{
+									url: '${post.url}',
 									date: '${post.date}',
-									locale: 'ru',
+									title: '${post.title}',
 									img: '${post.img}',
 									color: '${post.color}',
 									backgroundColor: '${post.backgroundColor}',
@@ -76,5 +127,9 @@ mixin BlogPosts()
 							)
 								h3(slot="title")=post.title
 								template(slot="desc")!=post.desc
+								a(
+									href=post.url
+									title=post.title
+								)
 
 

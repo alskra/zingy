@@ -4,7 +4,8 @@
 		:title="localLocale.format('DD MMMM YYYY HH:mm')"
 	)
 		span.date {{ localLocale.format('DD') }}
-		span.rest {{ localLocale.format(' MMMM YYYY') }}
+		span.mounth {{ localLocale.format(' MMMM') }}
+		span.rest {{ localLocale.format(' YYYY') }}
 </template>
 
 <script>
