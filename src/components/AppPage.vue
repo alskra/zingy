@@ -170,7 +170,11 @@
 
 	.side-nav.sticky-container-nav {
 		@media (width < 1024px) {
-			margin-bottom: calc(2 * var(--grid-cell_padding));
+			margin-bottom: calc(var(--grid-cell_padding) * 2);
 		}
+	}
+
+	.subscribe-form.sticky-container-subscribe {
+		margin-top: calc(var(--grid-cell_padding) * 2);
 	}
 </style>

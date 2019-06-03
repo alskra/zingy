@@ -20,11 +20,9 @@
 			display: flex;
 			flex-flow: column;
 			position: fixed;
-			/*z-index: 99;*/
 			top: range(60px, 108px);
 			bottom: 20px;
 			left: var(--grid_padding);
-			/*transform: translateY(-50%);*/
 		}
 
 		&.is-hidden {
