@@ -22,7 +22,7 @@
 			position: fixed;
 			/*z-index: 99;*/
 			top: range(60px, 108px);
-			bottom: 0;
+			bottom: 20px;
 			left: var(--grid_padding);
 			/*transform: translateY(-50%);*/
 		}
@@ -34,6 +34,7 @@
 		@media (width < 1440px) {
 			position: relative;
 			top: auto;
+			bottom: auto;
 			left: auto;
 		}
 	}
