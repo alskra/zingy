@@ -79,6 +79,7 @@
 		all: initial;
 
 		& {
+			display: block;
 			color: var(--color);
 			font-family: var(--font-family);
 			font-size: 12px;
@@ -113,6 +114,13 @@
 				&::before {
 					transform: scale(0);
 				}
+			}
+		}
+
+		&:focus-visible {
+			& + .check-radio-fake {
+				outline: 1px dotted currentColor;
+				outline: 5px auto -webkit-focus-ring-color;
 			}
 		}
 	}
@@ -161,6 +169,8 @@
 		all: initial;
 
 		& {
+			display: inline-block;
+			vertical-align: top;
 			color: #c5dcd6;
 			font-family: var(--font-family);
 			font-size: range(1.4rem, 1.6rem);
@@ -169,11 +179,21 @@
 			text-align: center;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			white-space: nowrap;
 			user-select: none;
+			box-sizing: border-box;
+			padding: 8px 10px;
+			max-width: 100%;
+			border: 1px solid currentColor;
+			transition: color 0.2s;
 		}
 
 		&:not(:disabled, .is-disabled) {
 			cursor: pointer;
+		}
+
+		&:hover:not(:disabled) {
+			color: white;
 		}
 	}
 
@@ -186,6 +206,18 @@
 			@media (width < 1024px) {
 				padding-right: var(--grid_padding);
 				padding-left: var(--grid_padding);
+			}
+		}
+
+		.grid-cell-is-3 {
+			@media (width < 1024px) {
+				text-align: center;
+			}
+		}
+
+		.button {
+			@media (width < 1024px) {
+				/*width: 100%;*/
 			}
 		}
 	}
