@@ -65,7 +65,11 @@
 		& {
 			display: flex;
 			flex-flow: column;
-			max-width: 300px;
+			/*max-width: 300px;*/
+
+			/*@media (width < 560px) {*/
+			/*	max-width: 100%;*/
+			/*}*/
 		}
 	}
 
@@ -90,7 +94,7 @@
 			padding-top: percentage(260 / 290);
 		}
 
-		@media (width < 768px) {
+		@media (width < 560px) {
 			&::before {
 				padding-top: percentage(9 / 16);
 			}
@@ -188,7 +192,7 @@
 
 	.posts-item-is-large {
 		@media (width >= 768px) {
-			max-width: calc(300px * 2 + var(--grid-cell_padding) * 2);
+			/*max-width: calc(300px * 2 + var(--grid-cell_padding) * 2);*/
 
 			.img-box {
 				&::before {

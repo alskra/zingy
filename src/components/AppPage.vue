@@ -1,6 +1,8 @@
 <script>
 	// all
 	import AppHeader from './AppHeader';
+	import AppFooter from './AppFooter';
+	import ZingySection from './ZingySection';
 
 	// index
 	import IntroSection from './IntroSection';
@@ -17,15 +19,13 @@
 	import SideNav from './SideNav';
 	// import BlogPosts from './BlogPosts';
 
-	// all
-	import AppFooter from './AppFooter';
-	import ZingySection from './ZingySection';
-
 	export default {
 		name: 'AppPage',
 		components: {
 			// all
 			AppHeader,
+			AppFooter,
+			ZingySection,
 
 			// index
 			IntroSection,
@@ -41,10 +41,6 @@
 			AppPageStickyContainer,
 			SideNav,
 			BlogPosts: () => import('./BlogPosts'),
-
-			// all
-			AppFooter,
-			ZingySection
 		},
 		data() {
 			return {
