@@ -87,6 +87,12 @@
 			display: block;
 			padding-top: percentage(260 / 290);
 		}
+
+		@media (width < 768px) {
+			&::before {
+				padding-top: percentage(9 / 16);
+			}
+		}
 	}
 
 	.img {
@@ -100,7 +106,7 @@
 		&.v-lazy-image {
 			opacity: 0;
 			filter: blur(10px);
-			transition: filter 0.5s;
+			transition: filter 0.7s;
 			will-change: filter;
 		}
 
@@ -117,10 +123,10 @@
 		font-weight: 500;
 		line-height: 1;
 		text-shadow:
-			0 0 1px rgba(#000000, 1),
-			0 0 1px rgba(#000000, 1),
-			0 0 1px rgba(#000000, 1),
-			0 0 1px rgba(#000000, 1);
+			0 -1px var(--color),
+			1px 0 var(--color),
+			0 1px var(--color),
+			-1px 0 var(--color);
 		user-select: none;
 		cursor: default;
 		white-space: nowrap;
