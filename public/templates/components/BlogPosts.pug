@@ -8,15 +8,35 @@ mixin BlogPosts()
 				date: '2019-06-02T15:13:14+04:00',
 				title: 'Подписка на статьи ZINGY',
 				desc: 'Как не потерять клиентов из-за долгой загрузки сайтов и тому подобное что-то рыбатекстное побольше рыбное такое чтоб было чем заполнить.',
-				img: 'upload/post-cover.jpg'
+				img: 'upload/post-cover.jpg',
+				color: '#ffffff',
+				backgroundColor: '#1a93b1',
+				isLarge: false
+			},
+			{
+				url: '',
+				date: '2019-06-02T15:13:14+04:00',
+				title: 'Вы думаете они будут ждать, пока ваш сайт загрузится?',
+				desc: 'Как не потерять клиентов из-за долгой загрузки сайта и почему это важно и полезные сервисы читайте в этой статье.'+
+				'Может быть и третья строчка',
+				img: 'upload/post-cover.jpg',
+				color: null,
+				backgroundColor: null,
+				isLarge: true
 			}
 		];
 
 	template
 		.blog-posts&attributes(attributes)
 			.grid
-				each post in posts
-					.grid-cell
-						posts-item(inline-template)
-							+PostsItem(post)
+				.grid-row
+					each post in posts
+						.grid-cell(class={'grid-cell-is-large': post.isLarge})
+							posts-item.post(
+								inline-template
+								color=post.color
+								background-color=post.backgroundColor
+								:is-large=`${post.isLarge}`
+							)
+								+PostsItem(post)
 

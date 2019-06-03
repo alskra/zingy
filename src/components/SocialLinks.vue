@@ -9,12 +9,6 @@
 	};
 </script>
 
-<style>
-	:root {
-		--social-links_justify-content: flex-start;
-	}
-</style>
-
 <style scoped>
 	.social-links {
 		all: initial;
@@ -27,7 +21,7 @@
 	.grid {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: var(--social-links_justify-content);
+		justify-content: var(--social-links_justify-content, flex-start);
 		margin: -10px -15px;
 	}
 

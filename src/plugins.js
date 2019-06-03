@@ -29,7 +29,7 @@ Vue.use(Loading, {
 Vue.use(VueMoment, {moment});
 
 Vue.use(lineClamp, {
-	// plugin options
+	importCss: true
 });
 
 Vue.use(VLazyImagePlugin);

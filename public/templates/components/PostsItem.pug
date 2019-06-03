@@ -1,7 +1,10 @@
-mixin PostsItem({url = '', date = '2019-06-02T15:13:14+04:00', title = 'Post Title', desc = 'Post Description', img = ''} = {})
+mixin PostsItem({url = '', date = '2019-06-02T15:13:14+04:00', title = 'Post Title', desc = 'Post Description', img = '', color = '#0a0a0a', backgroundColor = '#ffffff', isLarge = false} = {})
 	template
-		article.posts-item&attributes(attributes)
-			.body
+		article.posts-item(:class="{'posts-item-is-large': isLarge}")&attributes(attributes)
+			a.body(
+				href=url
+				:style="{backgroundColor}"
+			)
 				.header
 					v-lazy-image.img(
 						src=img
@@ -14,5 +17,12 @@ mixin PostsItem({url = '', date = '2019-06-02T15:13:14+04:00', title = 'Post Tit
 					)
 
 				.main
-					h3.title(v-line-clamp="2")=title
-					.desc(v-line-clamp="3")=desc
+					h3.title(
+						v-line-clamp="2"
+						:style="{color}"
+					)=title
+
+					.desc(
+						v-line-clamp="3"
+						:style="{color}"
+					)=desc

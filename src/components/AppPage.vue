@@ -101,6 +101,8 @@
 			--app-breadcrumb_color: #ffffff;
 			--base-title_color: #ffffff;
 			--side-nav_background-color: #ffffff;
+			/*--posts-item_color: #ffffff;*/
+			/*--posts-item_background-color: transparent;*/
 		}
 	}
 
@@ -150,7 +152,11 @@
 		}
 	}
 
-	.app-page-sticky-container {
+	.app-page-sticky-container.sticky-container {
 		margin-bottom: range(30px, 60px);
+	}
+
+	.side-nav.sticky-container-nav {
+		margin-bottom: calc(2 * var(--grid-cell_padding));
 	}
 </style>
