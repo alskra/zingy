@@ -7,6 +7,8 @@
 		:scrollable="true"
 		:reset="true"
 		:transition="transition"
+		@before-open="beforeOpen"
+		@closed="closed"
 	)
 
 		app-modal-body(v-bind="$props")
@@ -40,6 +42,14 @@
 			transition: {
 				type: String,
 				default: 'nice-modal-fade'
+			}
+		},
+		methods: {
+			beforeOpen() {
+				document.documentElement.classList.add('v--modal-block-scroll');
+			},
+			closed() {
+				document.documentElement.classList.remove('v--modal-block-scroll');
 			}
 		}
 	};
