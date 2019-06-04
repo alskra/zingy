@@ -73,6 +73,8 @@ module.exports = {
 		'css-blank-pseudo',
 		'focus-within',
 		'swiper',
-		'dom7'
+		'dom7',
+		'vue-clamp',
+		'resize-detector'
 	]
 };

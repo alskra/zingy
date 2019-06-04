@@ -29,7 +29,16 @@ Vue.use(Loading, {
 Vue.use(VueMoment, {moment});
 
 Vue.use(lineClamp, {
-	importCss: true
+	importCss: true,
+	defaultFallbackFunc(element) {
+		element.style.lineHeight = getComputedStyle(element).lineHeight;
+	}
 });
 
 Vue.use(VLazyImagePlugin);
+
+Vue.filter('striphtml', function (value) {
+	const div = document.createElement('div');
+	div.innerHTML = value;
+	return div.textContent || div.innerText || '';
+});

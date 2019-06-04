@@ -7,7 +7,7 @@
 		)
 			.img-box
 				v-lazy-image.img(
-					:src="post.img || 'upload/zingy.svg?fallback'"
+					:src="post.img || 'upload/zingy.svg'"
 					:alt="post.title"
 					:class="{'img-is-zingy': !post.img}"
 				)
@@ -27,23 +27,28 @@
 						:style="{color: post.color}"
 					)
 
-					.title(
-						v-line-clamp="post.isLarge && windowWidth >= 768 ? 2 : 4"
+					v-clamp.title(
+						:max-lines="post.isLarge && windowWidth >= 768 ? 2 : 4"
+						autoresize
 						:style="{color: post.color}"
-					)
-						slot(name="title")
+					) {{ post.title }}
 
 				.main
-					.desc(
-						v-line-clamp="post.isLarge && windowWidth >= 768 ? 3 : 5"
+					v-clamp.desc(
+						:max-lines="post.isLarge && windowWidth >= 768 ? 3 : 5"
+						autoresize
 						:style="{color: post.color}"
-					)
-						slot(name="desc")
+					) {{ post.desc | striphtml }}
 </template>
 
 <script>
+	import VClamp from 'vue-clamp';
+
 	export default {
 		name: 'PostsItem',
+		components: {
+			VClamp
+		},
 		props: {
 			post: {
 				type: Object,
@@ -198,6 +203,7 @@
 
 		* {
 			display: inline;
+			font: inherit;
 		}
 	}
 

@@ -26,8 +26,8 @@ const OUTPUT_DIR = '';
  * List of input directories
  */
 const INPUT_DIRS = [
-	'src/assets/img',
-	'public/upload'
+	'dist/img',
+	'dist/upload'
 ];
 
 /**
