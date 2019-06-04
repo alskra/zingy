@@ -119,7 +119,7 @@ mixin BlogPosts()
 									url: '${post.url}',
 									date: '${post.date}',
 									title: '${post.title}',
-									desc: '${post.desc.replace(/\s+/g, ' ')}',
+									desc: \`${post.desc}\`,
 									img: '${post.img}',
 									color: '${post.color}',
 									backgroundColor: '${post.backgroundColor}',
@@ -127,7 +127,7 @@ mixin BlogPosts()
 								}`
 							)
 								p=post.title
-								!=post.desc.replace(/\s+/g, ' ')
+								!=post.desc
 
 								a(
 									href=post.url
