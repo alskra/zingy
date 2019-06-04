@@ -80,16 +80,14 @@
 	.base-icon.service-main-bg {
 		position: absolute;
 		top: 0;
-		right: 50%;
-		width: auto;
+		left: var(--grid_padding);
+		width: calc(50% - 2 * var(--grid_padding));
 		height: 100%;
 		color: #f0f0f0;
 		pointer-events: none;
 
 		@media (width < 1024px) {
-			right: var(--grid_padding);
-			left: var(--grid_padding);
-			width: calc(100% - var(--grid_padding) * 2);
+			width: calc(100% - 2 * var(--grid_padding));
 		}
 	}
 
