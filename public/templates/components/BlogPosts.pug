@@ -135,7 +135,7 @@ mixin BlogPosts()
 									src=post.img || 'upload/zingy-256x256.png'
 									alt=post.title
 									class={'img-is-default': !post.img}
-
+									itemprop="image"
 								)
 
 								time.date(
@@ -148,7 +148,7 @@ mixin BlogPosts()
 								p(
 									slot="title"
 									itemprop="headline"
-								)=post.title
+								)=post.title.slice(0, 110)
 
 								div(
 									slot="desc"

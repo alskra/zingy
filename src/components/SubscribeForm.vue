@@ -191,20 +191,14 @@
 			box-sizing: border-box;
 			padding: 10px;
 			max-width: 100%;
+			cursor: pointer;
 			background: linear-gradient(to right, currentColor, currentColor) no-repeat 0 100% / 100% 1px;
 			transition: color, background-size;
 			transition-duration: 0.2s;
 		}
 
-		&:not(:disabled, .is-disabled) {
-			cursor: pointer;
-		}
-
-		&:hover:not(:disabled) {
-			color: white;
-		}
-
 		&:matches(:disabled, .is-disabled) {
+			cursor: default;
 			color: #c5dcd6;
 			background-size: 0 1px;
 		}
