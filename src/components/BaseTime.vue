@@ -15,13 +15,12 @@
 			datetime: {
 				type: String,
 				required: true
-			},
-			locale: {
-				type: String,
-				default: document.documentElement.getAttribute('lang')
 			}
 		},
 		computed: {
+			locale() {
+				return this.$store.state.locale;
+			},
 			localLocale() {
 				return this.$moment(this.datetime).locale(this.locale);
 			},

@@ -10,7 +10,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import VueMoment from 'vue-moment';
 import moment from 'moment';
 import 'moment/locale/ru';
-import {VLazyImagePlugin} from "v-lazy-image";
+import {VLazyImagePlugin} from 'v-lazy-image';
 
 Vue.use(VueWindowSize);
 Vue.use(VModal, {dynamic: true, injectModalsContainer: true});

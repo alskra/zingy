@@ -1,8 +1,23 @@
+<i18n>
+	{
+		"ru": {
+			"title": "Подписка на блог"
+		},
+		"en": {
+			"title": "Subscribe to blog"
+		}
+	}
+</i18n>
+
 <template lang="pug">
-	form.subscribe-form(action="")
+	form.subscribe-form(
+		action=""
+		novalidate
+		@submit="onSubmit"
+	)
 		.body
 			.header
-				.title Подписка на блог
+				.title {{ $t('title') }}
 
 			.main
 				.grid
@@ -12,6 +27,8 @@
 							name="email"
 							placeholder="Укажите свой email"
 							required
+							v-model="fields.email.value"
+							@input="checkInput($event.target)"
 						)
 
 					.grid-cell.grid-cell-is-2
@@ -20,7 +37,8 @@
 								type="checkbox"
 								name="agree"
 								required
-								v-model="agree"
+								v-model="fields.agree.value"
+								@change="checkInput($event.target)"
 							)
 
 							span.check-radio-fake.check-radio-fake-is-checkbox
@@ -28,7 +46,7 @@
 							span.check-radio-label Согласен с #[a(href="" target="_blank") условиями обработки персональных данных]
 
 					.grid-cell.grid-cell-is-3
-						button.button(:disabled="!agree") Подписаться
+						button.button(:disabled="errors.length > 0") Подписаться
 </template>
 
 <script>
@@ -36,8 +54,66 @@
 		name: 'SubscribeForm',
 		data() {
 			return {
-				agree: false
+				fields: {
+					email: {
+						value: '',
+						error: ''
+					},
+					agree: {
+						value: false,
+						error: ''
+					}
+				}
 			};
+		},
+		computed: {
+			errors() {
+				const errors = [];
+
+				Object.values(this.fields).map(field => {
+					if (field.error) errors.push(field.error);
+				});
+
+				return errors;
+			}
+		},
+		watch: {
+			'$store.state.locale': {
+				handler(val) {
+					this.$i18n.locale = val;
+				},
+				immediate: true
+			}
+		},
+		methods: {
+			checkInput(input) {
+				input.checkValidity();
+				this.fields[input.name].error = input.validationMessage;
+			},
+			checkForm() {
+				this.$el.querySelectorAll('input').forEach(input => {
+					this.checkInput(input);
+				});
+			},
+			onSubmit(evt) {
+				evt.preventDefault();
+
+				if (this.errors.length === 0) {
+					// Simulate ajax
+
+					const formData = new FormData(evt.target);
+
+					setTimeout(() => {
+
+					});
+				}
+			}
+		},
+		// created() {
+		// 	this.$i18n.locale = this.$store.state.locale;
+		// },
+		mounted() {
+			this.checkForm();
 		}
 	};
 </script>
@@ -189,7 +265,7 @@
 			white-space: nowrap;
 			user-select: none;
 			box-sizing: border-box;
-			padding: 10px;
+			padding: 10px 0;
 			max-width: 100%;
 			cursor: pointer;
 			background: linear-gradient(to right, currentColor, currentColor) no-repeat 0 100% / 100% 1px;
