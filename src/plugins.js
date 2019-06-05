@@ -7,9 +7,6 @@ import VueStickyDirective from '@renatodeleao/vue-sticky-directive';
 import VueDragscroll from 'vue-dragscroll';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import VueMoment from 'vue-moment';
-import moment from 'moment';
-import 'moment/locale/ru';
 import {VLazyImagePlugin} from 'v-lazy-image';
 
 Vue.use(VueWindowSize);
@@ -24,8 +21,6 @@ Vue.use(Loading, {
 	backgroundColor: 'var(--overlay_background-color)',
 	opacity: 1
 });
-
-Vue.use(VueMoment, {moment});
 
 Vue.use(VLazyImagePlugin);
 

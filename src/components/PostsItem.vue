@@ -184,7 +184,7 @@
 		user-select: none;
 		white-space: nowrap;
 
-		>>> .date {
+		>>> .day {
 			display: block;
 			font-size: range(2.6rem, 2.8rem);
 			font-weight: 700;

@@ -1,11 +1,11 @@
 <template lang="pug">
 	time.base-time(
 		:datetime="datetime"
-		:title="localLocale.format('DD MMMM YYYY HH:mm')"
+		:title="$d(date, 'long')"
 	)
-		span.date {{ formattedArray[0] }}
-		span.month {{ formattedArray[1] }}
-		span.year {{ formattedArray[2] }}
+		span.day {{ $d(date, 'day') }}
+		span.month {{ ' ' + $d(date, 'dayMonth').replace(/\s*\d+\s*/, '') }}
+		span.year {{ ' ' + $d(date, 'year') }}
 </template>
 
 <script>
@@ -18,14 +18,16 @@
 			}
 		},
 		computed: {
-			locale() {
-				return this.$store.state.locale;
-			},
-			localLocale() {
-				return this.$moment(this.datetime).locale(this.locale);
-			},
-			formattedArray() {
-				return this.localLocale.format('DD MMMM YYYY').split(' ');
+			date() {
+				return Date.parse(this.datetime);
+			}
+		},
+		watch: {
+			'$store.state.locale': {
+				handler(val) {
+					this.$i18n.locale = val;
+				},
+				immediate: true
 			}
 		}
 	};
