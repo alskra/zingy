@@ -7,7 +7,7 @@
 			slot(name="img")
 				img.img.img-is-default(
 					is="v-lazy-image"
-					src="upload/zingy.svg"
+					src="upload/zingy-256x256.png"
 					alt=""
 				)
 

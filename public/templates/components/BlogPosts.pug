@@ -59,7 +59,7 @@ mixin BlogPosts()
 				date: '2019-06-01T10:54:14Z',
 				title: 'Вы думаете они будут ждать, пока ваш сайт загрузится? Будет просто крутое что-то совсем. Как не потерять клиентов из-за долгой загрузки',
 				desc: `<p>Как не потерять клиентов из-за долгой загрузки сайтов и тому подобное.</p>`,
-				img: 'upload/audit.jpg',
+				img: '',
 				color: '#ffffff',
 				backgroundColor: '#cc5256',
 				isLarge: true
@@ -90,7 +90,7 @@ mixin BlogPosts()
 				title: 'Подписка на статьи ZINGY как не потерять клиентов из-за того, что 4 строка в названи заголовка',
 				desc: `<p>Как не потерять клиентов из-за долгой загрузки сайтов и тому подобное что-то рыбатекстное побольше рыбное такое чтоб было чем заполнить.
 				Что-то рыбатекстное побольше рыбное такое чтоб было чем заполнить</p>`,
-				img: '',
+				img: 'upload/audit.jpg',
 				color: '#ffffff',
 				backgroundColor: 'transparent',
 				isLarge: false
@@ -132,10 +132,10 @@ mixin BlogPosts()
 								img.img(
 									slot="img"
 									is="v-lazy-image"
-									src=post.img || 'upload/zingy.svg'
+									src=post.img || 'upload/zingy-256x256.png'
 									alt=post.title
 									class={'img-is-default': !post.img}
-									itemprop="image"
+
 								)
 
 								time.date(
