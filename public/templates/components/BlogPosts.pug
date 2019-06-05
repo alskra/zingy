@@ -108,10 +108,15 @@ mixin BlogPosts()
 		];
 
 	template
-		.blog-posts&attributes(attributes)
+		.blog-posts(itemscope itemtype="http://schema.org/Blog")&attributes(attributes)
+			meta(
+				itemprop="description"
+				content="Блог с полезным контентом для всех, кто интересуется IT"
+			)
+
 			.grid
 				.grid-row
-					each post in posts
+					each post in [posts[0]]
 						.grid-cell(class={'grid-cell-is-large': post.isLarge})
 							article.post(
 								is="posts-item"
@@ -120,28 +125,87 @@ mixin BlogPosts()
 									backgroundColor: '${post.backgroundColor}',
 									isLarge: ${post.isLarge}
 								}`
+								itemprop="blogPost"
+								itemscope
+								itemtype="http://schema.org/BlogPosting"
 							)
 								img.img(
 									slot="img"
 									is="v-lazy-image"
 									src=post.img || 'upload/zingy.svg'
 									alt=post.title
-									class={'img-is-zingy': !post.img}
+									class={'img-is-default': !post.img}
+									itemprop="image"
 								)
 
 								time.date(
 									slot="date"
 									is="base-time"
 									datetime=post.date
+									itemprop="dateModified"
 								)
 
-								p(slot="title")=post.title
-								div(slot="desc")!=post.desc
+								p(
+									slot="title"
+									itemprop="headline"
+								)=post.title
+
+								div(
+									slot="desc"
+									itemprop="description"
+								)!=post.desc
 
 								a.link(
 									slot="link"
 									href=post.url
 									title=post.title
+									itemprop="url"
+								)
+
+								// hidden microdata
+								span(
+									itemprop="publisher"
+									itemscope
+									itemtype="https://schema.org/Organization"
+								)
+									span(
+										itemprop="logo"
+										itemscope
+										itemtype="https://schema.org/ImageObject"
+									)
+										link(
+											itemprop="url contentUrl"
+											href="upload/zingy-256x256.png"
+										)
+
+									meta(
+										itemprop="name"
+										content="Zingy Projects"
+									)
+
+									meta(
+										itemprop="address"
+										content="ул. Улофа Пальме, 3, Москва, Московская область, Россия, 119590"
+									)
+
+									meta(
+										itemprop="telephone"
+										content="+79854575817"
+									)
+
+								meta(
+									itemprop="author"
+									content="Zingy Projects"
+								)
+
+								link(
+									itemprop="mainEntityOfPage"
+									href=post.url
+								)
+
+								time(
+									datetime=post.date
+									itemprop="datePublished"
 								)
 
 			nav.pagination(is="app-pagination")

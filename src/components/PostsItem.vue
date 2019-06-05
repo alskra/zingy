@@ -5,7 +5,7 @@
 	)
 		.img-box
 			slot(name="img")
-				img.img.img-is-zingy(
+				img.img.img-is-default(
 					is="v-lazy-image"
 					src="upload/zingy.svg"
 					alt=""
@@ -35,6 +35,7 @@
 					:max-lines="post.isLarge && windowWidth >= 768 ? 2 : 4"
 					autoresize
 					:style="{color: post.color}"
+					itemprop="headline"
 				) {{ title }}
 
 			.main
@@ -43,6 +44,7 @@
 					:max-lines="post.isLarge && windowWidth >= 768 ? 3 : 5"
 					autoresize
 					:style="{color: post.color}"
+					itemprop="description"
 				) {{ desc }}
 
 				slot(name="link")
@@ -50,6 +52,8 @@
 						href=""
 						title=""
 					)
+
+		slot
 </template>
 
 <script>
@@ -101,7 +105,7 @@
 		}
 
 		&:hover {
-			box-shadow: 0 1px 5px rgba(#000, 0.7);
+			box-shadow: 0 1px 5px rgba(#000, 0.5);
 			transform: translateY(-5px);
 		}
 	}
@@ -152,7 +156,7 @@
 		}
 	}
 
-	.v-lazy-image.img-is-zingy {
+	.v-lazy-image.img-is-default {
 		object-fit: contain;
 		background-color: var(--color-zingy);
 	}
