@@ -116,7 +116,7 @@ mixin BlogPosts()
 
 			.grid
 				.grid-row
-					each post in [posts[0]]
+					each post in posts
 						.grid-cell(class={'grid-cell-is-large': post.isLarge})
 							article.post(
 								is="posts-item"

@@ -20,6 +20,7 @@
 								type="checkbox"
 								name="agree"
 								required
+								v-model="agree"
 							)
 
 							span.check-radio-fake.check-radio-fake-is-checkbox
@@ -27,12 +28,17 @@
 							span.check-radio-label Согласен с #[a(href="" target="_blank") условиями обработки персональных данных]
 
 					.grid-cell.grid-cell-is-3
-						button.button Подписаться
+						button.button(:disabled="!agree") Подписаться
 </template>
 
 <script>
 	export default {
-		name: 'SubscribeForm'
+		name: 'SubscribeForm',
+		data() {
+			return {
+				agree: false
+			};
+		}
 	};
 </script>
 
@@ -133,6 +139,7 @@
 		height: 13px;
 		flex-shrink: 0;
 		background-color: #ffffff;
+		cursor: pointer;
 
 		&::before {
 			content: '';
@@ -171,7 +178,7 @@
 		& {
 			display: inline-block;
 			vertical-align: top;
-			color: #c5dcd6;
+			color: white;
 			font-family: var(--font-family);
 			font-size: range(1.6rem, 1.6rem);
 			font-weight: 500;
@@ -182,10 +189,11 @@
 			white-space: nowrap;
 			user-select: none;
 			box-sizing: border-box;
-			padding: 9px 10px;
+			padding: 10px;
 			max-width: 100%;
-			border: 1px solid currentColor;
-			transition: color 0.2s;
+			background: linear-gradient(to right, currentColor, currentColor) no-repeat 0 100% / 100% 1px;
+			transition: color, background-size;
+			transition-duration: 0.2s;
 		}
 
 		&:not(:disabled, .is-disabled) {
@@ -194,6 +202,11 @@
 
 		&:hover:not(:disabled) {
 			color: white;
+		}
+
+		&:matches(:disabled, .is-disabled) {
+			color: #c5dcd6;
+			background-size: 0 1px;
 		}
 	}
 
