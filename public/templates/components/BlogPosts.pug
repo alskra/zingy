@@ -115,21 +115,31 @@ mixin BlogPosts()
 						.grid-cell(class={'grid-cell-is-large': post.isLarge})
 							article.post(
 								is="posts-item"
-								:post!=`{
-									url: '${post.url}',
-									date: '${post.date}',
-									title: '${post.title}',
-									desc: \`${post.desc}\`,
-									img: '${post.img}',
+								:post=`{
 									color: '${post.color}',
 									backgroundColor: '${post.backgroundColor}',
 									isLarge: ${post.isLarge}
 								}`
 							)
-								p=post.title
-								!=post.desc
+								img.img(
+									slot="img"
+									is="v-lazy-image"
+									src=post.img || 'upload/zingy.svg'
+									alt=post.title
+									class={'img-is-zingy': !post.img}
+								)
 
-								a(
+								time.date(
+									slot="date"
+									is="base-time"
+									datetime=post.date
+								)
+
+								p(slot="title")=post.title
+								div(slot="desc")!=post.desc
+
+								a.link(
+									slot="link"
 									href=post.url
 									title=post.title
 								)

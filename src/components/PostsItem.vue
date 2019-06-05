@@ -1,48 +1,60 @@
 <template lang="pug">
-	article.posts-item(:class="{'posts-item-is-large': post.isLarge}")
-		a.body(
-			:href="post.url"
-			:title="post.title"
-			:style="{backgroundColor: post.backgroundColor}"
-		)
-			.img-box
-				v-lazy-image.img(
-					:src="post.img || 'upload/zingy.svg'"
-					:alt="post.title"
-					:class="{'img-is-zingy': !post.img}"
+	article.posts-item(
+		:class="{'posts-item-is-large': post.isLarge}"
+		:style="{backgroundColor: post.backgroundColor}"
+	)
+		.img-box
+			slot(name="img")
+				img.img.img-is-zingy(
+					is="v-lazy-image"
+					src="upload/zingy.svg"
+					alt=""
 				)
 
-				base-time.public-date(
-					:datetime="post.date"
-					:locale="locale"
-					v-if="!post.isLarge || windowWidth < 768"
-				)
-
-			.body-inner
-				header.header
-					base-time.public-date(
-						:datetime="post.date"
-						:locale="locale"
-						v-if="post.isLarge && windowWidth >= 768"
-						:style="{color: post.color}"
+			.date-box(v-if="!post.isLarge || windowWidth < 768")
+				slot(name="date")
+					time.date(
+						is="base-time"
+						datetime="2019-01-01"
 					)
 
-					v-clamp.title(
-						:max-lines="post.isLarge && windowWidth >= 768 ? 2 : 4"
-						autoresize
-						:style="{color: post.color}"
-					) {{ post.title }}
+		.body
+			header.header
+				.date-box(
+					v-if="post.isLarge && windowWidth >= 768"
+					:style="{color: post.color}"
+				)
+					slot(name="date")
+						time.date(
+							is="base-time"
+							datetime="2019-01-01"
+						)
 
-				.main
-					v-clamp.desc(
-						:max-lines="post.isLarge && windowWidth >= 768 ? 3 : 5"
-						autoresize
-						:style="{color: post.color}"
-					) {{ post.desc | striphtml }}
+				v-clamp.title(
+					tag="p"
+					:max-lines="post.isLarge && windowWidth >= 768 ? 2 : 4"
+					autoresize
+					:style="{color: post.color}"
+				) {{ title }}
+
+			.main
+				v-clamp.desc(
+					tag="p"
+					:max-lines="post.isLarge && windowWidth >= 768 ? 3 : 5"
+					autoresize
+					:style="{color: post.color}"
+				) {{ desc }}
+
+				slot(name="link")
+					a.link(
+						href=""
+						title=""
+					)
 </template>
 
 <script>
 	import VClamp from 'vue-clamp';
+	import {getVNodesTextContent} from '../helpers';
 
 	export default {
 		name: 'PostsItem',
@@ -56,8 +68,19 @@
 			}
 		},
 		computed: {
-			locale() {
-				return document.documentElement.getAttribute('lang');
+			title() {
+				if (this.$scopedSlots.title) {
+					return getVNodesTextContent(this.$scopedSlots.title());
+				}
+
+				return '';
+			},
+			desc() {
+				if (this.$scopedSlots.desc) {
+					return getVNodesTextContent(this.$scopedSlots.desc());
+				}
+
+				return '';
 			}
 		}
 	};
@@ -70,27 +93,23 @@
 		& {
 			display: flex;
 			flex-flow: column;
-			/*max-width: 300px;*/
+			background-color: var(--posts-item_background-color, #ffffff);
+			position: relative;
+			transition: box-shadow, transform;
+			transition-duration: 0.2s;
+			transition-delay: 0.1s;
+		}
 
-			/*@media (width < 560px) {*/
-			/*	max-width: 100%;*/
-			/*}*/
+		&:hover {
+			box-shadow: 0 1px 5px rgba(#000, 0.7);
+			transform: translateY(-5px);
 		}
 	}
 
-	.body {
-		color: var(--color);
-		text-decoration: none;
-		display: flex;
-		flex-flow: column;
-		height: 100%;
-		background-color: var(--posts-item_background-color, #ffffff);
-	}
-
 	.img-box {
+		flex-shrink: 0;
 		position: relative;
 		overflow: hidden;
-		flex-shrink: 0;
 
 		&::before {
 			content: '';
@@ -115,20 +134,17 @@
 		}
 	}
 
-	.img {
+	.v-lazy-image.img {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-
-		&.v-lazy-image {
-			opacity: 0;
-			filter: blur(10px);
-			transition: filter 0.7s;
-			will-change: filter;
-		}
+		opacity: 0;
+		filter: blur(10px);
+		transition: filter 0.7s;
+		will-change: filter;
 
 		&.v-lazy-image-loaded {
 			opacity: 1;
@@ -136,13 +152,22 @@
 		}
 	}
 
-	.img-is-zingy {
+	.v-lazy-image.img-is-zingy {
 		object-fit: contain;
 		background-color: var(--color-zingy);
 	}
 
-	.public-date {
+	.date-box {
+		position: absolute;
+		z-index: 1;
+		bottom: range(10px, 20px);
+		left: range(10px, 20px);
 		color: #ffffff;
+	}
+
+	.base-time.date {
+		display: block;
+		color: inherit;
 		font-family: var(--font-family);
 		font-size: range(1.2rem, 1.2rem);
 		font-weight: 500;
@@ -153,12 +178,7 @@
 			0 1px rgba(#000, 0.5),
 			-1px 0 rgba(#000, 0.5);
 		user-select: none;
-		cursor: default;
 		white-space: nowrap;
-		position: absolute;
-		z-index: 1;
-		bottom: range(10px, 20px);
-		left: range(10px, 20px);
 
 		>>> .date {
 			display: block;
@@ -172,9 +192,11 @@
 		}
 	}
 
-	.body-inner {
+	.body {
 		flex-grow: 1;
 		padding: range(15px, 30px) range(10px, 20px);
+		display: flex;
+		flex-flow: column;
 	}
 
 	.header {
@@ -187,11 +209,7 @@
 		font-size: range(1.8rem, 2rem);
 		font-weight: 500;
 		line-height: 1.25;
-
-		* {
-			display: inline;
-			font: inherit;
-		}
+		margin: 0;
 	}
 
 	.desc {
@@ -200,17 +218,19 @@
 		font-size: range(1.4rem, 1.6rem);
 		font-weight: 400;
 		line-height: 1.5;
+		margin: 0;
+	}
 
-		* {
-			display: inline;
-			font: inherit;
-		}
+	.link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 
 	.posts-item-is-large {
 		@media (width >= 768px) {
-			/*max-width: calc(300px * 2 + var(--grid-cell_padding) * 2);*/
-
 			.img-box {
 				&::before {
 					padding-top: percentage(330 / 605);
@@ -222,12 +242,17 @@
 				align-items: flex-start;
 			}
 
-			.public-date {
-				color: var(--posts-item_color, var(--color));
-				text-shadow: none;
-				position: static;
+			.date-box {
+				position: relative;
+				bottom: auto;
+				left: auto;
 				flex-shrink: 0;
 				margin-right: range(10px, 20px);
+				color: var(--posts-item_color, var(--color));
+			}
+
+			.base-time.date {
+				text-shadow: none;
 			}
 
 			.title {

@@ -18,7 +18,7 @@
 			},
 			locale: {
 				type: String,
-				required: true
+				default: document.documentElement.getAttribute('lang')
 			}
 		},
 		computed: {
