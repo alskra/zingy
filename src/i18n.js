@@ -5,10 +5,10 @@ import store from './store';
 Vue.use(VueI18n);
 
 const messages = {
-	ru: {
+	en: {
 
 	},
-	en: {
+	ru: {
 
 	}
 };

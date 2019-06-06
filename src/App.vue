@@ -7,6 +7,13 @@
 		components: {
 			AppPage,
 			VueSticky
+		},
+		watch: {
+			'$store.state.locale': {
+				handler(val) {
+					this.$i18n.locale = val;
+				}
+			}
 		}
 	}
 </script>

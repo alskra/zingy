@@ -1,12 +1,20 @@
 <i18n>
 	{
-		"ru": {
-			"title": "Подписка на блог",
-			"subscribe": "Подписаться"
-		},
 		"en": {
 			"title": "Subscribe to blog",
-			"subscribe": "Subscribe"
+			"subscribe": "Subscribe",
+			"agree": "I agree with <a href='' target='_blank'>the terms of personal data processing</a>",
+			"placeholder": {
+				"email": "Enter your email"
+			}
+		},
+		"ru": {
+			"title": "Подписка на блог",
+			"subscribe": "Подписаться",
+			"agree": "Согласен с <a href='' target='_blank'>условиями обработки персональных данных</a>",
+			"placeholder": {
+				"email": "Укажите свой email"
+			}
 		}
 	}
 </i18n>
@@ -27,11 +35,12 @@
 						:key="field.id"
 						:class="'grid-cell-is-' + (index + 1)"
 					)
-						template(v-if="field.attrs.type.match(/text|email/)")
+						template(v-if="field.attrs.type.match(/text|email|tel|url/)")
 							input.field(
 								v-model="field.value"
 								@input="onFieldInput(field)"
 								v-bind="field.attrs"
+								:placeholder="$t(`placeholder.${field.attrs.type}`)"
 								ref="field"
 								:class="{'is-validate': field.isValidate}"
 							)
@@ -47,7 +56,7 @@
 								)
 
 								span.check-radio-fake
-								span.check-radio-label Согласен с #[a(href="" target="_blank") условиями обработки персональных данных]
+								span.check-radio-label(v-html="$t('agree')")
 
 					.grid-cell.grid-cell-is-bottom
 						button.button(:class="{'is-disabled': isInvalid}") {{ $t('subscribe') }}
@@ -66,7 +75,6 @@
 						attrs: {
 							name: 'email',
 							type: 'email',
-							placeholder: 'Укажите свой email',
 							required: true,
 							autocomplete: 'on'
 						},
@@ -90,14 +98,6 @@
 				isLoading: false,
 				modal: null
 			};
-		},
-		watch: {
-			'$store.state.locale': {
-				handler(val) {
-					this.$i18n.locale = val;
-				},
-				immediate: true
-			}
 		},
 		methods: {
 			checkForm() {
@@ -125,10 +125,24 @@
 							isLoading: vm.isLoading
 						}
 					},
+					i18n: {
+						messages: {
+							en: {
+								error: 'An error has occurred!',
+								success: 'Thank you for subscribing!',
+								successMsg: 'You will receive our newsletter to this email address: <strong>{email}</strong>'
+							},
+							ru: {
+								error: 'Произошла ошибка!',
+								success: 'Благодарим за подписку!',
+								successMsg: 'Вы будете получать нашу рассылку на этот адрес электронной почты: <strong>{email}</strong>'
+							}
+						}
+					},
 					template: `
 						<app-modal-body class="modal-body" name="subscribe-form-modal" classes="is-small" :loading="isLoading">
-							<template v-slot:title>{{ error ? 'Произошла ошибка!' : 'Благодарим за подписку!' }}</template>
-							<base-content class="content" v-html="error || response"></base-content>
+							<template v-slot:title>{{ error ? $t('error') : $t('success') }}</template>
+							<base-content class="content" v-html="error || $t('successMsg', {email: response})"></base-content>
 						</app-modal-body>
 					`,
 					created() {
@@ -146,8 +160,9 @@
 				const formData = new FormData(evt.target);
 
 				// Simulate ajax
+				// В случае успеха ожидаем получить email
 				setTimeout(() => {
-					this.response = `Вы будете получать нашу рассылку на этот адрес электронной почты: <strong>${formData.get('email')}</strong>`;
+					this.response = formData.get('email');
 					this.isLoading = false;
 					vm.modal.response = this.response;
 					vm.modal.isLoading = this.isLoading;
@@ -250,6 +265,7 @@
 		height: 13px;
 		clip: rect(0, 0, 0, 0);
 		opacity: 0;
+		pointer-events: none;
 
 		&:not(:checked) {
 			& + .check-radio-fake {
@@ -307,7 +323,7 @@
 		line-height: 1.25;
 		margin-left: 10px;
 
-		a {
+		>>> a {
 			color: inherit;
 			font-weight: 500;
 			text-decoration: underline;

@@ -21,14 +21,6 @@
 			date() {
 				return Date.parse(this.datetime);
 			}
-		},
-		watch: {
-			'$store.state.locale': {
-				handler(val) {
-					this.$i18n.locale = val;
-				},
-				immediate: true
-			}
 		}
 	};
 </script>
