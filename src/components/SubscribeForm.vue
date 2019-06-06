@@ -21,7 +21,7 @@
 
 <template lang="pug">
 	form.subscribe-form(
-		action=""
+		action="/"
 		@submit.prevent="onSubmit"
 	)
 		.body
@@ -64,6 +64,7 @@
 
 <script>
 	import AppModalBody from './AppModalBody';
+	import axios from 'axios';
 
 	export default {
 		name: 'SubscribeForm',
@@ -92,11 +93,7 @@
 						isValidate: false
 					}
 				],
-				isInvalid: true,
-				response: null,
-				error: null,
-				isLoading: false,
-				modal: null
+				isInvalid: true
 			};
 		},
 		methods: {
@@ -108,10 +105,6 @@
 				this.checkForm();
 			},
 			onSubmit(evt) {
-				this.response = null;
-				this.error = null;
-				this.isLoading = true;
-
 				const vm = this;
 
 				this.$showModal({
@@ -120,9 +113,9 @@
 					},
 					data() {
 						return {
-							response: vm.response,
-							error: vm.error,
-							isLoading: vm.isLoading
+							response: null,
+							error: null,
+							isLoading: true
 						}
 					},
 					i18n: {
@@ -146,34 +139,32 @@
 						</app-modal-body>
 					`,
 					created() {
-						vm.modal = this;
-					},
-					destroyed() {
-						vm.modal = null;
+						// Fetch data
+						const formData = new FormData(evt.target);
+
+						axios.post(evt.target.action, formData)
+							.then(response => {
+								// В случае успеха ожидаем получить email
+								this.response = response || formData.get('email');
+							})
+							.catch(error => {
+								this.error = error;
+							})
+							.finally(() => {
+								this.isLoading = false;
+
+								vm.fields.forEach(field => {
+									field.value = null;
+									field.isValidate = false;
+								});
+
+								vm.isInvalid = true;
+							});
 					}
 				}, null, {
 					name: 'subscribe-form-modal',
 					classes: 'is-small'
 				});
-
-				// Fetch data
-				const formData = new FormData(evt.target);
-
-				// Simulate ajax
-				// В случае успеха ожидаем получить email
-				setTimeout(() => {
-					this.response = formData.get('email');
-					this.isLoading = false;
-					vm.modal.response = this.response;
-					vm.modal.isLoading = this.isLoading;
-
-					this.fields.forEach(field => {
-						field.value = null;
-						field.isValidate = false;
-					});
-
-					this.isInvalid = true;
-				}, 1000);
 			}
 		},
 		mounted() {
