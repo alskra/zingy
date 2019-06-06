@@ -1,28 +1,15 @@
 <template lang="pug">
-	.base-field
-		input(
-			:class="['input', {'is-invalid': error}]"
-			v-bind="$attrs"
-			:value="value"
-			@input="$emit('input', $event.target.value)"
-		)
-
-		transition
-			.error(v-if="error")
-				slot(name="error")
-					| {{ error }}
+	input.base-field(
+		:value="value"
+		@input="$emit('input', $event.target.value)"
+	)
 </template>
 
 <script>
 	export default {
 		name: 'BaseField',
-		inheritAttrs: false,
 		props: {
 			value: {
-				type: String,
-				default: ''
-			},
-			error: {
 				type: String,
 				default: null
 			}
@@ -37,24 +24,9 @@
 		& {
 			display: inline-flex;
 			vertical-align: top;
-			flex-flow: column;
-			max-width: 100%;
-			position: relative;
-		}
-
-		&.is-full-width {
-			width: 100%;
-		}
-	}
-
-	.input {
-		all: initial;
-
-		& {
-			display: flex;
-			align-items: center;
 			box-sizing: border-box;
 			padding: 5px range(15px, 20px);
+			max-width: 100%;
 			height: range(44px, 56px);
 			border: 1px solid currentColor;
 			color: var(--color);
@@ -71,7 +43,7 @@
 		}
 
 		&::placeholder {
-			color: var(--color);
+			color: #575757;
 			font-weight: 300;
 		}
 
@@ -85,32 +57,12 @@
 			opacity: var(--disabled_opacity);
 		}
 
-		&.is-invalid {
+		&:invalid.is-validate {
 			color: var(--color-error);
-
-			&::placeholder {
-				color: var(--color-error);
-			}
-		}
-	}
-
-	.error {
-		color: white;
-		font-family: var(--font-family);
-		font-size: 1.2rem;
-		line-height: 1.25;
-		background: var(--color-error);
-		padding: 3px 10px;
-		/*margin-top: 4px;*/
-
-		&.v-enter-active,
-		&.v-leave-active {
-			transition: opacity 0.2s;
 		}
 
-		&.v-enter,
-		&.v-leave-to {
-			opacity: 0;
+		&.is-full-width {
+			width: 100%;
 		}
 	}
 </style>

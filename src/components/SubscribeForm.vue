@@ -38,7 +38,8 @@
 						template(v-if="field.attrs.type.match(/text|email|tel|url/)")
 							input.field(
 								v-model="field.value"
-								@input="onFieldInput(field)"
+								@input="checkForm"
+								@invalid="field.isValidate = true"
 								v-bind="field.attrs"
 								:placeholder="$t(`placeholder.${field.attrs.type}`)"
 								ref="field"
@@ -49,7 +50,8 @@
 							label.check-radio
 								input.check-radio-input(
 									v-model="field.value"
-									@input="onFieldInput(field)"
+									@input="checkForm"
+									@invalid="field.isValidate = true"
 									v-bind="field.attrs"
 									ref="field"
 									:class="{'is-validate': field.isValidate}"
@@ -63,8 +65,8 @@
 </template>
 
 <script>
-	import AppModalBody from './AppModalBody';
 	import axios from 'axios';
+	import AppModalBody from './AppModalBody';
 
 	export default {
 		name: 'SubscribeForm',
@@ -99,10 +101,6 @@
 		methods: {
 			checkForm() {
 				this.isInvalid = !!this.$refs.field.find(field => !field.validity.valid);
-			},
-			onFieldInput(fieldData) {
-				fieldData.isValidate = true;
-				this.checkForm();
 			},
 			onSubmit(evt) {
 				const vm = this;

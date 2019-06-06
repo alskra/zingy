@@ -48,7 +48,7 @@
 			outline-offset: 1px;
 		}
 
-		&:disabled {
+		&:matches(:disabled, .is-disabled) {
 			cursor: default;
 			opacity: var(--disabled_opacity);
 		}

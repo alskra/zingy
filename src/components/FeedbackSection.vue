@@ -1,71 +1,10 @@
 <script>
-	import Inputmask from 'inputmask';
-	// import axios from 'axios';
-	import AppModal from './AppModal';
+	import FeedbackForm from './FeedbackForm';
 
 	export default {
 		name: 'FeedbackSection',
 		components: {
-			AppModal
-		},
-		data() {
-			return {
-				tel: {
-					value: null,
-					error: null
-				},
-				url: {
-					value: null,
-					error: null
-				},
-				response: null,
-				error: null,
-				isLoading: false
-			};
-		},
-		computed: {
-			hasErrors() {
-				return this.tel.error;
-			}
-		},
-		methods: {
-			checkTel(tel) {
-				if (!tel.value) {
-					this.tel.error = 'required';
-				} else if (tel.value.length < 9) {
-					this.tel.error = 'minLength';
-				} else {
-					this.tel.error = null;
-				}
-			},
-			onFormSubmit(evt) {
-				evt.preventDefault();
-
-				this.checkTel(this.tel);
-
-				if (!this.hasErrors) {
-					this.isLoading = true;
-
-					this.response = null;
-					this.error = null;
-
-					this.$modal.show('feedback-section-response');
-
-					const formData = new FormData(evt.target);
-
-					// Simulate AJAX
-					setTimeout(() => {
-						this.isLoading = false;
-						this.response = `Телефон: ${formData.get('tel')}, Сайт: ${formData.get('url') || '-'}`;
-
-						this.tel.value = null;
-						this.url.value = null;
-					}, 1000);
-				}
-			}
-		},
-		mounted() {
-			Inputmask({regex: '\\+\\d*'}).mask(this.$el.querySelectorAll('input[type="tel"]'));
+			FeedbackForm
 		}
 	};
 </script>
@@ -157,27 +96,5 @@
 
 	}
 
-	.form-grid {
-		display: flex;
-		flex-wrap: wrap;
-		margin: range(-5px, -10px) range(-10px, -20px);
-	}
 
-	.form-grid-cell {
-		min-width: 0;
-		margin: range(5px, 10px) range(10px, 20px);
-		flex: 1 1 200px;
-	}
-
-	.form-grid-cell-has-field {
-		flex-basis: 300px;
-	}
-
-	.base-field.form-field {
-		width: 100%;
-	}
-
-	.base-button.submit-button {
-		width: 100%;
-	}
 </style>

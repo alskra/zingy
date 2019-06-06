@@ -10,46 +10,47 @@ mixin FeedbackSection()
 						.content.content-is-description Оставьте заявку на консультацию
 
 					.grid-cell
-						form.form(
-							action=""
-							novalidate
-							@submit="onFormSubmit"
-						)
-							.form-grid
-								.form-grid-cell.form-grid-cell-has-field
-									base-field.form-field(
-										type="tel"
-										name="tel"
-										placeholder="Телефон"
-										v-model="tel.value"
-										:error="tel.error"
-										:disabled="isLoading"
-										@input="checkTel(tel)"
-									)
-										template(v-slot:error)
-											span(v-if="tel.error === 'required'") Это поле обязательное!
-											span(v-else-if="tel.error === 'minLength'") Номер должен содержать не менее 8 цифр
-
-								.form-grid-cell.form-grid-cell-has-field
-									base-field.form-field(
-										type="url"
-										name="url"
-										placeholder="Ссылка на сайт"
-										v-model="url.value"
-										:error="url.error"
-										:disabled="isLoading"
-									)
-
-								.form-grid-cell
-									base-button.submit-button(:disabled="isLoading") Отправить
-
-							.content.content-is-info *&nbsp;Отправляя заявку, вы соглашаетесь с #[a(href="" target="_blank") условиями передачи информации].
-
-							app-modal.modal(
-								name="feedback-section-response"
-								classes="is-small"
-								:loading="isLoading"
-							)
-								template(v-slot:title) {{ error ? 'Произошла ошибка!' : 'Ваша заявка отправлена, мы свяжемся с Вами в ближайшее время!' }}
-
-								base-content.modal-content.content(v-html="error || response")
+						feedback-form.form
+						//form.form(
+						//	action=""
+						//	novalidate
+						//	@submit="onFormSubmit"
+						//)
+						//	.form-grid
+						//		.form-grid-cell.form-grid-cell-has-field
+						//			base-field.form-field(
+						//				type="tel"
+						//				name="tel"
+						//				placeholder="Телефон"
+						//				v-model="tel.value"
+						//				:error="tel.error"
+						//				:disabled="isLoading"
+						//				@input="checkTel(tel)"
+						//			)
+						//				template(v-slot:error)
+						//					span(v-if="tel.error === 'required'") Это поле обязательное!
+						//					span(v-else-if="tel.error === 'minLength'") Номер должен содержать не менее 8 цифр
+						//
+						//		.form-grid-cell.form-grid-cell-has-field
+						//			base-field.form-field(
+						//				type="url"
+						//				name="url"
+						//				placeholder="Ссылка на сайт"
+						//				v-model="url.value"
+						//				:error="url.error"
+						//				:disabled="isLoading"
+						//			)
+						//
+						//		.form-grid-cell
+						//			base-button.submit-button(:disabled="isLoading") Отправить
+						//
+						//	.content.content-is-info *&nbsp;Отправляя заявку, вы соглашаетесь с #[a(href="" target="_blank") условиями передачи информации].
+						//
+						//	app-modal.modal(
+						//		name="feedback-section-response"
+						//		classes="is-small"
+						//		:loading="isLoading"
+						//	)
+						//		template(v-slot:title) {{ error ? 'Произошла ошибка!' : 'Ваша заявка отправлена, мы свяжемся с Вами в ближайшее время!' }}
+						//
+						//		base-content.modal-content.content(v-html="error || response")
