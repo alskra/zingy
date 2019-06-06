@@ -52,12 +52,6 @@
 				type: String,
 				default: 'nice-modal-fade'
 			}
-		},
-		created() {
-			this.$modal[this.name] = this;
-		},
-		destroyed() {
-			delete this.$modal[this.name];
 		}
 	};
 </script>

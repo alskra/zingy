@@ -11,11 +11,11 @@
 		data() {
 			return {
 				tel: {
-					value: '',
+					value: null,
 					error: null
 				},
 				url: {
-					value: '',
+					value: null,
 					error: null
 				},
 				response: null,
@@ -49,7 +49,7 @@
 					this.response = null;
 					this.error = null;
 
-					this.$modal.show('feedback-response');
+					this.$modal.show('feedback-section-response');
 
 					const formData = new FormData(evt.target);
 
@@ -57,6 +57,9 @@
 					setTimeout(() => {
 						this.isLoading = false;
 						this.response = `Телефон: ${formData.get('tel')}, Сайт: ${formData.get('url') || '-'}`;
+
+						this.tel.value = null;
+						this.url.value = null;
 					}, 1000);
 				}
 			}

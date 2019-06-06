@@ -43,8 +43,10 @@ Vue.prototype.$showModal = (component, props, options, events) => {
 };
 
 Vue.use(checkView);
+
 window.ResizeSensor = ResizeSensor;
 Vue.use(VueStickyDirective);
+
 Vue.use(VueDragscroll);
 
 Vue.use(Loading, {

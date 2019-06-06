@@ -45,9 +45,11 @@
 		methods: {
 			beforeOpen() {
 				document.documentElement.classList.add('v--modal-block-scroll');
+				document.body.classList.add('v--modal-block-scroll');
 			},
 			closed() {
 				document.documentElement.classList.remove('v--modal-block-scroll');
+				document.body.classList.remove('v--modal-block-scroll');
 			}
 		}
 	};

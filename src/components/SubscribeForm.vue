@@ -1,10 +1,12 @@
 <i18n>
 	{
 		"ru": {
-			"title": "Подписка на блог"
+			"title": "Подписка на блог",
+			"subscribe": "Подписаться"
 		},
 		"en": {
-			"title": "Subscribe to blog"
+			"title": "Subscribe to blog",
+			"subscribe": "Subscribe"
 		}
 	}
 </i18n>
@@ -48,7 +50,7 @@
 								span.check-radio-label Согласен с #[a(href="" target="_blank") условиями обработки персональных данных]
 
 					.grid-cell.grid-cell-is-bottom
-						button.button(:class="{'is-disabled': isInvalid}") Подписаться
+						button.button(:class="{'is-disabled': isInvalid}") {{ $t('subscribe') }}
 </template>
 
 <script>
@@ -66,7 +68,7 @@
 							type: 'email',
 							placeholder: 'Укажите свой email',
 							required: true,
-							autocomplete: 'off'
+							autocomplete: 'on'
 						},
 						value: null,
 						isValidate: false
@@ -137,7 +139,7 @@
 					}
 				}, null, {
 					name: 'subscribe-form-modal',
-					classes: ['is-small']
+					classes: 'is-small'
 				});
 
 				// Fetch data
