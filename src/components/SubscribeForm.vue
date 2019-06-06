@@ -81,7 +81,7 @@
 							required: true,
 							autocomplete: 'on'
 						},
-						value: null,
+						value: '',
 						isValidate: false
 					},
 					{
@@ -91,7 +91,7 @@
 							type: 'checkbox',
 							required: true
 						},
-						value: null,
+						value: '',
 						isValidate: false
 					}
 				],
@@ -150,7 +150,7 @@
 								this.isLoading = false;
 
 								vm.fields.forEach(field => {
-									field.value = null;
+									field.value = '';
 									field.isValidate = false;
 								});
 

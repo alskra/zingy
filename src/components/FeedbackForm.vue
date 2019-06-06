@@ -31,10 +31,11 @@
 					v-bind="field.attrs"
 					:placeholder="$t(`placeholder.${field.attrs.type}`)"
 					:class="{'is-validate': field.isValidate}"
-					ref="field"
 					@invalid.native="field.isValidate = true"
-					v-imask="field.maskOptions"
 					v-model="field.value"
+					v-imask="field.maskOptions"
+					@accept.native="field.maskOptions ? field.unmaskedValue = $event.detail.unmaskedValue : null"
+					ref="field"
 				)
 
 			.grid-cell
@@ -63,30 +64,42 @@
 							minlength: 8,
 							autocomplete: 'off'
 						},
-						value: null,
+						value: '',
 						isValidate: false,
 						maskOptions: {
 							mask: [
 								{
-									mask: '+00 {21} 0 000 0000',
+									mask: '{+}0 (000) 000-00-00',
+									startsWith: /^7/,
+									lazy: false,
+									country: 'Russia'
+								},
+								{
+									mask: '{+}0 (000) 000-0000',
+									startsWith: /^1/,
+									lazy: false,
+									country: 'United States'
+								},
+								{
+									mask: '{+}00 00 0000 0000',
+									startsWith: /^44/,
+									lazy: false,
+									country: 'United Kingdom'
+								},
+								{
+									mask: '{+}00 {21} 0 000 0000',
 									startsWith: /^30/,
 									lazy: false,
 									country: 'Greece'
 								},
 								{
-									mask: '+0 000 000-00-00',
-									startsWith: /^[78]/,
-									lazy: false,
-									country: 'Russia'
-								},
-								{
-									mask: '+00-0000-000000',
+									mask: '{+}00-0000-000000',
 									startsWith: /^91/,
 									lazy: false,
 									country: 'India'
 								},
 								{
-									mask: '0000000000000',
+									mask: /^\d+$/,
 									startsWith: /^/,
 									country: 'unknown'
 								}
@@ -97,6 +110,7 @@
 								return dynamicMasked.compiledMasks.find(m => number.match(m.startsWith));
 							}
 						},
+						unmaskedValue: null
 					},
 					{
 						id: 2,
@@ -105,7 +119,7 @@
 							type: 'url',
 							required: false
 						},
-						value: null,
+						value: '',
 						isValidate: false
 					}
 				],
