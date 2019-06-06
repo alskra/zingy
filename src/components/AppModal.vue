@@ -2,16 +2,14 @@
 	modal(
 		:name="name"
 		:classes="['app-modal', classes]"
-		:adaptive="true"
-		height="auto"
 		:scrollable="true"
-		:reset="true"
+		height="auto"
 		:transition="transition"
 		@before-open="beforeOpen"
 		@closed="closed"
 	)
 
-		app-modal-body(v-bind="$props")
+		app-modal-body.modal-body(v-bind="$props")
 			template(v-slot:title)
 				slot(name="title")
 
@@ -56,16 +54,10 @@
 </script>
 
 <style>
-	.v--modal-overlay {
-		.v--modal-box {
-			overflow: visible !important;
-		}
-	}
-
 	.v--modal-background-click {
-		box-sizing: border-box;
 		display: flex;
 		flex-flow: column;
+		box-sizing: border-box;
 		padding: 0 0 scale-down(12px, 0.5) scale-down(12px, 0.5);
 	}
 
@@ -76,17 +68,14 @@
 			top: auto !important;
 			left: auto !important;
 			width: 100% !important;
-			max-width: var(--grid_width);
 			height: auto !important;
+			overflow: visible !important;
 			margin: auto !important;
-		}
-
-		&.is-width-auto {
-			width: auto !important;
+			max-width: var(--grid_width);
 		}
 
 		&.is-small {
-			max-width: 600px !important;
+			max-width: 600px;
 		}
 	}
 </style>

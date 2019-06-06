@@ -19,7 +19,7 @@
 							type="button"
 							@click="$modal.hide(name)"
 						)
-							base-icon(name="close")
+							base-icon.close-button-icon(name="close")
 
 					.main
 						slot
@@ -52,6 +52,12 @@
 				type: String,
 				default: 'nice-modal-fade'
 			}
+		},
+		created() {
+			this.$modal[this.name] = this;
+		},
+		destroyed() {
+			delete this.$modal[this.name];
 		}
 	};
 </script>
@@ -128,7 +134,6 @@
 		>>> * {
 			display: inline;
 			font: inherit;
-			margin: 0;
 		}
 	}
 

@@ -12,8 +12,7 @@
 <template lang="pug">
 	form.subscribe-form(
 		action=""
-		novalidate
-		@submit="onSubmit"
+		@submit.prevent="onSubmit"
 	)
 		.body
 			.header
@@ -21,61 +20,74 @@
 
 			.main
 				.grid
-					.grid-cell.grid-cell-is-1
-						input.field(
-							type="email"
-							name="email"
-							placeholder="Укажите свой email"
-							required
-							v-model="fields.email.value"
-							@input="checkInput($event.target)"
-						)
-
-					.grid-cell.grid-cell-is-2
-						label.check-radio
-							input.check-radio-input(
-								type="checkbox"
-								name="agree"
-								required
-								v-model="fields.agree.value"
-								@change="checkInput($event.target)"
+					.grid-cell(
+						v-for="(field, index) in fields"
+						:key="field.id"
+						:class="'grid-cell-is-' + (index + 1)"
+					)
+						template(v-if="field.attrs.type.match(/text|email/)")
+							input.field(
+								v-model="field.value"
+								@input="onFieldInput(field)"
+								v-bind="field.attrs"
+								ref="field"
+								:class="{'is-validate': field.isValidate}"
 							)
 
-							span.check-radio-fake.check-radio-fake-is-checkbox
+						template(v-else-if="field.attrs.type.match(/checkbox|radio/)")
+							label.check-radio
+								input.check-radio-input(
+									v-model="field.value"
+									@input="onFieldInput(field)"
+									v-bind="field.attrs"
+									ref="field"
+									:class="{'is-validate': field.isValidate}"
+								)
 
-							span.check-radio-label Согласен с #[a(href="" target="_blank") условиями обработки персональных данных]
+								span.check-radio-fake
+								span.check-radio-label Согласен с #[a(href="" target="_blank") условиями обработки персональных данных]
 
-					.grid-cell.grid-cell-is-3
-						button.button(:disabled="errors.length > 0") Подписаться
+					.grid-cell.grid-cell-is-bottom
+						button.button(:class="{'is-disabled': isInvalid}") Подписаться
 </template>
 
 <script>
+	import AppModalBody from './AppModalBody';
+
 	export default {
 		name: 'SubscribeForm',
 		data() {
 			return {
-				fields: {
-					email: {
-						value: '',
-						error: ''
+				fields: [
+					{
+						id: 1,
+						attrs: {
+							name: 'email',
+							type: 'email',
+							placeholder: 'Укажите свой email',
+							required: true,
+							autocomplete: 'off'
+						},
+						value: null,
+						isValidate: false
 					},
-					agree: {
-						value: false,
-						error: ''
+					{
+						id: 2,
+						attrs: {
+							name: 'agree',
+							type: 'checkbox',
+							required: true
+						},
+						value: null,
+						isValidate: false
 					}
-				}
+				],
+				isInvalid: true,
+				response: null,
+				error: null,
+				isLoading: false,
+				modal: null
 			};
-		},
-		computed: {
-			errors() {
-				const errors = [];
-
-				Object.values(this.fields).map(field => {
-					if (field.error) errors.push(field.error);
-				});
-
-				return errors;
-			}
 		},
 		watch: {
 			'$store.state.locale': {
@@ -86,32 +98,67 @@
 			}
 		},
 		methods: {
-			checkInput(input) {
-				input.checkValidity();
-				this.fields[input.name].error = input.validationMessage;
-			},
 			checkForm() {
-				this.$el.querySelectorAll('input').forEach(input => {
-					this.checkInput(input);
-				});
+				this.isInvalid = !!this.$refs.field.find(field => !field.validity.valid);
+			},
+			onFieldInput(fieldData) {
+				fieldData.isValidate = true;
+				this.checkForm();
 			},
 			onSubmit(evt) {
-				evt.preventDefault();
+				this.response = null;
+				this.error = null;
+				this.isLoading = true;
 
-				if (this.errors.length === 0) {
-					// Simulate ajax
+				const vm = this;
 
-					const formData = new FormData(evt.target);
+				this.$showModal({
+					components: {
+						AppModalBody
+					},
+					data() {
+						return {
+							response: vm.response,
+							error: vm.error,
+							isLoading: vm.isLoading
+						}
+					},
+					template: `
+						<app-modal-body class="modal-body" name="subscribe-form-modal" classes="is-small" :loading="isLoading">
+							<template v-slot:title>{{ error ? 'Произошла ошибка!' : 'Благодарим за подписку!' }}</template>
+							<base-content class="content" v-html="error || response"></base-content>
+						</app-modal-body>
+					`,
+					created() {
+						vm.modal = this;
+					},
+					destroyed() {
+						vm.modal = null;
+					}
+				}, null, {
+					name: 'subscribe-form-modal',
+					classes: ['is-small']
+				});
 
-					setTimeout(() => {
+				// Fetch data
+				const formData = new FormData(evt.target);
 
+				// Simulate ajax
+				setTimeout(() => {
+					this.response = `Вы будете получать нашу рассылку на этот адрес электронной почты: <strong>${formData.get('email')}</strong>`;
+					this.isLoading = false;
+					vm.modal.response = this.response;
+					vm.modal.isLoading = this.isLoading;
+
+					this.fields.forEach(field => {
+						field.value = null;
+						field.isValidate = false;
 					});
-				}
+
+					this.isInvalid = true;
+				}, 1000);
 			}
 		},
-		// created() {
-		// 	this.$i18n.locale = this.$store.state.locale;
-		// },
 		mounted() {
 			this.checkForm();
 		}
@@ -155,6 +202,7 @@
 
 	.grid-cell {
 		margin: var(--grid-cell_padding);
+		position: relative;
 	}
 
 	.field {
@@ -172,10 +220,18 @@
 			height: 40px;
 			padding: 4px 10px;
 			background-color: #ffffff;
+			border: 1px solid transparent;
+			transition: color, border-color;
+			transition-duration: 0.2s;
 		}
 
 		&::placeholder {
 			color: #868484;
+		}
+
+		&:invalid.is-validate {
+			color: var(--color-error);
+			border-color: var(--color-error);
 		}
 	}
 
@@ -187,9 +243,11 @@
 
 	.check-radio-input {
 		position: absolute;
-		width: 0.1px;
-		height: 0.1px;
+		box-sizing: border-box;
+		width: 13px;
+		height: 13px;
 		clip: rect(0, 0, 0, 0);
+		opacity: 0;
 
 		&:not(:checked) {
 			& + .check-radio-fake {
@@ -205,6 +263,12 @@
 				outline: 5px auto -webkit-focus-ring-color;
 			}
 		}
+
+		&:invalid.is-validate {
+			& + .check-radio-fake {
+				border-color: var(--color-error);
+			}
+		}
 	}
 
 	.check-radio-fake {
@@ -213,9 +277,13 @@
 		align-items: center;
 		width: 13px;
 		height: 13px;
+		box-sizing: border-box;
+		border: 1px solid transparent;
 		flex-shrink: 0;
 		background-color: #ffffff;
 		cursor: pointer;
+		transition: color, border-color;
+		transition-duration: 0.2s;
 
 		&::before {
 			content: '';
@@ -277,6 +345,33 @@
 			cursor: default;
 			color: #c5dcd6;
 			background-size: 0 1px;
+			pointer-events: none;
+		}
+	}
+
+	.field-error {
+		position: absolute;
+		z-index: 1;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		/*transform: translate3d(10px, -50%, 0);*/
+		color: white;
+		background-color: var(--color-accent);
+		padding: 2px 5px;
+		box-sizing: border-box;
+		font-family: var(--font-family);
+		font-size: 12px;
+		line-height: 1.25;
+
+		&.v-enter,
+		&.v-leave-to {
+			opacity: 0;
+		}
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: opacity 0.5s;
 		}
 	}
 
@@ -292,7 +387,7 @@
 			}
 		}
 
-		.grid-cell-is-3 {
+		.grid-cell-is-bottom {
 			@media (width < 1024px) {
 				text-align: center;
 			}

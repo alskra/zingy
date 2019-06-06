@@ -8,16 +8,47 @@ import VueDragscroll from 'vue-dragscroll';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import {VLazyImagePlugin} from 'v-lazy-image';
+import VShowSlide from 'v-show-slide';
 
 Vue.use(VueWindowSize);
-Vue.use(VModal, {dynamic: true, injectModalsContainer: true});
+
+Vue.use(VModal, {
+	dynamic: true,
+	injectModalsContainer: true
+});
+
+Vue.prototype.$showModal = (component, props, options, events) => {
+	Vue.prototype.$modal.show(
+		component,
+		props || {},
+		{
+			scrollable: true,
+			height: 'auto',
+			transition: 'nice-modal-fade',
+			...options,
+			classes: ['app-modal'].concat(Array.isArray(options.classes) ? options.classes : options.classes ? [options.classes] : [])
+		},
+		{
+			'before-open'() {
+				document.documentElement.classList.add('v--modal-block-scroll');
+				document.body.classList.add('v--modal-block-scroll');
+			},
+			closed() {
+				document.documentElement.classList.remove('v--modal-block-scroll');
+				document.body.classList.remove('v--modal-block-scroll');
+			},
+			...events
+		}
+	)
+};
+
 Vue.use(checkView);
 window.ResizeSensor = ResizeSensor;
 Vue.use(VueStickyDirective);
 Vue.use(VueDragscroll);
 
 Vue.use(Loading, {
-	color: 'var(--color)',
+	color: 'var(--color-accent)',
 	backgroundColor: 'var(--overlay_background-color)',
 	opacity: 1
 });
@@ -29,3 +60,5 @@ Vue.filter('striphtml', function (value) {
 	div.innerHTML = value;
 	return div.textContent || div.innerText || '';
 });
+
+Vue.use(VShowSlide);
