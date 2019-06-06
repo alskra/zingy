@@ -23,7 +23,12 @@ module.exports = {
 	publicPath: '',
 	runtimeCompiler: true,
 	devServer: {
-		host: 'localhost'
+		host: 'localhost',
+		setup(app) {
+			app.post('*', (req, res) => {
+				res.redirect(req.originalUrl);
+			});
+		}
 	},
 	chainWebpack(config) {
 		config.plugin('html')

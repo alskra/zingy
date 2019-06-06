@@ -145,11 +145,9 @@
 						axios.post(evt.target.action, formData)
 							.then(response => {
 								// В случае успеха ожидаем получить email
-								this.response = response || formData.get('email');
+								this.response = formData.get('email') || response.data;
 							})
-							.catch(error => {
-								this.error = error;
-							})
+							.catch(error => this.error = error)
 							.finally(() => {
 								this.isLoading = false;
 
