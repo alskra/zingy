@@ -103,6 +103,12 @@
 	};
 </script>
 
+<style>
+	:root {
+		--app-page-main_background-color: #ffffff;
+	}
+</style>
+
 <style scoped>
 	.app-page {
 		all: initial;
