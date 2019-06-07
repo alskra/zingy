@@ -4,19 +4,36 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+const locales = ['en', 'ru'];
+
+function getLocale() {
+	const locale = (
+		queryString.parse(location.search).lang
+		|| document.documentElement.getAttribute('lang')
+		|| navigator.language
+	).split('-')[0].toLowerCase();
+
+	if (locales.includes(locale)) {
+		return locale;
+	}
+
+	return 'en';
+}
+
 export default new Vuex.Store(
 	{
 		state: {
-			locale: (
-				queryString.parse(location.search).lang
-				|| document.documentElement.getAttribute('lang')
-				|| navigator.language
-				|| 'en'
-			).split('-')[0].toLowerCase()
+			locale: getLocale()
 		},
 		mutations: {
 			setLocale(state, val) {
-				state.locale = (val || 'en').split('-')[0].toLowerCase();
+				val = val.split('-')[0].toLowerCase();
+
+				if (locales.includes(val)) {
+					state.locale = val;
+				} else {
+					state.locale = 'en';
+				}
 			}
 		}
 	}
