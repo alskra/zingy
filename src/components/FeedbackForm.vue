@@ -79,13 +79,22 @@
 						maskOptions: {
 							mask: [
 								/**
+								 * Unknown:
 								 * 0123456789
+								 * +0123456789
+								 * 55443322
+								 * +55443322
+								 *
+								 * Russia:
 								 * 89876543210
-								 * +89876543210
 								 * 79876543210
 								 * +79876543210
+								 *
+								 * USA:
 								 * 19876543210
 								 * +19876543210
+								 *
+								 * UK:
 								 * 449876543210
 								 * +449876543210
 								 */
@@ -117,12 +126,12 @@
 									// mask: /^[+]\d+$/,
 									mask: '{+}0000000000000000',
 									startsWith: /^\+|\d/,
-									country: 'unknown'
+									country: 'Unknown'
 								},
 								// {
 								// 	mask: /^\d+$/,
 								// 	startsWith: /^\d/,
-								// 	country: 'unknown'
+								// 	country: 'Unknown'
 								// }
 							],
 							dispatch(appended, dynamicMasked) {
