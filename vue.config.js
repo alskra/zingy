@@ -11,6 +11,10 @@ const pages = {
 		template: 'public/templates/blog.pug',
 		filename: 'blog.html'
 	},
+	article: {
+		template: 'public/templates/article.pug',
+		filename: 'article.html'
+	},
 	'vue-sticky-exm': {
 		template: 'public/templates/vue-sticky-exm.pug',
 		filename: 'vue-sticky-exm.html'

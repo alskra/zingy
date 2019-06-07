@@ -92,10 +92,8 @@
 	}
 
 	.nav-button-is-prev {
-		.base-icon.nav-button-icon {
-			transform-origin: 50% 50%;
-			transform: rotateY(-180deg);
-		}
+		transform-origin: 50% 50%;
+		transform: rotateY(-180deg);
 	}
 
 	.pagination {

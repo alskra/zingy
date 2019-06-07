@@ -45,7 +45,7 @@
 					pagination: {
 						clickable: true
 					},
-					preventInteractionOnTransition: true
+					preventInteractionOnTransition: false
 				},
 				isBeginning: true,
 				isEnd: false

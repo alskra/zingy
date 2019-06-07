@@ -1,24 +1,19 @@
 extends index
 
 include components/SideNav
-include components/BlogPosts
 
 append vars
 	-
-		title = 'Блог';
+		title = 'Статья';
 
 block app
-	app-page.is-theme-dark.page(inline-template)
+	app-page.page(inline-template)
 		+AppPage()
 			.grid
 				nav.breadcrumb(is="app-breadcrumb")
 					a(href="index.html") Главная
-					| Блог
-
-				h1.title(
-					is="base-title"
-					tag="h1"
-				) Блог с&nbsp;полезным контентом для всех, #[br]кто интересуется IT
+					a(href="blog.html") Блог
+					| Статья
 
 				app-page-sticky-container.sticky-container(:options="stickyContainerOptions")
 					template(v-slot:sidebar)
@@ -34,8 +29,10 @@ block app
 								v-if="windowWidth >= 1024"
 							)
 
-					blog-posts.posts(inline-template)
-						+BlogPosts()
+					h1.title(
+						is="base-title"
+						tag="h1"
+					) Вы думаете они будут ждать, пока ваш сайт загрузится?
 
 				subscribe-form.subscribe-form-is-wide.subscribe(
 					agree-url="blog.html"
