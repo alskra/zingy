@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -7,7 +8,8 @@ export default new Vuex.Store(
 	{
 		state: {
 			locale: (
-				document.documentElement.getAttribute('lang')
+				queryString.parse(location.search).lang
+				|| document.documentElement.getAttribute('lang')
 				|| navigator.language
 				|| 'en'
 			).split('-')[0].toLowerCase()
