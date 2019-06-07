@@ -21,6 +21,9 @@
 	--h1_font-size: scale-down(4.8rem, 0.56);
 	--h2_font-size: scale-down(2.8rem, 0.9);
 	--h3_font-size: scale-down(2.4rem, 0.9);
+	--h4_font-size: scale-down(2.2rem, 0.9);
+	--h5_font-size: scale-down(2rem, 0.9);
+	--h6_font-size: scale-down(1.8rem, 0.9);
 
 	--grid_width: env(--grid_width);
 	--grid_padding: range(10px, 40px);

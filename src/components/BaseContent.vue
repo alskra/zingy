@@ -64,13 +64,13 @@
 		color: var(--color);
 		font-family: var(--font-family);
 		line-height: 1.25;
-		margin: 0 0 var(--base-content_margin-y);
+		/*margin: 0 0 var(--base-content_margin-y);*/
+		margin: 0 0 1em;
 	}
 
 	>>> :--h1 {
 		font-size: var(--h1_font-size);
 		font-weight: 500;
-		/*margin: 0 0 0.5em;*/
 	}
 
 	>>> :--h2 {
@@ -80,6 +80,21 @@
 
 	>>> :--h3 {
 		font-size: var(--h3_font-size);
+		font-weight: 700;
+	}
+
+	>>> :--h4 {
+		font-size: var(--h4_font-size);
+		font-weight: 700;
+	}
+
+	>>> :--h5 {
+		font-size: var(--h5_font-size);
+		font-weight: 700;
+	}
+
+	>>> :--h6 {
+		font-size: var(--h6_font-size);
 		font-weight: 700;
 	}
 
