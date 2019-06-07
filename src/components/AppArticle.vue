@@ -12,4 +12,12 @@
 			display: block;
 		}
 	}
+
+	.header {
+		margin-bottom: range(30px, 60px);
+	}
+
+	.footer {
+		margin-top: range(30px, 60px);
+	}
 </style>
