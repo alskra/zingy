@@ -64,13 +64,13 @@
 		color: var(--color);
 		font-family: var(--font-family);
 		line-height: 1.25;
-		margin: 0 0 1em;
+		margin: 0 0 var(--base-content_margin-y);
 	}
 
 	>>> :--h1 {
 		font-size: var(--h1_font-size);
 		font-weight: 500;
-		margin: 0 0 0.5em;
+		/*margin: 0 0 0.5em;*/
 	}
 
 	>>> :--h2 {
@@ -119,7 +119,7 @@
 	}
 
 	>>> blockquote {
-		margin: calc(1.25 * var(--base-content_margin-y)) 0;
+		margin: calc(2 * var(--base-content_margin-y)) 0;
 		border-left: 4px solid var(--color-accent);
 		padding-left: range(16px, 32px);
 		position: relative;
