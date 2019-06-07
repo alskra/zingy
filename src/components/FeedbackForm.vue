@@ -97,27 +97,16 @@
 									country: 'United Kingdom'
 								},
 								{
-									mask: '{+}00 {21} 0 000 0000',
-									startsWith: /^\+?30/,
-									lazy: false,
-									country: 'Greece'
-								},
-								{
-									mask: '{+}00-0000-000000',
-									startsWith: /^\+?91/,
-									lazy: false,
-									country: 'India'
-								},
-								{
+									// mask: /^[+]\d+$/,
 									mask: '{+}0000000000000000',
-									startsWith: /^\+/,
+									startsWith: /^\+|\d/,
 									country: 'unknown'
 								},
-								{
-									mask: /^\d+$/,
-									startsWith: /^\d/,
-									country: 'unknown'
-								}
+								// {
+								// 	mask: /^\d+$/,
+								// 	startsWith: /^\d/,
+								// 	country: 'unknown'
+								// }
 							],
 							dispatch(appended, dynamicMasked) {
 								const number = (dynamicMasked.value + appended).replace(/[^+\d]/g, '');
