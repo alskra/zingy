@@ -93,7 +93,7 @@
 
 	.nav-button-is-prev {
 		transform-origin: 50% 50%;
-		transform: rotateY(-180deg);
+		transform: rotate(-180deg);
 	}
 
 	.pagination {

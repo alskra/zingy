@@ -29,10 +29,11 @@ block app
 								v-if="windowWidth >= 1024"
 							)
 
-					h1.title(
-						is="base-title"
-						tag="h1"
-					) Вы думаете они будут ждать, пока ваш сайт загрузится?
+					app-article(inline-template)
+						h1.title(
+							is="base-title"
+							tag="h1"
+						) Вы думаете они будут ждать, пока ваш сайт загрузится?
 
 				subscribe-form.subscribe-form-is-wide.subscribe(
 					agree-url="blog.html"

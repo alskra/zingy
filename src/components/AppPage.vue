@@ -17,8 +17,11 @@
 	import AppBreadcrumb from './AppBreadcrumb';
 	import AppPageStickyContainer from './AppPageStickyContainer';
 	import SideNav from './SideNav';
-	// import BlogPosts from './BlogPosts';
+	const BlogPosts = () => import('./BlogPosts');
 	import SubscribeForm from './SubscribeForm';
+
+	// article
+	const AppArticle = () => import('./AppArticle');
 
 	export default {
 		name: 'AppPage',
@@ -41,8 +44,11 @@
 			AppBreadcrumb,
 			AppPageStickyContainer,
 			SideNav,
-			BlogPosts: () => import('./BlogPosts'),
-			SubscribeForm
+			BlogPosts,
+			SubscribeForm,
+
+			// article
+			AppArticle
 		},
 		data() {
 			return {

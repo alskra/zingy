@@ -116,7 +116,7 @@
 		padding: scale-down(20px, 0.5);
 		box-sizing: border-box;
 
-		&:not(:hover) {
+		:root.is-device-desktop &:not(:hover) {
 			.base-icon.service-button-icon {
 				transform: translateY(10px);
 				opacity: 0;
