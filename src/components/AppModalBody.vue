@@ -18,6 +18,7 @@
 						button.close-button(
 							type="button"
 							@click="$modal.hide(name)"
+							autofocus
 						)
 							base-icon.close-button-icon(name="close")
 

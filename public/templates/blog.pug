@@ -29,12 +29,18 @@ block app
 							)
 								+SideNav()
 
-							subscribe-form.sticky-container-subscribe(v-if="windowWidth >= 1024")
+							subscribe-form.sticky-container-subscribe(
+								agree-url="blog.html"
+								v-if="windowWidth >= 1024"
+							)
 
 					blog-posts.posts(inline-template)
 						+BlogPosts()
 
-				subscribe-form.subscribe-form-is-wide.subscribe(v-if="windowWidth < 1024")
+				subscribe-form.subscribe-form-is-wide.subscribe(
+					agree-url="blog.html"
+					v-if="windowWidth < 1024"
+				)
 
 			feedback-section.section(inline-template)
 				+FeedbackSection()

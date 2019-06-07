@@ -5,14 +5,16 @@
 				"tel": "Phone",
 				"url": "Reference to site"
 			},
-			"submit": "Submit"
+			"submit": "Submit",
+			"agree": "*&nbsp;By submitting an application, you agree to <a href='{url}' target='_blank'>the terms of information transfer</a>."
 		},
 		"ru": {
 			"placeholder": {
 				"tel": "Телефон",
 				"url": "Ссылка на сайт"
 			},
-			"submit": "Отправить"
+			"submit": "Отправить",
+			"agree": "*&nbsp;Отправляя заявку, вы соглашаетесь с <a href='{url}' target='_blank'>условиями передачи информации</a>."
 		}
 	}
 </i18n>
@@ -40,6 +42,8 @@
 
 			.grid-cell
 				base-button.button {{ $t('submit') }}
+
+		.content(v-html="$t('agree', {url: agreeUrl})")
 </template>
 
 <script>
@@ -52,6 +56,12 @@
 		directives: {
 			imask: IMaskDirective
 		},
+		props: {
+			agreeUrl: {
+				type: String,
+				default: ''
+			}
+		},
 		data() {
 			return {
 				fields: [
@@ -60,9 +70,9 @@
 						attrs: {
 							name: 'tel',
 							type: 'tel',
+							autocomplete: 'on',
 							required: true,
-							minlength: 8,
-							autocomplete: 'off'
+							minlength: 8
 						},
 						value: '',
 						isValidate: false,
@@ -110,13 +120,14 @@
 								return dynamicMasked.compiledMasks.find(m => number.match(m.startsWith));
 							}
 						},
-						unmaskedValue: null
+						unmaskedValue: ''
 					},
 					{
 						id: 2,
 						attrs: {
 							name: 'url',
 							type: 'url',
+							autocomplete: 'on',
 							required: false
 						},
 						value: '',
@@ -127,8 +138,85 @@
 			};
 		},
 		methods: {
-			onSubmit() {
-				alert('onSubmit');
+			onSubmit(evt) {
+				const form = evt.target,
+					vm = this;
+
+				this.$showModal({
+					components: {
+						AppModalBody
+					},
+					data() {
+						return {
+							error: null,
+							response: null,
+							isLoading: true
+						}
+					},
+					i18n: {
+						messages: {
+							en: {
+								error: {
+									title: 'An error has occurred!',
+									msg: ''
+								},
+								response: {
+									title: 'Your application has been sent, we will contact you soon!',
+									msg: 'Your phone number: <strong>{tel}</strong>'
+								}
+							},
+							ru: {
+								error: {
+									title: 'Произошла ошибка!',
+									msg: ''
+								},
+								response: {
+									title: 'Ваша заявка отправлена, мы свяжемся с Вами в ближайшее время!',
+									msg: 'Ваш номер телефона: <strong>{tel}</strong>'
+								}
+							}
+						}
+					},
+					template: `
+						<app-modal-body class="modal-body" name="feedback-form-modal" classes="is-small" :loading="isLoading">
+							<template v-slot:title>{{ error ? $t('error.title') : $t('response.title') }}</template>
+							<base-content class="content" v-html="error || $t('response.msg', {tel: response})"></base-content>
+						</app-modal-body>
+					`,
+					created() {
+						// Fetch data
+						const formData = new FormData(form);
+
+						vm.fields.forEach(field => {
+							if (field.maskOptions) {
+								formData.set(field.attrs.name, field.unmaskedValue);
+							}
+						});
+
+						axios.post(form.action, formData)
+							.then(response => {
+								// В случае успеха ожидаем получить телефон
+								this.response = formData.get('tel') || response.data;
+
+								vm.fields.forEach((field, index) => {
+									field.value = '';
+
+									if (field.maskOptions) {
+										field.unmaskedValue = '';
+										vm.$refs.field[index].$el.maskRef.value = '';
+										vm.$refs.field[index].$el.maskRef.unmaskedValue = '';
+									}
+
+									field.isValidate = false;
+								});
+							})
+							.catch(error => this.error = error)
+							.finally(() => this.isLoading = false)
+					}
+				}, null, {
+					name: "feedback-form-modal",
+					classes: 'is-small'
+				})
 			}
 		}
 	};
@@ -166,5 +254,23 @@
 
 	.base-button.button {
 		width: 100%;
+	}
+
+	.content {
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(1.2rem, 1.4rem);
+		font-weight: 400;
+		line-height: 1.25;
+		margin-top: range(20px, 40px);
+
+		>>> a {
+			color: var(--color-link);
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 </style>

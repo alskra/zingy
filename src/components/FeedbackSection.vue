@@ -86,15 +86,4 @@
 		font-size: range(1.6rem, 1.8rem);
 		margin-bottom: range(70px / 2, 70px);
 	}
-
-	.content-is-info {
-		font-size: range(1.2rem, 1.4rem);
-		margin-top: range(40px / 2, 40px);
-	}
-
-	.form {
-
-	}
-
-
 </style>

@@ -6,11 +6,15 @@ Vue.use(Vuex);
 export default new Vuex.Store(
 	{
 		state: {
-			locale: document.documentElement.getAttribute('lang') || 'en'
+			locale: (
+				document.documentElement.getAttribute('lang')
+				|| navigator.language
+				|| 'en'
+			).split('-')[0].toLowerCase()
 		},
 		mutations: {
 			setLocale(state, val) {
-				state.locale = val || 'en';
+				state.locale = (val || 'en').split('-')[0].toLowerCase();
 			}
 		}
 	}

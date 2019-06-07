@@ -3,7 +3,7 @@
 		"en": {
 			"title": "Subscribe to blog",
 			"subscribe": "Subscribe",
-			"agree": "I agree with <a href='' target='_blank'>the terms of personal data processing</a>",
+			"agree": "I agree with <a href='{url}' target='_blank'>the terms of personal data processing</a>",
 			"placeholder": {
 				"email": "Enter your email"
 			}
@@ -11,7 +11,7 @@
 		"ru": {
 			"title": "Подписка на блог",
 			"subscribe": "Подписаться",
-			"agree": "Согласен с <a href='' target='_blank'>условиями обработки персональных данных</a>",
+			"agree": "Согласен с <a href='{url}' target='_blank'>условиями обработки персональных данных</a>",
 			"placeholder": {
 				"email": "Укажите свой email"
 			}
@@ -58,7 +58,7 @@
 								)
 
 								span.check-radio-fake
-								span.check-radio-label(v-html="$t('agree')")
+								span.check-radio-label(v-html="$t('agree', {url: agreeUrl})")
 
 					.grid-cell.grid-cell-is-bottom
 						button.button(:class="{'is-disabled': isInvalid}") {{ $t('subscribe') }}
@@ -70,6 +70,12 @@
 
 	export default {
 		name: 'SubscribeForm',
+		props: {
+			agreeUrl: {
+				type: String,
+				default: ''
+			}
+		},
 		data() {
 			return {
 				fields: [
@@ -144,10 +150,6 @@
 							.then(response => {
 								// В случае успеха ожидаем получить email
 								this.response = formData.get('email') || response.data;
-							})
-							.catch(error => this.error = error)
-							.finally(() => {
-								this.isLoading = false;
 
 								vm.fields.forEach(field => {
 									field.value = '';
@@ -155,7 +157,9 @@
 								});
 
 								vm.isInvalid = true;
-							});
+							})
+							.catch(error => this.error = error)
+							.finally(() => this.isLoading = false);
 					}
 				}, null, {
 					name: 'subscribe-form-modal',
