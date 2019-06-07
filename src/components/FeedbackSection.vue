@@ -15,7 +15,7 @@
 
 		& {
 			display: block;
-			padding: range(60px / 2, 60px) 0;
+			padding: range(30px, 60px) 0;
 			background-color: white;
 			position: relative;
 			min-height: range(504px / 2, 504px);

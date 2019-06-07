@@ -79,6 +79,15 @@
 		margin: 0 0 var(--base-content_margin-y);
 	}
 
+	>>> a {
+		color: var(--color-link);
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
 	>>> img {
 		display: block;
 		max-width: 100%;
