@@ -32,8 +32,8 @@
 	}
 
 	.grid {
-		padding: 0 var(--grid_padding);
 		box-sizing: border-box;
+		padding: 0 var(--grid_padding);
 		max-width: env(--max-breakpoint);
 		margin: 0 auto;
 	}
@@ -89,14 +89,14 @@
 	.grid-row {
 		display: flex;
 		flex-wrap: wrap;
-		margin: -15px -10px;
+		margin: -15px var(--grid-row_margin);
 		position: relative;
 		align-items: baseline;
 	}
 
 	.grid-cell {
-		width: calc(25% - 20px);
-		margin: 15px 10px;
+		margin: 15px var(--grid-cell_padding);
+		width: calc(25% - 2 * var(--grid-cell_padding));
 
 		&:nth-child(1) {
 			align-self: stretch;
@@ -110,23 +110,23 @@
 
 		@media (768px <= width < 1024px) {
 			&:first-child {
-				width: calc(100% - 20px);
+				width: calc(100% - 2 * var(--grid-cell_padding));
 			}
 
 			&:not(:first-child) {
-				width: calc(percentage(1 / 3) - 20px);
+				width: calc(percentage(1 / 3) - 2 * var(--grid-cell_padding));
 			}
 		}
 
 		@media (width < 768px) {
 			&:nth-child(1),
 			&:nth-child(2) {
-				width: calc(100% - 20px);
+				width: calc(100% - 2 * var(--grid-cell_padding));
 			}
 
 			&:nth-child(3),
 			&:nth-child(4) {
-				width: calc(50% - 20px);
+				width: calc(50% - 2 * var(--grid-cell_padding));
 			}
 		}
 	}
@@ -140,36 +140,39 @@
 			flex-flow: row;
 			flex-wrap: wrap;
 			align-items: flex-end;
-			margin: -15px -10px;
+			margin: -15px var(--grid-row_margin);
+			height: auto;
 		}
 	}
 
 	.contacts-grid-cell {
-		&:nth-child(3) {
-			margin-top: auto;
-		}
-
 		@media (width >= 1024px) {
 			&:nth-child(2) {
 				margin: range(30px, 60px) 0;
 			}
+
+			&:nth-child(3) {
+				margin-top: auto;
+			}
 		}
 
 		@media (width < 1024px) {
-			margin: 15px 10px;
-			width: calc(percentage(1 / 3) - 20px);
+			margin: 15px var(--grid-cell_padding);
+			width: calc(percentage(1 / 3) - 2 * var(--grid-cell_padding));
 
-			.social-links {
-				--social-links_justify-content: center;
-			}
-
-			&:nth-child(3) {
-				margin-top: 0;
+			&:nth-child(2) {
+				align-self: center;
 			}
 		}
 
 		@media (width < 768px) {
-			width: calc(100% - 20px);
+			width: calc(100% - 2 * var(--grid-cell_padding));
+		}
+	}
+
+	.social-links.social {
+		@media (width < 1024px) {
+			--social-links_justify-content: center;
 		}
 	}
 

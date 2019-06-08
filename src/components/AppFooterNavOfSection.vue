@@ -6,26 +6,22 @@
 		extends: AppFooterNav,
 		data() {
 			return {
-				hoverItemStyle: null
+				hoverElementStyle: null
 			};
 		},
 		methods: {
-			onNavItemMouseenter(event) {
-				// console.log(event.type);
-
-				this.hoverItemStyle = {
-					...this.hoverItemStyle,
+			onItemMouseenter(event) {
+				this.hoverElementStyle = {
+					...this.hoverElementStyle,
 					...{
 						top: event.currentTarget.offsetTop + 'px',
 						height: event.currentTarget.offsetHeight + 'px'
 					}
 				};
 			},
-			onNavItemMouseleave(/*event*/) {
-				// console.log(event.type);
-
-				this.hoverItemStyle = {
-					...this.hoverItemStyle,
+			onItemMouseleave() {
+				this.hoverElementStyle = {
+					...this.hoverElementStyle,
 					...{
 						top: '',
 						height: ''
@@ -35,14 +31,10 @@
 		},
 		mounted() {
 			this.$el
-				.querySelectorAll('.nav-item')
-				.forEach(navItem => {
-						navItem.addEventListener('mouseenter', this.onNavItemMouseenter);
-						navItem.addEventListener('mouseleave', this.onNavItemMouseleave);
-
-						/** @touch */
-						navItem.addEventListener('touchstart', this.onNavItemMouseenter);
-						navItem.addEventListener('touchend', this.onNavItemMouseleave);
+				.querySelectorAll('.item')
+				.forEach(item => {
+						item.addEventListener('mouseenter', this.onItemMouseenter);
+						item.addEventListener('mouseleave', this.onItemMouseleave);
 					}
 				)
 		}
@@ -57,23 +49,24 @@
 		position: relative;
 	}
 
-	.l-grid {
+	.grid {
 		@media (width < 768px) {
 			flex-flow: column;
 		}
 	}
 
-	.nav-item {
+	.item {
+		box-sizing: border-box;
+		padding-left: range(18px, 28px);
 		width: 100%;
 		font-weight: 300;
-		padding-left: range(18px, 28px);
 	}
 
-	.nav-item-text {
+	.item-text {
 		background: none;
 	}
 
-	.hover-item {
+	.hover-element {
 		width: 3px;
 		height: calc(range(1.6rem, 1.8rem) * 1.25 + 6px);
 		background-color: #e04b4a;
@@ -85,17 +78,16 @@
 		pointer-events: none;
 	}
 
-	.nav-name {
-		overflow: hidden;
-		text-overflow: ellipsis;
+	.name {
+		margin-bottom: 5px;
 		padding: 3px 0 3px range(18px, 28px);
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
 		font-size: range(1.6rem, 1.8rem);
 		font-weight: 500;
 		line-height: 1.25;
-		text-decoration: none;
 		text-transform: uppercase;
-		margin-bottom: 5px;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 </style>

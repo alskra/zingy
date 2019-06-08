@@ -3,8 +3,8 @@ mixin AppFooterNav(navList = [])
 		nav.app-footer-nav&attributes(attributes)
 			block
 
-			.l-grid
+			.grid
 				each item in navList
-					.l-grid-item
-						a.nav-item(href="")
-							span.nav-item-text= item
+					.grid-cell
+						a.item(href="")
+							span.item-text= item

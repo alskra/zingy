@@ -2,5 +2,5 @@ mixin AppFooterNavOfSection(navList, navName = 'Section')
 	include AppFooterNav
 
 	+AppFooterNav(navList).app-footer-nav-of-section&attributes(attributes)
-		.hover-item(:style="hoverItemStyle")
-		.nav-name= navName
+		.hover-element(:style="hoverElementStyle")
+		.name= navName

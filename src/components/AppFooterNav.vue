@@ -13,7 +13,7 @@
 		}
 	}
 
-	.l-grid {
+	.grid {
 		display: flex;
 		flex-flow: column;
 		margin: 0 -10px;
@@ -24,14 +24,12 @@
 		}
 	}
 
-	.l-grid-item {
+	.grid-cell {
 		margin: 0 10px;
 		display: flex;
 	}
 
-	.nav-item {
-		overflow: hidden;
-		text-overflow: ellipsis;
+	.item {
 		padding: 8px 0;
 		color: #ffffff;
 		font-family: var(--font-family, sans-serif);
@@ -39,15 +37,17 @@
 		font-weight: 500;
 		line-height: 1.25;
 		text-decoration: none;
+		overflow: hidden;
+		text-overflow: ellipsis;
 
 		&:hover {
-			.nav-item-text {
+			.item-text {
 				background-size: 100% 2px;
 			}
 		}
 	}
 
-	.nav-item-text {
+	.item-text {
 		padding-bottom: 1px;
 		transition: background-size 0.2s;
 		background: linear-gradient(#ec5151, #ec5151) no-repeat 0 100% / 0 2px;
