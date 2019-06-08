@@ -1,5 +1,4 @@
 mixin AppFooter()
-	include SocialLinks
 	include AppFooterNav
 	include AppFooterNavOfSection
 
@@ -55,8 +54,14 @@ mixin AppFooter()
 									p Телефон: #[br]#[a(href="tel:+79854575817") +7 (985) 457-58-17]
 
 							.contacts-grid-cell
-								social-links(inline-template)
-									+SocialLinks()
+								social-links(:links=`[
+									{name: 'vk', url: ''},
+									{name: 'facebook', url: ''},
+									{name: 'twitter', url: ''},
+									{name: 'yandex-zen', url: ''},
+									{name: 'instagram', url: ''},
+									{name: 'youtube', url: ''}
+								]`)
 
 							.contacts-grid-cell
 								.content.content-is-copyright

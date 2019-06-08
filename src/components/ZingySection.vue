@@ -1,3 +1,18 @@
+<template lang="pug">
+	.zingy-section
+		.matrix
+			.matrix-row optimi#[span z]ation
+			.matrix-row des#[span i]gn
+			.matrix-row developme#[span n]t
+			.matrix-row marketin#[span g]
+			.matrix-row strateg#[span y]
+
+		.grid
+			.content
+				slot
+					p #[strong ZINGY]&nbsp;— в&nbsp;переводе с&nbsp;англ. потрясающий, захватывающий
+</template>
+
 <script>
 	export default {
 		name: 'ZingySection'
@@ -77,9 +92,10 @@
 			box-sizing: border-box;
 			border: 1px solid #ffffff;
 			width: calc(47 / 34 * 1em);
+			pointer-events: none;
 		}
 
-		>>> b {
+		>>> span {
 			font-size: range(46px / 2.5, 46px);
 			font-weight: 700;
 			letter-spacing: calc(23 / 46 * 1em);
@@ -108,7 +124,6 @@
 		position: relative;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
-		padding: 0 var(--grid-cell_padding);
 		margin: 0 auto;
 	}
 

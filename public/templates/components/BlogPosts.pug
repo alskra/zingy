@@ -142,7 +142,7 @@ mixin BlogPosts()
 									slot="date"
 									is="base-time"
 									datetime=post.date
-									itemprop="dateModified"
+									itemprop="datePublished"
 								)
 
 								// Заголовок от 0 до 110 символов, требование google для `itemprop="headline"`
@@ -206,7 +206,7 @@ mixin BlogPosts()
 
 								time(
 									datetime=post.date
-									itemprop="datePublished"
+									itemprop="dateModified"
 								)
 
 			nav.pagination(is="app-pagination")

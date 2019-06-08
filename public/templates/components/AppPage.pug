@@ -1,6 +1,5 @@
 include AppHeader
 include AppFooter
-include ZingySection
 
 mixin AppPage()
 	template
@@ -15,5 +14,5 @@ mixin AppPage()
 				app-footer.footer(inline-template)
 					+AppFooter()
 
-			zingy-section.section(inline-template)
-				+ZingySection()
+			zingy-section.section
+				p #[strong ZINGY]&nbsp;— в&nbsp;переводе с&nbsp;англ. потрясающий, захватывающий

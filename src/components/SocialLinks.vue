@@ -1,6 +1,49 @@
+<i18n>
+	{
+		"en": {
+			"vk": "VK",
+			"facebook": "Facebook",
+			"twitter": "Twitter",
+			"yandex-zen": "Yandex Zen",
+			"instagram": "Instagram",
+			"youtube": "YouTube"
+		},
+		"ru": {
+			"vk": "VK",
+			"facebook": "Facebook",
+			"twitter": "Twitter",
+			"yandex-zen": "Яндекс Дзен",
+			"instagram": "Instagram",
+			"youtube": "YouTube"
+		}
+	}
+</i18n>
+
+<template lang="pug">
+	nav.social-links
+		.grid
+			.grid-cell(v-for="{name, url} of links")
+				a.link(
+					:href="url"
+					target="_blank"
+					:title="$t(name)"
+					rel="nofollow"
+				)
+					base-icon.link-icon(
+						:name="name"
+						:class="{'link-icon-is-masked': linkIconIsMasked}"
+					)
+</template>
+
 <script>
 	export default {
 		name: 'SocialLinks',
+		props: {
+			links: {
+				type: Array,
+				required: true
+			}
+		},
 		data() {
 			return {
 				linkIconIsMasked: document.documentElement.style.WebkitMask !== undefined
