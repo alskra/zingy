@@ -24,10 +24,10 @@
 
 <script>
 	import 'swiper/dist/css/swiper.css';
-	import {Swiper, Navigation, Pagination, Scrollbar} from 'swiper/dist/js/swiper.esm.js';
+	import {Swiper, Navigation, Pagination, Scrollbar, Lazy} from 'swiper/dist/js/swiper.esm.js';
 	import merge from 'lodash-es/merge';
 
-	Swiper.use([Navigation, Pagination, Scrollbar]);
+	Swiper.use([Navigation, Pagination, Scrollbar, Lazy]);
 
 	const debug = false;
 
@@ -47,8 +47,9 @@
 					},
 					preventInteractionOnTransition: false
 				},
-				isBeginning: true,
-				isEnd: false
+				isBeginning: null,
+				isEnd: null,
+				realIndex: null
 			};
 		},
 		watch: {
@@ -78,12 +79,19 @@
 					);
 
 					this.swiper.on('init', () => {
+						this.isBeginning = this.swiper.isBeginning;
+						this.isEnd = this.swiper.isEnd;
+						this.realIndex = this.swiper.realIndex;
+
 						this.$emit('init', this.swiper);
 					});
 
 					this.swiper.on('slideChange', () => {
 						// this.isBeginning = this.swiper.isBeginning;
 						// this.isEnd = this.swiper.isEnd;
+
+						this.realIndex = this.swiper.realIndex;
+
 						this.$emit('slide-change', this.swiper);
 					});
 
@@ -100,6 +108,7 @@
 						this.isEnd = this.swiper.isEnd;
 					});
 
+					// Init swiper
 					this.swiper.init();
 				});
 			},
@@ -107,7 +116,7 @@
 				this.swiper.slidePrev();
 			},
 			slideNext() {
-				this.swiper.slideNext()
+				this.swiper.slideNext();
 			}
 		},
 		beforeCreate() {

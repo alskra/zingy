@@ -22,6 +22,7 @@
 
 	// article
 	const AppArticle = () => import('./AppArticle');
+	import AppGallery from './AppGallery';
 
 	export default {
 		name: 'AppPage',
@@ -48,7 +49,8 @@
 			SubscribeForm,
 
 			// article
-			AppArticle
+			AppArticle,
+			AppGallery
 		},
 		data() {
 			return {

@@ -28,8 +28,11 @@
 
 		& {
 			display: flex;
-			flex-wrap: wrap;
 			align-items: flex-start;
+		}
+
+		@media (width < 1024px) {
+			flex-wrap: wrap;
 		}
 	}
 
@@ -44,21 +47,14 @@
 		}
 	}
 
-	.sidebar-inner {
-
-	}
-
 	.main {
-		flex: 1 0;
 		margin-left: calc(2 * var(--grid-cell_padding));
+		flex-grow: 1;
+		min-width: 0;
 
 		@media (width < 1024px) {
-			width: 100%;
 			margin-left: 0;
+			width: 100%;
 		}
-	}
-
-	.side-nav {
-
 	}
 </style>

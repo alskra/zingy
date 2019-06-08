@@ -1,6 +1,11 @@
 <script>
+	import AppGallery from './AppGallery';
+
 	export default {
-		name: 'AppArticle'
+		name: 'AppArticle',
+		components: {
+			AppGallery
+		}
 	};
 </script>
 
