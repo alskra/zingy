@@ -6,7 +6,10 @@
 				"url": "Reference to site"
 			},
 			"submit": "Submit",
-			"agree": "*&nbsp;By submitting an application, you agree to <a href='{url}' target='_blank'>the terms of information transfer</a>."
+			"agree": "*&nbsp;By submitting an application, you agree to <a href='{url}' target='_blank'>the terms of information transfer</a>.",
+			"invalid": {
+				"complete": "Enter the full number"
+			}
 		},
 		"ru": {
 			"placeholder": {
@@ -14,7 +17,10 @@
 				"url": "Ссылка на сайт"
 			},
 			"submit": "Отправить",
-			"agree": "*&nbsp;Отправляя заявку, вы соглашаетесь с <a href='{url}' target='_blank'>условиями передачи информации</a>."
+			"agree": "*&nbsp;Отправляя заявку, вы соглашаетесь с <a href='{url}' target='_blank'>условиями передачи информации</a>.",
+			"invalid": {
+				"complete": "Введите полный номер"
+			}
 		}
 	}
 </i18n>
@@ -29,16 +35,28 @@
 				v-for="(field, index) in fields"
 				:key="field.id"
 			)
-				base-field.field(
-					v-bind="field.attrs"
-					:placeholder="$t(`placeholder.${field.attrs.type}`)"
-					:class="{'is-validate': field.isValidate}"
-					@invalid.native="field.isValidate = true"
-					v-model="field.value"
-					v-imask="field.maskOptions"
-					@accept.native="field.maskOptions ? field.unmaskedValue = $event.detail.unmaskedValue : null"
-					ref="field"
-				)
+				template(v-if="field.maskOptions")
+					base-field.field(
+						ref="field"
+						v-bind="field.attrs"
+						:placeholder="$t(`placeholder.${field.attrs.type}`)"
+						:class="{'is-validate': field.isValidate}"
+						@invalid.native="field.isValidate = true"
+						v-imask="field.maskOptions"
+						:value="field.defaultValue"
+						@accept.native="(field.value = $event.detail.unmaskedValue, $event.target.setCustomValidity($t('invalid.complete')))"
+						@complete.native="$event.target.setCustomValidity('')"
+					)
+
+				template(v-else)
+					base-field.field(
+						ref="field"
+						v-bind="field.attrs"
+						:placeholder="$t(`placeholder.${field.attrs.type}`)"
+						:class="{'is-validate': field.isValidate}"
+						@invalid.native="field.isValidate = true"
+						v-model="field.value"
+					)
 
 			.grid-cell
 				base-button.button {{ $t('submit') }}
@@ -48,6 +66,7 @@
 
 <script>
 	import {IMaskDirective} from 'vue-imask';
+	import maskOptions from '../imask.config';
 	import axios from 'axios';
 	import AppModalBody from './AppModalBody';
 
@@ -71,76 +90,12 @@
 							name: 'tel',
 							type: 'tel',
 							autocomplete: 'on',
-							required: true,
-							minlength: 8
+							required: true
 						},
 						value: '',
+						defaultValue: '',
 						isValidate: false,
-						maskOptions: {
-							mask: [
-								/**
-								 * Unknown:
-								 * 0123456789
-								 * +0123456789
-								 * 55443322
-								 * +55443322
-								 *
-								 * Russia:
-								 * 89876543210
-								 * 79876543210
-								 * +79876543210
-								 *
-								 * USA:
-								 * 19876543210
-								 * +19876543210
-								 *
-								 * UK:
-								 * 449876543210
-								 * +449876543210
-								 */
-								{
-									mask: '0 (000) 000-00-00',
-									startsWith: /^8/,
-									lazy: false,
-									country: 'Russia'
-								},
-								{
-									mask: '{+}0 (000) 000-00-00',
-									startsWith: /^\+?7/,
-									lazy: false,
-									country: 'Russia'
-								},
-								{
-									mask: '{+}0 (000) 000-0000',
-									startsWith: /^\+?1/,
-									lazy: false,
-									country: 'United States'
-								},
-								{
-									mask: '{+}00 00 0000 0000',
-									startsWith: /^\+?44/,
-									lazy: false,
-									country: 'United Kingdom'
-								},
-								{
-									// mask: /^[+]\d+$/,
-									mask: '{+}0000000000000000',
-									startsWith: /^\+|\d/,
-									country: 'Unknown'
-								},
-								// {
-								// 	mask: /^\d+$/,
-								// 	startsWith: /^\d/,
-								// 	country: 'Unknown'
-								// }
-							],
-							dispatch(appended, dynamicMasked) {
-								const number = (dynamicMasked.value + appended).replace(/[^+\d]/g, '');
-
-								return dynamicMasked.compiledMasks.find(m => number.match(m.startsWith));
-							}
-						},
-						unmaskedValue: ''
+						maskOptions: maskOptions.tel
 					},
 					{
 						id: 2,
@@ -151,6 +106,7 @@
 							required: false
 						},
 						value: '',
+						defaultValue: '',
 						isValidate: false
 					}
 				],
@@ -159,8 +115,8 @@
 		},
 		methods: {
 			onSubmit(evt) {
-				const form = evt.target,
-					vm = this;
+				const form = evt.target;
+				const vm = this;
 
 				this.$showModal({
 					components: {
@@ -204,27 +160,22 @@
 						</app-modal-body>
 					`,
 					created() {
+						// Get form data
+						const formData = new FormData();
+
+						vm.fields.forEach(field => formData.append(field.attrs.name, field.value));
+
 						// Fetch data
-						const formData = new FormData(form);
-
-						vm.fields.forEach(field => {
-							if (field.maskOptions) {
-								formData.set(field.attrs.name, field.unmaskedValue);
-							}
-						});
-
 						axios.post(form.action, formData)
 							.then(response => {
 								// В случае успеха ожидаем получить телефон
 								this.response = formData.get('tel') || response.data;
 
 								vm.fields.forEach((field, index) => {
-									field.value = '';
-
 									if (field.maskOptions) {
-										field.unmaskedValue = '';
-										vm.$refs.field[index].$el.maskRef.value = '';
-										vm.$refs.field[index].$el.maskRef.unmaskedValue = '';
+										vm.$refs.field[index].$el.maskRef.value = field.defaultValue;
+									} else {
+										field.value = field.defaultValue;
 									}
 
 									field.isValidate = false;

@@ -84,10 +84,11 @@
 						attrs: {
 							name: 'email',
 							type: 'email',
-							required: true,
-							autocomplete: 'on'
+							autocomplete: 'on',
+							required: true
 						},
 						value: '',
+						defaultValue: '',
 						isValidate: false
 					},
 					{
@@ -97,7 +98,8 @@
 							type: 'checkbox',
 							required: true
 						},
-						value: '',
+						value: false,
+						defaultValue: false,
 						isValidate: false
 					}
 				],
@@ -109,6 +111,7 @@
 				this.isInvalid = !!this.$refs.field.find(field => !field.validity.valid);
 			},
 			onSubmit(evt) {
+				const form = evt.target;
 				const vm = this;
 
 				this.$showModal({
@@ -143,16 +146,19 @@
 						</app-modal-body>
 					`,
 					created() {
-						// Fetch data
-						const formData = new FormData(evt.target);
+						// Get form data
+						const formData = new FormData();
 
+						vm.fields.forEach(field => formData.append(field.attrs.name, field.value));
+
+						// Fetch data
 						axios.post(evt.target.action, formData)
 							.then(response => {
 								// В случае успеха ожидаем получить email
 								this.response = formData.get('email') || response.data;
 
 								vm.fields.forEach(field => {
-									field.value = '';
+									field.value = field.defaultValue;
 									field.isValidate = false;
 								});
 
