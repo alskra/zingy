@@ -133,15 +133,16 @@
 
 	.contacts-grid {
 		display: flex;
-		flex-flow: column;
-		height: 100%;
+
+		@media (width >= 1024px) {
+			flex-flow: column;
+			height: 100%;
+		}
 
 		@media (width < 1024px) {
-			flex-flow: row;
 			flex-wrap: wrap;
 			align-items: flex-end;
 			margin: -15px var(--grid-row_margin);
-			height: auto;
 		}
 	}
 
