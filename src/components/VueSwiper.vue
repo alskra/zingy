@@ -33,7 +33,8 @@
 		Lazy,
 		Controller,
 		Keyboard,
-		Zoom
+		Zoom,
+		Mousewheel
 	} from 'swiper/dist/js/swiper.esm.js';
 
 	import merge from 'lodash-es/merge';
@@ -45,7 +46,8 @@
 		Lazy,
 		Controller,
 		Keyboard,
-		Zoom
+		Zoom,
+		Mousewheel
 	]);
 
 	const debug = false;

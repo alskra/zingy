@@ -4,11 +4,6 @@
 			.overlay
 
 		.header
-			.caption(
-				v-if="swiper.realIndex !== undefined && images[swiper.realIndex].caption"
-				v-html="images[swiper.realIndex].caption"
-			)
-
 			button.close-button(
 				@click="$emit('close')"
 			) Close
@@ -28,16 +23,28 @@
 					.swiper-lazy-preloader.swiper-lazy-preloader-white
 
 		button.nav-button.nav-button-is-prev(
+			v-if="false"
 			type="button"
 			:disabled="swiper.isBeginning"
 			@click="swiper.slidePrev()"
 		)
 
 		button.nav-button.nav-button-is-next(
+			v-if="false"
 			type="button"
 			:disabled="swiper.isEnd"
 			@click="swiper.slideNext()"
 		)
+
+		.footer
+			vue-truncate-collapsed.caption(
+				v-if="swiper.realIndex !== undefined && images[swiper.realIndex].caption"
+				clamp="Показать"
+				less="Скрыть"
+				:length="100"
+				type="html"
+				:text="images[swiper.realIndex].caption"
+			)
 </template>
 
 <script>
@@ -65,6 +72,8 @@
 						enabled: true
 					},
 					zoom: true,
+					mousewheel: true,
+					grabCursor: true,
 					breakpoints: {
 						1024: {
 							slidesPerView: 1
@@ -132,9 +141,6 @@
 		display: flex;
 	}
 
-	.caption {
-	}
-
 	.close-button {
 		margin-left: auto;
 	}
@@ -169,6 +175,52 @@
 	}
 
 	.nav-button {
+		all: initial;
+
+		& {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+		}
+	}
+
+	.footer {
 		position: absolute;
+		z-index: 20;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		display: flex;
+		background-color: rgba(#000000, 0.7);
+	}
+
+	.caption {
+		color: white;
+		font-family: var(--font-family);
+		font-size: range(1.4rem, 1.8rem);
+		font-weight: 300;
+		line-height: 1.5;
+		padding: range(10px, 20px) var(--grid_padding);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		overflow-y: auto;
+		max-height: 100vh;
+
+		>>> p {
+			margin: 0;
+
+			&:last-child {
+				/*margin-bottom: 0;*/
+			}
+		}
+
+		>>> a {
+			color: inherit;
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 </style>

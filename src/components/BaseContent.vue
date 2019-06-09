@@ -11,8 +11,7 @@
 
 <style>
 	:root {
-		--base-content_line-height: 1.6;
-		--base-content_margin-y: calc(var(--base-content_line-height) * var(--font-size))
+		--base-content_margin-y: calc(var(--line-height) * var(--font-size))
 	}
 </style>
 
@@ -40,8 +39,8 @@
 			color: var(--color);
 			font-family: var(--font-family);
 			font-size: var(--font-size);
-			font-weight: 400;
-			line-height: var(--base-content_line-height);
+			font-weight: var(--font-weight);
+			line-height: var(--line-height);
 		}
 
 		&::before,
@@ -214,7 +213,7 @@
 			&::before {
 				content: '';
 				position: absolute;
-				top: calc(var(--base-content_line-height) * var(--font-size) / 2);
+				top: calc(var(--line-height) * var(--font-size) / 2);
 				left: 0;
 				width: 12px;
 				height: 12px;

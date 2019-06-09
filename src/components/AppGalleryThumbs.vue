@@ -160,6 +160,11 @@
 		padding: 10px 0 0;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		>>> * {
+			display: inline;
+		}
 
 		>>> p {
 			margin: 0;

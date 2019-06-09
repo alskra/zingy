@@ -9,6 +9,7 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import {VLazyImagePlugin} from 'v-lazy-image';
 import VShowSlide from 'v-show-slide';
+import VueTruncateCollapsed from 'vue-truncate-collapsed';
 
 Vue.use(VueWindowSize);
 
@@ -64,3 +65,5 @@ Vue.filter('striphtml', function (value) {
 });
 
 Vue.use(VShowSlide);
+
+Vue.component('vue-truncate-collapsed', VueTruncateCollapsed);

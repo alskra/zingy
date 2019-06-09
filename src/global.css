@@ -10,7 +10,7 @@
 	--font-family: Roboto, Arial, sans-serif;
 	--text-align: left;
 	--color: #0a0a0a;
-	--outline-color: #000;
+	--outline-color: #000000;
 
 	--color-accent: #e04b4a;
 	--color-link: #e04b4a;
@@ -18,6 +18,9 @@
 	--color-zingy: #252525;
 
 	--font-size: range(1.6rem, 1.8rem);
+	--font-weight: 400;
+	--line-height: 1.6;
+
 	--h1_font-size: scale-down(4.8rem, 0.56);
 	--h2_font-size: scale-down(2.8rem, 0.9);
 	--h3_font-size: scale-down(2.4rem, 0.9);
