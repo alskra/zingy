@@ -12,14 +12,18 @@
 </i18n>
 
 <template lang="pug">
-	.vue-swiper.app-gallery-full
+	.vue-swiper.app-gallery-full(
+		@mousemove="onMousemove"
+		@touchstart="onTouchstart"
+	)
 		transition(appear)
 			.overlay
 
-		.header
-			button.close-button(
-				@click="$emit('close')"
-			) Close
+		transition(appear)
+			.header(v-show="controlsAreShown")
+				button.close-button(
+					@click="$emit('close')"
+				) Close
 
 		.swiper-container(
 			ref="swiperContainer"
@@ -53,13 +57,13 @@
 		)
 
 		transition(appear)
-			.footer(v-if="swiper.realIndex !== undefined && images[swiper.realIndex].caption")
+			.footer(v-show="controlsAreShown && caption")
 				vue-truncate-collapsed.caption(
 					:clamp="$t('more')"
 					:less="$t('less')"
 					:length="100"
 					type="html"
-					:text="images[swiper.realIndex].caption"
+					:text="caption"
 				)
 </template>
 
@@ -91,13 +95,56 @@
 					mousewheel: true,
 					grabCursor: true,
 					on: {
+						init: () => {
+							this.toggleControls(true);
+						},
+						slideChange: () => {
+							this.toggleControls(true);
+						},
 						zoomChange: (scale) => {
 							this.isZoomed = scale !== 1;
 						}
 					}
 				},
-				isZoomed: false
+				isZoomed: false,
+				controlsAreShown: false
 			};
+		},
+		computed: {
+			caption() {
+				const index = this.swiper.realIndex;
+
+				if (index >= 0 && this.images[index].caption) {
+					return this.images[index].caption;
+				}
+
+				return '';
+			}
+		},
+		methods: {
+			toggleControls(val = !this.controlsAreShown) {
+				val = !!val;
+
+				clearTimeout(this.controlsTimer);
+
+				this.controlsAreShown = val;
+
+				if (val) {
+					this.controlsTimer = setTimeout(() => {
+						this.controlsAreShown = false;
+					}, 3000);
+				}
+			},
+			onMousemove() {
+				if (document.ontouchstart === undefined) {
+					this.toggleControls(true);
+				}
+			},
+			onTouchstart() {
+				if (document.ontouchstart !== undefined) {
+					this.toggleControls();
+				}
+			}
 		},
 		created() {
 			[document.documentElement, document.body].forEach(elem => elem.classList.add('app-gallery-scroll-block'));
@@ -127,6 +174,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
+			overflow: hidden;
 		}
 	}
 
@@ -156,6 +204,16 @@
 		left: 0;
 		width: 100%;
 		display: flex;
+
+		&.v-enter,
+		&.v-leave-to {
+			transform: translateY(-100%);
+		}
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: transform 0.3s;
+		}
 	}
 
 	.close-button {
