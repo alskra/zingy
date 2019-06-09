@@ -12,22 +12,26 @@
 </i18n>
 
 <template lang="pug">
-	.vue-swiper.app-gallery-full(
-		@mousemove="onMousemove"
-		@touchstart="onTouchstart"
-	)
+	.vue-swiper.app-gallery-full
 		transition(appear)
 			.overlay
 
 		transition(appear)
-			.header(v-show="controlsAreShown")
+			.header(
+				v-show="controlsAreShown"
+				@mouseenter="showControls"
+				@touchstart="showControls"
+			)
 				button.close-button(
 					@click="$emit('close')"
-				) Close
+				)
+					base-icon.close-button-icon(name="close")
 
 		.swiper-container(
 			ref="swiperContainer"
 			:style="{zIndex: isZoomed ? 4 : ''}"
+			@mousemove="onMousemove"
+			@touchstart="onTouchstart"
 		)
 			.swiper-wrapper
 				.swiper-slide(
@@ -57,7 +61,11 @@
 		)
 
 		transition(appear)
-			.footer(v-show="controlsAreShown && caption")
+			.footer(
+				v-show="controlsAreShown && caption"
+				@mouseenter="showControls"
+				@touchstart="showControls"
+			)
 				vue-truncate-collapsed.caption(
 					:clamp="$t('more')"
 					:less="$t('less')"
@@ -135,6 +143,11 @@
 					}, 3000);
 				}
 			},
+			showControls() {
+				clearTimeout(this.controlsTimer);
+
+				this.controlsAreShown = true;
+			},
 			onMousemove() {
 				if (document.ontouchstart === undefined) {
 					this.toggleControls(true);
@@ -202,8 +215,10 @@
 		z-index: 2;
 		top: 0;
 		left: 0;
-		width: 100%;
 		display: flex;
+		box-sizing: border-box;
+		padding: range(8px, 15px) var(--grid_padding);
+		width: 100%;
 
 		&.v-enter,
 		&.v-leave-to {
@@ -217,12 +232,20 @@
 	}
 
 	.close-button {
-		margin-left: auto;
+		all: initial;
+
+		& {
+			margin-left: auto;
+			width: scale-down(50px, 0.8);
+			height: scale-down(50px, 0.8);
+			color: #f0f0f0;
+			cursor: pointer;
+		}
 	}
 
 	.swiper-container {
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 	}
 
 	.swiper-slide {
@@ -264,8 +287,11 @@
 		z-index: 3;
 		bottom: 0;
 		left: 0;
-		width: 100%;
 		display: flex;
+		box-sizing: border-box;
+		padding: range(8px, 15px) var(--grid_padding);
+		width: 100%;
+		max-height: 100%;
 		background-color: rgba(#000000, 0.7);
 
 		&.v-enter,
@@ -285,18 +311,17 @@
 		font-size: range(1.4rem, 1.8rem);
 		font-weight: 300;
 		line-height: 1.5;
-		padding: range(8px, 15px) var(--grid_padding);
 		overflow: hidden;
 		text-overflow: ellipsis;
 		overflow-y: auto;
 		flex-grow: 1;
-		max-height: 100vh;
+		max-height: calc(100vh - 2 * range(8px, 15px));
 
 		>>> p {
 			margin: 0;
 
 			&:last-child {
-				/*margin-bottom: 0;*/
+				margin-bottom: 0;
 			}
 		}
 
