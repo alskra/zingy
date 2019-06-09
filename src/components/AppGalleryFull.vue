@@ -19,10 +19,11 @@
 					v-for="(image, index) of images"
 					:key="index"
 				)
-					img.image.swiper-lazy(
-						:data-src="image.src"
-						:alt="image.caption | striphtml"
-					)
+					.swiper-zoom-container
+						img.image.swiper-lazy(
+							:data-src="image.src"
+							:alt="image.caption | striphtml"
+						)
 
 					.swiper-lazy-preloader.swiper-lazy-preloader-white
 
@@ -63,6 +64,7 @@
 					keyboard: {
 						enabled: true
 					},
+					zoom: true,
 					breakpoints: {
 						1024: {
 							slidesPerView: 1
@@ -143,15 +145,16 @@
 	}
 
 	.swiper-slide {
-		display: flex;
-		flex-flow: column;
+		&.swiper-slide-zoomed {
+			z-index: 1;
+		}
+	}
+
+	.swiper-zoom-container {
+
 	}
 
 	.image {
-		margin: auto;
-		max-width: 100%;
-		max-height: 100%;
-
 		&.swiper-lazy {
 			opacity: 0;
 			filter: blur(10px);
