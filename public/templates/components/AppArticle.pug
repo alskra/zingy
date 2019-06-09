@@ -1,13 +1,15 @@
 mixin AppArticle()
 	mixin app-gallery()
 		//
-			`app-gallery` data format:
+			`app-gallery` data format
+
+			JSON массив объектов:
 
 			:images='[
 				{
 					"thumb": "", // URL для превью
 					"src": "",	// URL полноразмерного изображения
-					"caption": "" // Описание, HTML контент без переносов
+					"caption": "" // Описание, простой текст или HTML
 				},
 				...
 			]'

@@ -1,3 +1,16 @@
+<i18n>
+	{
+		"en": {
+			"more": "Show more",
+			"less": "Show less"
+		},
+		"ru": {
+			"more": "Показать",
+			"less": "Скрыть"
+		}
+	}
+</i18n>
+
 <template lang="pug">
 	.vue-swiper.app-gallery-full
 		transition(appear)
@@ -8,7 +21,10 @@
 				@click="$emit('close')"
 			) Close
 
-		.swiper-container(ref="swiperContainer")
+		.swiper-container(
+			ref="swiperContainer"
+			:style="{zIndex: isZoomed ? 4 : ''}"
+		)
 			.swiper-wrapper
 				.swiper-slide(
 					v-for="(image, index) of images"
@@ -36,15 +52,15 @@
 			@click="swiper.slideNext()"
 		)
 
-		.footer
-			vue-truncate-collapsed.caption(
-				v-if="swiper.realIndex !== undefined && images[swiper.realIndex].caption"
-				clamp="Показать"
-				less="Скрыть"
-				:length="100"
-				type="html"
-				:text="images[swiper.realIndex].caption"
-			)
+		transition(appear)
+			.footer(v-if="swiper.realIndex !== undefined && images[swiper.realIndex].caption")
+				vue-truncate-collapsed.caption(
+					:clamp="$t('more')"
+					:less="$t('less')"
+					:length="100"
+					type="html"
+					:text="images[swiper.realIndex].caption"
+				)
 </template>
 
 <script>
@@ -62,10 +78,10 @@
 		data() {
 			return {
 				defaultOptions: {
-					spaceBetween: 20,
-					slidesPerView: '1.125',
+					spaceBetween: 10,
+					slidesPerView: 1,
 					centeredSlides: true,
-					slideToClickedSlide: true,
+					slideToClickedSlide: false,
 					preloadImages: false,
 					lazy: true,
 					keyboard: {
@@ -74,12 +90,13 @@
 					zoom: true,
 					mousewheel: true,
 					grabCursor: true,
-					breakpoints: {
-						1024: {
-							slidesPerView: 1
+					on: {
+						zoomChange: (scale) => {
+							this.isZoomed = scale !== 1;
 						}
 					}
-				}
+				},
+				isZoomed: false
 			};
 		},
 		created() {
@@ -119,7 +136,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(#000000, 0.7);
+		background-color: rgba(#000000, 0.8);
 
 		&.v-enter,
 		&.v-leave-to {
@@ -134,7 +151,7 @@
 
 	.header {
 		position: absolute;
-		z-index: 10;
+		z-index: 2;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -186,12 +203,22 @@
 
 	.footer {
 		position: absolute;
-		z-index: 20;
+		z-index: 3;
 		bottom: 0;
 		left: 0;
 		width: 100%;
 		display: flex;
 		background-color: rgba(#000000, 0.7);
+
+		&.v-enter,
+		&.v-leave-to {
+			transform: translateY(100%);
+		}
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: transform 0.3s;
+		}
 	}
 
 	.caption {
@@ -200,10 +227,11 @@
 		font-size: range(1.4rem, 1.8rem);
 		font-weight: 300;
 		line-height: 1.5;
-		padding: range(10px, 20px) var(--grid_padding);
+		padding: range(8px, 15px) var(--grid_padding);
 		overflow: hidden;
 		text-overflow: ellipsis;
 		overflow-y: auto;
+		flex-grow: 1;
 		max-height: 100vh;
 
 		>>> p {
