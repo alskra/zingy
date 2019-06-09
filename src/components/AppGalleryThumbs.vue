@@ -8,7 +8,7 @@
 				)
 					img.image.swiper-lazy(
 						:data-src="image.thumb || image.src"
-						:alt="image.caption"
+						:alt="image.caption | striphtml"
 						@click="$emit('open', swiper.realIndex)"
 					)
 

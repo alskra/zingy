@@ -4,7 +4,11 @@
 			.overlay
 
 		.header
-			.caption {{ swiper.realIndex !== undefined ? images[swiper.realIndex].caption : null }}
+			.caption(
+				v-if="swiper.realIndex !== undefined && images[swiper.realIndex].caption"
+				v-html="images[swiper.realIndex].caption"
+			)
+
 			button.close-button(
 				@click="$emit('close')"
 			) Close
@@ -17,7 +21,7 @@
 				)
 					img.image.swiper-lazy(
 						:data-src="image.src"
-						:alt="image.caption"
+						:alt="image.caption | striphtml"
 					)
 
 					.swiper-lazy-preloader.swiper-lazy-preloader-white
