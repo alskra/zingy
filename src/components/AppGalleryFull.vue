@@ -140,8 +140,8 @@
 	}
 
 	.swiper-container {
-		margin: auto 0;
-		max-height: calc(100vh - 0px);
+		width: 100%;
+		height: 100vh;
 	}
 
 	.swiper-slide {
