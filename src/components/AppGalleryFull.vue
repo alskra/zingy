@@ -18,7 +18,7 @@
 
 		transition(appear)
 			.header(
-				v-show="controlsAreShown"
+				v-show="controlsAreShown && !isZoomed"
 				@mouseenter="showControls"
 				@touchstart="showControls"
 			)
@@ -31,7 +31,7 @@
 			ref="swiperContainer"
 			:style="{zIndex: isZoomed ? 4 : ''}"
 			@mousemove="onMousemove"
-			@touchstart="onTouchstart"
+			@touchend="onTouchend"
 		)
 			.swiper-wrapper
 				.swiper-slide(
@@ -62,7 +62,7 @@
 
 		transition(appear)
 			.footer(
-				v-show="controlsAreShown && caption"
+				v-show="controlsAreShown && !isZoomed && caption"
 				@mouseenter="showControls"
 				@touchstart="showControls"
 			)
@@ -153,7 +153,7 @@
 					this.toggleControls(true);
 				}
 			},
-			onTouchstart() {
+			onTouchend() {
 				if (document.ontouchstart !== undefined) {
 					this.toggleControls();
 				}
