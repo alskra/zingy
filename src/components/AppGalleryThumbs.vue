@@ -29,7 +29,9 @@
 				)
 					base-icon.nav-button-icon(name="angle-left")
 
-		.caption {{ swiper.realIndex !== undefined ? images[swiper.realIndex].caption : null }}
+		.caption(
+			v-if="swiper.realIndex !== undefined && images[swiper.realIndex].caption"
+		) {{ images[swiper.realIndex].caption }}
 </template>
 
 <script>
