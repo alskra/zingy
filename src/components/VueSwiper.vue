@@ -9,14 +9,14 @@
 
 		button.nav-button.nav-button-is-prev(
 			type="button"
-			:disabled="isBeginning"
-			@click="slidePrev"
+			:disabled="swiper.isBeginning"
+			@click="swiper.slidePrev()"
 		) navButtonIsPrev
 
 		button.nav-button.nav-button-is-next(
 			type="button"
-			:disabled="isEnd"
-			@click="slideNext"
+			:disabled="swiper.isEnd"
+			@click="swiper.slideNext()"
 		) navButtonIsNext
 
 		.pagination(ref="pagination")
@@ -24,10 +24,25 @@
 
 <script>
 	import 'swiper/dist/css/swiper.css';
-	import {Swiper, Navigation, Pagination, Scrollbar, Lazy} from 'swiper/dist/js/swiper.esm.js';
+
+	import {
+		Swiper,
+		Navigation,
+		Pagination,
+		Scrollbar,
+		Lazy,
+		Controller
+	} from 'swiper/dist/js/swiper.esm.js';
+
 	import merge from 'lodash-es/merge';
 
-	Swiper.use([Navigation, Pagination, Scrollbar, Lazy]);
+	Swiper.use([
+		Navigation,
+		Pagination,
+		Scrollbar,
+		Lazy,
+		Controller
+	]);
 
 	const debug = false;
 
@@ -47,9 +62,7 @@
 					},
 					preventInteractionOnTransition: false
 				},
-				isBeginning: null,
-				isEnd: null,
-				realIndex: null
+				swiper: {}
 			};
 		},
 		watch: {
@@ -59,64 +72,48 @@
 		},
 		methods: {
 			reInit() {
-				this.$nextTick(function () {
-					if (this.swiper) this.swiper.destroy();
+				if (this.swiper instanceof Swiper) {
+					this.swiper.destroy();
+				}
 
-					this.swiper = new Swiper(
-						this.$refs.swiperContainer,
-						merge(
-							this.defaultOptions,
-							{
-								pagination: {
-									el: this.$refs.pagination
-								}
-							},
-							this.options,
-							{
-								init: false
+				this.swiper = new Swiper(
+					this.$refs.swiperContainer,
+					merge(
+						this.defaultOptions,
+						{
+							pagination: {
+								el: this.$refs.pagination
 							}
-						)
-					);
+						},
+						this.options,
+						{
+							init: false
+						}
+					)
+				);
 
-					this.swiper.on('init', () => {
-						this.isBeginning = this.swiper.isBeginning;
-						this.isEnd = this.swiper.isEnd;
-						this.realIndex = this.swiper.realIndex;
-
-						this.$emit('init', this.swiper);
-					});
-
-					this.swiper.on('slideChange', () => {
-						// this.isBeginning = this.swiper.isBeginning;
-						// this.isEnd = this.swiper.isEnd;
-
-						this.realIndex = this.swiper.realIndex;
-
-						this.$emit('slide-change', this.swiper);
-					});
-
-					this.swiper.on('reachBeginning', () => {
-						this.isBeginning = true;
-					});
-
-					this.swiper.on('reachEnd', () => {
-						this.isEnd = true;
-					});
-
-					this.swiper.on('fromEdge', () => {
-						this.isBeginning = this.swiper.isBeginning;
-						this.isEnd = this.swiper.isEnd;
-					});
-
-					// Init swiper
-					this.swiper.init();
+				this.swiper.on('init', () => {
+					this.$emit('init', this.swiper);
 				});
-			},
-			slidePrev() {
-				this.swiper.slidePrev();
-			},
-			slideNext() {
-				this.swiper.slideNext();
+
+				this.swiper.on('slideChange', () => {
+					this.$emit('slide-change', this.swiper);
+				});
+
+				this.swiper.on('reachBeginning', () => {
+					this.$emit('reach-beginning', this.swiper);
+				});
+
+				this.swiper.on('reachEnd', () => {
+					this.$emit('reach-end', this.swiper);
+				});
+
+				this.swiper.on('fromEdge', () => {
+					this.$emit('from-edge', this.swiper);
+				});
+
+				// Initialize swiper
+				this.swiper.init();
 			}
 		},
 		beforeCreate() {
@@ -130,7 +127,9 @@
 			this.reInit();
 		},
 		updated() {
+			// `swiper.update()` method has issue
 			// this.swiper.update();
+
 			this.swiper.updateSize();
 			this.swiper.updateSlides();
 			this.swiper.updateProgress();

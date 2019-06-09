@@ -1,46 +1,28 @@
 <template lang="pug">
-	.vue-swiper.app-gallery
-		.swiper-container(ref="swiperContainer")
-			.swiper-wrapper
-				.swiper-slide(v-for="(image, imageIndex) of images")
-					img.swiper-lazy.image(
-						:data-src="image.href"
-						:alt="image.alt"
-						@click="index = imageIndex"
-					)
-
-					.swiper-lazy-preloader
-
-		button.nav-button.nav-button-is-prev(
-			type="button"
-			:disabled="isBeginning"
-			@click="slidePrev"
-		) navButtonIsPrev
-
-		button.nav-button.nav-button-is-next(
-			type="button"
-			:disabled="isEnd"
-			@click="slideNext"
-		) navButtonIsNext
-
-		.title {{ images[realIndex || 0].title }}
-
-		vue-gallery(
+	.app-gallery
+		app-gallery-thumbs(
+			ref="appGalleryThumbs"
 			:images="images"
-			:index="index"
-			@close="index = null"
+			@open="appGalleryFullIndex = $event"
+		)
+
+		app-gallery-full(
+			ref="appGalleryFull"
+			:images="images"
+			v-if="appGalleryFullIndex !== null"
+			:options="{initialSlide: appGalleryFullIndex}"
 		)
 </template>
 
 <script>
-	import VueSwiper from './VueSwiper';
-	import VueGallery from 'vue-gallery';
+	import AppGalleryThumbs from './AppGalleryThumbs';
+	import AppGalleryFull from './AppGalleryFull';
 
 	export default {
 		name: 'AppGallery',
-		extends: VueSwiper,
 		components: {
-			VueGallery
+			AppGalleryThumbs,
+			AppGalleryFull
 		},
 		props: {
 			images: {
@@ -50,38 +32,25 @@
 		},
 		data() {
 			return {
-				defaultOptions: {
-					// Disable preloading of all images
-					preloadImages: false,
-					// Enable lazy loading
-					lazy: true,
-					// watchSlidesVisibility: true,
-					// pagination: {
-					// 	el: null
-					// }
-				},
-				index: null
+				appGalleryFullIndex: null,
+				showFull: false
 			};
+		},
+		methods: {
+
+		},
+		mounted() {
+
 		}
 	};
 </script>
 
 <style scoped>
-	.swiper-slide {
-		&::before {
-			content: '';
-			display: block;
-			padding-top: percentage(480 / 770);
-		}
-	}
+	.app-gallery {
+		all: initial;
 
-	.image {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		cursor: pointer;
+		& {
+			display: block;
+		}
 	}
 </style>

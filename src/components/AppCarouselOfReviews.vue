@@ -11,9 +11,7 @@
 		data() {
 			return {
 				defaultOptions: {
-					slidesPerView: 'auto',
-					// spaceBetween: 20,
-					// autoHeight: true
+					slidesPerView: 'auto'
 				}
 			}
 		}

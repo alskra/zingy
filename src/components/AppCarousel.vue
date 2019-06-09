@@ -8,7 +8,13 @@
 			return {
 				defaultOptions: {
 					pagination: {
-						type: 'fraction'
+						type: 'fraction',
+						formatFractionCurrent(number) {
+							return String(number).padStart(2, '0')
+						},
+						formatFractionTotal(number) {
+							return String(number).padStart(2, '0')
+						}
 					}
 				}
 			}

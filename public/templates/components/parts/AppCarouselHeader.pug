@@ -6,8 +6,8 @@ mixin AppCarouselHeader()
 					.nav
 						button.nav-button.nav-button-is-prev(
 							type="button"
-							:disabled="isBeginning"
-							@click="slidePrev"
+							:disabled="swiper.isBeginning"
+							@click="swiper.slidePrev()"
 						)
 							base-icon.nav-button-icon(name="arrow-right")
 
@@ -15,7 +15,7 @@ mixin AppCarouselHeader()
 
 						button.nav-button.nav-button-is-next(
 							type="button"
-							:disabled="isEnd"
-							@click="slideNext"
+							:disabled="swiper.isEnd"
+							@click="swiper.slideNext()"
 						)
 							base-icon.nav-button-icon(name="arrow-right")
