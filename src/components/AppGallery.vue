@@ -11,6 +11,7 @@
 			:images="images"
 			v-if="appGalleryFullIndex !== null"
 			:options="{initialSlide: appGalleryFullIndex}"
+			@close="appGalleryFullIndex = null"
 		)
 </template>
 
@@ -32,8 +33,7 @@
 		},
 		data() {
 			return {
-				appGalleryFullIndex: null,
-				showFull: false
+				appGalleryFullIndex: null
 			};
 		},
 		methods: {

@@ -1,5 +1,14 @@
 <template lang="pug">
 	.vue-swiper.app-gallery-full
+		transition(appear)
+			.overlay
+
+		.header
+			.caption {{ swiper.realIndex !== undefined ? images[swiper.realIndex].caption : null }}
+			button.close-button(
+				@click="$emit('close')"
+			) Close
+
 		.swiper-container(ref="swiperContainer")
 			.swiper-wrapper
 				.swiper-slide(
@@ -7,25 +16,23 @@
 					:key="index"
 				)
 					img.image.swiper-lazy(
-						:data-src="image.thumb"
+						:data-src="image.src"
 						:alt="image.caption"
 					)
 
-					.swiper-lazy-preloader
+					.swiper-lazy-preloader.swiper-lazy-preloader-white
 
 		button.nav-button.nav-button-is-prev(
 			type="button"
 			:disabled="swiper.isBeginning"
 			@click="swiper.slidePrev()"
-		) navButtonIsPrev
+		)
 
 		button.nav-button.nav-button-is-next(
 			type="button"
 			:disabled="swiper.isEnd"
 			@click="swiper.slideNext()"
-		) navButtonIsNext
-
-		.caption {{ swiper.realIndex !== undefined ? images[swiper.realIndex].caption : null }}
+		)
 </template>
 
 <script>
@@ -43,47 +50,118 @@
 		data() {
 			return {
 				defaultOptions: {
+					spaceBetween: 20,
+					slidesPerView: '1.125',
+					centeredSlides: true,
+					slideToClickedSlide: true,
 					preloadImages: false,
-					lazy: true
+					lazy: true,
+					keyboard: {
+						enabled: true
+					},
+					breakpoints: {
+						1024: {
+							slidesPerView: 1
+						}
+					}
 				}
 			};
+		},
+		created() {
+			[document.documentElement, document.body].forEach(elem => elem.classList.add('app-gallery-scroll-block'));
+		},
+		destroyed() {
+			[document.documentElement, document.body].forEach(elem => elem.classList.remove('app-gallery-scroll-block'));
 		}
 	};
 </script>
+
+<style>
+	.app-gallery-scroll-block {
+		overflow: hidden;
+	}
+</style>
 
 <style scoped>
 	.app-gallery-full {
 		all: initial;
 
 		& {
-			display: block;
+			display: flex;
+			flex-flow: column;
+			position: fixed;
+			z-index: 999;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
 		}
 	}
 
-	.swiper-slide {
-		&::before {
-			content: '';
-			display: block;
-			padding-top: percentage(9 / 16);
-		}
-	}
-
-	.image {
+	.overlay {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
-		cursor: pointer;
+		background-color: rgba(#000000, 0.7);
+
+		&.v-enter,
+		&.v-leave-to {
+			opacity: 0;
+		}
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: opacity 0.3s;
+		}
+	}
+
+	.header {
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		left: 0;
+		width: 100%;
+		display: flex;
+	}
+
+	.caption {
+	}
+
+	.close-button {
+		margin-left: auto;
+	}
+
+	.swiper-container {
+		margin: auto 0;
+		max-height: calc(100vh - 0px);
+	}
+
+	.swiper-slide {
+		display: flex;
+		flex-flow: column;
+	}
+
+	.image {
+		margin: auto;
+		max-width: 100%;
+		max-height: 100%;
 
 		&.swiper-lazy {
 			opacity: 0;
-			transition: opacity 0.5s;
+			filter: blur(10px);
+			transition: filter 0.5s;
+			will-change: filter;
 		}
 
 		&.swiper-lazy-loaded {
 			opacity: 1;
+			filter: blur(0);
 		}
+	}
+
+	.nav-button {
+		position: absolute;
 	}
 </style>

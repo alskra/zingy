@@ -31,7 +31,8 @@
 		Pagination,
 		Scrollbar,
 		Lazy,
-		Controller
+		Controller,
+		Keyboard
 	} from 'swiper/dist/js/swiper.esm.js';
 
 	import merge from 'lodash-es/merge';
@@ -41,7 +42,8 @@
 		Pagination,
 		Scrollbar,
 		Lazy,
-		Controller
+		Controller,
+		Keyboard
 	]);
 
 	const debug = false;
