@@ -31,7 +31,8 @@
 
 		.caption(
 			v-if="swiper.realIndex !== undefined && images[swiper.realIndex].caption"
-		) {{ images[swiper.realIndex].caption }}
+			v-html="images[swiper.realIndex].caption"
+		)
 </template>
 
 <script>
@@ -159,5 +160,18 @@
 		padding: 10px 0 0;
 		overflow: hidden;
 		text-overflow: ellipsis;
+
+		>>> p {
+			margin: 0;
+		}
+
+		>>> a {
+			color: var(--color-link);
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 </style>
