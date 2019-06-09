@@ -60,7 +60,7 @@
 		}
 	}
 
-	>>> :--headings {
+	:--headings {
 		color: var(--color);
 		font-family: var(--font-family);
 		line-height: 1.25;
@@ -68,41 +68,41 @@
 		margin: 0 0 1em;
 	}
 
-	>>> :--h1 {
+	:--h1 {
 		font-size: var(--h1_font-size);
 		font-weight: 500;
 	}
 
-	>>> :--h2 {
+	:--h2 {
 		font-size: var(--h2_font-size);
 		font-weight: 700;
 	}
 
-	>>> :--h3 {
+	:--h3 {
 		font-size: var(--h3_font-size);
 		font-weight: 700;
 	}
 
-	>>> :--h4 {
+	:--h4 {
 		font-size: var(--h4_font-size);
 		font-weight: 700;
 	}
 
-	>>> :--h5 {
+	:--h5 {
 		font-size: var(--h5_font-size);
 		font-weight: 700;
 	}
 
-	>>> :--h6 {
+	:--h6 {
 		font-size: var(--h6_font-size);
 		font-weight: 700;
 	}
 
-	>>> p {
+	p {
 		margin: 0 0 var(--base-content_margin-y);
 	}
 
-	>>> a {
+	a {
 		color: var(--color-link);
 		text-decoration: underline;
 
@@ -111,10 +111,14 @@
 		}
 	}
 
-	>>> img {
+	img {
 		display: block;
-		max-width: 100%;
+	}
+
+	img,
+	.app-gallery.gallery {
 		margin: calc(1.25 * var(--base-content_margin-y)) auto;
+		max-width: 100%;
 
 		&.float-left {
 			@media (width >= 768px) {
@@ -133,7 +137,7 @@
 		}
 	}
 
-	>>> blockquote {
+	blockquote {
 		margin: calc(2 * var(--base-content_margin-y)) 0;
 		border-left: 4px solid var(--color-accent);
 		padding-left: range(16px, 32px);
@@ -166,8 +170,8 @@
 		}
 	}
 
-	>>> ol,
-	>>>	ul {
+	ol,
+	ul {
 		/*margin: calc(1.25 * var(--base-content_margin-y)) 0;*/
 		margin: 0 0 var(--base-content_margin-y);
 		padding: 0;
@@ -189,7 +193,7 @@
 		}
 	}
 
-	>>> ol {
+	ol {
 		counter-reset: ol;
 
 		> li {
@@ -203,7 +207,7 @@
 		}
 	}
 
-	>>> ul {
+	ul {
 		> li {
 			counter-increment: ol;
 
