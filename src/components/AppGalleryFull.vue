@@ -33,8 +33,8 @@
 		.swiper-container(
 			ref="swiperContainer"
 			:style="{zIndex: isZoomed ? 4 : ''}"
-			@mousemove="onMousemove"
-			@touchend="onTouchend"
+			@mousemove="mousemoveHandler"
+			@touchend="touchendHandler"
 		)
 			.swiper-wrapper
 				.swiper-slide(
@@ -151,28 +151,32 @@
 
 				this.controlsAreShown = true;
 			},
-			onMousemove() {
+			mousemoveHandler() {
 				if (document.ontouchstart === undefined) {
 					this.toggleControls(true);
 				}
 			},
-			onTouchend() {
-				if (document.ontouchstart !== undefined) {
-					this.toggleControls();
-				}
+			touchendHandler() {
+				this.toggleControls();
 			},
 			closeHandler(evt) {
-				const close = ['Escape', 'GoBack'];
-
-				if (close.includes(evt.key)) this.$emit('close');
+				if (['Escape', 'GoBack'].includes(evt.key)) this.$emit('close');
 			}
 		},
 		created() {
-			[document.documentElement, document.body].forEach(elem => elem.classList.add('app-gallery-scroll-block'));
+			[
+				document.documentElement,
+				document.body
+			].forEach(elem => elem.classList.add('app-gallery-scroll-block'));
+
 			document.addEventListener('keyup', this.closeHandler);
 		},
 		destroyed() {
-			[document.documentElement, document.body].forEach(elem => elem.classList.remove('app-gallery-scroll-block'));
+			[
+				document.documentElement,
+				document.body
+			].forEach(elem => elem.classList.remove('app-gallery-scroll-block'));
+
 			document.removeEventListener('keyup', this.closeHandler);
 		}
 	};
