@@ -50,10 +50,18 @@ mixin AppArticle()
 	template
 		article.app-article&attributes(attributes)
 			header.header
-				h1.title(
-					is="base-title"
-					tag="h1"
-				) Вы думаете они будут ждать, пока ваш сайт загрузится?
+				.header-grid
+					.header-grid-cell
+						h1.header-title(
+							is="base-title"
+							tag="h1"
+						) Вы думаете они будут ждать, пока ваш сайт загрузится?
+
+					.header-grid-cell
+						base-time.header-date(datetime="2019-06-09T12:51:44Z")
+
+					.header-grid-cell
+						app-share.header-share
 
 			.main
 				base-content.content

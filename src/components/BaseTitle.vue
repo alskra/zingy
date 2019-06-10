@@ -30,6 +30,8 @@
 			font-size: var(--h1_font-size);
 			font-weight: 500;
 			line-height: 1.25;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		&.v-enter-active,

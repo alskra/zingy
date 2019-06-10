@@ -12,10 +12,7 @@
 </i18n>
 
 <template lang="pug">
-	.vue-swiper.app-gallery-full(
-		@keyup.esc="$emit('close')"
-		tabindex="0"
-	)
+	.vue-swiper.app-gallery-full
 		transition(appear)
 			.overlay
 
