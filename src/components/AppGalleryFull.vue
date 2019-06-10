@@ -12,7 +12,10 @@
 </i18n>
 
 <template lang="pug">
-	.vue-swiper.app-gallery-full
+	.vue-swiper.app-gallery-full(
+		@keyup.esc="$emit('close')"
+		tabindex="0"
+	)
 		transition(appear)
 			.overlay
 
@@ -157,13 +160,20 @@
 				if (document.ontouchstart !== undefined) {
 					this.toggleControls();
 				}
+			},
+			closeHandler(evt) {
+				const close = ['Escape', 'GoBack'];
+
+				if (close.includes(evt.key)) this.$emit('close');
 			}
 		},
 		created() {
 			[document.documentElement, document.body].forEach(elem => elem.classList.add('app-gallery-scroll-block'));
+			document.addEventListener('keyup', this.closeHandler);
 		},
 		destroyed() {
 			[document.documentElement, document.body].forEach(elem => elem.classList.remove('app-gallery-scroll-block'));
+			document.removeEventListener('keyup', this.closeHandler);
 		}
 	};
 </script>
@@ -217,7 +227,7 @@
 		left: 0;
 		display: flex;
 		box-sizing: border-box;
-		padding: range(8px, 15px) var(--grid_padding);
+		padding: range(8px, 40px) var(--grid_padding) 0;
 		width: 100%;
 
 		&.v-enter,
@@ -236,8 +246,8 @@
 
 		& {
 			margin-left: auto;
-			width: scale-down(50px, 0.8);
-			height: scale-down(50px, 0.8);
+			width: range(44px, 58px);
+			height: range(44px, 58px);
 			color: #f0f0f0;
 			cursor: pointer;
 		}

@@ -14,7 +14,7 @@
 
 					.swiper-lazy-preloader
 
-			.nav
+			.nav(v-if="images.length > 1")
 				button.nav-button.nav-button-is-prev(
 					type="button"
 					:disabled="swiper.isBeginning"
@@ -50,6 +50,8 @@
 		data() {
 			return {
 				defaultOptions: {
+					spaceBetween: 10,
+					slidesPerView: 1,
 					preloadImages: false,
 					lazy: true
 				}
