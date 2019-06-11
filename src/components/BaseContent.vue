@@ -208,8 +208,6 @@
 
 	ul {
 		> li {
-			counter-increment: ol;
-
 			&::before {
 				content: '';
 				position: absolute;

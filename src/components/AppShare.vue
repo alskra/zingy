@@ -1,39 +1,102 @@
+<i18n>
+	{}
+</i18n>
+
 <template lang="pug">
 	.app-share
 		button.button(
 			type="button"
-			@click="dropdownIsShown = !dropdownIsShown"
+			@click="boxIsShown = !boxIsShown"
 		)
 			.button-text Поделиться
-			.button-icon
+			base-icon.button-icon(name="share")
+			.button-counter {{ commonCountFormatted }}
 
-		transition
-			.dropdown(v-if="dropdownIsShown")
-				.dropdown-item Foo
-				.dropdown-item Bar
-				.dropdown-item Baz
+		transition(
+			@enter="setBoxWidth"
+			@after-enter="resetBoxWidth"
+			@before-leave="setBoxWidth"
+			:duration="500"
+		)
+			.items-box(
+				v-if="boxIsShown"
+				v-dragscroll.x
+				@dragscrollmove="preventClickOnScroll($event, $event.detail.deltaX)"
+			)
+				.items
+					.items-grid
+						.items-grid-cell(
+							v-for="item of providers"
+							:key="item.toLowerCase()"
+						)
+							.item(
+								:is="'share-button-is-' + item.toLowerCase()"
+								v-bind="$props"
+								has_icon
+								:title_social="''"
+								:has_counter="false"
+								@count-update="commonCount += $event"
+								:title="item"
+							)
 </template>
 
 <script>
+	import {preventClickOnScroll} from '../helpers';
+	import {sliceThousandInt} from "vue-goodshare/src/helpers/count_number";
+	import ShareButtonIsVk from './ShareButtonIsVk';
+	import ShareButtonIsFacebook from './ShareButtonIsFacebook';
+	import ShareButtonIsTwitter from './ShareButtonIsTwitter';
+
 	export default {
 		name: 'AppShare',
+		components: {
+			ShareButtonIsVk,
+			ShareButtonIsFacebook,
+			ShareButtonIsTwitter
+		},
+		props: {
+			page_url: String,
+			page_title: String,
+			page_description: String,
+			page_image: String
+		},
 		data() {
 			return {
-				dropdownIsShown: false
+				boxIsShown: false,
+				commonCount: 0,
+				providers: [
+					'VK',
+					'Facebook',
+					'Twitter'
+				]
 			};
 		},
+		computed: {
+			commonCountFormatted() {
+				const count = this.commonCount;
+
+				return count >= 1000 ? sliceThousandInt(count) : count;
+			}
+		},
 		methods: {
-			closeHandler(evt) {
+			setBoxWidth(el) {
+				el.style.width = el.children[0].offsetWidth + 'px';
+			},
+			resetBoxWidth(el) {
+				el.style.width = '';
+			},
+			preventClickOnScroll,
+			onDocumentClick(evt) {
 				if (this.$el !== evt.target && !this.$el.contains(evt.target)) {
-					this.dropdownIsShown = false;
+					this.boxIsShown = false;
 				}
 			}
 		},
 		created() {
-			document.addEventListener('click', this.closeHandler);
+			document.addEventListener('click', this.onDocumentClick);
 		},
 		destroyed() {
-			document.removeEventListener('click', this.closeHandler);
+			document.removeEventListener('click', this.onDocumentClick);
 		}
 	};
 </script>
@@ -43,8 +106,9 @@
 		all: initial;
 
 		& {
-			display: block;
-			position: relative;
+			display: flex;
+			justify-content: flex-end;
+			user-select: none;
 		}
 	}
 
@@ -56,17 +120,23 @@
 			justify-content: center;
 			align-items: center;
 			box-sizing: border-box;
-			padding: 5px range(15px, 20px);
-			width: 150px;
+			flex-shrink: 0;
+			padding: 0 15px;
 			max-width: 100%;
 			height: 34px;
 			border: 1px solid #f0f0f0;
 			background-color: #f0f0f0;
 			cursor: pointer;
+			overflow: hidden;
+		}
+
+		@media (width < 768px) {
+			padding: 0 10px;
 		}
 	}
 
 	.button-text {
+		margin-right: 10px;
 		color: #999999;
 		font-family: var(--font-family);
 		font-size: 12px;
@@ -75,28 +145,84 @@
 		letter-spacing: calc(0.6 / 12 * 1em);
 		overflow: hidden;
 		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		@media (width < 768px) {
+			display: none;
+		}
 	}
 
-	.dropdown {
-		position: absolute;
-		top: 100%;
-		left: 0;
-		box-sizing: border-box;
-		padding: 10px;
-		min-width: 100%;
-		background-color: #f0f0f0;
+	.base-icon.button-icon {
+		width: 20px;
+		height: 20px;
+		flex-shrink: 0;
+		color: #c5c5c5;
+	}
 
-		&.v-enter,
-		&.v-leave-to {
-			transform: scaleY(0);
-			opacity: 0;
-		}
+	.button-counter {
+		margin-left: 10px;
+		flex-shrink: 0;
+		color: #999999;
+		font-family: var(--font-family);
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 1.25;
+	}
+
+	.items-box {
+		order: -1;
+		display: flex;
+		justify-content: flex-start;
+		overflow: hidden;
 
 		&.v-enter-active,
 		&.v-leave-active {
-			transform-origin: 50% 0;
-			transition: transform, opacity;
-			transition-duration: 0.3s;
+			transition: width 0.3s;
+
+			.items-grid-cell {
+				transition: transform, opacity;
+				transition-duration: 0.2s;
+			}
 		}
+
+		&.v-enter-active {
+			.items-grid-cell {
+				transition-delay: 0.3s;
+			}
+		}
+
+		&.v-leave-active {
+			transition-delay: 0.2s;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			width: 0 !important;
+
+			.items-grid-cell {
+				transform: translateX(10px);
+				opacity: 0;
+			}
+		}
+	}
+
+	.items {
+		flex-shrink: 0;
+		padding: 5px;
+		background-color: #f0f0f0;
+	}
+
+	.items-grid {
+		display: flex;
+		margin: -2px;
+	}
+
+	.items-grid-cell {
+		margin: 2px;
+		flex-shrink: 0;
+	}
+
+	.share-button.item {
+
 	}
 </style>

@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 464 662" fill-rule="evenodd" clip-rule="evenodd"
-	 shape-rendering="geometricprecision" text-rendering="geometricprecision">
-	<rect width="100%" height="100%" fill="none"/>
-	<g class="currentLayer">
-		<path d="M314 0L0 331l314 331c50-1 99 0 150-1L167 331 464 1c-51-1-100 0-150-1z"/>
-	</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 464 662" fill-rule="evenodd" clip-rule="evenodd" shape-rendering="geometricprecision" text-rendering="geometricprecision"><rect width="100%" height="100%" fill="none"/><path d="M314 0L0 331l314 331c50-1 99 0 150-1L167 331 464 1c-51-1-100 0-150-1z"/></svg>

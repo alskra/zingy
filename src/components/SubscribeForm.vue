@@ -152,7 +152,7 @@
 						vm.fields.forEach(field => formData.append(field.attrs.name, field.value));
 
 						// Fetch data
-						axios.post(evt.target.action, formData)
+						axios.post(form.action, formData)
 							.then(response => {
 								// В случае успеха ожидаем получить email
 								this.response = formData.get('email') || response.data;

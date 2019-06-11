@@ -28,15 +28,12 @@ mixin SideNav()
 
 			.main
 				nav.main-inner(
-					v-dragscroll.x="true"
-					@dragscrollstart="isDragging = true"
-					@dragscrollend="dragScrollEnd"
-					@click.capture="clickOnDrag"
+					v-dragscroll.x
+					@dragscrollmove="preventClickOnScroll($event, $event.detail.deltaX)"
 				)
 					each item, index in items
 						a.nav-item(
 							class={'is-active': index === 0}
 							href=item.url
-							@click="onItemClick"
 						)
 							span.nav-item-text= item.title

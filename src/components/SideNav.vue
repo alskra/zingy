@@ -1,25 +1,10 @@
 <script>
+	import {preventClickOnScroll} from '../helpers';
+
 	export default {
 		name: 'SideNav',
-		data() {
-			return {
-				isDragging: false
-			}
-		},
 		methods: {
-			dragScrollEnd() {
-				requestAnimationFrame(() => this.isDragging = false);
-			},
-			clickOnDrag(evt) {
-				if (this.isDragging) {
-					// alert(evt.target.tagName);
-					evt.stopPropagation();
-					evt.preventDefault();
-				}
-			},
-			onItemClick() {
-				// alert('onItemClick');
-			}
+			preventClickOnScroll
 		}
 	};
 </script>
