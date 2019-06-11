@@ -10,6 +10,17 @@ append vars
 block app
 	app-page.page(inline-template)
 		+AppPage()
+			a.link-backward(
+				ref="linkBackward"
+				href="blog.html"
+			) Вернуться в блог
+
+			a.link-up(
+				ref="linkUp"
+				href="#"
+			)
+				base-icon.link-up-icon(name="angle-left")
+
 			.grid
 				nav.breadcrumb(is="app-breadcrumb")
 					a(href="index.html") Главная

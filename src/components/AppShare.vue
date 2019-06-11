@@ -21,7 +21,7 @@
 		)
 			.items-box(
 				:class="{'is-invert': invert}"
-				v-if="boxIsShown"
+				v-if="boxIsShown || windowWidth < 768"
 				v-dragscroll.x
 				@dragscrollmove="preventClickOnScroll($event, $event.detail.deltaX)"
 			)

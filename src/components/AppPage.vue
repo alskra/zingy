@@ -75,19 +75,25 @@
 			onScrollAndResize() {
 				const zingySection = document.querySelector('.zingy-section');
 				const appPagination = document.querySelector('.app-pagination');
+				const linkBackward = this.$refs.linkBackward;
+				const linkUp = this.$refs.linkUp;
+
+				const bodyBottom = this.$refs.body.getBoundingClientRect().bottom;
 
 				if (zingySection) {
-					zingySection.classList.toggle(
-						'is-animation-stopped',
-						this.$refs.body.getBoundingClientRect().bottom >= this.windowHeight
-					);
+					zingySection.classList.toggle('is-animation-stopped', bodyBottom >= this.windowHeight);
 				}
 
 				if (appPagination) {
-					appPagination.classList.toggle(
-						'is-hidden',
-						this.$refs.body.getBoundingClientRect().bottom < this.windowHeight
-					)
+					appPagination.classList.toggle('is-hidden', bodyBottom < this.windowHeight);
+				}
+
+				if (linkBackward) {
+					linkBackward.classList.toggle('is-hidden', bodyBottom < this.windowHeight);
+				}
+
+				if (linkUp) {
+					linkUp.classList.toggle('is-hidden', bodyBottom < this.windowHeight);
 				}
 			}
 		},
@@ -200,5 +206,72 @@
 		@media (width >= 1024px) {
 			display: none;
 		}
+	}
+
+	.link-backward {
+		position: fixed;
+		/*top: range(60px, 108px);*/
+		/*bottom: 20px;*/
+		top: 50%;
+		left: var(--grid_padding);
+		transform-origin: 50% 0;
+		transform: translate3d(-50%, 0, 0) rotate(-90deg);
+		display: flex;
+		align-items: center;
+		color: var(--color);
+		text-decoration: none;
+		font-family: var(--font-family);
+		font-size: range(1.6rem, 1.8rem);
+		font-weight: 700;
+		line-height: 1.25;
+
+		&::before,
+		&::after {
+			content: '';
+			width: 20px;
+			height: 1px;
+			background-color: var(--color-accent);
+			margin: 0 10px;
+		}
+
+		&.is-hidden {
+			display: none;
+		}
+
+		@media (width < 1440px) {
+			display: none;
+		}
+	}
+
+	.link-up {
+		position: fixed;
+		top: 50%;
+		right: var(--grid_padding);
+		transform: translate3d(0, -50%, 0);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: range(40px, 60px);
+		height: range(40px, 60px);
+		color: white;
+		text-decoration: none;
+		background-color: var(--color-accent);
+		cursor: pointer;
+
+		&.is-hidden {
+			display: none;
+		}
+
+		@media (width < 1440px) {
+			display: none;
+		}
+	}
+
+	.base-icon.link-up-icon {
+		width: 32px;
+		height: 32px;
+		color: inherit;
+		transform-origin: 50% 50%;
+		transform: rotate(90deg);
 	}
 </style>

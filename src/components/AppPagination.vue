@@ -26,7 +26,7 @@
 		}
 
 		&.is-hidden {
-			visibility: hidden;
+			display: none;
 		}
 
 		@media (width < 1440px) {
