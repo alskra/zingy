@@ -21,7 +21,10 @@
 			vertical-align: top;
 			justify-content: center;
 			align-items: center;
+			box-sizing: border-box;
 			padding: 0 10px;
+			height: 34px;
+			cursor: pointer;
 		}
 	}
 

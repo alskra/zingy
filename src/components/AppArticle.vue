@@ -28,7 +28,7 @@
 	}
 
 	.header {
-		margin-bottom: range(30px, 60px);
+		margin-bottom: range(30px, 45px);
 	}
 
 	.header-grid {
@@ -121,8 +121,8 @@
 	}
 
 	.footer {
-		margin-top: range(30px, 60px);
-		padding: range(15px, 30px);
+		margin-top: range(30px, 45px);
+		padding: scale-down(calc(2 * var(--grid-cell_padding)), 0.5) calc(2 * var(--grid-cell_padding));
 		background-color: #f0f0f0;
 
 		@media (width < 1024px) {
@@ -149,7 +149,7 @@
 		}
 	}
 
-	.footer-like-button {
+	.like-button.footer-like-button {
 
 	}
 </style>
