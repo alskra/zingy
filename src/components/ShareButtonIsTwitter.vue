@@ -5,8 +5,10 @@
 		:button-design="button_design"
 		@click.prevent="showShareWindow"
 	)
-		span.icon.icon-is-twitter(v-if="has_icon")
-			base-icon(name="twitter-box")
+		base-icon.icon.icon-is-twitter(
+			name="twitter-box"
+			v-if="has_icon"
+		)
 
 		span.title.title-is-social(v-if="title_social") {{ title_social }}
 </template>

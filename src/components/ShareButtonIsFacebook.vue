@@ -3,8 +3,10 @@
 		:page-url="page_url"
 		@click.prevent="showShareWindow"
 	)
-		span.icon.icon-is-facebook(v-if="has_icon")
-			base-icon(name="facebook-box")
+		base-icon.icon.icon-is-facebook(
+			name="facebook-box"
+			v-if="has_icon"
+		)
 
 		span.title.title-is-facebook(v-if="title_social") {{ title_social }}
 		span.counter.counter-is-facebook(v-if="has_counter") {{ counter_facebook }}

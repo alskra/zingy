@@ -3,11 +3,11 @@
 </i18n>
 
 <template lang="pug">
-	.app-share
-		button.button(
-			type="button"
-			@click="boxIsShown = !boxIsShown"
-		)
+	.app-share(
+		@mouseenter="boxIsShown = true"
+		@mouseleave="boxIsShown = false"
+	)
+		button.button(type="button")
 			.button-text Поделиться
 			base-icon.button-icon(name="share")
 			.button-counter {{ commonCountFormatted }}
@@ -16,7 +16,7 @@
 			@enter="setBoxWidth"
 			@after-enter="resetBoxWidth"
 			@before-leave="setBoxWidth"
-			:duration="500"
+			:duration="{enter: 500, leave: 500}"
 		)
 			.items-box(
 				v-if="boxIsShown"
@@ -106,8 +106,8 @@
 		all: initial;
 
 		& {
-			display: flex;
-			justify-content: flex-end;
+			display: inline-flex;
+			vertical-align: top;
 			user-select: none;
 		}
 	}
@@ -214,11 +214,11 @@
 
 	.items-grid {
 		display: flex;
-		margin: -2px;
+		margin: -5px;
 	}
 
 	.items-grid-cell {
-		margin: 2px;
+		margin: 5px;
 		flex-shrink: 0;
 	}
 

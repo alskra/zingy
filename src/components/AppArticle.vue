@@ -7,6 +7,11 @@
 		components: {
 			AppShare,
 			AppGallery
+		},
+		data() {
+			return {
+				headerTitleHasBg: true
+			};
 		}
 	};
 </script>
@@ -36,8 +41,17 @@
 		min-width: 0;
 
 		&:nth-child(1) {
-			flex-grow: 1;
 			margin-bottom: range(0px, 10px);
+			flex: 0 0 100%;
+		}
+
+		&:nth-child(2) {
+			flex: 0 0 auto;
+		}
+
+		&:nth-child(3) {
+			flex: 1 0 0;
+			display: flex;
 		}
 
 		&:nth-child(2),
@@ -45,9 +59,43 @@
 			margin-top: auto;
 			margin-bottom: auto;
 		}
+	}
 
-		&:nth-child(3) {
-			flex: 1 1 0;
+	.header-title-box {
+
+	}
+
+	.header-title-box-has-bg {
+		display: flex;
+		flex-flow: column;
+		box-sizing: border-box;
+		padding: calc(2 * var(--grid-cell_padding));
+		min-height: 260px;
+		background: none no-repeat 50% 50% / cover;
+		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		.header-title {
+			margin: auto 0;
+			color: #ffffff;
+			text-align: center;
+			position: relative;
+		}
+
+		@media (width < 1024px) {
+			margin-right: calc(-1 * var(--grid_padding));
+			margin-left: calc(-1 * var(--grid_padding));
+			padding-right: var(--grid_padding);
+			padding-left: var(--grid_padding);
 		}
 	}
 
@@ -61,7 +109,8 @@
 	}
 
 	.app-share.header-share {
-
+		margin-left: auto;
+		min-width: 0;
 	}
 
 	.app-gallery.gallery {

@@ -6,8 +6,10 @@
 		:page-image="page_image"
 		@click.prevent="showShareWindow"
 	)
-		span.icon.icon-is-vk(v-if="has_icon")
-			base-icon(name="vk-box")
+		base-icon.icon.icon-is-vk(
+			name="vk-box"
+			v-if="has_icon"
+		)
 
 		span.title.title-is-vk(v-if="title_social") {{ title_social }}
 		span.counter.counter-is-vk(v-if="has_counter") {{ counter_vkontakte }}

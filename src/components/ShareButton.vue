@@ -16,7 +16,8 @@
 		}
 	}
 
-	.icon {
+	.base-icon.icon {
 		color: #999999;
+		pointer-events: none;
 	}
 </style>

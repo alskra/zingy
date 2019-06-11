@@ -52,10 +52,15 @@ mixin AppArticle()
 			header.header
 				.header-grid
 					.header-grid-cell
-						h1.header-title(
-							is="base-title"
-							tag="h1"
-						) Вы думаете они будут ждать, пока ваш сайт загрузится?
+						.header-title-box(
+							:key="headerTitleHasBg"
+							:class="{'header-title-box-has-bg': headerTitleHasBg}"
+							:style="{backgroundImage: headerTitleHasBg ? 'url(upload/article-bg.jpg)' : ''}"
+						)
+							h1.header-title(
+								is="base-title"
+								tag="h1"
+							) Вы думаете они будут ждать, пока ваш сайт загрузится?
 
 					.header-grid-cell
 						base-time.header-date(datetime="2019-06-09T12:51:44Z")
@@ -65,6 +70,12 @@ mixin AppArticle()
 
 			.main
 				base-content.content
+					p
+						a(
+							href=""
+							@click.prevent="headerTitleHasBg = !headerTitleHasBg"
+						) Toggle Header Background
+
 					p На собственном участке обязательно стоит выделить место под уютную #[a(href="") баньку или сауну]. Это место отдыха и встреч с друзьями, дружных посиделок и лечебных процедур. При обустройстве особое внимание уделяется отделке бани внутри.
 
 					h2 Заголовок пример h2
