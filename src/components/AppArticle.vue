@@ -1,12 +1,14 @@
 <script>
 	import AppShare from './AppShare';
 	import AppGallery from './AppGallery';
+	import LikeButton from './LikeButton';
 
 	export default {
 		name: 'AppArticle',
 		components: {
 			AppShare,
-			AppGallery
+			AppGallery,
+			LikeButton
 		},
 		data() {
 			return {
@@ -82,6 +84,7 @@
 			width: 100%;
 			height: 100%;
 			background-color: rgba(0, 0, 0, 0.5);
+			pointer-events: none;
 		}
 
 		.header-title {
@@ -135,8 +138,18 @@
 		display: flex;
 	}
 
-	.footer-cell {
+	.footer-grid-cell {
 		box-sizing: border-box;
 		padding: var(--grid-cell_padding);
+		min-width: 0;
+
+		&:nth-child(2) {
+			margin: auto 0 auto auto;
+			flex: 0 0 auto;
+		}
+	}
+
+	.footer-like-button {
+
 	}
 </style>

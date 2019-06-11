@@ -9,7 +9,8 @@
 		all: initial;
 
 		& {
-			display: flex;
+			display: inline-flex;
+			vertical-align: top;
 			width: 24px;
 			height: 24px;
 			cursor: pointer;

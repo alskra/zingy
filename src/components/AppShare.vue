@@ -26,7 +26,7 @@
 				@dragscrollmove="preventClickOnScroll($event, $event.detail.deltaX)"
 			)
 				.items
-					.items-grid
+					.items-grid(:class="{'is-invert': invert}")
 						.items-grid-cell(
 							v-for="item of providers"
 							:key="item.toLowerCase()"
@@ -111,6 +111,7 @@
 		& {
 			display: inline-flex;
 			vertical-align: top;
+			max-width: 100%;
 			user-select: none;
 		}
 	}
@@ -124,17 +125,12 @@
 			align-items: center;
 			box-sizing: border-box;
 			flex-shrink: 0;
-			padding: 0 15px;
-			max-width: 100%;
+			padding: 0 10px;
 			height: 34px;
 			border: 1px solid #f0f0f0;
 			background-color: #f0f0f0;
 			cursor: pointer;
 			overflow: hidden;
-		}
-
-		@media (width < 768px) {
-			padding: 0 10px;
 		}
 	}
 
@@ -209,6 +205,7 @@
 
 		&.is-invert {
 			order: -1;
+			justify-content: flex-start;
 
 			&.v-enter,
 			&.v-leave-to {
@@ -223,11 +220,18 @@
 		flex-shrink: 0;
 		padding: 5px;
 		background-color: #f0f0f0;
+		/*background-color: #2575d5;*/
+		/*width: 2000px;*/
 	}
 
 	.items-grid {
 		display: flex;
+		justify-content: flex-end;
 		margin: -5px;
+
+		&.is-invert {
+			justify-content: flex-start;
+		}
 	}
 
 	.items-grid-cell {
