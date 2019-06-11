@@ -66,7 +66,7 @@ mixin AppArticle()
 						base-time.header-date(datetime="2019-06-09T12:51:44Z")
 
 					.header-grid-cell
-						app-share.header-share
+						app-share.header-share(invert)
 
 			.main
 				base-content.content
@@ -207,3 +207,6 @@ mixin AppArticle()
 				+app-gallery().gallery
 
 			footer.footer
+				.footer-grid
+					.footer-grid-cell
+						app-share.footer-share

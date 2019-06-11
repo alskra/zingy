@@ -121,5 +121,22 @@
 		margin-top: range(30px, 60px);
 		padding: range(15px, 30px);
 		background-color: #f0f0f0;
+
+		@media (width < 1024px) {
+			margin-right: calc(-1 * var(--grid_padding));
+			margin-left: calc(-1 * var(--grid_padding));
+			padding-right: var(--grid_padding);
+			padding-left: var(--grid_padding);
+		}
+	}
+
+	.footer-grid {
+		margin: var(--grid-row_margin);
+		display: flex;
+	}
+
+	.footer-cell {
+		box-sizing: border-box;
+		padding: var(--grid-cell_padding);
 	}
 </style>

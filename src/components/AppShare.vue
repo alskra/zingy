@@ -4,6 +4,7 @@
 
 <template lang="pug">
 	.app-share(
+		:class="{'is-invert': invert}"
 		@mouseenter="boxIsShown = true"
 		@mouseleave="boxIsShown = false"
 	)
@@ -19,6 +20,7 @@
 			:duration="{enter: 500, leave: 500}"
 		)
 			.items-box(
+				:class="{'is-invert': invert}"
 				v-if="boxIsShown"
 				v-dragscroll.x
 				@dragscrollmove="preventClickOnScroll($event, $event.detail.deltaX)"
@@ -55,10 +57,11 @@
 			ShareButtonIsTwitter
 		},
 		props: {
+			invert: Boolean,
 			page_url: String,
 			page_title: String,
 			page_description: String,
-			page_image: String
+			page_image: String,
 		},
 		data() {
 			return {
@@ -170,9 +173,8 @@
 	}
 
 	.items-box {
-		order: -1;
 		display: flex;
-		justify-content: flex-start;
+		justify-content: flex-end;
 		overflow: hidden;
 
 		&.v-enter-active,
@@ -200,8 +202,19 @@
 			width: 0 !important;
 
 			.items-grid-cell {
-				transform: translateX(10px);
+				transform: translateX(-10px);
 				opacity: 0;
+			}
+		}
+
+		&.is-invert {
+			order: -1;
+
+			&.v-enter,
+			&.v-leave-to {
+				.items-grid-cell {
+					transform: translateX(10px);
+				}
 			}
 		}
 	}
