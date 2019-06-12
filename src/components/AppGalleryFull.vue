@@ -161,18 +161,14 @@
 			}
 		},
 		created() {
-			[
-				document.documentElement,
-				document.body
-			].forEach(elem => elem.classList.add('app-gallery-scroll-block'));
+			[document.documentElement, document.body]
+				.forEach(elem => elem.classList.add('app-gallery-scroll-block'));
 
 			document.addEventListener('keyup', this.closeHandler);
 		},
 		destroyed() {
-			[
-				document.documentElement,
-				document.body
-			].forEach(elem => elem.classList.remove('app-gallery-scroll-block'));
+			[document.documentElement, document.body]
+				.forEach(elem => elem.classList.remove('app-gallery-scroll-block'));
 
 			document.removeEventListener('keyup', this.closeHandler);
 		}

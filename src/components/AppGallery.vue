@@ -16,6 +16,7 @@
 </template>
 
 <script>
+	import i18n from '../i18n';
 	import Vue from 'vue';
 	import AppGalleryThumbs from './AppGalleryThumbs';
 	import AppGalleryFull from './AppGalleryFull';
@@ -43,7 +44,7 @@
 	document.addEventListener('click', (evt) => {
 		const el = evt.target;
 
-		if (el.hasAttribute('data-gallery')) {console.log('click on img');
+		if (el.hasAttribute('data-gallery')) {
 			let images;
 
 			if (el.dataset.gallery) {
@@ -70,15 +71,16 @@
 			}
 
 			const appGalleryFull = new (Vue.extend(AppGalleryFull))({
+				i18n,
 				el: '#app-gallery-full-mount-el',
-				destroyed() {
-					this.$el.parentNode.removeChild(this.$el);
-				},
 				propsData: {
 					images,
 					options: {
 						initialSlide
 					}
+				},
+				destroyed() {
+					this.$el.parentNode.removeChild(this.$el);
 				}
 			});
 
