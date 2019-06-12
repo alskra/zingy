@@ -14,12 +14,7 @@ mixin AppHeader()
 					)
 						base-icon.logo-icon(name="zingy")
 
-			transition-box(
-				:duration="{enter: 500, leave: 300}"
-				@enter="onLNavBoxEnter"
-				@after-enter="onLNavBoxAfterEnter"
-				@before-leave="onLNavBoxBeforeLeave"
-			)
+			transition-slide-x(:duration="{enter: 500, leave: 300}")
 				.nav-box(v-show="startAnimateIsEnd && !headerIsMinimized")
 					app-header-nav-is-top.app-header-nav-is-top.nav
 
@@ -31,12 +26,7 @@ mixin AppHeader()
 					)
 						base-icon.menu-button-icon(name="menu")
 
-			transition-box(
-				:duration="{enter: 500, leave: 300}"
-				@enter="onLRightPanelBoxEnter"
-				@after-enter="onLRightPanelBoxAfterEnter"
-				@before-leave="onLRightPanelBoxBeforeLeave"
-			)
+			transition-slide-x(:duration="{enter: 500, leave: 300}")
 				.right-panel-box(v-show="startAnimateIsEnd && !headerIsMinimized")
 					.right-panel
 						.right-panel-grid

@@ -45,24 +45,6 @@
 					this.headerIsMinimized = this.startAnimateIsEnd
 						&& (window.innerWidth < 1200 || scrollDelta > 0 || this.sidebarIsOpened);
 				}
-			},
-			onLNavBoxEnter(el) {
-				el.style.width = el.children[0].offsetWidth + 'px';
-			},
-			onLNavBoxAfterEnter(el) {
-				el.style.width = '';
-			},
-			onLNavBoxBeforeLeave(el){
-				el.style.width = el.children[0].offsetWidth + 'px';
-			},
-			onLRightPanelBoxEnter(el) {
-				this.onLNavBoxEnter(el);
-			},
-			onLRightPanelBoxAfterEnter(el) {
-				this.onLNavBoxAfterEnter(el);
-			},
-			onLRightPanelBoxBeforeLeave(el){
-				this.onLNavBoxBeforeLeave(el);
 			}
 		},
 		created() {
@@ -399,18 +381,6 @@
 				transition-property: transform, opacity;
 				transition-duration: 0.2s;
 				transition-delay: 0.3s;
-			}
-		}
-
-		&.v-enter-active {
-			.base-icon.phone-button-icon {
-				/*transition-delay: 0.3s;*/
-			}
-		}
-
-		&.v-leave-active {
-			.base-icon.phone-button-icon {
-				/*transition-delay: 0.3s;*/
 			}
 		}
 
