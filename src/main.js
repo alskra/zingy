@@ -6,6 +6,7 @@ import store from './store';
 import i18n from './i18n';
 import './plugins';
 import './base-components';
+import './transitions';
 import App from './App';
 
 Vue.config.productionTip = false;

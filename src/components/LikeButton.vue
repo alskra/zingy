@@ -30,8 +30,8 @@
 
 	.base-icon.icon {
 		flex: 0 0 auto;
-		width: 30px;
-		height: 25px;
+		width: 24px;
+		height: 24px;
 		color: #cb5053;
 	}
 

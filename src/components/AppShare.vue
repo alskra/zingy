@@ -1,5 +1,12 @@
 <i18n>
-	{}
+	{
+		"en": {
+			"share": "Share"
+		},
+		"ru": {
+			"share": "Поделиться"
+		}
+	}
 </i18n>
 
 <template lang="pug">
@@ -9,19 +16,16 @@
 		@mouseleave="boxIsShown = false"
 	)
 		button.button(type="button")
-			.button-text Поделиться
+			.button-text {{ $t('share') }}
 			base-icon.button-icon(name="share")
 			.button-counter {{ commonCountFormatted }}
 
-		transition(
-			@enter="setBoxWidth"
-			@after-enter="resetBoxWidth"
-			@before-leave="setBoxWidth"
-			:duration="{enter: 500, leave: 500}"
+		transition-slide-x(
+			:duration="{enter: 600, leave: 500}"
 		)
 			.items-box(
 				:class="{'is-invert': invert}"
-				v-if="boxIsShown || windowWidth < 768"
+				v-show="boxIsShown || windowWidth < 768"
 				v-dragscroll.x
 				@dragscrollmove="preventClickOnScroll($event, $event.detail.deltaX)"
 			)
@@ -138,7 +142,7 @@
 		margin-right: 10px;
 		color: #999999;
 		font-family: var(--font-family);
-		font-size: 12px;
+		font-size: 14px;
 		font-weight: 500;
 		line-height: 1.25;
 		letter-spacing: calc(0.6 / 12 * 1em);
@@ -152,8 +156,8 @@
 	}
 
 	.base-icon.button-icon {
-		width: 20px;
-		height: 20px;
+		width: 24px;
+		height: 24px;
 		flex-shrink: 0;
 		color: #c5c5c5;
 	}
@@ -163,7 +167,7 @@
 		flex-shrink: 0;
 		color: #999999;
 		font-family: var(--font-family);
-		font-size: 12px;
+		font-size: 14px;
 		font-weight: 500;
 		line-height: 1.25;
 	}
@@ -184,8 +188,10 @@
 		}
 
 		&.v-enter-active {
+			transition-delay: 0.1s;
+
 			.items-grid-cell {
-				transition-delay: 0.3s;
+				transition-delay: 0.4s;
 			}
 		}
 
