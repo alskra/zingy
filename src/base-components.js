@@ -20,7 +20,3 @@ Vue.component('VNodes', {
 		return ctx.props.vnodes;
 	}
 });
-
-Vue.component('TransitionBox', {
-	extends: Vue.component('Transition')
-});

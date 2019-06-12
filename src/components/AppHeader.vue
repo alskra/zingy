@@ -43,7 +43,7 @@
 					this.scrollPosition = window.pageYOffset;
 
 					this.headerIsMinimized = this.startAnimateIsEnd
-						&& (window.innerWidth < 1200 || scrollDelta > 0 || this.sidebarIsOpened);
+						&& (window.innerWidth < 1440 || scrollDelta > 0 || this.sidebarIsOpened);
 				}
 			}
 		},

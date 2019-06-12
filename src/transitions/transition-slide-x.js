@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-Vue.component('transition-slide-x', {
+Vue.component('TransitionSlideX', {
 	functional: true,
 	render(createElement, context) {
 		const setWidth = el => el.style.width = el.children[0].offsetWidth + 'px';
