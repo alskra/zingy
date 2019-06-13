@@ -24,7 +24,6 @@
 
 	// article
 	const AppArticle = () => import('./AppArticle');
-	import SwiperModalGalleryDynamic from './SwiperModalGalleryDynamic';
 
 	export default {
 		name: 'AppPage',
@@ -51,8 +50,7 @@
 			SubscribeForm,
 
 			// article
-			AppArticle,
-			SwiperModalGalleryDynamic
+			AppArticle
 		},
 		data() {
 			return {

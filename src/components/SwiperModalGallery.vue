@@ -12,13 +12,13 @@
 </i18n>
 
 <template lang="pug">
-	.vue-swiper.swiper-modal-gallery(v-lock-body-scroll="isShown")
+	.vue-swiper.swiper-modal-gallery(v-lock-body-scroll="shown")
 		transition
-			.overlay(v-if="isShown")
+			.overlay(v-if="shown")
 
 		transition
 			.header(
-				v-show="isShown && controlsAreShown && !isZoomed"
+				v-show="shown && controlsShown && !zoomed"
 				@mouseenter="showControls"
 				@touchstart="showControls"
 			)
@@ -29,7 +29,7 @@
 
 		.swiper-container(
 			ref="swiperContainer"
-			:class="{'is-shown': isShown, 'is-zoomed': isZoomed}"
+			:class="{'is-shown': shown, 'is-zoomed': zoomed}"
 			@mousemove="mousemoveHandler"
 			@touchend="touchendHandler"
 		)
@@ -64,7 +64,7 @@
 
 		transition
 			.footer(
-				v-show="isShown && controlsAreShown && !isZoomed"
+				v-show="shown && controlsShown && !zoomed"
 				@mouseenter="showControls"
 				@touchstart="showControls"
 			)
@@ -111,14 +111,14 @@
 						slideChange: () => {
 							this.toggleControls(true);
 						},
-						zoomChange: (scale) => {
-							this.isZoomed = scale !== 1;
+						zoomChange: scale => {
+							this.zoomed = scale !== 1;
 						}
 					}
 				},
-				isShown: false,
-				isZoomed: false,
-				controlsAreShown: false
+				shown: false,
+				zoomed: false,
+				controlsShown: false
 			};
 		},
 		computed: {
@@ -133,23 +133,32 @@
 			}
 		},
 		methods: {
-			toggleControls(val = !this.controlsAreShown) {
-				val = !!val;
-
+			toggleControls(val = !this.controlsShown) {
+				this.controlsShown = !!val;
 				clearTimeout(this.controlsTimer);
 
-				this.controlsAreShown = val;
-
-				if (val) {
+				if (this.controlsShown) {
 					this.controlsTimer = setTimeout(() => {
-						this.controlsAreShown = false;
+						this.controlsShown = false;
 					}, 3000);
 				}
 			},
 			showControls() {
+				this.controlsShown = true;
 				clearTimeout(this.controlsTimer);
+			},
+			close() {
+				this.$emit('before-close');
+				this.shown = false;
 
-				this.controlsAreShown = true;
+				setTimeout(() => {
+					this.$destroy();
+				}, 300);
+			},
+			closeHandler(evt) {
+				if (['Escape', 'GoBack'].includes(evt.key)) {
+					this.close();
+				}
 			},
 			mousemoveHandler() {
 				if (document.ontouchstart === undefined) {
@@ -158,29 +167,18 @@
 			},
 			touchendHandler() {
 				this.toggleControls();
-			},
-			close() {
-				this.$emit('before-close');
-				this.isShown = false;
-
-				setTimeout(() => {
-					this.$emit('closed');
-				}, 300);
-			},
-			closeHandler(evt) {
-				if (['Escape', 'GoBack'].includes(evt.key)) {
-					this.close();
-				}
 			}
 		},
 		created() {
 			document.addEventListener('keyup', this.closeHandler);
 		},
 		mounted() {
-			this.isShown = true;
+			this.shown = true;
 		},
 		destroyed() {
 			document.removeEventListener('keyup', this.closeHandler);
+			this.$el.remove();
+			this.$emit('closed');
 		}
 	};
 </script>

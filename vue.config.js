@@ -65,7 +65,7 @@ module.exports = {
 				return [options];
 			});
 
-		config.plugins.has('copy') && config.plugin('copy')
+		/*config.index.has('copy') && */config.plugin('copy')
 			.tap(([options]) => {
 				options.forEach(optionObj => optionObj.ignore = [
 					...optionObj.ignore,

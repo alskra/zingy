@@ -1,8 +1,10 @@
 import Vue from 'vue';
+import store from '../store';
+import i18n from '../i18n';
 import VueWindowSize from 'vue-window-size';
 import VModal from 'vue-js-modal';
 import checkView from 'vue-check-view';
-import ResizeSensor from "resize-sensor";
+import ResizeSensor from 'resize-sensor';
 import VueStickyDirective from '@renatodeleao/vue-sticky-directive';
 import VueDragscroll from 'vue-dragscroll';
 import Loading from 'vue-loading-overlay';
@@ -10,6 +12,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import {VLazyImagePlugin} from 'v-lazy-image';
 import VShowSlide from 'v-show-slide';
 import VueTruncateCollapsed from 'vue-truncate-collapsed';
+import SwiperModalGalleryDynamic from './swiper-modal-gallery-dynamic';
 
 Vue.use(VueWindowSize);
 
@@ -68,3 +71,5 @@ Vue.filter('striphtml', function (value) {
 Vue.use(VShowSlide);
 
 Vue.component('vue-truncate-collapsed', VueTruncateCollapsed);
+
+Vue.use(SwiperModalGalleryDynamic, {store, i18n});
