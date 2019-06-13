@@ -115,7 +115,7 @@
 	}
 
 	img,
-	.app-gallery.gallery {
+	.swiper-gallery.gallery {
 		margin: calc(1.25 * var(--base-content_margin-y)) auto;
 		max-width: 100%;
 

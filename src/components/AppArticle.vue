@@ -1,13 +1,13 @@
 <script>
 	import AppShare from './AppShare';
-	import AppGallery from './AppGallery';
+	import SwiperGallery from './SwiperGallery';
 	import LikeButton from './LikeButton';
 
 	export default {
 		name: 'AppArticle',
 		components: {
 			AppShare,
-			AppGallery,
+			SwiperGallery,
 			LikeButton
 		},
 		data() {
@@ -113,7 +113,7 @@
 		min-width: 0;
 	}
 
-	.app-gallery.gallery {
+	.swiper-gallery.gallery {
 		margin: range(20px, 40px) 0;
 	}
 
@@ -146,7 +146,15 @@
 		}
 	}
 
-	.like-button.footer-like-button {
+	img {
+		&.v-lazy-image {
+			filter: blur(10px);
+			transition: filter 0.5s;
+			will-change: filter;
+		}
 
+		&.v-lazy-image-loaded {
+			filter: blur(0);
+		}
 	}
 </style>

@@ -34,7 +34,7 @@
 			flex-flow: column;
 			box-sizing: border-box;
 			width: 100%;
-			height: var(--zingy-section_height);
+			height: var(--zingy-section_height, range(600px / 2.5, 600px));
 			position: relative;
 			background-color: black;
 		}
@@ -67,6 +67,10 @@
 			&::before {
 				animation-play-state: paused;
 			}
+		}
+
+		:root.v-lock-body-scroll-is-active & {
+			opacity: 0;
 		}
 	}
 

@@ -145,3 +145,13 @@
 </script>
 
 <style scoped src="./ShareButton.vue"></style>
+
+<style scoped>
+	.share-button-is-vk {
+		&:hover {
+			.base-icon.icon {
+				color: #4c75a3;
+			}
+		}
+	}
+</style>

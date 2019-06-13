@@ -1,5 +1,5 @@
 <template lang="pug">
-	a.share-button.share-button-is-facebook(
+	a.share-button.share-button-is-twitter(
 		:page-url="page_url"
 		:page-title="page_title"
 		:button-design="button_design"
@@ -74,3 +74,13 @@
 </script>
 
 <style scoped src="./ShareButton.vue"></style>
+
+<style scoped>
+	.share-button-is-twitter {
+		&:hover {
+			.base-icon.icon {
+				color: #55acee;
+			}
+		}
+	}
+</style>

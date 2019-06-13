@@ -1,5 +1,5 @@
 mixin AppArticle()
-	mixin app-gallery()
+	mixin swiper-gallery()
 		//
 			`app-gallery` data format
 
@@ -13,7 +13,7 @@ mixin AppArticle()
 				},
 				...
 			]'
-		app-gallery(
+		swiper-gallery(
 			:images!=[
 				{
 					thumb: 'https://media.architecturaldigest.com/photos/58f918044f42bd463db36a3f/16:9/w_1280,c_limit/1%2520-%252010%2520Greenest%2520Cities%2520in%2520America%2520in%25202017.jpg',
@@ -109,6 +109,7 @@ mixin AppArticle()
 								data-caption="<p>Caption for Foo</p>"
 							)
 								img.float-left(
+									is="v-lazy-image"
 									src="upload/pic-1.jpg"
 									alt=""
 									width="440"
@@ -120,7 +121,7 @@ mixin AppArticle()
 								гидроизоляцию, что предупредит преждевременный износ здания.
 
 						.clearfix
-							+app-gallery().gallery.float-right(style={width: '440px'})
+							+swiper-gallery().gallery.float-right(style={width: '440px'})
 
 							p.
 								Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения,
@@ -135,21 +136,21 @@ mixin AppArticle()
 								Это место отдыха и встреч с друзьями, дружных посиделок и лечебных процедур.
 								При обустройстве особое внимание уделяется отделке бани внутри.
 
-						.clearfix
-							a(
-								data-gallery="custom-gallery"
-								href="upload/pic-2.jpg"
+						a(
+							data-gallery="custom-gallery"
+							href="upload/pic-2.jpg"
+						)
+							img(
+								is="v-lazy-image"
+								src="upload/pic-2.jpg"
+								alt=""
+								width="600"
 							)
-								img(
-									src="upload/pic-2.jpg"
-									alt=""
-									width="600"
-								)
 
-							p.
-								Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения,
-								беспроблемное использование в условиях повышенной влажности. Важно предусмотреть хорошую
-								гидроизоляцию, что предупредит преждевременный износ здания.
+						p.
+							Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения,
+							беспроблемное использование в условиях повышенной влажности. Важно предусмотреть хорошую
+							гидроизоляцию, что предупредит преждевременный износ здания.
 
 						p.
 							На собственном участке обязательно стоит выделить место под уютную баньку или сауну.
@@ -226,7 +227,7 @@ mixin AppArticle()
 
 						p На собственном участке обязательно стоит выделить место под уютную баньку или сауну. Это место отдыха и встреч с друзьями, дружных посиделок и лечебных процедур.
 
-				+app-gallery().gallery
+				+swiper-gallery().gallery
 
 			footer.footer
 				.footer-grid

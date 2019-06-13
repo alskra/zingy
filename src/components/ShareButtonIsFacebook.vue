@@ -108,3 +108,13 @@
 </script>
 
 <style scoped src="./ShareButton.vue"></style>
+
+<style scoped>
+	.share-button-is-facebook {
+		&:hover {
+			.base-icon.icon {
+				color: #3b5999;
+			}
+		}
+	}
+</style>

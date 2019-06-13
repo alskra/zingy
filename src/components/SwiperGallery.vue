@@ -1,17 +1,20 @@
 <template lang="pug">
-	.vue-swiper.app-gallery-thumbs
+	.vue-swiper.swiper-gallery
 		.swiper-container(ref="swiperContainer")
 			.swiper-wrapper
 				.swiper-slide(
 					v-for="(image, index) of images"
 					:key="index"
+					:data-gallery="performanceNow"
+					:data-thumb="image.thumb"
+					:data-src="image.src"
+					:data-srcset="image.srcset"
+					:data-sizes="image.sizes"
+					:data-caption="image.caption"
 				)
 					img.image.swiper-lazy(
-						:data-gallery="Date.now()"
-						:data-thumb="image.thumb"
-						:data-src="image.src"
-						:data-caption="image.caption"
-						:alt="image.caption | striphtml"
+						:data-src="image.thumb"
+						:alt="image.caption.slice(0, 100) | striphtml"
 					)
 
 					.swiper-lazy-preloader
@@ -41,7 +44,7 @@
 	import VueSwiper from './VueSwiper';
 
 	export default {
-		name: 'AppGalleryThumbs',
+		name: 'SwiperGallery',
 		extends: VueSwiper,
 		props: {
 			images: {
@@ -64,17 +67,20 @@
 				const index = this.swiper.realIndex;
 
 				if (index >= 0 && this.images[index].caption) {
-					return this.images[index].caption;
+					return String(this.images[index].caption);
 				}
 
 				return '';
+			},
+			performanceNow() {
+				return performance.now();
 			}
-		},
+		}
 	};
 </script>
 
 <style scoped>
-	.app-gallery-thumbs {
+	.swiper-gallery {
 		all: initial;
 
 		& {
@@ -151,19 +157,11 @@
 		}
 	}
 
-	.nav-button-is-prev {
-
-	}
-
 	.nav-button-is-next {
 		.base-icon.nav-button-icon {
 			transform-origin: 50% 50%;
 			transform: rotate(180deg);
 		}
-	}
-
-	.base-icon.nav-button-icon {
-
 	}
 
 	.caption {

@@ -61,7 +61,8 @@ Vue.use(VLazyImagePlugin);
 Vue.filter('striphtml', function (value) {
 	const div = document.createElement('div');
 	div.innerHTML = value;
-	return div.textContent || div.innerText || '';
+	return (div.textContent || div.innerText || '')
+		.replace(/^\s*(\S.*\S)\s*$/s, (match, capture) => capture.replace(/\s+/g, ' '));
 });
 
 Vue.use(VShowSlide);

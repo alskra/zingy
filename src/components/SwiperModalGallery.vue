@@ -12,7 +12,7 @@
 </i18n>
 
 <template lang="pug">
-	.vue-swiper.app-gallery-full
+	.vue-swiper.swiper-modal-gallery(v-lock-body-scroll="isShown")
 		transition
 			.overlay(v-if="isShown")
 
@@ -42,7 +42,8 @@
 						img.image.swiper-lazy(
 							:data-src="image.src"
 							:data-srcset="image.srcset"
-							:alt="image.caption | striphtml"
+							:sizes="image.sizes"
+							:alt="image.caption.slice(0, 100) | striphtml"
 						)
 
 					.swiper-lazy-preloader.swiper-lazy-preloader-white
@@ -80,7 +81,7 @@
 	import VueSwiper from './VueSwiper';
 
 	export default {
-		name: 'AppGalleryFull',
+		name: 'SwiperModalGallery',
 		extends: VueSwiper,
 		props: {
 			images: {
@@ -159,10 +160,11 @@
 				this.toggleControls();
 			},
 			close() {
+				this.$emit('before-close');
 				this.isShown = false;
 
 				setTimeout(() => {
-					this.$emit('close');
+					this.$emit('closed');
 				}, 300);
 			},
 			closeHandler(evt) {
@@ -172,31 +174,19 @@
 			}
 		},
 		created() {
-			[document.documentElement, document.body]
-				.forEach(elem => elem.classList.add('app-gallery-scroll-block'));
-
 			document.addEventListener('keyup', this.closeHandler);
 		},
 		mounted() {
 			this.isShown = true;
 		},
 		destroyed() {
-			[document.documentElement, document.body]
-				.forEach(elem => elem.classList.remove('app-gallery-scroll-block'));
-
 			document.removeEventListener('keyup', this.closeHandler);
 		}
 	};
 </script>
 
-<style>
-	.app-gallery-scroll-block {
-		overflow: hidden;
-	}
-</style>
-
 <style scoped>
-	.app-gallery-full {
+	.swiper-modal-gallery {
 		all: initial;
 
 		& {

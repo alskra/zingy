@@ -20,5 +20,6 @@
 	.base-icon.icon {
 		color: #999999;
 		pointer-events: none;
+		transition: color 0.2s;
 	}
 </style>
