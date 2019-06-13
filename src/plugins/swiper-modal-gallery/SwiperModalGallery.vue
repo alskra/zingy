@@ -78,7 +78,7 @@
 </template>
 
 <script>
-	import VueSwiper from './VueSwiper';
+	import VueSwiper from '../../components/VueSwiper';
 
 	export default {
 		name: 'SwiperModalGallery',

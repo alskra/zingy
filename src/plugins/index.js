@@ -12,7 +12,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import {VLazyImagePlugin} from 'v-lazy-image';
 import VShowSlide from 'v-show-slide';
 import VueTruncateCollapsed from 'vue-truncate-collapsed';
-import SwiperModalGalleryDynamic from './swiper-modal-gallery-dynamic';
+import SwiperModalGallery from './swiper-modal-gallery';
 
 Vue.use(VueWindowSize);
 
@@ -72,4 +72,4 @@ Vue.use(VShowSlide);
 
 Vue.component('vue-truncate-collapsed', VueTruncateCollapsed);
 
-Vue.use(SwiperModalGalleryDynamic, {store, i18n});
+Vue.use(SwiperModalGallery, {store, i18n});

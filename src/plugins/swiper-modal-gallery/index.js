@@ -1,4 +1,6 @@
-import SwiperModalGallery from '../components/SwiperModalGallery';
+import SwiperModalGallery from './SwiperModalGallery';
+
+export {SwiperModalGallery};
 
 export default {
 	install(Vue, options) {

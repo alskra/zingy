@@ -5,16 +5,11 @@
 				.swiper-slide(
 					v-for="(image, index) of images"
 					:key="index"
-					:data-gallery="performanceNow"
-					:data-thumb="image.thumb"
-					:data-src="image.src"
-					:data-srcset="image.srcset"
-					:data-sizes="image.sizes"
-					:data-caption="image.caption"
 				)
 					img.image.swiper-lazy(
 						:data-src="image.thumb"
 						:alt="image.caption.slice(0, 100) | striphtml"
+						@click="$modalGallery(images, index)"
 					)
 
 					.swiper-lazy-preloader
