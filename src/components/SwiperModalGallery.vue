@@ -126,7 +126,7 @@
 				const index = this.swiper.realIndex;
 
 				if (index >= 0 && this.images[index].caption) {
-					return this.images[index].caption;
+					return String(this.images[index].caption);
 				}
 
 				return '';

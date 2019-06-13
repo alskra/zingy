@@ -113,7 +113,7 @@
 		min-width: 0;
 	}
 
-	.swiper-gallery.gallery {
+	.swiper-gallery.app-article-gallery {
 		margin: range(20px, 40px) 0;
 	}
 
