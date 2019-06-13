@@ -38,9 +38,9 @@
 	}
 
 	.grid {
+		margin: auto 0;
 		display: flex;
 		flex-flow: column;
-		margin: auto 0;
 
 		@media (width < 1440px) {
 			flex-flow: row;

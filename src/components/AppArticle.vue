@@ -63,18 +63,15 @@
 		}
 	}
 
-	.header-title-box {
-
-	}
-
 	.header-title-box-has-bg {
+		position: relative;
 		display: flex;
 		flex-flow: column;
 		box-sizing: border-box;
 		padding: calc(2 * var(--grid-cell_padding));
+		height: 100%;
 		min-height: 260px;
 		background: none no-repeat 50% 50% / cover;
-		position: relative;
 
 		&::before {
 			content: '';
@@ -88,10 +85,10 @@
 		}
 
 		.header-title {
+			position: relative;
 			margin: auto 0;
 			color: #ffffff;
 			text-align: center;
-			position: relative;
 		}
 
 		@media (width < 1024px) {

@@ -1,18 +1,6 @@
 <template lang="pug">
 	.app-gallery
-		app-gallery-thumbs(
-			ref="appGalleryThumbs"
-			:images="images"
-			@open="appGalleryFullIndex = $event"
-		)
-
-		app-gallery-full(
-			ref="appGalleryFull"
-			:images="images"
-			v-if="appGalleryFullIndex !== null"
-			:options="{initialSlide: appGalleryFullIndex}"
-			@close="appGalleryFullIndex = null"
-		)
+		app-gallery-thumbs(:images="images")
 </template>
 
 <script>
@@ -24,31 +12,27 @@
 	export default {
 		name: 'AppGallery',
 		components: {
-			AppGalleryThumbs,
-			AppGalleryFull
+			AppGalleryThumbs
 		},
 		props: {
 			images: {
 				type: Array,
 				required: true
 			}
-		},
-		data() {
-			return {
-				appGalleryFullIndex: null
-			};
 		}
 	};
 
 	// Dynamic AppGalleryFull
-	document.addEventListener('click', (evt) => {
-		const el = evt.target;
+	document.addEventListener('click', evt => {
+		const el = evt.target.closest('[data-gallery]');
 
-		if (el.hasAttribute('data-gallery')) {
+		if (el) {
+			evt.preventDefault();
+
 			let images;
 
 			if (el.dataset.gallery) {
-				images = Array.from(document.querySelectorAll(`[data-gallery=${el.dataset.gallery}]`));
+				images = Array.from(document.querySelectorAll(`[data-gallery='${el.dataset.gallery}']`));
 			} else {
 				images = [el];
 			}
@@ -57,9 +41,10 @@
 
 			images = images.map(image => {
 				return {
-					thumb: image.dataset.thumb || image.dataset.src || image.getAttribute('src'),
-					src: image.dataset.src || image.getAttribute('src'),
-					caption: image.dataset.caption || ''
+					thumb: image.dataset.thumb || image.querySelector('img').src,
+					src: image.dataset.src || image.getAttribute('src') || image.getAttribute('href'),
+					srcset: image.dataset.srcset || image.srcset,
+					caption: image.dataset.caption || image.title || image.alt || image.querySelector('img').alt
 				}
 			});
 
@@ -88,12 +73,6 @@
 		}
 	});
 </script>
-
-<style>
-	[data-gallery] {
-		cursor: pointer;
-	}
-</style>
 
 <style scoped>
 	.app-gallery {

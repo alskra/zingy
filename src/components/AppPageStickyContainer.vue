@@ -50,7 +50,7 @@
 	.main {
 		margin-left: calc(2 * var(--grid-cell_padding));
 		flex-grow: 1;
-		min-width: 0;
+		min-width: 0.1px;
 
 		@media (width < 1024px) {
 			margin-left: 0;

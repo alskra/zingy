@@ -7,9 +7,11 @@
 					:key="index"
 				)
 					img.image.swiper-lazy(
-						:data-src="image.thumb || image.src"
+						:data-gallery="Date.now()"
+						:data-thumb="image.thumb"
+						:data-src="image.src"
+						:data-caption="image.caption"
 						:alt="image.caption | striphtml"
-						@click="$emit('open', swiper.realIndex)"
 					)
 
 					.swiper-lazy-preloader
@@ -30,8 +32,8 @@
 					base-icon.nav-button-icon(name="angle-left")
 
 		.caption(
-			v-if="swiper.realIndex !== undefined && images[swiper.realIndex].caption"
-			v-html="images[swiper.realIndex].caption"
+			v-if="caption"
+			v-html="caption"
 		)
 </template>
 
@@ -56,7 +58,18 @@
 					lazy: true
 				}
 			};
-		}
+		},
+		computed: {
+			caption() {
+				const index = this.swiper.realIndex;
+
+				if (index >= 0 && this.images[index].caption) {
+					return this.images[index].caption;
+				}
+
+				return '';
+			}
+		},
 	};
 </script>
 

@@ -92,6 +92,7 @@ module.exports = {
 		'swiper',
 		'dom7',
 		'vue-clamp',
-		'resize-detector'
+		'resize-detector',
+		'vue-goodshare'
 	]
 };

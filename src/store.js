@@ -1,4 +1,4 @@
-import queryString from 'query-string';
+import queryString from 'query-string'; // query-string@5 for IE support
 import Vue from 'vue';
 import Vuex from 'vuex';
 

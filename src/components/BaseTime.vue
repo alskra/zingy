@@ -4,8 +4,10 @@
 		:title="$d(date, 'long')"
 	)
 		span.day {{ $d(date, 'day') }}
-		span.month {{ ' ' + $d(date, 'dayMonth').replace(/\s*\d+\s*/, '') }}
-		span.year {{ ' ' + $d(date, 'year') }}
+		| &#32;
+		span.month {{ $d(date, 'dayMonth').replace(/\s*\d+\s*/, '') }}
+		| &#32;
+		span.year {{ $d(date, 'year') }}
 </template>
 
 <script>

@@ -41,6 +41,16 @@
 	-moz-osx-font-smoothing: grayscale;
 
 	scroll-behavior: smooth;
+
+	//&.is-browser-ie {
+	//	overflow: hidden;
+	//	height: 100%;
+	//
+	//	body {
+	//		overflow: auto;
+	//		height: 100%;
+	//	}
+	//}
 }
 
 :focus:not(:focus-visible) {

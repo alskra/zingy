@@ -1,5 +1,6 @@
 import './global.css';
 import './polyfills';
+import './polyfills-ie';
 import 'ninelines-ua-parser';
 import Vue from 'vue';
 import store from './store';

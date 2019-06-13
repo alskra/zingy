@@ -13,23 +13,23 @@
 
 <template lang="pug">
 	.vue-swiper.app-gallery-full
-		transition(appear)
-			.overlay
+		transition
+			.overlay(v-if="isShown")
 
-		transition(appear)
+		transition
 			.header(
-				v-show="controlsAreShown && !isZoomed"
+				v-show="isShown && controlsAreShown && !isZoomed"
 				@mouseenter="showControls"
 				@touchstart="showControls"
 			)
 				button.close-button(
-					@click="$emit('close')"
+					@click="close"
 				)
 					base-icon.close-button-icon(name="close")
 
 		.swiper-container(
 			ref="swiperContainer"
-			:style="{zIndex: isZoomed ? 4 : ''}"
+			:class="{'is-shown': isShown, 'is-zoomed': isZoomed}"
 			@mousemove="mousemoveHandler"
 			@touchend="touchendHandler"
 		)
@@ -41,6 +41,7 @@
 					.swiper-zoom-container
 						img.image.swiper-lazy(
 							:data-src="image.src"
+							:data-srcset="image.srcset"
 							:alt="image.caption | striphtml"
 						)
 
@@ -60,9 +61,9 @@
 			@click="swiper.slideNext()"
 		)
 
-		transition(appear)
+		transition
 			.footer(
-				v-show="controlsAreShown && !isZoomed && caption"
+				v-show="isShown && controlsAreShown && !isZoomed"
 				@mouseenter="showControls"
 				@touchstart="showControls"
 			)
@@ -114,6 +115,7 @@
 						}
 					}
 				},
+				isShown: false,
 				isZoomed: false,
 				controlsAreShown: false
 			};
@@ -156,8 +158,17 @@
 			touchendHandler() {
 				this.toggleControls();
 			},
+			close() {
+				this.isShown = false;
+
+				setTimeout(() => {
+					this.$emit('close');
+				}, 300);
+			},
 			closeHandler(evt) {
-				if (['Escape', 'GoBack'].includes(evt.key)) this.$emit('close');
+				if (['Escape', 'GoBack'].includes(evt.key)) {
+					this.close();
+				}
 			}
 		},
 		created() {
@@ -165,6 +176,9 @@
 				.forEach(elem => elem.classList.add('app-gallery-scroll-block'));
 
 			document.addEventListener('keyup', this.closeHandler);
+		},
+		mounted() {
+			this.isShown = true;
 		},
 		destroyed() {
 			[document.documentElement, document.body]
@@ -206,14 +220,14 @@
 		height: 100%;
 		background-color: rgba(#000000, 0.8);
 
-		&.v-enter,
-		&.v-leave-to {
-			opacity: 0;
-		}
-
 		&.v-enter-active,
 		&.v-leave-active {
 			transition: opacity 0.3s;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			opacity: 0;
 		}
 	}
 
@@ -227,14 +241,14 @@
 		padding: range(8px, 40px) var(--grid_padding) 0;
 		width: 100%;
 
-		&.v-enter,
-		&.v-leave-to {
-			transform: translateY(-100%);
-		}
-
 		&.v-enter-active,
 		&.v-leave-active {
 			transition: transform 0.3s;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			transform: translateY(-100%);
 		}
 	}
 
@@ -253,16 +267,23 @@
 	.swiper-container {
 		width: 100%;
 		height: 100%;
+		opacity: 0;
+		transition: opacity 0.3s;
+
+		&.is-shown {
+			transition-duration: 0s;
+			opacity: 1;
+		}
+
+		&.is-zoomed {
+			z-index: 4;
+		}
 	}
 
 	.swiper-slide {
 		&.swiper-slide-zoomed {
 			z-index: 1;
 		}
-	}
-
-	.swiper-zoom-container {
-
 	}
 
 	.image {
@@ -301,14 +322,14 @@
 		max-height: 100%;
 		background-color: rgba(#000000, 0.7);
 
-		&.v-enter,
-		&.v-leave-to {
-			transform: translateY(100%);
-		}
-
 		&.v-enter-active,
 		&.v-leave-active {
 			transition: transform 0.3s;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			transform: translateY(100%);
 		}
 	}
 

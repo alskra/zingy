@@ -48,7 +48,7 @@
 
 <script>
 	import {preventClickOnScroll} from '../helpers';
-	import {sliceThousandInt} from "vue-goodshare/src/helpers/count_number";
+	import {sliceThousandInt} from 'vue-goodshare/src/helpers/count_number';
 	import ShareButtonIsVk from './ShareButtonIsVk';
 	import ShareButtonIsFacebook from './ShareButtonIsFacebook';
 	import ShareButtonIsTwitter from './ShareButtonIsTwitter';

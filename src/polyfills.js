@@ -9,15 +9,3 @@ import cssVars from 'css-vars-ponyfill';
 focusWithin(document, {force: true});
 
 cssVars();
-
-if (NodeList.prototype.forEach === undefined) {
-	NodeList.prototype.forEach = Array.prototype.forEach;
-}
-
-if (Object.getOwnPropertyDescriptor(Element.prototype, 'classList') === undefined) {
-	Object.defineProperty(
-		SVGElement.prototype,
-		'classList',
-		Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'classList')
-	);
-}

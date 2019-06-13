@@ -102,14 +102,17 @@ mixin AppArticle()
 							При обустройстве особое внимание уделяется отделке бани внутри.
 
 						.clearfix
-							img.float-left(
-								src="upload/pic-1.jpg"
-								alt=""
-								width="440"
-								data-gallery="gallery"
-								data-thumb="upload/pic-1.jpg"
-								data-caption="Caption for foo"
+							a(
+								data-gallery="custom-gallery"
+								href="upload/pic-1.jpg"
+								data-srcset="upload/pic-1.jpg 2x"
+								data-caption="<p>Caption for Foo</p>"
 							)
+								img.float-left(
+									src="upload/pic-1.jpg"
+									alt=""
+									width="440"
+								)
 
 							p.
 								Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения,
@@ -133,12 +136,15 @@ mixin AppArticle()
 								При обустройстве особое внимание уделяется отделке бани внутри.
 
 						.clearfix
-							img.float-left(
-								src="upload/pic-2.jpg"
-								alt=""
-								width="440"
-								data-gallery="gallery"
+							a(
+								data-gallery="custom-gallery"
+								href="upload/pic-2.jpg"
 							)
+								img(
+									src="upload/pic-2.jpg"
+									alt=""
+									width="600"
+								)
 
 							p.
 								Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения,

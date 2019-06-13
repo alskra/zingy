@@ -1,4 +1,6 @@
 <script>
+	import cssVars from 'css-vars-ponyfill';
+
 	// all
 	import AppHeader from './AppHeader';
 	import AppFooter from './AppFooter';
@@ -72,7 +74,7 @@
 			}
 		},
 		methods: {
-			onScrollAndResize() {
+			onScrollOrResize() {
 				const zingySection = document.querySelector('.zingy-section');
 				const appPagination = document.querySelector('.app-pagination');
 				const linkBackward = this.$refs.linkBackward;
@@ -98,15 +100,30 @@
 			}
 		},
 		created() {
-			window.addEventListener('scroll', this.onScrollAndResize);
-			window.addEventListener('resize', this.onScrollAndResize);
+			window.addEventListener('scroll', this.onScrollOrResize);
+			window.addEventListener('resize', this.onScrollOrResize);
 		},
 		destroyed() {
-			window.removeEventListener('scroll', this.onScrollAndResize);
-			window.removeEventListener('resize', this.onScrollAndResize);
+			window.removeEventListener('scroll', this.onScrollOrResize);
+			window.removeEventListener('resize', this.onScrollOrResize);
 		},
 		mounted() {
-			this.onScrollAndResize();
+			this.onScrollOrResize();
+
+			if (
+				this.$el.classList.contains('is-theme-dark')
+				&& document.documentElement.classList.contains('is-browser-ie')
+			) {
+				cssVars({
+					variables: {
+						'--app-page-main_background-color': '#383838',
+						'--app-breadcrumb_color': '#ffffff',
+						'--base-title_color': '#ffffff',
+						'--side-nav_background-color': '#ffffff',
+						'--app-pagination_color': '#ffffff'
+					}
+				})
+			}
 		}
 	};
 </script>
