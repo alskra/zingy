@@ -44,6 +44,7 @@
 }
 
 body {
+	padding-right: var(--body-is-scroll-locked_padding);
 	background-color: #ffffff;
 }
 

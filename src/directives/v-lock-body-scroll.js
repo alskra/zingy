@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import cssVars from 'css-vars-ponyfill';
 
 Vue.directive('lock-body-scroll', (el, binding) => {
 	if (
@@ -15,14 +16,18 @@ Vue.directive('lock-body-scroll', (el, binding) => {
 
 		document.documentElement.dataset.vLockBodyScroll = lockCounter;
 
-		const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+		cssVars({
+			variables: {
+				'--body-is-scroll-locked_padding': lockCounter ?
+					window.innerWidth - document.documentElement.clientWidth + 'px'
+					: ''
+			}
+		});
 
 		[document.documentElement, document.body]
 			.forEach(el => {
 				el.style.overflow = lockCounter ? 'hidden' : '';
 				el.classList.toggle('v-lock-body-scroll-is-active', lockCounter);
 			});
-
-		document.body.style.paddingRight = lockCounter ? scrollBarWidth + 'px' : '';
 	}
 });
