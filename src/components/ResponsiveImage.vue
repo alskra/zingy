@@ -59,7 +59,6 @@
 			display: block;
 			max-width: 100%;
 			height: auto;
-			cursor: inherit;
 			object-fit: cover;
 		}
 
