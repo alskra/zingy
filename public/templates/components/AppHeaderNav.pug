@@ -3,9 +3,9 @@ mixin AppHeaderNav()
 		nav.app-header-nav
 			.grid
 				each navItem, index in [['Главная', 'index.html'], ['Услуги', ''], ['О компании', ''], ['Разработка', ''], ['Продвижение', ''], ['Блог', 'blog.html'], ['Контакты', '']]
-					.grid-cell(class={'is-active': swiper === 0})
+					.grid-cell(class={'is-active': index === 0})
 						a.link(
 							href=navItem[1]
-							class={'is-active': swiper === 0}
+							class={'is-active': index === 0}
 						)
 							span.link-text= navItem[0]

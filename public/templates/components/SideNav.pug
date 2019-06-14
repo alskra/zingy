@@ -33,7 +33,7 @@ mixin SideNav()
 				)
 					each item, index in items
 						a.nav-item(
-							class={'is-active': swiper === 0}
+							class={'is-active': index === 0}
 							href=item.url
 						)
 							span.nav-item-text= item.title
