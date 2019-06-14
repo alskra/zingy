@@ -123,23 +123,22 @@ mixin AppArticle()
 
 						p Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения, беспроблемное использование в условиях повышенной влажности. Важно предусмотреть хорошую гидроизоляцию, что предупредит преждевременный износ здания.
 
-						div(style={textAlign: 'center'})
-							figure.base-content-figure(
-								is="base-figure"
-								style={width: '400px'}
+						figure.base-content-figure(
+							is="base-figure"
+							style={width: '400px'}
+						)
+							a.image-box(
+								data-gallery="custom-gallery"
+								href="upload/gallery/image-3.jpg"
 							)
-								a.image-box(
-									data-gallery="custom-gallery"
-									href="upload/gallery/image-3.jpg"
+								img.base-figure-image(
+									is="base-image"
+									:width-ratio="4"
+									:height-ratio="3"
+									src="upload/gallery/thumbs/image-3.jpg"
+									alt=""
+									title="Figure Image With Title Caption"
 								)
-									img.base-figure-image(
-										is="base-image"
-										:width-ratio="4"
-										:height-ratio="3"
-										src="upload/gallery/thumbs/image-3.jpg"
-										alt=""
-										title="Figure Image With Title Caption"
-									)
 
 						h3 Заголовок пример h3
 
