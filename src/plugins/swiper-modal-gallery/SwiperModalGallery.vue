@@ -22,6 +22,8 @@
 				@mouseenter="showControls"
 				@touchstart="showControls"
 			)
+				.pagination(ref="pagination")
+
 				button.close-button(
 					@click="close"
 				)
@@ -64,7 +66,7 @@
 
 		transition
 			.footer(
-				v-show="shown && controlsShown && !zoomed"
+				v-show="shown && controlsShown && !zoomed && caption"
 				@mouseenter="showControls"
 				@touchstart="showControls"
 			)
@@ -104,6 +106,9 @@
 					zoom: true,
 					mousewheel: true,
 					grabCursor: true,
+					pagination: {
+						type: 'fraction'
+					},
 					on: {
 						init: () => {
 							this.toggleControls(true);
@@ -304,6 +309,7 @@
 		bottom: 0;
 		left: 0;
 		display: flex;
+		align-items: baseline;
 		box-sizing: border-box;
 		padding: range(8px, 15px) var(--grid_padding);
 		width: 100%;
@@ -349,5 +355,17 @@
 				text-decoration: none;
 			}
 		}
+	}
+
+	.pagination {
+		margin: auto 0;
+		flex-shrink: 0;
+		color: #ffffff;
+		font-family: var(--font-family);
+		font-size: range(1.4rem, 1.8rem);
+		line-height: 1.25;
+		font-weight: 500;
+		white-space: nowrap;
+		user-select: none;
 	}
 </style>
