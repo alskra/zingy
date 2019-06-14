@@ -27,7 +27,7 @@
 		align-items: center;
 		height: 100%;
 		text-decoration: none;
-		padding: 0 range(0px, 20px);
+		padding: 0 range(-10px, 20px);
 
 		&:not(.is-active) {
 			&:hover {

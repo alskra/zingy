@@ -255,7 +255,7 @@
 			display: none;
 		}
 
-		@media (width < 1440px) {
+		@media (width < 1366px) {
 			display: none;
 		}
 	}
@@ -279,7 +279,7 @@
 			display: none;
 		}
 
-		@media (width < 1440px) {
+		@media (width < 1366px) {
 			display: none;
 		}
 	}

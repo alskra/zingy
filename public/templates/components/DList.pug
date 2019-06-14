@@ -7,6 +7,7 @@ mixin DList(items = [{title: 'Title', nav: [{url: '', text: 'Link'}]}])
 			each item, index in items
 				li.item(@mouseenter="onItemMouseenter")
 					.item-number= index < 9 ? '0' + (index + 1) : index + 1
+
 					.item-body
 						.item-title= item.title
 

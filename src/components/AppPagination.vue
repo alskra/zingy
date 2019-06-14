@@ -29,7 +29,7 @@
 			display: none;
 		}
 
-		@media (width < 1440px) {
+		@media (width < 1366px) {
 			position: relative;
 			top: auto;
 			bottom: auto;
@@ -42,7 +42,7 @@
 		display: flex;
 		flex-flow: column;
 
-		@media (width < 1440px) {
+		@media (width < 1366px) {
 			flex-flow: row;
 			flex-wrap: wrap;
 			justify-content: center;
@@ -64,7 +64,7 @@
 			}
 		}
 
-		@media (width < 1440px) {
+		@media (width < 1366px) {
 			margin: 5px;
 			display: flex;
 
