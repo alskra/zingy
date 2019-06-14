@@ -72,3 +72,5 @@ Vue.use(SwiperModalGallery, {store, i18n});
 Vue.use(VLockBodyScroll);
 
 Vue.use(StripHTML);
+
+Vue.component('ResponsiveImage', () => import('../components/ResponsiveImage'));

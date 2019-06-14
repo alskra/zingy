@@ -115,10 +115,12 @@ mixin AppArticle()
 								data-caption!="<p>Caption for <strong>Image 1</strong></p>"
 							)
 								img.float-left(
-									is="v-lazy-image"
+									is="responsive-image"
+									:real-width="1000"
+									:real-height="1778"
+									width="300"
 									src="upload/gallery/thumbs/image-6.jpg"
 									alt=""
-									width="200"
 								)
 
 							p.
@@ -147,10 +149,12 @@ mixin AppArticle()
 							href="upload/gallery/image-4.jpg"
 						)
 							img(
-								is="v-lazy-image"
+								is="responsive-image"
+								:real-width="1000"
+								:real-height="500"
+								width="600"
 								src="upload/gallery/thumbs/image-4.jpg"
 								alt=""
-								width="600"
 							)
 
 						p.

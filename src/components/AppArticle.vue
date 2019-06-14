@@ -145,16 +145,4 @@
 			flex: 0 0 auto;
 		}
 	}
-
-	img {
-		&.v-lazy-image {
-			filter: blur(10px);
-			transition: filter 0.5s;
-			will-change: filter;
-		}
-
-		&.v-lazy-image-loaded {
-			filter: blur(0);
-		}
-	}
 </style>
