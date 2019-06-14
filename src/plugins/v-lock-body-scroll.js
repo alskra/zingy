@@ -1,5 +1,6 @@
 import cssVars from 'css-vars-ponyfill';
 
+// Lock function
 const lockBodyScroll = (locked = true) => {
 	let lockCounter = JSON.parse(document.documentElement.dataset.vLockBodyScroll || 0);
 
@@ -26,6 +27,7 @@ const lockBodyScroll = (locked = true) => {
 		});
 };
 
+// Export directive
 export const VLockBodyScroll = (el, binding) => {
 	if (
 		!binding.hasOwnProperty('oldValue')
@@ -35,6 +37,7 @@ export const VLockBodyScroll = (el, binding) => {
 	}
 };
 
+// Export plugin
 export default {
 	install(Vue) {
 		Vue.directive('lock-body-scroll', VLockBodyScroll);

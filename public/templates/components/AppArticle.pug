@@ -1,14 +1,16 @@
 mixin AppArticle()
 	mixin swiper-gallery()
 		//
-			`app-gallery` data format
+			`swiper-gallery` data format
 
 			JSON массив объектов:
 
 			:images='[
 				{
-					"thumb": "", // URL для превью
+					"thumb": "", // URL эскиза
 					"src": "",	// URL полноразмерного изображения
+					"srcset": "",
+					"sizes": "",
 					"caption": "" // Описание, простой текст или HTML
 				},
 				...
@@ -16,33 +18,38 @@ mixin AppArticle()
 		swiper-gallery(
 			:images!=[
 				{
-					thumb: 'https://media.architecturaldigest.com/photos/58f918044f42bd463db36a3f/16:9/w_1280,c_limit/1%2520-%252010%2520Greenest%2520Cities%2520in%2520America%2520in%25202017.jpg',
-					src: 'https://media.architecturaldigest.com/photos/58f918044f42bd463db36a3f/16:9/w_1280,c_limit/1%2520-%252010%2520Greenest%2520Cities%2520in%2520America%2520in%25202017.jpg',
-					caption: 'Caption for image 1'
+					thumb: 'upload/gallery/thumbs/image-1.jpg',
+					src: 'upload/gallery/image-1.jpg',
+					caption: 'Caption for Image 1'
 				},
 				{
-					thumb: 'https://icdn3.digitaltrends.com/image/what-is-a-smart-city-series-introduction.jpg',
-					src: 'https://icdn3.digitaltrends.com/image/what-is-a-smart-city-series-introduction.jpg',
+					thumb: 'upload/gallery/thumbs/image-2.jpg',
+					src: 'upload/gallery/image-2.jpg',
 					caption: `
-						<p>На собственном участке обязательно стоит выделить место под уютную <a href="" > баньку или сауну</a>.</p>
+						<p>На собственном участке обязательно стоит выделить место под уютную <a href=""> баньку или сауну</a>.</p>
 						<p>Это место отдыха и встреч с друзьями, дружных посиделок и лечебных процедур.</p>
 						<p>Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения, беспроблемное использование в условиях повышенной влажности. Важно предусмотреть хорошую гидроизоляцию, что предупредит преждевременный износ здания.</p>
 					`
 				},
 				{
-					thumb: 'https://upload.wikimedia.org/wikipedia/commons/c/ce/City-of-the-future.jpg',
-					src: 'https://upload.wikimedia.org/wikipedia/commons/c/ce/City-of-the-future.jpg',
+					thumb: '',
+					src: 'upload/gallery/image-3.jpg',
 					caption: ''
 				},
 				{
-					thumb: 'http://www.totalpower.ca/wp-content/uploads/2015/08/toronto-skyline.jpg',
-					src: 'http://www.totalpower.ca/wp-content/uploads/2015/08/toronto-skyline.jpg',
-					caption: 'Caption for image 4'
+					thumb: 'upload/gallery/thumbs/image-4.jpg',
+					src: 'upload/gallery/image-4.jpg',
+					caption: 'Caption for Image 4'
 				},
 				{
-					thumb: 'https://cracowcitytours.com/media/photos/156036358/slide04-1.jpg',
-					src: 'https://cracowcitytours.com/media/photos/156036358/slide04-1.jpg',
-					caption: 'Caption for image 5'
+					thumb: 'upload/gallery/thumbs/image-5.jpg',
+					src: 'upload/gallery/image-5.jpg',
+					caption: 'Caption for Image 5'
+				},
+				{
+					thumb: 'upload/gallery/thumbs/image-6.jpg',
+					src: 'upload/gallery/image-6.jpg',
+					caption: 'Caption for Image 6'
 				},
 			]
 		)&attributes(attributes)
@@ -104,15 +111,14 @@ mixin AppArticle()
 						.clearfix
 							a(
 								data-gallery="custom-gallery"
-								href="upload/pic-1.jpg"
-								data-srcset="upload/pic-1.jpg 2x"
-								data-caption="<p>Caption for Foo</p>"
+								href="upload/gallery/image-6.jpg"
+								data-caption!="<p>Caption for <strong>Image 1</strong></p>"
 							)
 								img.float-left(
 									is="v-lazy-image"
-									src="upload/pic-1.jpg"
+									src="upload/gallery/thumbs/image-6.jpg"
 									alt=""
-									width="440"
+									width="200"
 								)
 
 							p.
@@ -121,7 +127,7 @@ mixin AppArticle()
 								гидроизоляцию, что предупредит преждевременный износ здания.
 
 						.clearfix
-							+swiper-gallery().base-content-gallery.float-right(style={width: '440px'})
+							+swiper-gallery().base-content-gallery.float-right(style={width: '400px'})
 
 							p.
 								Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения,
@@ -138,11 +144,11 @@ mixin AppArticle()
 
 						a(
 							data-gallery="custom-gallery"
-							href="upload/pic-2.jpg"
+							href="upload/gallery/image-4.jpg"
 						)
 							img(
 								is="v-lazy-image"
-								src="upload/pic-2.jpg"
+								src="upload/gallery/thumbs/image-4.jpg"
 								alt=""
 								width="600"
 							)

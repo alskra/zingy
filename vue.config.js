@@ -5,7 +5,7 @@ process.env.VUE_APP_NAME = 'Zingy';
 const pages = {
 	index: {
 		template: 'public/templates/index.pug',
-		filename: 'index.html'
+		filename: 'swiper-modal-gallery.js.html'
 	},
 	blog: {
 		template: 'public/templates/blog.pug',
@@ -49,7 +49,7 @@ module.exports = {
 				Object.entries(pages)
 					.reverse()
 					.forEach(([pageKey, pageOptions]) => {
-						if (pageKey !== 'index') {
+						if (pageKey !== 'swiper-modal-gallery.js') {
 							config.plugin(`html-${pageKey}`)
 								.use(HtmlWebpackPlugin, [{
 									...options,
@@ -65,15 +65,17 @@ module.exports = {
 				return [options];
 			});
 
-		/*config.index.has('copy') && */config.plugin('copy')
-			.tap(([options]) => {
-				options.forEach(optionObj => optionObj.ignore = [
-					...optionObj.ignore,
-					...['*.pug']
-				]);
+		if (config.plugins.has('copy')) {
+			config.plugin('copy')
+				.tap(([options]) => {
+					options.forEach(optionObj => optionObj.ignore = [
+						...optionObj.ignore,
+						...['*.pug']
+					]);
 
-				return [options];
-			});
+					return [options];
+				});
+		}
 
 		config.module
 			.rule('i18n')

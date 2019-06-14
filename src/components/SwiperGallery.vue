@@ -7,8 +7,8 @@
 					:key="index"
 				)
 					img.image.swiper-lazy(
-						:data-src="image.thumb"
-						:alt="image.caption.slice(0, 100) | striphtml"
+						:data-src="image.thumb || image.src"
+						:alt="stripCaption(image.caption || '')"
 						@click="$swiperModalGallery(images, index)"
 					)
 
@@ -30,8 +30,7 @@
 					base-icon.nav-button-icon(name="angle-left")
 
 		.caption(
-			v-if="caption"
-			v-html="caption"
+			v-html="caption || '&nbsp;'"
 		)
 </template>
 
@@ -66,9 +65,17 @@
 				}
 
 				return '';
-			},
-			performanceNow() {
-				return performance.now();
+			}
+		},
+		methods:{
+			stripCaption(str) {
+				const caption = this.$stripHTML(str);
+
+				if (caption > 100) {
+					return caption.slice(0, 100) + '...';
+				}
+
+				return caption;
 			}
 		}
 	};

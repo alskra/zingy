@@ -6,7 +6,7 @@ mixin DList(items = [{title: 'Title', nav: [{url: '', text: 'Link'}]}])
 		ol.d-list-inner
 			each item, index in items
 				li.item(@mouseenter="onItemMouseenter")
-					.item-number= '0' + (index + 1)
+					.item-number= '0' + (swiper + 1)
 					.item-body
 						.item-title= item.title
 

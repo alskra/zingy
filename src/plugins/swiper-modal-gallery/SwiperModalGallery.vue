@@ -31,7 +31,7 @@
 
 		.swiper-container(
 			ref="swiperContainer"
-			:class="{'is-shown': shown, 'is-zoomed': zoomed}"
+			:class="{'shown': shown, 'zoomed': zoomed}"
 			@mousemove="mousemoveHandler"
 			@touchend="touchendHandler"
 		)
@@ -45,7 +45,7 @@
 							:data-src="image.src"
 							:data-srcset="image.srcset"
 							:sizes="image.sizes"
-							:alt="image.caption.slice(0, 100) | striphtml"
+							:alt="stripCaption(image.caption || '')"
 						)
 
 					.swiper-lazy-preloader.swiper-lazy-preloader-white
@@ -138,6 +138,15 @@
 			}
 		},
 		methods: {
+			stripCaption(str) {
+				const caption = this.$stripHTML(str);
+
+				if (caption > 100) {
+					return caption.slice(0, 100) + '...';
+				}
+
+				return caption;
+			},
 			toggleControls(val = !this.controlsShown) {
 				this.controlsShown = !!val;
 				clearTimeout(this.controlsTimer);
@@ -263,12 +272,12 @@
 		opacity: 0;
 		transition: opacity 0.3s;
 
-		&.is-shown {
+		&.shown {
 			transition-duration: 0s;
 			opacity: 1;
 		}
 
-		&.is-zoomed {
+		&.zoomed {
 			z-index: 4;
 		}
 	}

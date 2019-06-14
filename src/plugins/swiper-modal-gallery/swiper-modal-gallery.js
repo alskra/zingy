@@ -44,13 +44,14 @@ export default {
 
 				images = images.map(image => {
 					const imgEl = image.querySelector('img');
+					const captionEl = image.querySelector('.caption');
 
 					return {
 						thumb: image.dataset.thumb || (imgEl && imgEl.src),
 						src: image.dataset.src || image.src || image.href,
 						srcset: image.dataset.srcset || image.srcset,
 						sizes: image.dataset.sizes || image.sizes,
-						caption: image.dataset.caption || image.title || image.alt || (imgEl && imgEl.alt)
+						caption: image.dataset.caption || (captionEl && captionEl.innerHTML) || image.title || image.alt
 					}
 				});
 

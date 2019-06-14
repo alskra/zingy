@@ -12,8 +12,9 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import {VLazyImagePlugin} from 'v-lazy-image';
 import VShowSlide from 'v-show-slide';
 import VueTruncateCollapsed from 'vue-truncate-collapsed';
-import SwiperModalGallery from './swiper-modal-gallery';
+import SwiperModalGallery from './swiper-modal-gallery/swiper-modal-gallery';
 import VLockBodyScroll from './v-lock-body-scroll';
+import StripHTML from './strip-html';
 
 Vue.use(VueWindowSize);
 
@@ -22,6 +23,7 @@ Vue.use(VModal, {
 	injectModalsContainer: true
 });
 
+// Custom `vue-js-modal`
 Vue.prototype.$showModal = (component, props, options, events) => {
 	Vue.prototype.$modal.show(
 		component,
@@ -61,16 +63,12 @@ Vue.use(Loading, {
 
 Vue.use(VLazyImagePlugin);
 
-Vue.filter('striphtml', function (value) {
-	const div = document.createElement('div');
-	div.innerHTML = value;
-	return (div.textContent || div.innerText || '')
-		.replace(/^\s*(\S.*\S)\s*$/s, (match, capture) => capture.replace(/\s+/g, ' '));
-});
-
 Vue.use(VShowSlide);
 
 Vue.component('vue-truncate-collapsed', VueTruncateCollapsed);
 
 Vue.use(SwiperModalGallery, {store, i18n});
+
 Vue.use(VLockBodyScroll);
+
+Vue.use(StripHTML);

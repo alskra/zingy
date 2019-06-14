@@ -1128,7 +1128,7 @@
       {
         templateParameters: function () { /* omitted long function */ },
         template: '!!pug-loader?pretty!public/templates/index.pug',
-        filename: 'index.html',
+        filename: 'swiper-modal-gallery.js.html',
         minify: false
       }
     ),
