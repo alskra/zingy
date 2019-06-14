@@ -111,29 +111,9 @@
 	}
 
 	img {
-		display: block;
-	}
-
-	img,
-	.swiper-gallery.base-content-gallery {
-		margin: calc(1.25 * var(--base-content_margin-y)) auto;
+		vertical-align: middle;
 		max-width: 100%;
-
-		&.float-left {
-			@media (width >= 768px) {
-				float: left;
-				margin-top: 0;
-				margin-right: calc(2 * var(--grid-cell_padding));
-			}
-		}
-
-		&.float-right {
-			@media (width >= 768px) {
-				float: right;
-				margin-top: 0;
-				margin-left: calc(2 * var(--grid-cell_padding));
-			}
-		}
+		height: auto;
 	}
 
 	blockquote {
@@ -171,7 +151,6 @@
 
 	ol,
 	ul {
-		/*margin: calc(1.25 * var(--base-content_margin-y)) 0;*/
 		margin: 0 0 var(--base-content_margin-y);
 		padding: 0;
 
@@ -232,6 +211,26 @@
 			content: '';
 			display: block;
 			clear: both;
+		}
+	}
+
+	.base-image.base-content-image,
+	.base-figure.base-content-figure,
+	.swiper-gallery.base-content-gallery {
+		margin: 0 auto var(--base-content_margin-y);
+
+		&.left {
+			@media (width >= 768px) {
+				float: left;
+				margin-right: calc(2 * var(--grid-cell_padding));
+			}
+		}
+
+		&.right {
+			@media (width >= 768px) {
+				float: right;
+				margin-left: calc(2 * var(--grid-cell_padding));
+			}
 		}
 	}
 </style>

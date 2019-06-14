@@ -88,6 +88,8 @@
 		& {
 			display: flex;
 			flex-flow: column;
+			box-sizing: border-box;
+			max-width: 100%;
 			position: relative;
 		}
 	}

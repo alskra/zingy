@@ -15,7 +15,6 @@ import VueTruncateCollapsed from 'vue-truncate-collapsed';
 import SwiperModalGallery from './swiper-modal-gallery/swiper-modal-gallery';
 import VLockBodyScroll from './v-lock-body-scroll';
 import StripHTML from './strip-html';
-import ResponsiveImage from '../components/ResponsiveImage';
 
 Vue.use(VueWindowSize);
 
@@ -73,5 +72,3 @@ Vue.use(SwiperModalGallery, {store, i18n});
 Vue.use(VLockBodyScroll);
 
 Vue.use(StripHTML);
-
-Vue.component('ResponsiveImage', ResponsiveImage);

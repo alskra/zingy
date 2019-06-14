@@ -101,6 +101,46 @@ mixin AppArticle()
 
 						p Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения, беспроблемное использование в условиях повышенной влажности. Важно предусмотреть хорошую гидроизоляцию, что предупредит преждевременный износ здания.
 
+						p(style={textAlign: 'center'})
+							img(
+								src="upload/gallery/image-1.jpg"
+								alt=""
+								title="Simple Image"
+								width="500"
+							)
+
+						p Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения, беспроблемное использование в условиях повышенной влажности. Важно предусмотреть хорошую гидроизоляцию, что предупредит преждевременный износ здания.
+
+						img.base-content-image(
+							is="base-image"
+							:width-ratio="16"
+							:height-ratio="9"
+							:width="400"
+							src="upload/gallery/thumbs/image-2.jpg"
+							alt=""
+							title="Responsive Lazy Image"
+						)
+
+						p Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения, беспроблемное использование в условиях повышенной влажности. Важно предусмотреть хорошую гидроизоляцию, что предупредит преждевременный износ здания.
+
+						div(style={textAlign: 'center'})
+							figure.base-content-figure(
+								is="base-figure"
+								style={width: '400px'}
+							)
+								a.image-box(
+									data-gallery="custom-gallery"
+									href="upload/gallery/image-3.jpg"
+								)
+									img.base-figure-image(
+										is="base-image"
+										:width-ratio="4"
+										:height-ratio="3"
+										src="upload/gallery/thumbs/image-3.jpg"
+										alt=""
+										title="Figure Image With Title Caption"
+									)
+
 						h3 Заголовок пример h3
 
 						p.
@@ -109,19 +149,24 @@ mixin AppArticle()
 							При обустройстве особое внимание уделяется отделке бани внутри.
 
 						.clearfix
-							a(
-								data-gallery="custom-gallery"
-								href="upload/gallery/image-6.jpg"
-								data-caption!="<p>Caption for <strong>Image 1</strong></p>"
+							figure.base-content-figure.left(
+								is="base-figure"
+								style={width: '400px'}
 							)
-								img.float-left(
-									is="responsive-image"
-									:width-ratio="4"
-									:height-ratio="3"
-									:width="400"
-									src="upload/gallery/thumbs/image-6.jpg"
-									alt=""
+								a.image-box(
+									data-gallery="custom-gallery"
+									href="upload/gallery/image-4.jpg"
 								)
+									img.base-figure-image(
+										is="base-image"
+										:width-ratio="4"
+										:height-ratio="3"
+										src="upload/gallery/thumbs/image-4.jpg"
+										alt=""
+										title="Figure Image With Tag Caption"
+									)
+
+									figcaption.caption Caption for Figure Image
 
 							p.
 								Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения,
@@ -129,7 +174,7 @@ mixin AppArticle()
 								гидроизоляцию, что предупредит преждевременный износ здания.
 
 						.clearfix
-							+swiper-gallery().base-content-gallery.float-right(style={width: '400px'})
+							+swiper-gallery().base-content-gallery.right(style={width: '400px'})
 
 							p.
 								Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения,
@@ -143,18 +188,6 @@ mixin AppArticle()
 								На собственном участке обязательно стоит выделить место под уютную баньку или сауну.
 								Это место отдыха и встреч с друзьями, дружных посиделок и лечебных процедур.
 								При обустройстве особое внимание уделяется отделке бани внутри.
-
-						a(
-							data-gallery="custom-gallery"
-							href="upload/gallery/image-4.jpg"
-						)
-							img(
-								is="responsive-image"
-								:width-ratio="1000"
-								:height-ratio="500"
-								src="upload/gallery/thumbs/image-4.jpg"
-								alt=""
-							)
 
 						p.
 							Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения,

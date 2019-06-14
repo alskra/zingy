@@ -1,5 +1,5 @@
 <template lang="pug">
-	v-lazy-image.responsive-image(
+	v-lazy-image.base-image(
 		v-bind="vLazyImageProps"
 		@intersect="onIntersect"
 		@load="onLoad"
@@ -10,9 +10,8 @@
 <script>
 	import VLazyImage from 'v-lazy-image';
 
-
 	export default {
-		name: 'ResponsiveImage',
+		name: 'BaseImage',
 		components: {
 			VLazyImage
 		},
@@ -83,11 +82,12 @@
 </script>
 
 <style scoped>
-	.responsive-image {
+	.base-image {
 		all: initial;
 
 		& {
 			display: block;
+			box-sizing: border-box;
 			max-width: 100%;
 			object-fit: cover;
 			cursor: inherit;
