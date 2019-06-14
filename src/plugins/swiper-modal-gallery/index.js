@@ -4,7 +4,9 @@ export {SwiperModalGallery};
 
 export default {
 	install(Vue, options) {
-		Vue.prototype.$modalGallery = (images, initialSlide = 0) => {
+		Vue.component('SwiperModalGallery', SwiperModalGallery);
+
+		Vue.prototype.$swiperModalGallery = (images, initialSlide = 0) => {
 			if (!document.getElementById('swiper-modal-gallery-dynamic')) {
 				const mountEl = document.createElement('div');
 
@@ -52,7 +54,7 @@ export default {
 					}
 				});
 
-				Vue.prototype.$modalGallery(images, initialSlide);
+				Vue.prototype.$swiperModalGallery(images, initialSlide);
 			}
 		});
 	}

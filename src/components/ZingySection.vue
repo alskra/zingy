@@ -68,10 +68,6 @@
 				animation-play-state: paused;
 			}
 		}
-
-		:root.v-lock-body-scroll-is-active & {
-			opacity: 0;
-		}
 	}
 
 	.matrix {

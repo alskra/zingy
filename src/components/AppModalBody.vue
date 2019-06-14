@@ -84,7 +84,7 @@
 	}
 
 	.body {
-		margin: scale-down(12px, 0.5) scale-down(12px, 0.5) 0 0;
+		margin: scale-down(12px, 0.5);
 		position: relative;
 
 		&::before {

@@ -5,8 +5,8 @@
 		:scrollable="true"
 		height="auto"
 		:transition="transition"
-		@before-open="beforeOpen"
-		@closed="closed"
+		@before-open="$lockBodyScroll()"
+		@closed="$lockBodyScroll(false)"
 	)
 
 		app-modal-body.modal-body(v-bind="$props")
@@ -41,26 +41,22 @@
 				type: String,
 				default: 'nice-modal-fade'
 			}
-		},
-		methods: {
-			beforeOpen() {
-				document.documentElement.classList.add('v--modal-block-scroll');
-				document.body.classList.add('v--modal-block-scroll');
-			},
-			closed() {
-				document.documentElement.classList.remove('v--modal-block-scroll');
-				document.body.classList.remove('v--modal-block-scroll');
-			}
 		}
 	};
 </script>
 
 <style>
+	:root {
+		.v--modal-block-scroll {
+			overflow: visible;
+			width: auto;
+		}
+	}
+
 	.v--modal-background-click {
 		display: flex;
 		flex-flow: column;
 		box-sizing: border-box;
-		padding: 0 0 scale-down(12px, 0.5) scale-down(12px, 0.5);
 	}
 
 	.app-modal {

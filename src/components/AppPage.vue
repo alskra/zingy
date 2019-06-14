@@ -156,9 +156,11 @@
 	.body {
 		position: relative;
 		z-index: 1;
-		min-height: 100vh;
 		display: flex;
 		flex-flow: column;
+		padding-right: var(--body-scroll-locked_padding);
+		min-height: 100vh;
+		background-color: #ffffff;
 
 		:root:not(.is-browser-ie) & {
 			margin-bottom: var(--zingy-section_height);

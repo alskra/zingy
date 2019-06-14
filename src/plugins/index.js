@@ -13,6 +13,7 @@ import {VLazyImagePlugin} from 'v-lazy-image';
 import VShowSlide from 'v-show-slide';
 import VueTruncateCollapsed from 'vue-truncate-collapsed';
 import SwiperModalGallery from './swiper-modal-gallery';
+import VLockBodyScroll from './v-lock-body-scroll';
 
 Vue.use(VueWindowSize);
 
@@ -30,16 +31,15 @@ Vue.prototype.$showModal = (component, props, options, events) => {
 			height: 'auto',
 			transition: 'nice-modal-fade',
 			...options,
-			classes: ['app-modal'].concat(Array.isArray(options.classes) ? options.classes : options.classes ? [options.classes] : [])
+			classes: ['app-modal']
+				.concat(Array.isArray(options.classes) ? options.classes : options.classes ? [options.classes] : [])
 		},
 		{
 			'before-open'() {
-				document.documentElement.classList.add('v--modal-block-scroll');
-				document.body.classList.add('v--modal-block-scroll');
+				Vue.prototype.$lockBodyScroll();
 			},
 			closed() {
-				document.documentElement.classList.remove('v--modal-block-scroll');
-				document.body.classList.remove('v--modal-block-scroll');
+				Vue.prototype.$lockBodyScroll(false);
 			},
 			...events
 		}
@@ -73,3 +73,4 @@ Vue.use(VShowSlide);
 Vue.component('vue-truncate-collapsed', VueTruncateCollapsed);
 
 Vue.use(SwiperModalGallery, {store, i18n});
+Vue.use(VLockBodyScroll);

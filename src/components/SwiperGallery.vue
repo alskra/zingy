@@ -9,7 +9,7 @@
 					img.image.swiper-lazy(
 						:data-src="image.thumb"
 						:alt="image.caption.slice(0, 100) | striphtml"
-						@click="$modalGallery(images, index)"
+						@click="$swiperModalGallery(images, index)"
 					)
 
 					.swiper-lazy-preloader
