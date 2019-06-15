@@ -1,5 +1,5 @@
 export default {
-	install(Vue, {throttle = 50} = {}) {
+	install(Vue) {
 		const vm = new Vue({
 			data: {
 				x: 0,

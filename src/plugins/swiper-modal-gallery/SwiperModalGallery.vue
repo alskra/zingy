@@ -135,30 +135,26 @@
 		},
 		computed: {
 			cover() {
-				const index = this.swiper.realIndex;
-				const previousIndex = this.swiper.previousIndex;
+				try {
+					const index = this.swiper.realIndex;
+					const previousIndex = this.swiper.previousIndex;
 
-				if (index == null) {
+					resolveRef.href = this.images[index].src;
+
+					if (this.covers.includes(resolveRef.href)) {
+						return this.images[index].src;
+					}
+
+					resolveRef.href = this.images[previousIndex].src;
+
+					if (this.covers.includes(resolveRef.href)) {
+						return this.images[previousIndex].src;
+					}
+
+					return '';
+				} catch (e) {
 					return '';
 				}
-
-				resolveRef.href = this.images[index].src;
-
-				if (this.covers.includes(resolveRef.href)) {
-					return this.images[index].src;
-				}
-
-				if (previousIndex == null) {
-					return '';
-				}
-
-				resolveRef.href = this.images[previousIndex].src;
-
-				if (this.covers.includes(resolveRef.href)) {
-					return this.images[previousIndex].src;
-				}
-
-				return '';
 			},
 			caption() {
 				const index = this.swiper.realIndex;
