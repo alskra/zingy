@@ -8,7 +8,7 @@
 				)
 					img.image.swiper-lazy(
 						:data-src="image.thumb || image.src"
-						:alt="stripCaption(image.caption || '')"
+						:alt="stripCaption(image.caption)"
 						@click="$swiperModalGallery(images, index)"
 					)
 
@@ -29,12 +29,11 @@
 				)
 					base-icon.nav-button-icon(name="angle-left")
 
-		.caption(
-			v-html="caption || '&nbsp;'"
-		)
+		.caption(v-html="caption || '&nbsp;'")
 </template>
 
 <script>
+	import _ from 'lodash-es/lang.default';
 	import VueSwiper from './VueSwiper';
 
 	export default {
@@ -60,22 +59,26 @@
 			caption() {
 				const index = this.swiper.realIndex;
 
-				if (index >= 0 && this.images[index].caption) {
-					return String(this.images[index].caption);
+				if (index >= 0 && _.isString(this.images[index].caption)) {
+					return this.images[index].caption;
 				}
 
 				return '';
 			}
 		},
 		methods:{
-			stripCaption(str) {
-				const caption = this.$stripHTML(str);
+			stripCaption(caption) {
+				if (_.isString(caption)) {
+					caption = this.$stripHTML(caption);
 
-				if (caption.length > 100) {
-					return caption.slice(0, 100) + '...';
+					if (caption.length > 100) {
+						caption = caption.slice(0, 100) + '...';
+					}
+
+					return caption;
 				}
 
-				return caption;
+				return '';
 			}
 		}
 	};

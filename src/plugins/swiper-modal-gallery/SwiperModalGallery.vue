@@ -46,7 +46,7 @@
 							:data-src="image.src"
 							:data-srcset="image.srcset"
 							:sizes="image.sizes"
-							:alt="stripCaption(image.caption || '')"
+							:alt="stripCaption(image.caption)"
 						)
 
 					.swiper-lazy-preloader.swiper-lazy-preloader-white
@@ -81,6 +81,7 @@
 </template>
 
 <script>
+	import _ from 'lodash-es/lang.default';
 	import VueSwiper from '../../components/VueSwiper';
 
 	const resolveRef = document.createElement('link');
@@ -135,21 +136,27 @@
 		},
 		computed: {
 			cover() {
-				const previousIndex = this.swiper.previousIndex;
 				const index = this.swiper.realIndex;
+				const previousIndex = this.swiper.previousIndex;
 
-				if (index >= 0) {
-					resolveRef.href = this.images[index].src;
+				if (!(index >= 0)) {
+					return '';
+				}
 
-					if (this.covers.includes(resolveRef.href)) {
-						return this.images[index].src;
-					} else if (previousIndex >= 0) {
-						resolveRef.href = this.images[previousIndex].src;
+				resolveRef.href = this.images[index].src;
 
-						if (this.covers.includes(resolveRef.href)) {
-							return this.images[previousIndex].src;
-						}
-					}
+				if (this.covers.includes(resolveRef.href)) {
+					return this.images[index].src;
+				}
+
+				if (!(previousIndex >= 0)) {
+					return '';
+				}
+
+				resolveRef.href = this.images[previousIndex].src;
+
+				if (this.covers.includes(resolveRef.href)) {
+					return this.images[previousIndex].src;
 				}
 
 				return '';
@@ -157,22 +164,26 @@
 			caption() {
 				const index = this.swiper.realIndex;
 
-				if (index >= 0 && this.images[index].caption) {
-					return String(this.images[index].caption);
+				if (index >= 0 && _.isString(this.images[index].caption)) {
+					return this.images[index].caption;
 				}
 
 				return '';
 			}
 		},
 		methods: {
-			stripCaption(str) {
-				const caption = this.$stripHTML(str);
+			stripCaption(caption) {
+				if (_.isString(caption)) {
+					caption = this.$stripHTML(caption);
 
-				if (caption.length > 100) {
-					return caption.slice(0, 100) + '...';
+					if (caption.length > 100) {
+						caption = caption.slice(0, 100) + '...';
+					}
+
+					return caption;
 				}
 
-				return caption;
+				return '';
 			},
 			toggleControls(val = !this.controlsShown) {
 				this.controlsShown = !!val;
