@@ -7,7 +7,7 @@
 		data() {
 			return {
 				startAnimateIsEnd: false,
-				headerIsMinimized: false,
+				headerIsMinimized: true,
 				sidebarIsOpened: false,
 				scrollPosition: 0
 			};
