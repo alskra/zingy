@@ -17,8 +17,11 @@
 			AppHeaderNavIsAside
 		},
 		watch: {
-			startAnimateIsEnd() {
-				this.setHeaderState();
+			startAnimateIsEnd: {
+				handler() {
+					this.setHeaderState();
+				},
+				immediate: true
 			},
 			sidebarIsOpened: {
 				handler(value) {
@@ -35,15 +38,16 @@
 		},
 		methods: {
 			setHeaderState() {
-				if (!this.scrollProcessed) {
-					this.scrollProcessed = true;
-					setTimeout(() => this.scrollProcessed = false, 100);
+				if (!this.headerStateFreezed) {
+					this.headerStateFreezed = true;
+					setTimeout(() => this.headerStateFreezed = false, 100);
 
-					const scrollDelta = window.pageYOffset - this.scrollPosition;
+					const deltaScroll = window.pageYOffset - this.scrollPosition;
+
 					this.scrollPosition = window.pageYOffset;
 
 					this.headerIsMinimized = this.startAnimateIsEnd
-						&& (window.innerWidth < 1366 || scrollDelta > 0 || this.sidebarIsOpened);
+						&& (window.innerWidth < 1366 || deltaScroll > 0 || this.sidebarIsOpened);
 				}
 			}
 		},
