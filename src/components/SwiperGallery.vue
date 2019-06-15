@@ -71,7 +71,7 @@
 			stripCaption(str) {
 				const caption = this.$stripHTML(str);
 
-				if (caption > 100) {
+				if (caption.length > 100) {
 					return caption.slice(0, 100) + '...';
 				}
 
