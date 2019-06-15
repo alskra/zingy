@@ -83,6 +83,8 @@
 <script>
 	import VueSwiper from '../../components/VueSwiper';
 
+	const resolveRef = document.createElement('link');
+
 	export default {
 		name: 'SwiperModalGallery',
 		extends: VueSwiper,
@@ -137,16 +139,16 @@
 				const index = this.swiper.realIndex;
 
 				if (index >= 0) {
-					const ref = document.createElement('a');
+					resolveRef.href = this.images[index].src;
 
-					ref.href = this.images[index].src;
-
-					if (this.covers.includes(ref.href)) {
-						ref.remove();
-
+					if (this.covers.includes(resolveRef.href)) {
 						return this.images[index].src;
 					} else if (previousIndex >= 0) {
-						return this.images[previousIndex].src;
+						resolveRef.href = this.images[previousIndex].src;
+
+						if (this.covers.includes(resolveRef.href)) {
+							return this.images[previousIndex].src;
+						}
 					}
 				}
 
