@@ -2,7 +2,7 @@
 	figure.base-figure
 		slot
 			//- a.image-box
-				//- .base-image.base-figure-image
+				//- base-image.base-figure-image
 
 			//- figcaption.caption
 </template>

@@ -15,6 +15,7 @@
 	.vue-swiper.swiper-modal-gallery(v-lock-body-scroll="shown")
 		transition
 			.overlay(v-if="shown")
+				.overlay-cover(:style="{backgroundImage: cover ? `url(${cover})` : ''}")
 
 		transition
 			.header(
@@ -118,15 +119,31 @@
 						},
 						zoomChange: scale => {
 							this.zoomed = scale !== 1;
+						},
+						lazyImageReady: (slideEl, imageEl) => {
+							this.covers.push(imageEl.getAttribute('src'));
 						}
 					}
 				},
 				shown: false,
 				zoomed: false,
-				controlsShown: false
+				controlsShown: false,
+				covers: []
 			};
 		},
 		computed: {
+			cover() {
+				const previousIndex = this.swiper.previousIndex;
+				const index = this.swiper.realIndex;
+
+				if (index >= 0 && this.covers.includes(this.images[index].src)) {
+					return this.images[index].src;
+				} else if (previousIndex >= 0) {
+					return this.images[previousIndex].src;
+				}
+
+				return '';
+			},
 			caption() {
 				const index = this.swiper.realIndex;
 
@@ -220,6 +237,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
+		overflow: hidden;
 		background-color: rgba(#000000, 0.8);
 
 		&.v-enter-active,
@@ -230,6 +248,26 @@
 		&.v-enter,
 		&.v-leave-to {
 			opacity: 0;
+		}
+	}
+
+	.overlay-cover {
+		position: absolute;
+		top: -30px;
+		right: -30px;
+		bottom: -30px;
+		left: -30px;
+		background: none no-repeat 50% 50% / cover;
+		filter: blur(15px);
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(#000000, 0.2);
 		}
 	}
 
