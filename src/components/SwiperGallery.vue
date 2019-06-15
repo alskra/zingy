@@ -33,7 +33,6 @@
 </template>
 
 <script>
-	import _ from 'lodash-es/lang.default';
 	import VueSwiper from './VueSwiper';
 
 	export default {
@@ -59,7 +58,7 @@
 			caption() {
 				const index = this.swiper.realIndex;
 
-				if (index >= 0 && _.isString(this.images[index].caption)) {
+				if (index != null && this.images[index].caption != null) {
 					return this.images[index].caption;
 				}
 
@@ -68,7 +67,7 @@
 		},
 		methods:{
 			stripCaption(caption) {
-				if (_.isString(caption)) {
+				if (caption != null) {
 					caption = this.$stripHTML(caption);
 
 					if (caption.length > 100) {

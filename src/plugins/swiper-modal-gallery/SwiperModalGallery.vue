@@ -81,7 +81,6 @@
 </template>
 
 <script>
-	import _ from 'lodash-es/lang.default';
 	import VueSwiper from '../../components/VueSwiper';
 
 	const resolveRef = document.createElement('link');
@@ -139,7 +138,7 @@
 				const index = this.swiper.realIndex;
 				const previousIndex = this.swiper.previousIndex;
 
-				if (!(index >= 0)) {
+				if (index == null) {
 					return '';
 				}
 
@@ -149,7 +148,7 @@
 					return this.images[index].src;
 				}
 
-				if (!(previousIndex >= 0)) {
+				if (previousIndex == null) {
 					return '';
 				}
 
@@ -164,7 +163,7 @@
 			caption() {
 				const index = this.swiper.realIndex;
 
-				if (index >= 0 && _.isString(this.images[index].caption)) {
+				if (index != null && this.images[index].caption != null) {
 					return this.images[index].caption;
 				}
 
@@ -173,7 +172,7 @@
 		},
 		methods: {
 			stripCaption(caption) {
-				if (_.isString(caption)) {
+				if (caption != null) {
 					caption = this.$stripHTML(caption);
 
 					if (caption.length > 100) {
