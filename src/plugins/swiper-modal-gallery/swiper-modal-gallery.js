@@ -14,15 +14,16 @@ export default {
 				document.body.appendChild(mountEl);
 			}
 
-			return new (Vue.extend(SwiperModalGallery))({
-				...options,
+			return new Vue({
+				...SwiperModalGallery,
 				el: '#swiper-modal-gallery-dynamic',
 				propsData: {
 					images,
 					options: {
 						initialSlide
 					}
-				}
+				},
+				...options
 			});
 		};
 

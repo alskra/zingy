@@ -5,7 +5,7 @@ mixin AppHeader()
 				appear
 				appear-active-class="v-appear-active"
 				:duration="600"
-				@after-appear="startAnimateIsEnd = true"
+				@after-appear="startAnimateCompleted = true"
 			)
 				.logo-box
 					a.logo(
@@ -15,19 +15,19 @@ mixin AppHeader()
 						base-icon.logo-icon(name="zingy")
 
 			transition-slide-x(:duration="{enter: 500, leave: 300}")
-				.nav-box(v-show="startAnimateIsEnd && !headerIsMinimized")
+				.nav-box(v-show="startAnimateCompleted && !minimized")
 					app-header-nav-is-top.app-header-nav-is-top.nav
 
 			transition-box(:duration="{enter: 550, leave: 350}")
-				.menu-button-box(v-show="startAnimateIsEnd && headerIsMinimized")
+				.menu-button-box(v-show="startAnimateCompleted && minimized")
 					button.menu-button(
 						type="button"
-						@click="sidebarIsOpened = !sidebarIsOpened"
+						@click="sidebarOpen = !sidebarOpen"
 					)
 						base-icon.menu-button-icon(name="menu")
 
 			transition-slide-x(:duration="{enter: 500, leave: 300}")
-				.right-panel-box(v-show="startAnimateIsEnd && !headerIsMinimized")
+				.right-panel-box(v-show="startAnimateCompleted && !minimized")
 					.right-panel
 						.right-panel-grid
 							.right-panel-grid-cell
@@ -47,7 +47,7 @@ mixin AppHeader()
 								) Начать проект
 
 			transition-box(:duration="{enter: 500, leave: 300}")
-				.phone-button-box(v-show="startAnimateIsEnd && headerIsMinimized && !sidebarIsOpened")
+				.phone-button-box(v-show="startAnimateCompleted && minimized && !sidebarOpen")
 					a.phone-button(href="tel:+79854575817")
 						base-icon.phone-button-icon(name="phone")
 
@@ -56,13 +56,13 @@ mixin AppHeader()
 				:duration="{enter: 600, leave: 600}"
 			)
 				.sidebar-backdrop(
-					v-if="sidebarIsOpened"
-					@click="sidebarIsOpened = false"
+					v-if="sidebarOpen"
+					@click="sidebarOpen = false"
 					key="1"
 				)
 
 				.sidebar(
-					v-if="sidebarIsOpened"
+					v-if="sidebarOpen"
 					key="2"
 				)
 					.sidebar-lang-box
@@ -79,7 +79,7 @@ mixin AppHeader()
 									base-button.is-full-width.sidebar-button(
 										tag="a"
 										href="#feedback-section"
-										@click="sidebarIsOpened = false"
+										@click="sidebarOpen = false"
 									) Начать проект
 
 								.sidebar-footer-grid-cell

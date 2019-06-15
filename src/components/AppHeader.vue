@@ -4,30 +4,27 @@
 
 	export default {
 		name: 'AppHeader',
-		data() {
-			return {
-				startAnimateIsEnd: false,
-				headerIsMinimized: true,
-				sidebarIsOpened: false,
-				scrollPosition: 0
-			};
-		},
 		components: {
 			AppHeaderNavIsTop,
 			AppHeaderNavIsAside
 		},
+		data() {
+			return {
+				startAnimateCompleted: false,
+				sidebarOpen: false
+			};
+		},
+		computed: {
+			minimized() {
+				return this.windowWidth < 1366
+					|| this.windowScroll.directionY === '>'
+					|| this.sidebarOpen;
+			}
+		},
 		watch: {
-			startAnimateIsEnd: {
-				handler() {
-					this.setHeaderState();
-				},
-				immediate: true
-			},
-			sidebarIsOpened: {
-				handler(value) {
-					this.setHeaderState();
-
-					if (value) {
+			sidebarOpen: {
+				handler(val) {
+					if (val) {
 						document.documentElement.classList.add('is-sidebar-opened');
 					} else {
 						document.documentElement.classList.remove('is-sidebar-opened');
@@ -35,29 +32,6 @@
 				},
 				immediate: true
 			}
-		},
-		methods: {
-			setHeaderState() {
-				if (!this.headerStateFreezed) {
-					this.headerStateFreezed = true;
-					setTimeout(() => this.headerStateFreezed = false, 100);
-
-					const deltaScroll = window.pageYOffset - this.scrollPosition;
-
-					this.scrollPosition = window.pageYOffset;
-
-					this.headerIsMinimized = this.startAnimateIsEnd
-						&& (window.innerWidth < 1366 || deltaScroll > 0 || this.sidebarIsOpened);
-				}
-			}
-		},
-		created() {
-			window.addEventListener('resize', this.setHeaderState);
-			window.addEventListener('scroll', this.setHeaderState);
-		},
-		destroyed() {
-			window.removeEventListener('resize', this.setHeaderState);
-			window.removeEventListener('scroll', this.setHeaderState);
 		}
 	};
 </script>

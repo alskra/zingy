@@ -2,6 +2,7 @@ import Vue from 'vue';
 import store from '../store';
 import i18n from '../i18n';
 import VueWindowSize from 'vue-window-size';
+import VueWindowScroll from './vue-window-scroll';
 import VModal from 'vue-js-modal';
 import checkView from 'vue-check-view';
 import ResizeSensor from 'resize-sensor';
@@ -17,6 +18,7 @@ import VLockBodyScroll from './v-lock-body-scroll';
 import StripHTML from './strip-html';
 
 Vue.use(VueWindowSize);
+Vue.use(VueWindowScroll);
 
 Vue.use(VModal, {
 	dynamic: true,
