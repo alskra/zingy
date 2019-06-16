@@ -1,7 +1,15 @@
 <script>
 	export default {
 		name: 'AppHeaderNav',
-		template: '#app-header-nav'
+		template: '#app-header-nav',
+		mounted() {
+			this.$el.querySelectorAll('a').forEach(link => {
+				if (location.pathname.indexOf(link.pathname) === 0) {
+					link.classList.add('active');
+					link.closest('.grid-cell').classList.add('active');
+				}
+			});
+		}
 	};
 </script>
 
@@ -29,7 +37,7 @@
 		text-decoration: none;
 		padding: 0 range(-10px, 20px);
 
-		&:not(.is-active) {
+		&:not(.active) {
 			&:hover {
 				.link-text {
 					&::before {
@@ -40,7 +48,7 @@
 			}
 		}
 
-		&.is-active {
+		&.active {
 			.link-text {
 				&::before {
 					transform: translateX(0);

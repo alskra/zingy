@@ -5,6 +5,7 @@ import VueWindowSize from 'vue-window-size';
 import VueWindowScroll from './vue-window-scroll';
 import VModal from 'vue-js-modal';
 import checkView from 'vue-check-view';
+import VueSticky from '../components/VueSticky';
 import ResizeSensor from 'resize-sensor';
 import VueStickyDirective from '@renatodeleao/vue-sticky-directive';
 import VueDragscroll from 'vue-dragscroll';
@@ -52,6 +53,8 @@ Vue.prototype.$showModal = (component, props, options, events) => {
 
 Vue.use(checkView);
 
+Vue.component('VueSticky', VueSticky);
+
 window.ResizeSensor = ResizeSensor;
 Vue.use(VueStickyDirective);
 
@@ -67,7 +70,7 @@ Vue.use(VLazyImagePlugin);
 
 Vue.use(VShowSlide);
 
-Vue.component('vue-truncate-collapsed', VueTruncateCollapsed);
+Vue.component('VueTruncateCollapsed', VueTruncateCollapsed);
 
 Vue.use(SwiperModalGallery, {store, i18n});
 

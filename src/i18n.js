@@ -1,19 +1,33 @@
+import queryString from 'query-string'; // query-string@5 for IE support
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import store from './store';
 
 Vue.use(VueI18n);
 
+const locales = ['en', 'ru'];
+
+function getLocale() {
+	const locale = (
+		queryString.parse(location.search).lang
+		|| document.documentElement.getAttribute('lang')
+		|| navigator.language
+	).split('-')[0].toLowerCase();
+
+	if (locales.includes(locale)) {
+		return locale;
+	}
+
+	return 'en';
+}
+
 const messages = {
 	en: {
-
 	},
 	ru: {
-
 	}
 };
 
-const dateTimeFormatsDefault = {
+const defaultDateTimeFormats = {
 	short: {
 		year: 'numeric', month: 'long', day: '2-digit'
 	},
@@ -37,12 +51,12 @@ const dateTimeFormatsDefault = {
 };
 
 const dateTimeFormats = {
-	en: dateTimeFormatsDefault,
-	ru: dateTimeFormatsDefault
+	en: defaultDateTimeFormats,
+	ru: defaultDateTimeFormats
 };
 
 export default new VueI18n({
-	locale: store.state.locale,
+	locale: getLocale(),
 	fallbackLocale: 'en',
 	messages,
 	dateTimeFormats

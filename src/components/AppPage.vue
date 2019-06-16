@@ -195,7 +195,7 @@
 	.base-title.title {
 		margin: 0 range(0px, 80px) range(30px, 60px) range(80px, -80px);
 
-		@media (width < 1440px) {
+		@media (width < 1366px) {
 			margin-right: 0;
 			margin-left: 0;
 		}

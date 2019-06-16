@@ -16,7 +16,7 @@
 	}
 
 	.grid-cell {
-		&.is-active {
+		&.active {
 			order: 1
 		}
 	}
@@ -25,7 +25,7 @@
 		justify-content: center;
 		padding: range(10px, 10px) 15px;
 
-		&.is-active {
+		&.active {
 			.link-text {
 				font-size: range(2rem * 1.5, 3rem * 1.5);
 			}

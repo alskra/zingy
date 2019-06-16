@@ -13,7 +13,7 @@ import App from './App';
 Vue.config.productionTip = false;
 
 new Vue({
+	...App,
 	store,
-	i18n,
-	...App
+	i18n
 }).$mount('#app');

@@ -1,0 +1,21 @@
+extends index
+
+append vars
+	-
+		title = 'Контакты';
+
+block app
+	app-page.is-theme-dark.page(inline-template)
+		+AppPage()
+			.grid
+				nav.breadcrumb(is="app-breadcrumb")
+					a(href="index.html") Главная
+					| Контакты
+
+				h1.title(
+					is="base-title"
+					tag="h1"
+				) Контакты
+
+			feedback-section.section(inline-template)
+				+FeedbackSection()
