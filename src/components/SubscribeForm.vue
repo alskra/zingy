@@ -390,7 +390,7 @@
 		}
 	}
 
-	.subscribe-form-is-wide {
+	.subscribe-form-wide {
 		@media (width < 1024px) {
 			margin: 0 calc(-1 * var(--grid_padding));
 		}

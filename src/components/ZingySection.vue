@@ -63,7 +63,7 @@
 			left: 0;
 		}
 
-		&.is-animation-stopped {
+		&.animation-stopped {
 			&::before {
 				animation-play-state: paused;
 			}

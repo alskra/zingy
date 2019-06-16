@@ -8,14 +8,14 @@ append vars
 		title = 'Блог';
 
 block app
-	app-page.is-theme-dark.page(inline-template)
+	app-page.theme-dark(inline-template)
 		+AppPage()
 			.grid
-				nav.breadcrumb(is="app-breadcrumb")
+				nav.app-page-breadcrumb(is="app-breadcrumb")
 					a(href="index.html") Главная
 					| Блог
 
-				h1.title(
+				h1.app-page-title(
 					is="base-title"
 					tag="h1"
 				) Блог с&nbsp;полезным контентом для всех, #[br]кто интересуется IT
@@ -23,24 +23,24 @@ block app
 				app-page-sticky-container.sticky-container(:options="stickyContainerOptions")
 					template(v-slot:sidebar)
 						aside
-							side-nav.side-nav-is-wide.sticky-container-nav(
+							side-nav.side-nav-wide.app-page-side-nav(
 								inline-template
 								v-if="windowWidth >= stickyContainerMinWidth ? true : true"
 							)
 								+SideNav()
 
-							subscribe-form.sticky-container-subscribe(
+							subscribe-form.app-page-subscribe-form(
 								agree-url="blog.html"
 								v-if="windowWidth >= 1024"
 							)
 
-					blog-posts.posts(inline-template)
+					blog-posts.app-page-posts(inline-template)
 						+BlogPosts()
 
-				subscribe-form.subscribe-form-is-wide.subscribe(
+				subscribe-form.subscribe-form-wide.app-page-subscribe-form-wide(
 					agree-url="blog.html"
 					v-if="windowWidth < 1024"
 				)
 
-			feedback-section.section(inline-template)
+			feedback-section.app-page-feedback-section(inline-template)
 				+FeedbackSection()

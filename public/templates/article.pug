@@ -8,7 +8,7 @@ append vars
 		title = 'Статья';
 
 block app
-	app-page.page(inline-template)
+	app-page(inline-template)
 		+AppPage()
 			a.link-backward(
 				ref="linkBackward"
@@ -22,7 +22,7 @@ block app
 				base-icon.link-up-icon(name="angle-left")
 
 			.grid
-				nav.breadcrumb(is="app-breadcrumb")
+				nav.app-page-breadcrumb(is="app-breadcrumb")
 					a(href="index.html") Главная
 					a(href="blog.html") Блог
 					| Статья
@@ -30,7 +30,7 @@ block app
 				app-page-sticky-container.sticky-container(:options="stickyContainerOptions")
 					template(v-slot:sidebar)
 						aside
-							side-nav.side-nav-is-wide.sticky-container-nav(
+							side-nav.side-nav-wide.sticky-container-nav(
 								inline-template
 								v-if="windowWidth >= stickyContainerMinWidth ? true : true"
 							)
@@ -41,13 +41,13 @@ block app
 								v-if="windowWidth >= 1024"
 							)
 
-					app-article(inline-template)
+					app-article.app-page-article(inline-template)
 						+AppArticle()
 
-				subscribe-form.subscribe-form-is-wide.subscribe(
+				subscribe-form.subscribe-form-wide.app-page-subscribe-form(
 					agree-url="blog.html"
 					v-if="windowWidth < 1024"
 				)
 
-			feedback-section.section(inline-template)
+			feedback-section.app-page-feedback-section(inline-template)
 				+FeedbackSection()

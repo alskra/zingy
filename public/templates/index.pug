@@ -20,32 +20,32 @@ block templates
 	+AppHeaderNav()
 
 block app
-	app-page.page(inline-template)
+	app-page(inline-template)
 		+AppPage()
-			intro-section.section(inline-template)
+			intro-section.app-page-intro-section(inline-template)
 				+IntroSection()
 
-			quote-section.section(inline-template)
+			quote-section.app-page-quote-section(inline-template)
 				+QuoteSection()
 
-			service-section.section(inline-template)
+			service-section.app-page-service-section(inline-template)
 				+ServiceSection()
 
-			work-section.section(inline-template)
+			work-section.app-page-work-section(inline-template)
 				+WorkSection()
 
-			page-section.section(inline-template)
+			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')
-					app-carousel-of-works.works-carousel(inline-template)
+					app-carousel-of-works.app-page-works-carousel(inline-template)
 						+AppCarouselOfWorks()
 
-			page-section.section(inline-template)
+			page-section.app-page-section(inline-template)
 				+PageSection('Отзывы')
-					app-carousel-of-reviews.reviews-carousel(inline-template)
+					app-carousel-of-reviews.app-page-reviews-carousel(inline-template)
 						+AppCarouselOfReviews()
 
-			page-section-is-services.section(inline-template)
+			page-section-is-services.app-page-services-section(inline-template)
 				+PageSectionIsServices()
 
-			feedback-section.section(inline-template)
+			feedback-section.app-page-feedback-section(inline-template)
 				+FeedbackSection()

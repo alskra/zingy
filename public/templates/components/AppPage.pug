@@ -5,14 +5,14 @@ mixin AppPage()
 	template
 		.app-page&attributes(attributes)
 			.body(ref="body")
-				app-header.header(inline-template)
+				app-header.app-page-header(inline-template)
 					+AppHeader()
 
 				main.main
 					block
 
-				app-footer.footer(inline-template)
+				app-footer.app-page-footer(inline-template)
 					+AppFooter()
 
-			zingy-section.section
+			zingy-section.app-page-zingy-section
 				p #[strong ZINGY]&nbsp;— в&nbsp;переводе с&nbsp;англ. потрясающий, захватывающий

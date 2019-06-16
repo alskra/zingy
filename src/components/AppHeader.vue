@@ -25,9 +25,9 @@
 			sidebarOpen: {
 				handler(val) {
 					if (val) {
-						document.documentElement.classList.add('is-sidebar-opened');
+						document.documentElement.classList.add('sidebar-open');
 					} else {
-						document.documentElement.classList.remove('is-sidebar-opened');
+						document.documentElement.classList.remove('sidebar-open');
 					}
 				},
 				immediate: true
@@ -587,7 +587,7 @@
 			/*will-change: filter;*/
 		}
 
-		&.is-sidebar-opened {
+		&.sidebar-open {
 			&,
 			body {
 				overflow: hidden;
