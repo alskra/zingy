@@ -2,13 +2,36 @@
 	export default {
 		name: 'AppHeaderNav',
 		template: '#app-header-nav',
-		mounted() {
-			this.$el.querySelectorAll('a').forEach(link => {
-				if (location.pathname.indexOf(link.pathname) === 0) {
+		methods: {
+			setActive() {
+				function doActive(link) {
 					link.classList.add('active');
 					link.closest('.grid-cell').classList.add('active');
 				}
-			});
+
+				function doInactive(link) {
+					link.classList.remove('active');
+					link.closest('.grid-cell').classList.remove('active');
+				}
+
+				this.$el.querySelectorAll('a').forEach(link => {
+					doInactive(link);
+
+					if (link.pathname.match(/^\/(index)?(\.html)?\/?$/)) {
+						if (location.pathname.match(/^\/(index)?(\.html)?\/?$/)) {
+							doActive(link);
+						}
+					} else if (location.pathname.indexOf(link.pathname) === 0) {
+						doActive(link);
+					}
+				});
+			}
+		},
+		mounted() {
+			this.setActive();
+		},
+		updated() {
+			this.setActive();
 		}
 	};
 </script>

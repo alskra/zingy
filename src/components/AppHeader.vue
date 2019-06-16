@@ -231,10 +231,6 @@
 	}
 
 	.base-icon.menu-button-icon {
-		@media (width < 1280px) {
-			/*transform: scale(calc(5 / 6));*/
-		}
-
 		@media (width < 640px) {
 			transform: scale(calc(2 / 3));
 		}

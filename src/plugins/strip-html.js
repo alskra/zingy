@@ -5,7 +5,9 @@ export const StripHTML = str => {
 	div.innerHTML = str;
 
 	return (div.textContent || div.innerText || '')
-		.replace(/^\s*(\S.*\S)\s*$/s, (match, capture) => capture.replace(/\s+/g, ' '));
+		.replace(/^\s*/, '')
+		.replace(/\s*$/, '')
+		.replace(/\s+/g, ' ');
 };
 
 // Export plugin

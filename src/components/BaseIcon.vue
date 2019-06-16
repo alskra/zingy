@@ -78,7 +78,7 @@
 		height: 30px;
 		overflow: visible;
 
-		:root:not(.is-sidebar-opened) & {
+		:root:not(.sidebar-open) & {
 			&:hover {
 				.menu-icon-line {
 					&:nth-child(1) {
@@ -100,7 +100,7 @@
 			}
 		}
 
-		:root.is-sidebar-opened & {
+		:root.sidebar-open & {
 			.menu-icon-line {
 				&:nth-child(2),
 				&:nth-child(3) {
@@ -124,7 +124,7 @@
 			}
 		}
 
-		:root.is-sidebar-opened:not(.is-device-mobile) & {
+		:root.sidebar-open:not(.is-device-mobile) & {
 			&:hover {
 				.menu-icon-line {
 					&:nth-child(1),
