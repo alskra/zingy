@@ -64,7 +64,8 @@
 		},
 		data() {
 			return {
-				stickyContainerMinWidth: 1024
+				stickyContainerMinWidth: 1024,
+				zingySectionShown: false
 			};
 		},
 		computed: {
@@ -82,28 +83,29 @@
 			}
 		},
 		methods: {
+			onZingySectionMounted(el) {
+
+				// el.scrollIntoView(false);
+			},
 			onScrollOrResize() {
-				const zingySection = document.querySelector('.zingy-section');
+				const zingySection = this.$refs.zingySection;
 				const appPagination = document.querySelector('.app-pagination');
 				const linkBackward = this.$refs.linkBackward;
 				const linkUp = this.$refs.linkUp;
+				const bodyRect = this.$refs.body.getBoundingClientRect();
 
-				const bodyBottom = this.$refs.body.getBoundingClientRect().bottom;
+				[appPagination, linkBackward, linkUp].forEach(el => {
+					if (el) {
+						el.classList.toggle('hidden', bodyRect.bottom < this.windowHeight);
+					}
+				});
 
-				if (zingySection) {
-					zingySection.classList.toggle('animation-stopped', bodyBottom >= this.windowHeight);
-				}
-
-				if (appPagination) {
-					appPagination.classList.toggle('hidden', bodyBottom < this.windowHeight);
-				}
-
-				if (linkBackward) {
-					linkBackward.classList.toggle('hidden', bodyBottom < this.windowHeight);
-				}
-
-				if (linkUp) {
-					linkUp.classList.toggle('hidden', bodyBottom < this.windowHeight);
+				if (this.$windowScroll.isEndY) {
+					this.zingySectionTimer = setTimeout(() => {
+						this.zingySectionShown = true;
+					}, 2000);
+				} else {
+					clearTimeout(this.zingySectionTimer);
 				}
 			}
 		},
@@ -165,10 +167,6 @@
 		padding-right: var(--body-scroll-locked_padding);
 		min-height: 100vh;
 		background-color: #ffffff;
-
-		:root:not(.is-browser-ie) & {
-			margin-bottom: var(--zingy-section_height);
-		}
 	}
 
 	.main {

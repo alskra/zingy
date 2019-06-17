@@ -17,7 +17,7 @@
 		computed: {
 			minimized() {
 				return this.windowWidth < 1366
-					|| this.windowScroll.directionY === '>'
+					|| this.$windowScroll.directionY === '>'
 					|| this.sidebarOpen;
 			}
 		},

@@ -129,5 +129,14 @@
 				margin-bottom: 0;
 			}
 		}
+
+		a {
+			color: var(--color-link);
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 </style>

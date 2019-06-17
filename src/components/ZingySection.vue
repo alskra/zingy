@@ -15,7 +15,10 @@
 
 <script>
 	export default {
-		name: 'ZingySection'
+		name: 'ZingySection',
+		mounted() {
+			this.$emit('mounted', this.$el);
+		}
 	};
 </script>
 
@@ -31,11 +34,11 @@
 
 		& {
 			display: flex;
-			flex-flow: column;
 			box-sizing: border-box;
+			position: relative;
 			width: 100%;
 			height: var(--zingy-section_height, range(600px / 2.5, 600px));
-			position: relative;
+			flex-flow: column;
 			background-color: black;
 		}
 
@@ -55,12 +58,6 @@
 			background: url("../assets/img/about-zingy-bg.jpg") no-repeat 50% 50% / cover;
 			animation: zingy-section_scale-bg 40s ease-in-out infinite;
 			transform-origin: 50% 100%;
-		}
-
-		:root:not(.is-browser-ie) & {
-			position: fixed;
-			bottom: 0;
-			left: 0;
 		}
 
 		&.animation-stopped {

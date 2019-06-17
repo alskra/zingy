@@ -6,8 +6,12 @@ export default {
 				y: 0,
 				deltaX: 0,
 				deltaY: 0,
-				directionX: '',
-				directionY: ''
+				directionX: null,
+				directionY: null,
+				isBeginningX: null,
+				isEndX: null,
+				isBeginningY: null,
+				isEndY: null,
 			},
 			watch: {
 				x(val, oldVal) {
@@ -32,25 +36,47 @@ export default {
 				}
 			},
 			methods: {
-				onWindowScroll() {
+				updateOffset() {
 					this.x = window.pageXOffset;
 					this.y = window.pageYOffset;
+				},
+				updateState() {
+					this.isBeginningX = this.x === 0;
+					this.isEndX = this.x === document.documentElement.scrollWidth - document.documentElement.clientWidth;
+
+					this.isBeginningY = this.y === 0;
+					this.isEndY = this.y === document.documentElement.scrollHeight - document.documentElement.clientHeight;
 				}
 			},
 			created() {
-				window.addEventListener('scroll', this.onWindowScroll);
+				this.updateOffset();
+				this.updateState();
+
+				window.addEventListener('scroll', this.updateOffset);
+				window.addEventListener('scroll', this.updateState);
+
+				const vm = this;
+
+				vm.updateFrame = requestAnimationFrame(function updateState() {
+					vm.updateState();
+					vm.updateFrame = requestAnimationFrame(updateState);
+				})
 			},
 			destroyed() {
-				window.removeEventListener('scroll', this.onWindowScroll);
+				window.removeEventListener('scroll', this.updateOffset);
+				window.removeEventListener('scroll', this.updateState);
+				cancelAnimationFrame(this.updateFrame);
 			}
 		});
 
-		Vue.mixin({
-			computed: {
-				windowScroll() {
-					return vm.$data;
-				}
-			}
-		});
+		// Vue.mixin({
+		// 	computed: {
+		// 		windowScroll() {
+		// 			return vm.$data;
+		// 		}
+		// 	}
+		// });
+
+		Vue.prototype.$windowScroll = vm.$data;
 	}
 }

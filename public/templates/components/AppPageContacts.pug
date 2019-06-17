@@ -17,6 +17,10 @@ mixin AppPageContacts()
 										a.link-button(href="mailto:manager.zingy.projects@gmail.com")
 											span manager.zingy.projects@gmail.com
 
+					.grid-cell(style={color: 'white', position: 'fixed', left: '50%', zIndex: 1000, background: 'black'})
+						| {{ $windowScroll.x }} | {{ $windowScroll.y }}
+						| {{ $windowScroll.isBeginningY }} | {{ $windowScroll.isEndY }}
+
 				.grid-row
 					.grid-cell
 						transition-fade-up(appear)
@@ -46,8 +50,8 @@ mixin AppPageContacts()
 								.section-grid
 									.section-grid-cell
 										address.content.
-											119590, г. Москва, ул. Улофа Пальме д.3<br>
-											пн-пт  с 10:00 до 21:00
+											119590, г. Москва, ул. Улофа Пальме, д. 3<br>
+											пн-пт с 10:00 до 21:00
 
 						transition-fade-up(appear)
 							section.section

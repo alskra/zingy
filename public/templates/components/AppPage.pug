@@ -14,5 +14,9 @@ mixin AppPage()
 				app-footer.app-page-footer(inline-template)
 					+AppFooter()
 
-			zingy-section.app-page-zingy-section
+			zingy-section.app-page-zingy-section(
+				ref="zingySection"
+				v-if="zingySectionShown"
+				@mounted="onZingySectionMounted"
+			)
 				p #[strong ZINGY]&nbsp;— в&nbsp;переводе с&nbsp;англ. потрясающий, захватывающий
