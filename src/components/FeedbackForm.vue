@@ -224,6 +224,7 @@
 	}
 
 	.base-button.button {
+		--base-button_background-color: #222222;
 		width: 100%;
 	}
 

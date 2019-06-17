@@ -36,7 +36,7 @@
 
 		&.v-enter-active,
 		&.v-leae-active {
-			transition: opacity 0.4s;
+			transition: opacity 0.5s;
 		}
 
 		&.v-enter,

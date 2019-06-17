@@ -27,15 +27,20 @@
 
 		& {
 			display: inline-flex;
-			vertical-align: top;
-			justify-content: center;
-			align-items: center;
 			box-sizing: border-box;
+			vertical-align: top;
 			padding: 5px range(15px, 20px);
 			max-width: 100%;
 			height: range(44px, 56px);
-			background-color: var(--color);
-			transition: background-color 0.2s;
+			justify-content: center;
+			align-items: center;
+			background-color: var(--base-button_background-color, var(--color));
+			transition:
+				color,
+				border-color,
+				background-color,
+				box-shadow;
+			transition-duration: 0.2s;
 			cursor: pointer;
 		}
 

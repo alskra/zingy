@@ -34,10 +34,10 @@
 			font-size: range(1.6rem, 1.8rem);
 			line-height: 1.25;
 			background-color: white;
-			transition-property:
+			transition:
 				color,
-				background-color,
 				border-color,
+				background-color,
 				box-shadow;
 			transition-duration: 0.2s;
 		}
