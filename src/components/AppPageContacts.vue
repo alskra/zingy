@@ -105,9 +105,12 @@
 		}
 
 		&:hover {
-			color: var(--color);
-			border-color: #ffffff;
-			background-color: #ffffff;
+			/*color: var(--color);*/
+			/*border-color: #ffffff;*/
+			/*background-color: #ffffff;*/
+			color: #ffffff;
+			border-color: var(--color-accent);
+			background-color: var(--color-accent);
 		}
 	}
 
