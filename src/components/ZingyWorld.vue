@@ -56,6 +56,7 @@
 	}
 
 	.marker {
-		/*transform-origin: calc(7 / 1920 * 100%) calc(10 / 1082.1505127 * 100%);*/
+		/*transform-origin: 7px 10px;*/
+		/*transform: scale(1.2);*/
 	}
 </style>

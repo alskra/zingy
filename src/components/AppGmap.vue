@@ -45,7 +45,7 @@
 						"saturation": -100
 					},
 					{
-						"lightness": 33
+						"lightness": /*33*/43
 					},
 					{
 						"gamma": 0.5

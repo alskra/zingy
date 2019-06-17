@@ -285,10 +285,13 @@
 	}
 
 	.contacts-box {
-		position: relative;
 		display: flex;
+		box-sizing: border-box;
+		position: relative;
+		margin-top: range(-60px, -138px);
+		padding-top: range(60px, 138px);
+		min-height: 100vh;
 		flex-flow: column;
-		min-height: calc(100vh - range(60px, 138px));
 
 		.grid {
 			position: relative;
@@ -297,10 +300,10 @@
 
 	.zingy-world.app-page-zingy-world {
 		position: absolute;
-		top: 0;
+		top: 20px;
+		right: 0;
+		bottom: 20px;
 		left: 0;
-		width: 100%;
-		height: calc(100vh - range(60px, 138px));
 	}
 </style>
 
