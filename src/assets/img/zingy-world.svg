@@ -9669,11 +9669,11 @@
 	</g>
 
 	<g class="lines">
-		<line class="line line-1" fill="#4E4E4E" stroke="#4E4E4E" stroke-miterlimit="10" x2="375" y2="346.8942566" x1="747" y1="145.8942413"/>
-		<line class="line line-2" fill="#4E4E4E" stroke="#4E4E4E" stroke-miterlimit="10" x2="575" y2="755.8942261" x1="375" y1="355.8942566"/>
-		<line class="line line-3" fill="#4E4E4E" stroke="#4E4E4E" stroke-miterlimit="10" x2="1021.2733154" y2="638.5565796" x1="593" y1="757.8942261"/>
-		<line class="line line-4" fill="#4E4E4E" stroke="#4E4E4E" stroke-miterlimit="10" x2="1052" y2="384.8942566" x1="1033" y1="617.8942261"/>
-		<line class="line line-5" fill="#4E4E4E" stroke="#4E4E4E" stroke-miterlimit="10" x2="1201" y2="307.8942566" x1="1064" y1="364.8942566"/>
-		<line class="line line-6" fill="#4E4E4E" stroke="#4E4E4E" stroke-miterlimit="10" x2="1220" y2="306.8942566" x1="1658" y1="852.8942261"/>
+		<line class="line line-1" stroke="#4E4E4E" stroke-miterlimit="10" x2="375" y2="346.8942566" x1="747" y1="145.8942413"/>
+		<line class="line line-2" stroke="#4E4E4E" stroke-miterlimit="10" x2="575" y2="755.8942261" x1="375" y1="355.8942566"/>
+		<line class="line line-3" stroke="#4E4E4E" stroke-miterlimit="10" x2="1021.2733154" y2="638.5565796" x1="593" y1="757.8942261"/>
+		<line class="line line-4" stroke="#4E4E4E" stroke-miterlimit="10" x2="1052" y2="384.8942566" x1="1033" y1="617.8942261"/>
+		<line class="line line-5" stroke="#4E4E4E" stroke-miterlimit="10" x2="1201" y2="307.8942566" x1="1064" y1="364.8942566"/>
+		<line class="line line-6" stroke="#4E4E4E" stroke-miterlimit="10" x2="1220" y2="306.8942566" x1="1658" y1="852.8942261"/>
 	</g>
 </svg>

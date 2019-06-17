@@ -284,7 +284,7 @@
 
 	.contacts-box {
 		position: relative;
-		min-height: calc(100vh - range(60px, 138px) - 20px);
+		min-height: calc(100vh - range(60px, 138px));
 
 		.grid {
 			position: relative;
@@ -296,7 +296,7 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: calc(100vh - range(60px, 138px) - 20px);
+		height: calc(100vh - range(60px, 138px));
 	}
 </style>
 

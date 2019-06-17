@@ -12,8 +12,8 @@
 		mounted() {
 			const markers = this.$el.querySelectorAll('.marker'); // 0-6
 			const lines = this.$el.querySelectorAll('.line'); // 0-5
-			const markersParams = [0.15, {opacity: 0}, '+=0'];
-			const linesParams = [0.5, {drawSVG: 0}, '+=0'];
+			const markersParams = [0.2, {opacity: 0}, '+=0'];
+			const linesParams = [0.7, {drawSVG: 0}, '+=0'];
 			const timelineStart = new TimelineLite({delay: 1});
 			const timelineEnd = new TimelineLite({delay: 1});
 
@@ -31,7 +31,7 @@
 
 			timelineEnd
 				.from(markers[6], ...markersParams)
-				.from(lines[5], ...[(0.15 + 0.5) * 5 - 0.15, ...linesParams.slice(1)])
+				.from(lines[5], ...[(0.2 + 0.7) * 5 - 0.2, ...linesParams.slice(1)])
 				.from(markers[5], ...markersParams);
 		}
 	};
@@ -50,7 +50,8 @@
 	// viewBox="0 0 1920 1082.1505127"
 	svg {
 		display: block;
-		max-height: 100%;
+		width: 100%;
+		height: 100%;
 	}
 
 	.marker {
