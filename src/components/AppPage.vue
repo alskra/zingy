@@ -27,6 +27,7 @@
 
 	// contacts
 	import ZingyWorld from './ZingyWorld';
+	import AppGmap from './AppGmap';
 
 	export default {
 		name: 'AppPage',
@@ -56,7 +57,8 @@
 			AppArticle,
 
 			// contacts
-			ZingyWorld
+			ZingyWorld,
+			AppGmap
 		},
 		data() {
 			return {
@@ -284,6 +286,8 @@
 
 	.contacts-box {
 		position: relative;
+		display: flex;
+		flex-flow: column;
 		min-height: calc(100vh - range(60px, 138px));
 
 		.grid {
