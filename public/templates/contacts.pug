@@ -1,5 +1,7 @@
 extends index
 
+include components/AppPageContacts
+
 append vars
 	-
 		title = 'Контакты';
@@ -19,6 +21,11 @@ block app
 						is="base-title"
 						tag="h1"
 					) Контакты
+
+					.grid-row
+						.grid-cell.grid-cell-10.x-center
+							app-page-contacts(inline-template)
+								+AppPageContacts()
 
 			app-gmap
 

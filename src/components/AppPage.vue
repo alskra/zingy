@@ -27,6 +27,7 @@
 
 	// contacts
 	import ZingyWorld from './ZingyWorld';
+	import AppPageContacts from './AppPageContacts';
 	import AppGmap from './AppGmap';
 
 	export default {
@@ -58,6 +59,7 @@
 
 			// contacts
 			ZingyWorld,
+			AppPageContacts,
 			AppGmap
 		},
 		data() {
@@ -176,18 +178,34 @@
 	}
 
 	.grid {
+		margin: 0 auto;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
-		margin: 0 auto;
 	}
 
 	.grid-row {
+		display: flex;
+		flex-wrap: wrap;
 		margin: 0 var(--grid-row_margin);
 	}
 
 	.grid-cell {
-		padding: 0 var(--grid-cell_padding);
 		box-sizing: border-box;
+		padding: 0 var(--grid-cell_padding);
+		min-width: 0;
+		max-width: 100%;
+
+		&.x-center {
+			margin: 0 auto;
+		}
+	}
+
+	.grid-cell-10 {
+		flex: 0 0 percentage(10 / 12);
+
+		@media (width < 1024px) {
+			flex-basis: 100%;
+		}
 	}
 
 	.app-breadcrumb.app-page-breadcrumb {
@@ -302,8 +320,8 @@
 		position: absolute;
 		top: 20px;
 		right: 0;
-		bottom: 20px;
 		left: 0;
+		height: calc(100vh - 20px);
 	}
 </style>
 
