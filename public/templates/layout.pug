@@ -3,7 +3,8 @@ block vars
 		let lang = 'ru',
 			title = 'Base Template',
 			meta = {
-				viewport: 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no'
+				viewport: 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no',
+				'format-detection': 'telephone=no'
 			};
 
 doctype html
@@ -15,6 +16,7 @@ html(lang=lang)
 		block meta
 			meta(charset="utf-8")
 			meta(name="viewport" content=meta.viewport)
+			meta(name="format-detection" content=meta['format-detection'])
 
 		//base(href=BASE_URL)
 
