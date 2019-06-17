@@ -7,15 +7,18 @@ append vars
 block app
 	app-page.theme-dark(inline-template)
 		+AppPage()
-			.grid
-				nav.app-page-breadcrumb(is="app-breadcrumb")
-					a(href="index.html") Главная
-					| Контакты
+			.contacts-box
+				zingy-world.app-page-zingy-world
 
-				h1.app-page-title(
-					is="base-title"
-					tag="h1"
-				) Контакты
+				.grid
+					nav.app-page-breadcrumb(is="app-breadcrumb")
+						a(href="index.html") Главная
+						| Контакты
+
+					h1.app-page-title(
+						is="base-title"
+						tag="h1"
+					) Контакты
 
 			feedback-section.app-page-feedback-section(inline-template)
 				+FeedbackSection()

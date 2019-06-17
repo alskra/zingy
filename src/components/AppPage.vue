@@ -25,6 +25,9 @@
 	// article
 	const AppArticle = () => import('./AppArticle');
 
+	// contacts
+	import ZingyWorld from './ZingyWorld';
+
 	export default {
 		name: 'AppPage',
 		components: {
@@ -50,7 +53,10 @@
 			SubscribeForm,
 
 			// article
-			AppArticle
+			AppArticle,
+
+			// contacts
+			ZingyWorld
 		},
 		data() {
 			return {
@@ -274,6 +280,23 @@
 		color: inherit;
 		transform-origin: 50% 50%;
 		transform: rotate(90deg);
+	}
+
+	.contacts-box {
+		position: relative;
+		min-height: calc(100vh - range(60px, 138px) - 20px);
+
+		.grid {
+			position: relative;
+		}
+	}
+
+	.zingy-world.app-page-zingy-world {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: calc(100vh - range(60px, 138px) - 20px);
 	}
 </style>
 
