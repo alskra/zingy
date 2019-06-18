@@ -116,9 +116,10 @@
 					},
 					onCompleteParams: ['{self}'],
 					onComplete(self) {
-						requestAnimationFrame(() => self.target.style.scrollBehavior = '');
+						self.target.style.scrollBehavior = '';
 						document.body.style.paddingBottom = el.offsetHeight + 'px';
 						el.classList.add('fixed');
+						el.classList.remove('animation-stopped');
 
 						window.zingySectionResize = () => document.body.style.paddingBottom = el.offsetHeight + 'px';
 						window.addEventListener('resize', window.zingySectionResize);
@@ -196,6 +197,10 @@
 		flex: 1 0 auto;
 		padding: range(60px, 138px) 0 0;
 		background-color: var(--app-page-main_background-color, #ffffff);
+	}
+
+	.app-footer.app-page-footer {
+		flex-shrink: 0;
 	}
 
 	.grid {
