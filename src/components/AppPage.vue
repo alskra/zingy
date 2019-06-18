@@ -106,7 +106,7 @@
 				}
 			},
 			onZingySectionMounted(el) {
-				const body = this.$refs.body;
+				// const body = this.$refs.body;
 
 				new TweenLite(document.documentElement, 2, {
 					scrollTop: this.$windowScroll.getLimitY(),
@@ -116,11 +116,11 @@
 					},
 					onCompleteParams: ['{self}'],
 					onComplete(self) {
-						self.target.style.scrollBehavior = '';
-						body.style.marginBottom = el.offsetHeight + 'px';
+						requestAnimationFrame(() => self.target.style.scrollBehavior = '');
+						document.body.style.paddingBottom = el.offsetHeight + 'px';
 						el.classList.add('fixed');
 
-						window.zingySectionResize = () => body.style.marginBottom = el.offsetHeight + 'px';
+						window.zingySectionResize = () => document.body.style.paddingBottom = el.offsetHeight + 'px';
 						window.addEventListener('resize', window.zingySectionResize);
 					}
 				});
