@@ -1,5 +1,10 @@
 <template lang="pug">
 	.zingy-section
+		.grid
+			.content.content-before
+				slot(name="before")
+					//- p Получите SEO бесплатно назвав промокод: «Апельсин»
+
 		.matrix
 			.matrix-row optimi#[span z]ation
 			.matrix-row des#[span i]gn
@@ -8,8 +13,8 @@
 			.matrix-row strateg#[span y]
 
 		.grid
-			.content
-				slot
+			.content.content-after
+				slot(name="after")
 					p #[strong ZINGY]&nbsp;— в&nbsp;переводе с&nbsp;англ. потрясающий, захватывающий
 </template>
 
@@ -22,12 +27,6 @@
 	};
 </script>
 
-<style>
-	:root {
-		--zingy-section_height: range(600px / 2.5, 600px);
-	}
-</style>
-
 <style scoped>
 	.zingy-section {
 		all: initial;
@@ -36,9 +35,10 @@
 			display: flex;
 			box-sizing: border-box;
 			position: relative;
-			width: 100%;
-			height: var(--zingy-section_height, range(600px / 2.5, 600px));
+			padding: range(20px, 40px) 0;
+			max-width: 100%;
 			flex-flow: column;
+			overflow: hidden;
 			background-color: black;
 		}
 
@@ -60,16 +60,34 @@
 			transform-origin: 50% 100%;
 		}
 
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.6);
+		}
+
 		&.animation-stopped {
 			&::before {
 				animation-play-state: paused;
 			}
 		}
+
+		&.fixed {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+		}
 	}
 
 	.matrix {
 		position: relative;
-		margin: auto auto auto calc(50% - 228 / 34 * 1em);
+		z-index: 1;
+		margin: range(30px, 60px) auto range(30px, 60px) calc(50% - 228 / 34 * 1em);
 		color: #ffffff;
 		font-family: var(--font-family);
 		font-size: range(34px / 2.5, 34px);
@@ -119,6 +137,7 @@
 
 	.grid {
 		position: relative;
+		z-index: 1;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
 		margin: 0 auto;
@@ -127,19 +146,38 @@
 	.content {
 		color: #ffffff;
 		font-family: var(--font-family);
-		font-size: range(1.6rem / 1.5, 1.6rem);
-		font-weight: 300;
+		font-size: range(2.6rem / 1.5, 2.6rem);
+		font-weight: 400;
 		line-height: 1.25;
-		padding: range(20px / 2, 20px) 0;
-		text-align: right;
+		text-align: center;
 
-		>>> p {
+		p {
 			margin: 0;
 		}
 
-		>>> strong {
+		strong {
 			font-weight: 500;
 			letter-spacing: calc(1.6 / 16 * 1em);
 		}
+
+		a {
+			color: var(--color-link);
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.content-after {
+		font-size: range(1.6rem / 1.5, 1.6rem);
+		font-weight: 300;
+		text-align: right;
+
+		/*strong {*/
+		/*	font-weight: 500;*/
+		/*	letter-spacing: calc(1.6 / 16 * 1em);*/
+		/*}*/
 	}
 </style>

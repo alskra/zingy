@@ -1,5 +1,6 @@
 <script>
 	import cssVars from 'css-vars-ponyfill';
+	import {TweenLite} from 'gsap';
 
 	// all
 	import AppHeader from './AppHeader';
@@ -83,12 +84,7 @@
 			}
 		},
 		methods: {
-			onZingySectionMounted(el) {
-
-				// el.scrollIntoView(false);
-			},
-			onScrollOrResize() {
-				const zingySection = this.$refs.zingySection;
+			setElementsVisible() {
 				const appPagination = document.querySelector('.app-pagination');
 				const linkBackward = this.$refs.linkBackward;
 				const linkUp = this.$refs.linkUp;
@@ -99,14 +95,39 @@
 						el.classList.toggle('hidden', bodyRect.bottom < this.windowHeight);
 					}
 				});
-
-				if (this.$windowScroll.isEndY) {
+			},
+			setZingySectionVisible() {
+				if (!this.zingySectionShown && this.$windowScroll.reachEndY()) {
 					this.zingySectionTimer = setTimeout(() => {
 						this.zingySectionShown = true;
 					}, 2000);
 				} else {
 					clearTimeout(this.zingySectionTimer);
 				}
+			},
+			onZingySectionMounted(el) {
+				const body = this.$refs.body;
+
+				new TweenLite(document.documentElement, 2, {
+					scrollTop: this.$windowScroll.getLimitY(),
+					onStartParams: ['{self}'],
+					onStart(self) {
+						self.target.style.scrollBehavior = 'auto';
+					},
+					onCompleteParams: ['{self}'],
+					onComplete(self) {
+						self.target.style.scrollBehavior = '';
+						body.style.marginBottom = el.offsetHeight + 'px';
+						el.classList.add('fixed');
+
+						window.zingySectionResize = () => body.style.marginBottom = el.offsetHeight + 'px';
+						window.addEventListener('resize', window.zingySectionResize);
+					}
+				});
+			},
+			onScrollOrResize() {
+				this.setElementsVisible();
+				this.setZingySectionVisible();
 			}
 		},
 		created() {
@@ -116,9 +137,11 @@
 		destroyed() {
 			window.removeEventListener('scroll', this.onScrollOrResize);
 			window.removeEventListener('resize', this.onScrollOrResize);
+			window.removeEventListener('resize', window.zingySectionResize);
+			delete window.zingySectionResize;
 		},
 		mounted() {
-			this.onScrollOrResize();
+			this.setElementsVisible();
 
 			if (
 				this.$el.classList.contains('theme-dark')

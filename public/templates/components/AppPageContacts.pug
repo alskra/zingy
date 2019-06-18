@@ -17,10 +17,6 @@ mixin AppPageContacts()
 										a.link-button(href="mailto:manager.zingy.projects@gmail.com")
 											span manager.zingy.projects@gmail.com
 
-					.grid-cell(style={color: 'white', position: 'fixed', left: '50%', zIndex: 1000, background: 'black'})
-						| {{ $windowScroll.x }} | {{ $windowScroll.y }}
-						| {{ $windowScroll.isBeginningY }} | {{ $windowScroll.isEndY }}
-
 				.grid-row
 					.grid-cell
 						transition-fade-up(appear)

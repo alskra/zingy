@@ -19,4 +19,8 @@ mixin AppPage()
 				v-if="zingySectionShown"
 				@mounted="onZingySectionMounted"
 			)
-				p #[strong ZINGY]&nbsp;— в&nbsp;переводе с&nbsp;англ. потрясающий, захватывающий
+				template(v-slot:before)
+					p Получите SEO бесплатно назвав промокод: #[b «Апельсин»]
+
+				template(v-slot:after)
+					p #[strong ZINGY]&nbsp;— в&nbsp;переводе с&nbsp;англ. потрясающий, захватывающий
