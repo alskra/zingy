@@ -97,7 +97,7 @@
 				});
 			},
 			setZingySectionVisible() {
-				if (!this.zingySectionShown && this.$windowScroll.reachEndY()) {
+				if (!this.zingySectionShown && this.$windowScroll.reachEndY()) {alert('show block!');
 					this.zingySectionTimer = setTimeout(() => {
 						this.zingySectionShown = true;
 					}, 2000);
