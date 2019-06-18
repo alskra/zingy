@@ -66,8 +66,7 @@
 		data() {
 			return {
 				stickyContainerMinWidth: 1024,
-				zingySectionShown: false,
-				debugInfo: ''
+				zingySectionShown: false
 			};
 		},
 		computed: {
@@ -98,10 +97,6 @@
 				});
 			},
 			setZingySectionVisible() {
-				this.debugInfo = 'getY: ' + this.$windowScroll.getY()
-					+ '<br>getLimitY: ' + this.$windowScroll.getLimitY()
-					+ '<br>reachEndY: ' + this.$windowScroll.reachEndY();
-
 				if (!this.zingySectionShown && this.$windowScroll.reachEndY()) {
 					this.zingySectionTimer = setTimeout(() => {
 						this.zingySectionShown = true;

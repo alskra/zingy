@@ -4,7 +4,6 @@ include AppFooter
 mixin AppPage()
 	template
 		.app-page&attributes(attributes)
-			.debug-info(v-html="debugInfo" style={position: 'fixed', zIndex: 1000, left: 0, right: 0, top: '50%', background: 'black', color: 'white'})
 			.body(ref="body")
 				app-header.app-page-header(inline-template)
 					+AppHeader()
