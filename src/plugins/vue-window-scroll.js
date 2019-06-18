@@ -15,14 +15,16 @@ export default {
 					isBeginningY: null,
 					isEndX: null,
 					isEndY: null,
-					getX: () => Math.max(window.pageXOffset, document.documentElement.scrollLeft),
-					getY: () => Math.max(window.pageYOffset, document.documentElement.scrollTop),
+					getX: () => window.pageXOffset,
+					getY: () => window.pageYOffset,
 					getLimitX: () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
 					getLimitY: () => document.documentElement.scrollHeight - document.documentElement.clientHeight,
 					reachBeginningX: () => window.pageXOffset === 0,
 					reachBeginningY: () => window.pageYOffset === 0,
-					reachEndX: () => window.pageXOffset === this.getLimitX(),
+					reachEndX: () => window.pageXOffset === this.getLimitX()
+						|| document.body.getBoundingClientRect().right <= window.innerWidth,
 					reachEndY: () => window.pageYOffset === this.getLimitY()
+						|| document.body.getBoundingClientRect().bottom <= window.innerHeight
 				};
 			},
 			watch: {
