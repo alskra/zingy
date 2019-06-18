@@ -153,7 +153,7 @@
 	.content {
 		color: #ffffff;
 		font-family: var(--font-family);
-		font-size: range(2.6rem / 1.5, 2.6rem);
+		font-size: range(2.2rem / 1.5, 2.2rem);
 		font-weight: 400;
 		line-height: 1.25;
 		text-align: center;
