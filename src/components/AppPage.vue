@@ -108,20 +108,21 @@
 			onZingySectionMounted(el) {
 				// const body = this.$refs.body;
 
+				this.$el.style.paddingBottom = el.offsetHeight + 'px';
+
 				new TweenLite(document.documentElement, 2, {
 					scrollTop: this.$windowScroll.getLimitY(),
 					onStartParams: ['{self}'],
-					onStart(self) {
+					onStart: self => {
 						self.target.style.scrollBehavior = 'auto';
 					},
 					onCompleteParams: ['{self}'],
-					onComplete(self) {
+					onComplete: self => {
 						self.target.style.scrollBehavior = '';
-						document.body.style.paddingBottom = el.offsetHeight + 'px';
 						el.classList.add('fixed');
-						el.classList.remove('animation-stopped');
+						el.classList.remove('absolute', 'animation-stopped');
 
-						window.zingySectionResize = () => document.body.style.paddingBottom = el.offsetHeight + 'px';
+						window.zingySectionResize = () => this.$el.style.paddingBottom = el.offsetHeight + 'px';
 						window.addEventListener('resize', window.zingySectionResize);
 					}
 				});
@@ -168,8 +169,9 @@
 
 		& {
 			display: block;
-			overflow: hidden;
+			position: relative;
 			min-width: env(--min-breakpoint);
+			overflow: hidden;
 		}
 
 		&.theme-dark {
