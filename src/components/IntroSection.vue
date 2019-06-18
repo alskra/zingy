@@ -307,7 +307,7 @@
 		:root:not(.is-browser-mobile-safari, .is-engine-trident) & {
 			width: 420px;
 			height: 803px;
-			background: url("../assets/img/intro-bg-3.jpg") no-repeat 50% / cover;
+			background: url("../assets/img/intro-bg-3.png") no-repeat 50% / cover;
 			clip-path: url("#unicorn");
 			transform-origin: 0 0;
 			transform: scale(scale-down(1, 0.3));
