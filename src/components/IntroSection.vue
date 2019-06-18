@@ -296,14 +296,14 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: url("../assets/img/unicorn-intro-fallback.png") no-repeat 50% 100% / 100% auto;
+		background: url("../assets/img/unicorn-intro-fallback-2.png") no-repeat 50% 100% / contain;
 	}
 
 	.unicorn-img-is-clip {
 		:root:not(.is-browser-mobile-safari, .is-engine-trident) & {
 			width: 420px;
 			height: 803px;
-			background: url("../assets/img/intro-bg-1.jpg") no-repeat 50% / cover;
+			background: url("../assets/img/intro-bg-3.jpg") no-repeat 50% / cover;
 			clip-path: url("#unicorn");
 			transform-origin: 0 0;
 			transform: scale(scale-down(1, 0.3));

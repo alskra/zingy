@@ -1,6 +1,9 @@
 mixin AppPageContacts()
 	template
-		.app-page-contacts&attributes(attributes)
+		.app-page-contacts(
+			itemscope
+			itemtype="http://schema.org/Organization"
+		)&attributes(attributes)
 			.grid
 				.grid-row
 					.grid-cell
@@ -11,11 +14,11 @@ mixin AppPageContacts()
 								.section-grid
 									.section-grid-cell
 										a.link-button(href="mailto:zingy.projects@gmail.com")
-											span zingy.projects@gmail.com
+											span(itemprop="email") zingy.projects@gmail.com
 
 									.section-grid-cell
 										a.link-button(href="mailto:manager.zingy.projects@gmail.com")
-											span manager.zingy.projects@gmail.com
+											span(itemprop="email") manager.zingy.projects@gmail.com
 
 				.grid-row
 					.grid-cell
@@ -26,17 +29,30 @@ mixin AppPageContacts()
 								.section-grid
 									.section-grid-cell
 										a.link-button(href="tel:+74959110795")
-											span +7 (495) 911-07-95
+											span(itemprop="telephone") +7 (495) 911-07-95
 
 						transition-fade-up(appear)
 							section.section
 								.section-grid
 									.section-grid-cell
 										.content
-											p ООО «ЗИНГИ ПРОДЖЕКТС»<br>
-											p ОГРН: 1135001004621<br>
-											p ИНН: 5001094804<br>
+											p
+												span(itemprop="name") ООО «ЗИНГИ ПРОДЖЕКТС»
+
+											p ОГРН: 1135001004621
+											p ИНН: 5001094804
 											p КПП: 500101001
+
+											// Hidden structured data
+											link(
+												href="upload/zingy-256x256.png"
+												itemprop="logo"
+											)
+
+											link(
+												href="/"
+												itemprop="url"
+											)
 
 					.grid-cell
 						transition-fade-up(appear)
@@ -45,7 +61,7 @@ mixin AppPageContacts()
 
 								.section-grid
 									.section-grid-cell
-										address.content.
+										address.content(itemprop="address").
 											119590, г. Москва, ул. Улофа Пальме, д. 3<br>
 											пн-пт с 10:00 до 21:00
 

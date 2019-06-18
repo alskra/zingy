@@ -106,8 +106,6 @@
 				}
 			},
 			onZingySectionMounted(el) {
-				// const body = this.$refs.body;
-
 				this.$el.style.paddingBottom = el.offsetHeight + 'px';
 
 				new TweenLite([document.documentElement, document.body], 2, {
