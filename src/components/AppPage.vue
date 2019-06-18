@@ -66,7 +66,8 @@
 		data() {
 			return {
 				stickyContainerMinWidth: 1024,
-				zingySectionShown: false
+				zingySectionShown: false,
+				debugInfo: ''
 			};
 		},
 		computed: {
@@ -97,7 +98,11 @@
 				});
 			},
 			setZingySectionVisible() {
-				if (!this.zingySectionShown && this.$windowScroll.reachEndY()) {alert('show block!');
+				this.debugInfo = 'getY: ' + this.$windowScroll.getY()
+					+ '<br>getLimitY: ' + this.$windowScroll.getLimitY()
+					+ '<br>reachEndY: ' + this.$windowScroll.reachEndY();
+
+				if (!this.zingySectionShown && this.$windowScroll.reachEndY()) {
 					this.zingySectionTimer = setTimeout(() => {
 						this.zingySectionShown = true;
 					}, 2000);
