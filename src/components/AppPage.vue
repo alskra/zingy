@@ -110,15 +110,15 @@
 
 				this.$el.style.paddingBottom = el.offsetHeight + 'px';
 
-				new TweenLite(document.documentElement, 2, {
+				new TweenLite([document.documentElement, document.body], 2, {
 					scrollTop: this.$windowScroll.getLimitY(),
 					onStartParams: ['{self}'],
-					onStart: self => {
-						self.target.style.scrollBehavior = 'auto';
+					onStart: () => {
+						document.documentElement.style.scrollBehavior = 'auto';
 					},
 					onCompleteParams: ['{self}'],
-					onComplete: self => {
-						self.target.style.scrollBehavior = '';
+					onComplete: () => {
+						document.documentElement.style.scrollBehavior = '';
 						el.classList.add('fixed');
 						el.classList.remove('absolute', 'animation-stopped');
 
