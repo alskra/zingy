@@ -118,7 +118,7 @@
 					},
 					onCompleteParams: ['{self}'],
 					onComplete: () => {
-						setTimeout(() => document.documentElement.style.scrollBehavior = '', 100);
+						setTimeout(() => document.documentElement.style.scrollBehavior = '', 50);
 						el.classList.add('fixed');
 						el.classList.remove('absolute', 'animation-stopped');
 
