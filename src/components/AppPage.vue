@@ -65,31 +65,17 @@
 		},
 		data() {
 			return {
-				stickyContainerMinWidth: 1024,
 				zingySectionShown: false,
 				bodyRect: {}
 			};
 		},
 		computed: {
-			stickyContainerOptions() {
-				let topSpacing = 60 + (108 - 60) / 1600 * (this.windowWidth - 320);
-
-				if (topSpacing > 108) topSpacing = 108;
-				if (topSpacing < 60) topSpacing = 60;
-
-				return {
-					topSpacing,
-					bottomSpacing: 20,
-					minWidth: this.stickyContainerMinWidth - 1
-				};
-			},
 			linkBackwardShown() {
 				return this.windowWidth >= 1440
 					&& this.bodyRect.bottom >= this.windowHeight;
 			},
 			linkUpShown() {
 				return this.windowWidth >= 1440
-					// && this.bodyRect.bottom >= this.windowHeight
 					&& this.$windowScroll.y >= 200;
 			}
 		},

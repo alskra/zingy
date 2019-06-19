@@ -1,13 +1,10 @@
 include ../components/SideNav
 
 mixin sticky-container-layout()
-	app-page-sticky-container.sticky-container(:options="stickyContainerOptions")
+	app-page-sticky-container.sticky-container
 		template(v-slot:sidebar)
 			aside
-				side-nav.side-nav-wide.app-page-side-nav-wide(
-					inline-template
-					v-if="windowWidth >= stickyContainerMinWidth ? true : true"
-				)
+				side-nav.side-nav-wide.app-page-side-nav-wide(inline-template)
 					+SideNav()
 
 				subscribe-form.app-page-subscribe-form(

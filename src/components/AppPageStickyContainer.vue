@@ -11,12 +11,18 @@
 <script>
 	export default {
 		name: 'AppPageStickyContainer',
-		props: {
-			options: {
-				type: Object,
-				default() {
-					return {};
-				}
+		computed: {
+			options() {
+				let topSpacing = 60 + (108 - 60) / 1600 * (this.windowWidth - 320);
+
+				if (topSpacing > 108) topSpacing = 108;
+				if (topSpacing < 60) topSpacing = 60;
+
+				return {
+					topSpacing: 20,
+					// bottomSpacing: 20,
+					minWidth: 1023
+				};
 			}
 		}
 	};
@@ -28,6 +34,8 @@
 
 		& {
 			display: flex;
+			box-sizing: border-box;
+			max-width: 100%;
 			align-items: flex-start;
 		}
 
@@ -37,24 +45,24 @@
 	}
 
 	.sidebar {
-		width: percentage(260 / 1080);
+		flex: 0 0 percentage(260 / 1080);
+		min-width: 0;
 		max-width: 260px;
-		flex-shrink: 0;
 
 		@media (width < 1024px) {
-			width: 100%;
+			flex-basis: 100%;
 			max-width: none;
 		}
 	}
 
 	.main {
 		margin-left: calc(2 * var(--grid-cell_padding));
-		flex-grow: 1;
+		flex: 1 1 auto;
 		min-width: 0.1px;
 
 		@media (width < 1024px) {
 			margin-left: 0;
-			width: 100%;
+			flex: 0 0 100%;
 		}
 	}
 </style>
