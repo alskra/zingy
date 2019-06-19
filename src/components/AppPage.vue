@@ -97,13 +97,13 @@
 				});
 			},
 			setZingySectionVisible() {
-				if (!this.zingySectionShown && this.$windowScroll.reachEndY()) {
-					this.zingySectionTimer = setTimeout(() => {
-						this.zingySectionShown = true;
-					}, 2000);
-				} else {
-					clearTimeout(this.zingySectionTimer);
-				}
+				// if (!this.zingySectionShown && this.$windowScroll.reachEndY()) {
+				// 	this.zingySectionTimer = setTimeout(() => {
+				// 		this.zingySectionShown = true;
+				// 	}, 2000);
+				// } else {
+				// 	clearTimeout(this.zingySectionTimer);
+				// }
 			},
 			onZingySectionMounted(el) {
 				this.$el.style.paddingBottom = el.offsetHeight + 'px';
