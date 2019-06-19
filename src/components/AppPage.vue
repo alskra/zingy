@@ -89,7 +89,7 @@
 			},
 			linkUpShown() {
 				return this.windowWidth >= 1440
-					&& this.bodyRect.bottom >= this.windowHeight
+					// && this.bodyRect.bottom >= this.windowHeight
 					&& this.$windowScroll.y >= 200;
 			}
 		},
@@ -129,7 +129,7 @@
 					},
 					onCompleteParams: ['{self}'],
 					onComplete: () => {
-						setTimeout(() => document.documentElement.style.scrollBehavior = '', 50);
+						setTimeout(() => document.documentElement.style.scrollBehavior = '', 100);
 						el.classList.add('fixed');
 						el.classList.remove('absolute', 'animation-stopped');
 
@@ -303,6 +303,7 @@
 
 	.link-up {
 		position: fixed;
+		z-index: 100;
 		right: var(--grid_padding);
 		bottom: 20px;
 		display: flex;
