@@ -53,13 +53,12 @@
 
 	.posts-item.post {
 		height: 100%;
-		/*transition: box-shadow, transform;*/
-		/*transition-duration: 0.2s;*/
-		/*transition-delay: 0.1s;*/
+		transition: box-shadow;
+		transition-duration: 0.2s;
+		transition-delay: 0.1s;
 
 		&:hover {
-			/*box-shadow: 0 0 5px rgba(#000000, 0.7);*/
-			/*transform: translateY(-5px);*/
+			box-shadow: 0 0 5px rgba(#000000, 0.7);
 		}
 	}
 

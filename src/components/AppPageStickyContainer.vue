@@ -19,9 +19,10 @@
 				if (topSpacing < 60) topSpacing = 60;
 
 				return {
-					topSpacing: 20,
-					// bottomSpacing: 20,
-					minWidth: 1023
+					topSpacing,
+					bottomSpacing: 20,
+					minWidth: 1023,
+					resizeSensor: false
 				};
 			}
 		}
