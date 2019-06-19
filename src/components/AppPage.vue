@@ -88,7 +88,8 @@
 
 					[appPagination].forEach(el => {
 						if (el) {
-							el.classList.toggle('hidden', this.bodyRect.bottom < this.windowHeight);
+							el.classList.toggle('hidden', this.windowWidth >= 1440
+								&& this.bodyRect.bottom < this.windowHeight);
 						}
 					});
 				}
