@@ -1,0 +1,23 @@
+include ../components/SideNav
+
+mixin sticky-container-layout()
+	app-page-sticky-container.sticky-container(:options="stickyContainerOptions")
+		template(v-slot:sidebar)
+			aside
+				side-nav.side-nav-wide.app-page-side-nav-wide(
+					inline-template
+					v-if="windowWidth >= stickyContainerMinWidth ? true : true"
+				)
+					+SideNav()
+
+				subscribe-form.app-page-subscribe-form(
+					agree-url="blog.html"
+					v-if="windowWidth >= 1024"
+				)
+
+		block
+
+	subscribe-form.subscribe-form-wide.app-page-subscribe-form-wide(
+		agree-url="blog.html"
+		v-if="windowWidth < 1024"
+	)

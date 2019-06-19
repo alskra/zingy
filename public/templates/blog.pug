@@ -1,6 +1,6 @@
 extends index
 
-include components/SideNav
+include chunks/sticky-container-layout
 include components/BlogPosts
 
 append vars
@@ -20,27 +20,6 @@ block app
 					tag="h1"
 				) Блог с&nbsp;полезным контентом для всех, #[br]кто интересуется IT
 
-				app-page-sticky-container.sticky-container(:options="stickyContainerOptions")
-					template(v-slot:sidebar)
-						aside
-							side-nav.side-nav-wide.app-page-side-nav(
-								inline-template
-								v-if="windowWidth >= stickyContainerMinWidth ? true : true"
-							)
-								+SideNav()
-
-							subscribe-form.app-page-subscribe-form(
-								agree-url="blog.html"
-								v-if="windowWidth >= 1024"
-							)
-
-					blog-posts.app-page-posts(inline-template)
+				+sticky-container-layout()
+					blog-posts.app-page-blog-posts(inline-template)
 						+BlogPosts()
-
-				subscribe-form.subscribe-form-wide.app-page-subscribe-form-wide(
-					agree-url="blog.html"
-					v-if="windowWidth < 1024"
-				)
-
-			feedback-section.app-page-feedback-section(inline-template)
-				+FeedbackSection()

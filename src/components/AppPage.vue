@@ -204,9 +204,11 @@
 	}
 
 	.grid {
+		display: flex;
 		margin: 0 auto;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
+		flex-flow: column;
 	}
 
 	.grid-row {
@@ -251,7 +253,7 @@
 		margin-bottom: range(30px, 60px);
 	}
 
-	.side-nav.app-page-side-nav {
+	.side-nav-wide.app-page-side-nav-wide {
 		@media (width < 1024px) {
 			margin-bottom: calc(var(--grid-cell_padding) * 2);
 		}
