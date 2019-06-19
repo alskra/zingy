@@ -22,7 +22,7 @@
 					topSpacing,
 					bottomSpacing: 20,
 					minWidth: 1023,
-					resizeSensor: false
+					resizeSensor: true
 				};
 			}
 		}
