@@ -11,15 +11,16 @@ block app
 	app-page(inline-template)
 		+AppPage()
 			a.link-backward(
-				ref="linkBackward"
+				v-if="linkBackwardShown"
 				href="blog.html"
 			) Вернуться в блог
 
-			a.link-up(
-				ref="linkUp"
-				href="#"
-			)
-				base-icon.link-up-icon(name="angle-left")
+			transition-box
+				a.link-up(
+					v-if="linkUpShown"
+					href="#"
+				)
+					base-icon.link-up-icon(name="angle-left")
 
 			.grid
 				nav.app-page-breadcrumb(is="app-breadcrumb")

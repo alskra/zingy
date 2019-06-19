@@ -23,16 +23,6 @@
 	.grid {
 		display: flex;
 		flex-flow: column;
-		/*max-width: calc(300px * 3 + var(--grid-cell_padding) * 2 * 2);*/
-		/*margin: 0 auto;*/
-
-		/*@media (width < 768px) {*/
-		/*	max-width: calc(300px * 2 + var(--grid-cell_padding) * 2 * 1);*/
-		/*}*/
-
-		/*@media (width < 560px) {*/
-		/*	max-width: 100%;*/
-		/*}*/
 	}
 
 	.grid-row {
@@ -63,6 +53,14 @@
 
 	.posts-item.post {
 		height: 100%;
+		transition: box-shadow, transform;
+		transition-duration: 0.2s;
+		transition-delay: 0.1s;
+
+		&:hover {
+			box-shadow: 0 0 5px rgba(#000000, 0.7);
+			/*transform: translateY(-5px);*/
+		}
 	}
 
 	.app-pagination.pagination {

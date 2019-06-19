@@ -89,11 +89,8 @@
 			display: block;
 			box-sizing: border-box;
 			max-width: 100%;
-			object-fit: cover;
 			cursor: inherit;
-		}
-
-		&.v-lazy-image {
+			object-fit: cover;
 			opacity: 0;
 			filter: blur(10px);
 			transition: filter 0.7s;
