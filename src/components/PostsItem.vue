@@ -140,13 +140,13 @@
 		height: 100%;
 		object-fit: cover;
 		opacity: 0;
-		filter: blur(10px);
-		transition: filter 0.7s;
-		will-change: filter;
+		/*filter: blur(10px);*/
+		/*transition: filter 0.7s;*/
+		/*will-change: filter;*/
 
 		&.v-lazy-image-loaded {
 			opacity: 1;
-			filter: blur(0);
+			/*filter: blur(0);*/
 		}
 	}
 
