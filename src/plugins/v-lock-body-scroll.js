@@ -28,12 +28,14 @@ const lockBodyScroll = (locked = true) => {
 };
 
 // Export directive
-export const VLockBodyScroll = (el, binding) => {
-	if (
-		!binding.hasOwnProperty('oldValue')
-		|| (binding.hasOwnProperty('oldValue') && binding.value !== binding.oldValue)
-	) {
+export const VLockBodyScroll = {
+	bind(el, binding) {
 		lockBodyScroll(binding.value);
+	},
+	update(el, binding) {
+		if (binding.value !== binding.oldValue) {
+			lockBodyScroll(binding.value);
+		}
 	}
 };
 

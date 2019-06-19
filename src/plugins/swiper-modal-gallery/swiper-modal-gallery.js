@@ -1,7 +1,9 @@
 import SwiperModalGallery from './SwiperModalGallery';
 
+// Export component
 export {SwiperModalGallery};
 
+// Export plugin
 export default {
 	install(Vue, options) {
 		Vue.component('SwiperModalGallery', SwiperModalGallery);
