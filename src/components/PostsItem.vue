@@ -101,6 +101,11 @@
 			max-width: 100%;
 			flex-flow: column;
 			background-color: var(--posts-item_background-color, #ffffff);
+			transition: box-shadow 0.2s 0.1s;
+		}
+
+		&:hover {
+			box-shadow: 0 0 5px rgba(#000000, 0.7);
 		}
 	}
 
@@ -140,13 +145,13 @@
 		height: 100%;
 		object-fit: cover;
 		opacity: 0;
-		/*filter: blur(10px);*/
-		/*transition: filter 0.7s;*/
-		/*will-change: filter;*/
+		filter: blur(10px);
+		transition: filter 0.7s;
+		will-change: filter;
 
 		&.v-lazy-image-loaded {
 			opacity: 1;
-			/*filter: blur(0);*/
+			filter: blur(0);
 		}
 	}
 
@@ -225,14 +230,6 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-
-		span {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-		}
 	}
 
 	.posts-item-is-large {

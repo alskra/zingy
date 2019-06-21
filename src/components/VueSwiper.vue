@@ -7,19 +7,19 @@
 					.swiper-slide Slide 2
 					.swiper-slide Slide 3
 
-		button.nav-button.nav-button-is-prev(
-			type="button"
-			:disabled="swiper.isBeginning"
-			@click="swiper.slidePrev()"
-		) navButtonIsPrev
+		//- button.nav-button.nav-button-is-prev(
+		//- 	type="button"
+		//- 	:disabled="swiper.isBeginning"
+		//- 	@click="swiper.slidePrev()"
+		//- ) navButtonIsPrev
 
-		button.nav-button.nav-button-is-next(
-			type="button"
-			:disabled="swiper.isEnd"
-			@click="swiper.slideNext()"
-		) navButtonIsNext
+		//- button.nav-button.nav-button-is-next(
+		//- 	type="button"
+		//- 	:disabled="swiper.isEnd"
+		//- 	@click="swiper.slideNext()"
+		//- ) navButtonIsNext
 
-		.pagination(ref="pagination")
+		//- .pagination(ref="pagination")
 </template>
 
 <script>
@@ -50,103 +50,100 @@
 		Mousewheel
 	]);
 
-	const debug = false;
-
 	export default {
 		name: 'VueSwiper',
 		props: {
 			options: {
-				type: Object,
-				default: null
+				type: Object
 			}
 		},
 		data() {
 			return {
 				defaultOptions: {
-					pagination: {
-						clickable: true
-					},
-					preventInteractionOnTransition: false
+					init: true
 				},
 				swiper: {}
 			};
 		},
 		watch: {
-			options() {
-				this.reInit();
+			options: {
+				handler() {
+					this.destroy();
+					this.init();
+				},
+				deep: true
 			}
 		},
 		methods: {
-			reInit() {
-				if (this.swiper instanceof Swiper) {
-					this.swiper.destroy();
-				}
-
-				this.swiper = new Swiper(
-					this.$refs.swiperContainer,
-					merge(
-						this.defaultOptions,
-						{
-							pagination: {
-								el: this.$refs.pagination
-							}
-						},
-						this.options,
-						{
-							init: false
+			init() {
+				const resolvedOptions = merge(
+					this.defaultOptions,
+					{
+						pagination: {
+							el: this.$refs.pagination
 						}
-					)
+					},
+					this.options
 				);
 
-				this.swiper.on('init', () => {
-					this.$emit('init', this.swiper);
-				});
+				if (resolvedOptions.init) {
+					// Create Swiper
+					this.swiper = new Swiper(
+						this.$refs.swiperContainer,
+						merge(
+							resolvedOptions,
+							{init: false}
+						)
+					);
 
-				this.swiper.on('slideChange', () => {
-					this.$emit('slide-change', this.swiper);
-				});
+					// Add listeners
+					this.swiper.on('init', () => {
+						this.$emit('init', this.swiper);
 
-				this.swiper.on('reachBeginning', () => {
-					this.$emit('reach-beginning', this.swiper);
-				});
+						setTimeout(() => {
+							this.update();
+						}, 50);
+					});
 
-				this.swiper.on('reachEnd', () => {
-					this.$emit('reach-end', this.swiper);
-				});
+					this.swiper.on('slideChange', () => this.$emit('slide-change', this.swiper));
+					this.swiper.on('reachBeginning', () => this.$emit('reach-beginning', this.swiper));
+					this.swiper.on('reachEnd', () => this.$emit('reach-end', this.swiper));
+					this.swiper.on('fromEdge', () => this.$emit('from-edge', this.swiper));
 
-				this.swiper.on('fromEdge', () => {
-					this.$emit('from-edge', this.swiper);
-				});
-
-				// Initialize swiper
-				this.swiper.init();
+					// Init Swiper
+					this.swiper.init(); // set `initialized` true
+					// console.log(this.swiper);
+					// console.log(this.swiper.initialized);
+					// console.log(this.swiper.destroyed);
+				}
+			},
+			update() {
+				if (this.swiper.initialized) {
+					// `swiper.update()` method has issue
+					// this.swiper.update();
+					this.swiper.updateSize();
+					this.swiper.updateSlides();
+					this.swiper.updateProgress();
+					this.swiper.updateSlidesClasses();
+				}
+			},
+			destroy() {
+				if (this.swiper.initialized) {
+					this.swiper.destroy(true, true); // set `destroyed` true
+					// console.log(this.swiper);
+					// console.log(this.swiper.initialized);
+					// console.log(this.swiper.destroyed);
+				}
 			}
 		},
-		beforeCreate() {
-			// eslint-disable-next-line no-console
-			if (process.env.NODE_ENV !== 'production' && debug) console.log('VueSwiper beforeCreate', this);
-		},
 		mounted() {
-			// eslint-disable-next-line no-console
-			if (process.env.NODE_ENV !== 'production' && debug) console.log('VueSwiper mounted', this);
-
-			this.reInit();
+			this.init();
 		},
 		updated() {
-			// `swiper.update()` method has issue
-			// this.swiper.update();
-
-			this.swiper.updateSize();
-			this.swiper.updateSlides();
-			this.swiper.updateProgress();
-			this.swiper.updateSlidesClasses();
+			this.update();
 		},
 		beforeDestroy() {
-			this.swiper.destroy();
-		},
-		destroyed() {
-			// eslint-disable-next-line no-console
-			if (process.env.NODE_ENV !== 'production' && debug) console.log('VueSwiper destroyed', this);
+			this.destroy();
 		}
 	};
 </script>

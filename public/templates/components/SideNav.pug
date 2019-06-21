@@ -28,12 +28,13 @@ mixin SideNav()
 
 			.main
 				nav.main-inner(
-					v-dragscroll.x
-					@dragscrollmove="preventClickOnScroll($event, $event.detail.deltaX)"
+					is="vue-swiper"
+					:options="swiperOptions"
 				)
 					each item, index in items
-						a.nav-item(
-							class={'is-active': index === 0}
-							href=item.url
-						)
-							span.nav-item-text= item.title
+						.swiper-slide
+							a.nav-item(
+								class={'is-active': index === 0}
+								href=item.url
+							)
+								span.nav-item-text= item.title

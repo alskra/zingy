@@ -53,11 +53,6 @@
 
 	.posts-item.post {
 		height: 100%;
-		transition: box-shadow 0.2s 0.1s;
-
-		&:hover {
-			box-shadow: 0 0 5px rgba(#000000, 0.7);
-		}
 	}
 
 	.app-pagination.pagination {

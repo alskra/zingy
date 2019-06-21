@@ -1,10 +1,29 @@
 <script>
-	import {preventClickOnScroll} from '../helpers';
+	import VueSwiper from './VueSwiper';
 
 	export default {
 		name: 'SideNav',
-		methods: {
-			preventClickOnScroll
+		components: {
+			VueSwiper
+		},
+		data() {
+			return {
+				swiperOptions: {
+					init: true,
+					slidesPerView: 'auto',
+					roundLengths: true,
+					// freeMode: true,
+					// freeModeMomentum: false
+				}
+			};
+		},
+		watch: {
+			windowWidth: {
+				handler(val) {
+					this.swiperOptions.init = val < 1024
+				},
+				immediate: true
+			}
 		}
 	};
 </script>
@@ -23,12 +42,6 @@
 		color: #cb5053;
 		background-color: currentColor;
 
-		&::before {
-			/*content: '';*/
-			display: block;
-			padding-top: 100%;
-		}
-
 		&::after {
 			content: '';
 			position: absolute;
@@ -42,12 +55,6 @@
 	}
 
 	.header-inner {
-		/*position: absolute;*/
-		/*top: 0;*/
-		/*left: 0;*/
-		box-sizing: border-box;
-		width: 100%;
-		height: 100%;
 		padding: range(15px, 30px) range(10px, 20px);
 	}
 
@@ -82,25 +89,35 @@
 		background-color: var(--side-nav_background-color, #f0f0f0);
 	}
 
-	.main-inner {
+	.vue-swiper.main-inner {
 		margin: 0 range(-10px, -20px);
+
+		>>> .swiper-slide {
+			width: auto;
+			max-width: 100%;
+		}
+
+		@media (width >= 1024px) {
+			>>> .swiper-wrapper {
+				flex-flow: column;
+			}
+		}
 
 		@media (width < 1024px) {
 			margin: range(-10px, -20px);
-			display: flex;
-			overflow: hidden;
 		}
 	}
 
 	.nav-item {
 		display: block;
+		box-sizing: border-box;
+		padding: range(6px, 13px) range(10px, 20px);
 		color: var(--color);
 		font-family: var(--font-family);
 		font-size: range(1.4rem, 1.6rem);
 		font-weight: 500;
 		line-height: 1.25;
 		text-decoration: none;
-		padding: range(6px, 13px) range(10px, 20px);
 		overflow: hidden;
 		text-overflow: ellipsis;
 
@@ -112,9 +129,9 @@
 		}
 
 		@media (width < 1024px) {
-			flex-shrink: 0;
 			padding-top: range(15px, 20px);
 			padding-bottom: range(15px, 20px);
+			white-space: nowrap;
 		}
 	}
 
