@@ -26,8 +26,6 @@
 			.items-box(
 				:class="{'is-invert': invert}"
 				v-show="boxIsShown || windowWidth < 768"
-				v-dragscroll.x
-				@dragscrollmove="preventClickOnScroll($event, $event.detail.deltaX)"
 			)
 				.items
 					.items-grid(:class="{'is-invert': invert}")
@@ -47,7 +45,6 @@
 </template>
 
 <script>
-	import {preventClickOnScroll} from '../helpers';
 	import {sliceThousandInt} from 'vue-goodshare/src/helpers/count_number';
 	import ShareButtonIsVk from './ShareButtonIsVk';
 	import ShareButtonIsFacebook from './ShareButtonIsFacebook';
@@ -84,26 +81,6 @@
 
 				return count >= 1000 ? sliceThousandInt(count) : count;
 			}
-		},
-		methods: {
-			setBoxWidth(el) {
-				el.style.width = el.children[0].offsetWidth + 'px';
-			},
-			resetBoxWidth(el) {
-				el.style.width = '';
-			},
-			preventClickOnScroll,
-			onDocumentClick(evt) {
-				if (this.$el !== evt.target && !this.$el.contains(evt.target)) {
-					this.boxIsShown = false;
-				}
-			}
-		},
-		created() {
-			document.addEventListener('click', this.onDocumentClick);
-		},
-		destroyed() {
-			document.removeEventListener('click', this.onDocumentClick);
 		}
 	};
 </script>
@@ -114,6 +91,7 @@
 
 		& {
 			display: inline-flex;
+			box-sizing: border-box;
 			vertical-align: top;
 			max-width: 100%;
 			user-select: none;
@@ -226,8 +204,6 @@
 		flex-shrink: 0;
 		padding: 5px;
 		background-color: #f0f0f0;
-		/*background-color: #2575d5;*/
-		/*width: 2000px;*/
 	}
 
 	.items-grid {

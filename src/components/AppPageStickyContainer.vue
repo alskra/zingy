@@ -1,29 +1,41 @@
 <template lang="pug">
-	.app-page-sticky-container(data-v-sticky-container)
-		.sidebar(v-sticky="options")
-			.sidebar-inner(data-v-sticky-inner)
-				slot(name="sidebar")
+	.app-page-sticky-container.vue-sticky-sidebar-container
+		vue-sticky-sidebar.sidebar(:options="stickySidebarOptions")
+			slot(name="sidebar")
 
-		.main
+		.main(ref="main")
 			slot
 </template>
 
 <script>
+	import {VueStickySidebar} from '../plugins/vue-sticky-sidebar/vue-sticky-sidebar';
+
 	export default {
 		name: 'AppPageStickyContainer',
-		computed: {
-			options() {
-				let topSpacing = 60 + (108 - 60) / 1600 * (this.windowWidth - 320);
+		components: {
+			VueStickySidebar
+		},
+		data() {
+			return {
+				stickySidebarOptions: {
+					init: true,
+					topSpacing: 20,
+					bottomSpacing: 20
+				}
+			};
+		},
+		watch: {
+			windowWidth: {
+				handler(val) {
+					this.stickySidebarOptions.init = val >= 1024;
 
-				if (topSpacing > 108) topSpacing = 108;
-				if (topSpacing < 60) topSpacing = 60;
+					let topSpacing = 60 + (108 - 60) / (1920 - 320) * (this.windowWidth - 320);
+					if (topSpacing > 108) topSpacing = 108;
+					if (topSpacing < 60) topSpacing = 60;
 
-				return {
-					topSpacing,
-					bottomSpacing: 20,
-					minWidth: 1023,
-					resizeSensor: true
-				};
+					this.stickySidebarOptions.topSpacing = topSpacing;
+				},
+				immediate: true
 			}
 		}
 	};

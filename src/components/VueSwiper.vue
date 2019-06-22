@@ -78,12 +78,12 @@
 			init() {
 				const resolvedOptions = merge(
 					this.defaultOptions,
+					this.options,
 					{
 						pagination: {
 							el: this.$refs.pagination
 						}
-					},
-					this.options
+					}
 				);
 
 				if (resolvedOptions.init) {
@@ -92,7 +92,9 @@
 						this.$refs.swiperContainer,
 						merge(
 							resolvedOptions,
-							{init: false}
+							{
+								init: false
+							}
 						)
 					);
 

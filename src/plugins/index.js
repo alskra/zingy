@@ -6,9 +6,6 @@ import VueWindowScroll from './vue-window-scroll';
 import VModal from 'vue-js-modal';
 import checkView from 'vue-check-view';
 import VueSticky from '../components/VueSticky';
-import ResizeSensor from 'resize-sensor';
-import VueStickyDirective from '@renatodeleao/vue-sticky-directive';
-import VueDragscroll from 'vue-dragscroll';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import {VLazyImagePlugin} from 'v-lazy-image';
@@ -56,11 +53,6 @@ Vue.use(checkView);
 
 Vue.component('VueSticky', VueSticky);
 
-window.ResizeSensor = ResizeSensor;
-Vue.use(VueStickyDirective);
-
-Vue.use(VueDragscroll);
-
 Vue.use(Loading, {
 	color: 'var(--color-accent)',
 	backgroundColor: 'var(--overlay_background-color)',
@@ -73,7 +65,10 @@ Vue.use(VShowSlide);
 
 Vue.component('VueTruncateCollapsed', VueTruncateCollapsed);
 
-Vue.use(SwiperModalGallery, {store, i18n});
+Vue.use(SwiperModalGallery, {
+	store,
+	i18n
+});
 
 Vue.use(VLockBodyScroll);
 

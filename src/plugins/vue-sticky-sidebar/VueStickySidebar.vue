@@ -1,0 +1,86 @@
+<template lang="pug">
+	.vue-sticky-sidebar(:class="{'vue-sticky-sidebar-initialized': stickySidebar._initialized}")
+		.vue-sticky-sidebar-inner(ref="sidebarInner")
+			slot
+</template>
+
+<script>
+	import ResizeSensor from 'resize-sensor';
+	import StickySidebar from 'sticky-sidebar';
+	import merge from 'lodash-es/merge';
+
+	window.ResizeSensor = ResizeSensor;
+
+	export default {
+		name: 'VueStickySidebar',
+		props: {
+			/** @see https://abouolia.github.io/sticky-sidebar/#options */
+			options: {
+				type: Object
+			}
+		},
+		data() {
+			return {
+				defaultOptions: {
+					init: true
+				},
+				stickySidebar: {}
+			};
+		},
+		watch: {
+			options: {
+				handler() {
+					// console.log('options changed!');
+					this.destroy();
+					this.init();
+				},
+				deep: true
+			},
+			$data() {
+				this.$nextTick(() => this.update());
+			}
+		},
+		methods: {
+			/** @see https://abouolia.github.io/sticky-sidebar/#public-methods */
+			init() {
+				const resolvedOptions = merge(
+					this.defaultOptions,
+					this.options,
+					{
+						containerSelector: '.vue-sticky-sidebar-container',
+						innerWrapperSelector: '.vue-sticky-sidebar-inner'
+					}
+				);
+
+				if (resolvedOptions.init) {
+					this.stickySidebar = new StickySidebar(this.$el, resolvedOptions);
+					// console.log(this.stickySidebar);
+				}
+			},
+			update() {
+				if (this.stickySidebar._initialized) {
+					this.stickySidebar.updateSticky();
+				}
+			},
+			destroy() {
+				if (this.stickySidebar._initialized) {
+					this.stickySidebar.destroy();
+					this.stickySidebar._initialized = false;
+					// console.log(this.stickySidebar);
+				}
+			}
+		},
+		mounted() {
+			this.init();
+		},
+		beforeDestroy() {
+			this.destroy();
+		}
+	};
+</script>
+
+<style>
+	.sticky-spacer {
+		flex-shrink: 0;
+	}
+</style>
