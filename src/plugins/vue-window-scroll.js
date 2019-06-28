@@ -19,12 +19,12 @@ export default {
 					getY: () => window.pageYOffset,
 					getLimitX: () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
 					getLimitY: () => document.documentElement.scrollHeight - document.documentElement.clientHeight,
-					reachBeginningX: () => window.pageXOffset === 0,
-					reachBeginningY: () => window.pageYOffset === 0,
-					reachEndX: () => window.pageXOffset === this.getLimitX()
-						|| document.body.getBoundingClientRect().right <= window.innerWidth,
-					reachEndY: () => window.pageYOffset === this.getLimitY()
-						|| document.body.getBoundingClientRect().bottom <= window.innerHeight
+					reachBeginningX: () => Math.abs(window.pageXOffset) < 1,
+					reachBeginningY: () => Math.abs(window.pageYOffset) < 1,
+					reachEndX: () => Math.abs(window.pageXOffset - this.getLimitX()) < 1
+						|| Math.abs(document.body.getBoundingClientRect().right - window.innerWidth) < 1,
+					reachEndY: () => Math.abs(window.pageYOffset - this.getLimitY()) < 1
+						|| Math.abs(document.body.getBoundingClientRect().bottom - window.innerHeight) < 1
 				};
 			},
 			watch: {
@@ -50,7 +50,7 @@ export default {
 				}
 			},
 			methods: {
-				updateData() {
+				update() {
 					// Changing on `scroll`
 					this.x = this.getX();
 					this.y = this.getY();
@@ -67,43 +67,32 @@ export default {
 				}
 			},
 			created() {
-				this.updateData();
+				this.update();
 
-				window.addEventListener('scroll', this.updateData);
-				window.addEventListener('resize', this.updateData);
+				window.addEventListener('scroll', this.update);
+				window.addEventListener('resize', this.update);
 
 				// eslint-disable-next-line no-unused-vars
 				this.observer = new MutationObserver((mutationsList, observer) => {
 					// console.log('mutations:', mutationsList);
-					this.updateData();
+					this.update();
 				});
 
-				this.observer.observe(document.documentElement, {
+				this.observer.observe(document, {
 					attributes: true,
-					childList: true,
 					characterData: true,
+					childList: true,
 					subtree: true
 				});
 			},
 			destroyed() {
-				window.removeEventListener('scroll', this.updateData);
-				window.removeEventListener('resize', this.updateData);
+				window.removeEventListener('scroll', this.update);
+				window.removeEventListener('resize', this.update);
 				this.observer.disconnect();
 			}
 		});
 
-		// Vue.mixin({
-		// 	computed: {
-		// 		windowScroll() {
-		// 			return vm.$data;
-		// 		}
-		// 	}
-		// });
-
 		Vue.prototype.$windowScroll = vm.$data;
-
-		Vue.prototype.$windowScrollUpdate = () => {
-			vm.updateData();
-		};
+		Vue.prototype.$windowScrollUpdate = vm.update;
 	}
 }
