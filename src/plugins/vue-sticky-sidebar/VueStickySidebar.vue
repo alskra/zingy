@@ -15,9 +15,7 @@
 		name: 'VueStickySidebar',
 		props: {
 			/** @see https://abouolia.github.io/sticky-sidebar/#options */
-			options: {
-				type: Object
-			}
+			options: Object
 		},
 		data() {
 			return {
@@ -35,13 +33,7 @@
 					this.init();
 				},
 				deep: true
-			},
-			// $data: {
-			// 	handler() {
-			// 		this.$nextTick(() => this.update());
-			// 	},
-			// 	deep: true
-			// }
+			}
 		},
 		methods: {
 			/** @see https://abouolia.github.io/sticky-sidebar/#public-methods */
@@ -62,7 +54,9 @@
 			},
 			update() {
 				if (this.stickySidebar._initialized) {
-					this.stickySidebar.updateSticky();
+					this.stickySidebar.calcDimensions();
+					// `stickySidebar.updateSticky()` method has issue
+					// this.stickySidebar.updateSticky();
 				}
 			},
 			destroy() {
@@ -75,6 +69,10 @@
 		},
 		mounted() {
 			this.init();
+		},
+		updated() {
+			// console.log('updated!');
+			this.update();
 		},
 		beforeDestroy() {
 			this.destroy();

@@ -1,4 +1,7 @@
 <script>
+	import upperFirst from 'lodash-es/upperFirst';
+	import camelCase from 'lodash-es/camelCase';
+
 	let icons = {};
 
 	const requireIcons = require.context('!!raw-loader!../assets/img/icons', true, /\.svg$/);
@@ -38,7 +41,7 @@
 		},
 		render(createElement) {
 			return createElement({
-				name: 'BaseIconIs-' + this.name,
+				name: 'BaseIconIs' + upperFirst(camelCase(this.name)),
 				template: icons[this.name],
 				_scopeId: this.$options._scopeId
 			}, {
