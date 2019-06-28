@@ -29,27 +29,22 @@
 	};
 </script>
 
-<style>
-	:root {
-		--intro-section_color-accent: var(--color-link);
-	}
-</style>
-
 <style scoped>
 	.intro-section {
 		all: initial;
 
 		& {
 			display: block;
+			box-sizing: border-box;
 			padding-bottom: range(40px, 80px);
+			max-width: 100%;
 		}
 	}
 
 	.body {
+		margin: 0 auto;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
-		padding: 0 var(--grid_padding);
-		margin: 0 auto;
 	}
 
 	.body-transition {
@@ -67,8 +62,8 @@
 		&.v-enter,
 		&.v-leave-to {
 			.body-inner {
-				transform: translateX(calc(-100% - 8px));
-				box-shadow: 0 0 #e81818;
+				transform: translateX(-100%)/* translateX(-8px)*//* translateX(range(-5px, -8px))*/;
+				box-shadow: 0 0 var(--color-accent);
 			}
 		}
 	}
@@ -78,7 +73,7 @@
 		flex-flow: column;
 		box-sizing: border-box;
 		margin: range(5px, 8px) range(5px, 8px) 0 0;
-		box-shadow: range(5px, 8px) range(-5px, -8px) var(--intro-section_color-accent);
+		box-shadow: range(5px, 8px) range(-5px, -8px) var(--color-accent);
 		background-color: #f0f0f0;
 		padding: scale-down(70px, 0.5) range(10px, 80px) scale-down(40px, 0.5);
 		min-height: calc(100vh - range(73px, 186px));
@@ -250,7 +245,7 @@
 			content: '';
 			display: block;
 			height: 100%;
-			background-color: var(--intro-section_color-accent);
+			background-color: var(--color-accent);
 			animation: scroll_run 1.5s linear infinite;
 		}
 	}

@@ -23,6 +23,8 @@
 
 		& {
 			display: block;
+			box-sizing: border-box;
+			max-width: 100%;
 		}
 	}
 
@@ -41,16 +43,16 @@
 				color: var(--color-link);
 			}
 		}
+	}
 
-		>>> a {
-			color: inherit;
-			text-decoration: underline;
-			transition: color 0.2s;
+	a {
+		color: inherit;
+		text-decoration: underline;
+		transition: color 0.2s;
 
-			&:hover {
-				/*color: var(--color-link);*/
-				text-decoration: none;
-			}
+		&:hover {
+			/*color: var(--color-link);*/
+			text-decoration: none;
 		}
 	}
 </style>

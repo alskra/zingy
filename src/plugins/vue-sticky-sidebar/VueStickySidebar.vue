@@ -1,6 +1,6 @@
 <template lang="pug">
 	.vue-sticky-sidebar(:class="{'vue-sticky-sidebar-initialized': stickySidebar._initialized}")
-		.vue-sticky-sidebar-inner(ref="sidebarInner")
+		.vue-sticky-sidebar-inner
 			slot
 </template>
 
@@ -36,9 +36,12 @@
 				},
 				deep: true
 			},
-			$data() {
-				this.$nextTick(() => this.update());
-			}
+			// $data: {
+			// 	handler() {
+			// 		this.$nextTick(() => this.update());
+			// 	},
+			// 	deep: true
+			// }
 		},
 		methods: {
 			/** @see https://abouolia.github.io/sticky-sidebar/#public-methods */
@@ -80,7 +83,12 @@
 </script>
 
 <style>
-	.sticky-spacer {
-		flex-shrink: 0;
+	.vue-sticky-sidebar {
+		will-change: min-height;
+	}
+
+	.vue-sticky-sidebar-inner {
+		transform: translate3d(0, 0, 0);
+		will-change: transform;
 	}
 </style>

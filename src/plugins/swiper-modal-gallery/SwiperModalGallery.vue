@@ -204,6 +204,7 @@
 			},
 			closeHandler(evt) {
 				if (['Escape', 'GoBack'].includes(evt.key)) {
+					evt.preventDefault();
 					this.close();
 				}
 			},
@@ -236,13 +237,14 @@
 
 		& {
 			display: flex;
-			flex-flow: column;
+			box-sizing: border-box;
 			position: fixed;
 			z-index: 999;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
+			flex-flow: column;
 			overflow: hidden;
 		}
 	}

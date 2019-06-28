@@ -1,12 +1,11 @@
 // Export filter
 export const StripHTML = str => {
-	const div = document.createElement('div');
+	const el = document.createElement('div');
 
-	div.innerHTML = str;
+	el.innerHTML = str;
 
-	return (div.textContent || div.innerText || '')
-		.replace(/^\s*/, '')
-		.replace(/\s*$/, '')
+	return (el.textContent || el.innerText || '')
+		.replace(/^\s+|\s+$/g, '')
 		.replace(/\s+/g, ' ');
 };
 
