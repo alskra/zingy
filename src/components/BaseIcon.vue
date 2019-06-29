@@ -15,12 +15,20 @@
 	});
 
 	icons.menu = `
-		<span>
-			<span class="menu-icon-line"></span>
-			<span class="menu-icon-line"></span>
-			<span class="menu-icon-line"></span>
-			<span class="menu-icon-line"></span>
-		</span>
+		<svg viewBox="0 0 32 32">
+			<line
+				v-for="(order, index) in 4"
+				:key="order"
+				x1="1.5"
+				:y1="2.5 + (9 * index)"
+				x2="30.5"
+				:y2="2.5 + (9 * index)"
+				stroke="currentColor"
+				stroke-width="3"
+				shape-rendering="auto"
+			>
+			</line>
+		</svg>
 	`;
 
 	export default {
@@ -56,6 +64,10 @@
 </script>
 
 <style scoped>
+	* {
+		pointer-events: none;
+	}
+
 	.base-icon {
 		all: initial;
 
@@ -68,115 +80,82 @@
 			color: inherit;
 			cursor: inherit;
 			fill: currentColor;
-		}
-
-		* {
-			pointer-events: none;
+			pointer-events: auto;
 		}
 	}
 
 	.base-icon-is-menu {
-		position: relative;
-		width: 36px;
-		height: 30px;
-		overflow: visible;
+		line {
+			stroke-dasharray: 100%, 100%;
+			transition: stroke-dashoffset, transform;
+			transition-duration: 0.2s;
+			transition-timing-function: linear;
+			will-change: stroke-dashoffset, transform;
+		}
 
 		:root:not(.sidebar-open) & {
+			line {
+				&:nth-child(1) {
+					stroke-dashoffset: 0;
+				}
+
+				&:nth-child(2) {
+					stroke-dashoffset: 50%;
+				}
+
+				&:nth-child(3) {
+					stroke-dashoffset: 10%;
+				}
+
+				&:nth-child(4) {
+					stroke-dashoffset: 25%;
+				}
+			}
+
 			&:hover {
-				.menu-icon-line {
+				line {
 					&:nth-child(1) {
-						width: 75%;
+						stroke-dashoffset: 25%;
 					}
 
 					&:nth-child(2) {
-						width: 35%;
+						stroke-dashoffset: 10%;
 					}
 
 					&:nth-child(3) {
-						width: 99%;
+						stroke-dashoffset: 50%;
 					}
 
 					&:nth-child(4) {
-						width: 60%;
+						stroke-dashoffset: 0;
 					}
 				}
 			}
 		}
 
 		:root.sidebar-open & {
-			.menu-icon-line {
+			line {
 				&:nth-child(2),
 				&:nth-child(3) {
-					display: none;
+					visibility: hidden;
 				}
 
 				&:nth-child(1),
 				&:nth-child(4) {
-					top: 14px;
-					width: 100%;
-					padding-left: 17px;
 				}
 
 				&:nth-child(1) {
-					transform: translate(-9px, 0) rotate(45deg);
+					transform-origin: 32px 2.5px;
+					transform: translate(-8.5px, 0px) rotate(-45deg);
+					stroke-dashoffset: -10px;
 				}
 
 				&:nth-child(4) {
-					transform: translate(-9px, 0) rotate(-45deg);
+					transform-origin: 32px 29.5px;
+					transform: translate(-8.5px, 0px) rotate(45deg);
+					stroke-dashoffset: -10px;
 				}
 			}
-		}
-
-		:root.sidebar-open:not(.is-device-mobile) & {
-			&:hover {
-				.menu-icon-line {
-					&:nth-child(1),
-					&:nth-child(4) {
-						padding-left: 0;
-					}
-
-					&:nth-child(1) {
-						transform: rotate(45deg);
-					}
-
-					&:nth-child(4) {
-						transform: rotate(-45deg);
-					}
-				}
-			}
-		}
-	}
-
-	.menu-icon-line {
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: 3px;
-		background-color: currentColor;
-		transform-origin: 50% 50%;
-		background-clip: content-box;
-		box-sizing: border-box;
-		transition: all 0.2s;
-		will-change: top, width, padding-left, transform;
-
-		&:nth-child(1) {
-			top: 0;
-			width: 57%;
-		}
-
-		&:nth-child(2) {
-			top: 9px;
-			width: 99%;
-		}
-
-		&:nth-child(3) {
-			top: 18px;
-			width: 34%;
-		}
-
-		&:nth-child(4) {
-			top: 27px;
-			width: 68%;
 		}
 	}
 </style>

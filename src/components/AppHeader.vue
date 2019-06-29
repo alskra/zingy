@@ -231,9 +231,8 @@
 	}
 
 	.base-icon.menu-button-icon {
-		@media (width < 640px) {
-			transform: scale(calc(2 / 3));
-		}
+		width: range(44 / 58 * 32px, 32px);
+		height: range(44 / 58 * 32px, 32px);
 	}
 
 	.right-panel-box {

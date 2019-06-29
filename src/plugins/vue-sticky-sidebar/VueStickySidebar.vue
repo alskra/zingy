@@ -54,9 +54,9 @@
 			},
 			update() {
 				if (this.stickySidebar._initialized) {
-					this.stickySidebar.calcDimensions();
-					// `stickySidebar.updateSticky()` method has issue
+					/** `stickySidebar.updateSticky()` method has issue */
 					// this.stickySidebar.updateSticky();
+					this.stickySidebar.calcDimensions();
 				}
 			},
 			destroy() {

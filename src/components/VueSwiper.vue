@@ -53,9 +53,7 @@
 	export default {
 		name: 'VueSwiper',
 		props: {
-			options: {
-				type: Object
-			}
+			options: Object
 		},
 		data() {
 			return {
@@ -121,7 +119,7 @@
 			},
 			update() {
 				if (this.swiper.initialized) {
-					// `swiper.update()` method has issue
+					/** `swiper.update()` method has issue */
 					// this.swiper.update();
 					this.swiper.updateSize();
 					this.swiper.updateSlides();
