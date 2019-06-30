@@ -162,8 +162,8 @@
 
 		&.v-enter-active {
 			.base-icon.menu-button-icon {
-				>>> .menu-icon-line {
-					transition: width 0.2s 0.2s;
+				>>> line {
+					transition: stroke-dashoffset 0.2s 0.2s;
 
 					&:nth-child(2) {
 						transition-delay: 0.25s;
@@ -182,8 +182,8 @@
 
 		&.v-leave-active {
 			.base-icon.menu-button-icon {
-				>>> .menu-icon-line {
-					transition: width 0.2s;
+				>>> line {
+					transition: stroke-dashoffset 0.2s;
 
 					&:nth-child(2) {
 						transition-delay: 0.05s;
@@ -205,8 +205,13 @@
 			width: 0;
 
 			.base-icon.menu-button-icon {
-				>>> .menu-icon-line {
-					width: 0;
+				>>> line {
+					&:nth-child(1),
+					&:nth-child(2),
+					&:nth-child(3),
+					&:nth-child(4) {
+						stroke-dashoffset: 100%;
+					}
 				}
 			}
 		}

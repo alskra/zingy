@@ -15,17 +15,38 @@
 	});
 
 	icons.menu = `
-		<svg viewBox="0 0 32 32">
+		<svg :style="{width: menuSize + 'px', height: menuSize + 'px'}">
 			<line
 				v-for="(order, index) in 4"
 				:key="order"
-				x1="1.5"
-				:y1="2.5 + (9 * index)"
-				x2="30.5"
-				:y2="2.5 + (9 * index)"
+				x1="0"
+				:y1="menuSize / 8 + (menuSize / 4 * index)"
+				:x2="menuSize"
+				:y2="menuSize / 8 + (menuSize / 4 * index)"
 				stroke="currentColor"
-				stroke-width="3"
-				shape-rendering="auto"
+				stroke-width="2"
+			>
+			</line>
+
+			<line
+				:x1="menuSize / 2"
+				:y1="menuSize / 2"
+				:x2="menuSize - menuSize / 8"
+				:y2="menuSize / 8"
+				stroke="currentColor"
+				stroke-width="2"
+				:transform="\`translate(-\${menuSize * 3 / 16}, 0)\`"
+			>
+			</line>
+
+			<line
+				:x1="menuSize / 2"
+				:y1="menuSize / 2"
+				:x2="menuSize - menuSize / 8"
+				:y2="menuSize - menuSize / 8"
+				stroke="currentColor"
+				stroke-width="2"
+				:transform="\`translate(-\${menuSize * 3 / 16}, 0)\`"
 			>
 			</line>
 		</svg>
@@ -50,6 +71,15 @@
 		render(createElement) {
 			return createElement({
 				name: 'BaseIconIs' + upperFirst(camelCase(this.name)),
+				computed: this.name === 'menu' ?
+					{
+						menuSize() {
+							return this.windowWidth <= 1120 ?
+								24
+								: 32;
+						}
+					}
+					: {},
 				template: icons[this.name],
 				_scopeId: this.$options._scopeId
 			}, {
@@ -95,6 +125,13 @@
 
 		:root:not(.sidebar-open) & {
 			line {
+				&:nth-child(1),
+				&:nth-child(2),
+				&:nth-child(3),
+				&:nth-child(4) {
+					transition-delay: 0.2s;
+				}
+
 				&:nth-child(1) {
 					stroke-dashoffset: 0;
 				}
@@ -110,50 +147,30 @@
 				&:nth-child(4) {
 					stroke-dashoffset: 25%;
 				}
-			}
 
-			&:hover {
-				line {
-					&:nth-child(1) {
-						stroke-dashoffset: 25%;
-					}
+				&:nth-child(5) {
+					stroke-dashoffset: -100%;
+				}
 
-					&:nth-child(2) {
-						stroke-dashoffset: 10%;
-					}
-
-					&:nth-child(3) {
-						stroke-dashoffset: 50%;
-					}
-
-					&:nth-child(4) {
-						stroke-dashoffset: 0;
-					}
+				&:nth-child(6) {
+					stroke-dashoffset: -100%;
 				}
 			}
 		}
 
 		:root.sidebar-open & {
 			line {
-				&:nth-child(2),
-				&:nth-child(3) {
-					visibility: hidden;
-				}
-
 				&:nth-child(1),
+				&:nth-child(2),
+				&:nth-child(3),
 				&:nth-child(4) {
+					stroke-dashoffset: -100%;
 				}
 
-				&:nth-child(1) {
-					transform-origin: 32px 2.5px;
-					transform: translate(-8.5px, 0px) rotate(-45deg);
-					stroke-dashoffset: -10px;
-				}
-
-				&:nth-child(4) {
-					transform-origin: 32px 29.5px;
-					transform: translate(-8.5px, 0px) rotate(45deg);
-					stroke-dashoffset: -10px;
+				&:nth-child(5),
+				&:nth-child(6) {
+					stroke-dashoffset: 0;
+					transition-delay: 0.2s;
 				}
 			}
 		}
