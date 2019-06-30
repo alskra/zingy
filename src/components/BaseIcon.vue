@@ -29,8 +29,8 @@
 			</line>
 
 			<line
-				:x1="menuSize / 2"
-				:y1="menuSize / 2"
+				:x1="menuSize / 2 - 0.5"
+				:y1="menuSize / 2 + 0.5"
 				:x2="menuSize - menuSize / 8"
 				:y2="menuSize / 8"
 				stroke="currentColor"
@@ -40,8 +40,8 @@
 			</line>
 
 			<line
-				:x1="menuSize / 2"
-				:y1="menuSize / 2"
+				:x1="menuSize / 2 - 0.5"
+				:y1="menuSize / 2 - 0.5"
 				:x2="menuSize - menuSize / 8"
 				:y2="menuSize - menuSize / 8"
 				stroke="currentColor"
