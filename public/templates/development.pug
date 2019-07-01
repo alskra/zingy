@@ -1,0 +1,27 @@
+extends index
+
+append vars
+	-
+		title = 'Разработка сайтов';
+
+block app
+	app-page(inline-template)
+		+AppPage()
+			.grid
+				nav.app-page-breadcrumb(is="app-breadcrumb")
+					a(href="index.html") Главная
+					a(href="services.html") Услуги
+					| Разработка сайтов
+
+			page-section.app-page-section(inline-template)
+				+PageSection('Наши работы')
+					app-carousel-of-works.app-page-works-carousel(inline-template)
+						+AppCarouselOfWorks()
+
+			work-section.app-page-work-section(inline-template)
+				+WorkSection('Почему выбирают нас')
+
+			page-section.app-page-section(inline-template)
+				+PageSection('Отзывы')
+					app-carousel-of-reviews.app-page-reviews-carousel(inline-template)
+						+AppCarouselOfReviews()

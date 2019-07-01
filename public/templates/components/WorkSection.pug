@@ -1,4 +1,4 @@
-mixin WorkSection()
+mixin WorkSection(title = 'Коротко о работе')
 	include AwesomeList
 
 	template
@@ -19,7 +19,7 @@ mixin WorkSection()
 						base-icon.body-stars-item(name="star")
 
 					header.header
-						h2.title Коротко о работе
+						h2.title= title
 
 					.main
 						awesome-list.about-list(inline-template)

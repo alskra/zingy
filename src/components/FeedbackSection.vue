@@ -35,21 +35,20 @@
 	}
 
 	.grid {
+		position: relative;
+		margin: 0 auto;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
-		padding: 0 var(--grid_padding);
-		margin: 0 auto;
-		position: relative;
 	}
 
 	.grid-row {
-		margin: 0 calc(-1 * var(--grid-cell_padding));
+		margin: 0 var(--grid-row_margin);
 	}
 
 	.grid-cell {
 		box-sizing: border-box;
-		padding: 0 var(--grid-cell_padding);
 		margin: 0 auto;
+		padding: 0 var(--grid-cell_padding);
 
 		@media (width >= 768px) {
 			width: percentage(10 / 12);

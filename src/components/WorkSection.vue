@@ -23,11 +23,10 @@
 
 	.body {
 		display: flex;
-		flex-flow: column;
+		margin: 0 auto;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
-		padding: 0 var(--grid_padding);
-		margin: 0 auto;
+		flex-flow: column;
 	}
 
 	.body-inner {
@@ -102,17 +101,18 @@
 	}
 
 	.header {
-		padding: 0 range(10px, 140px) 0 range(20px, 350px);
+		padding: 0 range(10px, 140px)/* 0 range(20px, 350px)*/;
 		margin-bottom: range(20px, 40px);
 	}
 
 	.title {
+		margin: 0;
 		color: var(--color);
 		font-family: var(--font-family);
 		font-size: var(--h1_font-size);
 		font-weight: 500;
 		line-height: 1.25;
-		margin: 0;
+		text-align: center;
 	}
 
 	.main {

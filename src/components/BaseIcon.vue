@@ -15,38 +15,38 @@
 	});
 
 	icons.menu = `
-		<svg :style="{width: menuSize + 'px', height: menuSize + 'px'}">
+		<svg :style="{width: size + 'px', height: size + 'px'}">
 			<line
 				v-for="(order, index) in 4"
 				:key="order"
 				x1="0"
-				:y1="menuSize / 8 + (menuSize / 4 * index)"
-				:x2="menuSize"
-				:y2="menuSize / 8 + (menuSize / 4 * index)"
+				:y1="size / 8 + (size / 4 * index)"
+				:x2="size"
+				:y2="size / 8 + (size / 4 * index)"
 				stroke="currentColor"
 				stroke-width="2"
 			>
 			</line>
 
 			<line
-				:x1="menuSize / 2 - 0.5"
-				:y1="menuSize / 2 + 0.5"
-				:x2="menuSize - menuSize / 8"
-				:y2="menuSize / 8"
+				:x1="size / 2 - 0.5"
+				:y1="size / 2 + 0.5"
+				:x2="size - size / 8"
+				:y2="size / 8"
 				stroke="currentColor"
 				stroke-width="2"
-				:transform="\`translate(-\${menuSize * 3 / 16}, 0)\`"
+				:transform="\`translate(-\${size * 3 / 16}, 0)\`"
 			>
 			</line>
 
 			<line
-				:x1="menuSize / 2 - 0.5"
-				:y1="menuSize / 2 - 0.5"
-				:x2="menuSize - menuSize / 8"
-				:y2="menuSize - menuSize / 8"
+				:x1="size / 2 - 0.5"
+				:y1="size / 2 - 0.5"
+				:x2="size - size / 8"
+				:y2="size - size / 8"
 				stroke="currentColor"
 				stroke-width="2"
-				:transform="\`translate(-\${menuSize * 3 / 16}, 0)\`"
+				:transform="\`translate(-\${size * 3 / 16}, 0)\`"
 			>
 			</line>
 		</svg>
@@ -73,7 +73,7 @@
 				name: 'BaseIconIs' + upperFirst(camelCase(this.name)),
 				computed: this.name === 'menu' ?
 					{
-						menuSize() {
+						size() {
 							return this.windowWidth <= 1120 ?
 								24
 								: 32;

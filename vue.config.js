@@ -19,6 +19,10 @@ const pages = {
 		template: 'public/templates/contacts.pug',
 		filename: 'contacts.html'
 	},
+	'development': {
+		template: 'public/templates/development.pug',
+		filename: 'development.html'
+	},
 	'vue-sticky-exm': {
 		template: 'public/templates/vue-sticky-exm.pug',
 		filename: 'vue-sticky-exm.html'
