@@ -10,6 +10,7 @@
 
 		& {
 			display: inline-flex;
+			box-sizing: border-box;
 			vertical-align: top;
 			width: 24px;
 			height: 24px;
@@ -21,5 +22,9 @@
 		color: #999999;
 		pointer-events: none;
 		transition: color 0.2s;
+	}
+
+	.counter {
+		display: none;
 	}
 </style>

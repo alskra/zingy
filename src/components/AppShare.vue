@@ -38,7 +38,7 @@
 								v-bind="$props"
 								has_icon
 								:title_social="''"
-								:has_counter="false"
+								has_counter
 								@count-update="commonCount += $event"
 								:title="item"
 							)

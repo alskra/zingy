@@ -13,6 +13,10 @@ block app
 					a(href="services.html") Услуги
 					| Разработка сайтов
 
+			section(is="fancy-section")
+				h2.title(slot="title") Создание сайтов под ключ
+					span Foo
+
 			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')
 					app-carousel-of-works.app-page-works-carousel(inline-template)

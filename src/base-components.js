@@ -22,6 +22,21 @@ requireComponents.keys().forEach(fileName => {
 Vue.component('VNodes', {
 	functional: true,
 	render(createElement, ctx) {
+		// console.log(ctx.props.vnodes);
 		return ctx.props.vnodes;
+	}
+});
+
+Vue.component('StyleScope', {
+	functional: true,
+	render(createElement, ctx) {
+		return createElement({
+			functional: true,
+			name: ctx.props.scope || ctx.parent.$options._scopeId,
+			_scopeId: ctx.props.scope || ctx.parent.$options._scopeId,
+			render() {
+				return ctx.slots().default[0];
+			}
+		});
 	}
 });

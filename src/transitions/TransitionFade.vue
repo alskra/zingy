@@ -2,12 +2,12 @@
 	import Vue from 'vue';
 
 	export default {
-		name: 'TransitionFadeUp',
+		name: 'TransitionFade',
 		functional: true,
 		render(createElement, context) {
 			const data = {
 				props: {
-					name: 'fade-up',
+					name: 'fade',
 					mode: 'out-in',
 					...context.props
 				}
@@ -19,15 +19,13 @@
 </script>
 
 <style scoped>
-	.fade-up-enter-active,
-	.fade-up-leave-active {
-		transition: opacity, transform;
-		transition-duration: 0.5s;
+	.fade-enter-active,
+	.fade-leave-active {
+		transition: opacity 5.5s;
 	}
 
-	.fade-up-enter,
-	.fade-up-leave-to {
+	.fade-enter,
+	.fade-leave-to {
 		opacity: 0;
-		transform: translateY(10px);
 	}
 </style>

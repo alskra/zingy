@@ -1,3 +1,4 @@
 import './transition-box';
-import './transition-slide-x';
+import './transition-fade';
 import './transition-fade-up';
+import './transition-slide-x';

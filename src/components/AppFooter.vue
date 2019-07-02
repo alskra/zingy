@@ -50,27 +50,28 @@
 	}
 
 	.zingy-projects {
-		display: flex;
-		position: absolute;
-		left: 0;
-		margin-top: range(-15px, -30px);
-		animation: zingy-projects_run 180s linear infinite;
-		pointer-events: none;
-
 		@keyframes zingy-projects_run {
 			100% {
 				transform: translateX(calc(-3983 / 1920 * 100vmax - 8vmax));
 			}
 		}
 
-		@media (width >= 1920px) {
-			animation-name: zingy-projects_run-for-large-screen;
-		}
+		display: flex;
+		position: absolute;
+		left: 0;
+		margin-top: range(-15px, -30px);
+		animation: zingy-projects_run 180s linear infinite;
+		pointer-events: none;
+		will-change: transform;
 
 		@keyframes zingy-projects_run-for-large-screen {
 			100% {
 				transform: translateX(calc(-3983px - 8 / 100 * 1920px));
 			}
+		}
+
+		@media (width >= 1920px) {
+			animation-name: zingy-projects_run-for-large-screen;
 		}
 	}
 

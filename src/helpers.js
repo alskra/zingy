@@ -1,3 +1,3 @@
-export function getVNodesTextContent(VNodes) {
-	return VNodes.map(VNode => VNode.children ? getVNodesTextContent(VNode.children) : VNode.text).join('');
+export function getVNodesTextContent(vnodes) {
+	return vnodes.map(vnode => vnode.children ? getVNodesTextContent(vnode.children) : vnode.text).join('');
 }

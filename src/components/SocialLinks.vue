@@ -20,7 +20,7 @@
 </i18n>
 
 <template lang="pug">
-	nav.social-links
+	nav.social-links(v-once)
 		.grid
 			.grid-cell(v-for="{name, url} of links")
 				a.link(
@@ -76,16 +76,18 @@
 		display: block;
 		width: range(38px / 1.5, 38px);
 		height: range(38px / 1.5, 38px);
+		overflow: hidden;
 		text-decoration: none;
 		color: #1a1a1a;
+		filter: drop-shadow(0 0);
 		transition: color, filter;
 		transition-duration: 0.2s;
-		overflow: hidden;
 		will-change: color, filter;
+		transform: translate3d(0, 0, 0);
 
 		&:hover {
 			color: var(--color-link);
-			filter: drop-shadow(0 0 3px var(--color-link));
+			filter: drop-shadow(0 0 3px);
 
 			.base-icon.link-icon-is-masked {
 				background-size: 100% 100%;
@@ -101,33 +103,34 @@
 		background: linear-gradient(to right, var(--color-link), var(--color-link)) no-repeat 0 0 / 0 100% #1a1a1a;
 		transition: background-size 0.2s;
 		will-change: background-size;
-		transform: translate3d(0, 0, 0);
 
 		>>> * {
 			display: none;
 		}
+	}
 
-		&.base-icon-is-vk {
+	.link-icon-is-masked {
+		.base-icon-is-vk& {
 			mask: url("../assets/img/icons/vk.svg") 50% / contain;
 		}
 
-		&.base-icon-is-facebook {
+		.base-icon-is-facebook& {
 			mask: url("../assets/img/icons/facebook.svg") 50% / contain;
 		}
 
-		&.base-icon-is-twitter {
+		.base-icon-is-twitter& {
 			mask: url("../assets/img/icons/twitter.svg") 50% / contain;
 		}
 
-		&.base-icon-is-yandex-zen {
+		.base-icon-is-yandex-zen& {
 			mask: url("../assets/img/icons/yandex-zen.svg") 50% / contain;
 		}
 
-		&.base-icon-is-instagram {
+		.base-icon-is-instagram& {
 			mask: url("../assets/img/icons/instagram.svg") 50% / contain;
 		}
 
-		&.base-icon-is-youtube {
+		.base-icon-is-youtube& {
 			mask: url("../assets/img/icons/youtube.svg") 50% / contain;
 		}
 	}

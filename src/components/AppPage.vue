@@ -4,6 +4,7 @@
 
 	// all
 	import AppHeader from './AppHeader';
+	import FeedbackSection from './FeedbackSection';
 	import AppFooter from './AppFooter';
 	import ZingySection from './ZingySection';
 
@@ -14,7 +15,6 @@
 	import WorkSection from './WorkSection';
 	import PageSection from './PageSection';
 	import PageSectionIsServices from './PageSectionIsServices';
-	import FeedbackSection from './FeedbackSection';
 
 	// blog
 	import AppBreadcrumb from './AppBreadcrumb';
@@ -31,11 +31,15 @@
 	import AppPageContacts from './AppPageContacts';
 	import AppGmap from './AppGmap';
 
+	// development
+	const FancySection = () => import('./FancySection');
+
 	export default {
 		name: 'AppPage',
 		components: {
 			// all
 			AppHeader,
+			FeedbackSection,
 			AppFooter,
 			ZingySection,
 
@@ -46,7 +50,6 @@
 			WorkSection,
 			PageSection,
 			PageSectionIsServices,
-			FeedbackSection,
 
 			// blog
 			AppBreadcrumb,
@@ -61,7 +64,10 @@
 			// contacts
 			ZingyWorld,
 			AppPageContacts,
-			AppGmap
+			AppGmap,
+
+			// development
+			FancySection,
 		},
 		data() {
 			return {
