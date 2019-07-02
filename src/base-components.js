@@ -31,7 +31,7 @@ Vue.component('StyleScope', {
 	functional: true,
 	render(createElement, ctx) {
 		return createElement({
-			functional: true,
+			// functional: true,
 			name: ctx.props.scope || ctx.parent.$options._scopeId,
 			_scopeId: ctx.props.scope || ctx.parent.$options._scopeId,
 			render() {
