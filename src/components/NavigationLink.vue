@@ -1,8 +1,8 @@
 <i18n>
 	{
 		"en": {
-			"prev": "Backward",
-			"next": "Forward"
+			"prev": "Previous",
+			"next": "Next"
 		},
 		"ru": {
 			"prev": "Назад",

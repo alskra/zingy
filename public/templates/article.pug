@@ -23,10 +23,7 @@ block app
 					base-icon.link-up-icon(name="angle-left")
 
 			.grid
-				nav.app-page-breadcrumb(is="app-breadcrumb")
-					a(href="index.html") Главная
-					a(href="blog.html") Блог
-					| Статья
+				+AppBreadcrumb([['Главная', 'index.html'], ['Блог', 'blog.html'], ['Статья', 'article.html']]).app-page-breadcrumb
 
 				+sticky-container-layout()
 					app-article.app-page-article(inline-template)

@@ -13,9 +13,7 @@ block app
 				zingy-world.app-page-zingy-world
 
 				.grid
-					nav.app-page-breadcrumb(is="app-breadcrumb")
-						a(href="index.html") Главная
-						| Контакты
+					+AppBreadcrumb([['Главная', 'index.html'], ['Контакты', 'contacts.html']]).app-page-breadcrumb
 
 					h1.app-page-title(
 						is="base-title"

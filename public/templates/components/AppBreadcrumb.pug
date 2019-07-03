@@ -1,0 +1,25 @@
+mixin AppBreadcrumb(items)
+	nav(
+		is="app-breadcrumb"
+		itemscope
+		itemtype="http://schema.org/BreadcrumbList"
+	)&attributes(attributes)
+		each item, index in items
+			a(
+				href=item[1]
+				itemprop="itemListElement"
+				itemscope
+				itemtype="http://schema.org/ListItem"
+			)
+				meta(
+					itemprop="position"
+					content=index + 1
+				)
+
+				span(
+					itemprop="item"
+					itemscope
+					itemtype="http://schema.org/Thing"
+					itemid=item[1]
+				)
+					span(itemprop="name")= item[0]

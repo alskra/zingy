@@ -43,6 +43,14 @@
 				color: var(--color-link);
 			}
 		}
+
+		&:last-child {
+			a {
+				text-decoration: none;
+				cursor: inherit;
+				pointer-events: none;
+			}
+		}
 	}
 
 	a {

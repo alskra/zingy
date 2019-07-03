@@ -8,10 +8,7 @@ block app
 	app-page(inline-template)
 		+AppPage()
 			.grid
-				nav.app-page-breadcrumb(is="app-breadcrumb")
-					a(href="index.html") Главная
-					a(href="services.html") Услуги
-					| Разработка сайтов
+				+AppBreadcrumb([['Главная', 'index.html'], ['Услуги', 'services.html'], ['Разработка сайтов', 'development.html']]).app-page-breadcrumb
 
 			section(is="fancy-section")
 				h2.title(slot="title") Создание сайтов под ключ

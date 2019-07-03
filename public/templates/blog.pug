@@ -11,9 +11,7 @@ block app
 	app-page.theme-dark(inline-template)
 		+AppPage()
 			.grid
-				nav.app-page-breadcrumb(is="app-breadcrumb")
-					a(href="index.html") Главная
-					| Блог
+				+AppBreadcrumb([['Главная', 'index.html'], ['Блог', 'blog.html']]).app-page-breadcrumb
 
 				h1.app-page-title(
 					is="base-title"

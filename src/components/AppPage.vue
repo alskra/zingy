@@ -39,6 +39,7 @@
 		components: {
 			// all
 			AppHeader,
+			AppBreadcrumb,
 			FeedbackSection,
 			AppFooter,
 			ZingySection,
@@ -52,7 +53,6 @@
 			PageSectionIsServices,
 
 			// blog
-			AppBreadcrumb,
 			AppPageStickyContainer,
 			SideNav,
 			BlogPosts,
