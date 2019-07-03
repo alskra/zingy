@@ -58,6 +58,7 @@ const dateTimeFormats = {
 export default new VueI18n({
 	locale: getLocale(),
 	fallbackLocale: 'en',
+	silentFallbackWarn: true,
 	messages,
 	dateTimeFormats
 });

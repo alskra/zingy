@@ -5,7 +5,9 @@
 			"subscribe": "Subscribe",
 			"agree": "I agree with <a href='{url}' target='_blank'>the terms of personal data processing</a>",
 			"placeholder": {
-				"email": "Enter your email"
+				"email": "Enter your email",
+				"workemail": "Workemail",
+				"subject": "Subject"
 			}
 		},
 		"ru": {
@@ -34,27 +36,28 @@
 						v-for="(field, index) in fields"
 						:key="field.id"
 						:class="'grid-cell-is-' + (index + 1)"
+						:style="['workemail', 'subject'].includes(field.attrs.name) ? {display: 'none'} : null"
 					)
-						template(v-if="field.attrs.type.match(/text|email|tel|url/)")
+						template(v-if="field.attrs.type.match(/text|email|tel|url|hidden/)")
 							input.field(
-								v-model="field.value"
+								ref="field"
+								v-bind="field.attrs"
+								:placeholder="$t(`placeholder.${field.attrs.name}`)"
+								:class="{'is-validate': field.isValidate}"
 								@input="checkForm"
 								@invalid="field.isValidate = true"
-								v-bind="field.attrs"
-								:placeholder="$t(`placeholder.${field.attrs.type}`)"
-								ref="field"
-								:class="{'is-validate': field.isValidate}"
+								v-model="field.value"
 							)
 
 						template(v-else-if="field.attrs.type.match(/checkbox|radio/)")
 							label.check-radio
 								input.check-radio-input(
-									v-model="field.value"
-									@input="checkForm"
-									@invalid="field.isValidate = true"
-									v-bind="field.attrs"
 									ref="field"
+									v-bind="field.attrs"
 									:class="{'is-validate': field.isValidate}"
+									@change="checkForm"
+									@invalid="field.isValidate = true"
+									v-model="field.value"
 								)
 
 								span.check-radio-fake
@@ -82,25 +85,45 @@
 					{
 						id: 1,
 						attrs: {
-							name: 'email',
 							type: 'email',
+							name: 'email',
+							value: '',
 							autocomplete: 'on',
 							required: true
 						},
 						value: '',
-						defaultValue: '',
 						isValidate: false
 					},
 					{
 						id: 2,
 						attrs: {
-							name: 'agree',
 							type: 'checkbox',
+							name: 'agree',
+							checked: false,
 							required: true
 						},
 						value: false,
-						defaultValue: false,
 						isValidate: false
+					},
+					{
+						id: 3,
+						attrs: {
+							type: 'text',
+							name: 'workemail',
+							value: '',
+							autocomplete: 'off'
+						},
+						value: ''
+					},
+					{
+						id: 4,
+						attrs: {
+							type: 'hidden',
+							name: 'subject',
+							value: 'Сообщение из формы Подписки',
+							autocomplete: 'off'
+						},
+						value: 'Сообщение из формы Подписки'
 					}
 				],
 				isInvalid: true
@@ -158,7 +181,7 @@
 								this.response = formData.get('email') || response.data;
 
 								vm.fields.forEach(field => {
-									field.value = field.defaultValue;
+									field.value = field.attrs.value || field.attrs.checked;
 									field.isValidate = false;
 								});
 

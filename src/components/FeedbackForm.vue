@@ -3,7 +3,9 @@
 		"en": {
 			"placeholder": {
 				"tel": "Phone",
-				"url": "Reference to site"
+				"url": "Reference to site",
+				"workemail": "Workemail",
+				"subject": "Subject"
 			},
 			"submit": "Submit",
 			"agree": "*&nbsp;By submitting an application, you agree to <a href='{url}' target='_blank'>the terms of information transfer</a>.",
@@ -32,18 +34,18 @@
 	)
 		.grid
 			.grid-cell.grid-cell-has-field(
-				v-for="(field, index) in fields"
+				v-for="field in fields"
 				:key="field.id"
+				:style="['workemail', 'subject'].includes(field.attrs.name) ? {display: 'none'} : null"
 			)
 				template(v-if="field.maskOptions")
 					base-field.field(
 						ref="field"
 						v-bind="field.attrs"
-						:placeholder="$t(`placeholder.${field.attrs.type}`)"
+						:placeholder="$t(`placeholder.${field.attrs.name}`)"
 						:class="{'is-validate': field.isValidate}"
 						@invalid.native="field.isValidate = true"
 						v-imask="field.maskOptions"
-						:value="field.defaultValue"
 						@accept.native="(field.value = $event.detail.unmaskedValue, $event.target.setCustomValidity($t('invalid.complete')))"
 						@complete.native="$event.target.setCustomValidity('')"
 					)
@@ -52,7 +54,7 @@
 					base-field.field(
 						ref="field"
 						v-bind="field.attrs"
-						:placeholder="$t(`placeholder.${field.attrs.type}`)"
+						:placeholder="$t(`placeholder.${field.attrs.name}`)"
 						:class="{'is-validate': field.isValidate}"
 						@invalid.native="field.isValidate = true"
 						v-model="field.value"
@@ -87,27 +89,47 @@
 					{
 						id: 1,
 						attrs: {
-							name: 'tel',
 							type: 'tel',
+							name: 'tel',
+							value: '',
 							autocomplete: 'on',
 							required: true
 						},
 						value: '',
-						defaultValue: '',
 						isValidate: false,
 						maskOptions: maskOptions.tel
 					},
 					{
 						id: 2,
 						attrs: {
-							name: 'url',
 							type: 'url',
+							name: 'url',
+							value: '',
 							autocomplete: 'on',
 							required: false
 						},
 						value: '',
-						defaultValue: '',
 						isValidate: false
+					},
+					{
+						id: 3,
+						attrs: {
+							type: 'text',
+							name: 'workemail',
+							value: '',
+							autocomplete: 'off'
+						},
+						value: ''
+					},
+					{
+						id: 4,
+						attrs: {
+							type: 'hidden',
+							name: 'subject',
+							value: 'Сообщение из формы Обратной Связи',
+							autocomplete: 'off'
+						},
+						value: 'Сообщение из формы Обратной Связи'
 					}
 				],
 				isInvalid: true
@@ -173,9 +195,9 @@
 
 								vm.fields.forEach((field, index) => {
 									if (field.maskOptions) {
-										vm.$refs.field[index].$el.maskRef.value = field.defaultValue;
+										vm.$refs.field[index].$el.maskRef.value = field.attrs.value;
 									} else {
-										field.value = field.defaultValue;
+										field.value = field.attrs.value || field.attrs.checked;
 									}
 
 									field.isValidate = false;

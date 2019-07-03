@@ -9,10 +9,7 @@
 	export default {
 		name: 'BaseField',
 		props: {
-			value: {
-				type: String,
-				default: null
-			}
+			value: String
 		}
 	};
 </script>
