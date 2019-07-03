@@ -1,14 +1,14 @@
 <script>
 	import AppShare from './AppShare';
 	import SwiperGallery from './SwiperGallery';
-	import LikeButton from './LikeButton';
+	import NavigationLink from './NavigationLink';
 
 	export default {
 		name: 'AppArticle',
 		components: {
 			AppShare,
 			SwiperGallery,
-			LikeButton
+			NavigationLink
 		},
 		data() {
 			return {
@@ -133,16 +133,22 @@
 	.footer-grid {
 		margin: var(--grid-row_margin);
 		display: flex;
+		/*flex-wrap: wrap;*/
+		align-items: center;
 	}
 
 	.footer-grid-cell {
 		box-sizing: border-box;
 		padding: var(--grid-cell_padding);
 		min-width: 0;
+		max-width: 100%;
+
+		&:nth-child(1) {
+			flex: 1 0 auto;
+		}
 
 		&:nth-child(2) {
-			margin: auto 0 auto auto;
-			flex: 0 0 auto;
+
 		}
 	}
 </style>

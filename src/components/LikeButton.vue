@@ -1,8 +1,8 @@
 <template lang="pug">
-	button.like-button(v-on="$listeners")
+	button.like-button
 		base-icon.icon(name="heart")
 
-		.counter
+		.counter(v-if="$scopedSlots.default")
 			slot
 </template>
 
