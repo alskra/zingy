@@ -11,7 +11,7 @@
 
 <style>
 	:root {
-		--base-content_margin-y: calc(var(--line-height) * var(--font-size))
+		--base-content_margin-y: calc(var(--font-size) * var(--line-height));
 	}
 </style>
 
@@ -109,6 +109,11 @@
 		}
 	}
 
+	b,
+	strong {
+		font-weight: 500;
+	}
+
 	img {
 		vertical-align: middle;
 		max-width: 100%;
@@ -116,11 +121,11 @@
 	}
 
 	blockquote {
+		position: relative;
+		z-index: 0;
 		margin: calc(2 * var(--base-content_margin-y)) 0;
 		border-left: 4px solid var(--color-accent);
 		padding-left: range(16px, 32px);
-		position: relative;
-		z-index: 0;
 
 		&:before {
 			content: '';
@@ -129,8 +134,10 @@
 			top: range(-12px, -24px);
 			left: range(10px, 70px);
 			width: scale-down(234px, 0.5);
+			max-width: calc(100% - range(10px, 70px));
 			height: scale-down(172px, 0.5);
-			background: url("../assets/img/open-quote.svg") no-repeat 50% 50% / contain;
+			max-height: calc(100% + 2 * range(12px, 24px));
+			background: url("../assets/img/open-quote.svg") no-repeat 0 50% / contain;
 			pointer-events: none;
 		}
 

@@ -29,13 +29,13 @@ Vue.component('VNodes', {
 
 Vue.component('StyleScope', {
 	functional: true,
-	render(createElement, ctx) {
+	render(createElement, {props, parent, slots}) {
 		return createElement({
 			// functional: true,
-			name: ctx.props.scope || ctx.parent.$options._scopeId,
-			_scopeId: ctx.props.scope || ctx.parent.$options._scopeId,
+			name: props.scope || parent.$options._scopeId,
+			_scopeId: props.scope || parent.$options._scopeId,
 			render() {
-				return ctx.slots().default[0];
+				return slots().default[0];
 			}
 		});
 	}

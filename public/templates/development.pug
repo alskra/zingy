@@ -11,8 +11,22 @@ block app
 				+AppBreadcrumb([['Главная', 'index.html'], ['Услуги', 'services.html'], ['Разработка сайтов', 'development.html']]).app-page-breadcrumb
 
 			section(is="fancy-section")
-				h2.title(slot="title") Создание сайтов под ключ
-					span Foo
+				h1(slot="title") Создание сайтов под ключ
+
+				p.
+					Говорят, что сайты уже никому не&nbsp;нужны, ведь &laquo;Все покупают в&nbsp;соцсетях&raquo;!
+					Мы&nbsp;считаем, что это не&nbsp;так.
+					Даже если вы&nbsp;продаете товары только в&nbsp;Instagram и&nbsp;получаете хорошую прибыль, помните&nbsp;&mdash; страничку
+					можно потерять за&nbsp;пару минут. Поэтому сайт&nbsp;&mdash; более надежный инструмент для получения прибыли.
+
+				p.
+					#[strong Мы&nbsp;делаем сайты качественно&nbsp;&mdash; без использования шаблонных решений и&nbsp;неадекватного дизайна]
+
+				a(
+					slot="button"
+					href="#feedback-section"
+				) Заказать сайт
+
 
 			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')

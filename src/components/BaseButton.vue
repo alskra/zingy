@@ -5,7 +5,7 @@
 	)
 		slot(name="icon")
 
-		span.text(v-if="$scopedSlots.default")
+		span.content(v-if="$scopedSlots.default")
 			slot
 </template>
 
@@ -63,7 +63,7 @@
 		}
 	}
 
-	.text {
+	.content {
 		color: #ffffff;
 		font-family: var(--font-family);
 		font-size: range(1.2rem, 1.4rem);

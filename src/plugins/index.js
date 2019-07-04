@@ -4,10 +4,9 @@ import i18n from '../i18n';
 import VueWindowSize from 'vue-window-size';
 import VueWindowScroll from './vue-window-scroll';
 import VModal from 'vue-js-modal';
-import checkView from 'vue-check-view';
 import VueSticky from '../components/VueSticky';
-import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import Loading from 'vue-loading-overlay';
 import {VLazyImagePlugin} from 'v-lazy-image';
 import VShowSlide from 'v-show-slide';
 import VueTruncateCollapsed from 'vue-truncate-collapsed';
@@ -48,8 +47,6 @@ Vue.prototype.$showModal = (component, props, options, events) => {
 		}
 	)
 };
-
-Vue.use(checkView);
 
 Vue.component('VueSticky', VueSticky);
 
