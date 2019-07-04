@@ -3,7 +3,6 @@
 		transition(
 			appear
 			:duration="{enter: 1000, leave: 800}"
-
 		)
 			.body(
 				ref="body"
@@ -15,20 +14,25 @@
 				)
 					.grid-row
 						.grid-cell.grid-cell-is-7
-							.header
+							.header(v-if="$scopedSlots.header || $scopedSlots.title")
 								.title
 									slot(name="title")
 
-							base-content.content
+							base-content.content(v-if="$scopedSlots.default")
 								slot
 
-							.footer
-								base-button.button(
-									tag="a"
-									v-if="$scopedSlots.button"
-									v-bind="$scopedSlots.button()[0].data.attrs"
-								)
-									v-nodes(:vnodes="$scopedSlots.button()[0].children")
+							.footer(v-if="$scopedSlots.footer || $scopedSlots.buttons")
+								.buttons(v-if="$scopedSlots.buttons")
+									.buttons-grid-row
+										.buttons-grid-cell(
+											v-for="(button, index) of $scopedSlots.buttons()"
+											:key="index"
+										)
+											base-button.button(
+												tag="a"
+												v-bind="button.data.attrs"
+											)
+												v-nodes(:vnodes="button.children")
 
 						.grid-cell.grid-cell-is-5 2
 </template>
@@ -43,32 +47,18 @@
 		},
 		data() {
 			return {
-				bodyShown: false
 			};
 		},
 		methods: {
 			getVNodesTextContent,
-			// bodyEnter(el) {
-			// 	clearTimeout(el.transitionTimer);
-			// 	el.style.overflow = 'hidden';
-			// 	el.transitionTimer = setTimeout(() => el.style.overflow = '', 500);
-			// },
-			// bodyLeave(el) {
-			// 	clearTimeout(el.transitionTimer);
-			// 	el.style.overflow = '';
-			// 	el.transitionTimer = setTimeout(() => el.style.overflow = 'hidden', 300);
-			// },
 			onBodyTransitionstart() {
-				console.log('onBodyTransitionstart');
 				this.$refs.body.style.overflow = 'hidden';
 			},
 			onBodyTransitionend() {
-				console.log('onBodyTransitionend');
 				this.$refs.body.style.overflow = '';
 			}
 		},
 		mounted() {
-			this.$nextTick(() => this.bodyShown = true);
 		}
 	};
 </script>
@@ -175,6 +165,7 @@
 	.grid-row {
 		display: flex;
 		margin: var(--grid-row_margin);
+		flex-wrap: wrap;
 	}
 
 	.grid-cell {
@@ -213,12 +204,29 @@
 		}
 	}
 
-
 	.footer {
 		margin-top: range(25px, 50px);
 	}
 
-	.button {
+	.buttons {
+		display: flex;
+		flex-flow: column;
+	}
+
+	.buttons-grid-row {
+		display: flex;
+		margin: var(--grid-row_margin);
+		flex-wrap: wrap;
+	}
+
+	.buttons-grid-cell {
+		box-sizing: border-box;
+		padding: var(--grid-cell_padding);
+		min-width: 0;
+		max-width: 100%;
+	}
+
+	.base-button.button {
 		width: 270px;
 	}
 </style>

@@ -8,9 +8,19 @@ block app
 	app-page(inline-template)
 		+AppPage()
 			.grid
-				+AppBreadcrumb([['Главная', 'index.html'], ['Услуги', 'services.html'], ['Разработка сайтов', 'development.html']]).app-page-breadcrumb
+				-
+					const breadcrumbs = [
+						['Главная', 'index.html'],
+						['Услуги', 'services.html'],
+						['Разработка', 'development.html'],
+						['Разработка сайтов', 'service.html']
+					];
+
+				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
 
 			section(is="fancy-section")
+				// Available slots: `header`, `title`, `default`, `footer`, `buttons`
+
 				h1(slot="title") Создание сайтов под ключ
 
 				p.
@@ -23,9 +33,14 @@ block app
 					#[strong Мы&nbsp;делаем сайты качественно&nbsp;&mdash; без использования шаблонных решений и&nbsp;неадекватного дизайна]
 
 				a(
-					slot="button"
+					slot="buttons"
 					href="#feedback-section"
 				) Заказать сайт
+
+				a(
+					slot="buttons"
+					href="#foo"
+				) Foo Button
 
 
 			page-section.app-page-section(inline-template)
