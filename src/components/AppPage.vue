@@ -28,7 +28,7 @@
 
 	// contacts
 	const ZingyWorld = () => import('./ZingyWorld');
-	const AppPageContacts = () => import('./AppPageContacts');
+	import AppPageContacts from './AppPageContacts';
 	const AppGmap = () => import('./AppGmap');
 
 	// development
