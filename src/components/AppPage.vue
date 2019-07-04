@@ -18,7 +18,7 @@
 
 	// blog
 	import AppBreadcrumb from './AppBreadcrumb';
-	import AppPageStickyContainer from './AppPageStickyContainer';
+	const AppPageStickyContainer = () => import('./AppPageStickyContainer');
 	import SideNav from './SideNav';
 	const BlogPosts = () => import('./BlogPosts');
 	import SubscribeForm from './SubscribeForm';
