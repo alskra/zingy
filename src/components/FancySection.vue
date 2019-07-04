@@ -3,11 +3,16 @@
 		transition(
 			appear
 			:duration="{enter: 1000, leave: 800}"
-			@enter="bodyEnter"
-			@leave="bodyLeave"
+
 		)
-			.body
-				.body-inner
+			.body(
+				ref="body"
+				:style="{overflow: 'hidden'}"
+			)
+				.body-inner(
+					@transitionstart.self="onBodyTransitionstart"
+					@transitionend.self="onBodyTransitionend"
+				)
 					.grid-row
 						.grid-cell.grid-cell-is-7
 							.header
@@ -38,23 +43,32 @@
 		},
 		data() {
 			return {
+				bodyShown: false
 			};
 		},
 		methods: {
 			getVNodesTextContent,
-			bodyEnter(el) {
-				clearTimeout(el.transitionTimer);
-				el.style.overflow = 'hidden';
-				el.transitionTimer = setTimeout(() => el.style.overflow = '', 600);
+			// bodyEnter(el) {
+			// 	clearTimeout(el.transitionTimer);
+			// 	el.style.overflow = 'hidden';
+			// 	el.transitionTimer = setTimeout(() => el.style.overflow = '', 500);
+			// },
+			// bodyLeave(el) {
+			// 	clearTimeout(el.transitionTimer);
+			// 	el.style.overflow = '';
+			// 	el.transitionTimer = setTimeout(() => el.style.overflow = 'hidden', 300);
+			// },
+			onBodyTransitionstart() {
+				console.log('onBodyTransitionstart');
+				this.$refs.body.style.overflow = 'hidden';
 			},
-			bodyLeave(el) {
-				clearTimeout(el.transitionTimer);
-				el.style.overflow = '';
-				el.transitionTimer = setTimeout(() => el.style.overflow = 'hidden', 300);
+			onBodyTransitionend() {
+				console.log('onBodyTransitionend');
+				this.$refs.body.style.overflow = '';
 			}
 		},
 		mounted() {
-
+			this.$nextTick(() => this.bodyShown = true);
 		}
 	};
 </script>

@@ -32,7 +32,7 @@
 	const AppGmap = () => import('./AppGmap');
 
 	// development
-	const FancySection = () => import('./FancySection');
+	import FancySection from './FancySection';
 
 	export default {
 		name: 'AppPage',
