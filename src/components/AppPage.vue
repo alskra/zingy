@@ -31,7 +31,7 @@
 	import AppPageContacts from './AppPageContacts';
 	const AppGmap = () => import('./AppGmap');
 
-	// development
+	// service
 	const FancySection = () => import('./FancySection');
 
 	export default {
@@ -66,7 +66,7 @@
 			AppPageContacts,
 			AppGmap,
 
-			// development
+			// service
 			FancySection,
 		},
 		data() {

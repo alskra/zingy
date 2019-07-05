@@ -1,3 +1,14 @@
+<i18n>
+	{
+		"en": {
+			"scroll-down": "Scroll down"
+		},
+		"ru": {
+			"scroll-down": "Крутите вниз"
+		}
+	}
+</i18n>
+
 <template lang="pug">
 	section.fancy-section
 		transition(
@@ -15,38 +26,58 @@
 					.grid-row
 						.grid-cell.grid-cell-is-7
 							.header(v-if="$scopedSlots.header || $scopedSlots.title")
-								.title
-									slot(name="title")
+								slot(name="header")
+
+								.title(
+									:is="$scopedSlots.title()[0].tag"
+								)
+									v-nodes(:vnodes="$scopedSlots.title()[0].children")
 
 							base-content.content(v-if="$scopedSlots.default")
 								slot
 
 							.footer(v-if="$scopedSlots.footer || $scopedSlots.buttons")
+								slot(name="footer")
+
 								.buttons(v-if="$scopedSlots.buttons")
 									.buttons-grid-row
 										.buttons-grid-cell(
-											v-for="(button, index) of $scopedSlots.buttons()"
+											v-for="({tag, data, children}, index) of $scopedSlots.buttons()"
 											:key="index"
 										)
 											base-button.button(
-												tag="a"
-												v-bind="button.data.attrs"
+												:tag="tag"
+												v-bind="data.attrs"
+												v-on="data.on"
 											)
-												v-nodes(:vnodes="button.children")
+												v-nodes(:vnodes="children")
 
 						.grid-cell.grid-cell-is-5 2
+
+				.scroll-down(
+					v-if="scrollDown"
+					:style="scrollDownStyle"
+				) {{ $t('scroll-down') }}
 </template>
 
 <script>
+	/**
+	 * @slots: `header`, `title`, `default`, `footer`, `buttons`
+	 */
+
 	import {getVNodesTextContent} from '../helpers';
 
 	export default {
 		name: 'FancySection',
 		props: {
-
+			scrollDown: {
+				type: Boolean,
+				default: false
+			}
 		},
 		data() {
 			return {
+				scrollDownStyle: {}
 			};
 		},
 		methods: {
@@ -56,9 +87,34 @@
 			},
 			onBodyTransitionend() {
 				this.$refs.body.style.overflow = '';
+			},
+			fixScrollDown() {
+				if (this.$el.getBoundingClientRect().bottom > this.windowHeight) {
+					this.scrollDownStyle = {
+						position: 'fixed',
+						bottom: '10px',
+						color: 'transparent'
+					};
+				} else {
+					this.scrollDownStyle = {
+						position: '',
+						bottom: '',
+						color: ''
+					};
+				}
+			},
+			onWindowScrollOrResize() {
+				this.fixScrollDown();
 			}
 		},
 		mounted() {
+			this.fixScrollDown();
+			window.addEventListener('scroll', this.onWindowScrollOrResize);
+			window.addEventListener('resize', this.onWindowScrollOrResize);
+		},
+		destroyed() {
+			window.removeEventListener('scroll', this.onWindowScrollOrResize);
+			window.removeEventListener('resize', this.onWindowScrollOrResize);
 		}
 	};
 </script>
@@ -188,16 +244,12 @@
 	}
 
 	.title {
+		margin: 0;
 		color: var(--color);
 		font-family: var(--font-family);
 		font-size: var(--h1_font-size);
 		font-weight: 500;
 		line-height: 1.25;
-
-		>>> * {
-			display: inline;
-			font: inherit;
-		}
 
 		@media (width >= 1024px) {
 			margin-left: range(80px, -160px);
@@ -228,5 +280,41 @@
 
 	.base-button.button {
 		width: 270px;
+	}
+
+	.scroll-down {
+		display: flex;
+		position: absolute;
+		z-index: 1;
+		bottom: range(-15px, -30px);
+		left: 50%;
+		flex-flow: column;
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(1.2rem, 1.4rem);
+		font-weight: 300;
+		line-height: 1.25;
+		transform: translateX(-50%) translateX(-0.5px);
+		transition: bottom 0.2s, color 0.2s;
+		pointer-events: none;
+
+		&::after {
+			@keyframes scroll-down_run {
+				0% {
+					background-position: 0 range(-30px, -60px);
+				}
+
+				100% {
+					background-position: 0 range(30px, 60px);
+				}
+			}
+
+			content: '';
+			margin: range(5px, 10px) auto 0;
+			width: 2px;
+			height: range(30px, 60px);
+			background: linear-gradient(to bottom, var(--color-accent), var(--color-accent)) no-repeat 0 0 / 100% 100%;
+			animation: scroll-down_run 2s linear infinite;
+		}
 	}
 </style>

@@ -13,12 +13,15 @@ block app
 						['Главная', 'index.html'],
 						['Услуги', 'services.html'],
 						['Разработка', 'development.html'],
-						['Разработка сайтов', 'service.html']
+						['Создание сайтов под ключ', 'service.html']
 					];
 
 				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
 
-			section(is="fancy-section")
+			section(
+				is="fancy-section"
+				scroll-down
+			)
 				// Available slots: `header`, `title`, `default`, `footer`, `buttons`
 
 				h1(slot="title") Создание сайтов под ключ
@@ -36,12 +39,6 @@ block app
 					slot="buttons"
 					href="#feedback-section"
 				) Заказать сайт
-
-				a(
-					slot="buttons"
-					href="#foo"
-				) Foo Button
-
 
 			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')
