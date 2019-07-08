@@ -11,7 +11,13 @@
 						v-for="(slide, index) of slides"
 						:key="index"
 					)
-						v-nodes(:vnodes="[slide]")
+						.swiper-slide-inner(
+							:style=`{
+								opacity: swiper.initialized ? '' : 0,
+								transitionDelay: \`\${(index + 1) * 0.2}s\`
+							}`
+						)
+							v-nodes(:vnodes="[slide]")
 </template>
 
 <script>
@@ -138,6 +144,11 @@
 		cursor: default;
 		user-select: none;
 		margin: 0 range(20px, 50px);
+	}
+
+	.swiper-slide-inner {
+		height: 100%;
+		transition: opacity 0.3s;
 	}
 
 	.app-carousel-of-articles {

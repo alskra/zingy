@@ -151,10 +151,9 @@
 	}
 
 	.article-title {
-		margin: 0 0 0.75em;
+		margin: 0 0 1em;
 		color: #ffffff;
 		font-family: var(--font-family);
-		/*font-size: scale-down(3.6rem, 0.75);*/
 		font-size: var(--h2_font-size);
 		font-weight: 500;
 		line-height: 1.25;
