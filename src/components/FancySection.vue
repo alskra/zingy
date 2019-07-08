@@ -353,8 +353,8 @@
 		font-weight: 500;
 		line-height: 1.25;
 
-		@media (width >= 1024px) {
-			margin-left: range(80px, -160px);
+		@media (width >= 1440px) {
+			margin-left: range(-100px, -180px);
 		}
 	}
 

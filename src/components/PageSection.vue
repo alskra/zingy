@@ -112,8 +112,12 @@
 		/*margin: 0 auto;*/
 		padding: 0 var(--grid-cell_padding);
 
-		@media (width >= 768px) {
+		@media (width >= 1024px) {
 			width: percentage(10 / 12);
+		}
+
+		@media (width >= 1440px) {
+			margin-left: percentage(-1 / 12);
 		}
 	}
 

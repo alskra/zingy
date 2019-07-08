@@ -31,7 +31,7 @@
 		>>> .grid-cell {
 			position: relative;
 
-			@media (width >= 768px) {
+			@media (width >= 1024px) {
 				margin: 0 auto;
 				width: percentage(10 / 12);
 			}
