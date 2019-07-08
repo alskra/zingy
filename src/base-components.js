@@ -21,9 +21,23 @@ requireComponents.keys().forEach(fileName => {
 
 Vue.component('VNodes', {
 	functional: true,
-	render(createElement, ctx) {
-		// console.log(ctx.props.vnodes);
-		return ctx.props.vnodes;
+	props: {
+		vnodes: {
+			type: Array,
+			required: true
+		}
+	},
+	render(createElement, {props, parent}) {
+		// console.log(props.vnodes);
+		if (parent.$options._scopeId) {
+			props.vnodes.forEach(vnode => {
+				vnode.data = vnode.data || {};
+				vnode.data.attrs = vnode.data.attrs || {};
+				vnode.data.attrs[parent.$options._scopeId] = '';
+			})
+		}
+
+		return props.vnodes;
 	}
 });
 

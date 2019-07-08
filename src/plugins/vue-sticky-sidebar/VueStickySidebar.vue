@@ -39,6 +39,7 @@
 			/** @see https://abouolia.github.io/sticky-sidebar/#public-methods */
 			init() {
 				const resolvedOptions = merge(
+					{},
 					this.defaultOptions,
 					this.options,
 					{

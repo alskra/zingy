@@ -193,8 +193,14 @@
 		& {
 			display: flex;
 			box-sizing: border-box;
+			padding: range(30px, 60px) 0;
 			max-width: 100%;
 			flex-flow: column;
+			background-color: white;
+		}
+
+		&.padding-top-none {
+			padding-top: 0;
 		}
 	}
 
@@ -461,10 +467,6 @@
 		@media (width < 1024px) {
 			padding-top: range(2px, 4px);
 			padding-bottom: range(2px, 4px);
-
-			&:nth-child(odd) {
-				/*transform: translateX(10px);*/
-			}
 		}
 	}
 

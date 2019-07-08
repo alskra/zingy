@@ -75,6 +75,7 @@
 		methods: {
 			init() {
 				const resolvedOptions = merge(
+					{},
 					this.defaultOptions,
 					this.options,
 					{
@@ -112,6 +113,7 @@
 
 					// Init Swiper
 					this.swiper.init(); // set `initialized` true
+					// console.log('VueSwiper init!');
 					// console.log(this.swiper);
 					// console.log(this.swiper.initialized);
 					// console.log(this.swiper.destroyed);
@@ -130,6 +132,7 @@
 			destroy() {
 				if (this.swiper.initialized) {
 					this.swiper.destroy(true, true); // set `destroyed` true
+					// console.log('VueSwiper destroy!');
 					// console.log(this.swiper);
 					// console.log(this.swiper.initialized);
 					// console.log(this.swiper.destroyed);

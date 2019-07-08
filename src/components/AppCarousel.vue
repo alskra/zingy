@@ -1,4 +1,21 @@
+<template lang="pug">
+	include ../../public/templates/components/parts/AppCarouselHeader.pug
+
+	.vue-swiper.app-carousel
+		+AppCarouselHeader()
+
+		.main
+			.swiper-container(ref="swiperContainer")
+				.swiper-wrapper
+					.swiper-slide(
+						v-for="(slide, index) of slides"
+						:key="index"
+					)
+						v-nodes(:vnodes="[slide]")
+</template>
+
 <script>
+	import {getScopedSlot} from '../helpers';
 	import VueSwiper from './VueSwiper';
 
 	export default {
@@ -18,6 +35,17 @@
 					}
 				}
 			}
+		},
+		computed: {
+			slides() {
+				return getScopedSlot(this.$scopedSlots.slides);
+			}
+		},
+		methods: {
+
+		},
+		mounted() {
+			// console.log('app-carousel:', this.slides);
 		}
 	};
 </script>
@@ -110,5 +138,23 @@
 		cursor: default;
 		user-select: none;
 		margin: 0 range(20px, 50px);
+	}
+
+	.app-carousel-of-articles {
+		.main {
+			margin: 0 auto;
+			width: calc(100% - 2 * var(--grid_padding));
+		}
+
+		.swiper-container {
+			margin: 0 calc(-1 * var(--grid_padding));
+			padding: 0 range(0px, 20px);
+		}
+
+		.swiper-slide {
+			margin: 0 range(10px, 20px);
+			width: range(300px, 695px);
+			height: auto;
+		}
 	}
 </style>

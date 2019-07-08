@@ -17,7 +17,7 @@ block app
 
 				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
 
-			section(
+			section.padding-top-none.app-page-fancy-section(
 				is="fancy-section"
 				scroll-down
 			)
@@ -42,43 +42,97 @@ block app
 					is="template"
 				)
 					article
-						template(slot="title")
-							h2 Функционал любой сложности
-
-						template(slot="description")
-							p Беремся за сложные проекты и предлагаем правильные решения
-
 						template(slot="image")
 							img(
 								src="upload/thinking.svg"
 								alt=""
 							)
 
-					article
 						template(slot="title")
-							h2 Учитываем особенности отрасли и UX
+							h2 Функционал любой сложности
 
 						template(slot="description")
-							p Учет особенностей отрасли и пользовательского опыта
+							p Беремся за сложные проекты и предлагаем правильные решения
 
+					article
 						template(slot="image")
 							img(
 								src="upload/industry-ux-ui.svg"
 								alt=""
 							)
 
+						template(slot="title")
+							h2 Учитываем особенности отрасли и UX
+
+						template(slot="description")
+							p Учет особенностей отрасли и пользовательского опыта
+
 					article
+						template(slot="image")
+							img(
+								src="upload/project.svg"
+								alt=""
+							)
+
 						template(slot="title")
 							h2 Оптимизируем сайт под поиск
 
 						template(slot="description")
 							p Грамотная оптимизация под поисковые системы на этапе разработки сайта
 
+			section.app-page-section(is="page-section")
+				template(slot="title")
+					h2 Чем хороший сео сайт отличается от среднего и плохого?
+
+				template(slot="articles-carousel")
+					article(data-bg-color="")
 						template(slot="image")
 							img(
-								src="upload/project.svg"
+								src="upload/monitoring.svg"
 								alt=""
 							)
+
+						template(slot="title")
+							h3 Продуманный UX
+
+						template(slot="description")
+							p.
+								Благодаря ему улучшаются #[a(href="") поведенческие факторы].
+								Падает процент отказов, увеличивается длина сессии, глубина просмотра и т.д.
+								Растет поисковый трафик и повышаются позиции в выдаче.
+								Следовательно, увеличиваются конверсии и продажи.
+
+					article(data-bg-color="#2d8896")
+						template(slot="image")
+							img(
+								src="upload/fingerprint.svg"
+								alt=""
+							)
+
+						template(slot="title")
+							h3 Уникальный дизайн
+
+						template(slot="description")
+							p.
+								Растет поисковый трафик и повышаются позиции в выдаче.
+								Следовательно, увеличиваются конверсии и продажи.
+
+					article(data-bg-color="#2d7c96")
+						template(slot="image")
+							img(
+								src="upload/fingerprint.svg"
+								alt=""
+							)
+
+						template(slot="title")
+							h3 SEO-оптимизация
+
+						template(slot="description")
+							p.
+								Благодаря ему улучшаются поведенческие факторы.
+								Падает процент отказов, увеличивается длина сессии, глубина просмотра и т.д.
+								Растет поисковый трафик и повышаются позиции в выдаче.
+								Следовательно, увеличиваются конверсии и продажи.
 
 			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')

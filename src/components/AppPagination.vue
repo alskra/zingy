@@ -1,9 +1,12 @@
 <template lang="pug">
 	nav.app-pagination(v-if="$scopedSlots.default")
 		.grid
-			.grid-cell(v-for="(item, index) in $scopedSlots.default()" :key="index + 1")
+			.grid-cell(
+				v-for="(item, index) in $scopedSlots.default()"
+				:key="index"
+			)
 				.item
-					v-nodes(:vnodes="item")
+					v-nodes(:vnodes="[item]")
 </template>
 
 <script>
