@@ -1,9 +1,9 @@
 <template lang="pug">
 	section.page-section
 		header.header
-			.grid
-				.grid-row
-					.grid-cell
+			.header-grid
+				.header-grid-row
+					.header-grid-cell
 						.title(
 							v-if="title"
 							:is="title[0].tag"
@@ -21,7 +21,7 @@
 						v-for="({tag, data, slots: {image, title, description}}, index) of articlesCarousel"
 						:key="index"
 						:is="tag"
-						:style="{backgroundColor: data.attrs['data-bg-color']}"
+						:style="{backgroundColor: data.attrs['bg-color']}"
 					)
 						.article-image-box(v-if="image")
 							img.article-image(
@@ -94,19 +94,22 @@
 		margin-bottom: range(20px, 30px);
 	}
 
-	.grid {
+	.content-box,
+	.header-grid {
 		margin: 0 auto;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
 	}
 
-	.grid-row {
+	.content-grid,
+	.header-grid-row {
 		margin: 0 var(--grid-row_margin);
 	}
 
-	.grid-cell {
+	.content-grid-item,
+	.header-grid-cell {
 		box-sizing: border-box;
-		margin: 0 auto;
+		/*margin: 0 auto;*/
 		padding: 0 var(--grid-cell_padding);
 
 		@media (width >= 768px) {

@@ -77,9 +77,9 @@
 	}
 
 	.grid {
+		margin: 0 auto;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
-		margin: 0 auto;
 	}
 
 	.grid-row {
@@ -88,13 +88,8 @@
 
 	.grid-cell {
 		box-sizing: border-box;
-		width: percentage(10 / 12);
+		/*margin: 0 auto;*/
 		padding: 0 var(--grid-cell_padding);
-		margin: 0 auto;
-
-		@media (width < 768px) {
-			width: 100%;
-		}
 	}
 
 	.nav {

@@ -27,8 +27,15 @@
 		z-index: 1;
 	}
 
-	.grid-cell {
-		position: relative;
+	.main {
+		>>> .grid-cell {
+			position: relative;
+
+			@media (width >= 768px) {
+				margin: 0 auto;
+				width: percentage(10 / 12);
+			}
+		}
 	}
 
 	.base-icon.background-quote {
