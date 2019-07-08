@@ -1,0 +1,94 @@
+extends index
+
+append vars
+	-
+		title = 'Создание сайтов под ключ';
+
+block app
+	app-page(inline-template)
+		+AppPage()
+			.grid
+				-
+					const breadcrumbs = [
+						['Главная', 'index.html'],
+						['Услуги', 'services.html'],
+						['Создание сайтов под ключ', 'development.html']
+					];
+
+				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
+
+			section(
+				is="fancy-section"
+				scroll-down
+			)
+				template(slot="title")
+					h1 Создание сайтов под ключ
+
+				template(slot="content")
+					p.
+						Говорят, что сайты уже никому не&nbsp;нужны, ведь &laquo;Все покупают в&nbsp;соцсетях&raquo;!
+						Мы&nbsp;считаем, что это не&nbsp;так.
+						Даже если вы&nbsp;продаете товары только в&nbsp;Instagram и&nbsp;получаете хорошую прибыль, помните&nbsp;&mdash; страничку
+						можно потерять за&nbsp;пару минут. Поэтому сайт&nbsp;&mdash; более надежный инструмент для получения прибыли.
+
+					p.
+						#[strong Мы&nbsp;делаем сайты качественно&nbsp;&mdash; без использования шаблонных решений и&nbsp;неадекватного дизайна]
+
+				template(slot="buttons")
+					a(href="#feedback-section") Заказать сайт
+
+				aside(
+					slot="articles"
+					is="template"
+				)
+					article
+						template(slot="title")
+							h2 Функционал любой сложности
+
+						template(slot="description")
+							p Беремся за сложные проекты и предлагаем правильные решения
+
+						template(slot="image")
+							img(
+								src="upload/thinking.svg"
+								alt=""
+							)
+
+					article
+						template(slot="title")
+							h2 Учитываем особенности отрасли и UX
+
+						template(slot="description")
+							p Учет особенностей отрасли и пользовательского опыта
+
+						template(slot="image")
+							img(
+								src="upload/industry-ux-ui.svg"
+								alt=""
+							)
+
+					article
+						template(slot="title")
+							h2 Оптимизируем сайт под поиск
+
+						template(slot="description")
+							p Грамотная оптимизация под поисковые системы на этапе разработки сайта
+
+						template(slot="image")
+							img(
+								src="upload/project.svg"
+								alt=""
+							)
+
+			page-section.app-page-section(inline-template)
+				+PageSection('Наши работы')
+					app-carousel-of-works.app-page-works-carousel(inline-template)
+						+AppCarouselOfWorks()
+
+			work-section.app-page-work-section(inline-template)
+				+WorkSection('Почему выбирают нас')
+
+			page-section.app-page-section(inline-template)
+				+PageSection('Отзывы')
+					app-carousel-of-reviews.app-page-reviews-carousel(inline-template)
+						+AppCarouselOfReviews()
