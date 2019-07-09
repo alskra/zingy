@@ -39,7 +39,7 @@
 								has_icon
 								:title_social="''"
 								has_counter
-								@count-update="commonCount += $event"
+								@count-update="log($event)"
 								:title="item"
 							)
 </template>
@@ -80,6 +80,11 @@
 				const count = this.commonCount;
 
 				return count >= 1000 ? sliceThousandInt(count) : count;
+			}
+		},
+		methods: {
+			log(val) {
+				console.log(val);
 			}
 		}
 	};

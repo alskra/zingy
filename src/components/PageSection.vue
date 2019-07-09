@@ -37,6 +37,10 @@
 
 							base-content.article-description(v-if="description")
 								v-nodes(:vnodes="description")
+
+			app-slider.slider(v-if="$scopedSlots.slider")
+				template(slot="slides")
+					slot(name="slider")
 </template>
 
 <script>
@@ -48,13 +52,15 @@
 	import AppCarousel from './AppCarousel';
 	import AppCarouselOfWorks from './AppCarouselOfWorks';
 	import AppCarouselOfReviews from './AppCarouselOfReviews';
+	import AppSlider from './AppSlider';
 
 	export default {
 		name: 'PageSection',
 		components: {
 			AppCarousel,
 			AppCarouselOfWorks,
-			AppCarouselOfReviews
+			AppCarouselOfReviews,
+			AppSlider
 		},
 		props: {
 
