@@ -39,13 +39,13 @@
 								has_icon
 								:title_social="''"
 								has_counter
-								@count-update="log($event)"
 								:title="item"
 							)
 </template>
 
 <script>
 	import {sliceThousandInt} from 'vue-goodshare/src/helpers/count_number';
+	import {shareCounter} from './ShareButton';
 	import ShareButtonIsVk from './ShareButtonIsVk';
 	import ShareButtonIsFacebook from './ShareButtonIsFacebook';
 	import ShareButtonIsTwitter from './ShareButtonIsTwitter';
@@ -67,7 +67,6 @@
 		data() {
 			return {
 				boxIsShown: false,
-				commonCount: 0,
 				providers: [
 					'VK',
 					'Facebook',
@@ -77,14 +76,9 @@
 		},
 		computed: {
 			commonCountFormatted() {
-				const count = this.commonCount;
+				const count = shareCounter.value;
 
 				return count >= 1000 ? sliceThousandInt(count) : count;
-			}
-		},
-		methods: {
-			log(val) {
-				console.log(val);
 			}
 		}
 	};

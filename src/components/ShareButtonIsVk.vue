@@ -17,6 +17,7 @@
 
 <script>
 	import ShareButton from './ShareButton';
+	import {shareCounter} from './ShareButton';
 	import {clickEvent} from "vue-goodshare/src/helpers/events";
 	import {documentHref} from "vue-goodshare/src/helpers/href";
 	import {documentTitle} from "vue-goodshare/src/helpers/title";
@@ -127,7 +128,8 @@
 				window.VK.Share.count = (index, count) => {
 					if (count) {
 						this.$root.$emit("VK:Share:count:update", count);
-						this.$emit('count-update', count);
+						// this.$emit('count-update', count);
+						shareCounter.value += count;
 					}
 				};
 			}

@@ -1,4 +1,8 @@
 <script>
+	import Vue from 'vue';
+
+	export const shareCounter = Vue.observable({value: 0});
+
 	export default {
 		name: 'ShareButton'
 	};
