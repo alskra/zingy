@@ -93,7 +93,7 @@
 			object-fit: cover;
 			opacity: 0;
 			filter: blur(10px);
-			transition: filter 0.7s;
+			transition: filter 0.5s;
 			will-change: filter;
 		}
 

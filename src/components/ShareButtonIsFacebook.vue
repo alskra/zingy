@@ -96,7 +96,6 @@
 								? sliceThousandInt(count.share.share_count)
 								: count.share.share_count;
 
-						// this.$emit('count-update', count.share.share_count);
 						shareCounter.value += count.share.share_count;
 					}
 				};

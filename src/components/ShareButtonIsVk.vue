@@ -128,7 +128,6 @@
 				window.VK.Share.count = (index, count) => {
 					if (count) {
 						this.$root.$emit("VK:Share:count:update", count);
-						// this.$emit('count-update', count);
 						shareCounter.value += count;
 					}
 				};

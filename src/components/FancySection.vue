@@ -474,6 +474,7 @@
 		display: flex;
 		box-sizing: border-box;
 		position: relative;
+		margin: 0;
 		min-height: range(60px, 160px);
 		flex-flow: column;
 		background-color: #222222;
