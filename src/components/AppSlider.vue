@@ -5,18 +5,21 @@
 				.grid-cell
 
 				.grid-cell
-					.nav
-						.nav-grid-row
-							.nav-grid-cell(
-								v-for="({slots: {title}}, index) of slides"
-								:key="index"
+					vue-swiper.nav(
+						ref="nav"
+						:options="vueSwiperNavOptions"
+					)
+						//.nav-grid-row
+						.swiper-slide.nav-grid-cell(
+							v-for="({slots: {title}}, index) of slides"
+							:key="index"
+							:class="{active: index === activeIndex}"
+						)
+							button.nav-item(
 								:class="{active: index === activeIndex}"
+								@click.prevent="(pause(), activeIndex = index)"
 							)
-								button.nav-item(
-									:class="{active: index === activeIndex}"
-									@click.prevent="activeIndex = index"
-								)
-									span.nav-item-text {{ getText(title[0].children) }}
+								span.nav-item-text {{ getText(title[0].children) }}
 
 			.grid-row
 				.grid-cell.grid-cell-image
@@ -38,7 +41,10 @@
 
 				.grid-cell
 					.main
-						transition(appear)
+						transition(
+							appear
+							@after-enter="play"
+						)
 							.main-inner(:key="activeIndex")
 								base-content.content
 									vue-truncate-content.content-truncated(
@@ -58,8 +64,8 @@
 										template(#after)
 											span.content-toggle(
 												tabindex="0"
-												@click="contentTruncated = !contentTruncated"
-												@keyup.enter="contentTruncated = !contentTruncated"
+												@click="toggleContent"
+												@keyup.enter="toggleContent"
 											) {{ $t(contentTruncated ? 'more' : 'less') }}
 </template>
 
@@ -71,12 +77,14 @@
 
 	import Loading from 'vue-loading-overlay';
 	import VueTruncateContent from '../plugins/vue-truncate-content/vue-truncate-content';
+	import VueSwiper from './VueSwiper';
 
 	export default {
 		name: 'AppSlider',
 		components: {
 			Loading,
-			VueTruncateContent
+			VueTruncateContent,
+			VueSwiper
 		},
 		i18n: {
 			messages: {
@@ -96,7 +104,13 @@
 				imageLoading: false,
 				image: {},
 				imagesCache: [],
-				contentTruncated: true
+				contentTruncated: true,
+				autoplay: true,
+				vueSwiperNavOptions: {
+					init: false,
+					slidesPerView: 'auto',
+					roundLengths: true
+				}
 			};
 		},
 		computed: {
@@ -108,8 +122,18 @@
 			}
 		},
 		watch: {
-			activeIndex() {
+			activeIndex(val) {
 				this.getImage();
+
+				if (this.$refs.nav.swiper.initialized) {
+					this.$refs.nav.swiper.slideTo(val);
+				}
+			},
+			windowWidth: {
+				handler(val) {
+					this.vueSwiperNavOptions.init = val < 1024;
+				},
+				immediate: true
 			}
 		},
 		methods: {
@@ -146,6 +170,25 @@
 						imgEl.alt = alt;
 					}
 				}
+			},
+			play() {
+				if (this.autoplay) {
+					this.timer = setTimeout(() => {
+						if (this.activeIndex < this.slides.length - 1) {
+							this.activeIndex++;
+						} else {
+							this.activeIndex = 0;
+						}
+					}, 2500);
+				}
+			},
+			pause() {
+				this.autoplay = false;
+				clearTimeout(this.timer);
+			},
+			toggleContent() {
+				this.pause();
+				this.contentTruncated = !this.contentTruncated;
 			}
 		},
 		mounted() {
@@ -168,15 +211,23 @@
 
 	.body {
 		margin: 0 auto;
-		width: calc(100% - var(--grid_padding));
+		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
+
+		@media (width < 1024px) {
+			margin: 0;
+			width: auto;
+		}
 	}
 
 	.grid-row {
 		display: flex;
+		flex-wrap: wrap;
 
 		& + & {
-			margin-top: range(-70px, -140px);
+			@media (width >= 1024px) {
+				margin-top: range(-55px, -110px);
+			}
 		}
 	}
 
@@ -186,22 +237,29 @@
 		min-width: 0;
 
 		&:nth-child(1) {
-			flex-basis: percentage(5 / 12);
+			@media (width >= 1024px) {
+				flex-basis: percentage(5 / 12);
+			}
 		}
 
 		&:nth-child(2) {
-			flex-basis: percentage(7 / 12);
+			@media (width >= 1024px) {
+				flex-basis: percentage(7 / 12);
+			}
 		}
 	}
 
 	.grid-cell-image {
 		display: flex;
 		flex-flow: column;
+
+		@media (width < 1024px) {
+			background-color: #e8e8e8;
+		}
 	}
 
 	.image-box {
 		position: relative;
-		margin-top: range(30px, 60px);
 		overflow: hidden;
 
 		&::before {
@@ -229,8 +287,18 @@
 			}
 		}
 
+		@media (width >= 1024px) {
+			margin-top: range(30px, 60px);
+		}
+
 		@media (width >= 1440px) {
 			margin-left: -100px;
+		}
+
+		@media (width < 1024px) {
+			margin: 0 auto;
+			width: 100%;
+			max-width: 480px;
 		}
 	}
 
@@ -262,30 +330,48 @@
 		}
 	}
 
-	.nav {
+	.vue-swiper.nav {
 		display: flex;
 		box-sizing: border-box;
 		position: relative;
 		z-index: 1;
-		margin: 0 range(-10px, -40px) 0 range(10px, 40px);
-		padding: range(15px, 30px) range(10px, 40px);
 		flex-flow: column;
 		background-color: #2a2c2b;
+
+		>>> .swiper-container {
+			box-sizing: border-box;
+			margin: 0;
+			padding: range(0px, 15px) range(0px, 25px);
+		}
+
+		>>> .swiper-slide {
+			width: auto;
+		}
+
+		@media (width >= 1024px) {
+			margin: 0 range(15px, -40px) 0 range(-15px, 40px);
+
+			>>> .swiper-wrapper {
+				flex-wrap: wrap;
+			}
+		}
 
 		@media (width >= 1440px) {
 			margin-right: -100px;
 		}
+
+		/*@media (width < 1024px) {*/
+		/*	margin: 0 calc(-1 * var(--grid_padding));*/
+		/*}*/
 	}
 
 	.nav-grid-row {
 		display: flex;
-		/*margin: range(-5px, -10px);*/
 		flex-wrap: wrap;
 	}
 
 	.nav-grid-cell {
 		box-sizing: border-box;
-		/*flex: 1 1 auto;*/
 		min-width: 0;
 	}
 
@@ -295,7 +381,7 @@
 		& {
 			display: flex;
 			box-sizing: border-box;
-			padding: 5px range(10px, 15px);
+			padding: 5px 15px;
 			width: 100%;
 			height: range(48px, 58px);
 			justify-content: center;
@@ -328,12 +414,15 @@
 	.main {
 		display: flex;
 		box-sizing: border-box;
-		/*margin-top: range(-70px, -140px);*/
-		padding: range(85px, 170px) range(10px, 40px) range(15px, 30px);
+		padding: range(15px, 30px) range(10px, 40px);
 		min-height: 100%;
 		overflow: hidden;
 		background-color: #f0f0f0;
 		perspective: 1000px;
+
+		@media (width >= 1024px) {
+			padding-top: range(70px, 140px);
+		}
 	}
 
 	.main-inner {
@@ -371,6 +460,10 @@
 
 		> :last-child {
 			margin-bottom: 0 !important;
+		}
+
+		@media (width < 1024px) {
+			min-height: 115px;
 		}
 	}
 

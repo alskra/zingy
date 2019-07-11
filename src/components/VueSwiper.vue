@@ -1,5 +1,5 @@
 <template lang="pug">
-	.vue-swiper
+	.vue-swiper(:class="{'vue-swiper-initialized': swiper.initialized}")
 		.swiper-container(ref="swiperContainer")
 			.swiper-wrapper
 				slot
