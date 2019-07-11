@@ -98,6 +98,12 @@
 				}
 			}
 		},
+		props: {
+			autoplay: {
+				type: Boolean,
+				default: true
+			}
+		},
 		data() {
 			return {
 				activeIndex: 0,
@@ -105,7 +111,7 @@
 				image: {},
 				imagesCache: [],
 				contentTruncated: true,
-				autoplay: true,
+				paused: false,
 				vueSwiperNavOptions: {
 					init: false,
 					slidesPerView: 'auto',
@@ -172,7 +178,7 @@
 				}
 			},
 			play() {
-				if (this.autoplay) {
+				if (this.autoplay && !this.paused) {
 					this.timer = setTimeout(() => {
 						if (this.activeIndex < this.slides.length - 1) {
 							this.activeIndex++;
@@ -183,7 +189,7 @@
 				}
 			},
 			pause() {
-				this.autoplay = false;
+				this.paused = true;
 				clearTimeout(this.timer);
 			},
 			toggleContent() {

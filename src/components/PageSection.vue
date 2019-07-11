@@ -12,7 +12,7 @@
 		.main
 			slot(name="main")
 
-			app-carousel.app-carousel-of-articles.articles-carousel(
+			app-carousel.app-carousel-of-articles.page-section-articles-carousel(
 				v-if="articlesCarousel"
 				:options="{slidesPerView: 'auto'}"
 			)
@@ -38,9 +38,13 @@
 							base-content.article-description(v-if="description")
 								v-nodes(:vnodes="description")
 
-			app-slider.slider(v-if="$scopedSlots.slider")
+			app-slider.page-section-slider(v-if="$scopedSlots.slider")
 				template(slot="slides")
 					slot(name="slider")
+
+			landing-cards.page-section-landing-cards(v-if="$scopedSlots['landing-cards']")
+				template(slot="cards")
+					slot(name="landing-cards")
 </template>
 
 <script>
@@ -53,6 +57,7 @@
 	import AppCarouselOfWorks from './AppCarouselOfWorks';
 	import AppCarouselOfReviews from './AppCarouselOfReviews';
 	import AppSlider from './AppSlider';
+	import LandingCards from './LandingCards';
 
 	export default {
 		name: 'PageSection',
@@ -60,10 +65,8 @@
 			AppCarousel,
 			AppCarouselOfWorks,
 			AppCarouselOfReviews,
-			AppSlider
-		},
-		props: {
-
+			AppSlider,
+			LandingCards
 		},
 		computed: {
 			title() {
@@ -75,9 +78,6 @@
 		},
 		methods: {
 			getVNodesTextContent
-		},
-		mounted() {
-			// console.log('page-section:', this.$scopedSlots.carousel && this.$scopedSlots.carousel())
 		}
 	};
 </script>
@@ -181,6 +181,16 @@
 
 		>>> a {
 			color: inherit;
+		}
+	}
+
+	.page-section-gray {
+		padding: 0;
+		background-color: #f0f0f0;
+
+		.header {
+			margin-bottom: 0;
+			padding: range(15px, 20px) 0;
 		}
 	}
 </style>

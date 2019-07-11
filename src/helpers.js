@@ -31,7 +31,6 @@ export function defineVNodesSlots(vnodes = []) {
 		}
 	});
 
-	// console.log(vnodes);
 	return vnodes;
 }
 
