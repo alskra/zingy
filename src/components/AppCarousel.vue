@@ -46,12 +46,6 @@
 			slides() {
 				return getScopedSlot(this.$scopedSlots.slides);
 			}
-		},
-		methods: {
-
-		},
-		mounted() {
-			// console.log('app-carousel:', this.slides);
 		}
 	};
 </script>
@@ -88,8 +82,11 @@
 
 	.grid-cell {
 		box-sizing: border-box;
-		/*margin: 0 auto;*/
 		padding: 0 var(--grid-cell_padding);
+
+		@media (width >= 1440px) {
+			margin: 0 percentage(-1 / 12);
+		}
 	}
 
 	.nav {

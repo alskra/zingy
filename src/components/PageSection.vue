@@ -115,7 +115,6 @@
 	.content-grid-item,
 	.header-grid-cell {
 		box-sizing: border-box;
-		/*margin: 0 auto;*/
 		padding: 0 var(--grid-cell_padding);
 
 		@media (width >= 1024px) {

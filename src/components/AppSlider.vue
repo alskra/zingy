@@ -3,6 +3,23 @@
 		.body
 			.grid-row
 				.grid-cell
+
+				.grid-cell
+					.nav
+						.nav-grid-row
+							.nav-grid-cell(
+								v-for="({slots: {title}}, index) of slides"
+								:key="index"
+								:class="{active: index === activeIndex}"
+							)
+								button.nav-item(
+									:class="{active: index === activeIndex}"
+									@click.prevent="activeIndex = index"
+								)
+									span.nav-item-text {{ getText(title[0].children) }}
+
+			.grid-row
+				.grid-cell.grid-cell-image
 					.image-box
 						transition(appear)
 							img.image(
@@ -20,19 +37,6 @@
 						)
 
 				.grid-cell
-					.nav
-						.nav-grid-row
-							.nav-grid-cell(
-								v-for="({slots: {title}}, index) of slides"
-								:key="index"
-								:class="{active: index === activeIndex}"
-							)
-								button.nav-item(
-									:class="{active: index === activeIndex}"
-									@click.prevent="activeIndex = index"
-								)
-									span.nav-item-text {{ getText(title[0].children) }}
-
 					.main
 						transition(appear)
 							.main-inner(:key="activeIndex")
@@ -170,6 +174,10 @@
 
 	.grid-row {
 		display: flex;
+
+		& + & {
+			margin-top: range(-70px, -140px);
+		}
 	}
 
 	.grid-cell {
@@ -186,9 +194,14 @@
 		}
 	}
 
+	.grid-cell-image {
+		display: flex;
+		flex-flow: column;
+	}
+
 	.image-box {
 		position: relative;
-		margin-top: range(45px, 90px);
+		margin-top: range(30px, 60px);
 		overflow: hidden;
 
 		&::before {
@@ -250,23 +263,74 @@
 	}
 
 	.nav {
+		display: flex;
+		box-sizing: border-box;
 		position: relative;
 		z-index: 1;
 		margin: 0 range(-10px, -40px) 0 range(10px, 40px);
+		padding: range(15px, 30px) range(10px, 40px);
+		flex-flow: column;
 		background-color: #2a2c2b;
-		height: 170px;
 
 		@media (width >= 1440px) {
 			margin-right: -100px;
 		}
 	}
 
+	.nav-grid-row {
+		display: flex;
+		/*margin: range(-5px, -10px);*/
+		flex-wrap: wrap;
+	}
+
+	.nav-grid-cell {
+		box-sizing: border-box;
+		/*flex: 1 1 auto;*/
+		min-width: 0;
+	}
+
+	.nav-item {
+		all: initial;
+
+		& {
+			display: flex;
+			box-sizing: border-box;
+			padding: 5px range(10px, 15px);
+			width: 100%;
+			height: range(48px, 58px);
+			justify-content: center;
+			align-items: center;
+			color: #ffffff;
+			font-family: var(--font-family);
+			font-size: range(1.6rem, 1.8rem);
+			font-weight: 500;
+			line-height: 1.25;
+			cursor: pointer;
+		}
+
+		&:hover,
+		&.active {
+			.nav-item-text {
+				background-size: 100% 2px;
+			}
+		}
+	}
+
+	.nav-item-text {
+		padding-bottom: 2px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		background: linear-gradient(to right, var(--color-accent), var(--color-accent)) no-repeat 0 100% / 0 2px;
+		transition: background-size 0.3s;
+	}
+
 	.main {
 		display: flex;
 		box-sizing: border-box;
-		margin-top: range(-70px, -140px);
-		padding: range(15px, 185px) range(10px, 40px) range(15px, 30px);
-		height: 100%;
+		/*margin-top: range(-70px, -140px);*/
+		padding: range(85px, 170px) range(10px, 40px) range(15px, 30px);
+		min-height: 100%;
 		overflow: hidden;
 		background-color: #f0f0f0;
 		perspective: 1000px;
@@ -299,6 +363,8 @@
 	}
 
 	.vue-truncate-content.content-truncated {
+		min-height: 175px;
+
 		> :first-child {
 			margin-top: 0 !important;
 		}
