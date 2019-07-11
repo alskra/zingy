@@ -216,7 +216,84 @@ block app
 
 				template(slot="landing-cards")
 					figure
+						template(slot="title")
+							p Лендинг
 
+						template(slot="description")
+							p Одностраничный сайт, который создан с целью красочной презентации товара или услуги.
+
+						template(slot="price")
+							span от 75 000 ₽
+
+						template(slot="order-button")
+							a(href="") Заказать сайт
+
+						template(slot="more-link")
+							a(href="") Узнать подробнее
+
+					figure
+						template(slot="title")
+							p Сайт-визитка
+
+						template(slot="description")
+							p Небольшой сайт. Презентация компании, продукта или услуги. На сайте содержатся данные о компании, товарах и услугах.
+
+						template(slot="price")
+							span от 100 000 ₽
+
+						template(slot="order-button")
+							a(href="") Заказать сайт
+
+						template(slot="more-link")
+							a(href="") Узнать подробнее
+
+					figure
+						template(slot="title")
+							p Корпоративный сайт
+
+						template(slot="description")
+							p Корпоративный сайт — это лицо компании и в первую очередь выполняет имиджевую функцию.
+
+						template(slot="price")
+							span от 150 000 ₽
+
+						template(slot="order-button")
+							a(href="") Заказать сайт
+
+						template(slot="more-link")
+							a(href="") Узнать подробнее
+
+					figure
+						template(slot="title")
+							p Интернет-магазин
+
+						template(slot="description")
+							p Сайт, торгующий товарами или услугами в сети Интернет, на сайте есть личный кабинет для покупателя, подключен эквайринг.
+
+						template(slot="price")
+							span от 250 000 ₽
+
+						template(slot="order-button")
+							a(href="") Заказать сайт
+
+						template(slot="more-link")
+							a(href="") Узнать подробнее
+
+					figure
+						template(slot="title")
+							p Личный кабинет
+
+						template(slot="description")
+							p Личный кабинет c нестандартным функционалом. Интеграция с множеством сторонних сервисов и пр.
+
+						template(slot="price")
+							span от 300 000 ₽
+
+						template(slot="order-button")
+							a(href="") Заказать сайт
+
+						template(slot="more-link")
+							a(href="") Узнать подробнее
 
 			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')
