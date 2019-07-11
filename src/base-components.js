@@ -28,29 +28,16 @@ Vue.component('VNodes', {
 		}
 	},
 	render(createElement, {props, parent}) {
-		// console.log(props.vnodes);
-		if (parent.$options._scopeId) {
-			props.vnodes.forEach(vnode => {
+		const scopeId = parent.$options._scopeId;
+
+		props.vnodes.forEach(vnode => {
+			if (vnode.tag && scopeId) {
 				vnode.data = vnode.data || {};
 				vnode.data.attrs = vnode.data.attrs || {};
-				vnode.data.attrs[parent.$options._scopeId] = '';
-			})
-		}
-
-		return props.vnodes;
-	}
-});
-
-Vue.component('StyleScope', {
-	functional: true,
-	render(createElement, {props, parent, slots}) {
-		return createElement({
-			// functional: true,
-			name: props.scope || parent.$options._scopeId,
-			_scopeId: props.scope || parent.$options._scopeId,
-			render() {
-				return slots().default[0];
+				vnode.data.attrs[scopeId] = '';
 			}
 		});
+
+		return props.vnodes;
 	}
 });

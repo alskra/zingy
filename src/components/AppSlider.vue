@@ -34,19 +34,29 @@
 									span.nav-item-text {{ getText(title[0].children) }}
 
 					.main
-						transition(
-							appear
-							mode="out-in"
-						)
+						transition(appear)
 							.main-inner(:key="activeIndex")
-								.title(
-									v-if="activeSlide.title"
-									:is="activeSlide.title[0].tag"
-								) {{ getText(activeSlide.title[0].children) }}
-
 								base-content.content
-									vue-clamp-content(:length="200")
-										v-nodes(:vnodes="activeSlide.content")
+									vue-truncate-content.content-truncated(
+										:length="200"
+										:truncated.sync="contentTruncated"
+									)
+										template(#before)
+											| 🦄&nbsp;
+
+										.h2(
+											v-if="activeSlide.title"
+											:is="activeSlide.title[0].tag"
+										) {{ getText(activeSlide.title[0].children) }}
+
+										v-nodes(:vnodes="activeSlide.content || []")
+
+										template(#after)
+											span.content-toggle(
+												tabindex="0"
+												@click="contentTruncated = !contentTruncated"
+												@keyup.enter="contentTruncated = !contentTruncated"
+											) {{ $t(contentTruncated ? 'more' : 'less') }}
 </template>
 
 <script>
@@ -56,19 +66,33 @@
 	} from '../helpers';
 
 	import Loading from 'vue-loading-overlay';
-	import VueClampContent from '../plugins/vue-clamp-content/vue-clamp-content';
+	import VueTruncateContent from '../plugins/vue-truncate-content/vue-truncate-content';
 
 	export default {
 		name: 'AppSlider',
 		components: {
 			Loading,
-			VueClampContent
+			VueTruncateContent
+		},
+		i18n: {
+			messages: {
+				en: {
+					more: 'Show more',
+					less: 'Show less'
+				},
+				ru: {
+					more: 'Показать полностью',
+					less: 'Свернуть'
+				}
+			}
 		},
 		data() {
 			return {
 				activeIndex: 0,
 				imageLoading: false,
-				image: {}
+				image: {},
+				imagesCache: [],
+				contentTruncated: true
 			};
 		},
 		computed: {
@@ -87,23 +111,36 @@
 		methods: {
 			getText: getVNodesTextContent,
 			getImage() {
-				const imgData = this.activeSlide.image && this.activeSlide.image[0].data;
+				const {'data-src': src, alt} = this.activeSlide.image
+					&& this.activeSlide.image[0].data
+					&& this.activeSlide.image[0].data.attrs
+					|| {};
 
-				if (imgData && !this.imageLoading) {
-					this.imageLoading = true;
-
-					const img = document.createElement('img');
-
-					img.addEventListener('load', () => {
-						this.imageLoading = false;
+				if (src && !this.imageLoading) {
+					if (this.imagesCache.includes(src)) {
 						this.image = {
-							src: img.src,
-							alt: img.alt
+							src,
+							alt
 						};
-					});
+					} else {
+						this.imageLoading = true;
 
-					img.src = imgData.attrs['data-src'];
-					img.alt = imgData.attrs.alt;
+						const imgEl = document.createElement('img');
+
+						imgEl.addEventListener('load', () => {
+							this.imageLoading = false;
+
+							this.image = {
+								src: imgEl.src,
+								alt: imgEl.alt
+							};
+
+							this.imagesCache.push(src);
+						});
+
+						imgEl.src = src;
+						imgEl.alt = alt;
+					}
 				}
 			}
 		},
@@ -170,6 +207,13 @@
 			left: 0;
 			background-color: rgba(0, 0, 0, 0.15);
 			pointer-events: none;
+			transition: opacity 0.3s;
+		}
+
+		&:hover {
+			&::after {
+				opacity: 0;
+			}
 		}
 
 		@media (width >= 1440px) {
@@ -191,12 +235,12 @@
 		}
 
 		&.v-enter-active {
-			transition-duration: 0.25s;
+			transition-duration: 0.3s;
 			z-index: 1;
 		}
 
 		&.v-leave-active {
-			transition-delay: 0.25s;
+			transition-delay: 0.3s;
 		}
 
 		&.v-enter,
@@ -218,22 +262,56 @@
 	}
 
 	.main {
+		display: flex;
 		box-sizing: border-box;
 		margin-top: range(-70px, -140px);
 		padding: range(15px, 185px) range(10px, 40px) range(15px, 30px);
 		height: 100%;
+		overflow: hidden;
 		background-color: #f0f0f0;
+		perspective: 1000px;
 	}
 
 	.main-inner {
+		box-sizing: border-box;
+		position: relative;
+		flex: 0 0 100%;
+		min-width: 0;
+
+		& + & {
+			margin-left: -100%;
+		}
+
 		&.v-enter-active,
 		&.v-leave-active {
-			transition: opacity 0.15s;
+			transition: opacity;
+			transition-duration: 0.3s;
+		}
+
+		&.v-enter-active {
+			z-index: 1;
 		}
 
 		&.v-enter,
 		&.v-leave-to {
 			opacity: 0;
 		}
+	}
+
+	.vue-truncate-content.content-truncated {
+		> :first-child {
+			margin-top: 0 !important;
+		}
+
+		> :last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	.content-toggle {
+		color: var(--color);
+		text-decoration: none;
+		font-weight: 500;
+		cursor: pointer;
 	}
 </style>
