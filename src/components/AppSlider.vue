@@ -469,7 +469,7 @@
 		}
 
 		@media (width < 1024px) {
-			min-height: 115px;
+			min-height: range(240px, 0px);
 		}
 	}
 
