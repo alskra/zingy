@@ -7,6 +7,7 @@
 						tag,
 						data: {attrs = {}} = {},
 						slots: {
+							image,
 							title,
 							description,
 							price,
@@ -20,6 +21,11 @@
 						:is="tag"
 						:style="{backgroundColor: attrs['bg-color']}"
 					)
+						.card-image-box(v-if="image")
+							img.card-image(
+								v-bind="image[0].data.attrs"
+							)
+
 						.card-body
 							.card-body-top
 								.card-title(
@@ -94,6 +100,7 @@
 		& {
 			display: flex;
 			box-sizing: border-box;
+			position: relative;
 			max-width: 100%;
 			height: 100%;
 			flex-flow: column;
@@ -103,9 +110,29 @@
 		}
 	}
 
+	.card-image-box {
+		display: flex;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		opacity: 0.3;
+	}
+
+	.card-image {
+		flex-shrink: 0;
+		width: calc(100% + 2 * range(30px, 60px));
+		height: calc(100% - 2 * range(15px, 30px));
+	}
+
 	.card-body {
 		display: flex;
 		box-sizing: border-box;
+		position: relative;
 		padding: range(30px, 60px) range(10px, 30px);
 		height: 100%;
 		flex-flow: column;
