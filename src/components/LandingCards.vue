@@ -108,6 +108,12 @@
 			font-family: var(--font-family);
 			background-color: #5f8896;
 		}
+
+		&:hover {
+			.card-image {
+				transform: scale(0.9);
+			}
+		}
 	}
 
 	.card-image-box {
@@ -125,8 +131,12 @@
 
 	.card-image {
 		flex-shrink: 0;
-		width: calc(100% + 2 * range(30px, 60px));
-		height: calc(100% - 2 * range(15px, 30px));
+		/*width: calc(100% + 2 * range(30px, 60px));*/
+		/*height: calc(100% - 2 * range(15px, 30px));*/
+		width: 100%;
+		height: 100%;
+		transform: scale(1.1);
+		transition: transform 0.3s;
 	}
 
 	.card-body {
