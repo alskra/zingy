@@ -456,6 +456,10 @@
 	.vue-truncate-content.content-truncated {
 		height: 200px;
 
+		.h2 {
+			margin-bottom: 0.75em;
+		}
+
 		> :first-child {
 			margin-top: 0 !important;
 		}
