@@ -32,6 +32,9 @@ export default {
 				const result = [];
 
 				vnodes.forEach(vnode => {
+					// Copy vnode
+					vnode = Object.defineProperties(new vnode.constructor(), Object.getOwnPropertyDescriptors(vnode));
+
 					if (vnode.tag && scopeId) {
 						vnode.data = vnode.data || {};
 						vnode.data.attrs = vnode.data.attrs || {};
@@ -43,11 +46,12 @@ export default {
 							counter += vnode.text.length;
 						}
 
-						truncate(vnode.children);
+						if (vnode.children) {
+							vnode.children = truncate(vnode.children);
+						}
+
 						result.push(vnode);
 					} else if (counter < this.realLength) {
-						vnode = Object.defineProperties(new vnode.constructor(), Object.getOwnPropertyDescriptors(vnode));
-
 						if (vnode.text) {
 							counter += vnode.text.length;
 
