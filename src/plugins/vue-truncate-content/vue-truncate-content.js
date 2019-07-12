@@ -111,6 +111,11 @@ export default {
 			return content;
 		}
 	},
+	watch: {
+		truncated() {
+			this.realLength = this.length;
+		}
+	},
 	methods: {
 		update() {
 			// console.log(this.$el.offsetHeight);
