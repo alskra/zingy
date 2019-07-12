@@ -90,10 +90,11 @@
 		color: white;
 		text-decoration: none;
 		position: relative;
+		transform: perspective(50px);
 
 		&:hover {
 			.base-icon.logo-icon {
-				transition: transform 0.8s;
+				transition: transform 0.8s 0.1s;
 				transform: perspective(50px) rotateY(360deg);
 			}
 		}

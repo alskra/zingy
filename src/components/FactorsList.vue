@@ -103,6 +103,13 @@
 			font-family: var(--font-family);
 			background-color: #2a2c2b;
 		}
+
+		&:hover {
+			.factor-number {
+				transition: transform 0.8s 0.1s;
+				transform: perspective(50px) rotateY(360deg);
+			}
+		}
 	}
 
 	.factor-header {
@@ -141,9 +148,11 @@
 	.factor-number {
 		box-sizing: border-box;
 		margin-left: range(10px, 30px);
+		flex: 0 0 auto;
 		min-width: 0;
 		font-size: range(3.8rem, 4.0rem);
 		font-weight: 700;
 		line-height: 1.25;
+		transform: perspective(50px);
 	}
 </style>
