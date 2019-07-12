@@ -1,25 +1,27 @@
 <template lang="pug">
 	.vue-swiper(:class="{'vue-swiper-initialized': swiper.initialized}")
 		.swiper-container(ref="swiperContainer")
-			.swiper-wrapper
+			.swiper-wrapper(ref="swiperWrapper")
 				slot
-					.swiper-slide Slide 1
-					.swiper-slide Slide 2
-					.swiper-slide Slide 3
+					//
+						.swiper-slide Slide 1
+						.swiper-slide Slide 2
+						.swiper-slide Slide 3
 
-		//- button.nav-button.nav-button-is-prev(
-		//- 	type="button"
-		//- 	:disabled="swiper.isBeginning"
-		//- 	@click="swiper.slidePrev()"
-		//- ) navButtonIsPrev
+		//
+			button.nav-button.nav-button-is-prev(
+				type="button"
+				:disabled="swiper.isBeginning"
+				@click="swiper.slidePrev()"
+			) navButtonIsPrev
 
-		//- button.nav-button.nav-button-is-next(
-		//- 	type="button"
-		//- 	:disabled="swiper.isEnd"
-		//- 	@click="swiper.slideNext()"
-		//- ) navButtonIsNext
+			button.nav-button.nav-button-is-next(
+				type="button"
+				:disabled="swiper.isEnd"
+				@click="swiper.slideNext()"
+			) navButtonIsNext
 
-		//- .pagination(ref="pagination")
+			.pagination(ref="pagination")
 </template>
 
 <script>
@@ -34,7 +36,8 @@
 		Controller,
 		Keyboard,
 		Zoom,
-		Mousewheel
+		Mousewheel,
+		Autoplay
 	} from 'swiper/dist/js/swiper.esm.js';
 
 	import merge from 'lodash-es/merge';
@@ -47,7 +50,8 @@
 		Controller,
 		Keyboard,
 		Zoom,
-		Mousewheel
+		Mousewheel,
+		Autoplay
 	]);
 
 	export default {
@@ -155,6 +159,16 @@
 	.swiper-container {
 		user-select: none;
 	}
+
+	/*.swiper-container-horizontal {*/
+	/*	display: flex;*/
+
+	/*	.swiper-wrapper {*/
+	/*		flex: 0 0 100%;*/
+	/*		width: auto;*/
+	/*		justify-content: center;*/
+	/*	}*/
+	/*}*/
 
 	.swiper-pagination-fraction {
 		bottom: auto;

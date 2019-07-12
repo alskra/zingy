@@ -30,17 +30,18 @@
 		data() {
 			return {
 				defaultOptions: {
+					centerInsufficientSlides: true,
 					pagination: {
 						type: 'fraction',
 						formatFractionCurrent(number) {
-							return String(number).padStart(2, '0')
+							return String(number).padStart(2, '0');
 						},
 						formatFractionTotal(number) {
-							return String(number).padStart(2, '0')
+							return String(number).padStart(2, '0');
 						}
 					}
 				}
-			}
+			};
 		},
 		computed: {
 			slides() {

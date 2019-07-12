@@ -327,7 +327,7 @@ block app
 
 			section.app-page-section(is="page-section")
 				template(slot="title")
-					h2 Факторы, от которых зависит итоговая цена реализации проекта
+					h2 Факторы, от&nbsp;которых зависит итоговая цена реализации проекта
 
 				template(slot="factors-list")
 					figure
@@ -350,6 +350,60 @@ block app
 
 						template(slot="description")
 							p Онлайн-кассы, CRM, служба доставки и лояльности и так далее.
+
+			section.app-page-section(is="page-section")
+				template(slot="title")
+					h2 CMS & Framework, с&nbsp;которыми мы работаем
+
+				template(slot="infinite-carousel")
+					figure(title="ModX")
+						template(slot="image")
+							img(
+								src="upload/logos/modx-logo.svg"
+								alt="ModX"
+							)
+
+					figure(title="1C-Bitrix")
+						template(slot="image")
+							img(
+								src="upload/logos/1c-bitrix.svg"
+								alt="1C-Bitrix"
+							)
+
+					figure(title="OpenCart")
+						template(slot="image")
+							img(
+								src="upload/logos/opencart.svg"
+								alt="OpenCart"
+							)
+
+					figure(title="WordPress")
+						template(slot="image")
+							img(
+								src="upload/logos/wporg-logo.svg"
+								alt="WordPress"
+							)
+
+					figure(title="Laravel")
+						template(slot="image")
+							img(
+								src="upload/logos/laravel.svg"
+								alt="Laravel"
+							)
+
+					figure(title="Yii Framework")
+						template(slot="image")
+							img(
+								src="upload/logos/yii.svg"
+								alt="Yii Framework"
+							)
+
+					figure(title="VueJS")
+						template(slot="image")
+							img(
+								src="upload/logos/vuejs.svg"
+								alt="VueJS"
+							)
 
 			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')

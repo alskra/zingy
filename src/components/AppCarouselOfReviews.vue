@@ -13,7 +13,7 @@
 				defaultOptions: {
 					slidesPerView: 'auto'
 				}
-			}
+			};
 		}
 	};
 </script>

@@ -52,6 +52,10 @@
 			factors-list.page-section-factors-list(v-if="$scopedSlots['factors-list']")
 				template(slot="factors")
 					slot(name="factors-list")
+
+			infinite-carousel.page-section-infinite-carousel(v-if="$scopedSlots['infinite-carousel']")
+				template(slot="slides")
+					slot(name="infinite-carousel")
 </template>
 
 <script>
@@ -66,6 +70,7 @@
 	import AppSlider from './AppSlider';
 	import LandingCards from './LandingCards';
 	import FactorsList from './FactorsList';
+	import InfiniteCarousel from './InfiniteCarousel';
 
 	export default {
 		name: 'PageSection',
@@ -75,7 +80,8 @@
 			AppCarouselOfReviews,
 			AppSlider,
 			LandingCards,
-			FactorsList
+			FactorsList,
+			InfiniteCarousel
 		},
 		computed: {
 			title() {
