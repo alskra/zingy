@@ -345,17 +345,20 @@
 		background-color: #2a2c2b;
 
 		>>> .swiper-container {
-			box-sizing: border-box;
 			margin: 0;
-			padding: range(0px, 15px) range(0px, 25px);
 		}
 
 		>>> .swiper-slide {
 			width: auto;
+			max-width: 100%;
 		}
 
 		@media (width >= 1024px) {
 			margin: 0 range(15px, -40px) 0 range(-15px, 40px);
+
+			>>> .swiper-container {
+				padding: range(0px, 15px) range(0px, 30px);
+			}
 
 			>>> .swiper-wrapper {
 				flex-wrap: wrap;
@@ -383,7 +386,7 @@
 		& {
 			display: flex;
 			box-sizing: border-box;
-			padding: 5px 15px;
+			padding: 0 10px;
 			width: 100%;
 			height: range(48px, 58px);
 			justify-content: center;
@@ -405,7 +408,7 @@
 	}
 
 	.nav-item-text {
-		padding-bottom: 2px;
+		padding: 2px 0;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
