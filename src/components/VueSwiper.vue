@@ -3,12 +3,12 @@
 		.swiper-container(ref="swiperContainer")
 			.swiper-wrapper(ref="swiperWrapper")
 				slot
-					//
+					//-
 						.swiper-slide Slide 1
 						.swiper-slide Slide 2
 						.swiper-slide Slide 3
 
-		//
+		//-
 			button.nav-button.nav-button-is-prev(
 				type="button"
 				:disabled="swiper.isBeginning"
