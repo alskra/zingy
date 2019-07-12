@@ -109,8 +109,8 @@ export default {
 	},
 	methods: {
 		update() {
-			console.log(this.$el.offsetHeight);
-			console.log(this.$el.scrollHeight);
+			// console.log(this.$el.offsetHeight);
+			// console.log(this.$el.scrollHeight);
 
 			if (this.truncated && this.$el.scrollHeight > this.$el.offsetHeight) {
 				this.realLength = this.realLength - 5;
@@ -122,7 +122,7 @@ export default {
 		}
 	},
 	render(createElement) {
-		console.log('render');
+		// console.log('render');
 
 		return createElement(
 			this.tag,
@@ -146,13 +146,13 @@ export default {
 		);
 	},
 	mounted() {
-		console.log('mounted');
+		// console.log('mounted');
 
 		this.update();
 		window.addEventListener('resize', this.onWindowResize);
 	},
 	updated() {
-		console.log('updated');
+		// console.log('updated');
 
 		this.update();
 	},
