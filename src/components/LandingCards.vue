@@ -11,8 +11,8 @@
 							title,
 							description,
 							price,
-							'order-button': orderButton,
-							'more-link': moreLink
+							order,
+							more
 						}
 					}, index) of cards`
 					:key="index"
@@ -41,15 +41,15 @@
 									v-nodes(:vnodes="price[0].children")
 
 								base-button.is-block.wide.card-order-button(
-									v-if="orderButton"
+									v-if="order"
 									tag="a"
-									v-bind="orderButton[0].data.attrs"
-								) {{ getText(orderButton[0].children) }}
+									v-bind="order[0].data.attrs"
+								) {{ getText(order[0].children) }}
 
 								a.card-more-link(
-									v-if="moreLink"
-									v-bind="moreLink[0].data.attrs"
-								) {{ getText(moreLink[0].children) }}
+									v-if="more"
+									v-bind="more[0].data.attrs"
+								) {{ getText(more[0].children) }}
 </template>
 
 <script>

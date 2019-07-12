@@ -48,6 +48,10 @@
 			landing-cards.page-section-landing-cards(v-if="$scopedSlots['landing-cards']")
 				template(slot="cards")
 					slot(name="landing-cards")
+
+			factors-list.page-section-factors-list(v-if="$scopedSlots['factors-list']")
+				template(slot="factors")
+					slot(name="factors-list")
 </template>
 
 <script>
@@ -61,6 +65,7 @@
 	import AppCarouselOfReviews from './AppCarouselOfReviews';
 	import AppSlider from './AppSlider';
 	import LandingCards from './LandingCards';
+	import FactorsList from './FactorsList';
 
 	export default {
 		name: 'PageSection',
@@ -69,7 +74,8 @@
 			AppCarouselOfWorks,
 			AppCarouselOfReviews,
 			AppSlider,
-			LandingCards
+			LandingCards,
+			FactorsList
 		},
 		computed: {
 			title() {

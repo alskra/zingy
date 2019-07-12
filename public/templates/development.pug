@@ -231,10 +231,10 @@ block app
 						template(slot="price")
 							span от 75 000 ₽
 
-						template(slot="order-button")
+						template(slot="order")
 							a(href="") Заказать сайт
 
-						template(slot="more-link")
+						template(slot="more")
 							a(href="") Узнать подробнее
 
 					figure(bg-color="#528596")
@@ -253,10 +253,10 @@ block app
 						template(slot="price")
 							span от 100 000 ₽
 
-						template(slot="order-button")
+						template(slot="order")
 							a(href="") Заказать сайт
 
-						template(slot="more-link")
+						template(slot="more")
 							a(href="") Узнать подробнее
 
 					figure(bg-color="#468296")
@@ -275,10 +275,10 @@ block app
 						template(slot="price")
 							span от 150 000 ₽
 
-						template(slot="order-button")
+						template(slot="order")
 							a(href="") Заказать сайт
 
-						template(slot="more-link")
+						template(slot="more")
 							a(href="") Узнать подробнее
 
 					figure(bg-color="#317d96")
@@ -297,10 +297,10 @@ block app
 						template(slot="price")
 							span от 250 000 ₽
 
-						template(slot="order-button")
+						template(slot="order")
 							a(href="") Заказать сайт
 
-						template(slot="more-link")
+						template(slot="more")
 							a(href="") Узнать подробнее
 
 					figure(bg-color="#227996")
@@ -319,11 +319,37 @@ block app
 						template(slot="price")
 							span от 300 000 ₽
 
-						template(slot="order-button")
+						template(slot="order")
 							a(href="") Заказать сайт
 
-						template(slot="more-link")
+						template(slot="more")
 							a(href="") Узнать подробнее
+
+			section.app-page-section(is="page-section")
+				template(slot="title")
+					h2 Факторы, от которых зависит итоговая цена реализации проекта
+
+				template(slot="factors-list")
+					figure
+						template(slot="title")
+							p Сложность проекта
+
+						template(slot="description")
+							p Реализовать одностаничник намного проще, чем личный кабинет, портал или интернет-магазин.
+
+					figure
+						template(slot="title")
+							p Планируемый функционал
+
+						template(slot="description")
+							p Например, корзина, личный кабинет, промокоды и так далее.
+
+					figure
+						template(slot="title")
+							p Количество сервисов для интеграции
+
+						template(slot="description")
+							p Онлайн-кассы, CRM, служба доставки и лояльности и так далее.
 
 			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')
