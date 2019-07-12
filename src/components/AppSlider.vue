@@ -48,11 +48,11 @@
 							.main-inner(:key="activeIndex")
 								base-content.content
 									vue-truncate-content.content-truncated(
-										:length="200"
+										:length="300"
 										:truncated.sync="contentTruncated"
 									)
 										template(#before)
-											| 🦄&nbsp;
+											| 🦄
 
 										.h2(
 											v-if="activeSlide.title"
@@ -365,10 +365,6 @@
 		@media (width >= 1440px) {
 			margin-right: -100px;
 		}
-
-		/*@media (width < 1024px) {*/
-		/*	margin: 0 calc(-1 * var(--grid_padding));*/
-		/*}*/
 	}
 
 	.nav-grid-row {
@@ -458,7 +454,7 @@
 	}
 
 	.vue-truncate-content.content-truncated {
-		min-height: 175px;
+		height: 200px;
 
 		> :first-child {
 			margin-top: 0 !important;
@@ -467,16 +463,14 @@
 		> :last-child {
 			margin-bottom: 0 !important;
 		}
-
-		@media (width < 1024px) {
-			min-height: range(240px, 0px);
-		}
 	}
 
 	.content-toggle {
 		color: var(--color);
 		text-decoration: none;
+		font-size: var(--font-size);
 		font-weight: 500;
+		line-height: var(--line-height);
 		cursor: pointer;
 	}
 </style>

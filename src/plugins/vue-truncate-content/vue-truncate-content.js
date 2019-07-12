@@ -18,30 +18,15 @@ export default {
 			default: true
 		}
 	},
-	render(createElement) {
-		return createElement(
-			this.tag,
-			{
-				class: {
-					'vue-truncate-content': true,
-					truncated: this.truncated
-				},
-				on: {
-					click: () => {
-						// this.$emit('update:truncated', !this.truncated);
-					}
-				},
-				key: Date.now(),
-			},
-			this.getContent()
-		);
+	data() {
+		return {
+			realLength: this.length
+		};
 	},
-	methods: {
-		getContent() {
+	computed: {
+		content() {
 			const scopeId = this.$parent.$options._scopeId;
-
-			let counter = 0,
-				truncated = false;
+			let counter = 0;
 
 			const truncate = (vnodes = []) => {
 				const result = [];
@@ -60,15 +45,14 @@ export default {
 
 						truncate(vnode.children);
 						result.push(vnode);
-					} else if (counter < this.length) {
+					} else if (counter < this.realLength) {
 						vnode = Object.defineProperties(new vnode.constructor(), Object.getOwnPropertyDescriptors(vnode));
 
 						if (vnode.text) {
 							counter += vnode.text.length;
 
-							if (counter > this.length) {
-								vnode.text = vnode.text.slice(0, vnode.text.length - (counter - this.length));
-								truncated = true;
+							if (counter > this.realLength) {
+								vnode.text = vnode.text.slice(0, vnode.text.length - (counter - this.realLength));
 							}
 						}
 
@@ -84,8 +68,8 @@ export default {
 			};
 
 			const content = truncate(this.$scopedSlots.default && this.$scopedSlots.default());
-			const beforeSlot = this.$scopedSlots.before && this.$scopedSlots.before() || [];
-			const afterSlot = this.$scopedSlots.after && this.$scopedSlots.after() || [];
+			const beforeSlot = this.$scopedSlots.before && this.$scopedSlots.before();
+			const afterSlot = this.$scopedSlots.after && this.$scopedSlots.after();
 
 			if (content.length > 0) {
 				const firstNode = content[0],
@@ -93,13 +77,15 @@ export default {
 					ellipsis = this.$createElement('span', this.ellipsis),
 					space = this.$createElement('span', ' ');
 
-				if (firstNode.children) {
-					firstNode.children.unshift(space, ...beforeSlot);
-				} else {
-					content.unshift(space, ...beforeSlot);
+				if (beforeSlot) {
+					if (firstNode.children) {
+						firstNode.children.unshift(...beforeSlot, space);
+					} else {
+						content.unshift(...beforeSlot, space);
+					}
 				}
 
-				if (truncated) {
+				if (this.truncated && counter > this.realLength) {
 					if (lastNode.children) {
 						lastNode.children.push(ellipsis);
 					} else {
@@ -107,7 +93,7 @@ export default {
 					}
 				}
 
-				if (counter > this.length) {
+				if (afterSlot && counter > this.realLength) {
 					const space = this.$createElement('span', ' ');
 
 					if (lastNode.children) {
@@ -120,5 +106,57 @@ export default {
 
 			return content;
 		}
+	},
+	methods: {
+		update() {
+			console.log(this.$el.offsetHeight);
+			console.log(this.$el.scrollHeight);
+
+			if (this.truncated && this.$el.scrollHeight > this.$el.offsetHeight) {
+				this.realLength = this.realLength - 5;
+			}
+		},
+		onWindowResize() {
+			this.realLength = this.length;
+			this.update();
+		}
+	},
+	render(createElement) {
+		console.log('render');
+
+		return createElement(
+			this.tag,
+			{
+				class: {
+					'vue-truncate-content': true,
+					truncated: this.truncated
+				},
+				style: {
+					overflow: 'hidden',
+					height: this.truncated ? '' : 'auto'
+				},
+				on: {
+					click: () => {
+						// this.$emit('update:truncated', !this.truncated);
+					}
+				},
+				key: Date.now()
+			},
+			this.content
+		);
+	},
+	mounted() {
+		console.log('mounted');
+
+		this.update();
+		window.addEventListener('resize', this.onWindowResize);
+	},
+	updated() {
+		console.log('updated');
+
+		this.update();
+	},
+	destroyed() {
+		window.removeEventListener('resize', this.onWindowResize);
 	}
 };

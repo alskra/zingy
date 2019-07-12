@@ -38,7 +38,7 @@
 							base-content.article-description(v-if="description")
 								v-nodes(:vnodes="description")
 
-			app-slider.page-section-slider(v-if="$scopedSlots.slider")
+			app-slider.page-section-slider(v-if="$scopedSlots.slider" :autoplay="false")
 				template(slot="slides")
 					slot(name="slider")
 
