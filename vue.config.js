@@ -26,13 +26,25 @@ const pages = {
 	'vue-sticky-exm': {
 		template: 'public/templates/vue-sticky-exm.pug',
 		filename: 'vue-sticky-exm.html'
+	},
+	'IBM-Plex-Sans/index': {
+		template: 'public/templates/IBM-Plex-Sans/index.pug',
+		filename: 'IBM-Plex-Sans/index.html'
+	},
+	'Source-Sans-Pro/index': {
+		template: 'public/templates/Source-Sans-Pro/index.pug',
+		filename: 'Source-Sans-Pro/index.html'
+	},
+	'Exo-2/index': {
+		template: 'public/templates/Exo-2/index.pug',
+		filename: 'Exo-2/index.html'
 	}
 };
 
 const pugTemplateLoaders = '!!pug-loader?pretty!';
 
 module.exports = {
-	publicPath: '',
+	publicPath: '/',
 	runtimeCompiler: true,
 	devServer: {
 		host: 'localhost',
