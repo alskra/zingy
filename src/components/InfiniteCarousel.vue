@@ -1,7 +1,6 @@
 <template lang="pug">
 	.infinite-carousel
 		vue-swiper(
-			ref="swiper"
 			v-if="slides"
 			:options="swiperOptions"
 		)
@@ -44,24 +43,27 @@
 		data() {
 			return {
 				swiperOptions: {
-					init: false,
+					// init: false,
 					slidesPerView: 'auto',
 					centerInsufficientSlides: true,
 					speed: 7000,
-					autoplay: {
-						delay: 0
-					},
+					autoplay: false,
 					allowTouchMove: false,
 					loop: true,
 					// loopedSlides: this.slides && this.slides.length,
 					disableOnInteraction: false,
 					on: {
-						resize: () => {
-							this.$refs.swiper.swiper.autoplay.stop();
-							this.$refs.swiper.swiper.slideToLoop(0, 0);
-							this.$refs.swiper.swiper.autoplay.start();
+						init: () => {
+							setTimeout(() => {
+								if (!this.swiperOptions.autoplay) {
+									this.swiperOptions.autoplay = {
+										delay: 0
+									};
+								}
+							}, 1000);
 						}
-					}
+					},
+					freeMode: true
 				}
 			};
 		},
@@ -69,17 +71,6 @@
 			slides() {
 				return getSlot(this.$scopedSlots.slides);
 			}
-		},
-		mounted() {
-			setTimeout(() => {
-				this.swiperOptions.init = true;
-			}, 50);
-
-			// this.$nextTick(() => {
-			// 	this.swiperOptions.init = true;
-			// });
-
-			// window.addEventListener('resize', this.swiper.autoplay.start);
 		}
 	};
 </script>
@@ -97,10 +88,6 @@
 	}
 
 	.vue-swiper {
-		>>> .swiper-container {
-
-		}
-
 		>>> .swiper-wrapper {
 			transition-timing-function: linear;
 		}
@@ -110,7 +97,7 @@
 		margin: 0;
 		box-sizing: border-box;
 		padding: range(10px, 20px);
-		width: range(150px, 300px);
+		width: range(140px, 280px);
 	}
 
 	.image-box {
