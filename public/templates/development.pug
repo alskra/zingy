@@ -351,6 +351,20 @@ block app
 						template(slot="description")
 							p Онлайн-кассы, CRM, служба доставки и лояльности и так далее.
 
+			section.app-page-fancy-section(is="fancy-section")
+				template(slot="title")
+					h2 Почему так разнятся цены на рынке?
+
+				template(slot="content")
+					p
+						strong Этим вопросом задаются многие начинающие предприниматели.  Цена на рынке в среднем колеблется от 10 000р. до 5 000 000р. Почему такой разбег? Давайте рассмотрим подробнее:
+
+				aside(
+					slot="articles"
+					is="template"
+				)
+
+
 			section.app-page-section(is="page-section")
 				template(slot="title")
 					h2 CMS & Framework, с&nbsp;которыми мы работаем

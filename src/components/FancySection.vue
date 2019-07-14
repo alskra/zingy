@@ -20,9 +20,15 @@
 					base-button.button(
 						:tag="tag"
 						v-bind="data.attrs"
-					) {{ getVNodesTextContent(children) }}
+					) {{ $getText(children) }}
 
-	section.fancy-section
+	section.fancy-section(
+		:set.prop=`(
+			title = $getSlot('title'),
+			buttons = $getSlot('buttons'),
+			articles = $getSlot('articles')
+		)`
+	)
 		transition(
 			appear
 			:duration="{enter: 1100, leave: 800}"
@@ -43,7 +49,7 @@
 								.title(
 									v-if="title"
 									:is="title[0].tag"
-								) {{ getVNodesTextContent(title[0].children) }}
+								) {{ $getText(title) }}
 
 							base-content.content(v-if="$scopedSlots.content")
 								slot(name="content")
@@ -78,11 +84,11 @@
 												.article-title(
 													v-if="title"
 													:is="title[0].tag"
-												) {{ getVNodesTextContent(title[0].children) }}
+												) {{ $getText(title) }}
 
 												p.article-description(
 													v-if="description"
-												) {{ getVNodesTextContent(description) }}
+												) {{ $getText(description) }}
 
 							footer.footer(v-if="buttons && windowWidth < 1024")
 								+buttons()
@@ -94,16 +100,6 @@
 </template>
 
 <script>
-	/**
-	 * @prop {Boolean} scrollDown
-	 * @slots: `title`, `content`, `buttons`, `articles`
-	 */
-
-	import {
-		getVNodesTextContent,
-		getScopedSlot
-	} from '../helpers';
-
 	export default {
 		name: 'FancySection',
 		props: {
@@ -121,19 +117,7 @@
 				transitionEnd: false
 			};
 		},
-		computed: {
-			title() {
-				return getScopedSlot(this.$scopedSlots.title);
-			},
-			buttons() {
-				return getScopedSlot(this.$scopedSlots.buttons);
-			},
-			articles() {
-				return getScopedSlot(this.$scopedSlots.articles);
-			}
-		},
 		methods: {
-			getVNodesTextContent,
 			afterEnter() {
 				this.transitionEnd = true;
 			},
@@ -151,33 +135,17 @@
 						color: 'transparent'
 					};
 				} else {
-					this.scrollDownStyle = {
-						position: '',
-						bottom: '',
-						color: ''
-					};
+					this.scrollDownStyle = null;
 				}
 			},
 			onWindowScrollOrResize() {
 				this.fixScrollDown();
 			}
 		},
-		created() {
-			// console.log('created:');
-			// console.log(this.$slots);
-			// console.log(this.$scopedSlots);
-		},
 		mounted() {
-			// console.log('mounted:');
-			// console.log(this.$slots);
-			// console.log(this.$scopedSlots);
-
 			this.fixScrollDown();
 			window.addEventListener('scroll', this.onWindowScrollOrResize);
 			window.addEventListener('resize', this.onWindowScrollOrResize);
-		},
-		updated() {
-			// console.log('updated:');
 		},
 		destroyed() {
 			window.removeEventListener('scroll', this.onWindowScrollOrResize);

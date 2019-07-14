@@ -1,5 +1,10 @@
 <template lang="pug">
-	.app-slider
+	.app-slider(
+		:set.prop=`(
+			slides = $getSlot('slides'),
+			activeSlide = slides[activeIndex].slots
+		)`
+	)
 		.body
 			.grid-row
 				.grid-cell
@@ -9,7 +14,6 @@
 						ref="nav"
 						:options="vueSwiperNavOptions"
 					)
-						//.nav-grid-row
 						.swiper-slide.nav-grid-cell(
 							v-for="({slots: {title}}, index) of slides"
 							:key="index"
@@ -19,20 +23,20 @@
 								:class="{active: index === activeIndex}"
 								@click.prevent="(pause(), activeIndex = index)"
 							)
-								span.nav-item-text {{ getText(title[0].children) }}
+								span.nav-item-text {{ $getText(title) }}
 
 			.grid-row
 				.grid-cell.grid-cell-image
 					.image-box
 						transition(appear)
 							img.image(
-								v-if="image.src"
-								:key="image.src"
-								v-bind="image"
+								v-if="activeImage"
+								:key="activeImage.src"
+								v-bind="activeImage.data.attrs"
 							)
 
 						loading(
-							:active="imageLoading"
+							:active="loading"
 							:is-full-page="false"
 							loader="bars"
 							color="#fff"
@@ -43,7 +47,7 @@
 					.main
 						transition(
 							appear
-							@after-enter="play"
+							@after-enter="play()"
 						)
 							.main-inner(:key="activeIndex")
 								base-content.content
@@ -57,7 +61,7 @@
 										.h2(
 											v-if="activeSlide.title"
 											:is="activeSlide.title[0].tag"
-										) {{ getText(activeSlide.title[0].children) }}
+										) {{ $getText(activeSlide.title) }}
 
 										v-nodes(:vnodes="activeSlide.content || []")
 
@@ -70,11 +74,6 @@
 </template>
 
 <script>
-	import {
-		getScopedSlot,
-		getVNodesTextContent
-	} from '../helpers';
-
 	import Loading from 'vue-loading-overlay';
 	import VueTruncateContent from '../plugins/vue-truncate-content/vue-truncate-content';
 	import VueSwiper from './VueSwiper';
@@ -101,15 +100,15 @@
 		props: {
 			autoplay: {
 				type: Boolean,
-				default: true
+				default: false
 			}
 		},
 		data() {
 			return {
 				activeIndex: 0,
-				imageLoading: false,
-				image: {},
-				imagesCache: [],
+				activeImage: null,
+				loading: false,
+				cache: [],
 				contentTruncated: true,
 				paused: false,
 				vueSwiperNavOptions: {
@@ -118,14 +117,6 @@
 					roundLengths: true
 				}
 			};
-		},
-		computed: {
-			slides() {
-				return getScopedSlot(this.$scopedSlots.slides);
-			},
-			activeSlide() {
-				return this.slides && this.slides[this.activeIndex].slots;
-			}
 		},
 		watch: {
 			activeIndex(val) {
@@ -143,43 +134,43 @@
 			}
 		},
 		methods: {
-			getText: getVNodesTextContent,
 			getImage() {
-				const {'data-src': src, alt} = this.activeSlide.image
-					&& this.activeSlide.image[0].data
-					&& this.activeSlide.image[0].data.attrs
-					|| {};
+				const activeIndex = this.activeIndex;
+				const activeSlide = this.$getSlot('slides')[activeIndex].slots;
+				const activeImage = activeSlide.image && activeSlide.image[0] || {};
+				const activeImageAttrs = activeImage && activeImage.data && activeImage.data.attrs || {};
 
-				if (src && !this.imageLoading) {
-					if (this.imagesCache.includes(src)) {
-						this.image = {
-							src,
-							alt
-						};
-					} else {
-						this.imageLoading = true;
-
-						const imgEl = document.createElement('img');
-
-						imgEl.addEventListener('load', () => {
-							this.imageLoading = false;
-
-							this.image = {
-								src: imgEl.src,
-								alt: imgEl.alt
-							};
-
-							this.imagesCache.push(src);
-						});
-
-						imgEl.src = src;
-						imgEl.alt = alt;
-					}
+				if (!activeImageAttrs.src) {
+					activeImageAttrs.src = activeImageAttrs['data-src'];
+					delete activeImageAttrs['data-src'];
 				}
+
+				if (!activeImageAttrs.src || this.cache.includes(activeImageAttrs.src)) {
+					this.loading = false;
+					this.activeImage = activeImage;
+
+					return;
+				}
+
+				const imgEl = document.createElement('img');
+
+				imgEl.addEventListener('load', () => {
+					this.cache.push(activeImageAttrs.src);
+
+					if (activeIndex === this.activeIndex) {
+						this.loading = false;
+						this.activeImage = activeImage;
+					}
+				});
+
+				this.loading = true;
+				imgEl.src = activeImageAttrs.src;
 			},
 			play() {
 				if (this.autoplay && !this.paused) {
-					this.timer = setTimeout(() => {
+					clearTimeout(this.autoplayTimer);
+
+					this.autoplayTimer = setTimeout(() => {
 						if (this.activeIndex < this.slides.length - 1) {
 							this.activeIndex++;
 						} else {
@@ -190,7 +181,7 @@
 			},
 			pause() {
 				this.paused = true;
-				clearTimeout(this.timer);
+				clearTimeout(this.autoplayTimer);
 			},
 			toggleContent() {
 				this.pause();
@@ -419,6 +410,7 @@
 	.main {
 		display: flex;
 		box-sizing: border-box;
+		position: relative;
 		padding: range(15px, 30px) range(10px, 40px);
 		min-height: 100%;
 		overflow: hidden;

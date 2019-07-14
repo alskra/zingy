@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import store from '../store';
 import i18n from '../i18n';
+import VueUtilities from './vue-utilities/vue-utilities';
 import VueWindowSize from 'vue-window-size';
 import VueWindowScroll from './vue-window-scroll';
 import VModal from 'vue-js-modal';
@@ -15,6 +16,7 @@ import VLockBodyScroll from './v-lock-body-scroll';
 import StripHTML from './strip-html';
 import * as VueGoogleMaps from 'vue2-google-maps';
 
+Vue.use(VueUtilities);
 Vue.use(VueWindowSize);
 Vue.use(VueWindowScroll);
 

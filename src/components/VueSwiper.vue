@@ -3,12 +3,12 @@
 		.swiper-container(ref="swiperContainer")
 			.swiper-wrapper(ref="swiperWrapper")
 				slot
-					//-
+					//
 						.swiper-slide Slide 1
 						.swiper-slide Slide 2
 						.swiper-slide Slide 3
 
-		//-
+		//
 			button.nav-button.nav-button-is-prev(
 				type="button"
 				:disabled="swiper.isBeginning"
@@ -105,7 +105,9 @@
 					this.swiper.on('init', () => {
 						this.$emit('init', this.swiper);
 
-						setTimeout(() => {
+						clearTimeout(this.updateTimer);
+
+						this.updateTimer = setTimeout(() => {
 							this.update();
 						}, 50);
 					});
@@ -117,7 +119,7 @@
 
 					// Init Swiper
 					this.swiper.init(); // set `initialized` true
-					// console.log('VueSwiper init!');
+					// console.log('VueSwiper inited!');
 					// console.log(this.swiper);
 					// console.log(this.swiper.initialized);
 					// console.log(this.swiper.destroyed);
@@ -131,12 +133,13 @@
 					this.swiper.updateSlides();
 					this.swiper.updateProgress();
 					this.swiper.updateSlidesClasses();
+					// console.log('VueSwiper updated!');
 				}
 			},
 			destroy() {
 				if (this.swiper.initialized) {
 					this.swiper.destroy(true, true); // set `destroyed` true
-					// console.log('VueSwiper destroy!');
+					// console.log('VueSwiper destroyed!');
 					// console.log(this.swiper);
 					// console.log(this.swiper.initialized);
 					// console.log(this.swiper.destroyed);
@@ -159,16 +162,6 @@
 	.swiper-container {
 		user-select: none;
 	}
-
-	/*.swiper-container-horizontal {*/
-	/*	display: flex;*/
-
-	/*	.swiper-wrapper {*/
-	/*		flex: 0 0 100%;*/
-	/*		width: auto;*/
-	/*		justify-content: center;*/
-	/*	}*/
-	/*}*/
 
 	.swiper-pagination-fraction {
 		bottom: auto;

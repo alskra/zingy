@@ -5,15 +5,15 @@
 				.header-grid-row
 					.header-grid-cell
 						.title(
-							v-if="title"
+							v-if="title = $getSlot('title')"
 							:is="title[0].tag"
-						) {{ getVNodesTextContent(title[0].children) }}
+						) {{ $getText(title) }}
 
 		.main
 			slot(name="main")
 
 			app-carousel.app-carousel-of-articles.page-section-articles-carousel(
-				v-if="articlesCarousel"
+				v-if="articlesCarousel = $getSlot('articles-carousel')"
 				:options="{slidesPerView: 'auto'}"
 			)
 				template(slot="slides")
@@ -33,14 +33,14 @@
 							.article-title(
 								v-if="title"
 								:is="title[0].tag"
-							) {{ getVNodesTextContent(title[0].children) }}
+							) {{ $getText(title) }}
 
 							base-content.article-description(v-if="description")
 								v-nodes(:vnodes="description")
 
 			app-slider.page-section-slider(
 				v-if="$scopedSlots.slider"
-				:autoplay="true"
+				:autoplay="false"
 			)
 				template(slot="slides")
 					slot(name="slider")
@@ -59,11 +59,6 @@
 </template>
 
 <script>
-	import {
-		getScopedSlot,
-		getVNodesTextContent,
-	} from '../helpers';
-
 	import AppCarousel from './AppCarousel';
 	import AppCarouselOfWorks from './AppCarouselOfWorks';
 	import AppCarouselOfReviews from './AppCarouselOfReviews';
@@ -82,17 +77,6 @@
 			LandingCards,
 			FactorsList,
 			InfiniteCarousel
-		},
-		computed: {
-			title() {
-				return getScopedSlot(this.$scopedSlots.title);
-			},
-			articlesCarousel() {
-				return getScopedSlot(this.$scopedSlots['articles-carousel']);
-			}
-		},
-		methods: {
-			getVNodesTextContent
 		}
 	};
 </script>

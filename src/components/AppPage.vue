@@ -102,12 +102,12 @@
 			},
 			setZingySectionVisible() {
 				if (!this.zingySectionShown) {
+					clearTimeout(this.zingySectionTimer);
+
 					if (this.$windowScroll.reachEndY()) {
 						this.zingySectionTimer = setTimeout(() => {
 							this.zingySectionShown = true;
 						}, 2000);
-					} else {
-						clearTimeout(this.zingySectionTimer);
 					}
 				}
 			},

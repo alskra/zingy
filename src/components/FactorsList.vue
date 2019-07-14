@@ -37,7 +37,7 @@
 	import {
 		getScopedSlot as getSlot,
 		getVNodesTextContent as getText
-	} from '../helpers';
+	} from '../plugins/vue-utilities/vue-utilities';
 
 	export default {
 		name: 'FactorsList',

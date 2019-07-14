@@ -8,7 +8,7 @@
 			.swiper-container(ref="swiperContainer")
 				.swiper-wrapper
 					.swiper-slide(
-						v-for="(slide, index) of slides"
+						v-for="(slide, index) of $getSlot('slides')"
 						:key="index"
 					)
 						.swiper-slide-inner(
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-	import {getScopedSlot} from '../helpers';
 	import VueSwiper from './VueSwiper';
 
 	export default {
@@ -42,11 +41,6 @@
 					}
 				}
 			};
-		},
-		computed: {
-			slides() {
-				return getScopedSlot(this.$scopedSlots.slides);
-			}
 		}
 	};
 </script>

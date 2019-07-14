@@ -56,7 +56,7 @@
 	import {
 		getScopedSlot as getSlot,
 		getVNodesTextContent as getText
-	} from '../helpers';
+	} from '../plugins/vue-utilities/vue-utilities';
 
 	export default {
 		name: 'LandingCards',
@@ -131,8 +131,6 @@
 
 	.card-image {
 		flex-shrink: 0;
-		/*width: calc(100% + 2 * range(30px, 60px));*/
-		/*height: calc(100% - 2 * range(15px, 30px));*/
 		width: 100%;
 		height: 100%;
 		transform: scale(1.1);
@@ -192,17 +190,17 @@
 	}
 
 	.card-more-link {
-		padding-bottom: 1px;
+		padding-bottom: 2px;
 		color: inherit;
 		font-size: range(1.6rem, 1.8rem);
 		font-weight: 300;
 		line-height: 1.25;
 		text-decoration: none;
-		background: linear-gradient(to right, currentColor, currentColor) no-repeat 0 100% / 0 1px;
+		background: linear-gradient(to right, currentColor, currentColor) no-repeat 0 100% / 0 2px;
 		transition: background-size 0.2s;
 
 		&:hover {
-			background-size: 100% 1px;
+			background-size: 100% 2px;
 		}
 	}
 </style>

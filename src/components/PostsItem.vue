@@ -58,7 +58,7 @@
 
 <script>
 	import VClamp from 'vue-clamp';
-	import {getVNodesTextContent} from '../helpers';
+	import {getVNodesTextContent} from '../plugins/vue-utilities/vue-utilities';
 
 	export default {
 		name: 'PostsItem',
