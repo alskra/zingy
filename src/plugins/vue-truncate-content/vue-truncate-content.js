@@ -142,11 +142,9 @@ export default {
 			this.getContent()
 		);
 	},
-	created() {
-		window.addEventListener('resize', this.onWindowResize);
-	},
 	mounted() {
 		this.update();
+		window.addEventListener('resize', this.onWindowResize);
 	},
 	updated() {
 		this.update();

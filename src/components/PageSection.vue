@@ -40,7 +40,7 @@
 
 			app-slider.page-section-slider(
 				v-if="$scopedSlots.slider"
-				:autoplay="false"
+				:autoplay="true"
 			)
 				template(slot="slides")
 					slot(name="slider")
