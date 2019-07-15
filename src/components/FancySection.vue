@@ -98,23 +98,25 @@
 
 					.grid-row.grid-row-is-tabs(v-if="tabs")
 						.grid-cell.grid-cell-8
-							.tabs
-								transition(appear)
-									base-content.tabs-item(:key="activeTabIndex")
-										v-nodes(:vnodes="activeTab.content")
+							.main
+								.tabs
+									transition(appear)
+										base-content.tabs-item(:key="activeTabIndex")
+											v-nodes(:vnodes="activeTab.content")
 
 						.grid-cell.grid-cell-4
-							vue-swiper.tabs-nav(:options="vueSwiperNavOptions")
-								.swiper-slide(
-									v-for="({tag, data: {attrs} = {}, slots: {title} = {}}, index) of tabs"
-									:key="index"
-								)
-									button.tabs-nav-item(
-										type="button"
-										:class="{active: index === activeTabIndex}"
-										@click.prevent="activeTabIndex = index"
+							.tabs-nav
+								vue-swiper(:options="vueSwiperNavOptions")
+									.swiper-slide(
+										v-for="({tag, data: {attrs} = {}, slots: {title} = {}}, index) of tabs"
+										:key="index"
 									)
-										span.tabs-nav-item-text {{ $getText(title) }}
+										button.tabs-nav-item(
+											type="button"
+											:class="{active: index === activeTabIndex}"
+											@click.prevent="activeTabIndex = index"
+										)
+											span.tabs-nav-item-text {{ $getText(title) }}
 
 					.grid-row(v-if="buttons && windowWidth < 1024")
 						.grid-cell
@@ -249,13 +251,14 @@
 			}
 
 			.header,
-			.base-content.content,
+			.main,
 			.footer,
 			.scroll-down {
 				transition: opacity 0.3s;
 			}
 
-			.article {
+			.articles,
+			.tabs-nav {
 				transition: opacity, transform;
 				transition-duration: 0.3s;
 			}
@@ -270,7 +273,7 @@
 				transition-delay: 0.5s;
 			}
 
-			.base-content.content {
+			.main {
 				transition-delay: 0.6s;
 			}
 
@@ -282,7 +285,8 @@
 				transition-delay: 0.8s;
 			}
 
-			.article {
+			.articles,
+			.tabs-nav {
 				transition-delay: 0.5s;
 			}
 		}
@@ -306,13 +310,14 @@
 			}
 
 			.header,
-			.base-content.content,
+			.main,
 			.footer,
 			.scroll-down {
 				opacity: 0;
 			}
 
-			.article {
+			.articles,
+			.tabs-nav {
 				opacity: 0;
 				transform: translateX(10px);
 			}
@@ -637,7 +642,7 @@
 		line-height: calc(22 / 16);
 	}
 
-	.vue-swiper.tabs-nav {
+	.tabs-nav {
 		background-color: #2a2c2b;
 
 		>>> .swiper-slide {
