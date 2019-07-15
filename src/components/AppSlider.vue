@@ -31,7 +31,7 @@
 						transition(appear)
 							img.image(
 								v-if="activeImage"
-								:key="activeImage.data.attrs.src"
+								:key="activeIndex + activeImage.data.attrs.src"
 								v-bind="activeImage.data.attrs"
 							)
 

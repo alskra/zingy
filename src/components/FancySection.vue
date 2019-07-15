@@ -27,7 +27,8 @@
 			title = $getSlot('title'),
 			buttons = $getSlot('buttons'),
 			articles = $getSlot('articles'),
-			tabs = $getSlot('tabs')
+			tabs = $getSlot('tabs'),
+			activeTab = tabs && tabs[activeTabIndex].slots
 		)`
 	)
 		transition(
@@ -54,6 +55,9 @@
 
 							base-content.content(v-if="$scopedSlots.content")
 								slot(name="content")
+
+								template(v-if="tabs")
+									v-nodes(:vnodes="activeTab.content")
 
 							footer.footer(v-if="buttons && windowWidth >= 1024")
 								+buttons()
@@ -91,10 +95,16 @@
 													v-if="description"
 												) {{ $getText(description) }}
 
+							nav.tabs-nav(v-if="tabs")
+								button.tabs-nav-item(
+									v-for="({tag, data: {attrs} = {}, slots: {title} = {}}, index) of tabs"
+									:key="index"
+									type="button"
+									@click.prevent="activeTabIndex = index"
+								) {{ $getText(title) }}
+
 							footer.footer(v-if="buttons && windowWidth < 1024")
 								+buttons()
-
-							nav.tabs-nav(v-if="tabs") Tabs
 
 				.scroll-down(
 					v-if="scrollDown"
@@ -117,7 +127,8 @@
 				support: {
 					mask: document.documentElement.style.WebkitMask != null
 				},
-				transitionEnd: false
+				transitionEnd: false,
+				activeTabIndex: 0
 			};
 		},
 		methods: {
@@ -190,7 +201,7 @@
 			right: 0;
 			bottom: range(15px, 30px);
 			left: range(5px, 8px);
-			background-color: #b84242;
+			background-color: var(--color-accent) /*#b84242*/;
 		}
 
 		&.v-enter-active,
