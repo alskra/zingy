@@ -284,11 +284,11 @@
 			transition: opacity 0.3s;
 		}
 
-		&:hover {
-			&::after {
-				opacity: 0;
-			}
-		}
+		/*&:hover {*/
+		/*	&::after {*/
+		/*		opacity: 0;*/
+		/*	}*/
+		/*}*/
 
 		@media (width >= 1024px) {
 			margin-top: range(30px, 60px);
