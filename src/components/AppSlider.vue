@@ -377,9 +377,9 @@
 		& {
 			display: flex;
 			box-sizing: border-box;
-			padding: 0 10px;
+			padding: 10px range(10px, 15px);
 			width: 100%;
-			height: range(48px, 58px);
+			min-height: range(48px, 58px);
 			justify-content: center;
 			align-items: center;
 			color: #ffffff;

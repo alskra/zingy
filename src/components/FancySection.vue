@@ -46,23 +46,24 @@
 					@transitionend.self="onBodyTransitionend"
 				)
 					.grid-row
-						.grid-cell(:class="{'grid-cell-7': articles, 'grid-cell-8': tabs}")
+						.grid-cell(:class="{'grid-cell-7': articles}")
 							header.header(v-if="title")
 								.title(
 									v-if="title"
 									:is="title[0].tag"
 								) {{ $getText(title) }}
 
-							base-content.content(v-if="$scopedSlots.content")
-								slot(name="content")
-
-								template(v-if="tabs")
-									v-nodes(:vnodes="activeTab.content")
+							.main
+								base-content.content(v-if="$scopedSlots.content")
+									slot(name="content")
 
 							footer.footer(v-if="buttons && windowWidth >= 1024")
 								+buttons()
 
-						.grid-cell(:class="{'grid-cell-5': articles, 'grid-cell-4': tabs}")(v-if="articles || tabs")
+						.grid-cell(
+							v-if="articles"
+							:class="{'grid-cell-5': articles}"
+						)
 							aside.articles(v-if="articles")
 								.articles-grid-row
 									.articles-grid-cell(
@@ -95,15 +96,29 @@
 													v-if="description"
 												) {{ $getText(description) }}
 
-							nav.tabs-nav(v-if="tabs")
-								button.tabs-nav-item(
+					.grid-row.grid-row-is-tabs(v-if="tabs")
+						.grid-cell.grid-cell-8
+							.tabs
+								transition(appear)
+									base-content.tabs-item(:key="activeTabIndex")
+										v-nodes(:vnodes="activeTab.content")
+
+						.grid-cell.grid-cell-4
+							vue-swiper.tabs-nav(:options="vueSwiperNavOptions")
+								.swiper-slide(
 									v-for="({tag, data: {attrs} = {}, slots: {title} = {}}, index) of tabs"
 									:key="index"
-									type="button"
-									@click.prevent="activeTabIndex = index"
-								) {{ $getText(title) }}
+								)
+									button.tabs-nav-item(
+										type="button"
+										:class="{active: index === activeTabIndex}"
+										@click.prevent="activeTabIndex = index"
+									)
+										span.tabs-nav-item-text {{ $getText(title) }}
 
-							footer.footer(v-if="buttons && windowWidth < 1024")
+					.grid-row(v-if="buttons && windowWidth < 1024")
+						.grid-cell
+							footer.footer
 								+buttons()
 
 				.scroll-down(
@@ -113,8 +128,13 @@
 </template>
 
 <script>
+	import VueSwiper from './VueSwiper';
+
 	export default {
 		name: 'FancySection',
+		components: {
+			VueSwiper
+		},
 		props: {
 			scrollDown: {
 				type: Boolean,
@@ -128,8 +148,21 @@
 					mask: document.documentElement.style.WebkitMask != null
 				},
 				transitionEnd: false,
-				activeTabIndex: 0
+				activeTabIndex: 0,
+				vueSwiperNavOptions: {
+					init: false,
+					slidesPerView: 'auto',
+					roundLengths: true
+				}
 			};
+		},
+		watch: {
+			windowWidth: {
+				handler(val) {
+					this.vueSwiperNavOptions.init = val < 1024;
+				},
+				immediate: true
+			}
 		},
 		methods: {
 			afterEnter() {
@@ -287,9 +320,12 @@
 	}
 
 	.body-inner {
+		display: flex;
+		box-sizing: border-box;
 		position: relative;
 		margin: range(5px, 8px) range(5px, 8px) 0 0;
 		padding: range(30px, 60px) range(10px, 80px);
+		flex-direction: column;
 		background-color: #f0f0f0;
 	}
 
@@ -301,6 +337,20 @@
 		display: flex;
 		margin: range(-15px, -30px) var(--grid-row_margin);
 		flex-wrap: wrap;
+
+		& + .grid-row {
+			margin-top: range(15px, 30px);
+		}
+	}
+
+	.grid-row-is-tabs {
+		@media (width < 1024px) {
+			.grid-cell {
+				&:nth-child(2) {
+					order: -1;
+				}
+			}
+		}
 	}
 
 	.grid-cell {
@@ -354,12 +404,51 @@
 		}
 	}
 
-	.base-content.content {
+	.main {
 		margin-bottom: auto;
+	}
+
+	.base-content.content {
+		& + .tabs {
+			margin-top: range(20px, 40px);
+		}
+	}
+
+	.tabs {
+		display: flex;
+
+		@media (width >= 1440px) {
+			margin-right: range(-100px, -180px);
+		}
+	}
+
+	.base-content.tabs-item {
+		position: relative;
+		flex: 0 0 100%;
+		min-width: 100%;
+
+		& + & {
+			z-index: 1;
+			margin-left: -100%;
+		}
+
+		&.v-enter-active,
+		&.v-leave-active {
+			transition: opacity 0.3s;
+		}
+
+		&.v-enter,
+		&.v-leave-to {
+			opacity: 0;
+		}
 	}
 
 	.footer {
 		margin-top: range(20px, 40px);
+
+		@media (width < 1024px) {
+			margin-top: 0;
+		}
 	}
 
 	.buttons {
@@ -546,5 +635,83 @@
 		font-size: range(1.4rem, 1.6rem);
 		font-weight: 400;
 		line-height: calc(22 / 16);
+	}
+
+	.vue-swiper.tabs-nav {
+		background-color: #2a2c2b;
+
+		>>> .swiper-slide {
+			width: auto;
+			max-width: 100%;
+		}
+
+		@media (width >= 1024px) {
+			>>> .swiper-container {
+				overflow: visible;
+			}
+
+			>>> .swiper-wrapper {
+				flex-direction: column;
+			}
+		}
+
+		@media (width >= 1440px) {
+			margin-right: range(-100px, -180px);
+			margin-left: range(100px, 180px);
+		}
+
+		@media (width < 1024px) {
+			margin: 0 range(-10px, -80px);
+		}
+	}
+
+	.tabs-nav-item {
+		all: initial;
+
+		& {
+			display: flex;
+			box-sizing: border-box;
+			padding: 10px range(10px, 15px);
+			width: 100%;
+			min-height: range(48px, 58px);
+			justify-content: center;
+			align-items: center;
+			color: #ffffff;
+			font-family: var(--font-family);
+			font-size: range(1.6rem, 1.8rem);
+			font-weight: 500;
+			line-height: 1.25;
+			cursor: pointer;
+			box-shadow: 0 0 var(--color-accent);
+			transition: background-color, box-shadow;
+			transition-duration: 0.3s;
+		}
+
+		&:hover,
+		&.active {
+			.tabs-nav-item-text {
+				background-size: 100% 2px;
+			}
+		}
+
+		&.active {
+			background-color: #222222;
+			box-shadow: 5px 0 var(--color-accent);
+		}
+
+		@media (width < 1024px) {
+			&.active {
+				box-shadow: none;
+			}
+		}
+	}
+
+	.tabs-nav-item-text {
+		padding: 2px 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		background: linear-gradient(to right, var(--color-accent), var(--color-accent)) no-repeat 0 100% / 0 2px;
+		transition: background-size 0.2s;
 	}
 </style>
