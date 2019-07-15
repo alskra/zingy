@@ -26,12 +26,12 @@
 								span.nav-item-text {{ $getText(title) }}
 
 			.grid-row
-				.grid-cell.grid-cell-image
+				.grid-cell.grid-cell-is-image
 					.image-box
 						transition(appear)
 							img.image(
 								v-if="activeImage"
-								:key="activeImage.src"
+								:key="activeImage.data.attrs.src"
 								v-bind="activeImage.data.attrs"
 							)
 
@@ -246,7 +246,7 @@
 		}
 	}
 
-	.grid-cell-image {
+	.grid-cell-is-image {
 		display: flex;
 		flex-flow: column;
 
