@@ -2,7 +2,7 @@
 	.app-slider(
 		:set.prop=`(
 			slides = $getSlot('slides'),
-			activeSlide = slides[activeIndex].slots
+			activeSlide = slides && slides[activeIndex].slots
 		)`
 	)
 		.body
@@ -136,35 +136,41 @@
 		methods: {
 			getImage() {
 				const activeIndex = this.activeIndex;
-				const activeSlide = this.$getSlot('slides')[activeIndex].slots;
-				const activeImage = activeSlide.image && activeSlide.image[0] || {};
-				const activeImageAttrs = activeImage && activeImage.data && activeImage.data.attrs || {};
+				const slides = this.$getSlot('slides');
+				const activeSlide = slides && slides[activeIndex].slots;
+				const activeImage = activeSlide && activeSlide.image && activeSlide.image[0];
+				const activeImageAttrs = activeImage && activeImage.data && activeImage.data.attrs;
 
-				if (!activeImageAttrs.src) {
-					activeImageAttrs.src = activeImageAttrs['data-src'];
-					delete activeImageAttrs['data-src'];
-				}
+				if (activeImageAttrs.src || activeImageAttrs['data-src']) {
+					if (!activeImageAttrs.src) {
+						activeImageAttrs.src = activeImageAttrs['data-src'];
+						delete activeImageAttrs['data-src'];
+					}
 
-				if (!activeImageAttrs.src || this.cache.includes(activeImageAttrs.src)) {
-					this.loading = false;
-					this.activeImage = activeImage;
-
-					return;
-				}
-
-				const imgEl = document.createElement('img');
-
-				imgEl.addEventListener('load', () => {
-					this.cache.push(activeImageAttrs.src);
-
-					if (activeIndex === this.activeIndex) {
+					if (this.cache.includes(activeImageAttrs.src)) {
 						this.loading = false;
 						this.activeImage = activeImage;
-					}
-				});
 
-				this.loading = true;
-				imgEl.src = activeImageAttrs.src;
+						return;
+					}
+
+					const imgEl = document.createElement('img');
+
+					imgEl.addEventListener('load', () => {
+						this.cache.push(activeImageAttrs.src);
+
+						if (activeIndex === this.activeIndex) {
+							this.loading = false;
+							this.activeImage = activeImage;
+						}
+					});
+
+					this.loading = true;
+					imgEl.src = activeImageAttrs.src;
+				} else {
+					this.loading = false;
+					this.activeImage = null;
+				}
 			},
 			play() {
 				if (this.autoplay && !this.paused) {

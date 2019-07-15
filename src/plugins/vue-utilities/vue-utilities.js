@@ -65,7 +65,7 @@ export function filterTags(vNodes = []) {
  * @returns {*|((props: any) => ScopedSlotChildren)|undefined|T[]}
  */
 export function getSlot(slotName) {
-	return this.$scopedSlots[slotName]
+	const slotVNodes = this.$scopedSlots[slotName]
 		&& this.$scopedSlots[slotName]()
 			.filter(vNode => {
 				if (vNode.tag) {
@@ -92,6 +92,10 @@ export function getSlot(slotName) {
 
 				return false;
 			});
+
+	if (slotVNodes && slotVNodes.length > 0) {
+		return slotVNodes;
+	}
 }
 
 export default {

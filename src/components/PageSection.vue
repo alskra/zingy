@@ -39,25 +39,25 @@
 								v-nodes(:vnodes="description")
 
 			app-slider.page-section-slider(
-				v-if="$scopedSlots.slider"
+				v-if="$getSlot('slider')"
 				:autoplay="true"
 			)
 				template(slot="slides")
 					slot(name="slider")
 
-			landing-cards.page-section-landing-cards(v-if="$scopedSlots['landing-cards']")
+			landing-cards.page-section-landing-cards(v-if="$getSlot('landing-cards')")
 				template(slot="cards")
 					slot(name="landing-cards")
 
-			factors-list.page-section-factors-list(v-if="$scopedSlots['factors-list']")
+			factors-list.page-section-factors-list(v-if="$getSlot('factors-list')")
 				template(slot="factors")
 					slot(name="factors-list")
 
-			infinite-carousel.page-section-infinite-carousel(v-if="$scopedSlots['infinite-carousel']")
+			infinite-carousel.page-section-infinite-carousel(v-if="$getSlot('infinite-carousel')")
 				template(slot="slides")
 					slot(name="infinite-carousel")
 
-			app-tabs.page-section-tabs(v-if="$scopedSlots['tabs']")
+			app-tabs.page-section-tabs(v-if="$getSlot('tabs')")
 				template(slot="tabs")
 					slot(name="tabs")
 </template>

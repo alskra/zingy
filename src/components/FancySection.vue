@@ -545,7 +545,7 @@
 
 	.articles-grid-row {
 		display: flex;
-		margin: range(-10px, -20px) var(--grid-row_margin);
+		margin: range(-5px, -10px) var(--grid-row_margin);
 		flex-flow: column;
 
 		@media (width < 1024px) {
@@ -556,7 +556,7 @@
 
 	.articles-grid-cell {
 		box-sizing: border-box;
-		padding: range(10px, 20px) var(--grid-cell_padding);
+		padding: range(5px, 10px) var(--grid-cell_padding);
 		min-width: 0;
 		max-width: 100%;
 
