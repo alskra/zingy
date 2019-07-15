@@ -357,10 +357,12 @@ block app
 
 				template(slot="content")
 					p
-						strong Этим вопросом задаются многие начинающие предприниматели.  Цена на рынке в среднем колеблется от 10 000р. до 5 000 000р. Почему такой разбег? Давайте рассмотрим подробнее:
+						strong.
+							Этим вопросом задаются многие начинающие предприниматели.<br>
+							Цена на&nbsp;рынке в&nbsp;среднем колеблется от 10&nbsp;000р. до 5&nbsp;000&nbsp;000р. Почему такой разбег? Давайте рассмотрим подробнее:
 
 				template(slot="tabs")
-					article
+					figure
 						template(slot="title")
 							p 30 000 руб.
 
@@ -371,15 +373,17 @@ block app
 
 							p Результат – вы получаете не просто сайт, а систему бизнеса «под ключ», которая работает как швейцарские часы. Настроенная CRM система объединяет работу множества сотрудников и налаживает контроль над ними. А продуманная система сквозной аналитики минимизирует расходы на рекламу.
 
-					article
+					figure
 						template(slot="title")
 							p 80 000 руб.
 
 						template(slot="content")
 							p.h2 Что я получу за 80 000 руб.
 
+							p Сайт разрабатывается на платной платформе. Интеграция #[a(href="/") CRM], системы сквозной аналитики, системы учета продаж и складских остатков. Перед разработкой сайта маркетологи проводят глубокий анализ ниши и конкурентов (не на словах), продумывают маркетинговый план, настраивают рекламные кампании, внедряют функциональные решения.
+
 							| Text...
-					article
+					figure
 						template(slot="title")
 							p 150 000 руб.
 
@@ -388,7 +392,7 @@ block app
 
 							| Text...
 
-					article
+					figure
 						template(slot="title")
 							p 250 т.р. — 300 т.р.
 
@@ -397,7 +401,7 @@ block app
 
 							| Text...
 
-					article
+					figure
 						template(slot="title")
 							p 300 т.р. — 500 т.р.
 
@@ -406,7 +410,7 @@ block app
 
 							| Text...
 
-					article
+					figure
 						template(slot="title")
 							p 500 т.р. — 5 млн. р.
 
@@ -472,6 +476,57 @@ block app
 			section.app-page-section(is="page-section")
 				template(slot="title")
 					h2 Этапы создания сайта
+
+				template(slot="tabs")
+					figure
+						template(slot="title")
+							p Брифинг
+
+						template(slot="content")
+							p Перед сдачей сайта клиету, оптимизатор проводит работы для правильной и быстрой интексации сайта поисковыми системами.
+
+							p.h3 Зачем?
+
+							p Как правило эти работы не заметны для заказчика, но в дальнейшем они принесут большой результат при продвижении сайта.
+
+							p.h3 Что нужно от вас?
+
+							p Также он создает правильную сео структуру сайта под поисковые запросы и собирает семантику.
+
+					figure
+						template(slot="title")
+							p Анализ конкурентов
+
+						template(slot="content")
+							| Content...
+
+					figure
+						template(slot="title")
+							p Создание струкуты и ТЗ
+
+						template(slot="content")
+							| Content...
+
+					figure
+						template(slot="title")
+							p Разработка дизайна
+
+						template(slot="content")
+							| Content...
+
+					figure
+						template(slot="title")
+							p Верстка и программирование
+
+						template(slot="content")
+							| Content...
+
+					figure
+						template(slot="title")
+							p Ввод в эксплуатацию
+
+						template(slot="content")
+							| Content...
 
 			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')

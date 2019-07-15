@@ -56,6 +56,10 @@
 			infinite-carousel.page-section-infinite-carousel(v-if="$scopedSlots['infinite-carousel']")
 				template(slot="slides")
 					slot(name="infinite-carousel")
+
+			app-tabs.page-section-tabs(v-if="$scopedSlots['tabs']")
+				template(slot="tabs")
+					slot(name="tabs")
 </template>
 
 <script>
@@ -66,6 +70,7 @@
 	import LandingCards from './LandingCards';
 	import FactorsList from './FactorsList';
 	import InfiniteCarousel from './InfiniteCarousel';
+	import AppTabs from './AppTabs';
 
 	export default {
 		name: 'PageSection',
@@ -76,7 +81,8 @@
 			AppSlider,
 			LandingCards,
 			FactorsList,
-			InfiniteCarousel
+			InfiniteCarousel,
+			AppTabs
 		}
 	};
 </script>
