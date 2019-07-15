@@ -106,7 +106,10 @@
 
 						.grid-cell.grid-cell-4
 							.tabs-nav
-								vue-swiper(:options="vueSwiperNavOptions")
+								vue-swiper(
+									ref="tabsNavSwiper"
+									:options="tabsNavSwiperOptions"
+								)
 									.swiper-slide(
 										v-for="({tag, data: {attrs} = {}, slots: {title} = {}}, index) of tabs"
 										:key="index"
@@ -151,7 +154,7 @@
 				},
 				transitionEnd: false,
 				activeTabIndex: 0,
-				vueSwiperNavOptions: {
+				tabsNavSwiperOptions: {
 					init: false,
 					slidesPerView: 'auto',
 					roundLengths: true
@@ -161,9 +164,14 @@
 		watch: {
 			windowWidth: {
 				handler(val) {
-					this.vueSwiperNavOptions.init = val < 1024;
+					this.tabsNavSwiperOptions.init = val < 1024;
 				},
 				immediate: true
+			},
+			activeTabIndex(val) {
+				if (this.$refs.tabsNavSwiper && this.$refs.tabsNavSwiper.swiper.initialized) {
+					this.$refs.tabsNavSwiper.swiper.slideTo(val);
+				}
 			}
 		},
 		methods: {
