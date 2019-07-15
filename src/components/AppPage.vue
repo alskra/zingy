@@ -34,6 +34,9 @@
 	// development
 	const FancySection = () => import('./FancySection');
 
+	// services
+	const AppServices = () => import('./AppServices');
+
 	export default {
 		name: 'AppPage',
 		components: {
@@ -68,6 +71,9 @@
 
 			// development
 			FancySection,
+
+			// services
+			AppServices
 		},
 		data() {
 			return {

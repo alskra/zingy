@@ -2,7 +2,7 @@ extends index
 
 append vars
 	-
-		title = 'Услуги ';
+		title = 'Услуги';
 
 block app
 	app-page(inline-template)
@@ -15,3 +15,33 @@ block app
 					];
 
 				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
+
+			section.app-page-services(is="app-services")
+				template(slot="services")
+					article
+						template(slot="title")
+							h2 Разработка сайтов и ПО
+
+						ol(
+							is="template"
+							slot="nav-list"
+						)
+							li: a(href="development.html") Разработка сайта-визитки
+							li: a(href="development.html") Проектирование
+							li: a(href="development.html") Разработка дизайна
+							li: a(href="development.html") FRONT-END DEVELOPMENT
+							li: a(href="development.html") BACK-END DEVELOPMENT
+
+					article
+						template(slot="title")
+							h2 Продвижение и раскрутка
+
+						ol(
+							is="template"
+							slot="nav-list"
+						)
+							li: a(href="seo.html") Анализ конкурентов
+							li: a(href="seo.html") Выявление технических ошибок сайта
+							li: a(href="seo.html") Улучшение поведенческих факторов
+							li: a(href="seo.html") Улучшение коммерческих факторов
+							li: a(href="seo.html") Проработка внешнего SEO
