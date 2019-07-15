@@ -139,7 +139,7 @@
 				const slides = this.$getSlot('slides');
 				const activeSlide = slides && slides[activeIndex].slots;
 				const activeImage = activeSlide && activeSlide.image && activeSlide.image[0];
-				const activeImageAttrs = activeImage && activeImage.data && activeImage.data.attrs;
+				const activeImageAttrs = activeImage && activeImage.data && activeImage.data.attrs || {};
 
 				if (activeImageAttrs.src || activeImageAttrs['data-src']) {
 					if (!activeImageAttrs.src) {

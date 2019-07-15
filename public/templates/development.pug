@@ -480,6 +480,12 @@ block app
 
 				template(slot="tabs")
 					figure
+						template(slot="image")
+							img(
+								src="upload/haber-gorsel-6.jpg"
+								alt="Менеджер проекта"
+							)
+
 						template(slot="title")
 							p Брифинг
 
@@ -495,39 +501,45 @@ block app
 							p Также он создает правильную сео структуру сайта под поисковые запросы и собирает семантику.
 
 					figure
+						template(slot="image")
+							img(
+								src="upload/gallery/image-1.jpg"
+								alt="Менеджер проекта"
+							)
+
 						template(slot="title")
 							p Анализ конкурентов
 
 						template(slot="content")
-							| Content...
+							p Content...
 
 					figure
 						template(slot="title")
 							p Создание струкуты и ТЗ
 
 						template(slot="content")
-							| Content...
+							p Content...
 
 					figure
 						template(slot="title")
 							p Разработка дизайна
 
 						template(slot="content")
-							| Content...
+							p Content...
 
 					figure
 						template(slot="title")
 							p Верстка и программирование
 
 						template(slot="content")
-							| Content...
+							p Content...
 
 					figure
 						template(slot="title")
 							p Ввод в эксплуатацию
 
 						template(slot="content")
-							| Content...
+							p Content...
 
 			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')
