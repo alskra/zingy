@@ -56,7 +56,7 @@ export default {
 						}
 
 						result.push(vNode);
-					} else if (counter < this.realLength) {
+					} else if (counter <= this.realLength) {
 						if (vNode.text) {
 							counter += vNode.text.length;
 
@@ -117,7 +117,7 @@ export default {
 		},
 		update() {
 			if (this.truncated && this.$el.scrollHeight > this.$el.offsetHeight) {
-				this.realLength = this.realLength - 5;
+				this.realLength -= 5;
 			}
 		},
 		onWindowResize() {

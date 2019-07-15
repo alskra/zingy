@@ -63,7 +63,7 @@
 											:is="activeSlide.title[0].tag"
 										) {{ $getText(activeSlide.title) }}
 
-										v-nodes(:vnodes="activeSlide.content || []")
+										v-nodes(:vnodes="activeSlide.content")
 
 										template(#after)
 											span.content-toggle(

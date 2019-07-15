@@ -73,11 +73,11 @@ export function getSlot(slotName) {
 
 					if (Array.isArray(vNode.children)) {
 						vNode.children.forEach(child => {
-							const slotName = child.tag && child.data && child.data.slot;
+							const slotName = child.data && child.data.slot;
 
 							if (slotName) {
 								const slotVNodes = child.tag === 'template' ?
-									filterTags(child.children)
+									child.children
 									: [child];
 
 								if (slotVNodes.length > 0) {

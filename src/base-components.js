@@ -24,7 +24,9 @@ Vue.component('VNodes', {
 	props: {
 		vnodes: {
 			type: Array,
-			required: true
+			default() {
+				return [];
+			}
 		}
 	},
 	render(createElement, {props, parent}) {
