@@ -1,6 +1,4 @@
-/**
- * Deprecated
- */
+/** Deprecated */
 
 export function getVNodesTextContent(vnodes = []) {
 	return vnodes.map(vnode => vnode.children ?
@@ -41,9 +39,7 @@ export function getScopedSlot(fn) {
 	return fn && defineVNodesSlots(getTagVNodes(fn()));
 }
 
-/**
- * Actual
- */
+/** Actual */
 
 /**
  * @param vNodes
@@ -66,31 +62,35 @@ export function filterTags(vNodes = []) {
 
 /**
  * @param slotName
- * @returns {*|((props: any) => ScopedSlotChildren)|undefined|*[]}
+ * @returns {*|((props: any) => ScopedSlotChildren)|undefined|T[]}
  */
 export function getSlot(slotName) {
 	return this.$scopedSlots[slotName]
-		&& filterTags(this.$scopedSlots[slotName]())
-			.map(vNode => {
-				vNode.slots = {};
+		&& this.$scopedSlots[slotName]()
+			.filter(vNode => {
+				if (vNode.tag) {
+					vNode.slots = {};
 
-				if (Array.isArray(vNode.children)) {
-					vNode.children.forEach(child => {
-						const slotName = child.tag && child.data && child.data.slot;
+					if (Array.isArray(vNode.children)) {
+						vNode.children.forEach(child => {
+							const slotName = child.tag && child.data && child.data.slot;
 
-						if (slotName) {
-							const slotVNodes = child.tag === 'template' ?
-								filterTags(child.children)
-								: [child];
+							if (slotName) {
+								const slotVNodes = child.tag === 'template' ?
+									filterTags(child.children)
+									: [child];
 
-							if (slotVNodes.length > 0) {
-								vNode.slots[slotName] = (vNode.slots[slotName] || []).concat(slotVNodes);
+								if (slotVNodes.length > 0) {
+									vNode.slots[slotName] = (vNode.slots[slotName] || []).concat(slotVNodes);
+								}
 							}
-						}
-					});
+						});
+					}
+
+					return true;
 				}
 
-				return vNode;
+				return false;
 			});
 }
 

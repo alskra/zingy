@@ -26,7 +26,8 @@
 		:set.prop=`(
 			title = $getSlot('title'),
 			buttons = $getSlot('buttons'),
-			articles = $getSlot('articles')
+			articles = $getSlot('articles'),
+			tabs = $getSlot('tabs')
 		)`
 	)
 		transition(
@@ -44,7 +45,7 @@
 					@transitionend.self="onBodyTransitionend"
 				)
 					.grid-row
-						.grid-cell(:class="{'grid-cell-is-7': articles}")
+						.grid-cell(:class="{'grid-cell-7': articles, 'grid-cell-8': tabs}")
 							header.header(v-if="title")
 								.title(
 									v-if="title"
@@ -57,7 +58,7 @@
 							footer.footer(v-if="buttons && windowWidth >= 1024")
 								+buttons()
 
-						.grid-cell.grid-cell-is-5(v-if="articles")
+						.grid-cell(:class="{'grid-cell-5': articles, 'grid-cell-4': tabs}")(v-if="articles || tabs")
 							aside.articles(v-if="articles")
 								.articles-grid-row
 									.articles-grid-cell(
@@ -92,6 +93,8 @@
 
 							footer.footer(v-if="buttons && windowWidth < 1024")
 								+buttons()
+
+							nav.tabs-nav(v-if="tabs") Tabs
 
 				.scroll-down(
 					v-if="scrollDown"
@@ -290,27 +293,41 @@
 	}
 
 	.grid-cell {
+		display: flex;
 		box-sizing: border-box;
 		padding: range(15px, 30px) var(--grid-cell_padding);
 		flex: 0 0 100%;
 		min-width: 0;
 		max-width: 100%;
+		flex-flow: column;
 	}
 
-	.grid-cell-is-7 {
+	.grid-cell-4 {
 		@media (width >= 1024px) {
-			flex: 0 0 percentage(7 / 12);
+			flex-basis: percentage(4 / 12);
 		}
 	}
 
-	.grid-cell-is-5 {
+	.grid-cell-5 {
 		@media (width >= 1024px) {
-			flex: 0 0 percentage(5 / 12);
+			flex-basis: percentage(5 / 12);
+		}
+	}
+
+	.grid-cell-7 {
+		@media (width >= 1024px) {
+			flex-basis: percentage(7 / 12);
+		}
+	}
+
+	.grid-cell-8 {
+		@media (width >= 1024px) {
+			flex-basis: percentage(8 / 12);
 		}
 	}
 
 	.header {
-		margin-bottom: range(25px, 50px);
+		margin-bottom: range(20px, 40px);
 	}
 
 	.title {
@@ -326,8 +343,12 @@
 		}
 	}
 
+	.base-content.content {
+		margin-bottom: auto;
+	}
+
 	.footer {
-		margin-top: range(25px, 50px);
+		margin-top: range(20px, 40px);
 	}
 
 	.buttons {

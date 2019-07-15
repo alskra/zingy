@@ -359,15 +359,12 @@ block app
 					p
 						strong Этим вопросом задаются многие начинающие предприниматели.  Цена на рынке в среднем колеблется от 10 000р. до 5 000 000р. Почему такой разбег? Давайте рассмотрим подробнее:
 
-				aside(
-					slot="articles"
-					is="template"
-				)
-
+				template(slot="tabs")
+					article
 
 			section.app-page-section(is="page-section")
 				template(slot="title")
-					h2 CMS & Framework, с&nbsp;которыми мы работаем
+					h2 CMS & Frameworks, с&nbsp;которыми мы работаем
 
 				template(slot="infinite-carousel")
 					figure(title="ModX")
@@ -418,6 +415,10 @@ block app
 								src="upload/logos/vuejs.svg"
 								alt="VueJS"
 							)
+
+			section.app-page-section(is="page-section")
+				template(slot="title")
+					h2 Этапы создания сайта
 
 			page-section.app-page-section(inline-template)
 				+PageSection('Наши работы')
