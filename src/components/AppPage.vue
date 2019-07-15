@@ -355,6 +355,12 @@
 		left: 0;
 		height: calc(100vh - 20px);
 	}
+
+	.app-page-is-services {
+		.main {
+			background: url("../assets/img/services-bg.jpg") no-repeat 50% 50% / cover fixed white;
+		}
+	}
 </style>
 
 <style>

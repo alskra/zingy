@@ -48,7 +48,10 @@
 			padding: range(30px, 60px) 0;
 			max-width: 100%;
 			flex-direction: column;
-			background: url("../assets/img/services-bg.jpg") no-repeat 50% 50% / cover white;
+		}
+
+		&.padding-top-none {
+			padding-top: 0;
 		}
 	}
 

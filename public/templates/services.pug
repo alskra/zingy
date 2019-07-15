@@ -5,7 +5,7 @@ append vars
 		title = 'Услуги';
 
 block app
-	app-page(inline-template)
+	app-page.app-page-is-services(inline-template)
 		+AppPage()
 			.grid
 				-
@@ -16,11 +16,11 @@ block app
 
 				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
 
-			section.app-page-services(is="app-services")
+			section.app-page-services.padding-top-none(is="app-services")
 				template(slot="services")
 					article
 						template(slot="title")
-							h2 Разработка сайтов и ПО
+							h2 Разработка сайтов и&nbsp;ПО
 
 						ol(
 							is="template"
@@ -34,7 +34,7 @@ block app
 
 					article
 						template(slot="title")
-							h2 Продвижение и раскрутка
+							h2 Продвижение и&nbsp;раскрутка
 
 						ol(
 							is="template"
