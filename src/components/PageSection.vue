@@ -9,6 +9,11 @@
 							:is="title[0].tag"
 						) {{ $getText(title) }}
 
+						base-content.description(
+							v-if="description = $getSlot('description')"
+						)
+							v-nodes(:vnodes="description")
+
 		.main
 			slot(name="main")
 
@@ -138,6 +143,10 @@
 		font-size: var(--h1_font-size);
 		font-weight: 500;
 		line-height: 1.25;
+	}
+
+	.base-content.description {
+		margin-top: range(20px, 30px);
 	}
 
 	.article {

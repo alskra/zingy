@@ -1,0 +1,17 @@
+extends index
+
+append vars
+	-
+		title = 'Услуги ';
+
+block app
+	app-page(inline-template)
+		+AppPage()
+			.grid
+				-
+					const breadcrumbs = [
+						['Главная', 'index.html'],
+						['Услуги', 'services.html']
+					];
+
+				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
