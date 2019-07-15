@@ -23,12 +23,12 @@
 							.tabs-item
 								.tabs-item-number {{ (activeTabIndex < 9 ? '0' : '') + (activeTabIndex + 1) }}
 
-								.tabs-item-title(
-									v-if="activeTab.title"
-									:is="activeTab.title[0].tag"
-								) {{ $getText(activeTab.title) }}
-
 								base-content.tabs-item-content
+									.h2(
+										v-if="activeTab.title"
+										:is="activeTab.title[0].tag"
+									) {{ $getText(activeTab.title) }}
+
 									v-nodes(:vnodes="activeTab.content")
 </template>
 
