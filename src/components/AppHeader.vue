@@ -1,4 +1,5 @@
 <script>
+	import url from 'url';
 	import AppHeaderNavIsTop from './AppHeaderNavIsTop';
 	import AppHeaderNavIsAside from './AppHeaderNavIsAside';
 
@@ -19,6 +20,12 @@
 				return this.windowWidth < 1366
 					|| this.$windowScroll.directionY === '>'
 					|| this.sidebarOpen;
+			},
+			url() {
+				return url;
+			},
+			location() {
+				return location;
 			}
 		},
 		watch: {
