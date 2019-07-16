@@ -17,7 +17,38 @@ block app
 				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
 
 			section.app-page-services.padding-top-none(is="app-services")
+				template(slot="title")
+					h1 Услуги
+
 				template(slot="services")
+					article
+						template(slot="title")
+							h2 Разработка сайтов и&nbsp;ПО
+
+						ol(
+							is="template"
+							slot="nav-list"
+						)
+							li: a(href="development.html") Разработка сайта-визитки
+							li: a(href="development.html") Проектирование
+							li: a(href="development.html") Разработка дизайна
+							li: a(href="development.html") FRONT-END DEVELOPMENT
+							li: a(href="development.html") BACK-END DEVELOPMENT
+
+					article
+						template(slot="title")
+							h2 Продвижение и&nbsp;раскрутка
+
+						ol(
+							is="template"
+							slot="nav-list"
+						)
+							li: a(href="seo.html") Анализ конкурентов
+							li: a(href="seo.html") Выявление технических ошибок сайта
+							li: a(href="seo.html") Улучшение поведенческих факторов
+							li: a(href="seo.html") Улучшение коммерческих факторов
+							li: a(href="seo.html") Проработка внешнего SEO
+
 					article
 						template(slot="title")
 							h2 Разработка сайтов и&nbsp;ПО

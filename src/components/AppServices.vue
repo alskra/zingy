@@ -1,9 +1,16 @@
 <template lang="pug">
 	section.app-services(
 		:set.prop=`(
+			title = $getSlot('title'),
 			services = $getSlot('services')
 		)`
 	)
+		.title(
+			v-if="title"
+			:is="title[0].tag"
+			:style="{display: 'none'}"
+		) {{ $getText(title) }}
+
 		.grid
 			.grid-row
 				.grid-cell(
@@ -56,7 +63,9 @@
 	}
 
 	.grid {
+		box-sizing: border-box;
 		margin: 0 auto;
+		padding: 0 range(10px, 40px);
 		width: 100%;
 		max-width: 1920px;
 		overflow: hidden;
@@ -64,19 +73,25 @@
 
 	.grid-row {
 		display: flex;
-		margin: range(-30px, -60px) 0;
+		margin: range(-20px, -40px) range(-10px, -40px);
 		flex-wrap: wrap;
+
+		@media (width < 960px) {
+			/*flex-direction: column;*/
+		}
 	}
 
 	.grid-cell {
 		box-sizing: border-box;
-		padding: range(30px, 60px) range(10px, 80px);
-		flex: 0 0 50%;
+		padding: range(20px, 40px) range(10px, 40px);
+		flex: 0 0 percentage(1 / 3);
 		min-width: 0;
 
-		@media (width < 1024px) {
-			padding-right: range(10px, 40px);
-			padding-left: range(10px, 40px);
+		@media (width < 1440px) {
+			flex: 0 0 percentage(1 / 2);
+		}
+
+		@media (width < 960px) {
 			flex: 0 0 100%;
 		}
 	}
@@ -108,8 +123,6 @@
 	}
 
 	.nav-list.service-nav-list {
-		margin: 0 auto;
-		/*width: 100%;*/
-		/*max-width: 480px;*/
+
 	}
 </style>
