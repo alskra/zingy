@@ -178,6 +178,7 @@
 		methods: {
 			afterEnter() {
 				this.transitionEnd = true;
+				this.$refs.body.style.overflow = '';
 			},
 			onBodyTransitionstart() {
 				this.$refs.body.style.overflow = 'hidden';
@@ -488,6 +489,8 @@
 	}
 
 	.base-button.button {
+		--base-button_background-color: #222222;
+
 		width: 270px;
 	}
 

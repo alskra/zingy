@@ -86,12 +86,11 @@
 	.item-number {
 		box-sizing: border-box;
 		margin-right: 10px;
-		/*padding: 0 range(5px, 10px);*/
 		flex: 0 0 range(40px, 80px);
 		min-width: 0;
 		color: #5c5c5c;
 		font-family: var(--font-family);
-		font-size: range(1.6rem, 1.8rem);
+		font-size: scale-down(1.8rem, 0.8);
 		line-height: 1.25;
 		text-align: center;
 	}
@@ -102,7 +101,7 @@
 		min-width: 0;
 		color: var(--color);
 		font-family: var(--font-family);
-		font-size: range(2.2rem, 2.4rem);
+		font-size: scale-down(2.4rem, 0.8);
 		line-height: 1.25;
 		transition: transform 0.3s;
 	}

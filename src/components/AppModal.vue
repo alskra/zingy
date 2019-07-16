@@ -48,21 +48,21 @@
 <style>
 	:root {
 		.v--modal-block-scroll {
-			overflow: visible;
 			width: auto;
+			overflow: visible;
 		}
 
 		.v--modal-overlay {
 			overflow-x: hidden;
 			background-color: rgba(0, 0, 0, 0.5);
-		}
 
-		.v--modal-background-click {
-			display: flex;
-			flex-flow: column;
-			box-sizing: border-box;
-			padding-right: var(--body-scroll-locked_padding);
-			width: 100vw;
+			.v--modal-background-click {
+				display: flex;
+				box-sizing: border-box;
+				padding-right: var(--body-scroll-locked_padding);
+				width: 100vw;
+				flex-flow: column;
+			}
 		}
 	}
 

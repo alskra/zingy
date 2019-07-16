@@ -381,6 +381,8 @@
 	.tabs-number {
 		display: flex;
 		box-sizing: border-box;
+		position: relative;
+		z-index: 2;
 		margin: 0 range(-10px - 30px, -80px - 60px) 10px auto;
 		padding: 5px range(10px, 20px);
 		min-width: range(115px, 230px);
@@ -395,7 +397,7 @@
 		}
 
 		@media (width < 1024px) {
-			margin-top: range(-10px, -40px);
+			margin-top: range(-20px - 20px, -50px - 40px);
 			margin-right: range(0px, -70px);
 		}
 	}

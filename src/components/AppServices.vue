@@ -116,11 +116,9 @@
 		margin: 0;
 		color: var(--color);
 		font-family: var(--font-family);
-		/*font-size: var(--h2_font-size);*/
 		font-size: scale-down(3.6rem, 0.9);
 		font-weight: 700;
 		line-height: 1.25;
-		text-align: center;
 	}
 
 	.service-main {
