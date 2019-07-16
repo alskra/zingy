@@ -209,7 +209,7 @@
 	.main {
 		flex: 1 0 auto;
 		padding: range(60px, 138px) 0 0;
-		background-color: var(--app-page-main_background-color, #ffffff);
+		background: no-repeat 50% 50% / cover fixed var(--app-page-main_background-color, #ffffff);
 	}
 
 	.app-footer.app-page-footer {
@@ -355,12 +355,6 @@
 		right: 0;
 		left: 0;
 		height: calc(100vh - 20px);
-	}
-
-	.app-page-is-services {
-		.main {
-			background: url("../assets/img/services-bg.jpg") no-repeat 50% 50% / cover fixed white;
-		}
 	}
 </style>
 

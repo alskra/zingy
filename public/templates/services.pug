@@ -5,8 +5,10 @@ append vars
 		title = 'Услуги';
 
 block app
-	app-page.app-page-is-services(inline-template)
-		+AppPage()
+	app-page(inline-template)
+		+AppPage({
+			backgroundImage: 'url(/upload/services-bg.jpg)'
+		})
 			.grid
 				-
 					const breadcrumbs = [
@@ -16,7 +18,7 @@ block app
 
 				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
 
-			section.app-page-services.padding-top-none(is="app-services")
+			section.app-page-services.padding-top-none.transparent(is="app-services")
 				template(slot="title")
 					h1 Услуги
 

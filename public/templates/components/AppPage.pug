@@ -3,14 +3,14 @@ include AppBreadcrumb
 include FeedbackSection
 include AppFooter
 
-mixin AppPage()
+mixin AppPage(mainStyle)
 	template
 		.app-page&attributes(attributes)
 			.body(ref="body")
 				app-header.app-page-header(inline-template)
 					+AppHeader()
 
-				main.main
+				main.main(style=mainStyle)
 					block
 
 					feedback-section.app-page-feedback-section(inline-template)

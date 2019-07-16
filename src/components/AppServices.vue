@@ -55,10 +55,15 @@
 			padding: range(30px, 60px) 0;
 			max-width: 100%;
 			flex-direction: column;
+			background-color: white;
 		}
 
 		&.padding-top-none {
 			padding-top: 0;
+		}
+
+		&.transparent {
+			background-color: transparent;
 		}
 	}
 
