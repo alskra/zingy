@@ -76,7 +76,7 @@
 		margin: range(-20px, -40px) range(-10px, -40px);
 		flex-wrap: wrap;
 
-		@media (width < 960px) {
+		@media (width < 1024px) {
 			/*flex-direction: column;*/
 		}
 	}
@@ -91,7 +91,7 @@
 			flex: 0 0 percentage(1 / 2);
 		}
 
-		@media (width < 960px) {
+		@media (width < 1024px) {
 			flex: 0 0 100%;
 		}
 	}

@@ -1,5 +1,9 @@
 <template lang="pug">
-	.infinite-carousel
+	.infinite-carousel(
+		:set.prop=`(
+			slides = $getSlot('slides')
+		)`
+	)
 		vue-swiper(
 			ref="vueSwiper"
 			v-if="slides"
@@ -33,7 +37,6 @@
 </template>
 
 <script>
-	import {getScopedSlot as getSlot} from '../plugins/vue-utilities/vue-utilities';
 	import VueSwiper from './VueSwiper';
 
 	export default {
@@ -49,22 +52,35 @@
 					slidesPerView: 'auto',
 					// centerInsufficientSlides: true,
 					speed: 7000,
-					autoplay: {
-						delay: 0
-					},
+					autoplay: false,
 					allowTouchMove: false,
 					loop: true,
 					// loopedSlides: this.slides && this.slides.length,
 					// loopAdditionalSlides: 20,
 					// loopedSlides: 20,
-					disableOnInteraction: false
+					disableOnInteraction: false,
+					on: {
+						init: () => {
+							if (!this.swiperOptions.autoplay) {
+								setTimeout(() => {
+									this.swiperOptions.autoplay = {
+										delay: 0
+									};
+								}, 1000);
+							}
+						},
+						resize: () => {
+							this.swiperOptions.init = false;
+
+							if (!this.swiperOptions.init) {
+								setTimeout(() => {
+									this.swiperOptions.init = true;
+								}, 50);
+							}
+						}
+					}
 				}
 			};
-		},
-		computed: {
-			slides() {
-				return getSlot(this.$scopedSlots.slides);
-			}
 		}
 	};
 </script>
