@@ -20,6 +20,7 @@
 					base-button.button(
 						:tag="tag"
 						v-bind="data.attrs"
+						@click.prevent="$root.showModalFeedback()"
 					) {{ $getText(children) }}
 
 	section.fancy-section(

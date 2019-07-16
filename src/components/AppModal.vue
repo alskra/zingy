@@ -10,7 +10,7 @@
 	)
 
 		app-modal-body.modal-body(v-bind="$props")
-			template(v-slot:title)
+			template(#title)
 				slot(name="title")
 
 			slot
@@ -51,18 +51,19 @@
 			overflow: visible;
 			width: auto;
 		}
-	}
 
-	.v--modal-overlay {
-		overflow-x: hidden;
-	}
+		.v--modal-overlay {
+			overflow-x: hidden;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
 
-	.v--modal-background-click {
-		display: flex;
-		flex-flow: column;
-		box-sizing: border-box;
-		padding-right: var(--body-scroll-locked_padding);
-		width: 100vw !important;
+		.v--modal-background-click {
+			display: flex;
+			flex-flow: column;
+			box-sizing: border-box;
+			padding-right: var(--body-scroll-locked_padding);
+			width: 100vw;
+		}
 	}
 
 	.app-modal {

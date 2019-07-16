@@ -44,6 +44,7 @@ mixin AppHeader()
 								base-button.right-panel-button(
 									tag="a"
 									:href="url.resolve(location.href, '#feedback-section')"
+									@click.prevent="$root.showModalFeedback()"
 								) Начать проект
 
 			transition-box(:duration="{enter: 500, leave: 300}")
@@ -79,7 +80,7 @@ mixin AppHeader()
 									base-button.is-full-width.sidebar-button(
 										tag="a"
 										:href="url.resolve(location.href, '#feedback-section')"
-										@click="sidebarOpen = false"
+										@click.prevent="$root.showModalFeedback()"
 									) Начать проект
 
 								.sidebar-footer-grid-cell
