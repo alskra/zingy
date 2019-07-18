@@ -27,6 +27,10 @@ const pages = {
 		template: 'public/templates/services.pug',
 		filename: 'services.html'
 	},
+	seo: {
+		template: 'public/templates/seo.pug',
+		filename: 'seo.html'
+	},
 	'vue-sticky-exm': {
 		template: 'public/templates/vue-sticky-exm.pug',
 		filename: 'vue-sticky-exm.html'

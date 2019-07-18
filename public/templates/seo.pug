@@ -1,0 +1,20 @@
+extends index
+
+append vars
+	-
+		title = 'SEO Продвижение';
+
+block app
+	app-page(inline-template)
+		+AppPage({
+			'background-image': 'url(/upload/seo-bg.jpg)'
+		})
+			.grid
+				-
+					const breadcrumbs = [
+						['Главная', 'index.html'],
+						['Услуги', 'services.html'],
+						['SEO Продвижение', 'seo.html']
+					];
+
+				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
