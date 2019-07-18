@@ -70,19 +70,11 @@
 							}
 						},
 						resize: () => {
-							// this.swiperOptions.init = false;
 							this.$refs.vueSwiper.swiper.autoplay.stop();
-							// this.$refs.vueSwiper.$refs.swiperWrapper.style.transitionDuration = '0s';
 
 							setTimeout(() => {
-								// this.$refs.vueSwiper.$refs.swiperWrapper.style.transitionDuration = this.swiperOptions.speed + 'ms';
 								this.$refs.vueSwiper.swiper.autoplay.start();
 							}, 50);
-							// if (!this.swiperOptions.init) {
-							// 	setTimeout(() => {
-							// 		this.swiperOptions.init = true;
-							// 	}, 50);
-							// }
 						}
 					}
 				}

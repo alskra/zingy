@@ -33,7 +33,7 @@
 					template: `
 						<app-modal-body class="modal-body" name="feedback" classes="is-small">
 							<template #title>{{ $t('title') }}</template>
-							<feedback-form agree-url="/"></feedback-form>
+							<feedback-form action="${this.$publicPath}mail.php" agree-url="${this.$publicPath}"></feedback-form>
 						</app-modal-body>
 					`
 				}, null, {

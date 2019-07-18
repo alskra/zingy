@@ -100,6 +100,7 @@ export function getSlot(slotName) {
 
 export default {
 	install(Vue) {
+		Vue.prototype.$publicPath = process.env.BASE_URL;
 		Vue.prototype.$getText = getText;
 		Vue.prototype.$filterTags = filterTags;
 		Vue.prototype.$getSlot = getSlot;

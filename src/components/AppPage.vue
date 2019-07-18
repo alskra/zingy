@@ -4,7 +4,6 @@
 
 	// all
 	import AppHeader from './AppHeader';
-	import FeedbackForm from './FeedbackForm';
 	import FeedbackSection from './FeedbackSection';
 	import AppFooter from './AppFooter';
 	import ZingySection from './ZingySection';
