@@ -90,14 +90,18 @@
 
 	.logo {
 		display: block;
+		position: relative;
+		flex-shrink: 0;
 		width: range(44px, 58px);
 		height: range(44px, 58px);
-		flex-shrink: 0;
 		background-color: #252525;
 		color: white;
 		text-decoration: none;
-		position: relative;
-		transform: perspective(50px);
+		overflow: hidden;
+
+		.base-icon.logo-icon {
+			transform: perspective(50px);
+		}
 
 		&:hover {
 			.base-icon.logo-icon {

@@ -80,10 +80,6 @@
 		display: flex;
 		margin: range(-20px, -40px) range(-10px, -40px);
 		flex-wrap: wrap;
-
-		@media (width < 1024px) {
-			/*flex-direction: column;*/
-		}
 	}
 
 	.grid-cell {
@@ -92,11 +88,11 @@
 		flex: 0 0 percentage(1 / 3);
 		min-width: 0;
 
-		@media (width < 1440px) {
+		@media (width < 1366px) {
 			flex: 0 0 percentage(1 / 2);
 		}
 
-		@media (width < 1024px) {
+		@media (width < 768px) {
 			flex: 0 0 100%;
 		}
 	}
