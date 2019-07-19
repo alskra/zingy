@@ -37,9 +37,7 @@ block app
 
 					p Чтобы сайт попал в топ-10, его нужно оптимизировать — доказать поисковой системе, что он полезен людям и содержит ответ на их запросы. Выглядит просто, но оптимизация включает значительные объемы работ, и требует специфический знаний.
 
-				template(
-					slot="seo"
-				)
+				template(slot="seo")
 					aside
 						template(slot="image")
 							img(
@@ -49,3 +47,50 @@ block app
 
 						template(slot="button")
 							a(href="seo.html#feedback-section") Заказать SEO
+
+			section.app-page-section(is="page-section")
+				template(slot="title")
+					h2 Как мы делаем SEO?
+
+				template(slot="factors-list")
+					figure
+						template(slot="title")
+							p Только белые методы продвижения
+
+						template(slot="description")
+							p Вы можете не переживать, что вас забанят, наложат фильтр поисковая система.
+
+					figure
+						template(slot="title")
+							p Результаты SEO сохраняются надолго
+
+						template(slot="description")
+							p В сравнении с контекстной рекламой уже достигнутый результат продвижения сохранится надолго
+
+					figure
+						template(slot="title")
+							p Первые результаты уже через 2 месяца
+
+						template(slot="description")
+							p При условии своевременного выполнения тех. заданий и внедрений изменений на сайт.
+
+					figure
+						template(slot="title")
+							p Повышаем конверсию и улучшаем юзабилити
+
+						template(slot="description")
+							p Вы можете не переживать, что вас забанят, наложат фильтр поисковая система.
+
+					figure
+						template(slot="title")
+							p Прозрачность продвижения
+
+						template(slot="description")
+							p В сравнении с контекстной рекламой уже достигнутый результат продвижения сохранится надолго
+
+					figure
+						template(slot="title")
+							p Индивидуальный подход
+
+						template(slot="description")
+							p При условии своевременного выполнения тех. заданий и внедрений изменений на сайт.
