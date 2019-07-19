@@ -1,4 +1,4 @@
-mixin ServiceSection()
+mixin ServiceSection(template = 1)
 	include DList
 
 	-
@@ -95,44 +95,90 @@ mixin ServiceSection()
 		section.service-section
 			.grid
 				.grid-row
-					.grid-cell
-						article.service
-							header.service-header
-								h2.service-title Обновить&nbsp;/ Создать сайт для&nbsp;бизнеса
+					if template === 1
+						.grid-cell
+							article.service
+								header.service-header
+									h2.service-title Обновить&nbsp;/ Создать сайт для&nbsp;бизнеса
 
-							.service-main
-								base-icon.service-main-bg(
-									name="unicorn"
-									:align="windowWidth >= 1024 ? 'xMaxYMid' : 'xMidYMin'"
-								)
+								.service-main
+									//-
+										base-icon.service-main-bg(
+											name="unicorn"
+											:align="windowWidth >= 1024 ? 'xMaxYMid' : 'xMidYMin'"
+										)
 
-								d-list.service-list(inline-template)
-									+DList(createSiteDList)
+									img.service-main-image(
+										src="upload/unicorn.svg"
+										alt=""
+									)
 
-							footer.service-footer
-								a.service-button(href="")
-									base-icon.service-button-icon(name="laurel")
-									.service-button-text Отдел #[strong web] разработки
-									base-icon.service-button-icon(name="laurel")
+									d-list.service-list(inline-template)
+										+DList(createSiteDList)
 
-					base-icon.grid-arrow(name="arrow-right-2")
+								footer.service-footer
+									a.service-button(href="")
+										base-icon.service-button-icon(name="laurel")
+										.service-button-text Отдел #[strong web] разработки
+										base-icon.service-button-icon(name="laurel")
 
-					.grid-cell
-						article.service
-							header.service-header
-								h2.service-title Продвинуть сайт в&nbsp;ТОП&nbsp;10 Yandex&nbsp;&amp;&nbsp;Google
+						base-icon.grid-arrow(name="arrow-right-2")
 
-							.service-main
-								base-icon.service-main-bg(
-									name="cup"
-									:align="windowWidth >= 1024 ? 'xMaxYMid' : 'xMidYMin'"
-								)
+						.grid-cell
+							article.service
+								header.service-header
+									h2.service-title Продвинуть сайт в&nbsp;ТОП&nbsp;10 Yandex&nbsp;&amp;&nbsp;Google
 
-								d-list.service-list(inline-template)
-									+DList(seoDList)
+								.service-main
+									//-
+										base-icon.service-main-bg(
+											name="cup"
+											:align="windowWidth >= 1024 ? 'xMaxYMid' : 'xMidYMin'"
+										)
 
-							footer.service-footer
-								a.service-button(href="")
-									base-icon.service-button-icon(name="laurel")
-									.service-button-text Отдел продвижения #[strong seo]
-									base-icon.service-button-icon(name="laurel")
+									img.service-main-image(
+										src="upload/cup.svg"
+										alt=""
+									)
+
+									d-list.service-list(inline-template)
+										+DList(seoDList)
+
+								footer.service-footer
+									a.service-button(href="")
+										base-icon.service-button-icon(name="laurel")
+										.service-button-text Отдел продвижения #[strong seo]
+										base-icon.service-button-icon(name="laurel")
+
+					else if template === 2
+						.grid-cell
+							article.service
+								header.service-header
+									h2.service-title Обновить&nbsp;/ Создать сайт для&nbsp;бизнеса
+
+								.service-main
+									img.service-main-image(
+										src="upload/unicorn.svg"
+										alt=""
+									)
+
+									d-list.service-list(inline-template)
+										+DList(createSiteDList)
+
+								footer.service-footer
+									a.service-button(href="")
+										base-icon.service-button-icon(name="laurel")
+										.service-button-text Отдел #[strong web] разработки
+										base-icon.service-button-icon(name="laurel")
+
+						.grid-cell
+							.image-box
+								.image-box-inner
+									base-image.image(
+										src="upload/blockchain.jpg"
+										alt=""
+										:width-ratio="653"
+										:height-ratio="439"
+									)
+
+									.image-rect
