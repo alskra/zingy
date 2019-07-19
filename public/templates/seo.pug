@@ -6,9 +6,7 @@ append vars
 
 block app
 	app-page(inline-template)
-		+AppPage({
-			'background-image': 'url(/upload/seo-bg.jpg)'
-		})
+		+AppPage('upload/seo-bg.jpg')
 			.grid
 				-
 					const breadcrumbs = [
@@ -18,3 +16,23 @@ block app
 					];
 
 				+AppBreadcrumb(breadcrumbs).app-page-breadcrumb
+
+			section.padding-top-none.transparent.app-page-fancy-section(
+				is="fancy-section"
+				scroll-down
+			)
+				template(slot="title")
+					h1 SEO Продвижение
+
+				template(slot="content")
+					p Цель SEO (поисковой оптимизации) — получить больше клиентов из поисковых систем. Работы по SEO поднимают сайт на первые позиции в Яндекс и Google.
+
+					p
+						img(
+							src="upload/search-field.png"
+							alt="Как работает SEO?"
+						)
+
+					p Чтобы найти товары или услуги, пользователи вводят в строку поиска запросы и поисковая система показывает ответ — сайты, которые соответствуют потребности пользователя. Это 10 лучших сайтов (топ-10), которые вы видите на первой странице поиска.
+
+					p Чтобы сайт попал в топ-10, его нужно оптимизировать — доказать поисковой системе, что он полезен людям и содержит ответ на их запросы. Выглядит просто, но оптимизация включает значительные объемы работ, и требует специфический знаний.

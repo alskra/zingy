@@ -1,19 +1,21 @@
+<template lang="pug">
+	nav.app-breadcrumb
+		.item(
+			v-for="(item, index) of $getSlot('default')"
+			:key="index"
+			:set.prop=`(
+				attrs = item.data.attrs,
+				url = attrs.href.replace(/^/, $publicPath),
+				attrs.href = url,
+				$filterTags(item.children)[1].data.attrs.itemid = url
+			)`
+		)
+			v-nodes(:vnodes="[item]")
+</template>
+
 <script>
 	export default {
-		name: 'AppBreadcrumb',
-		render(createElement) {
-			const getItems = () => {
-				if (this.$scopedSlots.default) {
-					return this.$scopedSlots.default().map(item => {
-						return createElement('div', {staticClass: 'item'}, [item]);
-					});
-				}
-
-				return null;
-			};
-
-			return createElement('nav', {class: 'app-breadcrumb'}, getItems());
-		}
+		name: 'AppBreadcrumb'
 	};
 </script>
 
@@ -59,7 +61,6 @@
 		transition: color 0.2s;
 
 		&:hover {
-			/*color: var(--color-link);*/
 			text-decoration: none;
 		}
 	}

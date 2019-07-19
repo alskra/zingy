@@ -229,6 +229,10 @@
 		&.padding-top-none {
 			padding-top: 0;
 		}
+
+		&.transparent {
+			background-color: transparent;
+		}
 	}
 
 	.body {

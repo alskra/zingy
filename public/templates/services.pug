@@ -6,9 +6,7 @@ append vars
 
 block app
 	app-page(inline-template)
-		+AppPage({
-			'background-image': 'url(/upload/services-bg.jpg)'
-		})
+		+AppPage('upload/services-bg.jpg')
 			.grid
 				-
 					const breadcrumbs = [

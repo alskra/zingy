@@ -3,14 +3,14 @@ include AppBreadcrumb
 include FeedbackSection
 include AppFooter
 
-mixin AppPage(mainStyle)
+mixin AppPage(mainBg)
 	template
 		.app-page&attributes(attributes)
 			.body(ref="body")
 				app-header.app-page-header(inline-template)
 					+AppHeader()
 
-				main.main(style=mainStyle)
+				main.main(:style=`{backgroundImage: 'url(' + $publicPath + '${mainBg})'}`)
 					block
 
 					feedback-section.app-page-feedback-section(inline-template)
