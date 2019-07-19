@@ -235,13 +235,13 @@
 
 	.ul-grid-row {
 		display: flex;
-		margin: range(-15px, -30px) range(-10px, -20px);
+		margin: calc(var(--base-content_margin-y) / -2) range(-10px, -20px);
 		flex-wrap: wrap;
 	}
 
 	.ul-grid-cell {
 		box-sizing: border-box;
-		padding: range(15px, 30px) range(10px, 20px);
+		padding: calc(var(--base-content_margin-y) / 2) range(10px, 20px);
 		flex: 1 1 300px;
 		min-width: 0;
 	}
@@ -257,7 +257,7 @@
 		> li {
 			display: block;
 			margin-bottom: var(--base-content_margin-y);
-			padding-left: 32px;
+			padding-left: 30px;
 			position: relative;
 
 			&::before {
@@ -265,8 +265,8 @@
 				position: absolute;
 				top: calc(var(--font-size) * var(--line-height) / 2);
 				left: 0;
-				width: 12px;
-				height: 12px;
+				width: 14px;
+				height: 14px;
 				background-color: var(--color-accent);
 				transform: translateY(-50%);
 				pointer-events: none;
