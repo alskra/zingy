@@ -76,13 +76,6 @@
 					)
 
 			.figures(v-if="figures = $getSlot('figures')")
-				//
-					.figures-grid
-						.figures-row
-							.figures-cell(
-								v-for="({tag, slots: {image, title, description}}, index) of figures"
-								:key="index"
-							)
 				.figure(
 					v-for="({tag, slots: {image, title, description}}, index) of figures"
 					:key="index"
@@ -103,6 +96,10 @@
 							v-if="description"
 						)
 							v-nodes(:vnodes="description")
+
+			app-faq.page-section-faq(v-if="$getSlot('faq')")
+				template(slot="items")
+					slot(name="faq")
 </template>
 
 <script>
@@ -114,6 +111,7 @@
 	import FactorsList from './FactorsList';
 	import InfiniteCarousel from './InfiniteCarousel';
 	import AppTabs from './AppTabs';
+	import AppFaq from './AppFaq';
 
 	export default {
 		name: 'PageSection',
@@ -125,7 +123,8 @@
 			LandingCards,
 			FactorsList,
 			InfiniteCarousel,
-			AppTabs
+			AppTabs,
+			AppFaq
 		}
 	};
 </script>
