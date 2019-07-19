@@ -67,13 +67,14 @@
 					slot(name="tabs")
 
 			.ul-grid(v-if="ul = $getSlot('ul')")
-				.ul-grid-row
-					.ul-grid-cell(
+				ul.ul
+					template(
 						v-for="(item, index) of ul"
-						:key="index"
 					)
-						ul.ul
-							v-nodes(:vnodes="item.children")
+						v-nodes(
+							:key="index"
+							:vnodes="item.children"
+						)
 </template>
 
 <script>
@@ -253,12 +254,15 @@
 		font-family: var(--font-family);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
+		column-width: 300px;
+		column-gap: range(20px, 40px);
 
 		> li {
 			display: block;
+			position: relative;
 			margin-bottom: var(--base-content_margin-y);
 			padding-left: 30px;
-			position: relative;
+			page-break-inside: avoid;
 
 			&::before {
 				content: '';
