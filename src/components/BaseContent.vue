@@ -196,7 +196,7 @@
 			&::before {
 				content: '';
 				position: absolute;
-				top: calc(var(--line-height) * var(--font-size) / 2);
+				top: calc(var(--font-size) * var(--line-height) / 2);
 				left: 0;
 				width: 12px;
 				height: 12px;

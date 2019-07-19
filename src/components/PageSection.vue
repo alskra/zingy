@@ -65,6 +65,15 @@
 			app-tabs.page-section-tabs(v-if="$getSlot('tabs')")
 				template(slot="tabs")
 					slot(name="tabs")
+
+			.ul-grid(v-if="ul = $getSlot('ul')")
+				.ul-grid-row
+					.ul-grid-cell(
+						v-for="(item, index) of ul"
+						:key="index"
+					)
+						ul.ul
+							v-nodes(:vnodes="item.children")
 </template>
 
 <script>
@@ -107,7 +116,7 @@
 	}
 
 	.header {
-		margin-bottom: range(20px, 30px);
+		margin-bottom: range(20px, 40px);
 	}
 
 	.content-box,
@@ -205,6 +214,72 @@
 		.header {
 			margin-bottom: 0;
 			padding: range(15px, 20px) 0;
+		}
+	}
+
+	.page-section-of-ul {
+		background-color: #f0f0f0;
+	}
+
+	.ul-grid {
+		display: flex;
+		margin: 0 auto;
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
+		flex-direction: column;
+
+		@media (width >= 1440px) {
+			max-width: calc(var(--grid_width) + 200px);
+		}
+	}
+
+	.ul-grid-row {
+		display: flex;
+		margin: range(-15px, -30px) range(-10px, -20px);
+		flex-wrap: wrap;
+	}
+
+	.ul-grid-cell {
+		box-sizing: border-box;
+		padding: range(15px, 30px) range(10px, 20px);
+		flex: 1 1 300px;
+		min-width: 0;
+	}
+
+	.ul {
+		margin: 0;
+		padding: 0;
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+
+		> li {
+			display: block;
+			margin-bottom: var(--base-content_margin-y);
+			padding-left: 32px;
+			position: relative;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: calc(var(--font-size) * var(--line-height) / 2);
+				left: 0;
+				width: 12px;
+				height: 12px;
+				background-color: var(--color-accent);
+				transform: translateY(-50%);
+				pointer-events: none;
+			}
+
+			> ol,
+			> ul {
+				margin-top: var(--base-content_margin-y);
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 	}
 </style>
