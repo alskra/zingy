@@ -66,15 +66,43 @@
 				template(slot="tabs")
 					slot(name="tabs")
 
-			.ul-grid(v-if="ul = $getSlot('ul')")
-				ul.ul
-					template(
-						v-for="(item, index) of ul"
+			ul.ul(v-if="ul = $getSlot('ul')")
+				template(
+					v-for="(item, index) of ul"
+				)
+					v-nodes(
+						:key="index"
+						:vnodes="item.children"
 					)
-						v-nodes(
-							:key="index"
-							:vnodes="item.children"
+
+			.figures(v-if="figures = $getSlot('figures')")
+				//
+					.figures-grid
+						.figures-row
+							.figures-cell(
+								v-for="({tag, slots: {image, title, description}}, index) of figures"
+								:key="index"
+							)
+				.figure(
+					v-for="({tag, slots: {image, title, description}}, index) of figures"
+					:key="index"
+					:is="tag"
+				)
+					.figure-image-box(v-if="image")
+						img.figure-image(
+							v-bind="image[0].data.attrs"
 						)
+
+					.figure-body
+						.figure-title(
+							v-if="title"
+							:is="title[0].tag"
+						) {{ $getText(title) }}
+
+						.figure-description(
+							v-if="description"
+						)
+							v-nodes(:vnodes="description")
 </template>
 
 <script>
@@ -248,8 +276,10 @@
 	}
 
 	.ul {
-		margin: 0;
+		margin: 0 auto;
 		padding: 0;
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
 		color: var(--color);
 		font-family: var(--font-family);
 		font-size: var(--font-size);
@@ -284,6 +314,105 @@
 			&:last-child {
 				margin-bottom: 0;
 			}
+		}
+
+		@media (width >= 1440px) {
+			max-width: calc(var(--grid_width) + 200px);
+		}
+	}
+
+	.figures {
+		margin: 0 auto;
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
+		column-width: 400px;
+		column-gap: range(20px, 40px);
+
+		@media (width >= 1440px) {
+			max-width: calc(var(--grid_width) + 200px);
+		}
+	}
+
+	.figures-grid {
+		display: flex;
+		margin: 0 auto;
+		width: calc(100% - 2 * var(--grid_padding));
+		max-width: var(--grid_width);
+		flex-direction: column;
+
+		@media (width >= 1440px) {
+			max-width: calc(var(--grid_width) + 200px);
+		}
+	}
+
+	.figures-row {
+		display: flex;
+		margin: range(-10px, -20px);
+		flex-wrap: wrap;
+	}
+
+	.figures-cell {
+		box-sizing: border-box;
+		padding: range(10px, 20px);
+		flex: 0 0 percentage(1 / 3);
+		min-width: 0;
+
+		@media (width < 1366px) {
+			flex: 0 0 percentage(1 / 2);
+		}
+
+		@media (width < 768px) {
+			flex: 0 0 100%;
+		}
+	}
+
+	.figure {
+		display: flex;
+		box-sizing: border-box;
+		margin: 0 0 range(20px, 40px);
+		page-break-inside: avoid;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.figure-image-box {
+		margin-right: range(10px, 20px);
+		flex: 0 0 range(50px, 70px);
+		height: range(50px, 70px);
+	}
+
+	.figure-image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	.figure-body {
+		box-sizing: border-box;
+		flex: 0 1 100%;
+		min-width: 0;
+	}
+
+	.figure-title {
+		margin: 0 0 range(10px, 15px);
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(2rem, 2.2rem);
+		font-weight: 500;
+		line-height: 1.25;
+	}
+
+	.figure-description {
+		color: var(--color);
+		font-family: var(--font-family);
+		font-size: range(1.4rem, 1.6rem);
+		line-height: var(--line-height);
+
+		p {
+			display: inline;
 		}
 	}
 </style>
