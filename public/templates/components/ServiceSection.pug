@@ -94,8 +94,8 @@ mixin ServiceSection(template = 1)
 	template
 		section.service-section
 			.grid
-				.grid-row
-					if template === 1
+				if template === 1
+					.grid-row
 						.grid-cell
 							article.service
 								header.service-header
@@ -150,7 +150,8 @@ mixin ServiceSection(template = 1)
 										.service-button-text Отдел продвижения #[strong seo]
 										base-icon.service-button-icon(name="laurel")
 
-					else if template === 2
+				else if template === 2
+					.grid-row
 						.grid-cell
 							article.service
 								header.service-header
@@ -169,6 +170,39 @@ mixin ServiceSection(template = 1)
 									a.service-button(href="")
 										base-icon.service-button-icon(name="laurel")
 										.service-button-text Отдел #[strong web] разработки
+										base-icon.service-button-icon(name="laurel")
+
+						.grid-cell
+							.image-box
+								.image-box-inner
+									base-image.image(
+										src="upload/blockchain.jpg"
+										alt=""
+										:width-ratio="653"
+										:height-ratio="439"
+									)
+
+									.image-rect
+
+					.grid-row
+						.grid-cell
+							article.service
+								header.service-header
+									h2.service-title Продвинуть сайт в&nbsp;ТОП&nbsp;10 Yandex&nbsp;&amp;&nbsp;Google
+
+								.service-main
+									img.service-main-image(
+										src="upload/cup.svg"
+										alt=""
+									)
+
+									d-list.service-list(inline-template)
+										+DList(seoDList)
+
+								footer.service-footer
+									a.service-button(href="")
+										base-icon.service-button-icon(name="laurel")
+										.service-button-text Отдел продвижения #[strong seo]
 										base-icon.service-button-icon(name="laurel")
 
 						.grid-cell

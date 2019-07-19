@@ -39,16 +39,18 @@
 
 		& {
 			display: flex;
-			flex-flow: column;
+			box-sizing: border-box;
 			position: relative;
+			max-width: 100%;
+			flex-flow: column;
 		}
 	}
 
 	.d-list-inner {
 		display: flex;
-		flex-flow: column;
-		padding: 0;
 		margin: scale-down(-15px, 0.8);
+		padding: 0;
+		flex-flow: column;
 	}
 
 	.item {

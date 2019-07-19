@@ -51,6 +51,34 @@
 		display: flex;
 		margin: scale-down(-40px, 0.5) scale-down(-80px, 0.5);
 		flex-wrap: wrap;
+
+		& + .grid-row {
+			margin-top: scale-down(40px, 0.5);
+		}
+
+		@media (width >= 1024px) {
+			&:nth-child(even) {
+				.grid-cell {
+					&:nth-child(1) {
+						order: 1;
+					}
+				}
+
+				.image-box-inner {
+					margin: range(20px, 80px) range(20px, 60px) 0 range(20px, 190px);
+
+					&::before {
+						right: range(20px, 190px);
+						left: auto;
+					}
+				}
+
+				.image-rect {
+					right: range(-20px, -60px);
+					left: auto;
+				}
+			}
+		}
 	}
 
 	.grid-cell {
@@ -121,7 +149,6 @@
 	}
 
 	.d-list.service-list {
-		position: relative;
 		margin: 0 auto;
 	}
 
@@ -218,6 +245,7 @@
 		&:not(.v-lazy-image-loaded) {
 			& + .image-rect {
 				top: 0;
+				right: 0;
 				left: 0;
 				opacity: 0;
 			}
@@ -232,8 +260,8 @@
 		border: 3px solid var(--color-accent);
 		width: 90%;
 		height: 90%;
-		transition: top, left, opacity;
-		transition-duration: 0.5s, 0.5s, 0s;
-		transition-delay: 0.5s;
+		transition: top, right, left, opacity;
+		transition-duration: 0.5s;
+		transition-delay: 0.6s;
 	}
 </style>
