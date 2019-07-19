@@ -9,15 +9,18 @@
 		all: initial;
 
 		& {
-			display: block;
+			display: flex;
+			box-sizing: border-box;
 			padding: range(30px, 60px) 0;
+			flex-direction: column;
+			background-color: white;
 		}
 	}
 
 	.content-box {
+		margin: 0 auto;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
-		margin: 0 auto;
 	}
 
 	.subject {

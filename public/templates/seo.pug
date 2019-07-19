@@ -94,3 +94,12 @@ block app
 
 						template(slot="description")
 							p При условии своевременного выполнения тех. заданий и внедрений изменений на сайт.
+
+			quote-section.app-page-quote-section(inline-template)
+				-
+					const quote = {
+						subject: 'Гарантии качества',
+						quote: '<p>Гарантируем качественно и в срок выполнить все работы, использовать технологии и стратегии, испытанные на множестве проектов.</p>'
+					}
+
+				+QuoteSection(quote)
