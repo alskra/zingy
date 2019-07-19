@@ -29,7 +29,8 @@
 			buttons = $getSlot('buttons'),
 			articles = $getSlot('articles'),
 			tabs = $getSlot('tabs'),
-			activeTab = tabs && tabs[activeTabIndex].slots
+			activeTab = tabs && tabs[activeTabIndex].slots,
+			seo = $getSlot('seo')
 		)`
 	)
 		transition(
@@ -47,7 +48,7 @@
 					@transitionend.self="onBodyTransitionend"
 				)
 					.grid-row
-						.grid-cell(:class="{'grid-cell-7': articles}")
+						.grid-cell(:class="{'grid-cell-7': articles || seo}")
 							header.header(v-if="title")
 								.title(
 									v-if="title"
@@ -62,8 +63,8 @@
 								+buttons()
 
 						.grid-cell(
-							v-if="articles"
-							:class="{'grid-cell-5': articles}"
+							v-if="articles || seo"
+							:class="{'grid-cell-5': articles || seo}"
 						)
 							aside.articles(v-if="articles")
 								.articles-grid-row
@@ -96,6 +97,23 @@
 												p.article-description(
 													v-if="description"
 												) {{ $getText(description) }}
+
+							aside.seo(
+								v-if="seo"
+								:set.prop=`(
+									seoImage = seo[0].slots.image[0],
+									seoButton = seo[0].slots.button[0]
+								)`
+							)
+								.seo-image-box(v-if="seoImage")
+									v-nodes(:vnodes="[seoImage]")
+
+								.seo-button-box(v-if="seoButton")
+									base-button.button(
+										tag="a"
+										v-bind="seoButton.data.attrs"
+										@click.prevent="$root.showModalFeedback"
+									) {{ $getText(seoButton.children) }}
 
 					.grid-row.grid-row-is-tabs(v-if="tabs")
 						.grid-cell.grid-cell-8
@@ -272,7 +290,8 @@
 			}
 
 			.articles,
-			.tabs-nav {
+			.tabs-nav,
+			.seo {
 				transition: opacity, transform;
 				transition-duration: 0.3s;
 			}
@@ -300,7 +319,8 @@
 			}
 
 			.articles,
-			.tabs-nav {
+			.tabs-nav,
+			.seo {
 				transition-delay: 0.5s;
 			}
 		}
@@ -331,7 +351,8 @@
 			}
 
 			.articles,
-			.tabs-nav {
+			.tabs-nav,
+			.seo {
 				opacity: 0;
 				transform: translateX(10px);
 			}
@@ -734,5 +755,41 @@
 		white-space: nowrap;
 		background: linear-gradient(to right, var(--color-accent), var(--color-accent)) no-repeat 0 100% / 0 2px;
 		transition: background-size 0.2s;
+	}
+
+	.seo {
+		display: flex;
+		box-sizing: border-box;
+		height: 100%;
+		flex-direction: column;
+
+		@media (width >= 1440px) {
+			margin-right: range(-100px, -180px);
+		}
+	}
+
+	.seo-image-box {
+		margin-bottom: 30px;
+
+		img {
+			display: block;
+			margin: 0 auto;
+			width: 490px;
+			max-width: 100%;
+		}
+
+		@media (width >= 1024px) {
+			margin-top: auto;
+		}
+	}
+
+	.seo-button-box {
+		display: flex;
+		margin-top: auto;
+		flex-direction: column;
+
+		.base-button.button {
+			margin: 0 auto;
+		}
 	}
 </style>
