@@ -11,6 +11,7 @@
 		& {
 			display: flex;
 			box-sizing: border-box;
+			position: relative;
 			padding: range(30px, 60px) 0;
 			flex-direction: column;
 			background-color: white;

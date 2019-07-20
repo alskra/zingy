@@ -97,6 +97,9 @@
 			linkUpShown() {
 				return this.windowWidth >= 1440
 					&& this.$windowScroll.y >= 200;
+			},
+			bgImageShown() {
+				return this.bodyRect.bottom >= this.windowHeight;
 			}
 		},
 		methods: {
@@ -216,7 +219,16 @@
 	.main {
 		flex: 1 0 auto;
 		padding: range(60px, 138px) 0 0;
-		background: no-repeat 50% 50% / cover fixed var(--app-page-main_background-color, #ffffff);
+		background-color: var(--app-page-main_background-color, #ffffff);
+	}
+
+	.bg-image {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: no-repeat 50% 50% / cover fixed;
 	}
 
 	.app-footer.app-page-footer {
@@ -225,6 +237,7 @@
 
 	.grid {
 		display: flex;
+		position: relative;
 		margin: 0 auto;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);

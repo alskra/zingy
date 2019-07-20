@@ -238,6 +238,7 @@
 		& {
 			display: flex;
 			box-sizing: border-box;
+			position: relative;
 			padding: range(30px, 60px) 0;
 			max-width: 100%;
 			flex-flow: column;

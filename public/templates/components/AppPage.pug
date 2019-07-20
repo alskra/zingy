@@ -10,7 +10,13 @@ mixin AppPage(mainBg)
 				app-header.app-page-header(inline-template)
 					+AppHeader()
 
-				main.main(:style=`{backgroundImage: 'url(' + $publicPath + '${mainBg})'}`)
+				main.main
+					if mainBg
+						.bg-image(
+							v-show="bgImageShown"
+							:style=`{backgroundImage: 'url(' + $publicPath + '${mainBg})'}`
+						)
+
 					block
 
 					feedback-section.app-page-feedback-section(inline-template)
