@@ -52,8 +52,8 @@
 	}
 
 	.body {
-		/*position: relative;*/
-		/*padding: range(30px, 60px) 0;*/
+		position: relative;
+		padding: range(30px, 60px) 0;
 	}
 
 	.image-box {

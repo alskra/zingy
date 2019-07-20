@@ -39,6 +39,7 @@
 
 	// seo
 	const InfoSection = () => import('./InfoSection');
+	const OrderSection = () => import('./OrderSection');
 
 	export default {
 		name: 'AppPage',
@@ -80,6 +81,7 @@
 
 			// seo
 			InfoSection,
+			OrderSection,
 		},
 		data() {
 			return {
