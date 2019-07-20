@@ -46,6 +46,10 @@
 			font-family: var(--font-family);
 			background-color: white;
 		}
+
+		@media (width < 1024px) {
+			padding: 0;
+		}
 	}
 
 	.image-box {
@@ -57,7 +61,9 @@
 		background-color: #312783;
 
 		@media (width < 1024px) {
-			display: none;
+			left: 0;
+			width: 100%;
+			height: 100%;
 		}
 	}
 
@@ -70,8 +76,14 @@
 	}
 
 	.body {
-		padding: range(40px, 120px) 0;
+		padding: range(60px, 120px) 0;
 		background-color: #222222;
+
+		@media (width < 1024px) {
+			position: relative;
+			padding: range(30px, 60px) 0;
+			background-color: rgba(#222222, 0.5);
+		}
 	}
 
 	.grid {
@@ -125,6 +137,7 @@
 
 	.base-button.button {
 		--base-button_background-color: var(--color-accent);
+		--base-button-hover_background-color: var(--color);
 
 		width: 315px;
 

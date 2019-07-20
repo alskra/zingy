@@ -115,6 +115,6 @@
 
 	.main {
 		box-sizing: border-box;
-		padding: 0 range(10px, 40px) range(20px, 40px);
+		padding: 0 range(10px, 40px) range(20px, 40px) range(20px, 60px);
 	}
 </style>
