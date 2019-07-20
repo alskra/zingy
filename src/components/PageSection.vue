@@ -284,7 +284,7 @@
 		font-family: var(--font-family);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
-		column-width: 300px;
+		column-width: 260px;
 		column-gap: range(20px, 40px);
 
 		> li {
@@ -325,7 +325,7 @@
 		margin: 0 auto;
 		width: calc(100% - 2 * var(--grid_padding));
 		max-width: var(--grid_width);
-		column-width: 400px;
+		column-width: 360px;
 		column-gap: range(20px, 40px);
 
 		@media (width >= 1440px) {
