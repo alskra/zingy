@@ -226,9 +226,9 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
-		background: no-repeat 50% 50% / cover fixed;
+		width: 100vw;
+		height: 100vh;
+		background: no-repeat 50% 50% / cover;
 	}
 
 	.app-footer.app-page-footer {
