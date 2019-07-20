@@ -44,6 +44,7 @@
 									v-if="order"
 									tag="a"
 									v-bind="order[0].data.attrs"
+									@click.prevent="$root.showModalFeedback"
 								) {{ getText(order[0].children) }}
 
 								a.card-more-link(
