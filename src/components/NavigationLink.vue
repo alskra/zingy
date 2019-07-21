@@ -22,8 +22,6 @@
 </template>
 
 <script>
-	import {getVNodesTextContent} from '../plugins/vue-utilities/vue-utilities';
-
 	export default {
 		name: 'NavigationLink',
 		props: {
@@ -35,7 +33,7 @@
 		computed: {
 			content() {
 				if (this.$scopedSlots.default) {
-					return getVNodesTextContent(this.$scopedSlots.default());
+					return this.$getText(this.$scopedSlots.default());
 				}
 
 				return null;

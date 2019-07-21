@@ -58,7 +58,6 @@
 
 <script>
 	import VClamp from 'vue-clamp';
-	import {getVNodesTextContent} from '../plugins/vue-utilities/vue-utilities';
 
 	export default {
 		name: 'PostsItem',
@@ -74,14 +73,14 @@
 		computed: {
 			title() {
 				if (this.$scopedSlots.title) {
-					return getVNodesTextContent(this.$scopedSlots.title());
+					return this.$getText(this.$scopedSlots.title());
 				}
 
 				return '';
 			},
 			desc() {
 				if (this.$scopedSlots.desc) {
-					return getVNodesTextContent(this.$scopedSlots.desc());
+					return this.$getText(this.$scopedSlots.desc());
 				}
 
 				return '';

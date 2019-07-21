@@ -14,7 +14,7 @@
 							order,
 							more
 						}
-					}, index) of cards`
+					}, index) of $getSlot('cards')`
 					:key="index"
 				)
 					.card(
@@ -22,53 +22,37 @@
 						:style="{backgroundColor: attrs['bg-color']}"
 					)
 						.card-image-box(v-if="image")
-							img.card-image(
-								v-bind="image[0].data.attrs"
-							)
+							img.card-image(v-bind="image[0].data.attrs")
 
 						.card-body
 							.card-body-top
 								.card-title(
 									v-if="title"
 									:is="title[0].tag"
-								) {{ getText(title[0].children) }}
+								) {{ $getText(title) }}
 
 								.card-description(v-if="description")
 									v-nodes(:vnodes="description")
 
 							.card-body-bottom
-								.card-price(v-if="price")
-									v-nodes(:vnodes="price[0].children")
+								.card-price(v-if="price") {{ $getText(price) }}
 
-								base-button.is-block.wide.card-order-button(
+								base-button.is-flex.wide.card-order-button(
 									v-if="order"
 									tag="a"
 									v-bind="order[0].data.attrs"
 									@click.prevent="$root.showModalFeedback"
-								) {{ getText(order[0].children) }}
+								) {{ $getText(order) }}
 
 								a.card-more-link(
 									v-if="more"
 									v-bind="more[0].data.attrs"
-								) {{ getText(more[0].children) }}
+								) {{ $getText(more) }}
 </template>
 
 <script>
-	import {
-		getScopedSlot as getSlot,
-		getVNodesTextContent as getText
-	} from '../plugins/vue-utilities/vue-utilities';
-
 	export default {
-		name: 'LandingCards',
-		computed: {
-			cards() {
-				return getSlot(this.$scopedSlots.cards);
-			}
-		},
-		methods: {
-			getText
-		}
+		name: 'LandingCards'
 	};
 </script>
 

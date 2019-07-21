@@ -67,7 +67,7 @@
 			opacity: var(--disabled_opacity);
 		}
 
-		&.is-block {
+		&.is-flex {
 			display: flex;
 		}
 

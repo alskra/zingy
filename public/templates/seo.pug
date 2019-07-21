@@ -269,6 +269,33 @@ block app
 
 			section.app-page-section(is="page-section")
 				template(slot="title")
+					h2 Тарифы
+
+				template(slot="tariffs")
+					figure
+						template(slot="title")
+							p Начинающий бизнес
+
+						template(slot="description")
+							p Подходит для сайтов-каталогов и услуг
+
+						template(slot="price")
+							p от 25 000 ₽/месяц
+
+						template(slot="sections")
+							div
+								template(slot="title")
+									p Этот тариф подходит вам, если:
+
+								template(slot="content")
+									ul
+										li SEO-аудит в сфере вашего бизнеса
+										li Анализ ниши и конкурентов
+										li Юзабилити анализ
+										li Составление списков рекомендаций по страницам сайта, структуре, прочая лабуда чтобы было больше текста в три строки
+
+			section.app-page-section(is="page-section")
+				template(slot="title")
 					h2 Вы спрашиваете, мы отвечаем
 
 				template(slot="faq")

@@ -3,29 +3,16 @@
 		.grid
 			.grid-row
 				.grid-cell(
-					v-for=`
-						(
-							{
-								tag,
-								slots: {
-									title,
-									description
-								}
-							},
-							index
-						) of factors
-					`
+					v-for="({tag, slots: {title, description}}, index) of $getSlot('factors')"
 					:key="index"
 				)
-					.factor(
-						:is="tag"
-					)
+					.factor(:is="tag")
 						.factor-body
 							.factor-header
 								.factor-title(
 									v-if="title"
 									:is="title[0].tag"
-								) {{ getText(title) }}
+								) {{ $getText(title) }}
 
 							.factor-main
 								.factor-description(v-if="description")
@@ -35,21 +22,8 @@
 </template>
 
 <script>
-	import {
-		getScopedSlot as getSlot,
-		getVNodesTextContent as getText
-	} from '../plugins/vue-utilities/vue-utilities';
-
 	export default {
-		name: 'FactorsList',
-		computed: {
-			factors() {
-				return getSlot(this.$scopedSlots.factors);
-			}
-		},
-		methods: {
-			getText
-		}
+		name: 'FactorsList'
 	};
 </script>
 

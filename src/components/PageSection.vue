@@ -100,6 +100,10 @@
 			app-faq.page-section-faq(v-if="$getSlot('faq')")
 				template(slot="items")
 					slot(name="faq")
+
+			app-tariffs.page-section-tariffs(v-if="$getSlot('tariffs')")
+				template(slot="tariffs")
+					slot(name="tariffs")
 </template>
 
 <script>
@@ -112,6 +116,7 @@
 	import InfiniteCarousel from './InfiniteCarousel';
 	import AppTabs from './AppTabs';
 	import AppFaq from './AppFaq';
+	import AppTariffs from './AppTariffs';
 
 	export default {
 		name: 'PageSection',
@@ -124,7 +129,8 @@
 			FactorsList,
 			InfiniteCarousel,
 			AppTabs,
-			AppFaq
+			AppFaq,
+			AppTariffs
 		}
 	};
 </script>

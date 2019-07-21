@@ -14,10 +14,35 @@
 		all: initial;
 
 		& {
-			display: block;
-			background: url("../assets/img/mount-bg.jpg") no-repeat 50% range(6px, 13px) / cover #ffffff;
+			display: flex;
+			box-sizing: border-box;
+			position: relative;
+			padding: range(30px, 60px) 0;
+			max-width: 100%;
+			flex-flow: column;
 			overflow: hidden;
-			margin: range(30px, 60px) 0;
+			background: url("../assets/img/mount-bg.jpg") no-repeat 50% range(6px, 13px) / cover #ffffff;
+		}
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			width: 100%;
+			background-color: #ffffff;
+			pointer-events: none;
+		}
+
+		&::before {
+			top: 0;
+			height: range(30px + 6px, 60px + 13px);
+		}
+
+
+		&::after {
+			bottom: 0;
+			height: range(30px, 60px);
 		}
 	}
 
