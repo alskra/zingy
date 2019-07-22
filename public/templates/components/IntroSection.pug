@@ -59,7 +59,16 @@ mixin IntroSection()
 							.unicorn
 								.unicorn-img-box
 									include ../../../src/assets/img/icons/unicorn-intro.svg
-									div(:class="['unicorn-img', {'unicorn-img-is-clip': isSupportClipPath}]")
+
+									.unicorn-img(
+										v-if="!isSupportClipPath"
+										:style="{backgroundImage: 'url(upload/unicorn-intro-fallback.png)'}"
+									)
+
+									.unicorn-img.unicorn-img-is-clip(
+										v-else
+										:style="{backgroundImage: 'url(upload/unicorn-intro.png)'}"
+									)
 
 								.unicorn-text-box
 									a(
