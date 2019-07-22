@@ -1,17 +1,20 @@
 <template lang="pug">
-	section.page-section
-		header.header
+	section.page-section(
+		:set.prop=`(
+			title = $getSlot('title'),
+			description = $getSlot('description')
+		)`
+	)
+		header.header(v-if="title")
 			.header-grid
 				.header-grid-row
 					.header-grid-cell
 						.title(
-							v-if="title = $getSlot('title')"
+							v-if="title"
 							:is="title[0].tag"
 						) {{ $getText(title) }}
 
-						base-content.description(
-							v-if="description = $getSlot('description')"
-						)
+						base-content.description(v-if="description")
 							v-nodes(:vnodes="description")
 
 		.main

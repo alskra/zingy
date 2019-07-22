@@ -58,7 +58,8 @@
 		}
 
 		@media (width >= 1024px) {
-			&:nth-child(even) {
+			/*&:nth-child(even),*/
+			&.invert {
 				.grid-cell {
 					&:nth-child(1) {
 						order: 1;

@@ -52,6 +52,48 @@
 			align-items: flex-start;
 		}
 
+		.page-section {
+			padding: range(20px, 40px) 0;
+			background-color: transparent;
+
+			>>> .header-grid {
+				width: 100%;
+			}
+
+			>>> .header-grid-cell {
+				margin-left: 0;
+				width: 100%;
+			}
+
+			>>> .factors-list {
+				.grid {
+					width: 100%;
+				}
+			}
+
+			>>> .ul,
+			>>> .figures {
+				width: 100%;
+			}
+
+			>>> .faq {
+				.grid {
+					width: 100%;
+				}
+			}
+		}
+
+		.order-section {
+			@media (width >= 1024px) {
+				padding: range(0px, 30px) 0;
+
+				>>> .image-box {
+					left: calc(50% + range(50px, 100px));
+					width: calc(50% - range(80px, 130px));
+				}
+			}
+		}
+
 		@media (width < 1024px) {
 			flex-wrap: wrap;
 		}
