@@ -7,7 +7,9 @@
 		data() {
 			return {
 				isSupportClipPath: document.documentElement.style.clipPath !== undefined
-			}
+					&& !document.documentElement.classList.contains('is-browser-mobile-safari')
+					&& !document.documentElement.classList.contains('is-engine-trident')
+			};
 		},
 		computed: {
 			scrollStickyBottom() {
@@ -22,9 +24,6 @@
 		components: {
 			VueSticky,
 			AppModal
-		},
-		methods: {
-
 		}
 	};
 </script>
@@ -295,36 +294,33 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: url("../assets/img/unicorn-intro-fallback-2.png") no-repeat 50% 100% / contain;
+		background: no-repeat 50% 100% / contain;
 	}
 
-	.unicorn-img-is-clip {
-		:root:not(.is-browser-mobile-safari, .is-engine-trident) & {
-			width: 420px;
-			height: 803px;
-			background: url("../assets/img/intro-bg-3.png") no-repeat 50% / cover;
-			clip-path: url("#unicorn");
-			transform-origin: 0 0;
-			transform: scale(scale-down(1, 0.3));
+	.unicorn-img-clipped {
+		width: 420px;
+		height: 803px;
+		background: no-repeat 50% / cover;
+		clip-path: url("#unicorn");
+		transform-origin: 0 0;
+		transform: scale(scale-down(1, 0.3));
 
-			&::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: url("../assets/img/intro-bg-2.jpg") no-repeat 50% / cover;
-				opacity: 0;
-				transition: opacity 0.5s;
-			}
-
-			&:hover {
-				&::before {
-					opacity: 1;
-				}
+		&:hover {
+			.unicorn-img-hover {
+				opacity: 1;
 			}
 		}
+	}
+
+	.unicorn-img-hover {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: no-repeat 50% / cover;
+		opacity: 0;
+		transition: opacity 0.5s;
 	}
 
 	.unicorn-text-box {

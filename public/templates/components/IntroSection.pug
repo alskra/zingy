@@ -65,10 +65,11 @@ mixin IntroSection()
 										:style="{backgroundImage: 'url(upload/unicorn-intro-fallback.png)'}"
 									)
 
-									.unicorn-img.unicorn-img-is-clip(
+									.unicorn-img.unicorn-img-clipped(
 										v-else
 										:style="{backgroundImage: 'url(upload/unicorn-intro.png)'}"
 									)
+										.unicorn-img-hover(:style="{backgroundImage: 'url(upload/unicorn-intro-hover.jpg)'}")
 
 								.unicorn-text-box
 									a(
