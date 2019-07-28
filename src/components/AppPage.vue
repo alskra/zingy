@@ -29,7 +29,7 @@
 	// contacts
 	const ZingyWorld = () => import('./ZingyWorld');
 	import AppPageContacts from './AppPageContacts';
-	const AppGmap = () => import('./AppGmap');
+	const AppYmaps = () => import('./AppYmaps');
 
 	// development
 	const FancySection = () => import('./FancySection');
@@ -71,7 +71,7 @@
 			// contacts
 			ZingyWorld,
 			AppPageContacts,
-			AppGmap,
+			AppYmaps,
 
 			// development
 			FancySection,
