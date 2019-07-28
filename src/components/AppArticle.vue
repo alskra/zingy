@@ -2,13 +2,17 @@
 	import AppShare from './AppShare';
 	import SwiperGallery from './SwiperGallery';
 	import NavigationLink from './NavigationLink';
+	import PageSection from './PageSection';
+	import OrderSection from './OrderSection';
 
 	export default {
 		name: 'AppArticle',
 		components: {
 			AppShare,
 			SwiperGallery,
-			NavigationLink
+			NavigationLink,
+			PageSection,
+			OrderSection
 		},
 		data() {
 			return {

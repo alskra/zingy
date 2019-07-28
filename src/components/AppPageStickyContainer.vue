@@ -52,42 +52,42 @@
 			align-items: flex-start;
 		}
 
-		.page-section {
+		>>> .page-section {
 			padding: range(20px, 40px) 0;
 			background-color: transparent;
 
-			>>> .header-grid {
+			.header-grid {
 				width: 100%;
 			}
 
-			>>> .header-grid-cell {
+			.header-grid-cell {
 				margin-left: 0;
 				width: 100%;
 			}
 
-			>>> .factors-list {
+			.factors-list {
 				.grid {
 					width: 100%;
 				}
 			}
 
-			>>> .ul,
-			>>> .figures {
+			.ul,
+			.figures {
 				width: 100%;
 			}
 
-			>>> .faq {
+			.faq {
 				.grid {
 					width: 100%;
 				}
 			}
 		}
 
-		.order-section {
+		>>> .order-section {
 			@media (width >= 1024px) {
 				padding: range(0px, 30px) 0;
 
-				>>> .image-box {
+				.image-box {
 					left: calc(50% + range(50px, 100px));
 					width: calc(50% - range(80px, 130px));
 				}
