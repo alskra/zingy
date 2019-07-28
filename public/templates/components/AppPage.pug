@@ -35,3 +35,15 @@ mixin AppPage(mainBg)
 
 				template(v-slot:after)
 					p #[strong ZINGY]&nbsp;— в&nbsp;переводе с&nbsp;англ. потрясающий, захватывающий
+
+			// Modals
+			app-modal(
+				name="feedback"
+				classes="is-small"
+			)
+				template(slot="title") Обратная связь
+
+				template(slot="default")
+					feedback-form.form(action=NODE_ENV === 'production' ? '/mail.php' : '/')
+						template(slot="content")
+							p *&nbsp;Отправляя заявку, вы соглашаетесь с <a href='' target='_blank'>условиями передачи информации</a>.

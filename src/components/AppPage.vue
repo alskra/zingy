@@ -7,6 +7,8 @@
 	import FeedbackSection from './FeedbackSection';
 	import AppFooter from './AppFooter';
 	import ZingySection from './ZingySection';
+	import AppModal from './AppModal';
+	import FeedbackForm from './FeedbackForm';
 
 	// index
 	import IntroSection from './IntroSection';
@@ -50,6 +52,8 @@
 			FeedbackSection,
 			AppFooter,
 			ZingySection,
+			AppModal,
+			FeedbackForm,
 
 			// index
 			IntroSection,

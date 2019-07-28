@@ -28,10 +28,7 @@
 </i18n>
 
 <template lang="pug">
-	form.feedback-form(
-		action="/"
-		@submit.prevent="onSubmit"
-	)
+	form.feedback-form(@submit.prevent="onSubmit")
 		.grid
 			.grid-cell.grid-cell-has-field(
 				v-for="field in fields"
@@ -63,7 +60,8 @@
 			.grid-cell
 				base-button.button {{ $t('submit') }}
 
-		.content(v-html="$t('agree', {url: agreeUrl})")
+		.content
+			slot(name="content")
 </template>
 
 <script>
@@ -258,7 +256,15 @@
 		line-height: 1.25;
 		margin-top: range(20px, 40px);
 
-		>>> a {
+		p {
+			margin: 0 0 1em;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+
+		a {
 			color: var(--color-link);
 			text-decoration: none;
 

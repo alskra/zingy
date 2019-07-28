@@ -10,4 +10,6 @@ mixin FeedbackSection()
 						.content.content-is-description Оставьте заявку на консультацию
 
 					.grid-cell
-						feedback-form.form(agree-url="/")
+						feedback-form.form(action=NODE_ENV === 'production' ? '/mail.php' : '/')
+							template(slot="content")
+								p *&nbsp;Отправляя заявку, вы соглашаетесь с <a href='' target='_blank'>условиями передачи информации</a>.

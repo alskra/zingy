@@ -8,7 +8,6 @@
 		@before-open="$lockBodyScroll()"
 		@closed="$lockBodyScroll(false)"
 	)
-
 		app-modal-body.modal-body(v-bind="$props")
 			template(#title)
 				slot(name="title")
