@@ -22,7 +22,7 @@
 
 			app-carousel.app-carousel-of-articles.page-section-articles-carousel(
 				v-if="articlesCarousel = $getSlot('articles-carousel')"
-				:options="{slidesPerView: 'auto'}"
+				:options="articlesCarouselOptions"
 			)
 				template(slot="slides")
 					.article(
@@ -134,6 +134,13 @@
 			AppTabs,
 			AppFaq,
 			AppTariffs
+		},
+		data() {
+			return {
+				articlesCarouselOptions: {
+					slidesPerView: 'auto'
+				}
+			};
 		}
 	};
 </script>
