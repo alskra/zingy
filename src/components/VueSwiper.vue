@@ -133,13 +133,13 @@
 					this.swiper.updateSlides();
 					this.swiper.updateProgress();
 					this.swiper.updateSlidesClasses();
-					console.log('VueSwiper updated!');
+					// console.log('VueSwiper updated!');
 				}
 			},
 			destroy() {
 				if (this.swiper.initialized) {
 					this.swiper.destroy(true, true); // set `destroyed` true
-					console.log('VueSwiper destroyed!');
+					// console.log('VueSwiper destroyed!');
 					// console.log(this.swiper);
 					// console.log(this.swiper.initialized);
 					// console.log(this.swiper.destroyed);
