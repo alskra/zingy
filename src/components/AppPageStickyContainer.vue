@@ -84,6 +84,10 @@
 		}
 
 		>>> .order-section {
+			border-top-width: range(20px, 40px);
+			border-bottom-width: range(20px, 40px);
+			background-color: transparent;
+
 			@media (width >= 1024px) {
 				padding: range(0px, 30px) 0;
 

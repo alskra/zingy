@@ -39,6 +39,8 @@
 			display: flex;
 			box-sizing: border-box;
 			position: relative;
+			border-top: range(30px, 60px) solid transparent;
+			border-bottom: range(30px, 60px) solid transparent;
 			padding: range(0px, 70px) 0 range(0px, 115px);
 			max-width: 100%;
 			flex-flow: column;

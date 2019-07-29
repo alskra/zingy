@@ -397,6 +397,8 @@
 		margin-right: range(10px, 20px);
 		flex: 0 0 range(50px, 70px);
 		height: range(50px, 70px);
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.figure-image {
