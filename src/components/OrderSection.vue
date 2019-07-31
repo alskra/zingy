@@ -1,9 +1,10 @@
 <template lang="pug">
 	.order-section
-		.image-box(v-if="image = $getSlot('image')")
-			img.image(
-				v-bind="image[0].data.attrs"
-			)
+		.image-box(
+			v-if="image = $getSlot('image')"
+			:style="{backgroundColor: image[0].data.attrs['bg-color']}"
+		)
+			img.image(v-bind="image[0].data.attrs")
 
 		.body
 			.grid
@@ -17,12 +18,13 @@
 						.content(v-if="content = $getSlot('content')")
 							v-nodes(:vnodes="content")
 
-						.footer
+						.footer(v-if="button = $getSlot('button')")
 							base-button.button(
+								v-if="button"
 								tag="a"
-								href=""
+								v-bind="button[0].data.attrs"
 								@click.prevent="$root.showModalFeedback"
-							) Заказать консультацию
+							) {{ $getText(button) }}
 </template>
 
 <script>

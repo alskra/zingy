@@ -21,7 +21,7 @@
 
 	if (!api.scriptEl) {
 		api.scriptEl = document.createElement('script');
-		api.scriptEl.src = 'https://api-maps.yandex.ru/2.1/?apikey=fa044ff0-6600-4936-8d46-1e837d7862df&lang=ru_RU&onload=initYmaps';
+		api.scriptEl.src = 'https://api-maps.yandex.ru/2.1/?apikey=e2f8b0c5-6413-463e-aee0-fbfcf40de345&lang=ru_RU&onload=initYmaps';
 		document.head.appendChild(api.scriptEl);
 	}
 

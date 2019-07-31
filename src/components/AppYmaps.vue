@@ -3,7 +3,7 @@
 		:state=`{
 			center: [55.718662, 37.511268],
 			zoom: 17,
-			behaviors: ['drag', 'dblClickZoom', 'rightMouseButtonMagnifier', 'multiTouch']
+			behaviors: [/*'drag', */'dblClickZoom', 'rightMouseButtonMagnifier', 'multiTouch']
 		}`
 		@init="onInit"
 	)

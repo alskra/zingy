@@ -519,6 +519,7 @@ mixin AppArticle()
 							img(
 								src="upload/bank.jpg"
 								alt=""
+								bg-color="#8e1219"
 							)
 
 						template(slot="title")
@@ -526,6 +527,9 @@ mixin AppArticle()
 
 						template(slot="content")
 							p Вместо этого предлагаем решения, при этом готовы сами их реализовать и нести ответственность за результат.
+
+						template(slot="button")
+							a(href="article.html#feedback-section") Заказать
 
 				+swiper-gallery().app-article-gallery
 
