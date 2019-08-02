@@ -93,12 +93,28 @@
 					width: 100%;
 				}
 			}
+
+			&:first-child {
+				padding-top: 0;
+			}
+
+			&:last-child {
+				padding-bottom: 0;
+			}
 		}
 
 		>>> .order-section {
 			border-top-width: range(20px, 40px);
 			border-bottom-width: range(20px, 40px);
 			background-color: transparent;
+
+			&:first-child {
+				border-top-width: 0;
+			}
+
+			&:last-child {
+				border-bottom-width: 0;
+			}
 
 			@media (width >= 1024px) {
 				padding: range(0px, 30px) 0;

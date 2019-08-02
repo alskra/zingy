@@ -158,6 +158,14 @@
 			flex-flow: column;
 			background-color: white;
 		}
+
+		&.padding-top-none {
+			padding-top: 0;
+		}
+
+		&.transparent {
+			background-color: transparent;
+		}
 	}
 
 	.header {
