@@ -29,10 +29,19 @@
 		& {
 			display: block;
 		}
+
+		.page-section {
+			>>> .title {
+				font-size: var(--h2_font-size);
+				font-weight: 700;
+			}
+		}
 	}
 
 	.header {
+		display: flex;
 		margin-bottom: range(30px, 45px);
+		flex-flow: column;
 	}
 
 	.header-grid {

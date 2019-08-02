@@ -4,6 +4,8 @@
 
 	// all
 	import AppHeader from './AppHeader';
+	import AppBreadcrumb from './AppBreadcrumb';
+	import ContentSection from './ContentSection';
 	import FeedbackSection from './FeedbackSection';
 	import AppFooter from './AppFooter';
 	import ZingySection from './ZingySection';
@@ -19,7 +21,6 @@
 	import PageSectionIsServices from './PageSectionIsServices';
 
 	// blog
-	import AppBreadcrumb from './AppBreadcrumb';
 	const AppPageStickyContainer = () => import('./AppPageStickyContainer');
 	import SideNav from './SideNav';
 	const BlogPosts = () => import('./BlogPosts');
@@ -49,6 +50,7 @@
 			// all
 			AppHeader,
 			AppBreadcrumb,
+			ContentSection,
 			FeedbackSection,
 			AppFooter,
 			ZingySection,
@@ -251,12 +253,12 @@
 	.grid-row {
 		display: flex;
 		flex-wrap: wrap;
-		margin: 0 var(--grid-row_margin);
+		margin: var(--grid-row_margin);
 	}
 
 	.grid-cell {
 		box-sizing: border-box;
-		padding: 0 var(--grid-cell_padding);
+		padding: var(--grid-cell_padding);
 		min-width: 0;
 		max-width: 100%;
 

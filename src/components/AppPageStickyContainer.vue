@@ -52,6 +52,18 @@
 			align-items: flex-start;
 		}
 
+		>>> .base-content {
+			padding: range(20px, 40px) 0;
+
+			&:first-child {
+				padding-top: 0;
+			}
+
+			&:last-child {
+				padding-bottom: 0;
+			}
+		}
+
 		>>> .page-section {
 			padding: range(20px, 40px) 0;
 			background-color: transparent;
