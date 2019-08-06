@@ -28,6 +28,7 @@
 
 	// article
 	const AppArticle = () => import('./AppArticle');
+	const ArticlesFeed = () => import('./ArticlesFeed');
 
 	// contacts
 	const ZingyWorld = () => import('./ZingyWorld');
@@ -73,6 +74,7 @@
 
 			// article
 			AppArticle,
+			ArticlesFeed,
 
 			// contacts
 			ZingyWorld,

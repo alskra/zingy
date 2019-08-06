@@ -129,6 +129,7 @@
 					if (count) {
 						this.$root.$emit("VK:Share:count:update", count);
 						shareCounter.value += count;
+						this.$set(shareCounter.urls, this.page_url, (shareCounter.urls[this.page_url] || 0) + count);
 					}
 				};
 			}

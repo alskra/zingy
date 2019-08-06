@@ -35,7 +35,10 @@
 						)
 							.item(
 								:is="'share-button-is-' + item.toLowerCase()"
-								v-bind="$props"
+								:page_url="page_url"
+								:page_title="pageTitle"
+								:page_description="pageDescription"
+								:page_image="page_image"
 								has_icon
 								:title_social="''"
 								has_counter
@@ -59,10 +62,10 @@
 		},
 		props: {
 			invert: Boolean,
-			page_url: String,
-			page_title: String,
-			page_description: String,
-			page_image: String,
+			pageUrl: String,
+			pageTitle: String,
+			pageDescription: String,
+			pageImage: String,
 		},
 		data() {
 			return {
@@ -75,10 +78,19 @@
 			};
 		},
 		computed: {
+			page_url() {
+				return this.pageUrl && this.$resolveUrl(this.pageUrl);
+			},
+			page_image() {
+				return this.pageImage && this.$resolveUrl(this.pageImage);
+			},
 			commonCountFormatted() {
-				const count = shareCounter.value;
+				const count = shareCounter.urls[this.page_url] || 0;
 
 				return count >= 1000 ? sliceThousandInt(count) : count;
+			},
+			shareCounter() {
+				return shareCounter;
 			}
 		}
 	};

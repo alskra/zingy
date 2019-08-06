@@ -31,6 +31,10 @@ const pages = {
 		template: 'public/templates/seo.pug',
 		filename: 'seo.html'
 	},
+	'audit-sajta': {
+		template: 'public/templates/audit-sajta.pug',
+		filename: 'audit-sajta.html'
+	},
 	'vue-sticky-exm': {
 		template: 'public/templates/vue-sticky-exm.pug',
 		filename: 'vue-sticky-exm.html'

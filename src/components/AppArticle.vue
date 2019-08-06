@@ -31,9 +31,11 @@
 		}
 
 		.page-section {
-			>>> .title {
-				font-size: var(--h2_font-size);
-				font-weight: 700;
+			>>> > .header {
+				.title {
+					font-size: var(--h2_font-size);
+					font-weight: 700;
+				}
 			}
 		}
 	}
@@ -146,7 +148,6 @@
 	.footer-grid {
 		margin: var(--grid-row_margin);
 		display: flex;
-		/*flex-wrap: wrap;*/
 		align-items: center;
 	}
 
@@ -157,11 +158,7 @@
 		max-width: 100%;
 
 		&:nth-child(1) {
-			flex: 1 0 auto;
-		}
-
-		&:nth-child(2) {
-
+			flex: 1 1 auto;
 		}
 	}
 </style>

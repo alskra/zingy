@@ -1,0 +1,32 @@
+extends index
+
+include chunks/sticky-container-layout
+include components/AppArticle
+
+append vars
+	-
+		title = 'Статья';
+
+block app
+	app-page(inline-template)
+		+AppPage()
+			a.link-backward(
+				v-if="linkBackwardShown"
+				href="blog.html"
+			) Вернуться в блог
+
+			transition-box
+				a.link-up(
+					v-if="linkUpShown"
+					href="audit-sajta.html#"
+				)
+					base-icon.link-up-icon(name="angle-left")
+
+			.grid
+				+AppBreadcrumb([['Главная', 'index.html'], ['Блог', 'blog.html'], ['Статья', 'article.html']]).app-page-breadcrumb
+
+				+sticky-container-layout()
+					articles-feed
+						template(slot="first-item")
+							app-article.app-page-article(inline-template)
+								+AppArticle(1)

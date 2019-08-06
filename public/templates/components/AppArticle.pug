@@ -1,4 +1,4 @@
-mixin AppArticle()
+mixin AppArticle(template = 0)
 	mixin swiper-gallery()
 		//
 			`swiper-gallery` data format
@@ -82,7 +82,12 @@ mixin AppArticle()
 						)
 
 					.header-grid-cell
-						app-share.header-share(invert)
+						app-share.header-share(
+							invert
+							page-url="article.html"
+							page-title="Статья"
+							page-description="Description"
+						)
 
 			.main
 				div(itemprop="articleBody")
@@ -531,19 +536,25 @@ mixin AppArticle()
 						template(slot="button")
 							a(href="article.html#feedback-section") Заказать
 
-					+swiper-gallery().app-article-gallery
+					if template === 0
+						+swiper-gallery().app-article-gallery
 
 			footer.footer
 				.footer-grid
 					.footer-grid-cell
-						app-share.footer-share
+						app-share.footer-share(
+							page-url="audit-sajta.html"
+							page-title="Аудит сайта"
+							page-description="Description"
+						)
 
-					.footer-grid-cell
-						a.footer-navigation-link(
-							is="navigation-link"
-							href="article.html"
-							direction="next"
-						) На собственном участке обязательно стоит выделить место под уютную баньку или сауну. Это место отдыха и встреч с друзьями, дружных посиделок и лечебных процедур
+					if template === 0
+						.footer-grid-cell
+							a.footer-navigation-link(
+								is="navigation-link"
+								href="article.html"
+								direction="next"
+							) На собственном участке обязательно стоит выделить место под уютную баньку или сауну. Это место отдыха и встреч с друзьями, дружных посиделок и лечебных процедур
 
 			// hidden microdata
 			meta(
