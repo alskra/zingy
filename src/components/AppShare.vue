@@ -35,7 +35,6 @@
 						)
 							.item(
 								:is="'share-button-is-' + item.toLowerCase()"
-								:key="item.toLowerCase() + page_url"
 								:page_url="page_url"
 								:page_title="pageTitle"
 								:page_description="pageDescription"
