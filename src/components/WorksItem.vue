@@ -69,10 +69,10 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		width: auto;
-		max-width: 60%;
-		max-height: 60%;
 		margin: auto;
+		width: 35%;
+		height: 35%;
+		object-fit: contain;
 	}
 
 	.caption {

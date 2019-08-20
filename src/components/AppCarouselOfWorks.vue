@@ -11,7 +11,8 @@
 		data() {
 			return {
 				defaultOptions: {
-					slidesPerView: 'auto'
+					slidesPerView: 'auto',
+					roundLengths: true
 				}
 			}
 		}
