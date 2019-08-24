@@ -126,7 +126,15 @@
 
 				window.VK.Share[index] = count => {
 					this.handleUpdateCount(count);
-					this.$set(shareCounter.urls, this.page_url, (shareCounter.urls[this.page_url] || 0) + count);
+
+					if (!shareCounter.urls[this.page_url]) {
+						this.$set(shareCounter.urls, this.page_url, {});
+					}
+
+					if (!shareCounter.urls[this.page_url].vk) {
+						this.$set(shareCounter.urls[this.page_url], 'vk', count);
+					}
+
 					console.log(shareCounter);
 				};
 

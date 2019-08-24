@@ -550,7 +550,7 @@ mixin AppArticle(template = 0)
 			footer.footer
 				.footer-grid
 					.footer-grid-cell
-						if template === 0
+						if template !== 0
 							app-share.footer-share(
 								page-url="article.html"
 								page-title="Вы думаете они будут ждать, пока ваш сайт загрузится?"
