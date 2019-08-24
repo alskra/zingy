@@ -106,7 +106,8 @@
 				if (
 					window.VK &&
 					window.VK.Share &&
-					typeof window.VK.Share.count === "function"
+					// typeof window.VK.Share.count === "function"
+					typeof window.VK.Share[this.page_url] === "function"
 				) {
 					return;
 				}
@@ -114,7 +115,7 @@
 				const script = document.createElement("script");
 
 				// Create `script` tag with share count URL
-				script.src = `https://vk.com/share.php?act=count&index=${getRandomInt(
+				script.src = `https://vk.com/share.php?act=${this.page_url}&index=${getRandomInt(
 					1,
 					2345
 				)}&url=${encodeURIComponent(this.$props.page_url)}`;
@@ -125,10 +126,12 @@
 
 				// Set share count to `counter_vkontakte` v-model
 				window.VK = Object.assign({}, {Share: {}}, window.VK);
-				window.VK.Share.count = (index, count) => {
+
+				window.VK.Share[this.page_url] = (index, count) => {
 					if (count) {
-						this.$root.$emit("VK:Share:count:update", count);
-						shareCounter.value += count;
+						// this.$root.$emit("VK:Share:count:update", count);
+						// shareCounter.value += count;
+						this.handleUpdateCount(count);
 						this.$set(shareCounter.urls, this.page_url, (shareCounter.urls[this.page_url] || 0) + count);
 						console.log(shareCounter);
 					}

@@ -18,7 +18,7 @@
 		button.button(type="button")
 			.button-text {{ $t('share') }}
 			base-icon.button-icon(name="share")
-			.button-counter {{ commonCountFormatted }}
+			.button-counter {{ commonCount }}
 
 		transition-slide-x(
 			:duration="{enter: 600, leave: 500}"
@@ -84,13 +84,10 @@
 			page_image() {
 				return this.pageImage && this.$resolveUrl(this.pageImage);
 			},
-			commonCountFormatted() {
+			commonCount() {
 				const count = shareCounter.urls[this.page_url] || 0;
 
 				return count >= 1000 ? sliceThousandInt(count) : count;
-			},
-			shareCounter() {
-				return shareCounter;
 			}
 		}
 	};
