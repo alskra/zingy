@@ -2,8 +2,7 @@
 	import Vue from 'vue';
 
 	export const shareCounter = Vue.observable({
-		urls: {},
-		value: 0
+		urls: {}
 	});
 
 	export default {

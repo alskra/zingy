@@ -135,7 +135,7 @@
 						this.$set(shareCounter.urls[this.page_url], 'vk', count);
 					}
 
-					console.log(shareCounter);
+					// console.log(shareCounter);
 				};
 
 				if (
