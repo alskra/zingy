@@ -82,12 +82,20 @@ mixin AppArticle(template = 0)
 						)
 
 					.header-grid-cell
-						app-share.header-share(
-							invert
-							page-url="article.html"
-							page-title="Статья"
-							page-description="Description: Статья"
-						)
+						if template === 0
+							app-share.header-share(
+								invert
+								page-url="article.html"
+								page-title="Вы думаете они будут ждать, пока ваш сайт загрузится?"
+								page-description="Вы думаете они будут ждать, пока ваш сайт загрузится?"
+							)
+						else
+							app-share.header-share(
+								invert
+								page-url="audit-sajta.html"
+								page-title="Аудит сайта"
+								page-description="Аудит сайта"
+							)
 
 			.main
 				div(itemprop="articleBody")
@@ -542,11 +550,18 @@ mixin AppArticle(template = 0)
 			footer.footer
 				.footer-grid
 					.footer-grid-cell
-						app-share.footer-share(
-							page-url="audit-sajta.html"
-							page-title="Аудит сайта"
-							page-description="Description: Аудит сайта"
-						)
+						if template === 0
+							app-share.footer-share(
+								page-url="article.html"
+								page-title="Вы думаете они будут ждать, пока ваш сайт загрузится?"
+								page-description="Вы думаете они будут ждать, пока ваш сайт загрузится?"
+							)
+						else
+							app-share.footer-share(
+								page-url="audit-sajta.html"
+								page-title="Аудит сайта"
+								page-description="Аудит сайта"
+							)
 
 					if template === 0
 						.footer-grid-cell
