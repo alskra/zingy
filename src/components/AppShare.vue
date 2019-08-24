@@ -85,7 +85,9 @@
 				return this.pageImage && this.$resolveUrl(this.pageImage);
 			},
 			commonCount() {
-				const count = shareCounter.urls[this.page_url] || 0;
+				let count = 0;
+
+				Object.values(shareCounter.urls[this.page_url]).forEach(val => count += val);
 
 				return count >= 1000 ? sliceThousandInt(count) : count;
 			}

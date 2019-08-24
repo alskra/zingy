@@ -96,7 +96,13 @@
 								? sliceThousandInt(count.share.share_count)
 								: count.share.share_count;
 
-						shareCounter.value += count.share.share_count;
+						if (!shareCounter.urls[this.page_url]) {
+							this.$set(shareCounter.urls, this.page_url, {});
+						}
+
+						if (!shareCounter.urls[this.page_url].facebook) {
+							this.$set(shareCounter.urls[this.page_url], 'facebook', count.share.share_count);
+						}
 					}
 				};
 			}
