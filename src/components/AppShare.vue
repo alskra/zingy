@@ -87,7 +87,7 @@
 			commonCount() {
 				let count = 0;
 
-				Object.values(shareCounter.urls[this.page_url]).forEach(val => count += val);
+				Object.values(shareCounter.urls[this.page_url] || []).forEach(val => count += val);
 
 				return count >= 1000 ? sliceThousandInt(count) : count;
 			}
