@@ -103,22 +103,19 @@
 			getShareCounter: function () {
 				// Let's see whether some other component has already
 				// asked for count. Then we just subscribe for the count update event
-				if (
-					window.VK &&
-					window.VK.Share &&
-					// typeof window.VK.Share.count === "function"
-					typeof window.VK.Share[this.page_url] === "function"
-				) {
-					return;
-				}
+				// if (
+				// 	window.VK &&
+				// 	window.VK.Share &&
+				// 	typeof window.VK.Share.count === "function"
+				// ) {
+				// 	return;
+				// }
 				// Variables
+				const index = getRandomInt(1, 2345);
 				const script = document.createElement("script");
 
 				// Create `script` tag with share count URL
-				script.src = `https://vk.com/share.php?act=${this.page_url}&index=${getRandomInt(
-					1,
-					2345
-				)}&url=${encodeURIComponent(this.$props.page_url)}`;
+				script.src = `https://vk.com/share.php?act=count&index=${index}&url=${encodeURIComponent(this.$props.page_url)}`;
 
 				// Add `script` tag with share count URL
 				// to end of `body` tag
@@ -127,13 +124,29 @@
 				// Set share count to `counter_vkontakte` v-model
 				window.VK = Object.assign({}, {Share: {}}, window.VK);
 
-				window.VK.Share[this.page_url] = (index, count) => {
+				window.VK.Share[index] = count => {
+					this.handleUpdateCount(count);
+					this.$set(shareCounter.urls, this.page_url, (shareCounter.urls[this.page_url] || 0) + count);
+					console.log(shareCounter);
+				};
+
+				if (
+					window.VK &&
+					window.VK.Share &&
+					typeof window.VK.Share.count === "function"
+				) {
+					return;
+				}
+
+				window.VK.Share.count = (index, count) => {
 					if (count) {
 						// this.$root.$emit("VK:Share:count:update", count);
 						// shareCounter.value += count;
-						this.handleUpdateCount(count);
-						this.$set(shareCounter.urls, this.page_url, (shareCounter.urls[this.page_url] || 0) + count);
-						console.log(shareCounter);
+						// this.handleUpdateCount(count);
+						// this.$set(shareCounter.urls, this.page_url, (shareCounter.urls[this.page_url] || 0) + count);
+						// console.log(shareCounter);
+
+						window.VK.Share[index](count);
 					}
 				};
 			}
