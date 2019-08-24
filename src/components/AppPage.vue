@@ -159,6 +159,9 @@
 			onScrollOrResize() {
 				this.setElementsVisible();
 				this.setZingySectionVisible();
+			},
+			scrollUp() {
+				window.scrollTo(0, 0);
 			}
 		},
 		created() {

@@ -72,7 +72,11 @@ mixin AppArticle(template = 0)
 								is="base-title"
 								tag="h1"
 								itemprop="headline"
-							) Вы думаете они будут ждать, пока ваш сайт загрузится?
+							)
+								if template === 0
+									| Вы думаете они будут ждать, пока ваш сайт загрузится?
+								else
+									| Аудит сайта
 
 					.header-grid-cell
 						time.header-date(

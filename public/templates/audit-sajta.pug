@@ -18,7 +18,8 @@ block app
 			transition-box
 				a.link-up(
 					v-if="linkUpShown"
-					href="audit-sajta.html#"
+					href="#"
+					@click.prevent="scrollUp"
 				)
 					base-icon.link-up-icon(name="angle-left")
 
