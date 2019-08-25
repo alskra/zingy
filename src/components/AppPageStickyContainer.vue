@@ -30,6 +30,7 @@
 					this.stickySidebarOptions.init = val >= 1024;
 
 					let topSpacing = 60 + (108 - 60) / (1920 - 320) * (this.windowWidth - 320);
+
 					if (topSpacing > 108) topSpacing = 108;
 					if (topSpacing < 60) topSpacing = 60;
 
