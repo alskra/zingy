@@ -3,7 +3,7 @@ mixin AppFooter()
 	include AppFooterNavOfSection
 
 	-
-		const [mainNav, devNav, seoNav] = [
+		const [mainNav, devNav, seoNav, styleNav] = [
 			[
 				'Главная',
 				'Услуги',
@@ -31,7 +31,14 @@ mixin AppFooter()
 				'Вывод из-под санкций',
 				'Контекстная реклама',
 				'SEO продвижение'
-			]
+			],
+			[
+				'Link 1',
+				'Link 2',
+				'Link 3',
+				'Link 4',
+				'Link 5',
+			],
 		]
 
 	template
@@ -46,8 +53,15 @@ mixin AppFooter()
 					.zingy-projects-copy
 					.zingy-projects-copy
 
+				.nav-action(v-if="windowWidth >= 768")
+					button.nav-button.nav-button-prev(@click="navPrev")
+						base-icon.nav-button-icon(name="angle-left")
+
+					button.nav-button.nav-button-next(@click="navNext")
+						base-icon.nav-button-icon(name="angle-left")
+
 				.grid-row
-					.grid-cell
+					.grid-cell.grid-cell-of-contacts
 						.contacts-grid
 							.contacts-grid-cell
 								.content.content-is-contacts
@@ -71,14 +85,26 @@ mixin AppFooter()
 
 									p &copy;&nbsp;2008&ndash;2019. Все&nbsp;права&nbsp;защищены
 
-					.grid-cell
+					.grid-cell.grid-cell-of-main-nav
 						app-footer-nav(inline-template)
 							+AppFooterNav(mainNav)
 
-					.grid-cell
+					.grid-cell.grid-cell-of-nav(v-show="checkItem(0)")
 						app-footer-nav-of-section(inline-template)
 							+AppFooterNavOfSection(devNav, 'Разработка')
 
-					.grid-cell
+					.grid-cell.grid-cell-of-nav(v-show="checkItem(1)")
 						app-footer-nav-of-section(inline-template)
 							+AppFooterNavOfSection(seoNav, 'Продвижение')
+
+					.grid-cell.grid-cell-of-nav(v-show="checkItem(2)")
+						app-footer-nav-of-section(inline-template)
+							+AppFooterNavOfSection(styleNav, 'Фирменный стиль')
+
+					.grid-cell.grid-cell-of-nav(v-show="checkItem(3)")
+						app-footer-nav-of-section(inline-template)
+							+AppFooterNavOfSection(styleNav, 'SMM')
+
+					.grid-cell.grid-cell-of-nav(v-show="checkItem(4)")
+						app-footer-nav-of-section(inline-template)
+							+AppFooterNavOfSection(styleNav, 'Поддержка')
