@@ -7,38 +7,38 @@
 	import AppBreadcrumb from './AppBreadcrumb';
 	import ContentSection from './ContentSection';
 
-	import FeedbackSection from './FeedbackSection';
-	// const FeedbackSection = () => import('./FeedbackSection');
+	// import FeedbackSection from './FeedbackSection';
+	const FeedbackSection = () => import('./FeedbackSection');
 
-	import AppFooter from './AppFooter';
-	// const AppFooter = () => import('./AppFooter');
+	// import AppFooter from './AppFooter';
+	const AppFooter = () => import('./AppFooter');
 
-	import ZingySection from './ZingySection';
-	// const ZingySection = () => import('./ZingySection');
+	// import ZingySection from './ZingySection';
+	const ZingySection = () => import('./ZingySection');
 
 	import AppModal from './AppModal';
 
-	import FeedbackForm from './FeedbackForm';
-	// const FeedbackForm = () => import('./FeedbackForm');
+	// import FeedbackForm from './FeedbackForm';
+	const FeedbackForm = () => import('./FeedbackForm');
 
 	// --------------------------------------------------------------------------
 	// index
 	import IntroSection from './IntroSection';
 
-	import QuoteSection from './QuoteSection';
-	// const QuoteSection = () => import('./QuoteSection');
+	// import QuoteSection from './QuoteSection';
+	const QuoteSection = () => import('./QuoteSection');
 
-	import ServiceSection from './ServiceSection';
-	// const ServiceSection = () => import('./ServiceSection');
+	// import ServiceSection from './ServiceSection';
+	const ServiceSection = () => import('./ServiceSection');
 
-	import WorkSection from './WorkSection';
-	// const WorkSection = () => import('./WorkSection');
+	// import WorkSection from './WorkSection';
+	const WorkSection = () => import('./WorkSection');
 
-	import PageSection from './PageSection';
-	// const PageSection = () => import('./PageSection');
+	// import PageSection from './PageSection';
+	const PageSection = () => import('./PageSection');
 
-	import PageSectionIsServices from './PageSectionIsServices';
-	// const PageSectionIsServices = () => import('./PageSectionIsServices');
+	// import PageSectionIsServices from './PageSectionIsServices';
+	const PageSectionIsServices = () => import('./PageSectionIsServices');
 
 	// --------------------------------------------------------------------------
 	// blog
