@@ -8,17 +8,30 @@
 	import ContentSection from './ContentSection';
 	import FeedbackSection from './FeedbackSection';
 	import AppFooter from './AppFooter';
-	import ZingySection from './ZingySection';
+
+	// import ZingySection from './ZingySection';
+	const ZingySection = () => import('./ZingySection');
+
 	import AppModal from './AppModal';
 	import FeedbackForm from './FeedbackForm';
 
 	// index
 	import IntroSection from './IntroSection';
-	import QuoteSection from './QuoteSection';
-	import ServiceSection from './ServiceSection';
-	import WorkSection from './WorkSection';
-	import PageSection from './PageSection';
-	import PageSectionIsServices from './PageSectionIsServices';
+
+	// import QuoteSection from './QuoteSection';
+	const QuoteSection = () => import('./QuoteSection');
+
+	// import ServiceSection from './ServiceSection';
+	const ServiceSection = () => import('./ServiceSection');
+
+	// import WorkSection from './WorkSection';
+	const WorkSection = () => import('./WorkSection');
+
+	// import PageSection from './PageSection';
+	const PageSection = () => import('./PageSection');
+
+	// import PageSectionIsServices from './PageSectionIsServices';
+	const PageSectionIsServices = () => import('./PageSectionIsServices');
 
 	// blog
 	const AppPageStickyContainer = () => import('./AppPageStickyContainer');
