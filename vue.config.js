@@ -125,11 +125,13 @@ module.exports = {
 		// 		include: 'asyncChunks'
 		// 	}])
 
-		config.plugin('prefetch').tap(options => {
-			options[0].rel = 'preload';
+		if (config.plugins.has('prefetch')) {
+			config.plugin('prefetch').tap(options => {
+				options[0].rel = 'preload';
 
-			return options;
-		});
+				return options;
+			});
+		}
 	},
 	css: {
 		sourceMap: process.env.NODE_ENV !== 'production'
