@@ -126,11 +126,13 @@ module.exports = {
 		// 	}])
 
 		if (config.plugins.has('prefetch')) {
-			config.plugin('prefetch').tap(options => {
-				options[0].rel = 'preload';
+			// config.plugin('prefetch').tap(options => {
+			// 	options[0].rel = 'preload';
+			//
+			// 	return options;
+			// });
 
-				return options;
-			});
+			config.plugins.delete('prefetch');
 		}
 	},
 	css: {
