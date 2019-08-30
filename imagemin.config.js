@@ -42,7 +42,7 @@ const options = {
 	 * @see https://github.com/imagemin/imagemin-mozjpeg
 	 */
 	mozjpegOptions: {
-		quality: 75,
+		quality: 73,
 		progressive: true
 	},
 	/**
