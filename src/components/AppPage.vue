@@ -6,14 +6,20 @@
 	import AppHeader from './AppHeader';
 	import AppBreadcrumb from './AppBreadcrumb';
 	import ContentSection from './ContentSection';
-	import FeedbackSection from './FeedbackSection';
-	import AppFooter from './AppFooter';
+
+	// import FeedbackSection from './FeedbackSection';
+	const FeedbackSection = () => import('./FeedbackSection');
+
+	// import AppFooter from './AppFooter';
+	const AppFooter = () => import('./AppFooter');
 
 	// import ZingySection from './ZingySection';
 	const ZingySection = () => import('./ZingySection');
 
 	import AppModal from './AppModal';
-	import FeedbackForm from './FeedbackForm';
+
+	// import FeedbackForm from './FeedbackForm';
+	const FeedbackForm = () => import('./FeedbackForm');
 
 	// index
 	import IntroSection from './IntroSection';
