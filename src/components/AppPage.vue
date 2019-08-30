@@ -8,37 +8,46 @@
 	import ContentSection from './ContentSection';
 
 	// import FeedbackSection from './FeedbackSection';
-	const FeedbackSection = () => import('./FeedbackSection');
+	// const FeedbackSection = () => import('./FeedbackSection');
+	const FeedbackSection = () => import(/* webpackPreload: true */ './FeedbackSection');
 
 	// import AppFooter from './AppFooter';
-	const AppFooter = () => import('./AppFooter');
+	// const AppFooter = () => import('./AppFooter');
+	const AppFooter = () => import(/* webpackPreload: true */ './AppFooter');
 
 	// import ZingySection from './ZingySection';
-	const ZingySection = () => import('./ZingySection');
+	// const ZingySection = () => import('./ZingySection');
+	const ZingySection = () => import(/* webpackPreload: true */ './ZingySection');
 
 	import AppModal from './AppModal';
 
 	// import FeedbackForm from './FeedbackForm';
-	const FeedbackForm = () => import('./FeedbackForm');
+	// const FeedbackForm = () => import('./FeedbackForm');
+	const FeedbackForm = () => import(/* webpackPreload: true */ './FeedbackForm');
 
 	// --------------------------------------------------------------------------
 	// index
 	import IntroSection from './IntroSection';
 
 	// import QuoteSection from './QuoteSection';
-	const QuoteSection = () => import('./QuoteSection');
+	// const QuoteSection = () => import('./QuoteSection');
+	const QuoteSection = () => import(/* webpackPreload: true */ './QuoteSection');
 
 	// import ServiceSection from './ServiceSection';
-	const ServiceSection = () => import('./ServiceSection');
+	// const ServiceSection = () => import('./ServiceSection');
+	const ServiceSection = () => import(/* webpackPreload: true */ './ServiceSection');
 
 	// import WorkSection from './WorkSection';
-	const WorkSection = () => import('./WorkSection');
+	// const WorkSection = () => import('./WorkSection');
+	const WorkSection = () => import(/* webpackPreload: true */ './WorkSection');
 
 	// import PageSection from './PageSection';
-	const PageSection = () => import('./PageSection');
+	// const PageSection = () => import('./PageSection');
+	const PageSection = () => import(/* webpackPreload: true */ './PageSection');
 
 	// import PageSectionIsServices from './PageSectionIsServices';
-	const PageSectionIsServices = () => import('./PageSectionIsServices');
+	// const PageSectionIsServices = () => import('./PageSectionIsServices');
+	const PageSectionIsServices = () => import(/* webpackPreload: true */ './PageSectionIsServices');
 
 	// --------------------------------------------------------------------------
 	// blog
