@@ -106,23 +106,31 @@
 			onEnter() {
 				this.getData();
 			},
+			setUrl(index) {
+				if (this.getAlias(this.articles[index].url) !== this.getAlias(location.pathname)) {
+					history.replaceState(null, this.articles[index].title, this.articles[index].url);
+					document.title = this.articles[index].title;
+				}
+			},
 			checkScroll() {
 				if (this.articles.length > 1) {
 					for (let index = 0; index < this.$refs.item.length; index++) {
 						const rect = this.$refs.item[index].getBoundingClientRect();
 
 						if (rect.top > this.topSpacing) {
-							const activeIndex = index > 0 ? index - 1 : 0;
-
-							if (this.getAlias(this.articles[activeIndex].url) !== this.getAlias(location.pathname)) {
-								history.replaceState(null, this.articles[activeIndex].title, this.articles[activeIndex].url);
-								document.title = this.articles[activeIndex].title;
-							}
+							this.setUrl(index > 0 ? index - 1 : 0);
 
 							break;
+						} else if (index === this.$refs.item.length - 1) {
+							this.setUrl(index);
 						}
 					}
 				}
+			}
+		},
+		created() {
+			if ('scrollRestoration' in history) {
+				history.scrollRestoration = 'manual';
 			}
 		},
 		mounted() {

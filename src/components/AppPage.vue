@@ -7,13 +7,15 @@
 	import AppBreadcrumb from './AppBreadcrumb';
 	import ContentSection from './ContentSection';
 
-	import FeedbackSection from './FeedbackSection';
-	// const FeedbackSection = () => import('./FeedbackSection');
+	// import FeedbackSection from './FeedbackSection';
+    // const FeedbackSection = () => import('./FeedbackSection');
 	// const FeedbackSection = () => import(/* webpackPreload: true */ './FeedbackSection');
+    const FeedbackSection = () => import('./Common').then(({FeedbackSection}) => FeedbackSection);
 
-	import AppFooter from './AppFooter';
+	// import AppFooter from './AppFooter';
 	// const AppFooter = () => import('./AppFooter');
 	// const AppFooter = () => import(/* webpackPreload: true */ './AppFooter');
+    const AppFooter = () => import('./Common').then(({AppFooter}) => AppFooter);
 
 	import ZingySection from './ZingySection';
 	// const ZingySection = () => import('./ZingySection');
