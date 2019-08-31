@@ -29,8 +29,8 @@
 
 	// --------------------------------------------------------------------------
 	// index
-	// import IntroSection from './IntroSection';
-	const IntroSection = () => import(/* webpackPrefetch: true */ './IntroSection');
+	import IntroSection from './IntroSection';
+	// const IntroSection = () => import(/* webpackPrefetch: true */ './IntroSection');
 
 	// import QuoteSection from './QuoteSection';
 	// const QuoteSection = () => import('./Common').then(({QuoteSection}) => QuoteSection);
