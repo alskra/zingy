@@ -119,26 +119,26 @@ module.exports = {
 			.loader('@kazupon/vue-i18n-loader')
 			.end();
 
-		config.plugin('preload-async')
-			.use(PreloadPlugin, [{
-				rel: 'preload',
-				include: 'asyncChunks',
-				fileBlacklist: [
-					/\.map$/,
-					/\.js$/
-				]
-			}])
-			.after('preload');
-
-		if (config.plugins.has('prefetch')) {
-			// config.plugin('prefetch').tap(options => {
-			// 	options[0].rel = 'preload';
-			//
-			// 	return options;
-			// });
-
-			config.plugins.delete('prefetch');
-		}
+		// config.plugin('preload-async')
+		// 	.use(PreloadPlugin, [{
+		// 		rel: 'preload',
+		// 		include: 'asyncChunks',
+		// 		fileBlacklist: [
+		// 			/\.map$/,
+		// 			/\.js$/
+		// 		]
+		// 	}])
+		// 	.after('preload');
+		//
+		// if (config.plugins.has('prefetch')) {
+		// 	// config.plugin('prefetch').tap(options => {
+		// 	// 	options[0].rel = 'preload';
+		// 	//
+		// 	// 	return options;
+		// 	// });
+		//
+		// 	config.plugins.delete('prefetch');
+		// }
 	},
 	css: {
 		sourceMap: process.env.NODE_ENV !== 'production'
