@@ -11,8 +11,9 @@
     // const FeedbackSection = () => import('./Common').then(({FeedbackSection}) => FeedbackSection);
     const FeedbackSection = () => import(/* webpackPrefetch: true */ './FeedbackSection');
 
-	import AppFooter from './AppFooter';
+	// import AppFooter from './AppFooter';
     // const AppFooter = () => import('./Common').then(({AppFooter}) => AppFooter);
+    const AppFooter = () => import(/* webpackPrefetch: true */ './AppFooter');
 
 	// import ZingySection from './ZingySection';
 	// const ZingySection = () => import('./Common').then(({ZingySection}) => ZingySection);
@@ -28,7 +29,8 @@
 
 	// --------------------------------------------------------------------------
 	// index
-	import IntroSection from './IntroSection';
+	// import IntroSection from './IntroSection';
+	const IntroSection = () => import(/* webpackPrefetch: true */ './IntroSection');
 
 	// import QuoteSection from './QuoteSection';
 	// const QuoteSection = () => import('./Common').then(({QuoteSection}) => QuoteSection);
