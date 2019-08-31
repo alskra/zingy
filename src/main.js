@@ -12,8 +12,14 @@ import App from './App';
 
 Vue.config.productionTip = false;
 
-new Vue({
-	...App,
-	store,
-	i18n
-}).$mount('#app');
+(async () => {
+	if (/MSIE|Trident/.test(navigator.userAgent)) {
+		await import('./polyfills-ie');
+	}
+
+	new Vue({
+		...App,
+		store,
+		i18n
+	}).$mount('#app');
+})();
