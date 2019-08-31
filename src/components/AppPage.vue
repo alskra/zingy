@@ -1,6 +1,6 @@
 <script>
 	import cssVars from 'css-vars-ponyfill';
-	import {TweenLite} from 'gsap';
+	// import {TweenLite} from 'gsap';
 
 	// all
 	import AppHeader from './AppHeader';
@@ -196,22 +196,26 @@
 			onZingySectionMounted(el) {
 				this.$el.style.paddingBottom = el.offsetHeight + 'px';
 
-				new TweenLite([document.documentElement, document.body], 2, {
-					scrollTop: this.$windowScroll.getLimitY(),
-					onStartParams: ['{self}'],
-					onStart: () => {
-						document.documentElement.style.scrollBehavior = 'auto';
-					},
-					onCompleteParams: ['{self}'],
-					onComplete: () => {
-						setTimeout(() => document.documentElement.style.scrollBehavior = '', 100);
-						el.classList.add('fixed');
-						el.classList.remove('absolute', 'animation-stopped');
+				(async () => {
+					const {TweenLite} = await import('gsap');
 
-						window.zingySectionResize = () => this.$el.style.paddingBottom = el.offsetHeight + 'px';
-						window.addEventListener('resize', window.zingySectionResize);
-					}
-				});
+					new TweenLite([document.documentElement, document.body], 2, {
+						scrollTop: this.$windowScroll.getLimitY(),
+						onStartParams: ['{self}'],
+						onStart: () => {
+							document.documentElement.style.scrollBehavior = 'auto';
+						},
+						onCompleteParams: ['{self}'],
+						onComplete: () => {
+							setTimeout(() => document.documentElement.style.scrollBehavior = '', 100);
+							el.classList.add('fixed');
+							el.classList.remove('absolute', 'animation-stopped');
+
+							window.zingySectionResize = () => this.$el.style.paddingBottom = el.offsetHeight + 'px';
+							window.addEventListener('resize', window.zingySectionResize);
+						}
+					});
+				})();
 			},
 			onScrollOrResize() {
 				this.setElementsVisible();
