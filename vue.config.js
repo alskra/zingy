@@ -139,9 +139,9 @@ module.exports = {
 		// 	});
 		// }
 
-		// if (config.plugins.has('prefetch')) {
-		// 	config.plugins.delete('prefetch');
-		// }
+		if (config.plugins.has('prefetch')) {
+			config.plugins.delete('prefetch');
+		}
 
 		//
 		// if (config.plugins.has('prefetch')) {
