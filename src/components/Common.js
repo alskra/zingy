@@ -14,7 +14,7 @@ import BlogPosts from './BlogPosts';
 import AppArticle from './AppArticle';
 import ArticlesFeed from './ArticlesFeed';
 import ZingyWorld from './ZingyWorld';
-import AppYmaps from './AppYmaps';
+// import AppYmaps from './AppYmaps';
 import FancySection from './FancySection';
 import AppServices from './AppServices';
 import InfoSection from './InfoSection';
@@ -36,7 +36,7 @@ export {
 	AppArticle,
 	ArticlesFeed,
 	ZingyWorld,
-	AppYmaps,
+	// AppYmaps,
 	FancySection,
 	AppServices,
 	InfoSection,

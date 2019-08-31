@@ -84,8 +84,8 @@
 
 	import AppPageContacts from './AppPageContacts';
 
-	// const AppYmaps = () => import('./AppYmaps');
-	const AppYmaps = () => import(/* webpackPrefetch: true */ './Common').then(({AppYmaps}) => AppYmaps);
+	const AppYmaps = () => import('./AppYmaps');
+	// const AppYmaps = () => import(/* webpackPrefetch: true */ './Common').then(({AppYmaps}) => AppYmaps);
 
 	// development
 	// const FancySection = () => import('./FancySection');
