@@ -54,7 +54,9 @@
 			.body-inner {
 				transition: transform, box-shadow;
 				transition-duration: 0.8s, 0.2s;
+				transition-duration: 0.4s, 0.2s;
 				transition-delay: 0s, 0.8s;
+				transition-delay: 0s, 0.4s;
 			}
 		}
 
@@ -91,7 +93,9 @@
 		&.v-leave-active {
 			transition: transform, opacity;
 			transition-duration: 0.3s;
+			transition-duration: 0.2s;
 			transition-delay: 1s;
+			transition-delay: 0.6s;
 		}
 
 		&.v-enter,
@@ -133,7 +137,9 @@
 		&.v-leave-active {
 			transition-property: transform, opacity;
 			transition-duration: 0.3s;
+			transition-duration: 0.2s;
 			transition-delay: 1.3s;
+			transition-delay: 0.8s;
 		}
 
 		&.v-enter,
@@ -190,7 +196,9 @@
 		&.v-leave-active {
 			transition-property: opacity;
 			transition-duration: 0.3s;
+			transition-duration: 0.2s;
 			transition-delay: 1.9s;
+			transition-delay: 1.2s;
 		}
 
 		&.v-enter,
@@ -258,7 +266,9 @@
 		&.v-leave-active {
 			transition-property: opacity;
 			transition-duration: 0.3s;
+			transition-duration: 0.2s;
 			transition-delay: 1.6s;
+			transition-delay: 1s;
 		}
 
 		&.v-enter,

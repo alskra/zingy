@@ -11,17 +11,20 @@
     // const FeedbackSection = () => import('./Common').then(({FeedbackSection}) => FeedbackSection);
     // const FeedbackSection = () => import(/* webpackPrefetch: true */ './FeedbackSection');
 
-	import AppFooter from './AppFooter';
+	// import AppFooter from './AppFooter';
     // const AppFooter = () => import('./Common').then(({AppFooter}) => AppFooter);
     // const AppFooter = () => import(/* webpackPrefetch: true */ './AppFooter');
+    const AppFooter = () => import('./AppFooter');
 
-	import ZingySection from './ZingySection';
+	// import ZingySection from './ZingySection';
 	// const ZingySection = () => import('./Common').then(({ZingySection}) => ZingySection);
 	// const ZingySection = () => import(/* webpackPrefetch: true */ './ZingySection');
+	const ZingySection = () => import('./ZingySection');
 
-	import AppModal from './AppModal';
+	// import AppModal from './AppModal';
 	// const AppModal = () => import('./Common').then(({AppModal}) => AppModal);
 	// const AppModal = () => import(/* webpackPrefetch: true */ './AppModal');
+	const AppModal = () => import('./AppModal');
 
 	import FeedbackForm from './FeedbackForm';
 	// const FeedbackForm = () => import('./Common').then(({FeedbackForm}) => FeedbackForm);
@@ -54,54 +57,64 @@
 
 	// --------------------------------------------------------------------------
 	// blog
+	import AppPageStickyContainer from './AppPageStickyContainer';
 	// const AppPageStickyContainer = () => import('./AppPageStickyContainer');
-	const AppPageStickyContainer = () => import('./Secondary').then(({AppPageStickyContainer}) => AppPageStickyContainer);
+	// const AppPageStickyContainer = () => import('./Secondary').then(({AppPageStickyContainer}) => AppPageStickyContainer);
 
+	import SideNav from './SideNav';
 	// import SideNav from './SideNav';
-	const SideNav = () => import('./Secondary').then(({SideNav}) => SideNav);
+	// const SideNav = () => import('./Secondary').then(({SideNav}) => SideNav);
 
+	import BlogPosts from './BlogPosts';
 	// const BlogPosts = () => import('./BlogPosts');
-	const BlogPosts = () => import('./Secondary').then(({BlogPosts}) => BlogPosts);
+	// const BlogPosts = () => import('./Secondary').then(({BlogPosts}) => BlogPosts);
 
-	// import SubscribeForm from './SubscribeForm';
-	const SubscribeForm = () => import('./Secondary').then(({SubscribeForm}) => SubscribeForm);
+	import SubscribeForm from './SubscribeForm';
+	// const SubscribeForm = () => import('./Secondary').then(({SubscribeForm}) => SubscribeForm);
 
 	// -----------------------------------------------------------------------------
 	// article
+	import AppArticle from './AppArticle';
 	// const AppArticle = () => import('./AppArticle');
-	const AppArticle = () => import('./Secondary').then(({AppArticle}) => AppArticle);
+	// const AppArticle = () => import('./Secondary').then(({AppArticle}) => AppArticle);
 
+	import ArticlesFeed from './ArticlesFeed';
 	// const ArticlesFeed = () => import('./ArticlesFeed');
-	const ArticlesFeed = () => import('./Secondary').then(({ArticlesFeed}) => ArticlesFeed);
+	// const ArticlesFeed = () => import('./Secondary').then(({ArticlesFeed}) => ArticlesFeed);
 
 	// -------------------------------------------------------------------------------
 	// contacts
-	// const ZingyWorld = () => import('./ZingyWorld');
-	const ZingyWorld = () => import('./Secondary').then(({ZingyWorld}) => ZingyWorld);
+	const ZingyWorld = () => import('./ZingyWorld');
+	// const ZingyWorld = () => import('./Secondary').then(({ZingyWorld}) => ZingyWorld);
 
+	import AppPageContacts from './AppPageContacts';
 	// import AppPageContacts from './AppPageContacts';
-	const AppPageContacts = () => import('./Secondary').then(({AppPageContacts}) => AppPageContacts);
+	// const AppPageContacts = () => import('./Secondary').then(({AppPageContacts}) => AppPageContacts);
 
 	const AppYmaps = () => import('./AppYmaps');
 	// const AppYmaps = () => import('./Secondary').then(({AppYmaps}) => AppYmaps);
 
 	// --------------------------------------------------------------------------------
 	// development
+	import FancySection from './FancySection';
 	// const FancySection = () => import('./FancySection');
-	const FancySection = () => import('./Secondary').then(({FancySection}) => FancySection);
+	// const FancySection = () => import('./Secondary').then(({FancySection}) => FancySection);
 
 	// --------------------------------------------------------------------------------
 	// services
+	import AppServices from './AppServices';
 	// const AppServices = () => import('./AppServices');
-	const AppServices = () => import('./Secondary').then(({AppServices}) => AppServices);
+	// const AppServices = () => import('./Secondary').then(({AppServices}) => AppServices);
 
 	// ------------------------------------------------------------------------------------
 	// seo
+	import InfoSection from './InfoSection';
 	// const InfoSection = () => import('./InfoSection');
-	const InfoSection = () => import('./Secondary').then(({InfoSection}) => InfoSection);
+	// const InfoSection = () => import('./Secondary').then(({InfoSection}) => InfoSection);
 
+	import OrderSection from './OrderSection';
 	// const OrderSection = () => import('./OrderSection');
-	const OrderSection = () => import('./Secondary').then(({OrderSection}) => OrderSection);
+	// const OrderSection = () => import('./Secondary').then(({OrderSection}) => OrderSection);
 
 	export default {
 		name: 'AppPage',
