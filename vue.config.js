@@ -133,7 +133,7 @@ module.exports = {
 		if (config.plugins.has('prefetch')) {
 			config.plugin('prefetch').tap(options => {
 				options[0].fileBlacklist = options[0].fileBlacklist || [];
-				options[0].fileBlacklist.push(/\.css$/);
+				options[0].fileBlacklist.push(/\.map$/, /\.css$/);
 
 				return options;
 			});
