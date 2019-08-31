@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const PreloadPlugin = require('@vue/preload-webpack-plugin');
 
 process.env.VUE_APP_NAME = 'Zingy';
 

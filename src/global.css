@@ -2,13 +2,13 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700&subset=cyrillic,cyrillic-ext,latin-ext');
 
-//@import "assets/fonts/Roboto/stylesheet.css";
+/*@import "assets/fonts/Roboto/stylesheet.css";*/
 
 :root {
-	// Browser dependent properties
-	--quotes: "“" "”" "‘" "’";
+	/*Browser dependent properties*/
 	--font-family: Roboto, Arial, sans-serif;
 	--text-align: left;
+	--quotes: "“" "”" "‘" "’";
 	--color: #0a0a0a;
 	--outline-color: #000000;
 

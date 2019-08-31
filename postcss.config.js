@@ -3,11 +3,11 @@ const {environmentVariables} = require('./postcss.import');
 module.exports = {
 	parser: 'postcss-scss',
 	plugins: {
-		'postcss-import': {
-			filter(path) {
-				return path.match(/\.pcss$/);
-			}
-		},
+		// 'postcss-import': {
+		// 	filter(path) {
+		// 		return path.match(/\.pcss$/);
+		// 	}
+		// },
 		'postcss-hexrgba': {},
 		'postcss-functions': {
 			functions: {
@@ -29,9 +29,9 @@ module.exports = {
 					});
 
 					return `calc(
-					(${min}) + ((${max}) - (${min}))
-					/ (${maxBreakpoint} - ${minBreakpoint}) * 1000
-					* (var(--resolved-breakpoint) - ${minBreakpoint}) / 1000
+						(${min}) + ((${max}) - (${min}))
+						/ (${maxBreakpoint} - ${minBreakpoint}) * 1000
+						* (var(--resolved-breakpoint) - ${minBreakpoint}) / 1000
 					)`;
 				},
 				'scale-down'(
@@ -52,9 +52,9 @@ module.exports = {
 					});
 
 					return `calc(
-					(${max}) * ${scale} + ((${max}) - (${max}) * ${scale})
-					/ (${maxBreakpoint} - ${minBreakpoint}) * 1000
-					* (var(--resolved-breakpoint) - ${minBreakpoint}) / 1000
+						(${max}) * ${scale} + ((${max}) - (${max}) * ${scale})
+						/ (${maxBreakpoint} - ${minBreakpoint}) * 1000
+						* (var(--resolved-breakpoint) - ${minBreakpoint}) / 1000
 					)`;
 				},
 				percentage(expression) {
@@ -71,9 +71,9 @@ module.exports = {
 		'postcss-preset-env': {
 			stage: false,
 			features: {
-				'all-property': {
-					replace: true
-				},
+				// 'all-property': {
+				// 	replace: true
+				// },
 				'any-link-pseudo-class': true,
 				'blank-pseudo-class': true, // ?
 				'color-functional-notation': true,
