@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PreloadPlugin = require('@vue/preload-webpack-plugin');
 
 process.env.VUE_APP_NAME = 'Zingy';
 
@@ -118,11 +119,16 @@ module.exports = {
 			.loader('@kazupon/vue-i18n-loader')
 			.end();
 
-		// config.plugin('preload-async')
-		// 	.use(PreloadPlugin, [{
-		// 		rel: 'prefetch',
-		// 		include: 'asyncChunks'
-		// 	}])
+		config.plugin('preload-async')
+			.use(PreloadPlugin, [{
+				rel: 'preload',
+				include: 'asyncChunks',
+				fileBlacklist: [
+					/\.map$/,
+					/\.js$/
+				]
+			}])
+			.after('preload');
 
 		if (config.plugins.has('prefetch')) {
 			// config.plugin('prefetch').tap(options => {

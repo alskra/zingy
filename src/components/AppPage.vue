@@ -62,45 +62,53 @@
 	// --------------------------------------------------------------------------
 	// blog
 	// const AppPageStickyContainer = () => import('./AppPageStickyContainer');
-	const AppPageStickyContainer = () => import(/* webpackPrefetch: true */ './Common').then(({AppPageStickyContainer}) => AppPageStickyContainer);
+	const AppPageStickyContainer = () => import(/* webpackPrefetch: true */ './Secondary').then(({AppPageStickyContainer}) => AppPageStickyContainer);
 
-	import SideNav from './SideNav';
+	// import SideNav from './SideNav';
+	const SideNav = () => import(/* webpackPrefetch: true */ './Secondary').then(({SideNav}) => SideNav);
 
 	// const BlogPosts = () => import('./BlogPosts');
-	const BlogPosts = () => import(/* webpackPrefetch: true */ './Common').then(({BlogPosts}) => BlogPosts);
+	const BlogPosts = () => import(/* webpackPrefetch: true */ './Secondary').then(({BlogPosts}) => BlogPosts);
 
-	import SubscribeForm from './SubscribeForm';
+	// import SubscribeForm from './SubscribeForm';
+	const SubscribeForm = () => import(/* webpackPrefetch: true */ './Secondary').then(({SubscribeForm}) => SubscribeForm);
 
+	// -----------------------------------------------------------------------------
 	// article
 	// const AppArticle = () => import('./AppArticle');
-	const AppArticle = () => import(/* webpackPrefetch: true */ './Common').then(({AppArticle}) => AppArticle);
+	const AppArticle = () => import(/* webpackPrefetch: true */ './Secondary').then(({AppArticle}) => AppArticle);
 
 	// const ArticlesFeed = () => import('./ArticlesFeed');
-	const ArticlesFeed = () => import(/* webpackPrefetch: true */ './Common').then(({ArticlesFeed}) => ArticlesFeed);
+	const ArticlesFeed = () => import(/* webpackPrefetch: true */ './Secondary').then(({ArticlesFeed}) => ArticlesFeed);
 
+	// -------------------------------------------------------------------------------
 	// contacts
 	// const ZingyWorld = () => import('./ZingyWorld');
-	const ZingyWorld = () => import(/* webpackPrefetch: true */ './Common').then(({ZingyWorld}) => ZingyWorld);
+	const ZingyWorld = () => import(/* webpackPrefetch: true */ './Secondary').then(({ZingyWorld}) => ZingyWorld);
 
-	import AppPageContacts from './AppPageContacts';
+	// import AppPageContacts from './AppPageContacts';
+	const AppPageContacts = () => import(/* webpackPrefetch: true */ './Secondary').then(({AppPageContacts}) => AppPageContacts);
 
 	const AppYmaps = () => import('./AppYmaps');
-	// const AppYmaps = () => import(/* webpackPrefetch: true */ './Common').then(({AppYmaps}) => AppYmaps);
+	// const AppYmaps = () => import(/* webpackPrefetch: true */ './Secondary').then(({AppYmaps}) => AppYmaps);
 
+	// --------------------------------------------------------------------------------
 	// development
 	// const FancySection = () => import('./FancySection');
-	const FancySection = () => import(/* webpackPrefetch: true */ './Common').then(({FancySection}) => FancySection);
+	const FancySection = () => import(/* webpackPrefetch: true */ './Secondary').then(({FancySection}) => FancySection);
 
+	// --------------------------------------------------------------------------------
 	// services
 	// const AppServices = () => import('./AppServices');
-	const AppServices = () => import(/* webpackPrefetch: true */ './Common').then(({AppServices}) => AppServices);
+	const AppServices = () => import(/* webpackPrefetch: true */ './Secondary').then(({AppServices}) => AppServices);
 
+	// ------------------------------------------------------------------------------------
 	// seo
 	// const InfoSection = () => import('./InfoSection');
-	const InfoSection = () => import(/* webpackPrefetch: true */ './Common').then(({InfoSection}) => InfoSection);
+	const InfoSection = () => import(/* webpackPrefetch: true */ './Secondary').then(({InfoSection}) => InfoSection);
 
 	// const OrderSection = () => import('./OrderSection');
-	const OrderSection = () => import(/* webpackPrefetch: true */ './Common').then(({OrderSection}) => OrderSection);
+	const OrderSection = () => import(/* webpackPrefetch: true */ './Secondary').then(({OrderSection}) => OrderSection);
 
 	export default {
 		name: 'AppPage',
