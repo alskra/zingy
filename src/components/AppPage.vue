@@ -57,39 +57,39 @@
 
 	// --------------------------------------------------------------------------
 	// blog
-	// import AppPageStickyContainer from './AppPageStickyContainer';
+	import AppPageStickyContainer from './AppPageStickyContainer';
 	// const AppPageStickyContainer = () => import('./AppPageStickyContainer');
-	const AppPageStickyContainer = () => import('./Secondary').then(({AppPageStickyContainer}) => AppPageStickyContainer);
+	// const AppPageStickyContainer = () => import('./Secondary').then(({AppPageStickyContainer}) => AppPageStickyContainer);
 
+	import SideNav from './SideNav';
 	// import SideNav from './SideNav';
-	// import SideNav from './SideNav';
-	const SideNav = () => import('./Secondary').then(({SideNav}) => SideNav);
+	// const SideNav = () => import('./Secondary').then(({SideNav}) => SideNav);
 
-	// import BlogPosts from './BlogPosts';
+	import BlogPosts from './BlogPosts';
 	// const BlogPosts = () => import('./BlogPosts');
-	const BlogPosts = () => import('./Secondary').then(({BlogPosts}) => BlogPosts);
+	// const BlogPosts = () => import('./Secondary').then(({BlogPosts}) => BlogPosts);
 
-	// import SubscribeForm from './SubscribeForm';
-	const SubscribeForm = () => import('./Secondary').then(({SubscribeForm}) => SubscribeForm);
+	import SubscribeForm from './SubscribeForm';
+	// const SubscribeForm = () => import('./Secondary').then(({SubscribeForm}) => SubscribeForm);
 
 	// -----------------------------------------------------------------------------
 	// article
-	// import AppArticle from './AppArticle';
+	import AppArticle from './AppArticle';
 	// const AppArticle = () => import('./AppArticle');
-	const AppArticle = () => import('./Secondary').then(({AppArticle}) => AppArticle);
+	// const AppArticle = () => import('./Secondary').then(({AppArticle}) => AppArticle);
 
-	// import ArticlesFeed from './ArticlesFeed';
+	import ArticlesFeed from './ArticlesFeed';
 	// const ArticlesFeed = () => import('./ArticlesFeed');
-	const ArticlesFeed = () => import('./Secondary').then(({ArticlesFeed}) => ArticlesFeed);
+	// const ArticlesFeed = () => import('./Secondary').then(({ArticlesFeed}) => ArticlesFeed);
 
 	// -------------------------------------------------------------------------------
 	// contacts
 	const ZingyWorld = () => import('./ZingyWorld');
 	// const ZingyWorld = () => import('./Secondary').then(({ZingyWorld}) => ZingyWorld);
 
+	import AppPageContacts from './AppPageContacts';
 	// import AppPageContacts from './AppPageContacts';
-	// import AppPageContacts from './AppPageContacts';
-	const AppPageContacts = () => import('./Secondary').then(({AppPageContacts}) => AppPageContacts);
+	// const AppPageContacts = () => import('./Secondary').then(({AppPageContacts}) => AppPageContacts);
 
 	const AppYmaps = () => import('./AppYmaps');
 	// const AppYmaps = () => import('./Secondary').then(({AppYmaps}) => AppYmaps);
@@ -108,13 +108,13 @@
 
 	// ------------------------------------------------------------------------------------
 	// seo
-	// import InfoSection from './InfoSection';
+	import InfoSection from './InfoSection';
 	// const InfoSection = () => import('./InfoSection');
-	const InfoSection = () => import('./Secondary').then(({InfoSection}) => InfoSection);
+	// const InfoSection = () => import('./Secondary').then(({InfoSection}) => InfoSection);
 
-	// import OrderSection from './OrderSection';
+	import OrderSection from './OrderSection';
 	// const OrderSection = () => import('./OrderSection');
-	const OrderSection = () => import('./Secondary').then(({OrderSection}) => OrderSection);
+	// const OrderSection = () => import('./Secondary').then(({OrderSection}) => OrderSection);
 
 	export default {
 		name: 'AppPage',
