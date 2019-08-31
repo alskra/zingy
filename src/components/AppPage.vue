@@ -8,38 +8,47 @@
 	import ContentSection from './ContentSection';
 
 	// import FeedbackSection from './FeedbackSection';
-    const FeedbackSection = () => import('./Common').then(({FeedbackSection}) => FeedbackSection);
+    // const FeedbackSection = () => import('./Common').then(({FeedbackSection}) => FeedbackSection);
+    const FeedbackSection = () => import(/* webpackPrefetch: true */ './FeedbackSection');
 
-	// import AppFooter from './AppFooter';
-    const AppFooter = () => import('./Common').then(({AppFooter}) => AppFooter);
+	import AppFooter from './AppFooter';
+    // const AppFooter = () => import('./Common').then(({AppFooter}) => AppFooter);
 
 	// import ZingySection from './ZingySection';
-	const ZingySection = () => import('./Common').then(({ZingySection}) => ZingySection);
+	// const ZingySection = () => import('./Common').then(({ZingySection}) => ZingySection);
+	const ZingySection = () => import(/* webpackPrefetch: true */ './ZingySection');
 
 	// import AppModal from './AppModal';
-	const AppModal = () => import('./Common').then(({AppModal}) => AppModal);
+	// const AppModal = () => import('./Common').then(({AppModal}) => AppModal);
+	const AppModal = () => import(/* webpackPrefetch: true */ './AppModal');
 
 	// import FeedbackForm from './FeedbackForm';
-	const FeedbackForm = () => import('./Common').then(({FeedbackForm}) => FeedbackForm);
+	// const FeedbackForm = () => import('./Common').then(({FeedbackForm}) => FeedbackForm);
+	const FeedbackForm = () => import(/* webpackPrefetch: true */ './FeedbackForm');
 
 	// --------------------------------------------------------------------------
 	// index
 	import IntroSection from './IntroSection';
 
 	// import QuoteSection from './QuoteSection';
-	const QuoteSection = () => import('./Common').then(({QuoteSection}) => QuoteSection);
+	// const QuoteSection = () => import('./Common').then(({QuoteSection}) => QuoteSection);
+	const QuoteSection = () => import(/* webpackPrefetch: true */ './QuoteSection');
 
 	// import ServiceSection from './ServiceSection';
-	const ServiceSection = () => import('./Common').then(({ServiceSection}) => ServiceSection);
+	// const ServiceSection = () => import('./Common').then(({ServiceSection}) => ServiceSection);
+	const ServiceSection = () => import(/* webpackPrefetch: true */ './ServiceSection');
 
 	// import WorkSection from './WorkSection';
-	const WorkSection = () => import('./Common').then(({WorkSection}) => WorkSection);
+	// const WorkSection = () => import('./Common').then(({WorkSection}) => WorkSection);
+	const WorkSection = () => import(/* webpackPrefetch: true */ './WorkSection');
 
 	// import PageSection from './PageSection';
-	const PageSection = () => import('./Common').then(({PageSection}) => PageSection);
+	// const PageSection = () => import('./Common').then(({PageSection}) => PageSection);
+	const PageSection = () => import(/* webpackPrefetch: true */ './PageSection');
 
 	// import PageSectionIsServices from './PageSectionIsServices';
-	const PageSectionIsServices = () => import('./Common').then(({PageSectionIsServices}) => PageSectionIsServices);
+	// const PageSectionIsServices = () => import('./Common').then(({PageSectionIsServices}) => PageSectionIsServices);
+	const PageSectionIsServices = () => import(/* webpackPrefetch: true */ './PageSectionIsServices');
 
 	// --------------------------------------------------------------------------
 	// blog
