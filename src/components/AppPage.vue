@@ -17,27 +17,32 @@
 	// const AppFooter = () => import(/* webpackPreload: true */ './AppFooter');
     const AppFooter = () => import('./Common').then(({AppFooter}) => AppFooter);
 
-	import ZingySection from './ZingySection';
+	// import ZingySection from './ZingySection';
 	// const ZingySection = () => import('./ZingySection');
 	// const ZingySection = () => import(/* webpackPreload: true */ './ZingySection');
+	const ZingySection = () => import('./Common').then(({ZingySection}) => ZingySection);
 
-	import AppModal from './AppModal';
+	// import AppModal from './AppModal';
+	const AppModal = () => import('./Common').then(({AppModal}) => AppModal);
 
-	import FeedbackForm from './FeedbackForm';
+	// import FeedbackForm from './FeedbackForm';
 	// const FeedbackForm = () => import('./FeedbackForm');
 	// const FeedbackForm = () => import(/* webpackPreload: true */ './FeedbackForm');
+	const FeedbackForm = () => import('./Common').then(({FeedbackForm}) => FeedbackForm);
 
 	// --------------------------------------------------------------------------
 	// index
 	import IntroSection from './IntroSection';
 
-	import QuoteSection from './QuoteSection';
+	// import QuoteSection from './QuoteSection';
 	// const QuoteSection = () => import('./QuoteSection');
 	// const QuoteSection = () => import(/* webpackPreload: true */ './QuoteSection');
+	const QuoteSection = () => import('./Common').then(({QuoteSection}) => QuoteSection);
 
-	import ServiceSection from './ServiceSection';
+	// import ServiceSection from './ServiceSection';
 	// const ServiceSection = () => import('./ServiceSection');
 	// const ServiceSection = () => import(/* webpackPreload: true */ './ServiceSection');
+	const ServiceSection = () => import('./Common').then(({ServiceSection}) => ServiceSection);
 
 	import WorkSection from './WorkSection';
 	// const WorkSection = () => import('./WorkSection');
