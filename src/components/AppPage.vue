@@ -7,50 +7,50 @@
 	import AppBreadcrumb from './AppBreadcrumb';
 	import ContentSection from './ContentSection';
 
-	// import FeedbackSection from './FeedbackSection';
+	import FeedbackSection from './FeedbackSection';
     // const FeedbackSection = () => import('./Common').then(({FeedbackSection}) => FeedbackSection);
-    const FeedbackSection = () => import(/* webpackPrefetch: true */ './FeedbackSection');
+    // const FeedbackSection = () => import(/* webpackPrefetch: true */ './FeedbackSection');
 
-	// import AppFooter from './AppFooter';
+	import AppFooter from './AppFooter';
     // const AppFooter = () => import('./Common').then(({AppFooter}) => AppFooter);
-    const AppFooter = () => import(/* webpackPrefetch: true */ './AppFooter');
+    // const AppFooter = () => import(/* webpackPrefetch: true */ './AppFooter');
 
-	// import ZingySection from './ZingySection';
+	import ZingySection from './ZingySection';
 	// const ZingySection = () => import('./Common').then(({ZingySection}) => ZingySection);
-	const ZingySection = () => import(/* webpackPrefetch: true */ './ZingySection');
+	// const ZingySection = () => import(/* webpackPrefetch: true */ './ZingySection');
 
-	// import AppModal from './AppModal';
+	import AppModal from './AppModal';
 	// const AppModal = () => import('./Common').then(({AppModal}) => AppModal);
-	const AppModal = () => import(/* webpackPrefetch: true */ './AppModal');
+	// const AppModal = () => import(/* webpackPrefetch: true */ './AppModal');
 
-	// import FeedbackForm from './FeedbackForm';
+	import FeedbackForm from './FeedbackForm';
 	// const FeedbackForm = () => import('./Common').then(({FeedbackForm}) => FeedbackForm);
-	const FeedbackForm = () => import(/* webpackPrefetch: true */ './FeedbackForm');
+	// const FeedbackForm = () => import(/* webpackPrefetch: true */ './FeedbackForm');
 
 	// --------------------------------------------------------------------------
 	// index
 	import IntroSection from './IntroSection';
 	// const IntroSection = () => import(/* webpackPrefetch: true */ './IntroSection');
 
-	// import QuoteSection from './QuoteSection';
+	import QuoteSection from './QuoteSection';
 	// const QuoteSection = () => import('./Common').then(({QuoteSection}) => QuoteSection);
-	const QuoteSection = () => import(/* webpackPrefetch: true */ './QuoteSection');
+	// const QuoteSection = () => import(/* webpackPrefetch: true */ './QuoteSection');
 
-	// import ServiceSection from './ServiceSection';
+	import ServiceSection from './ServiceSection';
 	// const ServiceSection = () => import('./Common').then(({ServiceSection}) => ServiceSection);
-	const ServiceSection = () => import(/* webpackPrefetch: true */ './ServiceSection');
+	// const ServiceSection = () => import(/* webpackPrefetch: true */ './ServiceSection');
 
-	// import WorkSection from './WorkSection';
+	import WorkSection from './WorkSection';
 	// const WorkSection = () => import('./Common').then(({WorkSection}) => WorkSection);
-	const WorkSection = () => import(/* webpackPrefetch: true */ './WorkSection');
+	// const WorkSection = () => import(/* webpackPrefetch: true */ './WorkSection');
 
-	// import PageSection from './PageSection';
+	import PageSection from './PageSection';
 	// const PageSection = () => import('./Common').then(({PageSection}) => PageSection);
-	const PageSection = () => import(/* webpackPrefetch: true */ './PageSection');
+	// const PageSection = () => import(/* webpackPrefetch: true */ './PageSection');
 
-	// import PageSectionIsServices from './PageSectionIsServices';
+	import PageSectionIsServices from './PageSectionIsServices';
 	// const PageSectionIsServices = () => import('./Common').then(({PageSectionIsServices}) => PageSectionIsServices);
-	const PageSectionIsServices = () => import(/* webpackPrefetch: true */ './PageSectionIsServices');
+	// const PageSectionIsServices = () => import(/* webpackPrefetch: true */ './PageSectionIsServices');
 
 	// --------------------------------------------------------------------------
 	// blog

@@ -130,14 +130,14 @@ module.exports = {
 		// 	}])
 		// 	.after('preload');
 
-		if (config.plugins.has('prefetch')) {
-			config.plugin('prefetch').tap(options => {
-				options[0].fileBlacklist = options[0].fileBlacklist || [];
-				options[0].fileBlacklist.push(/\.map$/, /\.js$/);
-
-				return options;
-			});
-		}
+		// if (config.plugins.has('prefetch')) {
+		// 	config.plugin('prefetch').tap(options => {
+		// 		options[0].fileBlacklist = options[0].fileBlacklist || [];
+		// 		options[0].fileBlacklist.push(/\.map$/, /\.js$/);
+		//
+		// 		return options;
+		// 	});
+		// }
 
 		// if (config.plugins.has('prefetch')) {
 		// 	config.plugins.delete('prefetch');
