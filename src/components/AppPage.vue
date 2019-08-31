@@ -159,7 +159,8 @@
 		data() {
 			return {
 				zingySectionShown: false,
-				bodyRect: {}
+				bodyRect: {},
+				defer: false
 			};
 		},
 		computed: {
@@ -256,6 +257,8 @@
 					}
 				})
 			}
+
+			this.defer = true;
 		}
 	};
 </script>
