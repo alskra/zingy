@@ -142,7 +142,7 @@
 			return {
 				zingySectionShown: false,
 				bodyRect: {},
-				defer: false
+				defer: true
 			};
 		},
 		computed: {
