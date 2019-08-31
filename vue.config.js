@@ -153,7 +153,8 @@ module.exports = {
 		// }
 	},
 	css: {
-		sourceMap: process.env.NODE_ENV !== 'production'
+		sourceMap: process.env.NODE_ENV !== 'production',
+		extract: false
 	},
 	transpileDependencies: [
 		'css-blank-pseudo',
