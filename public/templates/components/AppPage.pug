@@ -19,15 +19,15 @@ mixin AppPage(mainBg)
 
 					block
 
-					feedback-section.app-page-feedback-section(inline-template)
+					feedback-section.app-page-feedback-section(inline-template v-if="defer")
 						+FeedbackSection()
 
-				app-footer.app-page-footer(inline-template)
+				app-footer.app-page-footer(inline-template v-if="defer")
 					+AppFooter()
 
 			zingy-section.absolute.animation-stopped.app-page-zingy-section(
 				ref="zingySection"
-				v-if="zingySectionShown"
+				v-if="zingySectionShown && defer"
 				@mounted="onZingySectionMounted"
 			)
 				template(v-slot:before)
