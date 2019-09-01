@@ -31,8 +31,7 @@ block app
 						+AppArticle()
 
 			content-section.app-page-content-section
-				h2.
-					Контентный блок
+				h2 Контентный блок
 
 				p.
 					Для эксплуатации бани главным требованием будет сохранение тепла и пара внутри помещения,
@@ -43,3 +42,45 @@ block app
 					На собственном участке обязательно стоит выделить место под уютную баньку или сауну.
 					Это место отдыха и встреч с друзьями, дружных посиделок и лечебных процедур.
 					При обустройстве особое внимание уделяется отделке бани внутри.
+
+			content-section.app-page-content-section
+				h2 Контентный блок с таблицей
+
+				table
+					thead
+						tr
+							th №
+							th Наименование работ
+							th Ед. изм.
+							th Цена, ₽ (работы)
+
+					tbody
+						tr
+							td(data-title="№"): div 1
+							td(data-title="Наименование работ"): div Устройство контр-обрешетки и каркаса из брусков с утеплением
+							td(data-title="Ед. изм."): div м#[sup 2]
+							td(data-title="Цена, ₽ (работы)"): div #[small Цена]&nbsp;#[strong 600]&nbsp;₽
+
+						tr
+							td(data-title="№"): div 2
+							td(data-title="Наименование работ"): div Пароизоляция
+							td(data-title="Ед. изм."): div м#[sup 2]
+							td(data-title="Цена, ₽ (работы)"): div #[small Цена]&nbsp;#[strong 55]&nbsp;₽
+
+						tr
+							td(data-title="№"): div 3
+							td(data-title="Наименование работ"): div Подключение воды, канализации, сливного трапика
+							td(data-title="Ед. изм."): div шт.
+							td(data-title="Цена, ₽ (работы)"): div #[small Цена]&nbsp;#[strong от&nbsp;2000]&nbsp;₽
+
+						tr
+							td(data-title="№"): div 4
+							td(data-title="Наименование работ"): div Монтаж эл. щитка, с УЗО, автоматами и разводкой кабелей
+							td(data-title="Ед. изм."): div комплекс
+							td(data-title="Цена, ₽ (работы)"): div #[small Цена]&nbsp;#[strong от&nbsp;2000]&nbsp;₽
+
+						tr
+							td(data-title="№"): div 5
+							td(data-title="Наименование работ"): div Монтаж вагонки на стены и потолок
+							td(data-title="Ед. изм."): div м#[sup 2]
+							td(data-title="Цена, ₽ (работы)"): div #[small Цена]&nbsp;#[strong 600]&nbsp;₽
