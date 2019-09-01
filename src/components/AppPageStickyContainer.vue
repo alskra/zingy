@@ -1,14 +1,16 @@
 <template lang="pug">
 	.app-page-sticky-container.vue-sticky-sidebar-container
-		vue-sticky-sidebar.sidebar(:options="stickySidebarOptions")
-			slot(name="sidebar")
+		.sidebar
+			vue-sticky-sidebar(:options="stickySidebarOptions")
+				slot(name="sidebar")
 
 		.main(ref="main")
 			slot
 </template>
 
 <script>
-	import {VueStickySidebar} from '../plugins/vue-sticky-sidebar/vue-sticky-sidebar';
+	// import {VueStickySidebar} from '../plugins/vue-sticky-sidebar/vue-sticky-sidebar';
+	const VueStickySidebar = () => import('../plugins/vue-sticky-sidebar/vue-sticky-sidebar').then(({VueStickySidebar}) => VueStickySidebar);
 
 	export default {
 		name: 'AppPageStickyContainer',

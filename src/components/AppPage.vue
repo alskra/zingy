@@ -64,8 +64,8 @@
 	// const AppPageStickyContainer = () => import('./Secondary').then(({AppPageStickyContainer}) => AppPageStickyContainer);
 
 	import SideNav from './SideNav';
-	// import SideNav from './SideNav';
 	// const SideNav = () => import('./Secondary').then(({SideNav}) => SideNav);
+	// const SideNav = () => import('./SideNav');
 
 	import BlogPosts from './BlogPosts';
 	// const BlogPosts = () => import('./BlogPosts');
@@ -73,6 +73,7 @@
 
 	import SubscribeForm from './SubscribeForm';
 	// const SubscribeForm = () => import('./Secondary').then(({SubscribeForm}) => SubscribeForm);
+	// const SubscribeForm = () => import('./SubscribeForm');
 
 	// -----------------------------------------------------------------------------
 	// article
