@@ -244,6 +244,10 @@
 			}
 		},
 		created() {
+			if ('scrollRestoration' in history) {
+				history.scrollRestoration = 'manual';
+			}
+
 			window.addEventListener('scroll', this.onScrollOrResize);
 			window.addEventListener('resize', this.onScrollOrResize);
 			window.addEventListener('scroll', () => this.defer = true);
