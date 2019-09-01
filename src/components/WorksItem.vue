@@ -25,7 +25,7 @@
 		&::before {
 			content: '';
 			display: block;
-			padding-top: percentage((356 + 40) / 686);
+			padding-top: percentage(356 / 686);
 			background-color: inherit;
 		}
 
@@ -41,6 +41,12 @@
 
 		&:empty {
 			/*background-color: #a7a7a7;*/
+		}
+
+		@media (width < 768px) {
+			&::before {
+				padding-top: percentage((356 + 80) / 686);
+			}
 		}
 	}
 
