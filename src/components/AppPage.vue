@@ -169,7 +169,7 @@
 			return {
 				zingySectionShown: false,
 				bodyRect: {},
-				defer: true
+				defer: false
 			};
 		},
 		computed: {
@@ -246,6 +246,7 @@
 		created() {
 			window.addEventListener('scroll', this.onScrollOrResize);
 			window.addEventListener('resize', this.onScrollOrResize);
+			window.addEventListener('scroll', () => this.defer = true);
 		},
 		destroyed() {
 			window.removeEventListener('scroll', this.onScrollOrResize);
@@ -270,8 +271,6 @@
 					}
 				})
 			}
-
-			this.defer = true;
 		}
 	};
 </script>

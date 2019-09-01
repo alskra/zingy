@@ -25,24 +25,24 @@ block app
 				+IntroSection()
 
 			.defer(v-if="defer")
-				//quote-section.app-page-quote-section(inline-template)
-				//	+QuoteSection()
+				quote-section.app-page-quote-section(inline-template)
+					+QuoteSection()
 
-				//service-section.app-page-service-section(inline-template)
-				//	+ServiceSection()
-				//
-				//work-section.app-page-work-section(inline-template)
-				//	+WorkSection()
-				//
-				//page-section.app-page-section(inline-template)
-				//	+PageSection('Наши работы')
-				//		app-carousel-of-works.app-page-works-carousel(inline-template)
-				//			+AppCarouselOfWorks()
-				//
-				//page-section.app-page-section(inline-template)
-				//	+PageSection('Отзывы')
-				//		app-carousel-of-reviews.app-page-reviews-carousel(inline-template)
-				//			+AppCarouselOfReviews()
-				//
-				//page-section-is-services.app-page-services-section(inline-template)
-				//	+PageSectionIsServices()
+				service-section.app-page-service-section(inline-template)
+					+ServiceSection()
+
+				work-section.app-page-work-section(inline-template)
+					+WorkSection()
+
+				page-section.app-page-section(inline-template)
+					+PageSection('Наши работы')
+						app-carousel-of-works.app-page-works-carousel(inline-template)
+							+AppCarouselOfWorks()
+
+				page-section.app-page-section(inline-template)
+					+PageSection('Отзывы')
+						app-carousel-of-reviews.app-page-reviews-carousel(inline-template)
+							+AppCarouselOfReviews()
+
+				page-section-is-services.app-page-services-section(inline-template)
+					+PageSectionIsServices()
