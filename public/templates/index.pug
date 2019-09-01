@@ -21,12 +21,12 @@ block templates
 block app
 	app-page(inline-template)
 		+AppPage()
-			//intro-section.app-page-intro-section(inline-template)
-			//	+IntroSection()
+			intro-section.app-page-intro-section(inline-template)
+				+IntroSection()
 
 			.defer(v-if="defer")
-				quote-section.app-page-quote-section(inline-template)
-					+QuoteSection()
+				//quote-section.app-page-quote-section(inline-template)
+				//	+QuoteSection()
 
 				//service-section.app-page-service-section(inline-template)
 				//	+ServiceSection()
