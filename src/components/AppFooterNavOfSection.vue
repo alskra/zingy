@@ -79,6 +79,7 @@
 	}
 
 	.name {
+		display: block;
 		margin-bottom: 5px;
 		padding: 3px 0 3px range(18px, 28px);
 		color: #ffffff;
@@ -89,5 +90,6 @@
 		text-transform: uppercase;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		text-decoration: none;
 	}
 </style>

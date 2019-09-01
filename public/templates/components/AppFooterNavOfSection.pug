@@ -1,6 +1,6 @@
-mixin AppFooterNavOfSection(navList, navName = 'Section')
+mixin AppFooterNavOfSection(navList, navName = 'Section', navUrl = '')
 	include AppFooterNav
 
 	+AppFooterNav(navList).app-footer-nav-of-section&attributes(attributes)
 		.hover-element(:style="hoverElementStyle")
-		.name= navName
+		a.name(href=navUrl)= navName

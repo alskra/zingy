@@ -53,7 +53,7 @@ mixin AppFooter()
 					.zingy-projects-copy
 					.zingy-projects-copy
 
-				.nav-action(v-if="windowWidth >= 768")
+				.nav-action(v-if="windowWidth >= 768 && navLength > 1")
 					button.nav-button.nav-button-prev(@click="navPrev")
 						base-icon.nav-button-icon(name="angle-left")
 

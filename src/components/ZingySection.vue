@@ -27,18 +27,6 @@
 	};
 </script>
 
-<style>
-	.app-page {
-		&::after {
-			content: url("../assets/img/about-zingy-bg.jpg");
-			position: absolute;
-			width: 0;
-			height: 0;
-			overflow: hidden;
-		}
-	}
-</style>
-
 <style scoped>
 	.zingy-section {
 		all: initial;

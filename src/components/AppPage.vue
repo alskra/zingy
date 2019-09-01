@@ -184,11 +184,16 @@
 <style scoped>
 	.app-page {
 		all: initial;
+		display: block;
+		position: relative;
+		min-width: env(--min-breakpoint);
+		overflow: hidden;
 
-		& {
-			display: block;
-			position: relative;
-			min-width: env(--min-breakpoint);
+		&::after {
+			content: url("../assets/img/about-zingy-bg.jpg");
+			position: absolute;
+			width: 0;
+			height: 0;
 			overflow: hidden;
 		}
 
