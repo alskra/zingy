@@ -39,10 +39,6 @@
 			background-color: rgba(0, 0, 0, 0.5);
 		}
 
-		&:empty {
-			/*background-color: #a7a7a7;*/
-		}
-
 		@media (width < 768px) {
 			&::before {
 				padding-top: percentage((356 + 80) / 686);
@@ -79,6 +75,11 @@
 		width: 35%;
 		height: 35%;
 		object-fit: contain;
+
+		@media (width < 768px) {
+			width: 50%;
+			height: 50%;
+		}
 	}
 
 	.caption {
