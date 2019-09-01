@@ -6,7 +6,7 @@ include AppFooter
 mixin AppPage(mainBg)
 	template
 		.app-page&attributes(attributes)
-			.body(ref="body" :style="{minHeight: !defer ? '150vh' : ''}")
+			.body(ref="body")
 				app-header.app-page-header(inline-template)
 					+AppHeader()
 
@@ -19,10 +19,10 @@ mixin AppPage(mainBg)
 
 					block
 
-					feedback-section.app-page-feedback-section(inline-template v-if="defer")
+					feedback-section.app-page-feedback-section(inline-template)
 						+FeedbackSection()
 
-				app-footer.app-page-footer(inline-template v-if="defer")
+				app-footer.app-page-footer(inline-template)
 					+AppFooter()
 
 			zingy-section.absolute.animation-stopped.app-page-zingy-section(

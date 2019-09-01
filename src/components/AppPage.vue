@@ -1,175 +1,82 @@
 <script>
 	import cssVars from 'css-vars-ponyfill';
-	// import {TweenLite} from 'gsap';
 
-	// all
+	// index
 	import AppHeader from './AppHeader';
-	import AppBreadcrumb from './AppBreadcrumb';
-	import ContentSection from './ContentSection';
-
-	// import FeedbackSection from './FeedbackSection';
-    // const FeedbackSection = () => import('./Common').then(({FeedbackSection}) => FeedbackSection);
-    // const FeedbackSection = () => import(/* webpackPrefetch: true */ './FeedbackSection');
-    const FeedbackSection = () => import('./FeedbackSection');
-
-	// import AppFooter from './AppFooter';
-    // const AppFooter = () => import('./Common').then(({AppFooter}) => AppFooter);
-    // const AppFooter = () => import(/* webpackPrefetch: true */ './AppFooter');
-    const AppFooter = () => import('./AppFooter');
-
-	// import ZingySection from './ZingySection';
-	// const ZingySection = () => import('./Common').then(({ZingySection}) => ZingySection);
-	// const ZingySection = () => import(/* webpackPrefetch: true */ './ZingySection');
+	import IntroSection from './IntroSection';
+	import QuoteSection from './QuoteSection';
+	import ServiceSection from './ServiceSection';
+	import WorkSection from './WorkSection';
+	import PageSection from './PageSection';
+	import PageSectionIsServices from './PageSectionIsServices';
+	const FeedbackSection = () => import('./FeedbackSection');
+	const AppFooter = () => import('./AppFooter');
 	const ZingySection = () => import('./ZingySection');
-
-	// import AppModal from './AppModal';
-	// const AppModal = () => import('./Common').then(({AppModal}) => AppModal);
-	// const AppModal = () => import(/* webpackPrefetch: true */ './AppModal');
 	const AppModal = () => import('./AppModal');
-
-	// import FeedbackForm from './FeedbackForm';
-	// const FeedbackForm = () => import('./Common').then(({FeedbackForm}) => FeedbackForm);
-	// const FeedbackForm = () => import(/* webpackPrefetch: true */ './FeedbackForm');
 	const FeedbackForm = () => import('./FeedbackForm');
 
-	// --------------------------------------------------------------------------
-	// index
-	import IntroSection from './IntroSection';
-	// const IntroSection = () => import(/* webpackPrefetch: true */ './IntroSection');
-
-	import QuoteSection from './QuoteSection';
-	// const QuoteSection = () => import('./Common').then(({QuoteSection}) => QuoteSection);
-	// const QuoteSection = () => import(/* webpackPrefetch: true */ './QuoteSection');
-
-	import ServiceSection from './ServiceSection';
-	// const ServiceSection = () => import('./Common').then(({ServiceSection}) => ServiceSection);
-	// const ServiceSection = () => import(/* webpackPrefetch: true */ './ServiceSection');
-
-	import WorkSection from './WorkSection';
-	// const WorkSection = () => import('./Common').then(({WorkSection}) => WorkSection);
-	// const WorkSection = () => import(/* webpackPrefetch: true */ './WorkSection');
-
-	import PageSection from './PageSection';
-	// const PageSection = () => import('./Common').then(({PageSection}) => PageSection);
-	// const PageSection = () => import(/* webpackPrefetch: true */ './PageSection');
-
-	import PageSectionIsServices from './PageSectionIsServices';
-	// const PageSectionIsServices = () => import('./Common').then(({PageSectionIsServices}) => PageSectionIsServices);
-	// const PageSectionIsServices = () => import(/* webpackPrefetch: true */ './PageSectionIsServices');
-
-	// --------------------------------------------------------------------------
 	// blog
+	import AppBreadcrumb from './AppBreadcrumb';
 	import AppPageStickyContainer from './AppPageStickyContainer';
-	// const AppPageStickyContainer = () => import('./AppPageStickyContainer');
-	// const AppPageStickyContainer = () => import('./Secondary').then(({AppPageStickyContainer}) => AppPageStickyContainer);
-
 	import SideNav from './SideNav';
-	// const SideNav = () => import('./Secondary').then(({SideNav}) => SideNav);
-	// const SideNav = () => import('./SideNav');
-
-	import BlogPosts from './BlogPosts';
-	// const BlogPosts = () => import('./BlogPosts');
-	// const BlogPosts = () => import('./Secondary').then(({BlogPosts}) => BlogPosts);
-
 	import SubscribeForm from './SubscribeForm';
-	// const SubscribeForm = () => import('./Secondary').then(({SubscribeForm}) => SubscribeForm);
-	// const SubscribeForm = () => import('./SubscribeForm');
+	import BlogPosts from './BlogPosts';
 
-	// -----------------------------------------------------------------------------
 	// article
-	import AppArticle from './AppArticle';
-	// const AppArticle = () => import('./AppArticle');
-	// const AppArticle = () => import('./Secondary').then(({AppArticle}) => AppArticle);
-
 	import ArticlesFeed from './ArticlesFeed';
-	// const ArticlesFeed = () => import('./ArticlesFeed');
-	// const ArticlesFeed = () => import('./Secondary').then(({ArticlesFeed}) => ArticlesFeed);
+	import AppArticle from './AppArticle';
+	import ContentSection from './ContentSection';
 
-	// -------------------------------------------------------------------------------
 	// contacts
 	const ZingyWorld = () => import('./ZingyWorld');
-	// const ZingyWorld = () => import('./Secondary').then(({ZingyWorld}) => ZingyWorld);
-
 	import AppPageContacts from './AppPageContacts';
-	// import AppPageContacts from './AppPageContacts';
-	// const AppPageContacts = () => import('./Secondary').then(({AppPageContacts}) => AppPageContacts);
-
 	const AppYmaps = () => import('./AppYmaps');
-	// const AppYmaps = () => import('./Secondary').then(({AppYmaps}) => AppYmaps);
 
-	// --------------------------------------------------------------------------------
 	// development
 	import FancySection from './FancySection';
-	// const FancySection = () => import('./FancySection');
-	// const FancySection = () => import('./Secondary').then(({FancySection}) => FancySection);
 
-	// --------------------------------------------------------------------------------
 	// services
 	import AppServices from './AppServices';
-	// const AppServices = () => import('./AppServices');
-	// const AppServices = () => import('./Secondary').then(({AppServices}) => AppServices);
 
-	// ------------------------------------------------------------------------------------
 	// seo
 	import InfoSection from './InfoSection';
-	// const InfoSection = () => import('./InfoSection');
-	// const InfoSection = () => import('./Secondary').then(({InfoSection}) => InfoSection);
-
 	import OrderSection from './OrderSection';
-	// const OrderSection = () => import('./OrderSection');
-	// const OrderSection = () => import('./Secondary').then(({OrderSection}) => OrderSection);
 
 	export default {
 		name: 'AppPage',
 		components: {
-			// all
 			AppHeader,
-			AppBreadcrumb,
-			ContentSection,
-			FeedbackSection,
-			AppFooter,
-			ZingySection,
-			AppModal,
-			FeedbackForm,
-
-			// index
 			IntroSection,
 			QuoteSection,
 			ServiceSection,
 			WorkSection,
 			PageSection,
 			PageSectionIsServices,
-
-			// blog
+			FeedbackSection,
+			AppFooter,
+			ZingySection,
+			AppModal,
+			FeedbackForm,
+			AppBreadcrumb,
 			AppPageStickyContainer,
 			SideNav,
-			BlogPosts,
 			SubscribeForm,
-
-			// article
-			AppArticle,
+			BlogPosts,
 			ArticlesFeed,
-
-			// contacts
+			AppArticle,
+			ContentSection,
 			ZingyWorld,
 			AppPageContacts,
 			AppYmaps,
-
-			// development
 			FancySection,
-
-			// services
 			AppServices,
-
-			// seo
 			InfoSection,
 			OrderSection,
 		},
 		data() {
 			return {
 				zingySectionShown: false,
-				bodyRect: {},
-				defer: false
+				bodyRect: {}
 			};
 		},
 		computed: {
@@ -244,13 +151,8 @@
 			}
 		},
 		created() {
-			if ('scrollRestoration' in history) {
-				history.scrollRestoration = 'manual';
-			}
-
 			window.addEventListener('scroll', this.onScrollOrResize);
 			window.addEventListener('resize', this.onScrollOrResize);
-			window.addEventListener('scroll', () => this.defer = true);
 		},
 		destroyed() {
 			window.removeEventListener('scroll', this.onScrollOrResize);
