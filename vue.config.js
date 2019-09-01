@@ -54,7 +54,7 @@ const pages = {
 	}
 };
 
-const pugTemplateLoaders = '!!pug-loader!';
+const pugTemplateLoaders = '!!pug-loader?pretty!';
 
 module.exports = {
 	publicPath: '/',
@@ -75,7 +75,7 @@ module.exports = {
 					...{
 						template: pugTemplateLoaders + pages.index.template,
 						filename: pages.index.filename,
-						minify: true
+						minify: false
 					}
 				};
 

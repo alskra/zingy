@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "imagemin": "node imagemin.config.js",
-    "build-modern": "vue-cli-service build --modern && npm run imagemin",
+    "build-modern": "vue-cli-service build --modern && js-beautify dist/*.html --html --editorconfig && npm run imagemin",
     "now-build": "npm run build-modern",
     "deploy": "now"
   },

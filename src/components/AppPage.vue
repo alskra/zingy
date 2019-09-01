@@ -7,9 +7,10 @@
 	import AppBreadcrumb from './AppBreadcrumb';
 	import ContentSection from './ContentSection';
 
-	import FeedbackSection from './FeedbackSection';
+	// import FeedbackSection from './FeedbackSection';
     // const FeedbackSection = () => import('./Common').then(({FeedbackSection}) => FeedbackSection);
     // const FeedbackSection = () => import(/* webpackPrefetch: true */ './FeedbackSection');
+    const FeedbackSection = () => import('./FeedbackSection');
 
 	// import AppFooter from './AppFooter';
     // const AppFooter = () => import('./Common').then(({AppFooter}) => AppFooter);
@@ -26,9 +27,10 @@
 	// const AppModal = () => import(/* webpackPrefetch: true */ './AppModal');
 	const AppModal = () => import('./AppModal');
 
-	import FeedbackForm from './FeedbackForm';
+	// import FeedbackForm from './FeedbackForm';
 	// const FeedbackForm = () => import('./Common').then(({FeedbackForm}) => FeedbackForm);
 	// const FeedbackForm = () => import(/* webpackPrefetch: true */ './FeedbackForm');
+	const FeedbackForm = () => import('./FeedbackForm');
 
 	// --------------------------------------------------------------------------
 	// index
