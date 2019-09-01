@@ -25,7 +25,7 @@
 		&::before {
 			content: '';
 			display: block;
-			padding-top: percentage(356 / 686);
+			padding-top: percentage((356 + 40) / 686);
 			background-color: inherit;
 		}
 
@@ -79,7 +79,7 @@
 		position: relative;
 		z-index: 1;
 		margin: range(-5px, -20px) range(5px, 40px) 0 range(3px, 9px);
-		padding: range(10px, 30px) range(15px, 30px) range(10px, 20px) range(15px, 50px);
+		padding: range(15px, 30px) range(15px, 30px) range(15px, 20px) range(15px, 50px);
 	}
 
 	.description {
