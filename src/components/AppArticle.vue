@@ -1,5 +1,5 @@
 <script>
-	import AppShare from './AppShare';
+	const AppShare = () => import('./AppShare');
 	import SwiperGallery from './SwiperGallery';
 	import NavigationLink from './NavigationLink';
 	import PageSection from './PageSection';
