@@ -6,7 +6,7 @@ include AppFooter
 mixin AppPage(mainBg)
 	template
 		.app-page&attributes(attributes)
-			.body(ref="body")
+			.body(ref="body" :style="{minHeight: !defer ? '150vh' : ''}")
 				app-header.app-page-header(inline-template)
 					+AppHeader()
 
@@ -27,7 +27,7 @@ mixin AppPage(mainBg)
 
 			zingy-section.absolute.animation-stopped.app-page-zingy-section(
 				ref="zingySection"
-				v-if="zingySectionShown && defer"
+				v-if="zingySectionShown"
 				@mounted="onZingySectionMounted"
 			)
 				template(v-slot:before)
