@@ -30,8 +30,8 @@
 			display: block;
 		}
 
-		.page-section {
-			>>> > .header {
+		>>> .page-section {
+			> .header {
 				.title {
 					font-size: var(--h2_font-size);
 					font-weight: 700;
