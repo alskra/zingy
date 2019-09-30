@@ -36,6 +36,7 @@
 			justify-content: center;
 			align-items: center;
 			color: var(--base-button_color, #ffffff);
+			-webkit-text-fill-color: currentColor;
 			font-family: var(--font-family);
 			font-size: range(1.2rem, 1.4rem);
 			font-weight: 500;
