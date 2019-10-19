@@ -9,11 +9,11 @@
 	import WorkSection from './WorkSection';
 	import PageSection from './PageSection';
 	import PageSectionIsServices from './PageSectionIsServices';
-	const FeedbackSection = () => import('./FeedbackSection');
-	const AppFooter = () => import('./AppFooter');
+	import FeedbackSection from './FeedbackSection';
+	import AppFooter from './AppFooter';
 	const ZingySection = () => import('./ZingySection');
 	const AppModal = () => import('./AppModal');
-	const FeedbackForm = () => import('./FeedbackForm');
+	import FeedbackForm from './FeedbackForm';
 
 	// blog
 	import AppBreadcrumb from './AppBreadcrumb';
