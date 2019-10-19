@@ -3,7 +3,7 @@
 		.grid
 			.grid-row
 				.grid-cell(
-					v-for="({tag, slots: {title, description, price, sections}}, index) of $getSlot('tariffs')"
+					v-for="({tag, slots: {title, description, price, sections, button}}, index) of $getSlot('tariffs')"
 					:key="index"
 				)
 					.tariff(:is="tag")
@@ -36,7 +36,7 @@
 								base-button.button(
 									tag="a"
 									@click.prevent="$root.showModalFeedback"
-								) Заказать SEO
+								) {{ $getText(button) }}
 </template>
 
 <script>

@@ -125,7 +125,7 @@ module.exports = {
 	},
 	css: {
 		sourceMap: process.env.NODE_ENV !== 'production',
-		extract: false
+		extract: true
 	},
 	transpileDependencies: [
 		'css-blank-pseudo',
