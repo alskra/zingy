@@ -101,12 +101,16 @@
 
 		.base-icon.logo-icon {
 			transform: perspective(50px);
-		}
+			animation: logo-icon_rotate 5.8s 0.6s infinite;
 
-		&:hover {
-			.base-icon.logo-icon {
-				transition: transform 0.8s 0.1s;
-				transform: perspective(50px) rotateY(360deg);
+			@keyframes logo-icon_rotate {
+				percentage(5 / 5.8) {
+					transform: perspective(50px);
+				}
+
+				100% {
+					transform: perspective(50px) rotateY(360deg);
+				}
 			}
 		}
 	}

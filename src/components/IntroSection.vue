@@ -96,6 +96,7 @@
 			transition-duration: 0.2s;
 			transition-delay: 1s;
 			transition-delay: 0.6s;
+			transition-delay: 1s;
 		}
 
 		&.v-enter,
