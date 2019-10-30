@@ -65,6 +65,7 @@
 		justify-content: flex-end;
 		width: range(44px, 58px);
 		overflow: hidden;
+		background-color: #252525;
 
 		&.v-appear-active {
 			animation: logo-box_slide-in-right 0.4s;
@@ -98,19 +99,16 @@
 		color: white;
 		text-decoration: none;
 		overflow: hidden;
+		transform: perspective(50px);
+		animation: logo_rotate 5.8s 0.6s infinite;
 
-		.base-icon.logo-icon {
-			transform: perspective(50px);
-			animation: logo-icon_rotate 5.8s 0.6s infinite;
+		@keyframes logo_rotate {
+			percentage(5 / 5.8) {
+				transform: perspective(50px);
+			}
 
-			@keyframes logo-icon_rotate {
-				percentage(5 / 5.8) {
-					transform: perspective(50px);
-				}
-
-				100% {
-					transform: perspective(50px) rotateY(360deg);
-				}
+			100% {
+				transform: perspective(50px) rotateY(360deg);
 			}
 		}
 	}
